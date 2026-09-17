@@ -1,0 +1,49 @@
+{
+  "stage": "R211",
+  "objects": 100000,
+  "semantic_dim": 5,
+  "abis": {
+    "A": 12,
+    "B": 18
+  },
+  "single_max_relerr": 9.668681253150212e-16,
+  "single_mean_relerr": 4.623939736526848e-16,
+  "long_programs": {
+    "1": {
+      "max_semantic_relerr": 7.993970164345283e-16,
+      "mean_semantic_relerr": 4.571275371509246e-16,
+      "max_cross_abi_relerr": 1.1790592470561076e-15
+    },
+    "8": {
+      "max_semantic_relerr": 3.863973400262727e-15,
+      "mean_semantic_relerr": 1.876825253340522e-15,
+      "max_cross_abi_relerr": 5.350608619653216e-15
+    },
+    "32": {
+      "max_semantic_relerr": 1.2045602399553405e-14,
+      "mean_semantic_relerr": 6.0307543770816284e-15,
+      "max_cross_abi_relerr": 1.9601707211941418e-14
+    },
+    "128": {
+      "max_semantic_relerr": 5.878283498865524e-14,
+      "mean_semantic_relerr": 2.1057188139182446e-14,
+      "max_cross_abi_relerr": 7.857866470140797e-14
+    },
+    "512": {
+      "max_semantic_relerr": 3.4368715670160027e-13,
+      "mean_semantic_relerr": 7.464268404982994e-14,
+      "max_cross_abi_relerr": 2.038457293382956e-13
+    }
+  },
+  "product_tree": {
+    "program_len": 4096,
+    "median_update_ms": 0.0266655,
+    "median_full_ms": 10.782961499999999,
+    "speedup": 404.3787478202171,
+    "max_matrix_gap": 8.840288501232862e-10,
+    "median_nodes_touched": 13.0
+  },
+  "zero_per_object_gradients": true,
+  "object_payload": "typed opcode + exact coefficient",
+  "pass": false
+}

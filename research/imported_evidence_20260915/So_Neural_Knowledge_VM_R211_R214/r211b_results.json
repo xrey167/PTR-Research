@@ -1,0 +1,55 @@
+{
+  "stage": "R211b",
+  "objects": 100000,
+  "abis": {
+    "A": 12,
+    "B": 18
+  },
+  "exact_lane_policy": "IDs/numbers/time/revisions never enter long floating neural product",
+  "neural_algebra": "orthogonal Givens operators",
+  "long": {
+    "1": {
+      "max_relerr": 7.821651934359906e-16,
+      "mean_relerr": 4.705368526838238e-16,
+      "max_cross": 8.785647427484614e-16,
+      "max_orth_defect": 2.2250628999779564e-16
+    },
+    "8": {
+      "max_relerr": 3.218904797885092e-15,
+      "mean_relerr": 2.0540818246391073e-15,
+      "max_cross": 3.888658105538072e-15,
+      "max_orth_defect": 6.241575790793531e-16
+    },
+    "32": {
+      "max_relerr": 1.2456495706740784e-14,
+      "mean_relerr": 7.23415299597155e-15,
+      "max_cross": 1.4401333800477365e-14,
+      "max_orth_defect": 1.405861684031716e-15
+    },
+    "128": {
+      "max_relerr": 4.0973116285332866e-14,
+      "mean_relerr": 2.4458890849255116e-14,
+      "max_cross": 4.831303903448064e-14,
+      "max_orth_defect": 2.7609280840130128e-15
+    },
+    "512": {
+      "max_relerr": 1.285120564869169e-13,
+      "mean_relerr": 7.547603570460579e-14,
+      "max_cross": 1.5216770749500324e-13,
+      "max_orth_defect": 5.23111367269446e-15
+    },
+    "2048": {
+      "max_relerr": 3.5605668932792204e-13,
+      "mean_relerr": 2.485270270141579e-13,
+      "max_cross": 3.8041444527495904e-13,
+      "max_orth_defect": 9.75255784525148e-15
+    }
+  },
+  "tree": {
+    "median_update_ms": 0.02975,
+    "median_full_ms": 12.994250000000001,
+    "speedup": 436.78151260504205,
+    "max_relative_product_gap": 3.7726940813322624e-15
+  },
+  "pass": true
+}

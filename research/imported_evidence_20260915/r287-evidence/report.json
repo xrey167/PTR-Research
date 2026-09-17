@@ -1,0 +1,109 @@
+{
+  "architecture_candidate": "Temporal Capability Port Fabric (TCPF)",
+  "dod_status": "NOT_DOD; architectural factorization gate",
+  "elapsed_seconds": 23.277205156,
+  "guarantee_boundary": {
+    "exact": [
+      "only active generation lane is read",
+      "revoked pod returns no payload",
+      "stale lane can remain materialized without influence",
+      "new aliases and entity/value bindings require no neural optimization"
+    ],
+    "learned": [
+      "reasoning from typed value payload to answer label"
+    ],
+    "not_claimed": [
+      "natural-language entity linking quality",
+      "real LLM language quality",
+      "RAG superiority",
+      "novelty versus all prior art"
+    ]
+  },
+  "mean": {
+    "heldout_entity_value_pair_accuracy": 1.0,
+    "late_bound_alias_accuracy": 1.0,
+    "online_update_accuracy": 1.0,
+    "pointer_chain_accuracy": 1.0,
+    "pointer_update_accuracy": 1.0,
+    "revocation_accuracy": 1.0,
+    "stale_generation_mutation_invariance": 1.0
+  },
+  "next_gate": "Integrate the same generation authority primitive into real transformer attention, then replace text-derived KV payloads by compact model-native port codes and benchmark against Knowledge Packs/TurboRAG/strong RAG.",
+  "purpose": "Kill the prior held-out identity/value linking failure by changing the architecture: identity-to-value binding is mutable port state, not a learned pair. The neural component learns reusable operations over typed payloads; a canonical Symlink table resolves identity.",
+  "report_sha256": "0f19f6ee5d555c751f0e993f2e08df4736570250337e2b1304cf0ffa5a13f7c2",
+  "results": {
+    "11": {
+      "heldout_entity_value_pair_accuracy": 1.0,
+      "late_bound_alias_accuracy": 1.0,
+      "new_alias_optimizer_steps": 0,
+      "new_entity_optimizer_steps": 0,
+      "online_update_accuracy": 1.0,
+      "online_updates": 1000,
+      "optimizer_steps_after_world_updates": 0,
+      "pointer_chain_accuracy": 1.0,
+      "pointer_update_accuracy": 1.0,
+      "revocation_accuracy": 1.0,
+      "stale_generation_mutation_invariance": 1.0
+    },
+    "131": {
+      "heldout_entity_value_pair_accuracy": 1.0,
+      "late_bound_alias_accuracy": 1.0,
+      "new_alias_optimizer_steps": 0,
+      "new_entity_optimizer_steps": 0,
+      "online_update_accuracy": 1.0,
+      "online_updates": 1000,
+      "optimizer_steps_after_world_updates": 0,
+      "pointer_chain_accuracy": 1.0,
+      "pointer_update_accuracy": 1.0,
+      "revocation_accuracy": 1.0,
+      "stale_generation_mutation_invariance": 1.0
+    },
+    "23": {
+      "heldout_entity_value_pair_accuracy": 1.0,
+      "late_bound_alias_accuracy": 1.0,
+      "new_alias_optimizer_steps": 0,
+      "new_entity_optimizer_steps": 0,
+      "online_update_accuracy": 1.0,
+      "online_updates": 1000,
+      "optimizer_steps_after_world_updates": 0,
+      "pointer_chain_accuracy": 1.0,
+      "pointer_update_accuracy": 1.0,
+      "revocation_accuracy": 1.0,
+      "stale_generation_mutation_invariance": 1.0
+    },
+    "47": {
+      "heldout_entity_value_pair_accuracy": 1.0,
+      "late_bound_alias_accuracy": 1.0,
+      "new_alias_optimizer_steps": 0,
+      "new_entity_optimizer_steps": 0,
+      "online_update_accuracy": 1.0,
+      "online_updates": 1000,
+      "optimizer_steps_after_world_updates": 0,
+      "pointer_chain_accuracy": 1.0,
+      "pointer_update_accuracy": 1.0,
+      "revocation_accuracy": 1.0,
+      "stale_generation_mutation_invariance": 1.0
+    },
+    "89": {
+      "heldout_entity_value_pair_accuracy": 1.0,
+      "late_bound_alias_accuracy": 1.0,
+      "new_alias_optimizer_steps": 0,
+      "new_entity_optimizer_steps": 0,
+      "online_update_accuracy": 1.0,
+      "online_updates": 1000,
+      "optimizer_steps_after_world_updates": 0,
+      "pointer_chain_accuracy": 1.0,
+      "pointer_update_accuracy": 1.0,
+      "revocation_accuracy": 1.0,
+      "stale_generation_mutation_invariance": 1.0
+    }
+  },
+  "seeds": [
+    11,
+    23,
+    47,
+    89,
+    131
+  ],
+  "stage": "R287-TEMPORAL-CAPABILITY-PORT-SEMANTICS"
+}

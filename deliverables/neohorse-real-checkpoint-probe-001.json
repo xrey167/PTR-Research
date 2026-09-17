@@ -1,0 +1,40 @@
+{
+  "schema": "neohorse-real-checkpoint-probe:v1",
+  "model": "/srv/ai/workspaces/models/NeoHorse-1-4B",
+  "device": "cuda:0",
+  "dtype": "float16",
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "presence_penalty": 1.5,
+    "repetition_penalty": 1.0,
+    "thinking": "model default"
+  },
+  "rows": [
+    {
+      "prompt": "Write a Python function that returns the first n Fibonacci numbers.",
+      "generated_tokens": 64,
+      "elapsed_s": 3.502546010990045,
+      "tokens_per_s": 18.272422346254768,
+      "output": " The function must support both integer inputs and string inputs representing integers. It should return a list of integers. For example, `fibonacci_sequence(3)` should return `[0, 1, 1]`.\n\nTo implement this function, we need to handle two cases: when the input is already an integer,"
+    },
+    {
+      "prompt": "A supplier delivered 24 days for X12. A revised record says 18 days. Which current value should a lifecycle-aware system use, and why?",
+      "generated_tokens": 64,
+      "elapsed_s": 2.6066162509960122,
+      "tokens_per_s": 24.552904546476686,
+      "output": "\n\n<think>\n\n</think>\n\nIn a **lifecycle-aware system**, the decision of which value to use hinges on the distinction between **historical fact** and **current authoritative state**, particularly when the discrepancy is resolved by a formal revision.\n\n### Analysis of the Scenario\n\n1.  **The 24-Day Value"
+    },
+    {
+      "prompt": "Plan three tool calls to inspect a repository, test a change, and report only verified results.",
+      "generated_tokens": 64,
+      "elapsed_s": 2.6786458819988184,
+      "tokens_per_s": 23.89266921398468,
+      "output": "\n\n<question>\n\nTask 1: Repository Inspection\nYou are acting as a software engineer and a tester. Your goal is to inspect the current repository, determine whether any recent changes were made, whether the tests pass, and if there is an open issue to fix.\n\nUse the tools available to you to complete"
+    }
+  ],
+  "total_generated_tokens": 192,
+  "total_elapsed_s": 8.787808143984876,
+  "mean_tokens_per_s": 21.848451497137106
+}

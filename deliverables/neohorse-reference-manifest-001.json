@@ -1,0 +1,128 @@
+{
+  "schema": "neohorse-reference-manifest:v1",
+  "model": "TokenRhythm/NeoHorse-1-4B",
+  "base_model": "Qwen/Qwen3.5-4B",
+  "license": "Apache-2.0",
+  "paper": "https://arxiv.org/abs/2609.08183",
+  "repository": "https://github.com/TokenRhythm/NeoHorse",
+  "published_protocol": {
+    "server": "SGLang v0.5.17",
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "repetition_penalty": 1.0,
+    "thinking": true
+  },
+  "published_benchmarks": {
+    "QwenClawBench": {
+      "qwen35_4b": 38.47,
+      "neohorse_4b": 44.68,
+      "delta": 6.21
+    },
+    "WorkBuddy Bench": {
+      "qwen35_4b": 24.62,
+      "neohorse_4b": 34.41,
+      "delta": 9.79
+    },
+    "PinchBench": {
+      "qwen35_4b": 71.19,
+      "neohorse_4b": 77.33,
+      "delta": 6.14
+    },
+    "VitaBench": {
+      "qwen35_4b": 21.5,
+      "neohorse_4b": 32.0,
+      "delta": 10.5
+    },
+    "BFCL v4": {
+      "qwen35_4b": 61.02,
+      "neohorse_4b": 61.79,
+      "delta": 0.77
+    },
+    "tau2-Bench": {
+      "qwen35_4b": 84.29,
+      "neohorse_4b": 88.46,
+      "delta": 4.17
+    },
+    "HumanEval": {
+      "qwen35_4b": 87.2,
+      "neohorse_4b": 96.95,
+      "delta": 9.75
+    },
+    "LiveCodeBench v6": {
+      "qwen35_4b": 53.71,
+      "neohorse_4b": 59.43,
+      "delta": 5.72
+    },
+    "IFBench": {
+      "qwen35_4b": 60.33,
+      "neohorse_4b": 65.33,
+      "delta": 5.0
+    },
+    "IFEval": {
+      "qwen35_4b": 87.06,
+      "neohorse_4b": 88.35,
+      "delta": 1.29
+    }
+  },
+  "published_macro_average": {
+    "qwen35_4b": 58.94,
+    "neohorse_4b": 64.87,
+    "delta": 5.93
+  },
+  "local_probe": "runs/neohorse-real-checkpoint-probe-001.json",
+  "local_probe_status": "real checkpoint loaded on xrserver-dev GPU; Transformers fallback probe, not official benchmark",
+  "sglang_status": "installed on xrserver-dev; launch blocked by current GPU occupancy and hybrid cache/device issue; no official score substituted",
+  "model_family": "qwen3.5",
+  "pod_mapping": {
+    "pod_type": "model",
+    "model_variant": "base",
+    "model_family": "qwen3.5",
+    "reader_identity": "neohorse-1-4b",
+    "post_training": "routing-guided-agentic",
+    "interface": "text->text",
+    "context_length": 262144,
+    "max_context_length": 1010000,
+    "weight_format": "safetensors",
+    "precision": "bf16"
+  },
+  "post_training": "routing-guided-agentic",
+  "interface": "text input and text output",
+  "context_length": 262144,
+  "max_context_length": 1010000,
+  "weight_format": "safetensors",
+  "precision": "bf16",
+  "evaluation_definition": {
+    "higher_is_better": true,
+    "delta": "neohorse_1_4b minus qwen3.5_4b",
+    "track": "4B",
+    "comparison_models": [
+      "Qwen3.5-4B",
+      "Gemma-4-E4B-it",
+      "Nanbeige-4.2-3B",
+      "Agents-A1-4B",
+      "Spark-X2.5-4B"
+    ],
+    "groups": {
+      "agentic": [
+        "QwenClawBench",
+        "WorkBuddy Bench",
+        "PinchBench",
+        "VitaBench",
+        "BFCL v4",
+        "tau2-Bench"
+      ],
+      "coding": [
+        "HumanEval",
+        "LiveCodeBench v6"
+      ],
+      "instruction_following": [
+        "IFBench",
+        "IFEval"
+      ]
+    },
+    "macro_average_benchmarks": 10
+  }
+}

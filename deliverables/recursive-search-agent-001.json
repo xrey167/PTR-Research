@@ -1,0 +1,15 @@
+{
+  "schema": "recursive-search-agent-demo:v1",
+  "broad_recall": 0.5,
+  "deep_recall": 1.0,
+  "broad_search_calls": 1,
+  "deep_search_calls": 3,
+  "experience_records": 4,
+  "verified_records": 3,
+  "experience_pods": [
+    "experience:local-search:Which documents explain Brookside and Channel 4?:bm25:Which documents explain:found:doc-b,doc-a",
+    "experience:local-search:Which documents explain Brookside and Channel 4?:bm25:Which documents explain Brookside and Channel 4?:found:doc-b,doc-a"
+  ],
+  "passed": true,
+  "scope": "local three-document fixture; deterministic search policy, not an external agent benchmark"
+}

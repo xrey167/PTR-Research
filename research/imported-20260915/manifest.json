@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://chatgpt.com/share/6aa9082a-85d4-83eb-ba37-63f8dfc1398e",
+    "raw_path": "runs\\research-retest\\6aa9082a-85d4-83eb-ba37-63f8dfc1398e.html",
+    "raw_sha256": "674f79dacff6843b989f2dee2d81c56a359be82ff673f34940500317dc3ada60",
+    "raw_bytes": 531720,
+    "unique_nonempty_text_messages": 12,
+    "transcript_path": "research\\imported-20260915\\6aa9082a-85d4-83eb-ba37-63f8dfc1398e.md",
+    "transcript_sha256": "3b1ca8e9eaeff65f3badfaec3589fddccf572468396156f42208f85f8f051afe"
+  },
+  {
+    "url": "https://chatgpt.com/share/6aa93018-a76c-83ed-b902-37ac2c079592",
+    "raw_path": "runs\\research-retest\\6aa93018-a76c-83ed-b902-37ac2c079592.html",
+    "raw_sha256": "edd3cbe6b183fdb6220de45d2de4f5ab14bdce04a45a5e81b7fc1b663e68a412",
+    "raw_bytes": 6675917,
+    "unique_nonempty_text_messages": 226,
+    "transcript_path": "research\\imported-20260915\\6aa93018-a76c-83ed-b902-37ac2c079592.md",
+    "transcript_sha256": "3c038a5e017549199d4b48d09ddb727b1343ff586675ebb92cf23bb40039507c"
+  }
+]

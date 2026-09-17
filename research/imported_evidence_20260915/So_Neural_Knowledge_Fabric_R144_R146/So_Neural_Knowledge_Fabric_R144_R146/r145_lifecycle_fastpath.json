@@ -1,0 +1,48 @@
+{
+  "threads": 1,
+  "batch": 512,
+  "hops": 6,
+  "base_interleaved": {
+    "median_ms": 1.6669105,
+    "mean_ms": 1.7111511666666666,
+    "p95_ms": 1.9358925500000002
+  },
+  "snapshot_fastpath": {
+    "median_ms": 1.666455,
+    "mean_ms": 1.7068306366666668,
+    "p95_ms": 1.9276047
+  },
+  "fastpath_overhead_pct_median": -0.02732600220587411,
+  "base_for_naive": {
+    "median_ms": 1.6876065,
+    "mean_ms": 1.7225423750000002,
+    "p95_ms": 1.94271235
+  },
+  "naive_per_record": {
+    "median_ms": 2.258086,
+    "mean_ms": 2.3199073083333333,
+    "p95_ms": 2.5967118
+  },
+  "naive_overhead_pct_median": 33.80405918085763,
+  "mutation_partial_ms_per_edit": 0.0283986325,
+  "mutation_full_recompile_ms_per_edit": 0.11551344375,
+  "mutation_speedup": 4.067570639184827,
+  "stale_lease_rejected": true,
+  "new_lease_correct": true,
+  "hotpath_design": [
+    "pin immutable snapshot once per request",
+    "one scalar branch epoch comparison per neural step",
+    "Neural Images addressed by snapshot/revision so no per-use authorization",
+    "derived caches keyed by snapshot/dep digest; invalidation happens at mutation boundary",
+    "compile only changed Pod value row"
+  ],
+  "five_trial_fastpath_overhead_pct": [
+    0.2653113008028729,
+    -0.2696076654024826,
+    -0.7610341352226047,
+    0.3930029263482071,
+    -0.290955291299122
+  ],
+  "five_trial_mean_pct": -0.13265657295462585,
+  "five_trial_max_pct": 0.3930029263482071
+}

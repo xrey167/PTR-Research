@@ -1,0 +1,70 @@
+{
+  "baseline_strength": "oracle exact-address structured RAG: no retrieval errors and no text parsing; only repeated model-specific compilation remains",
+  "results": {
+    "1": {
+      "pod_median_ms": 0.011017,
+      "oracle_structured_rag_median_ms": 0.032854499999999995,
+      "speedup": 2.9821639284741757,
+      "accuracy": 1.0
+    },
+    "32": {
+      "pod_median_ms": 0.014497,
+      "oracle_structured_rag_median_ms": 0.038572999999999996,
+      "speedup": 2.6607573980823616,
+      "accuracy": 1.0
+    },
+    "512": {
+      "pod_median_ms": 0.049955,
+      "oracle_structured_rag_median_ms": 0.08974499999999999,
+      "speedup": 1.7965168651786607,
+      "accuracy": 1.0
+    },
+    "4096": {
+      "pod_median_ms": 0.36460400000000004,
+      "oracle_structured_rag_median_ms": 0.519352,
+      "speedup": 1.4244275981612928,
+      "accuracy": 1.0
+    }
+  },
+  "hot_update": {
+    "slot": 40,
+    "old": 19,
+    "new": 20,
+    "new_image_correct": true,
+    "old_image_still_encodes_old": true,
+    "runtime_rule": "old image is keyed by old revision and cannot authorize under new snapshot"
+  },
+  "zipf_hybrid": {
+    "4": {
+      "capacity": 4,
+      "hit_rate": 0.49746,
+      "expected_ms_per_read": 0.021991217249999997,
+      "speedup_vs_rag": 1.493982785332176
+    },
+    "8": {
+      "capacity": 8,
+      "hit_rate": 0.62056,
+      "expected_ms_per_read": 0.019303021,
+      "speedup_vs_rag": 1.7020392818305485
+    },
+    "16": {
+      "capacity": 16,
+      "hit_rate": 0.73894,
+      "expected_ms_per_read": 0.016717897749999995,
+      "speedup_vs_rag": 1.965229150896081
+    },
+    "32": {
+      "capacity": 32,
+      "hit_rate": 0.84929,
+      "expected_ms_per_read": 0.014308129624999999,
+      "speedup_vs_rag": 2.296212073910394
+    },
+    "64": {
+      "capacity": 64,
+      "hit_rate": 0.94776,
+      "expected_ms_per_read": 0.012157791,
+      "speedup_vs_rag": 2.702341239457069
+    }
+  },
+  "interpretation": "If a RAG system precompiles and reuses model-specific latent records, it has moved into the neural-memory design space (NeuralDB/Larimar/our Pods). The Fabric therefore treats RAG as cold backing store and Pods as resident compiled cache, rather than claiming universal accuracy dominance."
+}

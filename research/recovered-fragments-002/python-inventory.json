@@ -1,0 +1,361 @@
+[
+  {
+    "original_path": "strict_e0/run.py",
+    "fragment": "entry_8507_0.py",
+    "imports": [
+      "argparse",
+      "gate",
+      "importlib.metadata",
+      "json",
+      "native_e0",
+      "pathlib",
+      "run_ds3_oracle",
+      "run_tskv_prefix_quotient",
+      "sys",
+      "time"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  {
+    "original_path": "strict_e0/gate.py",
+    "fragment": "entry_8532_0.py",
+    "imports": [
+      "json",
+      "math",
+      "struct"
+    ],
+    "classes": [],
+    "functions": [
+      "key",
+      "evaluate"
+    ]
+  },
+  {
+    "original_path": "strict_e0/test_gate.py",
+    "fragment": "entry_8532_1.py",
+    "imports": [
+      "copy",
+      "gate",
+      "json",
+      "pathlib",
+      "random",
+      "reproduce"
+    ],
+    "classes": [],
+    "functions": [
+      "check"
+    ]
+  },
+  {
+    "original_path": "strict_e0/reproduce.py",
+    "fragment": "entry_8574_1.py",
+    "imports": [
+      "ast",
+      "copy",
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "historical",
+      "fixture",
+      "mutations"
+    ]
+  },
+  {
+    "original_path": "semantic_audit_v18/So_QC_C_Recovered/decoder_semantics/write_report.py",
+    "fragment": "entry_24315_0.py",
+    "imports": [
+      "hashlib",
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  {
+    "original_path": "semantic_audit_v18/So_QC_C_Recovered/decoder_semantics/test_root_migration.py",
+    "fragment": "entry_24450_0.py",
+    "imports": [
+      "decoder_semantics.compiler",
+      "full_shell_code.core",
+      "gzip",
+      "json",
+      "numpy",
+      "pathlib",
+      "query_abi_bridge.core",
+      "query_abi_bridge.run_validation",
+      "sys"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  {
+    "original_path": "semantic_audit_v18/So_QC_C_Recovered/decoder_semantics/audit_native.py",
+    "fragment": "entry_25112_0.py",
+    "imports": [
+      "hashlib",
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  {
+    "original_path": "semantic_audit_v18/So_QC_C_Recovered/decoder_semantics/run_native.py",
+    "fragment": "entry_25264_0.py",
+    "imports": [
+      "argparse",
+      "decoder_semantics.compiler",
+      "hashlib",
+      "json",
+      "numpy",
+      "pathlib",
+      "random",
+      "sys",
+      "time",
+      "torch",
+      "transformers"
+    ],
+    "classes": [],
+    "functions": [
+      "digest",
+      "run"
+    ]
+  },
+  {
+    "original_path": "semantic_audit_v18/So_QC_C_Recovered/decoder_semantics/compiler.py",
+    "fragment": "entry_25360_1.py",
+    "imports": [
+      "full_shell_code.core",
+      "hashlib",
+      "json",
+      "operator_forest.core",
+      "pathlib"
+    ],
+    "classes": [
+      "ProvenanceCompiler"
+    ],
+    "functions": []
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/binding_transfer/tensor_costs.py",
+    "fragment": "entry_28205_0.py",
+    "imports": [
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/binding_transfer/make_report.py",
+    "fragment": "entry_29551_0.py",
+    "imports": [
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "doc"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/binding_transfer/audit_bt2.py",
+    "fragment": "entry_29832_0.py",
+    "imports": [
+      "hashlib",
+      "json",
+      "pathlib",
+      "re",
+      "transformers"
+    ],
+    "classes": [],
+    "functions": [
+      "read"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/binding_transfer/run_bt2.py",
+    "fragment": "entry_29935_1.py",
+    "imports": [
+      "json",
+      "pathlib",
+      "re",
+      "run_bt1",
+      "safetensors.torch",
+      "sys",
+      "time",
+      "torch"
+    ],
+    "classes": [],
+    "functions": [
+      "render",
+      "definition",
+      "main"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/binding_transfer/audit_bt1.py",
+    "fragment": "entry_30350_0.py",
+    "imports": [
+      "hashlib",
+      "json",
+      "pathlib",
+      "re"
+    ],
+    "classes": [],
+    "functions": [
+      "read",
+      "sha"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/binding_transfer/run_bt1.py",
+    "fragment": "entry_30390_1.py",
+    "imports": [
+      "json",
+      "pathlib",
+      "re",
+      "run_im1",
+      "safetensors.torch",
+      "sys",
+      "tensor_memory",
+      "time",
+      "torch"
+    ],
+    "classes": [],
+    "functions": [
+      "rename",
+      "definition",
+      "main"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/plot_results.py",
+    "fragment": "entry_47323_0.py",
+    "imports": [
+      "cases",
+      "json",
+      "matplotlib",
+      "matplotlib.pyplot",
+      "numpy",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/verify_results.py",
+    "fragment": "entry_48643_0.py",
+    "imports": [
+      "argparse",
+      "cases",
+      "collections",
+      "hashlib",
+      "json",
+      "pathlib",
+      "re"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/bundle.py",
+    "fragment": "entry_48996_1.py",
+    "imports": [
+      "argparse",
+      "hashlib",
+      "json",
+      "pathlib",
+      "zipfile"
+    ],
+    "classes": [],
+    "functions": []
+  },
+  {
+    "original_path": "research/So_QC_C_Recovered/run_recovered.py",
+    "fragment": "entry_49162_1.py",
+    "imports": [
+      "argparse",
+      "cases",
+      "conditioned_operator",
+      "copy",
+      "coupling_operator",
+      "hashlib",
+      "json",
+      "numpy",
+      "os",
+      "pathlib",
+      "time",
+      "torch",
+      "transformers"
+    ],
+    "classes": [
+      "Boundary"
+    ],
+    "functions": [
+      "atomic_json",
+      "atomic_torch",
+      "main"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Conditioned_Reader/analyze_results.py",
+    "fragment": "entry_50078_0.py",
+    "imports": [
+      "argparse",
+      "cases",
+      "collections",
+      "hashlib",
+      "json",
+      "pathlib"
+    ],
+    "classes": [],
+    "functions": [
+      "inspect"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Conditioned_Reader/run_experiment.py",
+    "fragment": "entry_50734_0.py",
+    "imports": [
+      "argparse",
+      "cases",
+      "conditioned_operator",
+      "copy",
+      "hashlib",
+      "json",
+      "numpy",
+      "pathlib",
+      "time",
+      "torch",
+      "transformers"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ]
+  },
+  {
+    "original_path": "research/So_QC_C_Conditioned_Reader/cases.py",
+    "fragment": "entry_50789_1.py",
+    "imports": [
+      "random",
+      "re"
+    ],
+    "classes": [],
+    "functions": [
+      "gold",
+      "question",
+      "datasets",
+      "score",
+      "strict_ok"
+    ]
+  }
+]

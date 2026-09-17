@@ -1,0 +1,11 @@
+{
+  "origin_key": "origin:ef8ee6921819a131cec211f598296e2a749b3f76972c2a87ac6a0c1c45d74d23",
+  "knowledge_key": "model:reader:qwen2.5-3b",
+  "generation_key": "knowledge:227ccc92cc634f9243bfc9f0cb52c758549639f6e9457c0deafa17729b005e81",
+  "artifact_key": "lora:c5d7a87ec78db7750486ae471e2e94d4b66fa9122adbb1431ae315d14ddc7290",
+  "reader_identity": {
+    "sha256": "reader"
+  },
+  "protocol_sha256": "780875ec42be42e238a0883c0e20761a6e72d75ff26e4b65a6986f4d74de8717",
+  "full_research_goal_complete": false
+}

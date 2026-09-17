@@ -1,0 +1,80 @@
+{
+  "schema": "paper-benchmark-manifest:v1",
+  "created_at": "2026-09-16T05:29:43.563947+00:00",
+  "platform": {
+    "system": "Linux",
+    "release": "7.0.0-31-generic",
+    "python": "3.12.14"
+  },
+  "arms": [
+    "baseline",
+    "rsi"
+  ],
+  "evaluation_protocol": {
+    "verifier_outside_learning": true,
+    "memory_frozen_for_test": true,
+    "matched_task_deltas_only": true,
+    "metrics": [
+      "partial_score",
+      "success",
+      "wall_time_s",
+      "tool_calls",
+      "input_tokens",
+      "memory_pods"
+    ]
+  },
+  "storage_audit": {
+    "mounts": [
+      {
+        "path": "/srv/ai/workspaces",
+        "free_gib": 154.96,
+        "total_gib": 491.08
+      },
+      {
+        "path": "/tmp",
+        "free_gib": 15.07,
+        "total_gib": 15.13
+      }
+    ],
+    "snap_qemu": "/snap/lxd/current/bin/qemu-system-x86_64",
+    "kvm": true
+  },
+  "benchmarks": [
+    {
+      "spec": {
+        "name": "osworld_v2",
+        "release": "v2026.08.08",
+        "tasks": 108,
+        "cohort": "official 108-task batch",
+        "runner": "run_osworld.py",
+        "prerequisites": [
+          "docker",
+          "qemu-system-x86_64"
+        ]
+      },
+      "prerequisites": {
+        "docker": null,
+        "qemu-system-x86_64": null
+      },
+      "ready": false
+    },
+    {
+      "spec": {
+        "name": "agents_last_exam",
+        "release": "d10fb61a14f9719774c3520c5763068b28ef554d",
+        "tasks": 67,
+        "cohort": "Near-term: 64 CPU + 3 completed GPU baselines",
+        "runner": "run_ale.py",
+        "prerequisites": [
+          "qemu-system-x86_64"
+        ]
+      },
+      "prerequisites": {
+        "qemu-system-x86_64": null
+      },
+      "ready": false
+    }
+  ],
+  "status": "prepared_not_run",
+  "reason": "Official VM assets/runners and model credentials are required; no score is fabricated by this dry-run."
+}

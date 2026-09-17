@@ -1,0 +1,18 @@
+{
+  "schema": "recursive-pod-loop-demo:v1",
+  "history_count": 3,
+  "deep_expansions": 1,
+  "replay": {
+    "evaluated": 2,
+    "correct": 2,
+    "coverage": 1.0,
+    "accuracy": 1.0
+  },
+  "consolidated_pods": 2,
+  "lineage_artifact": "text:2bc9125610fce2b597684499dd65e8623f17798bd2ea2730ffff157a5cec8f2a",
+  "active_before_revoke": true,
+  "blocked_after_revoke": true,
+  "revoked_count": 3,
+  "passed": true,
+  "scope": "local deterministic replay fixture; not a claim about external agent benchmarks"
+}

@@ -1,0 +1,439 @@
+{
+  "checks": [
+    {
+      "seed": 101,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 101,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 101,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 103,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 103,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 103,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 107,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 107,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 107,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 109,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 109,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 109,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 113,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 113,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 113,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 127,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 127,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 127,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 131,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 131,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 131,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 137,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 137,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 137,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 139,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 139,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 139,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 149,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 149,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 149,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 151,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 151,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 151,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 157,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 157,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    },
+    {
+      "seed": 157,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh_accept": true,
+      "unit_error_rejected": true,
+      "modular_alias_rejected": true
+    }
+  ],
+  "costs": [
+    {
+      "name": "TC1_all_pairs_local",
+      "m": 15,
+      "k": 6,
+      "d": 256,
+      "direct_mac_terms": 23040,
+      "verify_mac_terms": 218640,
+      "verify_div_direct": 9.489583333333334,
+      "cost_gate": false
+    },
+    {
+      "name": "TC1_single_pair_local",
+      "m": 1,
+      "k": 6,
+      "d": 256,
+      "direct_mac_terms": 1536,
+      "verify_mac_terms": 71920,
+      "verify_div_direct": 46.822916666666664,
+      "cost_gate": false
+    },
+    {
+      "name": "large_control",
+      "m": 512,
+      "k": 512,
+      "d": 512,
+      "direct_mac_terms": 134217728,
+      "verify_mac_terms": 31457280,
+      "verify_div_direct": 0.234375,
+      "cost_gate": true
+    }
+  ],
+  "rounds": 40,
+  "soundness_bound_for_fixed_error": "<=2^-40 theoretical under secret independent post-commit challenges and valid bounds",
+  "production_secret_challenges_implemented": false,
+  "timing_claim": null,
+  "tc1_cost_gate_pass": false,
+  "model_forwards": 0,
+  "full_dod_pass": false
+}

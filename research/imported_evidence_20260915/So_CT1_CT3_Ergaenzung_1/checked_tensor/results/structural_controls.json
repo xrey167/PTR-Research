@@ -1,0 +1,26 @@
+[
+  {
+    "case": "operation",
+    "rejected": true
+  },
+  {
+    "case": "reference",
+    "rejected": true
+  },
+  {
+    "case": "shape",
+    "rejected": true
+  },
+  {
+    "case": "nonfinite",
+    "rejected": true
+  },
+  {
+    "case": "abi",
+    "rejected": true
+  },
+  {
+    "case": "boolean_epoch",
+    "rejected": true
+  }
+]

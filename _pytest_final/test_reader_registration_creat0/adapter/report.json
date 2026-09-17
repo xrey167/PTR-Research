@@ -1,0 +1,1 @@
+{"status": "trained_not_evaluated", "reader_identity": {"sha256": "reader"}, "adapter_files": {"adapter_model.safetensors": "adapter"}}

@@ -1,0 +1,30 @@
+{
+  "dataset_version": "podmodel_v1",
+  "privacy": {
+    "private_data_external_endpoints": false,
+    "telemetry": false,
+    "redact_before_generation": true
+  },
+  "columns": [
+    {"name": "pod_type", "kind": "categorical", "required": true},
+    {"name": "model_track", "kind": "categorical", "required": true},
+    {"name": "language", "kind": "categorical", "required": true},
+    {"name": "query", "kind": "text", "required": true},
+    {"name": "evidence", "kind": "structured", "required": true},
+    {"name": "target", "kind": "json", "required": true},
+    {"name": "provenance", "kind": "structured", "required": true},
+    {"name": "negative_case", "kind": "categorical", "required": true}
+  ],
+  "validators": [
+    "json_schema_target",
+    "required_provenance_keys",
+    "no_revoked_evidence",
+    "split_disjoint_by_origin_key",
+    "no_private_text_in_external_generation",
+    "pod_model_track_compatibility",
+    "acl_and_generation_consistency"
+  ],
+  "sampling_dimensions": [
+    "pod_type", "model_track", "language", "hop_depth", "rarity_slice", "negative_case", "latency_budget"
+  ]
+}

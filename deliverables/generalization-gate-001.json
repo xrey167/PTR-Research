@@ -1,0 +1,15 @@
+{
+  "schema": "generalization-gate:v1",
+  "passed": true,
+  "checks": {
+    "held_out_queries": true,
+    "semantic_beats_lexical": true,
+    "baseline_zero": true,
+    "adapter_nonzero": true,
+    "typed_guard_complete": true,
+    "scope_declared": true
+  },
+  "benchmark": "runs/generalization-benchmark-eval-001.json",
+  "reader": "runs/generalization-reader-eval-001.json",
+  "scope": "synthetic held-out benchmark; typed guard is deterministic safety, not learned quality"
+}

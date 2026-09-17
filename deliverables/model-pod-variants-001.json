@@ -1,0 +1,36 @@
+{
+  "schema": "model-pod-variants-demo:v1",
+  "variants": [
+    "lora",
+    "distilled",
+    "moe",
+    "quantized",
+    "base"
+  ],
+  "artifacts": [
+    "model:39eb088981d9547c59e3f5390209af7718eb06f49043df55aec4ae19e38746fc",
+    "model:b20ef1cd214ade364078bf83ec9a3f57bdf27412c282deb3188ef51ea0896ec6",
+    "model:1aa40969ee416f49c90a90554142200dc3e1b2b474b54217bdd1d2a124c0b9ad",
+    "model:bb7f25659ac3f21077cd0d563abd8b7bb25282751123e45a0bba9244f211e2ac",
+    "model:201b51f2925836c61286469f179eaf89415573c22ca75a1b4bec753050e95a75"
+  ],
+  "activation_operations": [
+    "attach_lora",
+    "load_student",
+    "load_moe",
+    "load_quantized",
+    "load_base"
+  ],
+  "revoked_origin": "origin:69eed69a6517a8399be658bc28f92daeb9faa7e32f27ae24f477bced2c38f08a",
+  "revoked_count": [
+    "knowledge:4c6f14f2addd4c9367c4d4eee5bf32d508a6055b8572e851b0281a218136785f",
+    "model:1aa40969ee416f49c90a90554142200dc3e1b2b474b54217bdd1d2a124c0b9ad",
+    "model:201b51f2925836c61286469f179eaf89415573c22ca75a1b4bec753050e95a75",
+    "model:39eb088981d9547c59e3f5390209af7718eb06f49043df55aec4ae19e38746fc",
+    "model:b20ef1cd214ade364078bf83ec9a3f57bdf27412c282deb3188ef51ea0896ec6",
+    "model:bb7f25659ac3f21077cd0d563abd8b7bb25282751123e45a0bba9244f211e2ac",
+    "origin:69eed69a6517a8399be658bc28f92daeb9faa7e32f27ae24f477bced2c38f08a"
+  ],
+  "all_activation_blocked": true,
+  "passed": true
+}

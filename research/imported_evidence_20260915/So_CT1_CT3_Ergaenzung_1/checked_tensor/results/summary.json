@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "exact_math_cases": 36,
+  "all_case_gates_pass": true,
+  "relabelled_old_outputs_rejected": 36,
+  "weak_hash_false_accepts": 36,
+  "structural_controls_pass": 6,
+  "new_model_answers": 0,
+  "archived_tensors_used": false,
+  "scope": "dyadic mathematical tensors; deterministic replay, not cryptographic proof or neural generalization",
+  "seconds": 0.15409134999936214,
+  "full_dod_pass": false
+}

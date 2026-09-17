@@ -1,0 +1,33 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest-*/
+.basetemp/
+*.egg-info/
+
+# Rust build artifacts
+bindings/raft_binding/target/
+build/
+dist/
+
+# Run artifacts (large, regenerable via server benchmarks)
+runs/
+research/runs/
+*.sqlite3
+*.sqlite3-journal
+*.safetensors
+
+# Models
+models/
+
+# Local noise
+.edgepdf*
+*.log
+.DS_Store
+Thumbs.db
+
+# scratch / test junk
+.tmp/
+_pytest_full/

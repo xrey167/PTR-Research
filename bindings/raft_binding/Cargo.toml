@@ -1,0 +1,14 @@
+[package]
+name = "neural-pods-raft"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "neural_pods_raft"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.23", features = ["extension-module"] }
+raft = "0.7"
+slog = "2"
+protobuf = "2"

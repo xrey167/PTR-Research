@@ -1,0 +1,722 @@
+[
+  {
+    "seed": 101,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "7a36d16ad05536135093b8ddcc5828d70d3b9e35226641647d950f40e6013883",
+    "new_output_sha256": "15b3db44717cd2b9bc93b9c0295ad6514a186339e8b069660a9b4094499a51d9"
+  },
+  {
+    "seed": 101,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "087aa3d5153d1449fe9d0f93c98e7938d4cc7f3a6903d718f6ac62cb2376dda4",
+    "new_output_sha256": "24ee0bfde87960a745ea7335f1bd11504a68350b596d32da67b6cde575267b2a"
+  },
+  {
+    "seed": 101,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "34a4f8d62352b484e1917c7629fa4dec87a3aeec8a6146e8b7c167bbeead86fb",
+    "new_output_sha256": "3812624d2a18f1b4cf00a142c972e519a1de6b58c0f4f1968cb5b40c1f53d73d"
+  },
+  {
+    "seed": 103,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "b73600140e21236bf119bb4c38df1a64588bfc71cf9571c12d660e6e9066fdd4",
+    "new_output_sha256": "f3d8fcf51a5c9b816ee58180ee5ebba816259c417b42ee211a7096f84a76a613"
+  },
+  {
+    "seed": 103,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "5b4b8bc126804f110a5c7a20ed24295a4a19023bd3761a3e3455af30564ea9a7",
+    "new_output_sha256": "dd6ad63d0e95a3593a47e21f98955a9d88f9bc43e48b474c7487bc95bd76b9c9"
+  },
+  {
+    "seed": 103,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "d7b2d684dc1a33aecea535f6d928d98f97e0695f468f2247d379c05f9b0be2d8",
+    "new_output_sha256": "cbd455e79daa18bf97048459eaef7d2aa2512681db2b22611ebec975a03482ee"
+  },
+  {
+    "seed": 107,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "9072875a9e7f4c4d7a2286de103c2d9fa9e247b4f1f1e55ae55690caacdb9063",
+    "new_output_sha256": "b7a2da7d2445c52a4a6457788091ce7f0e2ae33df93153f5e1d657b78b817a8c"
+  },
+  {
+    "seed": 107,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "7cf96458f5f4f799133a441b9faae3fcec1b138b05b52a528839b372c1f64cb3",
+    "new_output_sha256": "00036b628f371129c2dd9dfeb92544419ff14326659d30a997b45e5d08214636"
+  },
+  {
+    "seed": 107,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "cc0afa7d946bd5db53db1c07293b19a49a408458fa312837d59809e7f9001212",
+    "new_output_sha256": "bc7a4e50e06e030b23dab6cafc4d8f2e44b675fd491bb4fd74afc13e50a0c323"
+  },
+  {
+    "seed": 109,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "15dd8774c70ab9c7e3a0c4aef09cc227e8afb477428b447bb75fc12289cb5ea1",
+    "new_output_sha256": "f83beee93f2a75f4db0001c63832704327244e6ca4a231fe844da9d0baf01a76"
+  },
+  {
+    "seed": 109,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "4140fa9b47daa687a4952f09bd7f3431e1f138fabc2f149d9bef17690e83a0f9",
+    "new_output_sha256": "b4fc92e3b7cc3e36bebb4ab63d2d269b030cc9cf835ea00afded71ed32cec54d"
+  },
+  {
+    "seed": 109,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "81b13f70768be4defdc8d9531eb8416bac5a0d3fbc8bbd33d1fb805f8fb54fd7",
+    "new_output_sha256": "7f713f9851a959e87f528906898893d5a3a103572c6aeb25dbc18dc15b6dbd99"
+  },
+  {
+    "seed": 113,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "510fa12824bb957d1e56f5b54ecdbeafac8d707b03e8961a75bf4915a5c8e403",
+    "new_output_sha256": "92c88b61c848cbbb9ab663a1516a431d529603fa322e58a170aa1ca7906a7fdf"
+  },
+  {
+    "seed": 113,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "1b15df5033544c23ed9bf680b583f3daad0f851f69c78f2eb827295617591799",
+    "new_output_sha256": "49feed0821f024cd03c2e3ac03200bcdcfb773580da9c64e1c6f6d52b19d3e28"
+  },
+  {
+    "seed": 113,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "46afb31aced91bbfabda8d55650e8c84789ea6234cdcd2d531fe323c4a6ed832",
+    "new_output_sha256": "4eddae23ba8ca96f691f934961d92be7f750038490d6d0c3222bdb8124359cf0"
+  },
+  {
+    "seed": 127,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "29c6e7e08588c0e8456ad9fc68b5a4e3eeb723256f6594887c9220c45dafa290",
+    "new_output_sha256": "fc09e00223e85eafff4f545b8aa366d38f5a684b38927469f094679605d54c45"
+  },
+  {
+    "seed": 127,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "559b9339925e24beba32ec1666f845846cbb616e19d7817204dc999293ea0e8b",
+    "new_output_sha256": "c5a883d3ef99d0059949212bfc746271c9a3b926ffaec9ff729f95c0e18d3170"
+  },
+  {
+    "seed": 127,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "ed7ccc75e04ce14425297e5b0a8c0d2c89241d56688c5e88d4db40ee67918bd0",
+    "new_output_sha256": "4cc87593fd4a72c8aff13b861d9075aaa92b6998fee066c31aeb51148d8040a8"
+  },
+  {
+    "seed": 131,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "c9ea99cd4bc2ca5b9d4666cc7474c2ef5216154e4ff7fd38d53badd669f5f1a3",
+    "new_output_sha256": "5f91b0c0bebbdff20221121592183161ab19061bf6bd2926842c253680f95e1d"
+  },
+  {
+    "seed": 131,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "a9d2c292d116c77b3f5dba4a00ef981726f6b26f50711c50b5f8248e8e970892",
+    "new_output_sha256": "1d147ad9f3487ca8aabc7a772557609771dd86b60628342166bb6ec7c5d04bf4"
+  },
+  {
+    "seed": 131,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "f59c28e0ff2842a119e6f38c76c728285a37b86c932be9a18a4742456ceac61d",
+    "new_output_sha256": "65740f84beb66696c87615bcd78d6e7a04392d224a192c912798d6280d268c7c"
+  },
+  {
+    "seed": 137,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "6a3da03ed55cb0b3ac4825d5c5586b9a42d00ba934898841383070098569c7ca",
+    "new_output_sha256": "075fa953c7612ca5899320a14cb6617257263762e60d99c4a6f5ddc8909a4c41"
+  },
+  {
+    "seed": 137,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "529d267b8a6102b6ced7fef981b98e818858be4a43e33e4aed6e534a34078f34",
+    "new_output_sha256": "d28500c557579141f87a79013cd24fe65c251816e3179daa6b8df8c1bd061c4f"
+  },
+  {
+    "seed": 137,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "7e9eb568fc53372de5278bc481fd0734296a76f8f51e27a1180a84004f066f4c",
+    "new_output_sha256": "408441a0249620f8690f4de5a7ca1567bbbcb9424f4b9ea0c3f1c86a41846247"
+  },
+  {
+    "seed": 139,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "1c0cb92f62728df943e8d158a1e43e02bc1a4f62e7ac1cd25c34d0c57e4ec3c7",
+    "new_output_sha256": "71681d46b83c9734fe6598992811081f3f5c6ec52a1423828527a12137ffad9e"
+  },
+  {
+    "seed": 139,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "cfc99ae4675dad0555d802619fc08851af2c18d95d53a06b0304f799b174236e",
+    "new_output_sha256": "6983ffa2f3955b4d43c734e3ae687fe9d0dd01a55530887a88374bd7ac993ae1"
+  },
+  {
+    "seed": 139,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "a01302a01e8b0d7090ab2f8c3bda4e307989222cacc92b499606c31fa8e3a2a4",
+    "new_output_sha256": "d1e0a01e04788e937dff47dfbbb7cbdec934a0f34409589f167cde116568b99b"
+  },
+  {
+    "seed": 149,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "e867798eb8ba4180ef7aba6dfaf9a6f271f07fdeb739b1be0b044a45be013b48",
+    "new_output_sha256": "587586964feb06a0edeefe6657cccfe6defcac3f88814c8d1680e16e84730a83"
+  },
+  {
+    "seed": 149,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "f89a121b3c87b3901423f2bf80f172a4374bc90c7d3623cc05fe9606e3e308ce",
+    "new_output_sha256": "aec940bf9ab2ec8f2a0fb95b4f2a35d3b14903826083e33137eedf970f68f4e9"
+  },
+  {
+    "seed": 149,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "086cc8504a5c982ef48a7aa989cbcbe7b2a39f7c25f3c108156d64f1ce29d613",
+    "new_output_sha256": "86f792a80a8f5dfc2e94609614560c73f3d0485b37a219da629a18cc3aff7ad9"
+  },
+  {
+    "seed": 151,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "bc74b9951191a9f056a9ec0cbf24d06495af7ac19f6d9bb58637973c69fd3b6d",
+    "new_output_sha256": "6a222ff2e499c59fd861f579bf6f20789295d20f5931c9fd1dd784417498cc0b"
+  },
+  {
+    "seed": 151,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "a475bee2433e873ecb7d19b678a7d86a7ad45d263f696959a76038db98fe73f0",
+    "new_output_sha256": "6f7d46eb14cc7d3d4ebb20d3c8a956f98d4e61e16eaae1f1d93d2e41d72eb966"
+  },
+  {
+    "seed": 151,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "a31669f6a575e8147e7c569a5107d4882ba5713e067bd1015ad5b37903302bfe",
+    "new_output_sha256": "8ab95c2be72c161f271c8bb95a9f984d97e9c5def853277639e03b2fcd9a50fc"
+  },
+  {
+    "seed": 157,
+    "shape": [
+      2,
+      4,
+      2
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "e5acb691d80fdb28bcb64422fbc9a98399a508438eb7151b26d0ea4a3f144d83",
+    "new_output_sha256": "8bd4b12d5c9fa4f79ed0cb325556014257477d5cd8193ef18df81fba31228fe6"
+  },
+  {
+    "seed": 157,
+    "shape": [
+      3,
+      8,
+      3
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "8dade9f14e33cb31a1189e13653f4029857da150be407fe1869f751b922bf14f",
+    "new_output_sha256": "0bdd61eda0d8cfe4fd1c222ea2e6fc7c2ed5759b95ffbe1161bbf017583d3d19"
+  },
+  {
+    "seed": 157,
+    "shape": [
+      4,
+      16,
+      4
+    ],
+    "exact_fraction_match": true,
+    "fresh_accept": true,
+    "stale_rejected": true,
+    "relabelled_old_output_rejected": true,
+    "weak_hash_control_accepts_relabelled": true,
+    "new_output_accepted": true,
+    "undeclared_input_rejected": true,
+    "aba_old_evidence_rejected": true,
+    "aba_new_evidence_accepted": true,
+    "aba_output_unchanged": true,
+    "output_sha256": "88a6dc1e7d6259c3fd89e6833f1be68854da3223ba842ff06b74a04c835898c7",
+    "new_output_sha256": "7b8d91a02b6ea0ea8dc9cca40130a83a043cb5f06f641d0937af0de438a05496"
+  }
+]

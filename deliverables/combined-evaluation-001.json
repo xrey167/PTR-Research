@@ -1,0 +1,24 @@
+{
+  "schema": "neural-pods-combined-evaluation:v1",
+  "passed": true,
+  "system_gate": "runs/project-gate-001.json",
+  "generalization_gate": "runs/generalization-gate-001.json",
+  "results": [
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "research/run_project_gate.py"
+      ],
+      "returncode": 0,
+      "output_tail": "{\n  \"passed\": true,\n  \"checks\": 20,\n  \"report\": \"runs\\\\project-gate-001.json\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "research/run_generalization_gate.py"
+      ],
+      "returncode": 0,
+      "output_tail": "{\n  \"schema\": \"generalization-gate:v1\",\n  \"passed\": true,\n  \"checks\": {\n    \"held_out_queries\": true,\n    \"semantic_beats_lexical\": true,\n    \"baseline_zero\": true,\n    \"adapter_nonzero\": true,\n    \"typed_guard_complete\": true,\n    \"scope_declared\": true\n  },\n  \"benchmark\": \"runs/generalization-benchmark-eval-001.json\",\n  \"reader\": \"runs/generalization-reader-eval-001.json\",\n  \"scope\": \"synthetic held-out benchmark; typed guard is deterministic safety, not learned quality\"\n}\n"
+    }
+  ]
+}

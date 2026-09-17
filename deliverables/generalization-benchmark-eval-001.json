@@ -1,0 +1,13 @@
+{
+  "schema": "generalization-benchmark-eval:v1",
+  "queries": 20,
+  "required_docs_per_query": 3,
+  "k": 9,
+  "lexical_recall_at_9": 0.41666666666666663,
+  "lexical_full_chain_rate": 0.25,
+  "dense_recall_at_9": 0.6166666666666667,
+  "dense_full_chain_rate": 0.3,
+  "provenance_routed_recall": 1.0,
+  "scope": "synthetic leakage-controlled multi-hop retrieval benchmark",
+  "note": "No LLM quality claim; retrieval-only screen with held-out roots/templates."
+}

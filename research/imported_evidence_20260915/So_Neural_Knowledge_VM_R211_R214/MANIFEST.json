@@ -1,0 +1,15 @@
+{
+  "FROZEN_DOD.md": "3ca9ef30e049281fe1c4098fab4eb245712fa0aa428c6799e0e47d250046e75e",
+  "README.md": "e0d4d05ccddac2d9ae76ed38cbd29ef723d35d3eb9d9e284b76cf972e9f743aa",
+  "VISION_DOD_ALIGNMENT.md": "befc3d631c1fcda4c556d06af2242f24b8ea4dc3de43f4bced01a1311dfee53d",
+  "r211_kcir_cross_abi.py": "e9a9b0abb2718aefcd20171898316bc654ba1a17dfd18dbd02e3916213fda505",
+  "r211_results.json": "cf7c135df490e44f3ad63e530dc823f88fd537cc1e8edfa4f8f817d987d6ecc9",
+  "r211b_results.json": "d0dff8c0a82f749ca000aaadd28aa962334b6957a3ff802e05248fb734624847",
+  "r211b_stable_split_abi.py": "a4eae16cc5f3a212854052f9c1149517c7363a996d6725fb215c8cbec77697b1",
+  "r212_intertwiner_calibration.py": "dbf4917dd59389843de866ac201f27985c8412d05f6ac659a78cd90a55a3d665",
+  "r212_results.json": "ac539c30af5a81340f7cf79599be61d2883ee1eed34a713cc78ea5c7410559b8",
+  "r213_noisy_abi_calibration.py": "4b1134496789f7ff27be2f9350a1a1916081b5d6690eded89c817bff895f86b7",
+  "r213_results.json": "184b1f3bbe6fa48b1e230774d0f477bb0a462e7f05efa2273584b81fa1e72d29",
+  "r214_results.json": "a5959be4be302b3986212dc42a074e2223188718d9e6e50d6cef5b78bac82caf",
+  "r214_semantic_root_multimodel.py": "5edc2bb19326b7708c252baf53f94c69c7c1bfed380572b70be6d12420b53d3e"
+}

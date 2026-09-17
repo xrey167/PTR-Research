@@ -1,0 +1,12 @@
+{
+  "sources": {
+    "engine.py": "f31ee24347e67cb9936d94b75215dcf8d64be6a257ba3a4c557968f15648cbbc",
+    "run.py": "3609b9c2d2509e178587e959d42b41953427e91780ac77c9f8017c9bcc7eefc3",
+    "PROTOCOL.md": "6731dbc9f039763aaf5a54413875f890cf4e394576e03a8de1a9d3c44a786bea"
+  },
+  "development_seeds": [
+    11,
+    19
+  ],
+  "validation_started": false
+}

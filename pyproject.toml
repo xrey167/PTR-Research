@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neural-pods"
+version = "0.3.0"
+description = "Local provenance-controlled LoRA memory research prototype"
+requires-python = ">=3.11"
+dependencies = ["torch", "transformers", "peft", "qdrant-client", "sentence-transformers", "psutil"]
+
+[tool.setuptools.packages.find]
+include = ["neural_pods*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

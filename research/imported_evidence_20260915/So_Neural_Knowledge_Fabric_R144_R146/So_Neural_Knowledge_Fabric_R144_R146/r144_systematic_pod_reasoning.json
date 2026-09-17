@@ -1,0 +1,274 @@
+{
+  "design": {
+    "held_relation_bigrams": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "held_value_rule": "((a*7+b*11+3)%5)==0",
+    "training": "new random world each step; no training query may traverse held value pair or held relation bigram",
+    "steps_per_seed": 500,
+    "seeds": [
+      1441,
+      1442,
+      1443,
+      1444,
+      1445
+    ]
+  },
+  "runs": [
+    {
+      "seed": 1441,
+      "seen": {
+        "accuracy": 0.9909375,
+        "route_accuracy": 0.9909375,
+        "n": 3200
+      },
+      "held_rel": {
+        "accuracy": 0.9896875,
+        "route_accuracy": 0.9896875,
+        "n": 3200
+      },
+      "held_value": {
+        "accuracy": 0.9896875,
+        "route_accuracy": 0.9896875,
+        "n": 3200
+      },
+      "held_both": {
+        "accuracy": 0.98875,
+        "route_accuracy": 0.98875,
+        "n": 3200
+      },
+      "long_8": {
+        "accuracy": 0.9915625,
+        "route_accuracy": 0.9915625,
+        "n": 3200
+      },
+      "long_16": {
+        "accuracy": 0.990625,
+        "route_accuracy": 0.990625,
+        "n": 3200
+      }
+    },
+    {
+      "seed": 1442,
+      "seen": {
+        "accuracy": 0.9896875,
+        "route_accuracy": 0.9896875,
+        "n": 3200
+      },
+      "held_rel": {
+        "accuracy": 0.990625,
+        "route_accuracy": 0.990625,
+        "n": 3200
+      },
+      "held_value": {
+        "accuracy": 0.991875,
+        "route_accuracy": 0.991875,
+        "n": 3200
+      },
+      "held_both": {
+        "accuracy": 0.9890625,
+        "route_accuracy": 0.9890625,
+        "n": 3200
+      },
+      "long_8": {
+        "accuracy": 0.9915625,
+        "route_accuracy": 0.9915625,
+        "n": 3200
+      },
+      "long_16": {
+        "accuracy": 0.9903125,
+        "route_accuracy": 0.9903125,
+        "n": 3200
+      }
+    },
+    {
+      "seed": 1443,
+      "seen": {
+        "accuracy": 0.9878125,
+        "route_accuracy": 0.9878125,
+        "n": 3200
+      },
+      "held_rel": {
+        "accuracy": 0.9903125,
+        "route_accuracy": 0.9903125,
+        "n": 3200
+      },
+      "held_value": {
+        "accuracy": 0.9909375,
+        "route_accuracy": 0.9909375,
+        "n": 3200
+      },
+      "held_both": {
+        "accuracy": 0.9884375,
+        "route_accuracy": 0.9884375,
+        "n": 3200
+      },
+      "long_8": {
+        "accuracy": 0.99,
+        "route_accuracy": 0.99,
+        "n": 3200
+      },
+      "long_16": {
+        "accuracy": 0.9921875,
+        "route_accuracy": 0.9921875,
+        "n": 3200
+      }
+    },
+    {
+      "seed": 1444,
+      "seen": {
+        "accuracy": 0.9896875,
+        "route_accuracy": 0.9896875,
+        "n": 3200
+      },
+      "held_rel": {
+        "accuracy": 0.9878125,
+        "route_accuracy": 0.9878125,
+        "n": 3200
+      },
+      "held_value": {
+        "accuracy": 0.9878125,
+        "route_accuracy": 0.9878125,
+        "n": 3200
+      },
+      "held_both": {
+        "accuracy": 0.9890625,
+        "route_accuracy": 0.9890625,
+        "n": 3200
+      },
+      "long_8": {
+        "accuracy": 0.9921875,
+        "route_accuracy": 0.9921875,
+        "n": 3200
+      },
+      "long_16": {
+        "accuracy": 0.990625,
+        "route_accuracy": 0.990625,
+        "n": 3200
+      }
+    },
+    {
+      "seed": 1445,
+      "seen": {
+        "accuracy": 0.99125,
+        "route_accuracy": 0.99125,
+        "n": 3200
+      },
+      "held_rel": {
+        "accuracy": 0.9884375,
+        "route_accuracy": 0.9884375,
+        "n": 3200
+      },
+      "held_value": {
+        "accuracy": 0.9896875,
+        "route_accuracy": 0.9896875,
+        "n": 3200
+      },
+      "held_both": {
+        "accuracy": 0.989375,
+        "route_accuracy": 0.989375,
+        "n": 3200
+      },
+      "long_8": {
+        "accuracy": 0.99,
+        "route_accuracy": 0.99,
+        "n": 3200
+      },
+      "long_16": {
+        "accuracy": 0.98875,
+        "route_accuracy": 0.98875,
+        "n": 3200
+      }
+    }
+  ],
+  "summary": {
+    "seen": {
+      "mean_accuracy": 0.989875,
+      "min_accuracy": 0.9878125,
+      "mean_route_accuracy": 0.989875,
+      "per_seed": [
+        0.9909375,
+        0.9896875,
+        0.9878125,
+        0.9896875,
+        0.99125
+      ]
+    },
+    "held_rel": {
+      "mean_accuracy": 0.9893750000000001,
+      "min_accuracy": 0.9878125,
+      "mean_route_accuracy": 0.9893750000000001,
+      "per_seed": [
+        0.9896875,
+        0.990625,
+        0.9903125,
+        0.9878125,
+        0.9884375
+      ]
+    },
+    "held_value": {
+      "mean_accuracy": 0.99,
+      "min_accuracy": 0.9878125,
+      "mean_route_accuracy": 0.99,
+      "per_seed": [
+        0.9896875,
+        0.991875,
+        0.9909375,
+        0.9878125,
+        0.9896875
+      ]
+    },
+    "held_both": {
+      "mean_accuracy": 0.9889374999999999,
+      "min_accuracy": 0.9884375,
+      "mean_route_accuracy": 0.9889374999999999,
+      "per_seed": [
+        0.98875,
+        0.9890625,
+        0.9884375,
+        0.9890625,
+        0.989375
+      ]
+    },
+    "long_8": {
+      "mean_accuracy": 0.9910625,
+      "min_accuracy": 0.99,
+      "mean_route_accuracy": 0.9910625,
+      "per_seed": [
+        0.9915625,
+        0.9915625,
+        0.99,
+        0.9921875,
+        0.99
+      ]
+    },
+    "long_16": {
+      "mean_accuracy": 0.9905000000000002,
+      "min_accuracy": 0.98875,
+      "mean_route_accuracy": 0.9905000000000002,
+      "per_seed": [
+        0.990625,
+        0.9903125,
+        0.9921875,
+        0.990625,
+        0.98875
+      ]
+    }
+  },
+  "seconds": 20.779088497161865
+}

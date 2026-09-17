@@ -1,0 +1,430 @@
+{
+  "checks": [
+    {
+      "seed": 101,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 101,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 101,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 103,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 103,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 103,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 107,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 107,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 107,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 109,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 109,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 109,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 113,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 113,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 113,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 127,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 127,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 127,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 131,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 131,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 131,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 137,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 137,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 137,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 139,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 139,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 139,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 149,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 149,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 149,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 151,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 151,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 151,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 157,
+      "shape": [
+        2,
+        4,
+        2
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 157,
+      "shape": [
+        3,
+        8,
+        3
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    },
+    {
+      "seed": 157,
+      "shape": [
+        4,
+        16,
+        4
+      ],
+      "fresh": true,
+      "wrong_rejected": true,
+      "alias_rejected": true
+    }
+  ],
+  "costs": [
+    {
+      "pair_count": 1,
+      "direct_mac_terms": 1536,
+      "verification_mac_terms": 3596,
+      "ratio": 2.3411458333333335,
+      "cheaper": false
+    },
+    {
+      "pair_count": 3,
+      "direct_mac_terms": 4608,
+      "verification_mac_terms": 4644,
+      "ratio": 1.0078125,
+      "cheaper": false
+    },
+    {
+      "pair_count": 15,
+      "direct_mac_terms": 23040,
+      "verification_mac_terms": 10932,
+      "ratio": 0.4744791666666667,
+      "cheaper": true
+    }
+  ],
+  "source_scope": "reused CT1 mathematical development cases",
+  "probability_bound": "<=1/(2147483647^2), theoretical for fixed error and independent secret post-commit field challenges",
+  "actual_secret_verifier": false,
+  "on_query_cost_gate": false,
+  "implementation_note": "Harness deliberately performs redundant zero-challenge arithmetic during domain checking; MAC ledger models an optimized verifier, not actual harness runtime.",
+  "new_model_answers": 0,
+  "full_dod_pass": false
+}

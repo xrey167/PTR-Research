@@ -1,0 +1,13 @@
+{
+  "stage": "R214",
+  "program_len": 8192,
+  "model_abis": 4,
+  "median_canonical_tree_update_ms": 0.03075,
+  "median_map_root_all_abis_ms": 0.00925,
+  "median_naive_per_model_recompile_ms": 106.0326,
+  "end_to_end_speedup_vs_naive": 2650.815,
+  "max_compiled_vs_naive_relerr": 1.2631115684610647e-12,
+  "old_snapshot_max_change": 0.0,
+  "semantic_revision_compiled_once": true,
+  "pass": true
+}

@@ -1,0 +1,213 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "valid_fixture",
+      "expected": true,
+      "verdict": {
+        "engineering_gate": true,
+        "cqta2_e0_gate": true,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "pass",
+        "correct": {
+          "visible_text": 4,
+          "none": 4,
+          "full_cache": 4,
+          "opposite_full_cache": 4
+        },
+        "identical_continuations": 4,
+        "causal_changes": 4,
+        "full_logit_equality": true
+      }
+    },
+    {
+      "name": "only_three_causal_changes",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "first token differs from recorded greedy logits"
+      }
+    },
+    {
+      "name": "unselected_logit_drift",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "full first logits are not exactly identical"
+      }
+    },
+    {
+      "name": "selected_logit_drift",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "full first logits are not exactly identical"
+      }
+    },
+    {
+      "name": "forged_correct_field",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "quality or causal gate failed",
+        "correct": {
+          "visible_text": 3,
+          "none": 4,
+          "full_cache": 3,
+          "opposite_full_cache": 4
+        },
+        "identical_continuations": 4,
+        "causal_changes": 4,
+        "full_logit_equality": true
+      }
+    },
+    {
+      "name": "truncated_logits",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "full finite vocabulary logits required"
+      }
+    },
+    {
+      "name": "nonfinite_logits",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "full finite vocabulary logits required"
+      }
+    },
+    {
+      "name": "duplicated_case",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "duplicate or foreign case/mode"
+      }
+    },
+    {
+      "name": "missing_null_control",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "all sixteen case/mode records required"
+      }
+    },
+    {
+      "name": "order_independent_pairing",
+      "expected": true,
+      "verdict": {
+        "engineering_gate": true,
+        "cqta2_e0_gate": true,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "pass",
+        "correct": {
+          "visible_text": 4,
+          "none": 4,
+          "full_cache": 4,
+          "opposite_full_cache": 4
+        },
+        "identical_continuations": 4,
+        "causal_changes": 4,
+        "full_logit_equality": true
+      }
+    },
+    {
+      "name": "declared_fact_leak",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "recorded injection invariant violated"
+      }
+    },
+    {
+      "name": "broken_prompt_concatenation",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "prefix/suffix concatenation mismatch"
+      }
+    },
+    {
+      "name": "greedy_mismatch",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "first token differs from recorded greedy logits"
+      }
+    },
+    {
+      "name": "missing_eos",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "quality or causal gate failed",
+        "correct": {
+          "visible_text": 4,
+          "none": 4,
+          "full_cache": 3,
+          "opposite_full_cache": 4
+        },
+        "identical_continuations": 3,
+        "causal_changes": 4,
+        "full_logit_equality": true
+      }
+    },
+    {
+      "name": "signed_zero_mismatch",
+      "expected": false,
+      "verdict": {
+        "engineering_gate": false,
+        "cqta2_e0_gate": false,
+        "q0_authorized": false,
+        "full_dod": false,
+        "reason": "full first logits are not exactly identical"
+      }
+    }
+  ],
+  "synthetic_only": true,
+  "new_model_sequences": 0,
+  "missing_historical_reducer_comparison": "not_run",
+  "sources": {
+    "recovered-fragments-002\\entry_8532_0.py": "177c9765b04cdaf9e81ff45544a4aa11f0701ece428e1c3810f6a48ede24191c",
+    "recovered-fragments-002\\entry_8574_1.py": "61f5761b31271215708bd2a4fae9cf4014809032078d9bec8ec71573fc58b7ca"
+  }
+}

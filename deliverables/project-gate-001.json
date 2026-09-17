@@ -1,0 +1,182 @@
+{
+  "schema": "neural-pods-project-gate:v1",
+  "created_at": "2026-09-16T06:06:49.716867+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        "C:\\Users\\ReyDa\\neural-pods\\.pytest-gate-basetemp"
+      ],
+      "returncode": 0,
+      "output_tail": "........................................................................ [ 33%]\n........................................................................ [ 66%]\n........................................................................ [ 99%]\n.                                                                        [100%]\n============================== warnings summary ===============================\ntests/test_cpu_int8.py::test_int8_full_decoder_forward_and_packed_weight_fingerprint\n  C:\\Users\\ReyDa\\neural-pods\\.venv\\Lib\\site-packages\\torch\\ao\\nn\\quantized\\modules\\utils.py:72: UserWarning: torch.quantize_per_tensor, torch.quantize_per_channel and other quantized tensor creation functions that produce tensors with dtype torch.quint8, torch.qint8, and torch.qint32 are deprecated and will be removed in a future PyTorch release. Please see https://github.com/pytorch/pytorch/issues/184982 for more information. (Triggered internally at C:\\actions-runner\\_work\\pytorch\\pytorch\\aten\\src\\ATen\\quantized\\Quantizer.cpp:116.)\n    qweight = torch.quantize_per_tensor(\n\ntests/test_reader_training_run.py::test_reader_optimizer_updates_only_adapter_and_reload_matches\n  C:\\Users\\ReyDa\\neural-pods\\.venv\\Lib\\site-packages\\peft\\utils\\save_and_load.py:438: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.\n    warnings.warn(\n\n.venv\\Lib\\site-packages\\_pytest\\cacheprovider.py:469\n  C:\\Users\\ReyDa\\neural-pods\\.venv\\Lib\\site-packages\\_pytest\\cacheprovider.py:469: PytestCacheWarning: could not create cache path C:\\Users\\ReyDa\\neural-pods\\.pytest_cache\\v\\cache\\nodeids: [WinError 5] Zugriff verweigert: 'C:\\\\Users\\\\ReyDa\\\\neural-pods\\\\.pytest_cache\\\\v\\\\cache'\n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n217 passed, 3 warnings in 23.44s\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "research/audit_linked_model.py",
+        "runs/linked-model-replay-002"
+      ],
+      "returncode": 0,
+      "output_tail": "{\"audit_passed\": true, \"rows\": 6, \"correct\": 6, \"full_first_logits_equal\": 6, \"graph_nodes_hash_verified\": 64, \"receipt_lineage_verified\": 6, \"full_research_goal_complete\": false, \"evidence_sha256\": {\"links.json\": \"95bf149d4fdeab2f8a48d03879e5eb5ea3b44552ef2a296dcde499028f5a889a\", \"capsules.json\": \"305655357c262b5524f5e3f73bf2effeb9da3ab88b94ba89f5fb498127d624df\", \"reader-logits.safetensors\": \"12adf635e668a5de357836f25701f3ee1ea11ed03258a86ba227b7c33efbfb9c\"}, \"limits\": \"Persisted evidence audit; no independent inference replay, no independent replay of runner lifecycle controls; only six existing lookup queries.\"}\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "research/audit_replay_revocation.py",
+        "runs/linked-model-replay-002"
+      ],
+      "returncode": 0,
+      "output_tail": "{\n  \"origin\": \"origin:7bee9717ca440ef2eb5f121a20fe58dba1e94b74afa5e42984850d2fac995331\",\n  \"revoked_count\": 19,\n  \"answer_id\": \"answer:14c9a4a3441836e3a48800e6b784f0dc098170776cb436c44e056ab38ce2b33a\",\n  \"receipt_blocked\": true,\n  \"scope\": \"copied replay registry; selective origin revocation\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "research/audit_replay_generation.py",
+        "runs/linked-model-replay-002"
+      ],
+      "returncode": 0,
+      "output_tail": "{\n  \"old_generation\": \"knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109\",\n  \"new_generation\": \"knowledge:6e6fa4788b87c530cfa24f01f4150892fd69a9d388f6593bcdf71dab9462c57c\",\n  \"old_answer_id\": \"answer:14c9a4a3441836e3a48800e6b784f0dc098170776cb436c44e056ab38ce2b33a\",\n  \"old_receipt_blocked\": true,\n  \"new_value\": 19,\n  \"scope\": \"copied replay registry; generation supersession control\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "research/evaluate_jspace_local.py"
+      ],
+      "returncode": 0,
+      "output_tail": "{\n  \"schema\": \"jspace-local-gate:v1\",\n  \"passed\": true,\n  \"writes\": 8,\n  \"deletions\": 3,\n  \"max_state_error\": 4.646393850144347e-15,\n  \"revocation_blocked\": true,\n  \"scope\": \"local J-Space-style non-commutative operator proxy; original private J-Space not present\"\n}\n"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\reader-lora-mixed-multihop-001\\regression-report.json"
+      ],
+      "returncode": 0,
+      "output_tail": "two-hop=4/4, three-hop=4/4"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\mixed-multihop-reader-registry-001.json"
+      ],
+      "returncode": 0,
+      "output_tail": "generation-bound and revocation controls passed"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\reader-lora-mixed-multihop-001\\full-eval-report.json"
+      ],
+      "returncode": 0,
+      "output_tail": "full split=84/96, three-hop=4/4"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\reader-lora-boundary-002\\full-eval-report.json"
+      ],
+      "returncode": 0,
+      "output_tail": "boundary candidate=86/96, three-hop=4/4"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\boundary-reader-registry-001.json"
+      ],
+      "returncode": 0,
+      "output_tail": "boundary candidate generation/revocation passed"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\reader-lora-boundary-002\\guard-audit.json"
+      ],
+      "returncode": 0,
+      "output_tail": "typed guard=100/100"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\native-embedding-reindex-001\\report.json"
+      ],
+      "returncode": 0,
+      "output_tail": "native embedding recall@1=1.0"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\assembled-stack-demo-001.json"
+      ],
+      "returncode": 0,
+      "output_tail": "assembled routing/retrieval/revocation passed"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\reader-lora-boundary-002\\gpu-throughput-report.json"
+      ],
+      "returncode": 0,
+      "output_tail": "GPU generation=23.91 tok/s"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\reader-lora-boundary-002\\pod-vs-rag-throughput.json"
+      ],
+      "returncode": 0,
+      "output_tail": "Pod/RAG latency ratio=1.20x"
+    },
+    {
+      "command": [
+        "persisted",
+        "C:\\Users\\ReyDa\\neural-pods\\runs\\multifact-internal-lora-004\\pod-vs-rag-throughput.json"
+      ],
+      "returncode": 0,
+      "output_tail": "value-bearing Pod/RAG=2.16x, exact=both"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "r211b_stable_split_abi.py"
+      ],
+      "returncode": 0,
+      "output_tail": "{\n  \"stage\": \"R211b\",\n  \"objects\": 100000,\n  \"abis\": {\n    \"A\": 12,\n    \"B\": 18\n  },\n  \"exact_lane_policy\": \"IDs/numbers/time/revisions never enter long floating neural product\",\n  \"neural_algebra\": \"orthogonal Givens operators\",\n  \"long\": {\n    \"1\": {\n      \"max_relerr\": 7.821651934359906e-16,\n      \"mean_relerr\": 4.705368526838238e-16,\n      \"max_cross\": 8.785647427484614e-16,\n      \"max_orth_defect\": 2.2250628999779564e-16\n    },\n    \"8\": {\n      \"max_relerr\": 3.218904797885092e-15,\n      \"mean_relerr\": 2.0540818246391073e-15,\n      \"max_cross\": 3.888658105538072e-15,\n      \"max_orth_defect\": 6.241575790793531e-16\n    },\n    \"32\": {\n      \"max_relerr\": 1.2456495706740784e-14,\n      \"mean_relerr\": 7.23415299597155e-15,\n      \"max_cross\": 1.4401333800477365e-14,\n      \"max_orth_defect\": 1.405861684031716e-15\n    },\n    \"128\": {\n      \"max_relerr\": 4.0973116285332866e-14,\n      \"mean_relerr\": 2.4458890849255116e-14,\n      \"max_cross\": 4.831303903448064e-14,\n      \"max_orth_defect\": 2.7609280840130128e-15\n    },\n    \"512\": {\n      \"max_relerr\": 1.285120564869169e-13,\n      \"mean_relerr\": 7.547603570460579e-14,\n      \"max_cross\": 1.5216770749500324e-13,\n      \"max_orth_defect\": 5.23111367269446e-15\n    },\n    \"2048\": {\n      \"max_relerr\": 3.5605668932792204e-13,\n      \"mean_relerr\": 2.485270270141579e-13,\n      \"max_cross\": 3.8041444527495904e-13,\n      \"max_orth_defect\": 9.75255784525148e-15\n    }\n  },\n  \"tree\": {\n    \"median_update_ms\": 0.03,\n    \"median_full_ms\": 12.867750000000001,\n    \"speedup\": 428.92500000000007,\n    \"max_relative_product_gap\": 3.7726940813322624e-15\n  },\n  \"pass\": true\n}\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "r212_intertwiner_calibration.py"
+      ],
+      "returncode": 0,
+      "output_tail": "{\n  \"stage\": \"R212\",\n  \"generator_count\": 5,\n  \"dimension\": 6,\n  \"models\": {\n    \"A\": {\n      \"nullspace_dim\": 1,\n      \"calibration_ms\": 2.3772,\n      \"equation_residual\": 2.256611884922749e-15,\n      \"program_errors\": [\n        [\n          1,\n          1.2873676413302935e-15,\n          1.0233126977665614e-15\n        ],\n        [\n          8,\n          2.9291014844310518e-15,\n          2.5778120322651963e-15\n        ],\n        [\n          32,\n          8.92630356597447e-15,\n          8.34921430135217e-15\n        ],\n        [\n          128,\n          3.3122829765126924e-14,\n          3.2010359942072346e-14\n        ],\n        [\n          256,\n          6.483965370255496e-14,\n          6.352277521703039e-14\n        ]\n      ],\n      \"max_state_relerr\": 7.634021498170384e-14,\n      \"P_vs_true_up_to_sign_relerr\": 7.611873082690207e-16\n    },\n    \"B\": {\n      \"nullspace_dim\": 1,\n      \"calibration_ms\": 1.5881,\n      \"equation_residual\": 2.2966044488821875e-15,\n      \"program_errors\": [\n        [\n          1,\n          1.2379665831384242e-15,\n          1.067520487131243e-15\n        ],\n        [\n          8,\n          1.5217951708195692e-15,\n          1.2593028666697997e-15\n        ],\n        [\n          32,\n          3.180740596300609e-15,\n          2.7371115799627896e-15\n        ],\n        [\n          128,\n          1.0776060350461578e-14,\n          9.631662237057389e-15\n        ],\n        [\n          256,\n          2.057264518705897e-14,\n          1.9205156375618836e-14\n        ]\n      ],\n      \"max_state_relerr\": 2.4245016684954632e-14,\n      \"P_vs_true_up_to_sign_relerr\": 7.550295891090924e-16\n    }\n  },\n  \"zero_fact_gradients\": true,\n  \"calibration_scope\": \"global ABI only\",\n  \"pass\": true\n}\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "r213_noisy_abi_calibration.py"
+      ],
+      "returncode": 0,
+      "output_tail": ".0114975715769125e-15,\n      \"L16_mean\": 3.783528775957035e-15,\n      \"L16_max\": 4.046396609458903e-15,\n      \"L64_mean\": 1.379699769770064e-14,\n      \"L64_max\": 1.4437249651212045e-14,\n      \"L256_mean\": 5.413311622298069e-14,\n      \"L256_max\": 5.538164483337143e-14\n    },\n    {\n      \"noise\": 1e-08,\n      \"abi_map_relerr\": 4.68077972874158e-09,\n      \"smallest_singular\": 4.0415922344291984e-08,\n      \"spectral_separation_ratio\": 67673798.16369122,\n      \"L1_mean\": 6.835364845650715e-09,\n      \"L1_max\": 8.326320604510034e-09,\n      \"L16_mean\": 6.6100204020348734e-09,\n      \"L16_max\": 8.39397384449613e-09,\n      \"L64_mean\": 6.4866544192845665e-09,\n      \"L64_max\": 8.193913301507189e-09,\n      \"L256_mean\": 6.399422017999523e-09,\n      \"L256_max\": 8.662304387218176e-09\n    },\n    {\n      \"noise\": 1e-07,\n      \"abi_map_relerr\": 4.1662222848141036e-08,\n      \"smallest_singular\": 3.4132751261582564e-07,\n      \"spectral_separation_ratio\": 8013121.882681465,\n      \"L1_mean\": 6.179566217859703e-08,\n      \"L1_max\": 6.603403163483371e-08,\n      \"L16_mean\": 5.894732857880515e-08,\n      \"L16_max\": 7.805123663767276e-08,\n      \"L64_mean\": 5.699627861126917e-08,\n      \"L64_max\": 7.622142081927128e-08,\n      \"L256_mean\": 5.8697368269584763e-08,\n      \"L256_max\": 7.337394089756901e-08\n    },\n    {\n      \"noise\": 1e-06,\n      \"abi_map_relerr\": 3.2601151613396095e-07,\n      \"smallest_singular\": 4.053191829834695e-06,\n      \"spectral_separation_ratio\": 674801.228642221,\n      \"L1_mean\": 4.930306385888008e-07,\n      \"L1_max\": 5.484396213503774e-07,\n      \"L16_mean\": 4.480151178767792e-07,\n      \"L16_max\": 5.81988185640133e-07,\n      \"L64_mean\": 4.705279418394411e-07,\n      \"L64_max\": 5.897305715852522e-07,\n      \"L256_mean\": 4.474486880630229e-07,\n      \"L256_max\": 5.843584672523346e-07\n    },\n    {\n      \"noise\": 1e-05,\n      \"abi_map_relerr\": 3.9438628593680635e-06,\n      \"smallest_singular\": 3.79617857554115e-05,\n      \"spectral_separation_ratio\": 72048.72960968142,\n      \"L1_mean\": 5.789360930106248e-06,\n      \"L1_max\": 7.171436685949041e-06,\n      \"L16_mean\": 5.5520900940091755e-06,\n      \"L16_max\": 6.91910264380271e-06,\n      \"L64_mean\": 5.4448060991777195e-06,\n      \"L64_max\": 6.977312025184516e-06,\n      \"L256_mean\": 5.408063067490587e-06,\n      \"L256_max\": 6.885444139417881e-06\n    },\n    {\n      \"noise\": 0.0001,\n      \"abi_map_relerr\": 3.8064787232098255e-05,\n      \"smallest_singular\": 0.00039943660185849157,\n      \"spectral_separation_ratio\": 6847.350923180551,\n      \"L1_mean\": 5.15768131254048e-05,\n      \"L1_max\": 6.566957208828823e-05,\n      \"L16_mean\": 5.270794805116428e-05,\n      \"L16_max\": 6.83503346216508e-05,\n      \"L64_mean\": 5.286246806253383e-05,\n      \"L64_max\": 6.817268734967968e-05,\n      \"L256_mean\": 5.2361114066736554e-05,\n      \"L256_max\": 6.812196680763579e-05\n    },\n    {\n      \"noise\": 0.001,\n      \"abi_map_relerr\": 0.00046602153436317025,\n      \"smallest_singular\": 0.0034568987158046776,\n      \"spectral_separation_ratio\": 791.2831941504727,\n      \"L1_mean\": 0.0005910275611872603,\n      \"L1_max\": 0.0006903386803493714,\n      \"L16_mean\": 0.0006567940136911266,\n      \"L16_max\": 0.0008280072562569022,\n      \"L64_mean\": 0.0006371643250518281,\n      \"L64_max\": 0.0008114178392352201,\n      \"L256_mean\": 0.0006438912726662936,\n      \"L256_max\": 0.0008131609138567085\n    },\n    {\n      \"noise\": 0.01,\n      \"abi_map_relerr\": 0.0035266691540993067,\n      \"smallest_singular\": 0.04031816913688278,\n      \"spectral_separation_ratio\": 67.88998624955568,\n      \"L1_mean\": 0.004811350775134439,\n      \"L1_max\": 0.005790184368810244,\n      \"L16_mean\": 0.004903472401812342,\n      \"L16_max\": 0.006323611162991365,\n      \"L64_mean\": 0.004851477259447403,\n      \"L64_max\": 0.0063079106671107416,\n      \"L256_mean\": 0.004906536076109839,\n      \"L256_max\": 0.006315974317144622\n    }\n  ],\n  \"observation\": \"deep error is controlled by global ABI calibration error; no per-fact gradients used\",\n  \"pass_condition\": \"informational sweep, not binary\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\ReyDa\\neural-pods\\.venv\\Scripts\\python.exe",
+        "r214_semantic_root_multimodel.py"
+      ],
+      "returncode": 0,
+      "output_tail": "{\n  \"stage\": \"R214\",\n  \"program_len\": 8192,\n  \"model_abis\": 4,\n  \"median_canonical_tree_update_ms\": 0.0314,\n  \"median_map_root_all_abis_ms\": 0.00955,\n  \"median_naive_per_model_recompile_ms\": 104.87415,\n  \"end_to_end_speedup_vs_naive\": 2561.029304029304,\n  \"max_compiled_vs_naive_relerr\": 1.2631115684610647e-12,\n  \"old_snapshot_max_change\": 0.0,\n  \"semantic_revision_compiled_once\": true,\n  \"pass\": true\n}\n"
+    }
+  ],
+  "claims": {
+    "full_research_goal_complete": false,
+    "limits": [
+      "private original So/CQP1/J-Space weights are unavailable",
+      "R211-R214 are proxy/mechanism evidence",
+      "broad external-world multi-hop quality is not established"
+    ]
+  }
+}

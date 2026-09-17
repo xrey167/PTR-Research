@@ -1,0 +1,32 @@
+{
+  "r287-evidence.zip": {
+    "sha256": "0b824db162b9db08920c6710ffcbcbdbbd8c533f233d8d5aa2732f6aa3b9b4ee",
+    "bytes": 1621,
+    "extracted_to": "research\\imported_evidence_20260915\\r287-evidence",
+    "files": 2
+  },
+  "r290-evidence.zip": {
+    "sha256": "2f3c472a479456decac631bc19d4f461de65a3abc1ccb382a38bc4b63d7fb583",
+    "bytes": 6443,
+    "extracted_to": "research\\imported_evidence_20260915\\r290-evidence",
+    "files": 2
+  },
+  "So_CT1_CT3_Ergaenzung (1).zip": {
+    "sha256": "88bb04b946bc3c9222005dc3c0d5ecf090f65f28839a97a7b6294709361156d8",
+    "bytes": 54464,
+    "extracted_to": "research\\imported_evidence_20260915\\So_CT1_CT3_Ergaenzung_1",
+    "files": 22
+  },
+  "So_Neural_Knowledge_Fabric_R144_R146.zip": {
+    "sha256": "da4f37aafb46450049ffac8c294628247f1b8009e3886b7eb297f05d0a8a7b34",
+    "bytes": 17859,
+    "extracted_to": "research\\imported_evidence_20260915\\So_Neural_Knowledge_Fabric_R144_R146",
+    "files": 11
+  },
+  "So_Neural_Knowledge_VM_R211_R214.zip": {
+    "sha256": "1d53802f8b102e93e84d7aaab272e812ef536cef82fcb6650122845c9a8650c4",
+    "bytes": 17296,
+    "extracted_to": "research\\imported_evidence_20260915\\So_Neural_Knowledge_VM_R211_R214",
+    "files": 14
+  }
+}

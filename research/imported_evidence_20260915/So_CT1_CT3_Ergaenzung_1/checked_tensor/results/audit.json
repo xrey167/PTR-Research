@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": 36,
+  "output_cells_independently_checked": 1152,
+  "edited_output_cells_independently_checked": 1152,
+  "structural_control_rows": 6,
+  "scope": "same-assistant independently implemented integer/Fraction audit of saved numerical data",
+  "not_audit_of": "LLM output, genuine project tensors, production sandbox, remote attestation",
+  "full_dod_pass": false
+}

@@ -1,0 +1,261 @@
+{
+  "_id": "66e98d74d4219fc3f1db215f",
+  "id": "Qwen/Qwen2.5-3B-Instruct",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen2",
+    "text-generation",
+    "chat",
+    "conversational",
+    "en",
+    "arxiv:2407.10671",
+    "base_model:Qwen/Qwen2.5-3B",
+    "base_model:finetune:Qwen/Qwen2.5-3B",
+    "license:other",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 5453753,
+  "likes": 571,
+  "modelId": "Qwen/Qwen2.5-3B-Instruct",
+  "author": "Qwen",
+  "sha": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "lastModified": "2024-09-25T12:33:00.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "model_type": "qwen2",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- messages[0]['content'] }}\n    {%- else %}\n        {{- 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.' }}\n    {%- endif %}\n    {{- \"\\n\\n# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0]['content'] + '<|im_end|>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>system\\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) or (message.role == \"assistant\" and not message.tool_calls) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {{- '<|im_start|>' + message.role }}\n        {%- if message.content %}\n            {{- '\\n' + message.content }}\n        {%- endif %}\n        {%- for tool_call in message.tool_calls %}\n            {%- if tool_call.function is defined %}\n                {%- set tool_call = tool_call.function %}\n            {%- endif %}\n            {{- '\\n<tool_call>\\n{\"name\": \"' }}\n            {{- tool_call.name }}\n            {{- '\", \"arguments\": ' }}\n            {{- tool_call.arguments | tojson }}\n            {{- '}\\n</tool_call>' }}\n        {%- endfor %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if (loop.index0 == 0) or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n{%- endif %}\n",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "license": "other",
+    "license_name": "qwen-research",
+    "license_link": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/blob/main/LICENSE",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "base_model": "Qwen/Qwen2.5-3B",
+    "tags": [
+      "chat"
+    ],
+    "library_name": "transformers"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "size": 1519
+    },
+    {
+      "rfilename": "LICENSE",
+      "blobId": "ed317377ac0abff39f17eec693ce664f4b8152af",
+      "size": 7388
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "0b87f6362ee8ad33b2223afb47134264380f13fe",
+      "size": 4930
+    },
+    {
+      "rfilename": "config.json",
+      "blobId": "51b83fbd4e2d363b60235b9c8d494046a83c1cbf",
+      "size": 661
+    },
+    {
+      "rfilename": "generation_config.json",
+      "blobId": "bf077f03dc569cfb8a90b3ec1ad20365a620bad6",
+      "size": 242
+    },
+    {
+      "rfilename": "merges.txt",
+      "blobId": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0",
+      "size": 1671839
+    },
+    {
+      "rfilename": "model-00001-of-00002.safetensors",
+      "blobId": "023b91070b9cfb1f9ab22fe215519bd786db6906",
+      "size": 3968658944,
+      "lfs": {
+        "sha256": "67347b23fb4165b652eb6611f5e1f2a06dfcddba8e909df1b2b0b1857bee06c2",
+        "size": 3968658944,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00002-of-00002.safetensors",
+      "blobId": "02754809bbcaf9c3f1a667c1ca0c3b153d6d72ac",
+      "size": 2203268048,
+      "lfs": {
+        "sha256": "a40d941d0e7e0b966ad8b62bb6d6b7c88cce1299197b599d9d0a4ce59aabfc1d",
+        "size": 2203268048,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model.safetensors.index.json",
+      "blobId": "38047c6284a25427043f0ab040f623a2a20dd093",
+      "size": 35581
+    },
+    {
+      "rfilename": "tokenizer.json",
+      "blobId": "443909a61d429dff23010e5bddd28ff530edda00",
+      "size": 7031645
+    },
+    {
+      "rfilename": "tokenizer_config.json",
+      "blobId": "07bfe0640cb5a0037f9322287fbfc682806cf672",
+      "size": 7305
+    },
+    {
+      "rfilename": "vocab.json",
+      "blobId": "4783fe10ac3adce15ac8f358ef5462739852c569",
+      "size": 2776833
+    }
+  ],
+  "spaces": [
+    "embedl/hfviewer",
+    "pliny-the-prompter/obliteratus",
+    "alexnasa/Wan2.2-Animate-ZEROGPU",
+    "fffiloni/SCAIL-2",
+    "VIDraft/global-llm-leaderboard",
+    "mrfakename/DMOSpeech2",
+    "build-small-hackathon/ai-home-assistant-helper",
+    "Harshit-2425/Indian-Judgemental",
+    "seawolf2357/LLM_Quantization",
+    "cvachet/pdf-chatbot",
+    "multimodalart/self-forcing",
+    "fffiloni/Meigen-MultiTalk",
+    "eduagarcia/open_pt_llm_leaderboard",
+    "Heartsync/VEO3-RealTime",
+    "build-small-hackathon/llm-cinema",
+    "kevinwang676/F5-TTS",
+    "build-small-hackathon/FamilyLegacy",
+    "fffiloni/Wan2.1-VACE-1.3B",
+    "logikon/open_cot_leaderboard",
+    "KBaba7/Quant",
+    "fffiloni/Wan2.1",
+    "Nymbo/Serverless-TextGen-Hub",
+    "aizip-dev/SLM-RAG-Arena",
+    "hynt/F5-TTS-Vietnamese-100h",
+    "IndexTeam/AnisoraV3",
+    "redradios/E2-F5-TTS",
+    "thinkwee/BibGuard",
+    "ginigen/Wan-2.2-Enhanced",
+    "fffiloni/Reward-Forcing",
+    "FallnAI/Quantize-HF-Models",
+    "Agnuxo/OpenCLAW-Agent",
+    "openfree/LLM_Quantization",
+    "bhaskartripathi/LLM_Quantization",
+    "TencentARC/RollingForcing",
+    "yl4579/DMOSpeech2-demo",
+    "ruslanmv/convert_to_gguf",
+    "herokominato/Wan2.2-Animate-ZEROGPU",
+    "KempnerInstituteAI/LVP",
+    "prithivMLmods/NAVA-Text-to-Video",
+    "parchiev/SIRIN",
+    "cot-leaderboard/open-cot-dashboard",
+    "MERaLiON/SeaEval_Leaderboard",
+    "lightmate/llm-chatbot",
+    "YinmingHuang/StableAvatar",
+    "zchipitt/E2-F5-TTS",
+    "Westlake-AGI-Lab/FlowDirector",
+    "JyuViole/E2-F5-TTS-RUS",
+    "haodongli/RollingSink",
+    "anugrahteesdollar/drugenv-trainer",
+    "build-small-hackathon/HearthNet",
+    "SpongeBobFan2002/E2-F5-TTS",
+    "wana14/Wan-2.2-5B",
+    "build-small-hackathon/iep-generator-v3",
+    "Nymbo/Qwen-2.5-3B-Instruct",
+    "totolook/Quant",
+    "chyams/llm-explorer",
+    "rohanjain1648/alice-rl-environment",
+    "multimodalart/LiveEdit",
+    "Hemant0000/Voice_cloning",
+    "johnc-transforms/E2-F5-TTS",
+    "K00B404/LLM_Quantization",
+    "nam194/F5-TTS-Vietnamese",
+    "keeperballon/multi-llm",
+    "tsi-org/pixio-video-stream",
+    "TTimur/OpenLLMKyrgyzLeaderboard_v0.1",
+    "marcelo1126/InfiniteTalk",
+    "vaibhavpandeyvpz/wan2.2-text-image-to-video",
+    "arco1847/nid-info-extractor1",
+    "Anuj2209/openenv-customer-support",
+    "build-small-hackathon/android-skill-router",
+    "M4xjunior/E2-F5-TTS",
+    "attashe/F5-TTS-RU",
+    "zhwang4ai/GenerativeReasoningBenchmark",
+    "giorgoskyriacou2009tv/F5-TTS-Unlimited-fast",
+    "shmuelamar/igcs-demo",
+    "jbilcke-hf/NON_WORKING_matrix_game_2",
+    "randrewsv/ai-debate",
+    "Speedofmastery/orynxml-backend",
+    "vaibhavpandeyvpz/wan2.1-flf2v-image-to-video",
+    "PanchamJ/wan2.1-flf2v-image-to-video",
+    "LLM-course/Agentic-zork",
+    "Kodacoda/obliteratus",
+    "dumbordumber/obliteratus",
+    "tek-wizard/devops-incident-responder",
+    "AbhishekMallick/incident-triage-env",
+    "Shasidharyadavr/netweaver_sre",
+    "glitchfilter/methanol-apc-env",
+    "shoaibUTM/assignment-generator",
+    "Saiyam0211/polyglot-redteam",
+    "hitanshjain1812/meta_final",
+    "rikunarita-3/Heretic-Web-UI",
+    "build-small-hackathon/the-echo",
+    "build-small-hackathon/thousand-token-wood-sim",
+    "build-small-hackathon/picklld",
+    "build-small-hackathon/dempsters-court",
+    "build-small-hackathon/roast-battle-arena",
+    "build-small-hackathon/the-seance",
+    "Patriae/patriae-cuban-voices-tts",
+    "MinhDS/ProfillyBot",
+    "afaceuser09/InfinityGRM"
+  ],
+  "createdAt": "2024-09-17T14:08:52.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 3085938688
+    },
+    "total": 3085938688
+  },
+  "usedStorage": 6171926992
+}

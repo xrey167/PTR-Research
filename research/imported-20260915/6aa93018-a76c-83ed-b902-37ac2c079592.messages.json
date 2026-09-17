@@ -1,0 +1,1584 @@
+[
+  {
+    "entry": 58150,
+    "role": "user",
+    "channel": null,
+    "text": "Suche dir den Quantenchat Fortsetzung, hole dir den letzten Stand und mache dort nahtlos weiter mit der Forschung und Entwicklung ",
+    "time": 1789290988.314908
+  },
+  {
+    "entry": 58121,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich suche den letzten Stand aus „Quantenchat Fortsetzung“ samt Forschungsdateien und setze daran die nächsten Experimente an. Dafür nutze ich die Library-Funktion zum Auffinden der bisherigen Artefakte.",
+    "time": 1789291005.153051
+  },
+  {
+    "entry": 58001,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich habe einen deutlich neueren Stand gefunden: das Paket **R211–R214** und eine Vision-/DoD-Abstimmung vom 13. September. Der Chat selbst wurde von der Verlaufssuche nicht gefunden; ich prüfe deshalb jetzt die Originaldateien, damit die Fortsetzung auf dem tatsächlichen Code und den neuesten Ergebnissen aufbaut.",
+    "time": 1789291055.334654
+  },
+  {
+    "entry": 57763,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neue Stand setzt auf eine einmalige globale Modellanbindung statt Training pro Fakt. Beim Code-Audit fällt aber eine wichtige Grenze auf: R213 stört die Kalibrierungsdaten, führt die langen Programme anschließend mit idealen, ungestörten Operatoren aus. Ich prüfe diese Übertragungsannahme gezielt. Gleichzeitig ist der Modellserver hier erreichbar — ich versuche deshalb, die bislang blockierte Prüfung an einem echten vortrainierten Decoder ausführbar zu machen.",
+    "time": 1789291121.277937
+  },
+  {
+    "entry": 57389,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Gegenprobe bestätigt die Grenze: Bei tatsächlich gestörten Operatoren wächst der relative Fehler mit der Programmlänge; bei bloß gestörter Kalibrierung bleibt er nahezu konstant. Das muss die Modellanbindung ausdrücklich berücksichtigen.\n\nDie bisherige Umgebungsblockade lässt sich diesmal überwinden: PyTorch und Transformers sind installiert, die Gewichte von Qwen3‑0.6B laden. Damit kann ich den nächsten Anschlussversuch am eingefrorenen Sprachmodell durchführen.",
+    "time": 1789291299.515754
+  },
+  {
+    "entry": 57092,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Qwen3‑0.6B läuft jetzt tatsächlich mit eingefrorenen Gewichten. Der erste Versuch nutzt eine gemeinsam kalibrierte Einspeisung für später installierte Fakten, ohne Fakttext im Anfragepfad: Bei der Auswahl zwischen vier Farben erreicht er bisher 91,7 %, bei der freien ersten Ausgabe aber nur 33,3 %. Das reicht nicht.\n\nIch prüfe als Nächstes, ob das eingespeiste Wissen auch für eine andere Aufgabe nutzbar ist — etwa eine Ja/Nein-Frage über die Farbe. So lässt sich erkennen, ob der Ansatz Wissen zum Weiterdenken liefert oder überwiegend das Antwortwort beeinflusst.",
+    "time": 1789291542.828598
+  },
+  {
+    "entry": 56678,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Kontrolle war wichtig: Mit dem vorgesehenen Chat-Format des Modells erreicht die neu kalibrierte Einspeisung auf **24 weiteren Fakten und drei Frageformulierungen 72/72 korrekte erste Antworttokens**. Ohne Einspeisung sind es 0/72. Die 100.000 Zuordnungen wurden erst nach der globalen Kalibrierung installiert; geprüft sind davon bisher nur diese Stichproben.\n\nDas ist ein erster positiver Befund am echten Sprachmodell. Ob die Repräsentation auch neue Operationen unterstützt, prüfe ich jetzt mit denselben eingefrorenen Einspeisevektoren.",
+    "time": 1789291726.473099
+  },
+  {
+    "entry": 56402,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Transfer-Test zeigt die entscheidende Grenze: Die Einspeisung liefert die Farbe zuverlässig als erstes Antwortwort, beantwortet damit aber die neue Frage „Ist die Farbe rot?“ nicht korrekt im geforderten Ja/Nein-Format. Mit derselben Information als Text beantwortet das Modell diese 24 Fälle korrekt.\n\nDamit haben wir die Sprachmodell-Blockade überwunden und die nächste technische Hürde eingegrenzt: Die Modellanbindung muss Wissen bereitstellen, ohne die Antwortform festzulegen. Ich sichere jetzt Code, Gewichte der Einspeisung, Rohdaten und den korrigierten Forschungsstand.",
+    "time": 1789291922.61186
+  },
+  {
+    "entry": 56246,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Ich habe den neuesten auffindbaren Originalstand **R211–R214** übernommen und **fünf Anschlussversuche ausgeführt**. Der vollständige Chatverlauf war nicht abrufbar; die Originaldateien wurden geprüft.\n\nDer wichtigste Fortschritt: **Qwen3‑0.6B läuft jetzt tatsächlich mit eingefrorenen Gewichten.**\n\n- **72/72 korrekte erste Antworttokens** bei 24 neuen Fakten und drei Frageformulierungen — ohne Fakttext im Anfragepfad und ohne Training pro neuem Fakt.\n- 100.000 Zuordnungen installiert; insgesamt **48 unterschiedliche Fakten geprüft**, keine behauptete Vollvalidierung.\n- Entscheidende Grenze gefunden: Dieselbe Einspeisung scheitert beim Wechsel von der Farbantwort zur Ja/Nein-Frage. Sie liefert noch keine allgemein verwendbare Wissensrepräsentation.\n- R213 korrigiert eingeordnet: Ungenaue ausgeführte Operatoren können Fehler über lange Programme akkumulieren.\n\n**Die vollständige DoD bleibt unverändert offen.** Der nächste Entwicklungsschritt ist eine Modellanbindung, die Wissen und Antwortform sauber trennt.\n\n[Quantenchat_Fortsetzung_20260913.md](sandbox:/workspace/scratch/941d86d4dab9/Quantenchat_Fortsetzung_20260913.md)  \n[Quantenchat_Fortsetzung_QC_A1_A5_20260913.zip](sandbox:/workspace/scratch/941d86d4dab9/Quantenchat_Fortsetzung_QC_A1_A5_20260913.zip) — Code, Kalibrierungsgewichte, Rohdaten und Reproduktion.",
+    "time": 1789291983.581818
+  },
+  {
+    "entry": 56233,
+    "role": "user",
+    "channel": null,
+    "text": "Teste und forsche weiter das ganze soll eine neue Break Architektur werden und ein Major Beitrag im Gebiet ",
+    "time": 1789293191.505902
+  },
+  {
+    "entry": 56189,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze am entscheidenden Gegenbefund an: Die bisherige Einspeisung liefert ein Farbwort, lässt das Modell damit aber noch nicht zuverlässig weiterarbeiten. Ich teste jetzt eine globale Schnittstelle, die Wissensinhalt und Anfrageoperation getrennt verarbeitet, mit zurückgehaltenen Aufgaben und Gegenkontrollen. Parallel dazu prüfe ich die nächste Vorarbeit, damit wir Fortschritt nicht mit technischer Neuheit verwechseln.",
+    "time": 1789293230.34394
+  },
+  {
+    "entry": 54881,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neue Versuch bildet aus dem aktuellen Anfragezustand einen Operator, der erst danach den kanonischen Wissenswert erhält. Zur Laufzeit bekommt diese Schnittstelle weder die richtige Antwort noch ein Aufgabenlabel. Eine konstante Einspeisung wird mit denselben Kalibrierungsdaten als Vergleich geprüft.\n\nFür die Neuheit ist die Grenze schon klarer: Gedächtnisadapter und interne Funktionsvektoren gibt es bereits. Ein großer Beitrag müsste die gemeinsame Eigenschaft belegen: neue Wissenskompositionen, korrekte Revisionen über alle abgeleiteten Zustände und einen messbaren Vorteil.",
+    "time": 1789293581.77553
+  },
+  {
+    "entry": 54726,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ja — dieses Ziel bleibt bestehen. Ich prüfe den Kandidaten gerade auch auf neue logische Operationen und vollständige Antworten. Gute Werte bei direkten Faktfragen reichen nicht; die Architektur muss zeigen, dass sie wechselndes Wissen für weitere Berechnungen nutzbar macht.",
+    "time": 1789293721.58342
+  },
+  {
+    "entry": 54296,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die anfrageabhängige Schnittstelle löst die kalibrierten Vergleichsaufgaben deutlich besser, fällt bei den zurückgehaltenen Operationen aber auf 50 % zurück. Auch der Text-Lehrer liefert in diesem Aufbau teilweise falsche erste Antworttokens.\n\nIch teste deshalb eine zweite Lernregel gegen die exakten Aufgabenlösungen. Trainiert werden nur die gemeinsam genutzten Schnittstellenparameter; das Sprachmodell bleibt eingefroren. Dabei vergleiche ich eine frühere mit einer späten Einspeisung, um reine Antwortsteuerung von nutzbarer Verarbeitung im Decoder zu unterscheiden.",
+    "time": 1789293897.875832
+  },
+  {
+    "entry": 53170,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich teste zusätzlich einen direkteren Anschluss an die ursprüngliche Pod-Idee: Der kanonische Wissenswert verändert einen kleinen, gemeinsam gelernten Koordinatenraum innerhalb des Decoders. An dieser Grenze lässt sich mathematisch eine alte Wissenswirkung in eine neue überführen, ohne den gesamten Anfragepräfix neu zu berechnen.\n\nDer Versuch muss aber beides zeigen: korrekte Antworten und eine stabile Änderung des tatsächlichen neuronalen Zustands. Die schöne Algebra allein zählt nicht als Durchbruch.",
+    "time": 1789294716.856846
+  },
+  {
+    "entry": 52619,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ein konkreter mechanistischer Befund liegt jetzt vor: Beim Koordinatenansatz lassen sich die getesteten alten Decoder-Zustände an der Einspeisegrenze ändern oder auf „keine Einspeisung“ zurückführen. Die relativen Zustandsfehler liegen bei etwa \\(2–3\\times10^{-7}\\); alle 16 ersten Antworttokens stimmen mit frischer Berechnung überein.\n\nDas ist noch keine vollständige Löschung aller Folgezustände und löst die Generalisierung nicht. Ich prüfe auch die herkömmliche affine Rückrechnung mit höherer Präzision, bevor ich dem Koordinatenansatz einen Vorteil zuschreibe.",
+    "time": 1789295072.663408
+  },
+  {
+    "entry": 51937,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die verbesserte Gegenkontrolle besteht die lokale Reparaturprüfung ebenfalls. Der Koordinatenansatz hat in diesen Fällen kleinere Zustandsfehler, aber die Reparaturfähigkeit allein ist damit kein Alleinstellungsmerkmal.\n\nAuch die Lernläufe sind beendet: Die späte Schnittstelle erreicht über zwei Seeds 85 % bei vertrauten Aufgaben und 62,5–65 % bei zurückgehaltenen Operationen. Die vollständigen Kurzantworten verfehlen das Ziel noch deutlich. Ich halte deshalb beide Ergebnisse fest: die trainierte, lokal reparierbare Decoder-Grenze und die weiterhin offene gemeinsame Hürde aus Generalisierung und Lifecycle-Korrektheit.",
+    "time": 1789295508.883198
+  },
+  {
+    "entry": 51519,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich prüfe jetzt die Auswertung gegen die gespeicherten Einzelergebnisse und bündele Code, Protokolle und Gegenkontrollen. Der entscheidende nächste Forschungsansatz ist eine lernfähige, invertierbare Schnittstelle, die Antwortqualität und stabile Zustandsänderungen gleichzeitig erreicht.\n\n",
+    "time": 1789295791.431058
+  },
+  {
+    "entry": 51242,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Nachprüfung stimmt mit den gespeicherten Ergebnissen überein: Quellcode-Prüfsummen passen, Antwortwerte sind nachgezählt und die ursprünglichen Erfolgskriterien unverändert. Ich sichere jetzt den Forschungsbericht samt ausführbarem Code und Rohdaten, einschließlich der Fehlversuche und der verbesserten affinen Gegenkontrolle.\n\n",
+    "time": 1789295942.724062
+  },
+  {
+    "entry": 51111,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Ich habe weiterentwickelt und getestet: **drei Architekturvarianten, fünf Lernläufe und zusätzliche Reparaturversuche** am eingefrorenen Qwen3-0.6B.\n\nDie wichtigsten Ergebnisse:\n\n- **Antwortqualität:** Die späte Schnittstelle erreicht jeweils 85 % bei vertrauten Aufgaben und 62,5–65 % bei zurückgehaltenen Operationen, gemessen am ersten Antworttoken. Vollständige Kurzantworten gelingen bislang nur in 3–4 von 8 Fällen.\n- **Zustandsreparatur:** Der orthogonale Koordinatenrahmen ermöglicht lokale Änderungen und Rücknahmen mit sehr kleinen numerischen Fehlern. Eine sorgfältig implementierte affine Gegenkontrolle besteht diese Prüfung ebenfalls.\n- **Reichweite:** 100.000 Zuordnungen sind installiert; tatsächlich geprüft wurden 24 unterschiedliche IDs mit vier möglichen Werten.\n\n**Ein Durchbruch ist damit noch nicht nachgewiesen.** Der nächste spezifizierte Kandidat verbindet einen ausdrucksstärkeren, invertierbaren Reader mit kontrollierter numerischer Stabilität. Er muss Generalisierung und Reparatur gemeinsam bestehen; die ursprünglichen Erfolgskriterien bleiben unverändert.\n\n[So_Quantenchat_QC_B_Forschungsbericht_20260913.md](sandbox:/workspace/scratch/941d86d4dab9/So_Quantenchat_QC_B_Forschungsbericht_20260913.md)\n\n[So_Quantenchat_QC_B_Architektur_Code_Ergebnisse_20260913.zip](sandbox:/workspace/scratch/941d86d4dab9/So_Quantenchat_QC_B_Architektur_Code_Ergebnisse_20260913.zip)",
+    "time": 1789295968.804742
+  },
+  {
+    "entry": 51098,
+    "role": "user",
+    "channel": null,
+    "text": "Höre nicht vorher auf bis wir ein Meisterwerk erschaffen haben ",
+    "time": 1789298359.290841
+  },
+  {
+    "entry": 51060,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze am offenen Kernproblem an: Die Schnittstelle muss unbekannte Aufgaben zuverlässig lösen und zugleich Änderungen sauber verarbeiten. Dafür implementiere und teste ich jetzt den invertierbaren Reader mit begrenzter Konditionszahl. Parallel lasse ich die Versuchsmethodik unabhängig prüfen. Die volle Vision und die Erfolgskriterien bleiben bestehen.",
+    "time": 1789298380.813585
+  },
+  {
+    "entry": 50845,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die unabhängige Prüfung hat einen konkreten Schwachpunkt gefunden: Die bisherigen Kalibrierungs-IDs kodierten Aufgabe und Farbwert. Dadurch konnten Training und Validierung Hinweise aus der Kennung nutzen.\n\nIch korrigiere das im neuen Versuch mit zufälligen Kennungen und Gegenwelten: Dieselbe Frage bekommt nacheinander verschiedene gespeicherte Werte. Damit prüfen wir direkt, ob der Speicherwert die Antwort steuert. Für die Auswahl des Modells zählen außerdem vollständige Antworten pro Aufgabenfamilie.",
+    "time": 1789298525.132414
+  },
+  {
+    "entry": 50506,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neue Reader läuft jetzt auf den korrigierten Daten. Seine Mathematik hat die unabhängigen Referenztests bestanden, einschließlich wiederholter Wertänderungen.\n\nZusätzlich bereite ich eine zweite Variante vor: Sie hält die Koordinaten der Anfrage unverändert und schreibt Wissen in einen getrennten Unterraum. Das könnte eine flexiblere Antwortfunktion erlauben, ohne die direkte Rücknahme zu verlieren. Ob das im Sprachmodell hilft, wird separat gemessen.",
+    "time": 1789299041.38699
+  },
+  {
+    "entry": 50099,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die erste korrigierte Trainingsreihe erreicht inzwischen 78 von 80 vollständigen Validierungsantworten richtig. Damit ist das frühere Problem beim direkten Auslesen in diesem Zwischenstand behoben.\n\nDas ist noch kein Testergebnis. Als Nächstes entscheiden die zurückgehaltenen Aufgaben, die Gegenwelten und die Reparaturprüfung, ob sich dieser Fortschritt übertragen lässt.",
+    "time": 1789299391.53801
+  },
+  {
+    "entry": 49991,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Rechenumgebung hat gerade die Verbindung verloren. Die Läufe waren gestartet, aber ich habe noch keine vollständigen Ergebnisse aller Varianten. Ich prüfe, ob die Prozesse und Zwischenstände wieder erreichbar sind; einen abgebrochenen Lauf werde ich nicht als abgeschlossen werten.",
+    "time": 1789299461.024828
+  },
+  {
+    "entry": 49949,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Verbindung lässt sich bisher nicht wiederherstellen. Verifiziert sind die beiden implementierten Operatoren und ihre numerischen Referenztests; der letzte beobachtete Modellstand war 78/80 auf der Validierung. Die vollständige Modellprüfung bleibt offen.\n\nIch versuche noch, den bereits geschriebenen Code und die Protokolle verfügbar zu machen. So lässt sich am tatsächlichen Stand anknüpfen, ohne aus Zwischenwerten einen Erfolg abzuleiten.",
+    "time": 1789299541.845383
+  },
+  {
+    "entry": 49833,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Ich habe die nächste Entwicklungsstufe umgesetzt:\n\n- **Zwei neue Reader:** eine invertierbare Schnittstelle mit begrenzter Konditionszahl und eine nichtlineare Variante, die Anfragekoordinaten erhält.\n- **Unabhängige numerische Tests bestanden**, einschließlich wiederholter Änderungen und Rücknahmen. Das belegt die lokalen Operatoren, noch keine vollständige Architektur.\n- **Einen Versuchsfehler korrigiert:** Frühere Kennungen verrieten den Farbwert. Jetzt prüfen zufällige Kennungen und wechselnde Werte bei identischer Frage die tatsächliche Speichernutzung.\n- **Erster Modellzwischenstand:** 78/80 vollständige Validierungsantworten korrekt. Die abschließenden Generalisierungstests sind noch offen.\n\n**Aktuell blockiert die Rechenumgebung:** Sie ist auch nach Wiederverbindungsversuchen nicht erreichbar. Deshalb konnte ich die gestarteten Testreihen nicht abschließend auswerten und die neuen Dateien nicht verfügbar machen.\n\nDas Gesamtziel bleibt bestehen. Ein Durchbruch ist erst belegt, wenn Antwortqualität, Generalisierung, Lifecycle-Korrektheit und Vorteil gegenüber starkem RAG gemeinsam nachgewiesen sind.",
+    "time": 1789299605.893691
+  },
+  {
+    "entry": 49801,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich prüfe zuerst, ob die Rechenumgebung und die gestarteten Läufe wieder erreichbar sind. Danach setze ich bei den fehlenden Tests an: unbekannte Aufgaben, wechselnde Speicherwerte und wiederholte Zustandsänderungen.",
+    "time": 1789300591.064218
+  },
+  {
+    "entry": 49550,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Umgebung ist wieder erreichbar, wurde aber zurückgesetzt: Die zuletzt gestarteten Läufe und ihre lokalen Zwischenstände fehlen. Das gesicherte QC-B-Paket ist noch vorhanden. Ich stelle darauf aufbauend die korrigierten Versuche wieder her und sichere die nächsten Checkpoints früher. Den alten Wert von 78/80 behandle ich nur als beobachteten Zwischenstand, nicht als wiederhergestelltes Ergebnis.",
+    "time": 1789300659.838381
+  },
+  {
+    "entry": 49164,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Das gesicherte Paket ist anhand seiner Prüfsummen wiederhergestellt; auch die identischen Qwen-Gewichte sind erneut verfügbar. Die korrigierten Daten und beide Operatoren sind neu aufgebaut und geprüft.\n\nDie Auswertung trennt jetzt außerdem genauer: 240 Testfragen beruhen auf vier Kennungen in jeweils vier Wertewelten. Entscheidend ist, ob dieselbe Frage mit einem geänderten Speicherwert auch die richtige geänderte Antwort erhält.",
+    "time": 1789301312.716141
+  },
+  {
+    "entry": 49007,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neue Lauf hat die Ausführungsprüfung bestanden: Der zwischengespeicherte Decoder-Teil liefert dieselben Logits wie das vollständige Modell. Auch spätere Trainingsantworten beeinflussen den früheren Anfragezustand in der geprüften Gegenprobe nicht.\n\nJetzt werden alle drei Reader mit getrennten Seeds und derselben Folge von Trainingsbatches verglichen. Die Auswahl erfolgt nach vollständigen Validierungsantworten; die Testfragen bleiben davon getrennt.",
+    "time": 1789301482.105883
+  },
+  {
+    "entry": 48937,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich sichere jetzt den rekonstruierten Code und den aktuellen Trainingscheckpoint. Damit ist auch der neue Arbeitsstand verfügbar, falls die Rechenumgebung erneut ausfällt.",
+    "time": 1789301500.666329
+  },
+  {
+    "entry": 48471,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die erste Trainingsreihe erreicht jetzt 79/80 vollständige Validierungsantworten. Die anschließende Prüfung ist umfangreicher: Sie umfasst alle 240 Testfragen mit richtigen und vertauschten Speicherwerten sowie Reparaturen auf 15 verschiedenen Anfrageformen. Erst diese Ergebnisse zeigen, wie weit der Reader über die Kalibrierung hinauskommt.",
+    "time": 1789301827.364887
+  },
+  {
+    "entry": 48331,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der erste vollständige Lauf ist ausgewertet: 159/160 Antworten bei vertrauten Aufgaben, aber nur 25/80 bei zurückgehaltenen Aufgaben. Auch die Prüfung über wiederholte Zustandsänderungen verfehlt die Fehlerschranke.\n\nDamit ist die Lücke klarer: Gute Kalibrierung reicht noch nicht für Generalisierung und stabile Reparatur. Ich führe jetzt den zweiten Seed und beide strukturell eingeschränkten Reader durch.",
+    "time": 1789301901.564885
+  },
+  {
+    "entry": 48128,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Zusatzkontrolle zeigt, dass schon der einfache Textvergleich ein Problem hat: Das kleine Modell gibt bei mehreren Aufgaben trotz wechselnder Fakten immer dieselbe Antwort. Diese schwache Kontrolle genügt daher nicht, um einen Vorteil der Architektur zu belegen.\n\nIch ergänze einen begrenzten Test mit einem größeren, eingefrorenen 3B-Modell. Er soll klären, wie viel des Problems am Basismodell und wie viel an unserer Wissensschnittstelle liegt.",
+    "time": 1789302140.855601
+  },
+  {
+    "entry": 47799,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Auch der zweite affine Lauf bestätigt die Lücke: 158/160 vertraute Antworten sind korrekt, aber nur 31/80 bei den zurückgehaltenen Aufgaben. Beide Seeds verfehlen die Prüfung über wiederholte Änderungen.\n\nJetzt folgen die Varianten mit begrenzter Konditionszahl und mit erhaltenen Anfragekoordinaten. Ich sichere den Stand mit beiden abgeschlossenen Läufen.",
+    "time": 1789302376.924219
+  },
+  {
+    "entry": 47517,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der größere Backbone liefert einen wichtigen Befund: 23/24 vollständige Antworten sind korrekt, einschließlich Negation und neuer Ausgabelabels. Das spricht dafür, die Wissensschnittstelle auch an einem stärkeren Modell zu prüfen.\n\nDie unabhängige Zahlenprüfung erklärt außerdem die Reparaturprobleme der freien affinen Reader besser: Ihre vollständigen Zustandsabbildungen haben Konditionszahlen bis etwa 1.887. Die kleine Hilfsmatrix allein hatte diese Empfindlichkeit deutlich unterschätzt.",
+    "time": 1789302781.78934
+  },
+  {
+    "entry": 47173,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die erste beschränkte Variante verbindet inzwischen hohe Genauigkeit bei vertrauten Aufgaben mit bestandener lokaler Reparaturprüfung: 158/160 Antworten sind korrekt, und auch die Folge von 256 Änderungen bleibt unter der festgelegten Fehlergrenze.\n\nBei zurückgehaltenen Aufgaben erreicht sie jedoch nur 39/80. Ich nutze den Befund zum 3B-Modell deshalb für einen weiteren Anschlussversuch: Überträgt dessen bessere Aufgabenkompetenz sich auch auf einen global kalibrierten Reader ohne Faktentext zur Laufzeit?",
+    "time": 1789303248.63439
+  },
+  {
+    "entry": 46913,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich schließe jetzt den Vergleich aller drei Reader-Varianten ab. Parallel läuft der Anschlussversuch am 3B-Modell: Er prüft, ob sich dessen bessere Aufgabenkompetenz auch über einen numerischen Gedächtniscode nutzen lässt. Dafür werden die Modellgewichte eingefroren und vollständige Antworten samt Gegenproben ausgewertet.",
+    "time": 1789303723.564359
+  },
+  {
+    "entry": 46096,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Auch die erste nichtlineare Coupling-Variante besteht die lokale Reparaturprüfung. Ihre Antwortqualität auf zurückgehaltenen Aufgaben bleibt mit 27/80 jedoch deutlich schwächer als auf vertrauten Aufgaben mit 157/160.\n\nBeim 3B-Versuch ist die globale Kalibrierung abgeschlossen und unabhängig nachgerechnet. Jetzt entscheidet die Antwortauswertung, ob die gut angenäherten internen Zustände tatsächlich das gewünschte Verhalten erzeugen.",
+    "time": 1789303872.262672
+  },
+  {
+    "entry": 46029,
+    "role": "user",
+    "channel": null,
+    "text": "Entwickle eigene Lösungen und forsche dran wie wollen eine neue Technik erschaffen die der Vision entspricht also bitte setze jetzt wirklich mal alles daran und nicht nur so halbherzig ",
+    "time": 1789303910.886297
+  },
+  {
+    "entry": 45981,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich nehme die Kritik ernst. Ich werde die bisherigen Varianten nicht einfach weiter optimieren und das als neue Architektur ausgeben.\n\nDer nächste eigene Entwurf soll zwei Dinge zusammenbringen: Das Modell muss mit neu eingesetztem Wissen rechnen können, und dieses Wissen muss als separat widerrufbarer Bestandteil erhalten bleiben. Dafür untersuche ich jetzt, wo der bisherige Eingriff Information verliert, und baue daraus einen gezielten neuen Mechanismus. Entscheidend sind anschließend neue Aufgaben und echte Änderungsgegenproben — nicht nur passende Trainingsantworten.",
+    "time": 1789303958.532351
+  },
+  {
+    "entry": 45458,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neue Versuch ist jetzt konkret festgelegt: Ein **anfragegebundenes Wissensfeld** soll den numerischen Wissenscode über die Anfragezustände verteilen, damit spätere Attention-Schichten ihn beim Rechnen nutzen können. Der unveränderte Anfragezustand bleibt als Anker erhalten; Änderungen werden daraus neu zusammengesetzt.\n\nIch teste denselben gelernten Mechanismus einmal nur am letzten Token und einmal über die ganze Anfrage. Dazu kommen eine frische Test-ID, vertauschte Wissenswerte und exakte Lehrerzustände als diagnostische Kontrollen. So können wir unterscheiden, ob die Idee, ihre Kalibrierung oder bereits die gewählte Schnittstelle scheitert.",
+    "time": 1789304465.872813
+  },
+  {
+    "entry": 45143,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der vollständige Vergleich mit dem 0,6B-Modell ist abgeschlossen: Die beschränkten und nichtlinearen Varianten bestehen die lokale Reparaturprüfung in beiden Seeds, die unbeschränkten affinen Varianten nicht. Keine Variante besteht aber die gemeinsame Qualitätsprüfung auf neuen Aufgaben.\n\nIch sichere diesen Stand samt neuem Entwurf. Das Wissensfeld läuft bereits am eingefrorenen 3B-Modell; seine Kalibrierung verwendet keine Antworten der neuen Testfälle.",
+    "time": 1789304574.581007
+  },
+  {
+    "entry": 44438,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Kalibrierung des Wissensfeldes ist fertig. Sie umfasst 2.056 ausgerichtete Tokenzustände aus ausschließlich Trainingsfragen. Der einfache lineare Compiler bildet diese Zustandsänderungen allerdings nur grob ab — das ist ein konkretes Risiko für die neue Idee.\n\nDeshalb sind die beiden Orakelkontrollen wichtig: Sie testen dieselbe Schnittstelle mit exakt gemessenen Zuständen. Damit lässt sich ein schwacher Compiler von einer ungeeigneten Architekturgrenze unterscheiden.",
+    "time": 1789304988.442804
+  },
+  {
+    "entry": 43211,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der zusätzliche Eingriffstest bestätigt: Die neuen Reader verändern tatsächlich interne Zustände und Ausgabelogits. Die bisher unveränderten Antworten sind also kein bloß übersprungener Eingriff.\n\nDie erste Orakelkontrolle zeigt zudem: Selbst der exakte Lehrerzustand am letzten Token reicht an Block 17 nur für 8/20 neue Aufgaben. Ich setze deshalb einen zweiten eigenen Entwurf um: einen späteren Wissenseingriff mit wiederverwendbarem, wissensfreiem Anfragepräfix. Damit prüfen wir zugleich eine klarere Grenze für Änderungen und deren Rechenaufwand.",
+    "time": 1789305907.230477
+  },
+  {
+    "entry": 42634,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Wissensfeld-Versuch ist vollständig ausgewertet: Der gelernte Reader erreicht 30/60 Antworten und kein erfolgreiches Änderungspaar. Mit exakten Lehrerzuständen verbessert die Verteilung über alle Anfragepositionen immerhin eine Aufgabenfamilie; insgesamt bleiben es aber 11/20 gegenüber 17/20 mit Fakttext.\n\nDas grenzt das Problem ein: Eine bessere Kalibrierung allein kann diese frühe Schnittstelle nicht automatisch ausreichend machen. Der neue späte Entwurf wird deshalb zusätzlich gegen die normale Modellgenerierung geprüft, bevor seine Testantworten zählen.",
+    "time": 1789306427.023095
+  },
+  {
+    "entry": 42202,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der späte Entwurf hat seine Ausführungsprüfung bestanden: Mit und ohne Reader stimmen die vollständigen Antworten auf acht Prüffragen exakt mit der normalen Modellgenerierung überein; auch die verglichenen ersten Logits sind identisch.\n\nDer wissensfreie Präfix-Cache bleibt dabei unverändert. Jetzt laufen die Qualitäts- und Änderungsgegenproben auf der neuen Test-ID. Ich sichere außerdem die abgeschlossenen Wissensfeld-Ergebnisse und die neuen Checkpoints.",
+    "time": 1789306631.118258
+  },
+  {
+    "entry": 42045,
+    "role": "user",
+    "channel": null,
+    "text": "Suche und erschaffe Lösungen, wir wollen etwas völlig neues erschaffen. Du arbeitest noch nicht hart genug daran. ",
+    "time": 1789319284.465077
+  },
+  {
+    "entry": 42016,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze beim offenen Kernproblem an: Der schnelle Ausführungspfad funktioniert im bisherigen Versuch, aber neue Frageformen werden noch zu unzuverlässig verstanden. Ich werde eigene Ansätze zur Trennung von Faktenwissen und Frageverarbeitung entwickeln und gegen den bisherigen Reader testen. Parallel prüfe ich verwandte Arbeiten, damit wir mögliche Neuheit konkret eingrenzen können.",
+    "time": 1789319523.299687
+  },
+  {
+    "entry": 41749,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der letzte Stand ist wiederhergestellt. Ein wichtiger Literaturtreffer zeigt bereits eine ähnliche Idee zur Wiederverwendung wissensfreier Fragezustände. Ich werde den Neuheitsanspruch deshalb enger prüfen. Unser nächster Ansatz muss vor allem die bisherige Schwäche lösen: Fakten so einbinden, dass das Modell auch unbekannte Operationen und Antwortbezeichnungen richtig verarbeitet.",
+    "time": 1789319605.686678
+  },
+  {
+    "entry": 41431,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich entwickle jetzt eine zweite Schnittstelle: Der Faktenwert soll früher am Entitätsbezug der Frage eingebunden werden. Danach berechnen wir genau den davon abhängigen Teil der Frage neu. So bekommt das Modell mehr Gelegenheit, Negation, Bedingungen und neue Antwortformate selbst anzuwenden. Ich prüfe dabei getrennt, ob die Position geeignet ist und ob unser gelernter Reader sie zuverlässig bedienen kann.",
+    "time": 1789319818.716894
+  },
+  {
+    "entry": 41149,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Analyse erklärt die bisherige Schwäche deutlicher: Am späten Fragezustand hängen die Wertänderungen stark von der jeweiligen Operation ab. Der Reader lernt dort offenbar eher Richtung Antwort als einen allgemein nutzbaren Faktenträger.\n\nDer neue Versuch ist festgelegt: drei Einbindungsstellen, zwei Reader-Varianten und der unveränderte CUT1-Vergleich. Die Auswahl erfolgt auf Validierungsfragen; danach folgen 152 Testfälle mit zwei neuen Kennungen, darunter neue Bedingungen, Bezeichnungen und eine Farbumwandlung.",
+    "time": 1789320136.451001
+  },
+  {
+    "entry": 40756,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der 3B-Lauf sammelt gerade die Referenzzustände für die neuen Reader. Zusätzlich entsteht eine Ausgabeschranke für Faktenrevisionen: Ändert oder widerruft sich ein Fakt während einer Berechnung, soll deren altes Ergebnis nicht mehr veröffentlicht werden können. Damit bearbeiten wir neben dem Verständnisproblem auch eine konkrete Lücke der Gesamtarchitektur.",
+    "time": 1789320372.517285
+  },
+  {
+    "entry": 40443,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der erste technische Vergleich besteht: Die neue Neuberechnung ab der Entität liefert dieselben vollständigen Tokenfolgen und dieselben ersten Logits wie ein vollständiger Modelllauf mit identischer Einbindung. Die übrigen Varianten durchlaufen dieselbe Prüfung. Das bestätigt zunächst die Ausführung; die Antwortqualität wird erst danach bewertet.",
+    "time": 1789320558.832672
+  },
+  {
+    "entry": 40271,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die neuen Zustände zeigen tatsächlich mehr Trennung: An der Entität ist ein größerer Teil des Wertsignals über verschiedene Fragen hinweg gemeinsam als am letzten Frage-Token. Das Signal ist allerdings klein. Deshalb testen wir zusätzlich eine feste Folge von drei Einbindungsstellen, die den Wert durch mehrere Modellschichten weitergibt. Ich sichere den Zwischenstand, während die Qualitätsprüfungen weiterlaufen.",
+    "time": 1789320657.931429
+  },
+  {
+    "entry": 39927,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die erste Qualitätsprüfung fällt klar aus: Alle sechs einzelnen Entitäts-Reader erreichen auf VALID 22/40 Antworten, aber kein vollständig richtiges Paar nach einem relevanten Wertwechsel. Selbst exakt übernommene Lehrerzustände helfen an dieser einzelnen Position nicht. Das spricht gegen diese Schnittstelle in der getesteten Form. Der bereits vorab festgelegte Relaisversuch prüft als Nächstes, ob mehrere Einbindungsstellen gemeinsam ausreichen.",
+    "time": 1789321149.882959
+  },
+  {
+    "entry": 39549,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich prüfe zusätzlich einen anderen Weg: Vier gemeinsam nutzbare Speicherkapseln übersetzen die numerischen Farbwerte direkt in modellinterne Aufmerksamkeitsspeicher. Neue Kennungen würden nur ihren Wertcode erhalten, ohne eigenes Training. Der Versuch soll zeigen, ob damit neue Frageformen besser funktionieren. Die KV-Technik selbst ist bekannt; entscheidend sind hier die gemessene Qualität und die Einbindung in unsere Architektur.",
+    "time": 1789321511.312457
+  },
+  {
+    "entry": 39331,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Revisionsschranke funktioniert inzwischen auch während echter 3B-Berechnungen: Drei gezielt unterbrochene Generierungen durften nach Edit, Widerruf oder Widerruf plus Wiederherstellung nicht mehr veröffentlichen. Die 20 zusätzlichen Tests für Konkurrenzzugriffe, Neustart und Prozessabbrüche bestehen ebenfalls. Das ist ein Fortschritt bei der Laufzeitkonsistenz; falsche Modellantworten verhindert diese Schranke nicht.",
+    "time": 1789321606.370672
+  },
+  {
+    "entry": 38628,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Kapseln bestehen den ersten Ausführungstest ebenfalls: 8/8 vollständige Antworten stimmen mit dem entsprechenden vollständigen Textpräfix-Lauf überein, bei identischen ersten Logits. Pro Anfrage bleiben 36 latente Präfixpositionen im Modell erhalten. Jetzt wird gemessen, ob dieser Speicherzugang auf den neuen Frageformen besser abschneidet als die Zustands-Reader.",
+    "time": 1789322418.200421
+  },
+  {
+    "entry": 37944,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Kapseln bringen einen messbaren Qualitätsgewinn gegenüber CUT1: 116 statt 92 richtige Antworten in 152 Testfällen. Auf den neuen Formen sind es 27/32 statt 11/32; vollständig richtige Wertwechselpaare steigen von 28 auf 50 von 96.\n\nDie Fakttext-Kontrolle bleibt insgesamt besser mit 126/152. Außerdem nutzt KVC1 eine andere Faktformulierung und bekannte Präfix-Cache-Technik. Das Ergebnis zeigt einen brauchbareren Speicherzugang, aber noch keinen neuartigen Durchbruch.",
+    "time": 1789323180.601291
+  },
+  {
+    "entry": 37493,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Alle Modellläufe sind abgeschlossen. Auch das Relais aus drei Entitätsports bleibt schwach: 76/152 richtige Antworten. Der derzeit brauchbarste neue Pfad ist die Kombination aus numerischen Kapseln und Revisionsschranke: An einer weiteren neuen Kennung waren alle vier freigegebenen Antworten richtig, und alle drei veralteten Berechnungen wurden beim Commit blockiert.\n\nDie Kapselablage lässt sich zudem verlustfrei um 70,83 % der Rohtensorbytes verkleinern. Ich schließe jetzt den letzten unabhängigen Audit und den gemeinsamen Forschungsbericht ab.",
+    "time": 1789323852.03099
+  },
+  {
+    "entry": 37042,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die unabhängige Schlussprüfung hat die Ergebnisse bestätigt. Die stärkste Kombination dieser Runde sind numerische Speicherkapseln mit einer Revisionsschranke: Sie beantwortet mehr der neuen Frageformen richtig und blockiert veraltete Berechnungen beim Commit. Ich sichere jetzt den geprüften Bericht, die Rohresultate und den vollständigen Code; die noch offenen Anforderungen bleiben ausdrücklich dokumentiert.",
+    "time": 1789324356.452443
+  },
+  {
+    "entry": 36822,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Ich habe auf dem wiederhergestellten Projektstand **drei Ansätze implementiert, 1.816 Modellantworten erzeugt und die gespeicherten Ergebnisse unabhängig prüfen lassen**.\n\nDer bisher tragfähigste Pfad verbindet numerische Speicherkapseln mit einer Revisionsschranke:\n\n- **Bessere Antworten:** 116/152 richtig gegenüber 92/152 beim bisherigen CUT1-Verfahren. Auf den neuen Frageformen: **27/32 statt 11/32**.\n- **Änderungen im laufenden Decoder:** Alle vier freigegebenen Antworten waren richtig; drei während der Berechnung veraltete Antworten wurden beim Commit blockiert. Zusätzlich bestehen **20/20 Systemtests**.\n- **Kompaktere Ablage:** **70,83 % weniger Rohtensorbytes**, mit 288/288 byteidentisch rekonstruierten Tensoren.\n- **Zwei Hypothesen widerlegt:** Einzelne und mehrstufige Entitätsports verbessern die Qualität nicht. Selbst exakte Referenzzustände beheben das Problem an diesen Schnittstellen nicht.\n\n**Ein bedeutender neuer Architekturbeitrag ist damit noch nicht belegt.** Die Fakttext-Kontrolle bleibt insgesamt besser, und wiederverwendbare Präfix-Kapseln haben bekannte Vorarbeiten. Der Versuch umfasst bisher nur zwei Testkennungen mit vier Werten. Die vollständige Vision bleibt unverändert; insbesondere vielfältige Fakten, Mehrschritt-Komposition und vollständiger Widerruf sind offen.\n\nDer geprüfte Stand enthält Implementierungen, Rohantworten, Protokolle und Auditoren:\n\n[So_EP1_AR1_KVC1_Forschungsbericht.md](sandbox:/workspace/scratch/941d86d4dab9/So_EP1_AR1_KVC1_Forschungsbericht.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789324441.951841
+  },
+  {
+    "entry": 36809,
+    "role": "user",
+    "channel": null,
+    "text": "Mach weiter. \n\nNichts unter neuer Wissens Architektur, besser als rag, neu etc. Ist akzeptabel, daher - erschaffe etwas Neues nicht bestehendes und mache das so lange mit maximalen Aufwand, Perfektion, bis wir wirklich das Ziel erreicht haben ",
+    "time": 1789324623.432685
+  },
+  {
+    "entry": 36771,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze die Forschung fort. Der nächste entscheidende Schritt ist, aus dem Vier-Werte-Versuch einen Faktenzugang für mehrere verknüpfte, unabhängig änderbare Fakten zu machen und ihn unter gleichen Bedingungen gegen die Textkontrolle zu testen. Die volle Zielsetzung bleibt bestehen; Neuheit und Überlegenheit müssen die Ergebnisse tragen.",
+    "time": 1789324639.588437
+  },
+  {
+    "entry": 36687,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich nutze die Skills für Codearbeit und die Forschungsdateien. Die neue Hypothese lautet: Mehrere Fakten könnten sich als getrennte Änderungen eines gemeinsamen neuronalen Zustands einsetzen lassen, ohne für jede Kombination einen vollständigen Wissenspräfix neu zu berechnen. Ob das auch beim Schlussfolgern funktioniert, prüfe ich mit zurückgehaltenen Faktenkombinationen und gezielten Gegenproben.",
+    "time": 1789324654.416804
+  },
+  {
+    "entry": 36078,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Versuch ist jetzt festgelegt: drei Fakten bilden 32 mögliche Welten. Der neue Speicher setzt deren neuronale Zustände aus Einzeländerungen und paarweisen Wechselwirkungen zusammen. Neun vollständig neue Dreifachkombinationen bleiben beim Aufbau ausgeschlossen. Die Fragen verlangen unter anderem, einem Verweis zu folgen und anschließend mit der gefundenen Farbe weiterzurechnen.",
+    "time": 1789324988.591443
+  },
+  {
+    "entry": 35338,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die erste Prüfung hat einen konkreten Fehler abgefangen: Beim Addieren und Subtrahieren der Zustandsänderungen gehen in FP32 einzelne kleine Werte verloren – sogar bei bereits bekannten Kombinationen. Deshalb ist der Lauf vor allen Antworttests gestoppt. Ich behebe diese numerische Auslöschung und prüfe zuerst die exakte Rekonstruktion erneut; erst danach zählt die Antwortqualität.",
+    "time": 1789325216.027929
+  },
+  {
+    "entry": 34654,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Korrektur besteht die Rekonstruktionsprüfung: Alle 31 unterstützten Zustände sind jetzt bitgenau wiederhergestellt. Außerdem zeigt sich eine nutzbare Struktur: Änderungen wirken erst ab ihrer jeweiligen Faktenposition. Ich baue daraus eine kompakte Ablage der tatsächlich veränderten Bereiche, während die Antworttests weiterlaufen.",
+    "time": 1789325376.344185
+  },
+  {
+    "entry": 34104,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ein wichtiger Edit-Test ist bereits abgeschlossen: Alle 448 geprüften Einzeländerungen und zwei Folgen mit je 1.000 Änderungen ergeben exakt denselben neuronalen Zustand wie eine frische Zusammensetzung. Die naive Variante, die nur den einzelnen Faktenbeitrag austauscht, hinterlässt dagegen bei 198 von 224 Paarmodell-Änderungen alte Wechselwirkungen. Das zeigt konkret, warum die Wissensarchitektur Abhängigkeiten zwischen Fakten mitführen muss. Die Antwortqualität auf den neuen Kombinationen wird noch gemessen.",
+    "time": 1789325655.989097
+  },
+  {
+    "entry": 33596,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Auch die Verbindung zum echten Decoder funktioniert jetzt mit drei getrennt versionierten Fakten: Vier frische Antworten waren richtig, drei während der Generierung veraltete Berechnungen wurden blockiert. Die gespeicherte Ausgabe bleibt dabei nach einem Neustart an ihren Frage-, Modell- und Compilervertrag gebunden. Das ist ein Fortschritt gegenüber der bisherigen Einzelfakten-Schranke; der vollständige Qualitätsvergleich läuft noch.",
+    "time": 1789326053.213768
+  },
+  {
+    "entry": 33083,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die 512 Antworten der beiden Entwürfe sind jetzt vollständig erzeugt und versiegelt. Das Modell mit Paarwechselwirkungen erreicht 227/256 richtige Antworten, die reine Addition einzelner Fakten 210/256. Jetzt folgt die identische Textkontrolle auf allen Welten. Entscheidend ist, ob der Gewinn auch auf den neun zuvor ausgeschlossenen Kombinationen ohne Qualitätsverlust gegenüber dieser Kontrolle besteht.",
+    "time": 1789326456.686998
+  },
+  {
+    "entry": 32927,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich ergänze eine stärkere Effizienzkontrolle: Ein normaler Präfixcache könnte die gemeinsamen Teile der Welten ebenfalls wiederverwenden. Deshalb prüfe ich jetzt einen Pfad, der nur die letzten zwei Faktenpositionen zusammen mit der Frage berechnet. So vermeiden wir, einen Vorteil des neuen Speichers lediglich gegen eine unnötig teure Textverarbeitung zu messen.",
+    "time": 1789326459.034455
+  },
+  {
+    "entry": 32113,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Hauptvergleich ist abgeschlossen: Auf den neuen Kombinationen steigt die Genauigkeit von 53/72 mit Einzelbeiträgen auf 64/72 mit Paarwechselwirkungen; der exakte Faktenpräfix erreicht 66/72. Die vier direkten beziehungsweise verweisbezogenen Abfragen funktionieren im Paarmodell in allen 128 Fällen.\n\nDie stärkere Kontrolle begrenzt allerdings den Architekturanspruch: Gewöhnliches Präfix-Sharing braucht hier weniger Speicher. Ich dokumentiere deshalb genau, welcher Teil funktioniert und welcher behauptete Vorteil den Vergleich nicht übersteht.",
+    "time": 1789327049.669475
+  },
+  {
+    "entry": 31398,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Bei der Schlussprüfung ergänze ich noch eine Absicherung: Der gespeicherte Ausgabevertrag soll auch die Modellkonfiguration und Tokenizer-Dateien eindeutig binden. Dafür wiederhole ich den kurzen Decoder-Revisionsversuch mit erweitertem Vertrag. Die Qualitätsresultate und die gescheiterten Vergleichskriterien bleiben unverändert erhalten.",
+    "time": 1789327397.661331
+  },
+  {
+    "entry": 31014,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Alle Modellläufe und Prüfungen sind abgeschlossen. Die erweiterte Vertragsbindung besteht auch die sechs gezielten Konfigurations- und Tokenizer-Gegenproben.\n\nDer belastbare Gewinn dieser Runde ist die funktionierende Faktenkomposition mit korrekt aktualisierten Wechselwirkungen. Der neue Speicher erreicht aber noch keine Überlegenheit: Die stärkere Präfixkontrolle bleibt genauer und kleiner. Ich sichere jetzt den vollständigen Code, die 990 Modellsequenzen, die Gegenproben und den Forschungsbericht.",
+    "time": 1789327530.669103
+  },
+  {
+    "entry": 30856,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Ich habe den eigenen **Interaktionsspeicher IM1** implementiert und **990 reale Modellsequenzen** ausgeführt. Er speichert Faktenbeiträge samt ihren Wechselwirkungen und aktualisiert bei Änderungen alle betroffenen Beiträge.\n\nIm kleinen Drei-Fakten-Versuch:\n\n- **128/128 direkte und verweisbezogene Antworten richtig**, darunter 36 auf zuvor ausgeschlossenen Kombinationen.\n- **Komposition verbessert:** 64/72 richtige Antworten gegenüber 53/72 ohne Paarwechselwirkungen. Die exakte Textkontrolle erreicht 66/72.\n- **Änderungen konsistent:** 448 Einzelübergänge und 2.000 weitere Änderungen ergeben bitgenau dieselben Zustände wie frische Zusammensetzung.\n- **Reale Revisionsprüfung:** Vier frische Antworten richtig, drei veraltete Generationen blockiert; zusätzlich 13 bestandene Systemtests.\n\nDie stärkere Gegenprobe ist entscheidend: **Gewöhnliches Präfix-Sharing bleibt hier genauer und benötigt weniger Speicher.** Dieser Entwurf belegt daher noch keine neue, RAG überlegene Wissensarchitektur. Die vollständige Zielsetzung bleibt unverändert.\n\nCode, Rohantworten, Gegenproben und die daraus folgenden Architekturgrenzen sind vollständig dokumentiert:\n\n[So_IM1_Forschungsbericht.md](sandbox:/workspace/scratch/941d86d4dab9/So_IM1_Forschungsbericht.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789327584.909399
+  },
+  {
+    "entry": 30843,
+    "role": "user",
+    "channel": null,
+    "text": "Du sollst doch aber nicht vorher aufhören ",
+    "time": 1789328359.316475
+  },
+  {
+    "entry": 30784,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Du hast recht. Ich habe den abgeschlossenen Versuch zum Anlass genommen, die Arbeit zu beenden, obwohl dein Ziel offen ist.\n\n**Ein fertiger Testbericht ist nicht dein Abbruchkriterium.** Gefordert bleibt die nachweislich neue, RAG überlegene Wissensarchitektur. Die bisherigen Ergebnisse sind Zwischenstände.\n\nIch kann keinen Durchbruch garantieren und nicht außerhalb eines aktiven Arbeitslaufs unbegrenzt weiterrechnen. Diese Grenze hätte ich klar benennen müssen, statt wiederholt mit einem Abschlussbericht zu enden.",
+    "time": 1789328394.121428
+  },
+  {
+    "entry": 30771,
+    "role": "user",
+    "channel": null,
+    "text": "Du kannst ihn nicht garantieren aber so lange dran arbeiten bis ich es sage zu stoppen oder Ziel erreicht ",
+    "time": 1789328973.245119
+  },
+  {
+    "entry": 30750,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze die Arbeit fort. Der nächste Engpass ist die Generalisierung: IM1 funktioniert bisher nur mit festen Rollen und wenigen Werten und verliert beim Speicherbedarf gegen den Präfixvergleich. Ich prüfe jetzt einen Ansatz, der Wissensinhalte und ihre Bindung an Entitäten getrennt repräsentiert, und lege vor den Tests fest, woran er scheitern würde. Das Gesamtziel bleibt unverändert.\n",
+    "time": 1789329185.651342
+  },
+  {
+    "entry": 30392,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Literatur zeigt bereits, dass Modelle Entitäten und Eigenschaften über interne Bindungsrepräsentationen verknüpfen. Das allein wäre also kein neuer Beitrag. Mein konkreter Test lautet: Lassen sich die in IM1 gespeicherten Wissensänderungen auf andere Entitätsnamen übertragen, wenn nur deren Ausgangszustand neu berechnet wird? Ich vergleiche das mit unveränderten Ausgangszuständen und vollständiger Modelleingabe, damit ein scheinbarer Erfolg durch Antwortmuster auffällt.\n",
+    "time": 1789329295.294673
+  },
+  {
+    "entry": 30264,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Test läuft jetzt am eingefrorenen 3B-Modell. Die Trennung ist festgelegt: Pro neuem Namenspaar erhält der Kandidat zunächst nur einen Ausgangszustand mit zwei roten Objekten. Die tatsächlichen Testfarben werden ausschließlich aus den alten IM1-Korrekturen eingesetzt. Vollständig berechnete Testzustände kommen erst nach dem Festschreiben sämtlicher Kandidatenantworten hinzu.\n",
+    "time": 1789329361.519566
+  },
+  {
+    "entry": 30118,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ein erster Unterschied ist sichtbar: Beim Namenspaar X/Y beantwortet der Transfer mit Einzeltermen bisher 6 von 8 Fragen richtig, der Transfer mit Paartermen 8 von 8. Das ist noch kein Gesamtergebnis. Es spricht aber dafür, dass die Bindung zwischen Fakten beim Übertragen mitgeführt werden muss; ein bloßer Austausch einzelner Werte reicht hier bereits nicht aus.\n",
+    "time": 1789329443.285709
+  },
+  {
+    "entry": 29869,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der bisher stärkere Kandidat hat auch die ersten zusätzlichen Namensfälle bestanden. Ich verschärfe deshalb den nächsten Versuch bereits: neue Farben statt nur neuer Namen. Dabei bekommt der Compiler ausschließlich einzeln geänderte Fakten; die Kombinationen bleiben zurückgehalten. So lässt sich prüfen, ob die übertragenen Wechselwirkungen eine wiederverwendbare Beziehung darstellen oder am bisherigen Farbkatalog hängen.\n",
+    "time": 1789329560.982313
+  },
+  {
+    "entry": 29699,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Jetzt ist auch beim stärkeren Transfer ein Fehler aufgetreten: 39 von 40 bisher ausgewerteten Fragen sind korrekt. Damit ist dessen vorab festgelegtes Bestehenskriterium bereits verfehlt. Ich untersuche die Ursache weiter: Die übertragenen Paarterme könnten neben der Beziehung auch Reste der ursprünglichen Inhalte enthalten. Dafür bereite ich eine gezielte Projektion vor, die diese beiden Anteile rechnerisch zu trennen versucht.\n",
+    "time": 1789329665.774586
+  },
+  {
+    "entry": 29553,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Fehler sind jetzt konkreter: Beim Namenspaar K/M verwechselt der Kandidat zweimal das ausgewählte mit dem anderen Objekt. Im Versuch mit neuen Farben verbessert die Übernahme der Paarterme die Trefferzahl von 12/16 auf 15/16, vertauscht aber einmal die Farbzuordnung. Ich teste deshalb als Nächstes die vorbereitete Projektion gegen genau diesen unveränderten Vergleich; die bisherigen Fehlschläge bleiben erhalten.\n",
+    "time": 1789329776.016336
+  },
+  {
+    "entry": 29095,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Projektion trennt die gewählten Unterräume numerisch sauber, verbessert die bisherigen Antworten aber nicht. Daraus folgt ein anderer Reparaturversuch: Die inhaltlichen Richtungen nicht entfernen, sondern anhand der einzeln kalibrierten neuen Werte in den neuen Werteraum abbilden. Ich implementiere diesen Transport als geschlossene lineare Rechnung; die gemeinsamen Testzustände bleiben auch dabei ausgeschlossen.\n",
+    "time": 1789329937.889334
+  },
+  {
+    "entry": 28918,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die drei abgeschlossenen Versuche sind geprüft; der vierte läuft. Für deinen Wunsch nach Fortsetzung über diese Antwort hinaus richte ich anschließend eine wiederkehrende Forschungsaufgabe ein. Sie kann stündlich einen neuen Arbeitslauf anstoßen. Das ist keine ununterbrochene Recheninstanz; jeder Lauf muss seine tatsächlich ausgeführten Tests und verbleibenden Grenzen ausweisen.\n",
+    "time": 1789330050.738742
+  },
+  {
+    "entry": 28799,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neue Transport hat die 16 Entwicklungsfragen vollständig richtig beantwortet; die unveränderte Übertragung lag bei 15/16. Diesen kleinen Erfolg prüfe ich sofort strenger: mit einem weiteren Namenspaar, einem anderen Farbkatalog und sämtlichen 18 Kombinationen zweier geänderter Farben samt Auswahl. Erst dieser neue Test zeigt, ob die Reparatur über die bisherigen Entwicklungsfälle hinaus trägt.\n",
+    "time": 1789330110.348734
+  },
+  {
+    "entry": 28272,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Im neuen Validierungsbereich steht der Transport bisher bei 24/24 richtigen Antworten, die Einzelterme bei 20/24. Parallel habe ich weitere nahe Vorarbeiten gefunden: lineare KV-Übertragung und übertragbare relationale Bindungsräume. Deshalb behandle ich auch diesen Fortschritt als Mechanismusnachweis; eine Neuheitsbehauptung müsste sich ausdrücklich von diesen Arbeiten abgrenzen.\n",
+    "time": 1789330270.238736
+  },
+  {
+    "entry": 28094,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Transport steht inzwischen bei 52/52 Fragen im neuen Bereich. Gleichzeitig zeigt die Speicherrechnung eine klare Grenze: Die derzeitigen Transportfaktoren und materialisierten Paarterme sind noch zu groß für einen Speichervorteil. Ein positiver Qualitätstest würde deshalb die weitere Entwicklung des Compilers rechtfertigen, aber noch keine skalierbare, RAG überlegene Architektur belegen.\n",
+    "time": 1789330369.54223
+  },
+  {
+    "entry": 27730,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neue Validierungstest ist abgeschlossen: **72/72 für den Transport, 60/72 für Einzelterme, 72/72 für die vollständige Referenz.** Das ist ein konkreter Fortschritt bei der Übertragung auf neue Namen und Werte. Jetzt prüfe ich die gespeicherten Antworten abschließend und sichere den Stand als Ausgangspunkt für die weitere Forschung. Skalierung, komplexes Schlussfolgern und RAG-Überlegenheit bleiben offen.\n",
+    "time": 1789330547.344138
+  },
+  {
+    "entry": 27566,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Abschlussprüfung bestätigt die 72/72 Antworten, darunter alle 12 Auswahlwechsel-Paare mit wechselnder richtiger Antwort. Insgesamt wurden in dieser Fortsetzung 656 Modellsequenzen erzeugt. Ich sichere jetzt Code, Rohdaten und Bericht und richte danach die stündliche Fortsetzungsaufgabe auf diesem Stand ein.\n",
+    "time": 1789330653.357663
+  },
+  {
+    "entry": 27435,
+    "role": "assistant",
+    "channel": "final",
+    "text": "**Die stündliche Forschungsfortsetzung ist eingerichtet**, mit deinem Stopp oder der vollständig nachgewiesenen Zielerreichung als Abbruchkriterium. Sie startet einzelne Arbeitsläufe; ununterbrochene Dauerrechnung kann ich nicht zusagen.\n\nIch habe inzwischen fünf weitere Versuche mit **656 tatsächlich erzeugten Modellantworten** durchgeführt. Der entwickelte Bindungstransport erreicht im neuen Validierungsbereich **72/72**, gegenüber **60/72** ohne ihn. Skalierung, Neuheit und RAG-Überlegenheit bleiben offen.\n\n[So_BT_Forschungsbericht.md](sandbox:/workspace/scratch/941d86d4dab9/So_BT_Forschungsbericht.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789330713.889131
+  },
+  {
+    "entry": 27422,
+    "role": "user",
+    "channel": null,
+    "text": "Go on harder ",
+    "time": 1789338641.859912
+  },
+  {
+    "entry": 27384,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich gehe jetzt an die Aussagekraft der bisherigen Nachweise: Kann ein alter Tensor unter einer neuen Revision erneut als gültiger Build ausgegeben werden? Falls ja, reichen die bestandenen Handle-Tests nicht aus. Ich prüfe den neuesten Stand und entwickle daraus eine überprüfbare Verbindung zwischen tatsächlicher Tensorberechnung und Revisionsfreigabe.\n",
+    "time": 1789338658.862958
+  },
+  {
+    "entry": 27135,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neueste Arbeitsstand ist auffindbar, aber der Dateidownload scheitert derzeit mit HTTP 502. Ich überschreibe deshalb nichts am Hauptarchiv.\n\nAus dem vorhandenen Code ist die nächste Lücke trotzdem klar: Eine gültige Revision beweist noch nicht, dass ein Tensor daraus berechnet wurde. Ich entwickle dafür einen eng definierten Tensor-Auswertungsplan, dessen Eingaben und Ergebnis nachgerechnet werden können. Das lässt sich zunächst mathematisch und numerisch prüfen; der Anschluss an die Originaltensoren bleibt bis zum erfolgreichen Download offen.\n",
+    "time": 1789338737.571926
+  },
+  {
+    "entry": 26974,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der erste neue Nachweis steht: In 36 exakt nachgerechneten Tensorfällen erkennt der Prüfer jeweils den alten, lediglich mit neuen Metadaten versehenen Ausgangstensor. Eine reine Hash-/Manifestkontrolle akzeptiert ihn in allen 36 Fällen.\n\nDer Preis ist bisher vollständiges Nachrechnen. Ich prüfe deshalb als Nächstes die entscheidende Effizienzfrage: Kann ein kleinerer algebraischer Nachweis diese Arbeit reduzieren, ohne bei unserem Transport mit nur sechs Richtungen teurer als die Berechnung selbst zu werden?\n",
+    "time": 1789338938.562841
+  },
+  {
+    "entry": 26384,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die günstigere Variante liefert eine wichtige Grenze: Für die gesamte Bank mit 15 Paartermen halbiert sie rechnerisch ungefähr die nötigen Multiply-Accumulate-Terme. Für die höchstens drei aktiven Paarterme einer einzelnen Anfrage ist sie bereits etwas teurer als direktes Nachrechnen.\n\nDamit ist ein pauschaler „billiger Beweis pro Anfrage“ für diesen Entwurf nicht begründet. Die aktuelle Richtung ist: Berechnung und Abhängigkeiten beim Installieren prüfen und den geprüften Zustand anschließend an seine Revision binden. Ein Vorteil bei echten Modellantworten ist weiterhin offen.\n",
+    "time": 1789339203.677477
+  },
+  {
+    "entry": 26117,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Ich habe die Lücke zwischen gültiger Revision und korrekter Tensorberechnung bearbeitet:\n\n- **36/36 alte Tensoren mit neuen Metadaten erkannt.** Ein separater Prüfer bestätigt jeweils 1.152 ursprüngliche und geänderte Tensorwerte exakt.\n- Zwei günstigere algebraische Prüfvarianten untersucht. Die bessere spart rechnerisch bei einer ganzen Paarbank, **bringt pro einzelner Anfrage aber keinen Rechenvorteil**.\n\nDas sind ausgeführte mathematische Tests, keine neuen Modellantworten oder Neuheitsnachweise.\n\nDer Hauptarchiv-Download scheitert weiterhin mit **HTTP 502**. Daher sind Code, Rohdaten und Bericht als Ergänzung gesichert; die Zusammenführung bleibt offen. Die vollständige DoD bleibt unverändert.\n\n[So_CT1_CT3_Ergaenzung.zip](sandbox:/workspace/scratch/941d86d4dab9/next/So_CT1_CT3_Ergaenzung.zip)",
+    "time": 1789339246.189035
+  },
+  {
+    "entry": 26071,
+    "role": "user",
+    "channel": null,
+    "text": "Dont stop before dod ",
+    "time": 1789357864.4752269
+  },
+  {
+    "entry": 26061,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze am neuesten gesicherten Stand an. Dafür nutze ich den Library-Skill zur Wiederherstellung nach der Speicherbereinigung. Zuerst prüfe ich außerdem die offenen Nachweise: Ein robuster Zahlencode allein beweist noch nicht, dass das eingefrorene Modell damit Wissen versteht.\n",
+    "time": 1789357866.540974
+  },
+  {
+    "entry": 26051,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die vollständige DoD bleibt das Ziel, nicht der Abschluss einer Versuchsreihe. Ich arbeite weiter; dabei trenne ich bestandene Teiltests strikt von den noch fehlenden Nachweisen für Modellverständnis, Neuheit und Überlegenheit gegenüber starkem RAG.\n",
+    "time": 1789357877.521611
+  },
+  {
+    "entry": 25903,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Die vollständige DoD bleibt unverändert das Abbruchkriterium — ein fertiger Versuch ist kein Projektabschluss.\n\nAktuell ist v17 auffindbar, aber die Wiederherstellung scheitert auch beim zweiten Versuch mit HTTP 502. Nach der Speicherbereinigung fehlen hier die Arbeitsdateien. Daher kann ich gerade keine neuen Projekttests ausführen und werde keine Ergebnisse erfinden oder das Archiv überschreiben.\n\nDas ist eine technische Unterbrechung, keine Zielerreichung.",
+    "time": 1789357906.618602
+  },
+  {
+    "entry": 25870,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze beim Anschluss an echte Modellsemantik an. Zuerst prüfe ich den aktuellen Arbeitsstand und die verfügbare Modellumgebung. Außerdem überprüfe ich eine wichtige Grenze von CC8: Ein exakt zurücklesbarer Zahlencode beweist noch nicht, dass der eingefrorene Decoder seine Bedeutung versteht.",
+    "time": 1789361468.517277
+  },
+  {
+    "entry": 25638,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich habe einen konkreten Fehler gefunden: CC8 bindet für Qwen3 eine andere Modellrevision als der ursprüngliche Download- und Prüfcode. Die bisher versuchte Adresse liefert deshalb HTTP 404. Die numerischen Tests bleiben gültig, aber die behauptete Bindung an das ursprüngliche Modell muss korrigiert werden. Ich prüfe jetzt beide Revisionsangaben gegen die archivierten Herkunftsnachweise.",
+    "time": 1789361548.427
+  },
+  {
+    "entry": 25493,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Beide ursprünglichen Modellrevisionen und ihre Gewichtshashes sind beim Anbieter erreichbar. Der frühere Umgebungsblocker ist damit teilweise behoben. Ich stelle gerade die gepinnte CPU-Laufzeit und das 0,6B-Modell wieder her. Falls die Downloads vollständig geprüft werden können, folgt eine echte Decoder-Gegenprobe für den CC8-Kanal.",
+    "time": 1789361603.203413
+  },
+  {
+    "entry": 25165,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Das ursprüngliche 0,6B-Modell ist vollständig heruntergeladen; sein Gewichtshash stimmt mit dem archivierten Nachweis überein. Auch die gepinnte Laufzeit ist installiert. Die Gegenprobe startet jetzt: identische Ja/Nein-Fragen unter gegensätzlichen gespeicherten Zuständen, jeweils mit CC8, vertauschtem CC8, ohne Eingriff und mit explizitem Fakttext.",
+    "time": 1789361732.460053
+  },
+  {
+    "entry": 24938,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die erste echte Decoderprüfung zeigt die offene Lücke deutlich: CC8 erreicht **12/24**, ebenso der vertauschte Code und der Lauf ohne Eingriff. Kein einziges der zwölf Zustandwechselpaare wird vollständig richtig beantwortet. Der Eingriff verändert nachweislich Aktivierungen und Logits, wird aber nicht zuverlässig als Wissen genutzt.\n\nAuch die Fakttext-Kontrolle ist mit **13/24** schwach. Damit lässt sich das Versagen noch nicht sauber zwischen Basismodell und Schnittstelle aufteilen. Ich prüfe deshalb den Anschluss an das bereits im Projekt verwendete 3B-Modell.",
+    "time": 1789361822.86113
+  },
+  {
+    "entry": 24634,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Herkunftsfehler betrifft die Qwen3-Verträge in CC5 bis CC8. Ein neuer Compiler liest Revisionen und Gewichtshashes jetzt aus den ursprünglichen Nachweisen; seine Vertrags-IDs ändern sich, während die geprüften Tensorbytes gleich bleiben. Die historischen Ergebnisse bleiben erhalten. Der 3B-Download läuft bereits mit Prüfung beider ursprünglicher Gewichtshashes.",
+    "time": 1789361978.94398
+  },
+  {
+    "entry": 24504,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die zusätzliche Vertragsprüfung läuft auf der bestehenden Fakten-Runtime: Alte Handles sollen nach der Korrektur abgewiesen werden, obwohl ihre Tensorbytes unverändert sind. Damit wird der Herkunftsfehler nicht durch stilles Umetikettieren verdeckt. Für den 3B-Vergleich sind Protokoll und Code bereits festgeschrieben; die Gewichtsdateien werden noch übertragen.",
+    "time": 1789362047.929194
+  },
+  {
+    "entry": 24342,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Beide 3B-Gewichtshashes stimmen ebenfalls exakt mit dem früheren Projektstand überein. Der Decodervergleich startet mit der ursprünglich kalibrierten Schicht 17 und BF16. Er soll klären, ob der größere Backbone die Fragen mit Fakttext lösen kann, während der CC8-Eingriff noch keine verlässliche Bedeutungsbindung liefert.",
+    "time": 1789362107.542195
+  },
+  {
+    "entry": 24184,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der 3B-Lauf hat die Prüfungen ohne Eingriff und mit CC8 inzwischen abgeschlossen. Auch hier beantwortet CC8 bislang nur eine der beiden gegensätzlichen Wertewelten richtig. Die noch laufenden Kontrollen mit vertauschtem Code und Fakttext entscheiden, wie klar sich der Fehler der Wissensschnittstelle zuordnen lässt.",
+    "time": 1789362220.336946
+  },
+  {
+    "entry": 24002,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der 3B-Vergleich ist vollständig: Die Fakttext-Kontrolle beantwortet 24/24 Fragen und alle 12 Wertwechselpaare richtig. Der unveränderte CC8-Eingriff bleibt bei 12/24 und keinem richtigen Wertwechselpaar. Damit ist die Lücke konkret belegt: Der numerisch lesbare Code erhält durch diese Einbindung noch keine nutzbare Bedeutung im Sprachmodell.\n\nAuch die Reparatur der Modellherkunft besteht: Alte Handles werden unter dem korrigierten Vertrag abgewiesen, frische akzeptiert; die Tensorbytes bleiben gleich.\n",
+    "time": 1789362403.179558
+  },
+  {
+    "entry": 23754,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Ausführungsumgebung ist wiederhergestellt: Beide originalen Modelle laufen mit geprüften Gewichtshashes. Der geprüfte Stand enthält jetzt 200 neue Modellsequenzen, die negativen Ergebnisse und die Herkunftskorrektur. Ich sichere ihn mit unveränderter DoD und erhaltenen früheren Versuchen.\n\nDer nächste Entwurf muss die fehlende Bedeutungsbindung lösen; ein weiterer numerischer Rückdecodiertest würde diese Lücke nicht bearbeiten.\n",
+    "time": 1789362485.064559
+  },
+  {
+    "entry": 23632,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich sichere den geprüften Arbeitsstand jetzt als nächste Archivversion.\n",
+    "time": 1789362543.669969
+  },
+  {
+    "entry": 23546,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Übertragung des vollständigen Archivs ist zweimal fehlgeschlagen; die bisherige Version wurde nicht ersetzt. Ich versuche deshalb, den kleinen Ergänzungsstand separat zu sichern. Er enthält Code, Rohantworten und die geprüften Änderungen samt eindeutiger Zuordnung zur Ausgangsversion.\n",
+    "time": 1789362588.37186
+  },
+  {
+    "entry": 23466,
+    "role": "assistant",
+    "channel": "final",
+    "text": "**Beide originalen Modelle laufen wieder. Ich habe 200 neue Modellsequenzen ausgeführt.**\n\nDer entscheidende Gegenbefund am 3B-Modell:\n\n| Verfahren | Richtige Antworten | Richtige Wertwechselpaare |\n|---|---:|---:|\n| Unveränderter CC8-Eingriff | 12/24 | 0/12 |\n| Fakttext-Kontrolle | 24/24 | 12/12 |\n\nDamit scheitert dieser konkrete Anschluss: Numerische Rücklesbarkeit erzeugt noch keine nutzbare Bedeutung im Sprachmodell. Der nächste Architekturpunkt ist ein gemeinsam kalibrierter semantischer Reader.\n\nZusätzlich habe ich falsche Modellrevisionen in vier historischen Compilerverträgen entdeckt und eine geprüfte Migration umgesetzt: neue Verträge, unveränderte Tensorbytes, alte Handles abgewiesen.\n\n**Die vollständige DoD bleibt offen.** Code, Rohantworten und Bericht sind lokal geprüft. Die dauerhafte Übertragung scheiterte auch für die Ergänzung; das Hauptarchiv bleibt unverändert.\n\n[So_DS1_Ergaenzung.zip](sandbox:/workspace/scratch/941d86d4dab9/release_v19/So_DS1_Ergaenzung.zip) · [Vollständiger Arbeitsstand](sandbox:/workspace/scratch/941d86d4dab9/release_v19/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789362607.201119
+  },
+  {
+    "entry": 23416,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich arbeite bereits am nächsten echten 3B-Versuch weiter. Der neue gemeinsame semantische Linker ist eingefroren; die neue Validierung läuft ohne Nachkalibrierung. Die Kontrollen trennen dabei explizit Linkerwirkung, vertauschte Werte, Fakttext und die fallbezogene Teacher-Obergrenze.",
+    "time": 1789364507.572861
+  },
+  {
+    "entry": 23355,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "DS2 ist eindeutig gescheitert: Linker, vertauschter Linker und kein Wissen liegen jeweils bei 32/64; kein einziges Wertwechselpaar gelingt. Besonders wichtig: Selbst die fallbezogene exakte Teacher-Differenz an Schicht 22 bleibt bei 32/64, während Fakttext 64/64 erreicht. Damit ist nicht nur die Mittelwertkalibrierung schwach—die lokale Acht-Positionen-Schnittstelle verliert bereits kausal notwendige Zustände.\n\nIch gehe deshalb nicht in weiteres Skalieren dieser Variante. Der nächste Entwurf verschiebt den Wissenszustand vor die Frageverarbeitung: eine global geteilte, typisierte Rollen-Kapsel pro Wert, während Entitätsauswahl, Revision und Mehr-Hop-Programm separat binär bleiben. Zuerst prüfe ich, ob die rollenbezogene Formulierung auf neuen Namen überhaupt 64/64 semantisch trägt; erst danach lohnt ein latenter Cache-/Compilerpfad.",
+    "time": 1789364770.317588
+  },
+  {
+    "entry": 22842,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Rohdaten-Audit bestätigt 320/320 eindeutige Modellfälle und alle berichteten Paarwerte. DS2 bleibt als Fehlversuch erhalten; der neue DS3-Entwurf ist nicht als Ergebnis ausgegeben, sondern als vorregistrierte nächste Hypothese mit einem harten Orakelgate vor jedem Training. Das verhindert, erneut Rechenzeit in einen Compiler zu investieren, dessen Schnittstelle selbst keine vollständige Semantik tragen kann. Jetzt baue und prüfe ich den versionsgeschützten Gesamtstand.",
+    "time": 1789364932.142298
+  },
+  {
+    "entry": 22612,
+    "role": "assistant",
+    "channel": "final",
+    "text": "DS2 ist abgeschlossen: **320 neue reale 3B-Modellsequenzen**.\n\n- Linker: **32/64**, Wertwechselpaare **0/32**\n- Vertauschter Linker: **32/64**, **0/32**\n- Exakte lokale Teacher-Differenz: **32/64**, **0/32**\n- Fakttext-Kontrolle: **64/64**, **32/32**\n\nDamit ist die gesamte lokale Ein-Schicht-/Acht-Positionen-Familie verworfen. Sie verliert kausal notwendige Attention-Zustände; weitere Skalensuche wäre nicht zielführend.\n\nAls nächsten eigenen Mechanismus habe ich das **Causal Memory Relay (DS3)** vorregistriert: Der kompakte Wissenszustand wird schichtweise durch die Frageverarbeitung geführt und erzeugt virtuelle K/V-Slots. Vor jedem Training muss ein exaktes Relais-Orakel mindestens **63/64** und **32/32 Wertwechselpaare** erreichen. Erst dann wird ein gemeinsamer, faktunabhängiger Compiler entwickelt.\n\nDer Ansatz wird ausdrücklich gegen verwandte latente Speicher abgegrenzt; beispielsweise verwendet aktuelle Context-Distillation bereits modulare LoRA-Speicher und geteilte Query-KV-Caches. [Primärquelle](https://arxiv.org/abs/2605.28889)\n\nDer unabhängige Audit besteht. Die vollständige DoD bleibt offen. Der geprüfte Gesamtstand wurde unter derselben Dateiidentität aktualisiert:\n\n[So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/01f48339cabe/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789365189.287768
+  },
+  {
+    "entry": 22477,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der aktuelle Stand ist diesmal vollständig verfügbar (Library-Version 19). Ich lese jetzt die eingefrorenen Kriterien und die tatsächlich jüngsten Resultate direkt aus dem Archiv, statt an einer älteren CC8-Zusammenfassung weiterzubauen. Danach prüfe ich zuerst, ob das vorregistrierte DS3-Relais-Orakel mit den vorhandenen 3B-Gewichten ausführbar ist; sein Scheitern würde die gesamte Relaisfamilie vor Training stoppen.",
+    "time": 1789365247.641986
+  },
+  {
+    "entry": 22208,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "DS3-O wird jetzt als echter kausaler Schnittstellentest umgesetzt: Nicht der letzte Antwortzustand und nicht der Assistant-Marker werden kopiert. Nur die lexikalischen Fragepositionen erhalten vor jedem Decoderblock die fallbezogenen Teacher-Zustände; der jeweilige Block, der Antwortanker und die Generierung laufen im wissensfreien Studentpfad selbst. Das verhindert, dass ein scheinbarer Erfolg lediglich durch direkt kopierte Antwortlogits entsteht. Entwicklungs- und Validierungsnamen bleiben getrennt, und Code/Protokoll werden vor der neuen Validierung versiegelt.",
+    "time": 1789365436.088668
+  },
+  {
+    "entry": 22071,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Das technische Entwicklungsgate besteht: Das Relais erreicht 8/8, während der gegensinnige Teacher 0/8 liefert; der wissensfreie Pfad liegt bei 4/8. Entscheidend ist, dass der Antwortanker nie kopiert wurde und alle 36 Eingriffe ausschließlich im Prefill an den Fragepositionen stattfanden. Ich starte nun die versiegelte 64-Fall-Validierung auf acht neuen Namen und vier Formen; ab jetzt wird weder Mechanismus noch Code angepasst.",
+    "time": 1789365758.671057
+  },
+  {
+    "entry": 22010,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die neue Validierung besteht unerwartet klar: Relais 64/64, Text 64/64, gegensinniges Relais 0/64; alle 32 Wertwechselpaare gelingen. Noch wichtiger für die Architektur: Bereits die präzise ausgerichtete Ein-Schicht-Orakelkontrolle erreicht 64/64. Das widerspricht DS2 nicht—DS2 ersetzte nur acht Endpositionen nach einem Block; hier werden sämtliche Fragepositionen vor Block 22 konditioniert, sodass der Block daraus selbst Attention-K/V und Antwortanker erzeugt.\n\nDamit ist die kausal hinreichende Schnittstelle erstmals identifiziert. Ich friere jetzt diese einfachere Schnittstelle als DS3-C-Ziel ein und prüfe als nächsten Schritt, ob ein gemeinsamer, faktunabhängiger Compiler ihre Teacher-Zustände aus Wertcode plus wissensfreier Frage approximieren kann. Die Orakelresultate werden vorher unabhängig auditiert und nicht zur Kandidatenauswahl verwendet.",
+    "time": 1789367195.134017
+  },
+  {
+    "entry": 21847,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der gemeinsam trainierte Compiler besteht die getrennte Entwicklung: alle drei Regularisierungen erreichen 32/32 und 16/16 Wertwechselpaare; nach dem vorab festgelegten Rekonstruktions-Tiebreak ist λ=10 versiegelt. Das ist noch keine neue Validierung. Jetzt laufen 320 Sequenzen auf acht weiteren, unbenutzten Namen—einschließlich gegensinnigem Compiler, exaktem Orakel, Text und Nullkontrolle.",
+    "time": 1789368429.793606
+  },
+  {
+    "entry": 21786,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "DS3-C besteht auch die neue, versiegelte Validierung vollständig: 64/64 und 32/32 Wertwechselpaare; der gegensinnige Compiler liefert 0/64 und ändert alle 64 Antworten. Damit wurde aus dem Orakel ein gemeinsamer Compiler: Validierungsfakten verursachen weder Gradienten noch eigene 2.048D-Tensoren, und der Studentprompt enthält weiterhin keinen Fakttext.\n\nBevor ich das als belastbaren Teilnachweis sichere, prüfe ich jetzt unabhängig Falltrennung, Rohantworten, Tokenpfade, Compilerform und Siegel. Eine Neuheits- oder RAG-Überlegenheitsbehauptung folgt daraus noch ausdrücklich nicht; Werte und Operatorfamilie sind weiterhin klein.",
+    "time": 1789369936.831348
+  },
+  {
+    "entry": 21701,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der unabhängige Audit bestätigt 320/320 Validierungssequenzen, getrennte 16/4/8 Namensmengen, den fakttextfreien Studentpfad und die feste Compilerform (4,22 MB gemeinsamer Parameterblock; keine Pro-Fakt-Tensorbank). Ich prüfe nun gezielt die nächsten wissenschaftlichen Nachbarn—latente Kontextkompression, KV-/Adapter-Memory und Hidden-State-Transfer—damit dieser Mechanismus nicht vorschnell als neu bezeichnet wird und die nächste Generalisierungsprüfung eine echte Abgrenzung testet.",
+    "time": 1789370001.061174
+  },
+  {
+    "entry": 21422,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich mache direkt weiter. Der Forschungsstand ist vollständig geprüft; offen ist nur die dauerhafte, versionsgeschützte Sicherung. Der erste Übertragungsversuch wurde vor dem Commit abgewiesen und hat die bestehende Fassung nicht verändert. Ich wiederhole ihn mit dem für diesen Datensatz passenden nicht‑geteilten Ersetzungsmodus.",
+    "time": 1789390131.108814
+  },
+  {
+    "entry": 21285,
+    "role": "assistant",
+    "channel": "final",
+    "text": "TSKV‑P0 ist abgeschlossen und unabhängig auditiert:\n\n- **72 neue reale Qwen2.5‑3B-Sequenzen**\n- Beide 36‑Block‑Varianten wurden distributionsinstabil: **0/16** Slotantworten mit EOS\n- Stabile Block‑22‑Variante:\n  - Exakter K/V‑Slot: **2/4**\n  - Permutierter Slot: **0/4**\n  - Kausale Antwortwechsel: **1/4**\n  - Falscher Typ und umgekehrte Reihenfolge: jeweils **2/4**\n\nDamit ist rohe Faktspan‑K/V‑Konkatenation verworfen. Wegen fehlender positiver Schnittstellenkontrolle wurden wissenschaftliche Validierung und Compilertraining nicht geöffnet.\n\nAls Nächstes folgt **TSKV‑P1 Prefix Quotient**: Ein exakter Teacher‑Prefix‑Cache muss zunächst die Fakttextleistung reproduzieren. Danach werden seine System-, Fakt-, Delimiter- und Assistant-Anteile kontrolliert entfernt, um einen kausal hinreichenden nichttextuellen Wissensquotienten zu isolieren.\n\nGesamt‑DoD bleibt `false`. Archiv v26, SHA‑256 `aafba5ed12d7aaca3d63dfc4a1535cc2366945a85df89aee00716a92384821d2`:\n\n[So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/01f48339cabe/release_v26/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789390168.35256
+  },
+  {
+    "entry": 21272,
+    "role": "user",
+    "channel": null,
+    "text": "Go fucking on ",
+    "time": 1789396452.771342
+  },
+  {
+    "entry": 21251,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich arbeite weiter. Ich hole den neuesten Archivstand und prüfe zuerst, ob sich die gepinnte Modellumgebung wiederherstellen lässt. Parallel prüfe ich den vorbereiteten Prefix-Cache-Versuch auf Fehler, damit der nächste echte Modelllauf eine belastbare Aussage liefert.",
+    "time": 1789396482.997078
+  },
+  {
+    "entry": 21113,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der aktuelle Stand ist v27. Ich nutze die Skills für Codearbeit und die Forschungsdateien. Die Modellpakete fehlen hier weiterhin; ich prüfe jetzt gezielt den Wiederherstellungsweg. Eine zweite Prüfung untersucht parallel, ob die bisherigen Cache-Kontrollen tatsächlich die beabsichtigten Aussagen testen.",
+    "time": 1789396515.719768
+  },
+  {
+    "entry": 20782,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Prüfung hat einen echten Startfehler gefunden: Der E0-Runner würde wegen einer Python-Variablenbindung schon vor dem Laden des Modells abbrechen. Außerdem wurden mehrere Prüfwerte nur fest eingetragen. Ich korrigiere beides.\n\nFür den Speicherentwurf untersuche ich jetzt eine grundlegende Frage an den archivierten 3B-Tensoren: Welche K/V-Zustände lassen sich zusammenfassen, ohne die Aufmerksamkeitsgewichte des Decoders zu verändern?",
+    "time": 1789396648.080182
+  },
+  {
+    "entry": 20626,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die mathematische Prüfung zeigt einen wichtigen Unterschied: Ein zusammengefasster K/V-Slot muss auch die ursprüngliche Gewichtssumme erhalten. Sonst verändert bereits das Anhängen weiterer Tokens die Aufmerksamkeit.\n\nIch prüfe deshalb zwei feste Entwürfe: exaktes Zusammenfassen gleicher Schlüssel und eine Näherung mit berechenbarer Fehlergrenze, die bei Überschreitung auf den vollständigen Cache zurückfällt. Diese Tests verwenden archivierte 3B-Tensoren; neue Modellantworten sind ohne die fehlenden Gewichte weiterhin nicht möglich.",
+    "time": 1789397084.961878
+  },
+  {
+    "entry": 20349,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der erste Entwurf hat eine klare Grenze: In den 216 geprüften K/V-Köpfen lassen sich keine der 7.776 Positionen durch exaktes Zusammenfassen einsparen. Die Ein-Slot-Näherung hält ihre Fehlergrenze ein, wird aber schon bei der kleinsten getesteten Abweichung vom Ausgangspunkt vollständig abgewiesen.\n\nIch verwerfe deshalb diesen Wiederverwendungspfad und entwickle eine Erweiterung, die zusätzlich die lokale Änderung der Aufmerksamkeit speichert. Sie erhält ein eigenes Protokoll und neue numerische Prüffragen.",
+    "time": 1789397216.815247
+  },
+  {
+    "entry": 19978,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die unabhängige Nachrechnung bestätigt den negativen PQ2-Befund. Auch die Reparatur des E0-Runners besteht 21/21 Vertragstests.\n\nDie neue Erweiterung speichert vier Richtungen, in denen sich die Aufmerksamkeit um den Ausgangspunkt verändert. Dafür ist die Fehlergrenze jetzt hergeleitet. Als Nächstes wird geprüft, ob sie mehr Wiederverwendung zulässt und ob der zusätzliche Speicher diesen Nutzen wieder aufzehrt.",
+    "time": 1789397642.390873
+  },
+  {
+    "entry": 19684,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich habe vor der neuen Auswertung eine zusätzliche Gegenprobe festgelegt: dieselbe verbesserte Fehlergrenze, aber ohne gespeicherte Änderungsrichtungen. Damit lässt sich erkennen, ob diese Richtungen überhaupt nötig sind.\n\nAuch der Speichervergleich zählt den vollständigen Aufwand: Mehrere gespeicherte Ausgangspunkte und der weiterhin benötigte exakte Rückfallcache können eine kleine Einzelrepräsentation insgesamt teurer machen.",
+    "time": 1789397851.380511
+  },
+  {
+    "entry": 19488,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Voraussetzungen der neuen Fehlergrenze sind unabhängig geprüft. Sie nutzt den zusätzlichen gespeicherten Zustand, um einen Teil der lokalen Änderung direkt vorherzusagen. Größere Abweichungen bleiben durch einen Restterm begrenzt.\n\nDie Auswertung prüft nun ausdrücklich auch den Fall, dass diese zusätzlichen Daten keinen Vorteil bringen. Der Entwurf wird nur weiterverfolgt, wenn er die vorher festgelegten Kriterien erfüllt.",
+    "time": 1789397960.173021
+  },
+  {
+    "entry": 19237,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die getrennte Entwicklung zeigt einen messbaren Nutzen der zusätzlichen Richtungen: Beim Abstand 0,01 werden 288/288 Näherungen zugelassen, gegenüber 52/288 ohne diese Richtungen. Keine berechnete Fehlergrenze wurde verletzt; größere Abstände werden überwiegend abgewiesen.\n\nDas ist noch keine neue Validierung. Der Quellstand ist jetzt eingefroren und wird unabhängig geprüft, bevor die neuen Prüffragen geöffnet werden.",
+    "time": 1789398087.1988
+  },
+  {
+    "entry": 19034,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die unabhängige Prüfung hat den festgeschriebenen Entwurf freigegeben. Jetzt läuft die neue numerische Validierung: 18.144 neue Abfragen an archivierten K/V-Tensoren, einschließlich der Kontrolle ohne Ableitungsterme. Sie prüft, ob die kompakte Näherung ihre Fehlergrenze einhält und häufiger wiederverwendbar ist. Neue Modellantworten entstehen dabei nicht.\n\n",
+    "time": 1789398359.917793
+  },
+  {
+    "entry": 18707,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die neue Validierung besteht die festgelegten numerischen Kriterien: Bei Abstand 0,01 werden **3.452/3.456** Näherungen zugelassen, gegenüber **660/3.456** ohne Ableitungsterme. Keine zugelassene Näherung überschreitet die Fehlergrenze.\n\nDer Gewinn gilt bisher nur lokal. Vier gespeicherte Anker plus dichter Rückfall benötigen **3,45-mal** die ursprünglichen K/V-Tensorbytes. Damit ist noch kein Speichervorteil belegt. Jetzt werden Rohvektoren, Entscheidungen und Speicherrechnung unabhängig nachgerechnet.\n",
+    "time": 1789398608.730298
+  },
+  {
+    "entry": 18445,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der unabhängige Audit bestätigt die Ergebnisse und die Speicherrechnung. Außerdem ist ein Startfehler im vorbereiteten nativen Modelltest behoben; seine 21 Vertragstests bestehen.\n\nIch sichere jetzt den geprüften Gesamtstand mit allen Rohdaten und Fehlversuchen. Die nächste entscheidende Prüfung bleibt der Anschluss an echte Decoderqueries: Nur dort lässt sich feststellen, ob die lokale Näherung tatsächlich Rechenarbeit spart. Die vollständige DoD bleibt offen.\n",
+    "time": 1789398905.771167
+  },
+  {
+    "entry": 18163,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Abschlussprüfung hat ein beschädigtes ZIP erkannt; der bisherige gesicherte Stand wurde nicht ersetzt. Die geprüften Forschungsdateien sind intakt. Ich erhalte den fehlgeschlagenen Verpackungsversuch und baue das Archiv erneut in einer temporären Datei, die erst nach vollständiger Prüfung veröffentlicht wird.\n",
+    "time": 1789399078.202199
+  },
+  {
+    "entry": 17738,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die vollständige Sicherung ist fehlgeschlagen; eine genaue Ursache wurde nicht zurückgegeben. Das lokal geprüfte Archiv und sämtliche Rohdaten sind vorhanden. Ich versuche eine stärkere verlustfreie Kompression, ohne Inhalte zu entfernen oder den Versionsschutz zu ändern.\n",
+    "time": 1789399342.369806
+  },
+  {
+    "entry": 17644,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Für die Fortsetzung ist eine Grenze entscheidend: Die geprüfte Fehlergrenze gilt für Attentionvektoren. Ob eine solche Näherung die Modellantwort unverändert lässt, ist damit noch offen. Der nächste native Versuch muss deshalb reale Queryabstände und Antwortqualität gemeinsam messen.\n",
+    "time": 1789399432.851423
+  },
+  {
+    "entry": 17504,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die verlustfreie Neuverpackung läuft noch und ist der letzte offene Schritt. Die Forschungsresultate und Audits sind abgeschlossen; ich ändere daran nichts mehr.\n",
+    "time": 1789399578.293442
+  },
+  {
+    "entry": 17253,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Auch die kleinere vollständige Fassung konnte nicht gesichert werden. Ich sichere deshalb zusätzlich einen kompakten Ergänzungsstand mit Code, Protokollen und Prüfberichten. Das vollständige, lokal geprüfte Archiv mit allen Rohvektoren bleibt erhalten; die bisherige Hauptfassung wurde nicht ersetzt.\n",
+    "time": 1789399803.184801
+  },
+  {
+    "entry": 17039,
+    "role": "assistant",
+    "channel": "final",
+    "text": "**PQ3 ist implementiert und mathematisch geprüft:** eine Attention-Näherung mit erhaltener Softmax-Masse und vier lokalen Ableitungsrichtungen.\n\n- **18.144 neue numerische Proben**, unabhängig nachgerechnet.\n- Bei Query-Abstand 0,01: **3.452/3.456** Näherungen zugelassen, gegenüber **660/3.456** ohne Ableitungsrichtungen. Keine zugelassene Näherung verletzt die Fehlergrenze.\n- Gegenbefund: Vier Anker samt dichtem Rückfall benötigen **3,455× die ursprünglichen K/V-Bytes**. Kein Gesamt-Speichervorteil.\n- Zusätzlich einen Startfehler im vorbereiteten Modelltest repariert; **21 Vertragstests bestanden**.\n\nDas sind synthetische Queries auf archivierten 3B-Tensoren, **keine neuen Modellantworten**. Echte Decoderqualität, Neuheit, RAG-Überlegenheit und vollständige DoD bleiben offen.\n\n**Die dauerhafte Sicherung scheiterte auch für die Ergänzung.** Das Hauptarchiv blieb unverändert. Der lokal geprüfte Gesamtstand enthält alle Rohdaten und 941 hashgeprüfte Dateien:\n\n[So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/continue_v27_1438/release_v28_compact/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789399924.317534
+  },
+  {
+    "entry": 16912,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze fort und prüfe nach der Speicherbereinigung erneut zuerst den dauerhaft gesicherten Stand. Danach führe ich den begonnenen gleichqualitativen Retrieval-Grenzvergleich auf den 100.000 Fakten und natürlichen 4/8/16-Hop-Fragen aus; er wird ausdrücklich nicht als vollständiger starker-RAG- oder Modellnachweis ausgegeben.",
+    "time": 1789406753.906013
+  },
+  {
+    "entry": 16773,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich lege den Vergleich jetzt vor der Auswertung fest: 100.000 Fakten, natürliche 4/8/16‑Hop‑Fragen und vier gleich genaue Ausführungspfade. Neben zwei FTS‑Varianten kommt eine adversariale direkte Textindex‑Kontrolle hinzu; Parsingkosten, Indexaufbau und reine Ausführung werden getrennt gemessen. Ein positiver Wert wäre nur eine Retrieval‑Untergrenze, kein vollständiger RAG‑ oder DoD‑Nachweis.",
+    "time": 1789406873.201367
+  },
+  {
+    "entry": 16676,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Entwicklungsprozess läuft auf allen vier Pfaden. Der unstrukturierte BM25‑Pfad ist absichtlich teurer, weil er pro Hop aus echten Faktensätzen Kandidaten abruft und die Quellbindung erst danach prüft; damit ist der Vergleich deutlich härter als der frühere spaltenlose Mini‑Benchmark.",
+    "time": 1789407069.196213
+  },
+  {
+    "entry": 16601,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der vorab versiegelte Entwicklungsstart ist korrekt gescheitert und bleibt erhalten: Die unstrukturierte Kontrolle fragte den Bindestrichnamen als ein Token ab, während FTS5 ihn in Wort und Zahl zerlegt. Das war kein Kandidatenfehler, sondern ein Fehler der Kontrollimplementierung. Ich korrigiere ausschließlich diese Tokenisierung, versioniere den Fehlstart und starte die Entwicklung neu; weder Fallauswahl noch Gates ändern sich.",
+    "time": 1789407214.887107
+  },
+  {
+    "entry": 16412,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die getrennte Entwicklung besteht: alle vier Pfade 864/864, einschließlich 128 Edit-/Restore‑Zyklen. Gegen strukturiertes FTS liegt der reine Ausführungskern bei 46,6×, gegen Faktensatz‑BM25 bei 4.675×; der adversariale direkte Textindex begrenzt ihn auf 2,61×. Die Quellen und das Protokoll sind jetzt unter `b8d961…e55e49` versiegelt. Ich öffne die 3.456 unbenutzten Validierungsfälle ohne Codeänderung.",
+    "time": 1789407715.419599
+  },
+  {
+    "entry": 16351,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die versiegelte Validierung besteht ebenfalls: 3.456/3.456 in allen vier Pfaden und 128/128 Lifecycle‑Fälle. Der So‑Kern ist 38,9× schneller als strukturiertes FTS und 4.012× schneller als Faktensatz‑BM25; inklusive natürlichem Parser 16,9× beziehungsweise 1.544×. Der direkte Textindex bleibt die schärfste Grenze: nur 2,44× im Kern und 1,55× Ende‑zu‑Ende. Deshalb ist das ein belastbarer Retrieval‑Layer‑Vorteil, aber noch nicht das verlangte >3× gegen eine vollständige starke RAG‑Pipeline. Ich auditiere nun Rohdaten, Falltrennung und wiederhergestellte Indizes unabhängig.",
+    "time": 1789408386.538868
+  },
+  {
+    "entry": 15777,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der unabhängige Audit bestätigt Entwicklung und Validierung vollständig, einschließlich disjunkter Fragen, aller 200.000 wiederhergestellten FTS‑Zeilen, SQLite‑Integrität, Quellsiegel und Rohantworten. Ich integriere RBL1 jetzt in den revisionsgeschützten Gesamtstand; die eingefrorene DoD bleibt byteidentisch und `false`.",
+    "time": 1789408533.014785
+  },
+  {
+    "entry": 15561,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Das Archiv v29 ist lokal vollständig geprüft (921 Dateien, SHA‑256 `899735…2ba91`), aber die erste versionsgeschützte Übertragung ist nach 60 Sekunden transient abgebrochen; v28 wurde dabei nicht ersetzt. Ich wiederhole den konditionalen Austausch nur gegen weiterhin aktuelle Version 28.",
+    "time": 1789408757.967711
+  },
+  {
+    "entry": 15347,
+    "role": "assistant",
+    "channel": "final",
+    "text": "RBL1 ist getrennt validiert und unabhängig auditiert:\n\n- 100.000 Fakten, 4.320 natürliche Fragen, alle Operatoren und 4/8/16 Hop.\n- Alle vier Verfahren: 100 % korrekte Antworten.\n- Neue Validierung mit 3.456 unbenutzten Fällen:\n  - So vs. strukturiertes FTS5: **38,93×** schneller im Kern, **16,86×** Ende-zu-Ende.\n  - So vs. Faktensatz-BM25: **4.012×** beziehungsweise **1.544×**.\n  - Adversarialer direkter Textindex: nur **2,44×** beziehungsweise **1,55×**.\n- 256 Edit-/Restore-Zyklen bestanden; alte Snapshot-Handles wurden vollständig abgewiesen.\n- Der erste fehlerhafte FTS-Start blieb erhalten.\n- Audit aller Rohantworten, Falltrennung, 200.000 Indexzeilen und Siegel bestanden.\n\nDie Einschränkung ist bindend: Das ist ein starker Retrieval-Layer-Nachweis, aber noch kein >3×-Nachweis gegen vollständigen Dense-/Reranker-/Decoder-RAG. RAG umfasst neuronales Retrieval und Generierung; ColBERTv2 ist eine stärkere Retrievalvorarbeit als FTS5. [RAG](https://arxiv.org/abs/2005.11401), [ColBERTv2](https://arxiv.org/abs/2112.01488), [SQLite FTS5](https://www.sqlite.org/fts5.html).\n\nGesamt-DoD bleibt `false`; die Forschung wird fortgesetzt.\n\nArchiv v29: 921 hashgeprüfte Dateien, SHA‑256 `89973581abe7d5c84ad536767ca676dc2f637d5ca0ca976af7a33acb7b02ba91`.\n\n[RBL1-Bericht](sandbox:/workspace/scratch/01f48339cabe/work_v28/So_QC_C_Recovered/retrieval_boundary/REPORT_RBL1_DE.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/01f48339cabe/work_v28/So_QC_C_Recovered/release_v29/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789408850.604047
+  },
+  {
+    "entry": 15297,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich setze am neuesten Stand an und prüfe zuerst, ob der echte Decodervergleich wieder ausführbar ist. Dafür nutze ich den Library‑Skill zur Wiederherstellung und die Code‑Skills für Implementierung und Prüfung. Außerdem prüfe ich die zuletzt abgeleitete Geschwindigkeitsgrenze: Sie gilt nur für Arbeit, die beide Vergleichspfade tatsächlich gemeinsam haben.",
+    "time": 1789411569.970976
+  },
+  {
+    "entry": 15137,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Abruf der aktuellen Version scheitert mit HTTP 502; eine bekannte lokale Kopie von Version 30 ist noch vorhanden. Ich prüfe deren Hash gegen den zuletzt gesicherten Wert und arbeite nur bei Übereinstimmung weiter. Die Modelllaufzeit fehlt weiterhin. Damit bleibt der reale Decoderlauf blockiert, während sich der aktuelle Code und seine Nachweise prüfen lassen.",
+    "time": 1789411615.402237
+  },
+  {
+    "entry": 14854,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich habe eine konkrete Lücke im CQTA‑Anschluss gefunden: Der bisherige Test berechnet die Fehlerschranke mit dem ursprünglichen FP64‑Anker und hält vollständige 128×128‑Näherungsmatrizen bereit. Die kompakte Ablage enthält beides nicht.\n\nIch implementiere deshalb einen eigenständig ladbaren Auswerter, der nur die gespeicherten INT8‑Faktoren, FP32‑Anker und Prüfdaten benötigt. Er muss seine Schranke daraus konservativ berechnen und bei Überschreitung ohne Ausgabewert zurückweisen. Das ist ein notwendiger Anschluss vor dem Decoderlauf, kein weiterer Semantiknachweis.",
+    "time": 1789411693.942197
+  },
+  {
+    "entry": 14691,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Zugriff auf den Modellanbieter funktioniert jetzt wieder, ebenso der Abruf der gepinnten Torch‑Version. Ich starte die Wiederherstellung der ursprünglichen 3B‑Gewichte in einem separaten Ordner und lasse beide Gewichtshashes prüfen. Falls sie vollständig ankommen, führe ich noch in diesem Lauf die vorgelagerte Cache‑Positivkontrolle am echten Modell aus.",
+    "time": 1789411732.126018
+  },
+  {
+    "entry": 14490,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Wiederherstellung wurde durch die Netzfreigabe gestoppt, bevor Installation und Gewichtsladen abgeschlossen waren. Ich versuche nicht, diese Sperre zu umgehen. Die lokale Arbeit bleibt möglich: Der neue Auswerter kommt jetzt ohne Originalanker und dichte Näherungsmatrix aus; als Nächstes prüfe ich ihn gegen die gespeicherten Rohproben.",
+    "time": 1789411851.776951
+  },
+  {
+    "entry": 14313,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der serialisierte Auswerter besteht den Replay aller 14.976 gespeicherten Proben. Unter den 10.328 zugelassenen Ausgaben verletzt keine die geprüfte Fehlerschranke oder das Fehlerbudget; 4.648 Fälle werden ohne Antwort verworfen.\n\nDas ist keine neue Validierung: Es sind bewusst dieselben archivierten Queries. Der neue Nachweis ist, dass die kompakte Ablage tatsächlich ohne Originalanker, dichte Prefixdaten und vorgegebene Ankerwahl auswertbar ist. Speicherbedarf und ungültige Eingaben prüfe ich jetzt gesondert.",
+    "time": 1789412014.656846
+  },
+  {
+    "entry": 13921,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der kompakte Attention-Speicher lässt sich jetzt ohne ursprüngliche Ankerqueries oder dichte K/V-Tensoren auswerten. Die Wiederholung der 14.976 archivierten Proben und 21 Grenztests besteht. Eine wichtige Speicherfalle ist dabei bestätigt: Dauerhaft entpackte Faktoren verbrauchen 148 % des ursprünglichen Speichers; nur die gepackte Ablage bleibt bei 48 %. Das sind noch keine neuen Modellantworten.\n",
+    "time": 1789412347.336034
+  },
+  {
+    "entry": 13489,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Zusätzlich ist eine Schlussfolgerung aus RBL2 präzisiert: Die dortige Grenze gilt nur für tatsächlich identische, unveränderte Vorarbeit. Sie ist keine gemessene Grenze für vollständigen RAG. Den Startfehler des vorbereiteten Modelltests habe ich ebenfalls separat behoben; seine Ausführung bleibt wegen der abgebrochenen Freigabe für Laufzeit- und Gewichtsdownloads blockiert.\n",
+    "time": 1789412415.618071
+  },
+  {
+    "entry": 13170,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Bestandsprüfung ist abgeschlossen: Alle früheren Rohresultate und die eingefrorene DoD sind unverändert erhalten. Ergänzt sind die ausführbare Laufzeit, ihre Gegenproben und die korrigierte Kosteninterpretation. Ich prüfe gerade das Gesamtarchiv; der entscheidende nächste Nachweis bleibt der echte Decodervergleich, nicht ein weiterer synthetischer Test.\n",
+    "time": 1789412725.810134
+  },
+  {
+    "entry": 12826,
+    "role": "assistant",
+    "channel": "final",
+    "text": "SA1 läuft jetzt ausschließlich aus dem kompakten Speicher, ohne Originalanker oder dichte Prefix-K/V-Tensoren.\n\n- **14.976 bekannte Proben erneut gerechnet:** 10.328 zugelassen ohne Fehlerbudgetverletzung; 4.648 ohne Ausgabe abgewiesen.\n- **21/21 Grenztests bestanden.**\n- Gepackte Arrays: **48,05 %** der ursprünglichen Bytes. Dauerhaft entpackte Faktoren würden hingegen **148,05 %** benötigen.\n- Frühere Rohresultate und eingefrorene DoD unverändert erhalten.\n\nKeine neue Validierung oder Modellantworten. Für den echten Decodervergleich brauche ich die Freigabe der Modell-/Laufzeitdownloads; deren Netzwerkfreigabe wurde abgebrochen. Neuheit und RAG-Überlegenheit bleiben unbewiesen.\n\nDie dauerhafte Sicherung ist fehlgeschlagen. Der geprüfte Stand liegt lokal vor:\n\n[REPORT_DE.md](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/serialized_atlas/REPORT_DE.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/release_v31/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789412861.498256
+  },
+  {
+    "entry": 12776,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich prüfe jetzt den offenen Haken am 2,35×-Ergebnis: Wie viel bleibt übrig, wenn abgewiesene Queries tatsächlich exakt nachgerechnet werden müssen? Dabei prüfe ich auch die Speicherabrechnung der Vergleichspfade. Daraus soll ein vollständiger Ausführungspfad entstehen, den wir anschließend an den Decoder anschließen können.\n",
+    "time": 1789414773.868648
+  },
+  {
+    "entry": 12553,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich habe zwei konkrete Schwächen der bisherigen Kontrolle gefunden: Der exakte SA2-Kern liest seine Werte mit ungünstigen Speicherabständen, und er hält sie tatsächlich in FP32, obwohl die Speichertabelle BF16 als Referenz nennt. Ich ergänze deshalb eine zusammenhängend lesende Kontrolle und einen echten BF16-Pfad. Der neue Vergleich umfasst auch sämtliche Ablehnungen samt exakter Nachrechnung.\n",
+    "time": 1789414841.700224
+  },
+  {
+    "entry": 12212,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der vollständige Pfad liefert jetzt für alle 11.232 Fälle einen Vektor innerhalb des festen Fehlerbudgets: 7.751 über CQTA, 3.481 durch exakte Nachrechnung. Auf der ursprünglichen Reihenfolge schrumpft der Vorteil gegenüber der stärkeren exakten Kontrolle auf **1,29×**. Die noch laufende gemischte Reihenfolge prüft, wie abhängig das Ergebnis vom Wiederverwenden desselben Heads ist.\n",
+    "time": 1789415179.391624
+  },
+  {
+    "entry": 12093,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der vollständige Pfad ist jetzt gemessen: Bei gemischter Reihenfolge bleiben **1,12× Beschleunigung** gegenüber der schnellsten exakten Kontrolle. Wenn alle Näherungen abgewiesen werden, ist er dagegen rund **45 % langsamer**. Der residente exakte Rückfall erhöht den Speicher auf **148 % der BF16-Ausgangsdaten**. Ich rechne die Ergebnisse jetzt getrennt aus den Rohdaten nach und halte diese Grenzen im Forschungsstand fest.",
+    "time": 1789415408.409151
+  },
+  {
+    "entry": 11780,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die getrennte Nachrechnung bestätigt alle **11.232 Ausgaben innerhalb des Fehlerbudgets** und die gespeicherten Laufzeiten. Der Rückfallpfad funktioniert, aber sein Vorteil hängt stark von Reihenfolge und Ablehnungsrate ab. Ich korrigiere außerdem die frühere Speicherangabe: Die damalige exakte Zeitkontrolle verwendete FP32-Daten; die kleinere BF16-Zahl war nur eine Vergleichsgröße.",
+    "time": 1789415464.884808
+  },
+  {
+    "entry": 11594,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der neue Stand enthält auch die ungünstigen Ergebnisse und die Korrektur des früheren Vergleichs. Alle **940 Dateien des Ausgangsstands** sind erhalten; geändert wurden nur die Übergabedokumente und der Archivbauer. Die neue Implementierung und ihre Rohdaten liegen separat. Ich prüfe jetzt das Gesamtarchiv vor der versionsgeschützten Sicherung.",
+    "time": 1789415675.858744
+  },
+  {
+    "entry": 11353,
+    "role": "assistant",
+    "channel": "final",
+    "text": "**SA3 ergänzt einen vollständigen exakten Rückfallpfad und strengere Vergleichskerne.**\n\n- **11.232/11.232 Ausgaben im Fehlerbudget:** 7.751 Näherungen, 3.481 exakte Rückfälle.\n- Beschleunigung gegenüber der schnellsten exakten Kontrolle: **1,29× gruppiert, 1,12× bei gemischter Reihenfolge**.\n- Gegenbefund: Bei vollständiger Ablehnung **45 % langsamer**; Speicherbedarf einschließlich Rückfall **148 % der BF16-Ausgangsdaten**.\n- **40 getrennte Nachprüfungen bestanden.** Frühere Speicher- und Timerangaben wurden präzisiert.\n\nDas sind numerische CPU-Tests auf archivierten Tensoren, keine neuen Modellantworten. **Neuheit, RAG-Überlegenheit und vollständige DoD bleiben offen.** Der nächste entscheidende Nachweis benötigt weiterhin die fehlende Modellumgebung.\n\nDie dauerhafte Übertragung scheiterte erneut. Der lokal geprüfte Gesamtstand enthält 998 Dateien samt Rohdaten:\n\n[So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/release_v31_sa3/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789415776.875524
+  },
+  {
+    "entry": 11303,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich gehe jetzt an die entscheidende offene Stelle: den Anschluss an echte Modellberechnungen. Zuerst prüfe ich, ob die benötigte Umgebung inzwischen verfügbar ist. Falls sie weiterhin fehlt, bearbeite ich die mathematische Grenze zwischen lokalem Attention-Fehler und tatsächlicher Antwortstabilität; weitere Radius- oder Farbtests würden diese Lücke nicht schließen.",
+    "time": 1789416313.722294
+  },
+  {
+    "entry": 10676,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Modellumgebung fehlt weiterhin. Eine konkrete Lücke lässt sich aber bereits mathematisch prüfen: Ein kleiner Attention-Fehler kann in späteren Cachezuständen fortwirken. Wird dann nur der aktuelle Schritt exakt nachgerechnet, können ältere Näherungsfehler erhalten bleiben.\n\nIch entwickle dafür eine Fehlerfortpflanzung bis zur Tokenentscheidung und prüfe sie an exakt nachrechenbaren Zustandsketten. Das wird ein begrenzter mathematischer Nachweis, kein vorgetäuschter Modelllauf.",
+    "time": 1789416415.296308
+  },
+  {
+    "entry": 10237,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Entwicklung bestätigt die Lücke: Die Kontrolle, die nur den aktuellen Fehler berücksichtigt, zertifiziert **6 von 24 Fällen fälschlich** als stabil. Die vollständige Fehlerfortpflanzung stimmt dagegen exakt mit allen 384 geprüften Extremfällen überein.\n\nSie nutzt auch bekannte Zusammenhänge zwischen Fehlern: Dadurch zertifiziert sie 16 Fälle, während gewöhnliche komponentenweise Intervallgrenzen nur 9 zulassen. Ich prüfe den unveränderten Mechanismus jetzt auf 96 getrennten mathematischen Fällen.",
+    "time": 1789416647.552865
+  },
+  {
+    "entry": 9881,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die getrennte Validierung besteht: Die vollständige Fehlerfortpflanzung zertifiziert **63 von 96 Fällen** ohne Fehlzertifikat; die Intervallkontrolle schafft 43. Die Kontrolle ohne Fehlerhistorie lässt dagegen **24 instabile Fälle fälschlich zu**.\n\nDrei exakt berechnete Gegenbeispiele zeigen außerdem: Selbst Fehler unter \\(10^{-12}\\) können bei entsprechend hoher späterer Verstärkung die Entscheidung kippen. Daraus folgt keine solche Fehlerhäufigkeit für Qwen. Es zeigt, welche zusätzliche Absicherung der reale Decoderanschluss benötigt.",
+    "time": 1789416812.822202
+  },
+  {
+    "entry": 9665,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die neue Rechnung ist geprüft und dokumentiert. Für die Architektur folgt daraus eine klare Anforderung: Ein Rückfall muss gegebenenfalls auch frühere fehlerbehaftete Cachezustände neu berechnen. Dieselbe Antwort am vorherigen Schritt reicht als Nachweis nicht aus.\n\nIch sichere außerdem die bislang nur lokal vorhandenen Ergänzungen zusammen. Dafür bereite ich neben dem Gesamtarchiv einen kleineren Ergänzungsstand vor, der an die geprüfte Ausgangsversion gebunden ist.",
+    "time": 1789417037.156361
+  },
+  {
+    "entry": 9311,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Gesamtstand umfasst jetzt **1.022 Dateien**; auch alle zuvor lokal gesicherten Versuche sind erhalten. Der Ergänzungsstand bekommt eine geprüfte Wiederherstellung: Falsche Ausgangsversionen und beschädigte Daten werden abgewiesen, vorhandene Zielarchive nicht überschrieben. Damit lässt sich die Arbeit vollständig zusammenführen, falls die große Archivübertragung erneut scheitert.",
+    "time": 1789417249.493091
+  },
+  {
+    "entry": 9099,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Saving files to Library.",
+    "time": 1789417325.369647
+  },
+  {
+    "entry": 8948,
+    "role": "assistant",
+    "channel": "final",
+    "text": "**DEL1 schließt eine wichtige Nachweislücke:** Frühere Näherungsfehler können spätere Entscheidungen verfälschen, selbst wenn der aktuelle Rechenschritt exakt ausgeführt wird.\n\nDie implementierte Fehlerfortpflanzung wurde auf **96 neuen mathematischen Fällen mit 1.536 Extrempunkten** geprüft:\n\n- **63 Fälle sicher zertifiziert**, gegenüber 43 mit einfachen Intervallschranken.\n- **Keine falsche Zertifizierung**.\n- Eine Kontrolle, die frühere Fehler ignoriert, akzeptiert **24 Fälle fälschlich**.\n\nDaraus folgt für den Decoderentwurf: Ein sicherer Rückfall muss gegebenenfalls frühere Cachezustände neu berechnen.\n\nDas sind exakte affine Modellrechnungen, **keine neuen Sprachmodellantworten**. Modellgewichte und Laufzeitabhängigkeiten fehlen weiterhin; Neuheit, RAG-Überlegenheit und vollständige DoD bleiben offen.\n\nDie dauerhafte Übertragung scheiterte auch für die kleinere Ergänzung. Das bisherige Archiv wurde nicht ersetzt. Lokal sind sämtliche Ergänzungen in **1.022 hashgeprüften Dateien** erhalten:\n\n[REPORT_DEL1_DE.md](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/decoder_error_lineage/REPORT_DEL1_DE.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/release_v31_del1/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789417504.285706
+  },
+  {
+    "entry": 8929,
+    "role": "user",
+    "channel": null,
+    "text": "go on till your reach the dod",
+    "time": 1789418404.597
+  },
+  {
+    "entry": 8893,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich arbeite weiter an der offenen Verbindung zum echten Decoder. Zuerst prüfe ich den aktuellen Archivstand und die Modellumgebung; danach bearbeite ich den nächsten ausführbaren Schritt, ohne die DoD auf mathematische Teiltests zu reduzieren.",
+    "time": 1789418415.25582
+  },
+  {
+    "entry": 8601,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich habe einen konkreten Fehler im vorbereiteten Modellgate gefunden: Es akzeptiert drei von vier kausalen Wechseln und bis zu 0,5 Abweichung bei ausgewählten Logits. Das widerspricht dem später eingefrorenen CQTA2-Vertrag mit vollständiger Gleichheit und vier von vier Wechseln. Ich korrigiere die Freigabeprüfung, bevor damit ein Modellversuch als bestanden gelten kann.",
+    "time": 1789418484.799686
+  },
+  {
+    "entry": 8442,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die neue Freigabeprüfung besteht ihre Gegenproben: Acht konstruierte Ergebnisdatensätze, die das alte Gate trotz Verletzung des CQTA2-Vertrags akzeptiert, werden jetzt abgewiesen. Korrekte Daten bleiben auch bei vertauschter Zeilenreihenfolge gültig. Der echte Einstiegspunkt bricht weiterhin vor jeder Generierung ab, weil die gepinnte Modellumgebung fehlt; ein Modelltest wurde dadurch nicht ersetzt.",
+    "time": 1789418647.475919
+  },
+  {
+    "entry": 8383,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Korrektur und ihre 15 Prüfungen sind fertig. Beim Verpacken ist jetzt zusätzlich die Verbindung zur Ausführungsumgebung abgebrochen. Ich prüfe, ob das Archiv noch vollständig geschrieben wurde; ohne diese Prüfung gebe ich es nicht als gesicherten Stand aus.",
+    "time": 1789418733.123583
+  },
+  {
+    "entry": 8178,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Ausführungsumgebung ist wieder erreichbar. Alle 1.022 Dateien des vorherigen Stands sind erhalten; das neue Gesamtarchiv enthält zusätzlich die korrigierte Freigabeprüfung und ihre Nachweise. Die vollständige DoD bleibt offen. Der nächste entscheidende Versuch braucht weiterhin die echte, gepinnte Modellumgebung.",
+    "time": 1789418830.242926
+  },
+  {
+    "entry": 8027,
+    "role": "assistant",
+    "channel": "final",
+    "text": "**Die vollständige DoD bleibt offen.** Ich habe eine Freigabelücke behoben, die einen unzureichenden Modelltest als bestanden hätte ausgeben können.\n\nDie neue Prüfung verlangt vollständige Logitgleichheit, vier korrekte kausale Wechsel und eindeutig zugeordnete Ergebnisse. **15 technische Tests bestehen**; acht fehlerhafte Testdatensätze akzeptierte die alte Prüfung fälschlich.\n\nDas sind keine neuen Modellantworten. Der echte Decoderlauf bleibt durch fehlende gepinnte Modellgewichte und Abhängigkeiten blockiert.\n\nAlle bisherigen Ergebnisse sind im geprüften Gesamtarchiv erhalten. Die dauerhafte Sicherung scheiterte erneut, auch für die kleine Ergänzung.\n\n[Bericht](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/strict_e0/REPORT_DE.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/release_v31_e0c_retry/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789418867.183728
+  },
+  {
+    "entry": 7994,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich prüfe zuerst, ob sich der echte Modelllauf inzwischen ausführen lässt. Falls die Umgebung weiterhin blockiert ist, halte ich an dieser Grenze an, statt weitere technische Teiltests als Fortschritt zur vollständigen Architektur auszugeben.",
+    "time": 1789419231.606616
+  },
+  {
+    "entry": 7819,
+    "role": "assistant",
+    "channel": "final",
+    "text": "Die erneute Prüfung bestätigt: **Der echte Decoderlauf ist weiterhin blockiert** — Modellgewichte, Torch und Transformers fehlen. Die DoD ist nicht erreicht; weitere Ersatztests würden diese Lücke nicht schließen.\n\nDie frühere Netzwerkfreigabe zur Wiederherstellung wurde abgebrochen. **Darf ich den Download der exakt gepinnten Modellgewichte und Laufzeitpakete aus den offiziellen Quellen erneut versuchen?** Dafür würde ich keine kostenpflichtige Rechenleistung buchen.",
+    "time": 1789419260.715891
+  },
+  {
+    "entry": 7786,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich nehme dein „Go on“ als Freigabe für den erneuten Wiederherstellungsversuch. Ich prüfe die festgelegten Versionen und versuche den Download aus den offiziellen Quellen — ohne kostenpflichtige Rechenleistung.",
+    "time": 1789419885.399775
+  },
+  {
+    "entry": 7642,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die offiziellen Quellen sind diesmal erreichbar; die Modellrevision und die festgelegte Transformers-Version sind bestätigt. Der Modelldownload und die Installation der CPU-Laufzeit laufen. Sobald die Dateihashes stimmen, starte ich den strikten E0-Decodervergleich.",
+    "time": 1789419931.06804
+  },
+  {
+    "entry": 7401,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Laufzeitinstallation ist weit fortgeschritten, und die Modellgewichte werden übertragen. Die bereits geladenen Konfigurations- und Tokenizerdateien stimmen mit den archivierten Hashes überein. Der folgende Test bleibt unverändert streng: vollständige Logitgleichheit und vier von vier korrekte kausale Wechsel.",
+    "time": 1789420048.657259
+  },
+  {
+    "entry": 7107,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Beide Gewichtsshards sind vollständig geladen und stimmen exakt mit den archivierten SHA‑256-Werten überein. Auch die fünf Laufzeit-Pins passen. Ich starte jetzt den realen 3B-Test; das Ergebnis entscheidet, ob die nächste Modellstufe geöffnet werden darf.",
+    "time": 1789420138.82618
+  },
+  {
+    "entry": 6936,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Das 3B-Modell ist geladen und führt den Vergleich aus. Anschließend prüfe ich die gespeicherten Token, Prompts, Antworten und vollständigen Erstlogits mit einer separaten Nachrechnung. Ein korrektes Antwortwort allein reicht nicht zum Bestehen des Gates.",
+    "time": 1789420251.426679
+  },
+  {
+    "entry": 6804,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der reale Test ist abgeschlossen: Textpräfix und exakter Cache liefern in allen vier Fällen identische vollständige Erstlogits und Tokenfolgen. Das strikte Gate scheitert dennoch: Bei der Paritätsfrage zu Wert 0 antworten beide falsch mit „No“. Insgesamt gelingen nur drei von vier kausalen Wechseln. Die separate Nachrechnung bestätigt den Befund; nach Protokoll bleiben die folgenden Modellstufen geschlossen.",
+    "time": 1789420298.450724
+  },
+  {
+    "entry": 6643,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ein wichtiger Unterschied ist jetzt belegt: Der exakte Cache reproduziert die Textberechnung vollständig; der Fehler liegt in diesem Fall bereits in der Antwort des Textpfads. Deshalb wäre weitere Kompression noch kein nachgewiesener Weg zur geforderten Semantik. Ich sichere die realen Rohdaten und den unveränderten Fehlbefund.",
+    "time": 1789420426.303613
+  },
+  {
+    "entry": 6440,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Saving files to Library.\n",
+    "time": 1789420510.674425
+  },
+  {
+    "entry": 6344,
+    "role": "assistant",
+    "channel": "final",
+    "text": "**Die 3B-Modellumgebung läuft wieder.** Beide Gewichtshashes und alle Laufzeit-Pins stimmen. Ich habe **16 reale Modellsequenzen** ausgeführt.\n\n- Text und exakter Cache: **4/4 identische vollständige Erstlogits und Tokenfolgen**.\n- Richtige Antworten: jeweils **3/4**.\n- Gegensinniger Cache: **4/4**, aber nur **3/4 kausale Antwortwechsel**.\n- Fehler: Wert 0 wird bei der Paritätsfrage bereits mit sichtbarem Fakttext falsch beantwortet.\n\nDie separate Nachrechnung bestätigt das Ergebnis. Das strikte Gate scheitert; Folgevalidierung und Training bleiben geschlossen. **Die vollständige DoD ist nicht erreicht.**\n\nDer geprüfte Stand enthält alle Rohdaten. Die dauerhafte Sicherung scheiterte erneut.\n\n[Bericht](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/strict_e0/REPORT_NATIVE_DE.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/941d86d4dab9/continue_v30/So_QC_C_Recovered/release_v31_e0_native/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789420542.512411
+  },
+  {
+    "entry": 6331,
+    "role": "user",
+    "channel": null,
+    "text": "Go on",
+    "time": 1789426016.243911
+  },
+  {
+    "entry": 6302,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich prüfe zuerst den aktuellen Arbeitsstand und den nächsten Prefix-Test. Dabei kontrolliere ich auch die letzte Schlussfolgerung: Ein gescheiterter Teacher-Transfer begrenzt den getesteten Eingriff, beweist aber noch keine grundsätzliche Kapazitätsgrenze des Modells.",
+    "time": 1789426026.225001
+  },
+  {
+    "entry": 6243,
+    "role": "assistant",
+    "channel": null,
+    "text": "The output of this plugin was redacted.",
+    "time": 1789426035.372415
+  },
+  {
+    "entry": 6233,
+    "role": "tool",
+    "channel": "commentary",
+    "text": "The output of this plugin was redacted.",
+    "time": 1789426035.476356
+  },
+  {
+    "entry": 6064,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Ich habe einen Fehler im noch unbenutzten Validierungsgate gefunden: Es wertet korrekt übersprungene Decoder-Hooks als unerlaubte Eingriffe. Außerdem war die Schlussfolgerung zur Schnittstellenkapazität zu stark. Ich korrigiere beides nachvollziehbar; das gemessene Scheitern von TSC1 bleibt davon unberührt.\n",
+    "time": 1789426160.798198
+  },
+  {
+    "entry": 5752,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die reale Gegenprobe bestätigt den Gatefehler: Ein korrekt übersprungener Decoderaufruf würde abgewiesen. Sie zeigt zusätzlich eine numerische Abweichung: Die Antworten bleiben identisch, aber nicht sämtliche Logits. Ich prüfe jetzt, ob sie durch die unterschiedliche Cache-Einstellung bei Zustandserfassung und Generierung entsteht.\n",
+    "time": 1789426287.371681
+  },
+  {
+    "entry": 5564,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die angeglichene Zustandserfassung besteht: Beide Antworten und alle Logits sind exakt identisch, bei null Schreibzugriffen während des Decodierens. Damit ist auch die zweite Fehlerquelle eingegrenzt: Die bisherige Erfassung ohne Cache war keine bitgenaue Referenz für die Generierung mit Cache. Diese Einschränkung muss künftig bei Teacher-Kontrollen berücksichtigt werden.\n",
+    "time": 1789426345.763721
+  },
+  {
+    "entry": 5349,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Beim Sichern ist der lokale Speicher vollgelaufen. Die vollständigen Modellgewichte sind geprüft vorhanden; ich entferne zwei überholte, unvollständige Downloadreste und sichere dann die Korrektur samt beiden Gegenproben. Die bisherigen Forschungsdaten bleiben erhalten.\n",
+    "time": 1789426411.603702
+  },
+  {
+    "entry": 5297,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die Korrekturen sind dokumentiert und die historischen Messdaten unverändert erhalten. Die nachgezählten Compilerfehler betragen 85 von 144 Antworten. Für CQP1 ist nun zusätzlich festgehalten, dass die positive Kontrolle Erfassung und Anwendung im gleichen Ausführungsmodus prüfen muss.\n",
+    "time": 1789426467.707108
+  },
+  {
+    "entry": 5184,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der Speicherengpass ist behoben; beide vollständigen Gewichtsshards stimmen weiterhin mit ihren festgelegten Hashes überein. Der geprüfte Arbeitsstand wird jetzt mit den erhaltenen Fehlversuchen und der korrigierten Interpretation gesichert.\n",
+    "time": 1789426580.173992
+  },
+  {
+    "entry": 5114,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Saving file to Library.\n",
+    "time": 1789426600.515351
+  },
+  {
+    "entry": 5019,
+    "role": "assistant",
+    "channel": "final",
+    "text": "**Zwei Fehlerquellen mit acht neuen realen Modellsequenzen geprüft:**\n\n- Das bisherige Validierungsgate verwechselt übersprungene Decoderaufrufe mit unerlaubten Eingriffen. Die korrigierte Prüfung unterscheidet beides.\n- Zustandserfassung und Generierung mit unterschiedlichen Cache-Einstellungen liefern keine bitgenau gleichen Logits. Bei angeglichener Ausführung stimmen Antworten und sämtliche Logits exakt überein.\n\nDie frühere Behauptung einer grundsätzlichen Schnittstellen-Kapazitätsgrenze ist zurückgenommen. TSC1 bleibt gemessen gescheitert; die vollständige DoD bleibt offen.\n\nKorrekturen, Rohdaten und Fehlversuche sind gesichert. Nächster wissenschaftlicher Schritt bleibt CQP1.\n\n[So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/01f48339cabe/work_v31_native_1422/So_QC_C_Recovered/release_v33_hook/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789426656.332266
+  },
+  {
+    "entry": 5002,
+    "role": "user",
+    "channel": null,
+    "text": "Go on ",
+    "time": 1789434035.9145598
+  },
+  {
+    "entry": 4978,
+    "role": "user",
+    "channel": null,
+    "text": "Original custom instructions no longer available",
+    "time": 1789434040.204103
+  },
+  {
+    "entry": 4832,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die neue Validierung ist bei 23 von 32 Gruppen. Bislang werden nur Fortschritt und technische Stabilität beobachtet; die 483 Antworten bleiben bis zum vollständigen Ergebnis versiegelt. Entscheidend ist nicht nur Trefferzahl, sondern ob der falsche Quotient gezielt die falsche Welt erzeugt und Null- sowie Schichtumkehrkontrollen klar abfallen.",
+    "time": 1789435000.169793
+  },
+  {
+    "entry": 4719,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die neue Validierung besteht vollständig und der vorab versiegelte Auditor bestätigt sie: 96/96 für den gemeinsamen Quotienten, 96/96 für Text und exakten Präfix; falscher Quotient 96/96 gegen die falsche Semantik mit 80 Antwortwechseln; Null 36/96, Schichtumkehr 59/96. Das ist erstmals ein sauber getrennter Transfernachweis über neue Namen und eine dritte Faktformulierung. Er ist noch kein Skalierungs-, Neuheits- oder RAG-Sieg.",
+    "time": 1789435512.709439
+  },
+  {
+    "entry": 4452,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Der gesamte neue Stand ist konsistent: 1.095/1.098 Dateien der Ausgangsversion sind byteidentisch; nur README, Fortsetzungsvertrag und Bundler wurden absichtlich aktualisiert, keine fremde Änderung ging verloren. Ich baue jetzt den manifestgeprüften Gesamtstand und verifiziere anschließend jede Archivdatei.",
+    "time": 1789435726.637406
+  },
+  {
+    "entry": 4365,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Saving file to Library.",
+    "time": 1789435870.55576
+  },
+  {
+    "entry": 4157,
+    "role": "assistant",
+    "channel": "commentary",
+    "text": "Die versionsgeschützte Sicherung wurde lokal abgewiesen, weil das neue 630-MB-Archiv die zulässige Einzeldateigröße überschreitet; Version 32 blieb unverändert. Ich komprimiere deshalb ausschließlich die 504-MB-E0-Rohantwortdatei verlustfrei und behalte ihren ursprünglichen SHA-256 zur vollständigen Rekonstruktion. Wissenschaftliche Daten oder Ergebnisse werden nicht reduziert.",
+    "time": 1789435934.99945
+  },
+  {
+    "entry": 3701,
+    "role": "tool",
+    "channel": null,
+    "text": "The output of this plugin was redacted.",
+    "time": 1789437025.48679
+  },
+  {
+    "entry": 3569,
+    "role": "assistant",
+    "channel": "final",
+    "text": "CQP1‑Q0R liefert den bisher stärksten kausalen Semantiknachweis am eingefrorenen Qwen2.5‑3B:\n\n- **2.208 neue, auditierte Modellsequenzen**\n- Gemeinsamer Quotient: **96/96** in Entwicklung A, Entwicklung B und neuer Validierung C\n- Jeweils **32/32 pro Operator** und **12/12 pro Wert**\n- Falscher +4‑Quotient folgt **96/96** seiner falschen Semantik und verändert 80/96 Antworten\n- Nullkontrolle: 36/96; Schichtumkehr: 56/57/59\n- Keine faktenspezifischen Gradienten und keine Wissenstexttokens im Fragepfad\n- Technisch unterbrochener Lauf wurde ohne Datenverlust, Retuning oder Überschreiben fortgesetzt\n\nBindende Grenze: Der Entitätsträger benötigt derzeit analytisch etwa **169,57 GB für 100.000 Fakten**. Neuheit, Mehr-Hop, zweites Modell, Lifecycle und RAG-Überlegenheit sind daher weiterhin offen. Nahe Vorarbeiten wie [C²KV](https://arxiv.org/abs/2607.17715) und [KVEraser](https://arxiv.org/abs/2606.17034) verhindern eine vorschnelle Neuheitsbehauptung.\n\nDer nächste skalierungsentscheidende Versuch BCC1‑O ist vorregistriert: Er soll den dichten Entitätsprefix durch einen dynamischen Bindungsträger aus der natürlichen Frage ersetzen.\n\nVersion 33, 1.261 hashgeprüfte Dateien, SHA‑256 `132bc1528451a2bb67ff3c8abbfa9c1614849d4f046a2f4190502fab12e39a72`. Gesamt‑DoD bleibt `false`; die Forschung läuft weiter.\n\n[Bericht](sandbox:/workspace/scratch/01f48339cabe/So_QC_C_Recovered/causal_prefix_quotient/REPORT_CQP1_Q0R_DE.md) · [So_QC_CR1_Arbeitsstand.zip](sandbox:/workspace/scratch/01f48339cabe/So_QC_C_Recovered/release_v33_cqp1_lzma/So_QC_CR1_Arbeitsstand.zip)",
+    "time": 1789437036.234772
+  }
+]

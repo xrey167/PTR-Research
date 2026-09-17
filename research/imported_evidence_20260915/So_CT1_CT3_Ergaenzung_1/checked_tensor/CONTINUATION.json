@@ -1,0 +1,12 @@
+{
+  "primary_archive_id": "libfile_29109bd032b481919c29006014fea2b1",
+  "last_resolved_primary_version": 11,
+  "primary_materialization": "three transfers returned HTTP 502; no bytes acquired",
+  "primary_changed": false,
+  "supplement": "CT1 checked tensor expressions; CT2/CT3 exact modular product verification and rejected per-query cost gate",
+  "new_model_answers": 0,
+  "full_dod_pass": false,
+  "next": "Materialize latest main archive, preserve and append this supplement under version protection. Prioritize actual frozen-model multi-source non-colour operator validation once execution is available.",
+  "avoid": "Do not relabel these generated mathematical tensors as archived model tensors; do not count reused certificate cases as new semantic validation; do not spin more small lifecycle checks.",
+  "integration_pending": "C derivation, authoritative snapshot capture, atomic output commit, true compiler/model ABIs and actual decoder linkage remain unintegrated."
+}

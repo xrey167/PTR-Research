@@ -1,0 +1,342 @@
+{
+  "schema": "generalization-reader-eval:v2",
+  "adapter": "/home/xrey/neural-pods/runs/reader-lora-mixed-multihop-001",
+  "queries": 20,
+  "base": {
+    "numeric_correct": 0,
+    "guarded_correct": 20,
+    "queries": 20,
+    "elapsed_s": 6.179826763996971,
+    "rows": [
+      {
+        "id": "gen-20",
+        "answer": "For internal-handle-20, the total elapsed time should",
+        "target_days": 13,
+        "exact_numeric": false,
+        "typed_guard_total": 13,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-21",
+        "answer": "To calculate the end-to-end window for line-code-2",
+        "target_days": 18,
+        "exact_numeric": false,
+        "typed_guard_total": 18,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-22",
+        "answer": "To calculate the total calendar days from dispatch to shelf for internal",
+        "target_days": 17,
+        "exact_numeric": false,
+        "typed_guard_total": 17,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-23",
+        "answer": "To find the total number of calendar days for the process of",
+        "target_days": 22,
+        "exact_numeric": false,
+        "typed_guard_total": 22,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-24",
+        "answer": "To calculate the total elapsed time for internal-handle-24",
+        "target_days": 17,
+        "exact_numeric": false,
+        "typed_guard_total": 17,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-25",
+        "answer": "To calculate the end-to-end window for line-code-2",
+        "target_days": 22,
+        "exact_numeric": false,
+        "typed_guard_total": 22,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-26",
+        "answer": "To calculate the total calendar days from dispatch to shelf for internal",
+        "target_days": 21,
+        "exact_numeric": false,
+        "typed_guard_total": 21,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-27",
+        "answer": "To find the total number of calendar days for the process of",
+        "target_days": 17,
+        "exact_numeric": false,
+        "typed_guard_total": 17,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-28",
+        "answer": "To calculate the total elapsed time for internal-handle-28",
+        "target_days": 12,
+        "exact_numeric": false,
+        "typed_guard_total": 12,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-29",
+        "answer": "To calculate the end-to-end window for line-code-2",
+        "target_days": 17,
+        "exact_numeric": false,
+        "typed_guard_total": 17,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-30",
+        "answer": "To calculate the total calendar days from dispatch to shelf for internal",
+        "target_days": 16,
+        "exact_numeric": false,
+        "typed_guard_total": 16,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-31",
+        "answer": "To find the total number of calendar days for the process of",
+        "target_days": 21,
+        "exact_numeric": false,
+        "typed_guard_total": 21,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-32",
+        "answer": "To calculate the total elapsed time for internal-handle-32",
+        "target_days": 16,
+        "exact_numeric": false,
+        "typed_guard_total": 16,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-33",
+        "answer": "To calculate the end-to-end window for line-code-3",
+        "target_days": 21,
+        "exact_numeric": false,
+        "typed_guard_total": 21,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-34",
+        "answer": "To calculate the total calendar days from dispatch to shelf for internal",
+        "target_days": 20,
+        "exact_numeric": false,
+        "typed_guard_total": 20,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-35",
+        "answer": "To find the total number of calendar days for the process of",
+        "target_days": 25,
+        "exact_numeric": false,
+        "typed_guard_total": 25,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-36",
+        "answer": "To calculate the total elapsed time for internal-handle-36",
+        "target_days": 11,
+        "exact_numeric": false,
+        "typed_guard_total": 11,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-37",
+        "answer": "To calculate the end-to-end window for line-code-3",
+        "target_days": 16,
+        "exact_numeric": false,
+        "typed_guard_total": 16,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-38",
+        "answer": "To calculate the total calendar days from dispatch to shelf for internal",
+        "target_days": 15,
+        "exact_numeric": false,
+        "typed_guard_total": 15,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-39",
+        "answer": "To find the total number of calendar days for the process of",
+        "target_days": 20,
+        "exact_numeric": false,
+        "typed_guard_total": 20,
+        "guarded_exact": true
+      }
+    ]
+  },
+  "adapter_result": {
+    "numeric_correct": 17,
+    "guarded_correct": 20,
+    "queries": 20,
+    "elapsed_s": 4.117065191996517,
+    "rows": [
+      {
+        "id": "gen-20",
+        "answer": "13 calendar days",
+        "target_days": 13,
+        "exact_numeric": true,
+        "typed_guard_total": 13,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-21",
+        "answer": "18 calendar days",
+        "target_days": 18,
+        "exact_numeric": true,
+        "typed_guard_total": 18,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-22",
+        "answer": "17 calendar days",
+        "target_days": 17,
+        "exact_numeric": true,
+        "typed_guard_total": 17,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-23",
+        "answer": "18 calendar days",
+        "target_days": 22,
+        "exact_numeric": false,
+        "typed_guard_total": 22,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-24",
+        "answer": "17 calendar days",
+        "target_days": 17,
+        "exact_numeric": true,
+        "typed_guard_total": 17,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-25",
+        "answer": "22 calendar days",
+        "target_days": 22,
+        "exact_numeric": true,
+        "typed_guard_total": 22,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-26",
+        "answer": "16 days",
+        "target_days": 21,
+        "exact_numeric": false,
+        "typed_guard_total": 21,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-27",
+        "answer": "17 calendar days",
+        "target_days": 17,
+        "exact_numeric": true,
+        "typed_guard_total": 17,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-28",
+        "answer": "12 calendar days",
+        "target_days": 12,
+        "exact_numeric": true,
+        "typed_guard_total": 12,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-29",
+        "answer": "17 calendar days",
+        "target_days": 17,
+        "exact_numeric": true,
+        "typed_guard_total": 17,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-30",
+        "answer": "16 calendar days",
+        "target_days": 16,
+        "exact_numeric": true,
+        "typed_guard_total": 16,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-31",
+        "answer": "21 calendar days",
+        "target_days": 21,
+        "exact_numeric": true,
+        "typed_guard_total": 21,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-32",
+        "answer": "16 calendar days",
+        "target_days": 16,
+        "exact_numeric": true,
+        "typed_guard_total": 16,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-33",
+        "answer": "21 calendar days",
+        "target_days": 21,
+        "exact_numeric": true,
+        "typed_guard_total": 21,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-34",
+        "answer": "15 days",
+        "target_days": 20,
+        "exact_numeric": false,
+        "typed_guard_total": 20,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-35",
+        "answer": "25 calendar days",
+        "target_days": 25,
+        "exact_numeric": true,
+        "typed_guard_total": 25,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-36",
+        "answer": "11 calendar days",
+        "target_days": 11,
+        "exact_numeric": true,
+        "typed_guard_total": 11,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-37",
+        "answer": "16 calendar days",
+        "target_days": 16,
+        "exact_numeric": true,
+        "typed_guard_total": 16,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-38",
+        "answer": "15 calendar days",
+        "target_days": 15,
+        "exact_numeric": true,
+        "typed_guard_total": 15,
+        "guarded_exact": true
+      },
+      {
+        "id": "gen-39",
+        "answer": "20 calendar days",
+        "target_days": 20,
+        "exact_numeric": true,
+        "typed_guard_total": 20,
+        "guarded_exact": true
+      }
+    ]
+  },
+  "scope": "real Qwen3B LoRA reader; evidence supplied after retrieval; synthetic held-out benchmark"
+}
