@@ -1,9 +1,0 @@
-{
-  "status": "interrupted_resource_pressure",
-  "rows": [],
-  "lifecycle": {},
-  "fictional_data": true,
-  "elapsed_s": 1.3200100511312485e-05,
-  "error": "BF16 process had about 9.9 million page faults, 0.30 GiB resident of 6.88 GiB private memory, and only one completed capsule; terminated deliberately after process identity check.",
-  "confirmed_process_exit": 1
-}

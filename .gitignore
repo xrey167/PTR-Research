@@ -13,8 +13,7 @@ build/
 dist/
 
 # Run artifacts (large, regenerable via server benchmarks)
-runs/*
-!runs/*/
+runs/
 !research/runs/
 !research/runs/*.json
 !research/runs/*.jsonl

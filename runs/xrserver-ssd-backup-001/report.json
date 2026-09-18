@@ -1,9 +1,0 @@
-{
-  "schema": "xrserver-ssd-backup:v1",
-  "host": "xrserver",
-  "mountpoint": "/srv/ai/extra-ssd/neural-pods-workspace",
-  "artifact": "neural-pods-public-pack.zip",
-  "sha256": "0c0ba12b169a46ee5067cdb27efc35d08dfb6b1cc680689d40ea3690e026bc37",
-  "bytes": 243405,
-  "verified_equal_to_local": true
-}
