@@ -45,6 +45,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--device', choices=['cpu', 'cuda'], default='cuda')
     parser.add_argument('--beta', type=float, default=0.1)
+    parser.add_argument('--sft-alpha', type=float, default=0.5)
     parser.add_argument('--epochs', type=int, default=1)
     parser.add_argument('--learning-rate', type=float, default=5e-5)
     parser.add_argument('--mode', choices=['preflight', 'train'], required=True)
@@ -131,8 +132,12 @@ def main():
             with torch.no_grad():
                 ref_c = seq_logprobs(reference, c_ids, mask, c_labels)
                 ref_r = seq_logprobs(reference, r_ids, mask, r_labels)
-            loss = -torch.nn.functional.logsigmoid(
+            dpo_loss = -torch.nn.functional.logsigmoid(
                 args.beta * ((pol_c - ref_c) - (pol_r - ref_r))).mean()
+            # NLL anchor on the chosen answer: pure contrastive DPO lets the
+            # policy's general (non-pair) distribution decay, which destroyed
+            # the concept-family knowledge in the first run.
+            loss = dpo_loss + args.sft_alpha * (-pol_c).mean()
             optimizer.zero_grad()
             loss.backward()
             grad_norm = torch.nn.utils.clip_grad_norm_(
