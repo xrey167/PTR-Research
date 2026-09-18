@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "graph": {
+    "nodes": 51,
+    "lora_files_verified": 7
+  },
+  "wheel_sha256": "77cc6803b15431593db3909914a8bcdef726024a36a6b86f03b7df5c46a65b08",
+  "wheel_source_files_verified": 9,
+  "fresh_cli_wall_s": 20.13730560010299,
+  "fresh_cli_answer": {
+    "status": "committed",
+    "text": "18 days",
+    "input_tokens": 45,
+    "output_tokens": 4,
+    "generation_s": 0.6231660000048578,
+    "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+    "generation": 4,
+    "generation_key": "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+    "artifact_key": "lora:f1837c9760765d982c91ee5b54b18a99169f296b0b98734504ee1dab663791a5",
+    "origin_keys": [
+      "origin:7bee9717ca440ef2eb5f121a20fe58dba1e94b74afa5e42984850d2fac995331"
+    ],
+    "receipt": {
+      "answer_id": "answer:a31a455ecffe113ab88c1d9dec94cc0efb5381605de10ace67d22b37fbe21599",
+      "text": "18 days",
+      "dependencies": [
+        "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+        "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+        "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+        "lora:f1837c9760765d982c91ee5b54b18a99169f296b0b98734504ee1dab663791a5",
+        "router:1090c7501fb126166091a240456a51c277e766738ac278937127549cff07182b",
+        "vector:c447cb6f4f91b03aa2e2a3e10f4353a8a75ff7c250e59678b6eb69ae7f1dabc1"
+      ]
+    },
+    "query_semantics": {
+      "subject": "supplier:muller",
+      "component": "x12",
+      "predicate": "lead_time",
+      "role": "FACT",
+      "intent": "supplier_metric_lookup",
+      "tags": []
+    },
+    "routing_mode": "dragonfly-pod-address:v2",
+    "representation_key": "router:1090c7501fb126166091a240456a51c277e766738ac278937127549cff07182b",
+    "trained_aliases": [
+      "Mueller",
+      "Mueller GmbH",
+      "Muller GmbH",
+      "Müller",
+      "Müller GmbH"
+    ],
+    "embedded_link": {
+      "model_prediction": "LINK 1 CLUSTER 1",
+      "cluster_key": "cluster:v1:439068c3d853dcfd24983c42975823921d003bf401b6968ac024c4237ceba53b",
+      "link_artifact_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+      "generation_key": "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109"
+    }
+  }
+}

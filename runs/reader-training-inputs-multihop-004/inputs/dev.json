@@ -1,0 +1,2186 @@
+[
+  {
+    "id": "dev:E75:35:en:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of E75 from Evrana Components. how many days until arrival?",
+    "history": [],
+    "target": "35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 35
+    }
+  },
+  {
+    "id": "dev:E75:35:en:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of E75 from Evrana Components. add four days to the waiting period.",
+    "history": [],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "dev:E75:35:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within 33 days?",
+    "history": [],
+    "target": "No; 35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 33,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:E75:35:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within 35 days?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:35:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within 38 days?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 38,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:35:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within four weeks and 5 days?",
+    "history": [],
+    "target": "No; 35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 33,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:E75:35:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within five weeks?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:35:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within five weeks and 3 days?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 38,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:35:en:missing",
+    "task": "missing",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": null,
+    "question": "Consider a new order of E75 from Evrana Components. how many days until arrival?",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "dev:E75:35:en:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "How many days should we allocate for them?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of E75 from Evrana Components."
+      }
+    ],
+    "target": "35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "answer": 35,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:E75:35:en:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Allow four additional days; what is the total?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of E75 from Evrana Components."
+      }
+    ],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:E75:35:en:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Use the latest information: how many days?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of E75 from Evrana Components."
+      },
+      {
+        "role": "assistant",
+        "content": "Earlier estimate: 39 days."
+      }
+    ],
+    "target": "35 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "answer": 35,
+      "deadline_days": null,
+      "prior_value": 39
+    }
+  },
+  {
+    "id": "dev:E75:35:de:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Wie viele Tage dauert es bis zur Ankunft?",
+    "history": [],
+    "target": "35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 35
+    }
+  },
+  {
+    "id": "dev:E75:35:de:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Addiere vier Tage zur Wartezeit.",
+    "history": [],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "dev:E75:35:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von 33 Tage eintreffen?",
+    "history": [],
+    "target": "Nein; 35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 33,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:E75:35:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von 35 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:35:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von 38 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 38,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:35:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von vier Wochen und 5 Tage eintreffen?",
+    "history": [],
+    "target": "Nein; 35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 33,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:E75:35:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von fünf Wochen eintreffen?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:35:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von fünf Wochen und 3 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": 38,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:35:de:missing",
+    "task": "missing",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": null,
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Wie viele Tage dauert es bis zur Ankunft?",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "dev:E75:35:de:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Wie viele Tage sollten wir dafür vorsehen?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von E75 bei Evrana Components."
+      }
+    ],
+    "target": "35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "answer": 35,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:E75:35:de:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Plane vier weitere Tage ein; wie lautet die Summe?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von E75 bei Evrana Components."
+      }
+    ],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:E75:35:de:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 35
+    },
+    "question": "Nach dem neuesten Stand: wie viele Tage?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von E75 bei Evrana Components."
+      },
+      {
+        "role": "assistant",
+        "content": "Frühere Schätzung: 39 Tage."
+      }
+    ],
+    "target": "35 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 35,
+      "answer": 35,
+      "deadline_days": null,
+      "prior_value": 39
+    }
+  },
+  {
+    "id": "dev:E75:39:en:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of E75 from Evrana Components. how many days until arrival?",
+    "history": [],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "dev:E75:39:en:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of E75 from Evrana Components. add four days to the waiting period.",
+    "history": [],
+    "target": "43 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": null,
+      "answer": 43
+    }
+  },
+  {
+    "id": "dev:E75:39:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within 37 days?",
+    "history": [],
+    "target": "No; 39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 37,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:E75:39:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within 39 days?",
+    "history": [],
+    "target": "Yes; 39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 39,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:39:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within 42 days?",
+    "history": [],
+    "target": "Yes; 39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:39:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within five weeks and 2 days?",
+    "history": [],
+    "target": "No; 39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 37,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:E75:39:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within five weeks and 4 days?",
+    "history": [],
+    "target": "Yes; 39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 39,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:39:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of E75 from Evrana Components. can delivery finish within six weeks?",
+    "history": [],
+    "target": "Yes; 39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:39:en:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "How many days should we allocate for them?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of E75 from Evrana Components."
+      }
+    ],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:E75:39:en:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Allow four additional days; what is the total?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of E75 from Evrana Components."
+      }
+    ],
+    "target": "43 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "answer": 43,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:E75:39:en:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Use the latest information: how many days?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of E75 from Evrana Components."
+      },
+      {
+        "role": "assistant",
+        "content": "Earlier estimate: 35 days."
+      }
+    ],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": 35
+    }
+  },
+  {
+    "id": "dev:E75:39:de:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Wie viele Tage dauert es bis zur Ankunft?",
+    "history": [],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "dev:E75:39:de:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Addiere vier Tage zur Wartezeit.",
+    "history": [],
+    "target": "43 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": null,
+      "answer": 43
+    }
+  },
+  {
+    "id": "dev:E75:39:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von 37 Tage eintreffen?",
+    "history": [],
+    "target": "Nein; 39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 37,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:E75:39:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von 39 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 39,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:39:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von 42 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:39:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von fünf Wochen und 2 Tage eintreffen?",
+    "history": [],
+    "target": "Nein; 39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 37,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:E75:39:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von fünf Wochen und 4 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 39,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:39:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von E75 bei Evrana Components. Kann die Lieferung innerhalb von sechs Wochen eintreffen?",
+    "history": [],
+    "target": "Ja; 39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:E75:39:de:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Wie viele Tage sollten wir dafür vorsehen?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von E75 bei Evrana Components."
+      }
+    ],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:E75:39:de:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Plane vier weitere Tage ein; wie lautet die Summe?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von E75 bei Evrana Components."
+      }
+    ],
+    "target": "43 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "answer": 43,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:E75:39:de:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "lead_time_days": 39
+    },
+    "question": "Nach dem neuesten Stand: wie viele Tage?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von E75 bei Evrana Components."
+      },
+      {
+        "role": "assistant",
+        "content": "Frühere Schätzung: 35 Tage."
+      }
+    ],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 39,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": 35
+    }
+  },
+  {
+    "id": "dev:F86:35:en:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. how many days until arrival?",
+    "history": [],
+    "target": "35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 35
+    }
+  },
+  {
+    "id": "dev:F86:35:en:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. add four days to the waiting period.",
+    "history": [],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "dev:F86:35:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within 33 days?",
+    "history": [],
+    "target": "No; 35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 33,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:F86:35:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within 35 days?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:35:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within 38 days?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 38,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:35:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within four weeks and 5 days?",
+    "history": [],
+    "target": "No; 35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 33,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:F86:35:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within five weeks?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:35:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within five weeks and 3 days?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 38,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:35:en:missing",
+    "task": "missing",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": null,
+    "question": "Consider a new order of F86 from Faldor Supply. how many days until arrival?",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "dev:F86:35:en:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "How many days should we allocate for them?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of F86 from Faldor Supply."
+      }
+    ],
+    "target": "35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "answer": 35,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:F86:35:en:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Allow four additional days; what is the total?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of F86 from Faldor Supply."
+      }
+    ],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:F86:35:en:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Use the latest information: how many days?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of F86 from Faldor Supply."
+      },
+      {
+        "role": "assistant",
+        "content": "Earlier estimate: 39 days."
+      }
+    ],
+    "target": "35 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "answer": 35,
+      "deadline_days": null,
+      "prior_value": 39
+    }
+  },
+  {
+    "id": "dev:F86:35:de:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Wie viele Tage dauert es bis zur Ankunft?",
+    "history": [],
+    "target": "35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 35
+    }
+  },
+  {
+    "id": "dev:F86:35:de:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Addiere vier Tage zur Wartezeit.",
+    "history": [],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "dev:F86:35:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von 33 Tage eintreffen?",
+    "history": [],
+    "target": "Nein; 35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 33,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:F86:35:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von 35 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:35:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von 38 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 38,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:35:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von vier Wochen und 5 Tage eintreffen?",
+    "history": [],
+    "target": "Nein; 35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 33,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:F86:35:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von fünf Wochen eintreffen?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:35:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von fünf Wochen und 3 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": 38,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:35:de:missing",
+    "task": "missing",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": null,
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Wie viele Tage dauert es bis zur Ankunft?",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "dev:F86:35:de:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Wie viele Tage sollten wir dafür vorsehen?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von F86 bei Faldor Supply."
+      }
+    ],
+    "target": "35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "answer": 35,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:F86:35:de:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Plane vier weitere Tage ein; wie lautet die Summe?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von F86 bei Faldor Supply."
+      }
+    ],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:F86:35:de:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 35
+    },
+    "question": "Nach dem neuesten Stand: wie viele Tage?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von F86 bei Faldor Supply."
+      },
+      {
+        "role": "assistant",
+        "content": "Frühere Schätzung: 39 Tage."
+      }
+    ],
+    "target": "35 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 35,
+      "answer": 35,
+      "deadline_days": null,
+      "prior_value": 39
+    }
+  },
+  {
+    "id": "dev:F86:39:en:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. how many days until arrival?",
+    "history": [],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "dev:F86:39:en:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. add four days to the waiting period.",
+    "history": [],
+    "target": "43 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": null,
+      "answer": 43
+    }
+  },
+  {
+    "id": "dev:F86:39:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within 37 days?",
+    "history": [],
+    "target": "No; 39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 37,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:F86:39:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within 39 days?",
+    "history": [],
+    "target": "Yes; 39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 39,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:39:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within 42 days?",
+    "history": [],
+    "target": "Yes; 39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:39:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within five weeks and 2 days?",
+    "history": [],
+    "target": "No; 39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 37,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:F86:39:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within five weeks and 4 days?",
+    "history": [],
+    "target": "Yes; 39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 39,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:39:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Consider a new order of F86 from Faldor Supply. can delivery finish within six weeks?",
+    "history": [],
+    "target": "Yes; 39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:39:en:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "How many days should we allocate for them?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of F86 from Faldor Supply."
+      }
+    ],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:F86:39:en:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Allow four additional days; what is the total?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of F86 from Faldor Supply."
+      }
+    ],
+    "target": "43 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "answer": 43,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:F86:39:en:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Use the latest information: how many days?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Consider a new order of F86 from Faldor Supply."
+      },
+      {
+        "role": "assistant",
+        "content": "Earlier estimate: 35 days."
+      }
+    ],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": 35
+    }
+  },
+  {
+    "id": "dev:F86:39:de:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Wie viele Tage dauert es bis zur Ankunft?",
+    "history": [],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "dev:F86:39:de:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Addiere vier Tage zur Wartezeit.",
+    "history": [],
+    "target": "43 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": null,
+      "answer": 43
+    }
+  },
+  {
+    "id": "dev:F86:39:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von 37 Tage eintreffen?",
+    "history": [],
+    "target": "Nein; 39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 37,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:F86:39:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von 39 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 39,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:39:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von 42 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:39:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von fünf Wochen und 2 Tage eintreffen?",
+    "history": [],
+    "target": "Nein; 39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 37,
+      "answer": false
+    }
+  },
+  {
+    "id": "dev:F86:39:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von fünf Wochen und 4 Tage eintreffen?",
+    "history": [],
+    "target": "Ja; 39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 39,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:39:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Betrachte eine neue Bestellung von F86 bei Faldor Supply. Kann die Lieferung innerhalb von sechs Wochen eintreffen?",
+    "history": [],
+    "target": "Ja; 39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "dev:F86:39:de:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Wie viele Tage sollten wir dafür vorsehen?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von F86 bei Faldor Supply."
+      }
+    ],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:F86:39:de:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Plane vier weitere Tage ein; wie lautet die Summe?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von F86 bei Faldor Supply."
+      }
+    ],
+    "target": "43 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "answer": 43,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "dev:F86:39:de:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "lead_time_days": 39
+    },
+    "question": "Nach dem neuesten Stand: wie viele Tage?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Betrachte eine neue Bestellung von F86 bei Faldor Supply."
+      },
+      {
+        "role": "assistant",
+        "content": "Frühere Schätzung: 35 Tage."
+      }
+    ],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 39,
+      "answer": 39,
+      "deadline_days": null,
+      "prior_value": 35
+    }
+  },
+  {
+    "id": "dev:multihop:E75:en",
+    "task": "multi_hop_total",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "facts": [
+        "Supplier Evrana Components needs 35 days for component E75.",
+        "Customs for component E75 adds 6 days."
+      ]
+    },
+    "question": "What is the total arrival time for E75 from Evrana Components if supplier transport takes 35 days and customs adds 6 days?",
+    "history": [],
+    "target": "41 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 41,
+      "answer": 41,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "dev:multihop:E75:de",
+    "task": "multi_hop_total",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "facts": [
+        "Lieferant Evrana Components braucht 35 Tage für Komponente E75.",
+        "Der Zoll für Komponente E75 fügt 6 Tage hinzu."
+      ]
+    },
+    "question": "Wie lange dauert die gesamte Ankunft von E75 bei Evrana Components, wenn der Lieferant 35 Tage und der Zoll 6 Tage braucht?",
+    "history": [],
+    "target": "41 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 41,
+      "answer": 41,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "dev:multihop:F86:en",
+    "task": "multi_hop_total",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "facts": [
+        "Supplier Faldor Supply needs 39 days for component F86.",
+        "Customs for component F86 adds 1 days."
+      ]
+    },
+    "question": "What is the total arrival time for F86 from Faldor Supply if supplier transport takes 39 days and customs adds 1 days?",
+    "history": [],
+    "target": "40 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 40,
+      "answer": 40,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "dev:multihop:F86:de",
+    "task": "multi_hop_total",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "facts": [
+        "Lieferant Faldor Supply braucht 39 Tage für Komponente F86.",
+        "Der Zoll für Komponente F86 fügt 1 Tage hinzu."
+      ]
+    },
+    "question": "Wie lange dauert die gesamte Ankunft von F86 bei Faldor Supply, wenn der Lieferant 39 Tage und der Zoll 1 Tage braucht?",
+    "history": [],
+    "target": "40 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 40,
+      "answer": 40,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  }
+]

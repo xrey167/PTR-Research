@@ -13,8 +13,12 @@ build/
 dist/
 
 # Run artifacts (large, regenerable via server benchmarks)
-runs/
-# research/runs measurement JSONs are tracked as evidence; only local scratch is ignored
+runs/*
+!runs/*/
+!research/runs/
+!research/runs/*.json
+!research/runs/*.jsonl
+
 *.sqlite3
 *.sqlite3-journal
 *.safetensors

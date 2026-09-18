@@ -1,0 +1,29 @@
+{
+  "requests": 10000,
+  "workers": 32,
+  "elapsed_s": 1.077182722001453,
+  "requests_per_s": 9283.476048909844,
+  "correct": true,
+  "batches": 318,
+  "mean_batch": 31.446540880503143,
+  "max_batch": 32,
+  "stats": {
+    "submitted": 10000,
+    "completed": 10000,
+    "rejected": 0,
+    "batches": 318,
+    "deadline_drops": 0,
+    "cancelled": 0,
+    "errors": 0,
+    "queue_wait_ms_total": 25745.84463320207,
+    "queue_wait_ms_max": 47.56318299769191,
+    "batch_latency_ms_total": 38.27984796225792,
+    "batch_latency_ms_max": 0.15908099885564297,
+    "batch_items_total": 10000,
+    "queued": 0,
+    "active_keys": 0,
+    "queue_wait_ms_mean": 2.574584463320207,
+    "batch_latency_ms_mean": 0.12037688038445886,
+    "batch_size_mean": 31.446540880503143
+  }
+}

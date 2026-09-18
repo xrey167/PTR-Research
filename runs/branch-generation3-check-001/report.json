@@ -1,0 +1,9 @@
+{
+  "pod_identity": "pod:ff703174212fd11c7d0f47ae",
+  "original_artifact": "model:bcecc504c5d67df289de084f31fc5411b2c324800029b6fd52f0968bbba5294d",
+  "branched_artifact": "model:42fb5cb674b21e89d582c2c5c9d25d8ea4f7dc9587b9a570d64bc941398a86e5",
+  "resolved_after_revoke": "model:42fb5cb674b21e89d582c2c5c9d25d8ea4f7dc9587b9a570d64bc941398a86e5",
+  "identity_stable": true,
+  "old_revoked": 1,
+  "new_active": true
+}

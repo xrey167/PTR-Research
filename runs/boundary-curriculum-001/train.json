@@ -1,0 +1,1346 @@
+[
+  {
+    "id": "boundary:N41:35:en:28",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "For Nordstern Parts / N41, is a deadline of 4 weeks sufficient?",
+    "history": [],
+    "target": "No; 35 days",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 28,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:N41:35:en:34",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "For Nordstern Parts / N41, is a deadline of 4 weeks and 6 days sufficient?",
+    "history": [],
+    "target": "No; 35 days",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 34,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:N41:35:en:35",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "For Nordstern Parts / N41, is a deadline of 5 weeks sufficient?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:N41:35:en:36",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "For Nordstern Parts / N41, is a deadline of 5 weeks and 1 days sufficient?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 36,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:N41:35:en:42",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "For Nordstern Parts / N41, is a deadline of 6 weeks sufficient?",
+    "history": [],
+    "target": "Yes; 35 days",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:N41:34:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 34
+    },
+    "question": "For Nordstern Parts / N41, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "38 days",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 34,
+      "deadline_days": null,
+      "answer": 38
+    }
+  },
+  {
+    "id": "boundary:N41:35:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "For Nordstern Parts / N41, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "39 days",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "boundary:N41:36:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 36
+    },
+    "question": "For Nordstern Parts / N41, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "40 days",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 36,
+      "deadline_days": null,
+      "answer": 40
+    }
+  },
+  {
+    "id": "boundary:N41:35:de:28",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "Sind 4 Wochen für Nordstern Parts / N41 ausreichend?",
+    "history": [],
+    "target": "Nein; 35 Tage",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 28,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:N41:35:de:34",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "Sind 4 Wochen und 6 Tage für Nordstern Parts / N41 ausreichend?",
+    "history": [],
+    "target": "Nein; 35 Tage",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 34,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:N41:35:de:35",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "Sind 5 Wochen für Nordstern Parts / N41 ausreichend?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 35,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:N41:35:de:36",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "Sind 5 Wochen und 1 Tage für Nordstern Parts / N41 ausreichend?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 36,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:N41:35:de:42",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "Sind 6 Wochen für Nordstern Parts / N41 ausreichend?",
+    "history": [],
+    "target": "Ja; 35 Tage",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:N41:34:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 34
+    },
+    "question": "Welche Dauer ergibt sich für Nordstern Parts / N41 mit vier Puffertagen?",
+    "history": [],
+    "target": "38 Tage",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 34,
+      "deadline_days": null,
+      "answer": 38
+    }
+  },
+  {
+    "id": "boundary:N41:35:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 35
+    },
+    "question": "Welche Dauer ergibt sich für Nordstern Parts / N41 mit vier Puffertagen?",
+    "history": [],
+    "target": "39 Tage",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 35,
+      "deadline_days": null,
+      "answer": 39
+    }
+  },
+  {
+    "id": "boundary:N41:36:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "lead_time_days": 36
+    },
+    "question": "Welche Dauer ergibt sich für Nordstern Parts / N41 mit vier Puffertagen?",
+    "history": [],
+    "target": "40 Tage",
+    "assessment": {
+      "supplier": "Nordstern Parts",
+      "component": "N41",
+      "value": 36,
+      "deadline_days": null,
+      "answer": 40
+    }
+  },
+  {
+    "id": "boundary:R52:42:en:35",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "For Rheinland Motion / R52, is a deadline of 5 weeks sufficient?",
+    "history": [],
+    "target": "No; 42 days",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 35,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:R52:42:en:41",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "For Rheinland Motion / R52, is a deadline of 5 weeks and 6 days sufficient?",
+    "history": [],
+    "target": "No; 42 days",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 41,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:R52:42:en:42",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "For Rheinland Motion / R52, is a deadline of 6 weeks sufficient?",
+    "history": [],
+    "target": "Yes; 42 days",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:R52:42:en:43",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "For Rheinland Motion / R52, is a deadline of 6 weeks and 1 days sufficient?",
+    "history": [],
+    "target": "Yes; 42 days",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 43,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:R52:42:en:49",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "For Rheinland Motion / R52, is a deadline of 7 weeks sufficient?",
+    "history": [],
+    "target": "Yes; 42 days",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 49,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:R52:41:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 41
+    },
+    "question": "For Rheinland Motion / R52, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "45 days",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 41,
+      "deadline_days": null,
+      "answer": 45
+    }
+  },
+  {
+    "id": "boundary:R52:42:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "For Rheinland Motion / R52, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "46 days",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": null,
+      "answer": 46
+    }
+  },
+  {
+    "id": "boundary:R52:43:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 43
+    },
+    "question": "For Rheinland Motion / R52, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "47 days",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 43,
+      "deadline_days": null,
+      "answer": 47
+    }
+  },
+  {
+    "id": "boundary:R52:42:de:35",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "Sind 5 Wochen für Rheinland Motion / R52 ausreichend?",
+    "history": [],
+    "target": "Nein; 42 Tage",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 35,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:R52:42:de:41",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "Sind 5 Wochen und 6 Tage für Rheinland Motion / R52 ausreichend?",
+    "history": [],
+    "target": "Nein; 42 Tage",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 41,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:R52:42:de:42",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "Sind 6 Wochen für Rheinland Motion / R52 ausreichend?",
+    "history": [],
+    "target": "Ja; 42 Tage",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 42,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:R52:42:de:43",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "Sind 6 Wochen und 1 Tage für Rheinland Motion / R52 ausreichend?",
+    "history": [],
+    "target": "Ja; 42 Tage",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 43,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:R52:42:de:49",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "Sind 7 Wochen für Rheinland Motion / R52 ausreichend?",
+    "history": [],
+    "target": "Ja; 42 Tage",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": 49,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:R52:41:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 41
+    },
+    "question": "Welche Dauer ergibt sich für Rheinland Motion / R52 mit vier Puffertagen?",
+    "history": [],
+    "target": "45 Tage",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 41,
+      "deadline_days": null,
+      "answer": 45
+    }
+  },
+  {
+    "id": "boundary:R52:42:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 42
+    },
+    "question": "Welche Dauer ergibt sich für Rheinland Motion / R52 mit vier Puffertagen?",
+    "history": [],
+    "target": "46 Tage",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 42,
+      "deadline_days": null,
+      "answer": 46
+    }
+  },
+  {
+    "id": "boundary:R52:43:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "lead_time_days": 43
+    },
+    "question": "Welche Dauer ergibt sich für Rheinland Motion / R52 mit vier Puffertagen?",
+    "history": [],
+    "target": "47 Tage",
+    "assessment": {
+      "supplier": "Rheinland Motion",
+      "component": "R52",
+      "value": 43,
+      "deadline_days": null,
+      "answer": 47
+    }
+  },
+  {
+    "id": "boundary:A63:49:en:42",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "For Atlas Mechatronics / A63, is a deadline of 6 weeks sufficient?",
+    "history": [],
+    "target": "No; 49 days",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 42,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:A63:49:en:48",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "For Atlas Mechatronics / A63, is a deadline of 6 weeks and 6 days sufficient?",
+    "history": [],
+    "target": "No; 49 days",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 48,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:A63:49:en:49",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "For Atlas Mechatronics / A63, is a deadline of 7 weeks sufficient?",
+    "history": [],
+    "target": "Yes; 49 days",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 49,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:A63:49:en:50",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "For Atlas Mechatronics / A63, is a deadline of 7 weeks and 1 days sufficient?",
+    "history": [],
+    "target": "Yes; 49 days",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 50,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:A63:49:en:56",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "For Atlas Mechatronics / A63, is a deadline of 8 weeks sufficient?",
+    "history": [],
+    "target": "Yes; 49 days",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:A63:48:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 48
+    },
+    "question": "For Atlas Mechatronics / A63, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "52 days",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 48,
+      "deadline_days": null,
+      "answer": 52
+    }
+  },
+  {
+    "id": "boundary:A63:49:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "For Atlas Mechatronics / A63, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "53 days",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": null,
+      "answer": 53
+    }
+  },
+  {
+    "id": "boundary:A63:50:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 50
+    },
+    "question": "For Atlas Mechatronics / A63, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "54 days",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 50,
+      "deadline_days": null,
+      "answer": 54
+    }
+  },
+  {
+    "id": "boundary:A63:49:de:42",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "Sind 6 Wochen für Atlas Mechatronics / A63 ausreichend?",
+    "history": [],
+    "target": "Nein; 49 Tage",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 42,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:A63:49:de:48",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "Sind 6 Wochen und 6 Tage für Atlas Mechatronics / A63 ausreichend?",
+    "history": [],
+    "target": "Nein; 49 Tage",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 48,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:A63:49:de:49",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "Sind 7 Wochen für Atlas Mechatronics / A63 ausreichend?",
+    "history": [],
+    "target": "Ja; 49 Tage",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 49,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:A63:49:de:50",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "Sind 7 Wochen und 1 Tage für Atlas Mechatronics / A63 ausreichend?",
+    "history": [],
+    "target": "Ja; 49 Tage",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 50,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:A63:49:de:56",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "Sind 8 Wochen für Atlas Mechatronics / A63 ausreichend?",
+    "history": [],
+    "target": "Ja; 49 Tage",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:A63:48:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 48
+    },
+    "question": "Welche Dauer ergibt sich für Atlas Mechatronics / A63 mit vier Puffertagen?",
+    "history": [],
+    "target": "52 Tage",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 48,
+      "deadline_days": null,
+      "answer": 52
+    }
+  },
+  {
+    "id": "boundary:A63:49:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 49
+    },
+    "question": "Welche Dauer ergibt sich für Atlas Mechatronics / A63 mit vier Puffertagen?",
+    "history": [],
+    "target": "53 Tage",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 49,
+      "deadline_days": null,
+      "answer": 53
+    }
+  },
+  {
+    "id": "boundary:A63:50:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "lead_time_days": 50
+    },
+    "question": "Welche Dauer ergibt sich für Atlas Mechatronics / A63 mit vier Puffertagen?",
+    "history": [],
+    "target": "54 Tage",
+    "assessment": {
+      "supplier": "Atlas Mechatronics",
+      "component": "A63",
+      "value": 50,
+      "deadline_days": null,
+      "answer": 54
+    }
+  },
+  {
+    "id": "boundary:K74:56:en:49",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "For Komet Systems / K74, is a deadline of 7 weeks sufficient?",
+    "history": [],
+    "target": "No; 56 days",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 49,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:K74:56:en:55",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "For Komet Systems / K74, is a deadline of 7 weeks and 6 days sufficient?",
+    "history": [],
+    "target": "No; 56 days",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 55,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:K74:56:en:56",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "For Komet Systems / K74, is a deadline of 8 weeks sufficient?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:K74:56:en:57",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "For Komet Systems / K74, is a deadline of 8 weeks and 1 days sufficient?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 57,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:K74:56:en:63",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "For Komet Systems / K74, is a deadline of 9 weeks sufficient?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 63,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:K74:55:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 55
+    },
+    "question": "For Komet Systems / K74, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "59 days",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 55,
+      "deadline_days": null,
+      "answer": 59
+    }
+  },
+  {
+    "id": "boundary:K74:56:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "For Komet Systems / K74, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "60 days",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 60
+    }
+  },
+  {
+    "id": "boundary:K74:57:en:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 57
+    },
+    "question": "For Komet Systems / K74, what duration includes four extra buffer days?",
+    "history": [],
+    "target": "61 days",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 57,
+      "deadline_days": null,
+      "answer": 61
+    }
+  },
+  {
+    "id": "boundary:K74:56:de:49",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "Sind 7 Wochen für Komet Systems / K74 ausreichend?",
+    "history": [],
+    "target": "Nein; 56 Tage",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 49,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:K74:56:de:55",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "Sind 7 Wochen und 6 Tage für Komet Systems / K74 ausreichend?",
+    "history": [],
+    "target": "Nein; 56 Tage",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 55,
+      "answer": false
+    }
+  },
+  {
+    "id": "boundary:K74:56:de:56",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "Sind 8 Wochen für Komet Systems / K74 ausreichend?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:K74:56:de:57",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "Sind 8 Wochen und 1 Tage für Komet Systems / K74 ausreichend?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 57,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:K74:56:de:63",
+    "task": "deadline_weeks_boundary",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "Sind 9 Wochen für Komet Systems / K74 ausreichend?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": 63,
+      "answer": true
+    }
+  },
+  {
+    "id": "boundary:K74:55:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 55
+    },
+    "question": "Welche Dauer ergibt sich für Komet Systems / K74 mit vier Puffertagen?",
+    "history": [],
+    "target": "59 Tage",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 55,
+      "deadline_days": null,
+      "answer": 59
+    }
+  },
+  {
+    "id": "boundary:K74:56:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 56
+    },
+    "question": "Welche Dauer ergibt sich für Komet Systems / K74 mit vier Puffertagen?",
+    "history": [],
+    "target": "60 Tage",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 60
+    }
+  },
+  {
+    "id": "boundary:K74:57:de:buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "lead_time_days": 57
+    },
+    "question": "Welche Dauer ergibt sich für Komet Systems / K74 mit vier Puffertagen?",
+    "history": [],
+    "target": "61 Tage",
+    "assessment": {
+      "supplier": "Komet Systems",
+      "component": "K74",
+      "value": 57,
+      "deadline_days": null,
+      "answer": 61
+    }
+  }
+]

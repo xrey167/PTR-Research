@@ -1,0 +1,1949 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "lookup",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "18",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.07420300017111,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "f56907930c3a93bd2680bf483dff2034970e4523ba61a31dd1fa48fabb87ee22"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "lookup",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "18",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.47536309994757175,
+      "new_input_tokens": 15,
+      "receipt": {
+        "answer_id": "answer:6984137d5e53013696624ff5a28b1ed852138c3b8cfb62b448dcc360f683499c",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:f8be2f591e2ebf5dd0fcedc6a890528049172005ed70ce9196de1ed7597aba29"
+        ]
+      },
+      "first_logits_sha256": "f56907930c3a93bd2680bf483dff2034970e4523ba61a31dd1fa48fabb87ee22"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "lookup",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "24",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.44557059998624027,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "fd9f72a1738b7788010863da6d7d8dc46fb6f5fe33bbd42f0898eaef0c6a0cd0"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "lookup",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.6083686999045312,
+      "new_input_tokens": 48,
+      "first_logits_sha256": "a89837ece3c27639ff08fe8ea036d7f38acfc212774f41e689fdf817b4eb863d"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "plus_two",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "20",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0689978001173586,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "f0f19c2085f19d6a29581238d0cdb72c9aa4f55cfc1762620d62dee50b204b2a"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "plus_two",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "20",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4481750000268221,
+      "new_input_tokens": 19,
+      "receipt": {
+        "answer_id": "answer:ba394277f389fedc929e2b97f7db5de6c0283738af1e8f9dfe0cbe50198fcee4",
+        "text": "NO",
+        "dependencies": [
+          "cache:f8be2f591e2ebf5dd0fcedc6a890528049172005ed70ce9196de1ed7597aba29"
+        ]
+      },
+      "first_logits_sha256": "f0f19c2085f19d6a29581238d0cdb72c9aa4f55cfc1762620d62dee50b204b2a"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "plus_two",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "26",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.5730230999179184,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "8e1b34498cb06f2e95b1161d545fe445a24cc4bcb161e829bc1d2fcef39f1b62"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "plus_two",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7911533999722451,
+      "new_input_tokens": 52,
+      "first_logits_sha256": "06f01a86816359d0cf443776ebe947d67623591829bc19edf5683c765e0b3981"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "above_25",
+      "mode": "fresh_text_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "no",
+      "text": "NO",
+      "correct": true,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.1345658998470753,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "1e990281cfe74bb53a2d7325ef12e50dcc51bcdf8d55a30841b20ecffeb74a31"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "above_25",
+      "mode": "saved_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "no",
+      "text": "NO",
+      "correct": true,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.46035150019451976,
+      "new_input_tokens": 20,
+      "receipt": {
+        "answer_id": "answer:ba394277f389fedc929e2b97f7db5de6c0283738af1e8f9dfe0cbe50198fcee4",
+        "text": "NO",
+        "dependencies": [
+          "cache:f8be2f591e2ebf5dd0fcedc6a890528049172005ed70ce9196de1ed7597aba29"
+        ]
+      },
+      "first_logits_sha256": "1e990281cfe74bb53a2d7325ef12e50dcc51bcdf8d55a30841b20ecffeb74a31"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "above_25",
+      "mode": "wrong_value_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "no",
+      "text": "YES",
+      "correct": false,
+      "tokens": [
+        14004,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.47763850004412234,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "785a1319edcbea25b803a8751c936caca60d7f0b5ff4ad553f3e4bfab512a2ca"
+    },
+    {
+      "entity": "Neral",
+      "value": 18,
+      "operator": "above_25",
+      "mode": "no_fact",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7375260000117123,
+      "new_input_tokens": 53,
+      "first_logits_sha256": "bfee5b6e31dca7787cf0ae9f0cbe6e1c42046e254ba4c887fdf4130c2322d09a"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "lookup",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "24",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0772134000435472,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "fd9f72a1738b7788010863da6d7d8dc46fb6f5fe33bbd42f0898eaef0c6a0cd0"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "lookup",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "24",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.483547099865973,
+      "new_input_tokens": 15,
+      "receipt": {
+        "answer_id": "answer:78399cef6f5400d4b5b91f35530fc33ad80740a378b8133cc9c7e53cdae026a7",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:e3538c6389517412197787b7bfa645be5134df72525a81ad864d1fc445ceee07"
+        ]
+      },
+      "first_logits_sha256": "fd9f72a1738b7788010863da6d7d8dc46fb6f5fe33bbd42f0898eaef0c6a0cd0"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "lookup",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "31",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.5421366000082344,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "636972ae30ace229f79e08832cd03f75ff08c7935a41ce35f902a23954e85ad6"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "lookup",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.6717342999763787,
+      "new_input_tokens": 48,
+      "first_logits_sha256": "a89837ece3c27639ff08fe8ea036d7f38acfc212774f41e689fdf817b4eb863d"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "plus_two",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "26",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.1747517997864634,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "8e1b34498cb06f2e95b1161d545fe445a24cc4bcb161e829bc1d2fcef39f1b62"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "plus_two",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "26",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4460811000317335,
+      "new_input_tokens": 19,
+      "receipt": {
+        "answer_id": "answer:342197dad5e389feef8092ad3e2ab361f038f841d77310b8d37c34875525c60c",
+        "text": "NO",
+        "dependencies": [
+          "cache:e3538c6389517412197787b7bfa645be5134df72525a81ad864d1fc445ceee07"
+        ]
+      },
+      "first_logits_sha256": "8e1b34498cb06f2e95b1161d545fe445a24cc4bcb161e829bc1d2fcef39f1b62"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "plus_two",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "33",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4376329998485744,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "fcfbed35006c7e1311bd41c158fb1892baf8b243b87cf52f7a9d8c0ba14c6595"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "plus_two",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.8357826999854296,
+      "new_input_tokens": 52,
+      "first_logits_sha256": "06f01a86816359d0cf443776ebe947d67623591829bc19edf5683c765e0b3981"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "above_25",
+      "mode": "fresh_text_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "no",
+      "text": "YES",
+      "correct": false,
+      "tokens": [
+        14004,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.145682099973783,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "785a1319edcbea25b803a8751c936caca60d7f0b5ff4ad553f3e4bfab512a2ca"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "above_25",
+      "mode": "saved_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "no",
+      "text": "YES",
+      "correct": false,
+      "tokens": [
+        14004,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.5157810999080539,
+      "new_input_tokens": 20,
+      "receipt": {
+        "answer_id": "answer:f59df1af5da65fe636def97f3c710015c1f2c40c0beb88edba61c5bdba112613",
+        "text": "YES",
+        "dependencies": [
+          "cache:e3538c6389517412197787b7bfa645be5134df72525a81ad864d1fc445ceee07"
+        ]
+      },
+      "first_logits_sha256": "785a1319edcbea25b803a8751c936caca60d7f0b5ff4ad553f3e4bfab512a2ca"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "above_25",
+      "mode": "wrong_value_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "yes",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4808235999662429,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "b1a233085d16c249885d38e5551aa748a005f0d170afd6d3d794306c0ff73bc7"
+    },
+    {
+      "entity": "Neral",
+      "value": 24,
+      "operator": "above_25",
+      "mode": "no_fact",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.8150224999990314,
+      "new_input_tokens": 53,
+      "first_logits_sha256": "bfee5b6e31dca7787cf0ae9f0cbe6e1c42046e254ba4c887fdf4130c2322d09a"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "lookup",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "31",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.9546803999692202,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "636972ae30ace229f79e08832cd03f75ff08c7935a41ce35f902a23954e85ad6"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "lookup",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "31",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.3937905998900533,
+      "new_input_tokens": 15,
+      "receipt": {
+        "answer_id": "answer:f62f90d168f9dbaf28c6f583fca992af2fe67fccee94172e0ee9276bbedefd0c",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:19df9cedb1e291517d5713c80c7827955b09e1d95a7e5ebff947034eabbde5da"
+        ]
+      },
+      "first_logits_sha256": "636972ae30ace229f79e08832cd03f75ff08c7935a41ce35f902a23954e85ad6"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "lookup",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "42",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.42563189985230565,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "7c0bf0668d8e050e0ec11e105e192b6d5e0447b40df398817884ff9d3391abe9"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "lookup",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.751494700089097,
+      "new_input_tokens": 48,
+      "first_logits_sha256": "a89837ece3c27639ff08fe8ea036d7f38acfc212774f41e689fdf817b4eb863d"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "plus_two",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "33",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.1709823000710458,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "fcfbed35006c7e1311bd41c158fb1892baf8b243b87cf52f7a9d8c0ba14c6595"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "plus_two",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "33",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4554874000605196,
+      "new_input_tokens": 19,
+      "receipt": {
+        "answer_id": "answer:b3513ca46780ee5c0139193694b6dd8dde2de14a8b7590ec78e97316c22dc914",
+        "text": "NO",
+        "dependencies": [
+          "cache:19df9cedb1e291517d5713c80c7827955b09e1d95a7e5ebff947034eabbde5da"
+        ]
+      },
+      "first_logits_sha256": "fcfbed35006c7e1311bd41c158fb1892baf8b243b87cf52f7a9d8c0ba14c6595"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "plus_two",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "44",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.43882190017029643,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "b60a2c81478ae348a7f4bdca125bfc71331dfbe131a222b36048dfe25f5795c7"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "plus_two",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.8350043999962509,
+      "new_input_tokens": 52,
+      "first_logits_sha256": "06f01a86816359d0cf443776ebe947d67623591829bc19edf5683c765e0b3981"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "above_25",
+      "mode": "fresh_text_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "yes",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.1575058000162244,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "b1a233085d16c249885d38e5551aa748a005f0d170afd6d3d794306c0ff73bc7"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "above_25",
+      "mode": "saved_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "yes",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.5069273998960853,
+      "new_input_tokens": 20,
+      "receipt": {
+        "answer_id": "answer:b3513ca46780ee5c0139193694b6dd8dde2de14a8b7590ec78e97316c22dc914",
+        "text": "NO",
+        "dependencies": [
+          "cache:19df9cedb1e291517d5713c80c7827955b09e1d95a7e5ebff947034eabbde5da"
+        ]
+      },
+      "first_logits_sha256": "b1a233085d16c249885d38e5551aa748a005f0d170afd6d3d794306c0ff73bc7"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "above_25",
+      "mode": "wrong_value_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4775182001758367,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "8966ee548f1408e81ea1013531f8e8e5835640861ae6105bf4309229e0315a37"
+    },
+    {
+      "entity": "Neral",
+      "value": 31,
+      "operator": "above_25",
+      "mode": "no_fact",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7548105998430401,
+      "new_input_tokens": 53,
+      "first_logits_sha256": "bfee5b6e31dca7787cf0ae9f0cbe6e1c42046e254ba4c887fdf4130c2322d09a"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "lookup",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "42",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.9795087000820786,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "7c0bf0668d8e050e0ec11e105e192b6d5e0447b40df398817884ff9d3391abe9"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "lookup",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "42",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4826539000496268,
+      "new_input_tokens": 15,
+      "receipt": {
+        "answer_id": "answer:367d0a83bf947188b3a410d5d8bf1f934306b4f317ceb53f1104603c67dd9458",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:2522a39ba624379cf79712e7a9685ca1c2c72671a53f6d1643736d9c95b39222"
+        ]
+      },
+      "first_logits_sha256": "7c0bf0668d8e050e0ec11e105e192b6d5e0447b40df398817884ff9d3391abe9"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "lookup",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "18",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.48072790005244315,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "f56907930c3a93bd2680bf483dff2034970e4523ba61a31dd1fa48fabb87ee22"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "lookup",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Neral?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.6196741999592632,
+      "new_input_tokens": 48,
+      "first_logits_sha256": "a89837ece3c27639ff08fe8ea036d7f38acfc212774f41e689fdf817b4eb863d"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "plus_two",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "44",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0630868000444025,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "b60a2c81478ae348a7f4bdca125bfc71331dfbe131a222b36048dfe25f5795c7"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "plus_two",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "44",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.42800489999353886,
+      "new_input_tokens": 19,
+      "receipt": {
+        "answer_id": "answer:ff12077a17a7f607990e12bb77a6de2454d2ef894650ba53a5d042c16842cd28",
+        "text": "NO",
+        "dependencies": [
+          "cache:2522a39ba624379cf79712e7a9685ca1c2c72671a53f6d1643736d9c95b39222"
+        ]
+      },
+      "first_logits_sha256": "b60a2c81478ae348a7f4bdca125bfc71331dfbe131a222b36048dfe25f5795c7"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "plus_two",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "20",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.46393249998800457,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "f0f19c2085f19d6a29581238d0cdb72c9aa4f55cfc1762620d62dee50b204b2a"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "plus_two",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Neral plus 2 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7671270999126136,
+      "new_input_tokens": 52,
+      "first_logits_sha256": "06f01a86816359d0cf443776ebe947d67623591829bc19edf5683c765e0b3981"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "above_25",
+      "mode": "fresh_text_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.1108430000022054,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "8966ee548f1408e81ea1013531f8e8e5835640861ae6105bf4309229e0315a37"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "above_25",
+      "mode": "saved_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4726022998802364,
+      "new_input_tokens": 20,
+      "receipt": {
+        "answer_id": "answer:367d0a83bf947188b3a410d5d8bf1f934306b4f317ceb53f1104603c67dd9458",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:2522a39ba624379cf79712e7a9685ca1c2c72671a53f6d1643736d9c95b39222"
+        ]
+      },
+      "first_logits_sha256": "8966ee548f1408e81ea1013531f8e8e5835640861ae6105bf4309229e0315a37"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "above_25",
+      "mode": "wrong_value_prefix",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "no",
+      "text": "NO",
+      "correct": true,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.5004366999492049,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "1e990281cfe74bb53a2d7325ef12e50dcc51bcdf8d55a30841b20ecffeb74a31"
+    },
+    {
+      "entity": "Neral",
+      "value": 42,
+      "operator": "above_25",
+      "mode": "no_fact",
+      "question": "Is the delivery lead time of Neral greater than 25 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7548727998510003,
+      "new_input_tokens": 53,
+      "first_logits_sha256": "bfee5b6e31dca7787cf0ae9f0cbe6e1c42046e254ba4c887fdf4130c2322d09a"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "lookup",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "18",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.1544101999606937,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "ffaf8d3a65df0bf4821ac48cb4de79dcf61298c0981a92e2a1e525064ca09ebc"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "lookup",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "18",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4502077999059111,
+      "new_input_tokens": 15,
+      "receipt": {
+        "answer_id": "answer:53dd808e45c38b54a1ea4d2214df59b246a6da006834d35c981c11b76d54f53d",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:0c0e52e9a743d3b6fb136793659f0f7465b808bc1d1221722382e39ac4894ade"
+        ]
+      },
+      "first_logits_sha256": "ffaf8d3a65df0bf4821ac48cb4de79dcf61298c0981a92e2a1e525064ca09ebc"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "lookup",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "24",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.38287500012665987,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "5429dfb1bca85f08c9c4503c19b5e90e94804dd767907777514bd8e73dac8b4b"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "lookup",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.6268242001533508,
+      "new_input_tokens": 48,
+      "first_logits_sha256": "8702a79b14cf23f5ff379d534da383986ee90380ada490ca087b05c206b218ec"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "plus_two",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "20",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0066188001073897,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "4924cb325b81ce08cf0c725d76da7b92e22f0b0e2f562147bbbb94e561777802"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "plus_two",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "20",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4830706000793725,
+      "new_input_tokens": 19,
+      "receipt": {
+        "answer_id": "answer:53dd808e45c38b54a1ea4d2214df59b246a6da006834d35c981c11b76d54f53d",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:0c0e52e9a743d3b6fb136793659f0f7465b808bc1d1221722382e39ac4894ade"
+        ]
+      },
+      "first_logits_sha256": "4924cb325b81ce08cf0c725d76da7b92e22f0b0e2f562147bbbb94e561777802"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "plus_two",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "26",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4707168999593705,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "5fabf0a12208d7b83ca488259bc023ddf9704b915da3b606c684e117fc257d11"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "plus_two",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.8223737000953406,
+      "new_input_tokens": 52,
+      "first_logits_sha256": "e71cd97b9026562f5e7d2c0fe35325a85e5e843b6141b64ca2517098b5eaa4d6"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "above_25",
+      "mode": "fresh_text_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "no",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0726704001426697,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "60cbc4c7f331a61b5e3e509d72972ec5d69647edf876556097e3ec75f151a9c9"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "above_25",
+      "mode": "saved_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "no",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4842551997862756,
+      "new_input_tokens": 20,
+      "receipt": {
+        "answer_id": "answer:53dd808e45c38b54a1ea4d2214df59b246a6da006834d35c981c11b76d54f53d",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:0c0e52e9a743d3b6fb136793659f0f7465b808bc1d1221722382e39ac4894ade"
+        ]
+      },
+      "first_logits_sha256": "60cbc4c7f331a61b5e3e509d72972ec5d69647edf876556097e3ec75f151a9c9"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "above_25",
+      "mode": "wrong_value_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "no",
+      "text": "YES",
+      "correct": false,
+      "tokens": [
+        14004,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.46002850006334484,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "995b5b7b811d5caffd992ce27ce49f11a65af20ab4741d510dbf399572fef114"
+    },
+    {
+      "entity": "Vost",
+      "value": 18,
+      "operator": "above_25",
+      "mode": "no_fact",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7714249000418931,
+      "new_input_tokens": 53,
+      "first_logits_sha256": "53a8c4f7ba3cc657c802cef9a3ea648b9b2ab976c0ad2e002b317fa3291a9c51"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "lookup",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "24",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.9386114000808448,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "5429dfb1bca85f08c9c4503c19b5e90e94804dd767907777514bd8e73dac8b4b"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "lookup",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "24",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.46148580010049045,
+      "new_input_tokens": 15,
+      "receipt": {
+        "answer_id": "answer:fd7e41b800d5beb0bee7cd348e84ebc04b53286fad32e6211faebdeacca40ed3",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:c1a127fb85b489fb32f9542053f601907f67781c04d662a933bb27469da1e3d8"
+        ]
+      },
+      "first_logits_sha256": "5429dfb1bca85f08c9c4503c19b5e90e94804dd767907777514bd8e73dac8b4b"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "lookup",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "31",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.5031665000133216,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "24cfeb1e3b7e154c150b73ab47512101bd2c6c1549537cbe0b2dd7c36b8c77ee"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "lookup",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.5917903000954539,
+      "new_input_tokens": 48,
+      "first_logits_sha256": "8702a79b14cf23f5ff379d534da383986ee90380ada490ca087b05c206b218ec"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "plus_two",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "26",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.9587283998262137,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "5fabf0a12208d7b83ca488259bc023ddf9704b915da3b606c684e117fc257d11"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "plus_two",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "26",
+      "text": "NO",
+      "correct": false,
+      "tokens": [
+        8996,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.44356110016815364,
+      "new_input_tokens": 19,
+      "receipt": {
+        "answer_id": "answer:4a9089d245d3058672eddf20b305a40d836bce59ac73bbf48b7553606a9e0f46",
+        "text": "NO",
+        "dependencies": [
+          "cache:c1a127fb85b489fb32f9542053f601907f67781c04d662a933bb27469da1e3d8"
+        ]
+      },
+      "first_logits_sha256": "5fabf0a12208d7b83ca488259bc023ddf9704b915da3b606c684e117fc257d11"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "plus_two",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "33",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.44362829998135567,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "a5c330647a4055efcdc444588143434923666d5d8e2f9a814fba0642cb7aabb5"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "plus_two",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7682354000862688,
+      "new_input_tokens": 52,
+      "first_logits_sha256": "e71cd97b9026562f5e7d2c0fe35325a85e5e843b6141b64ca2517098b5eaa4d6"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "above_25",
+      "mode": "fresh_text_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "no",
+      "text": "YES",
+      "correct": false,
+      "tokens": [
+        14004,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0479021000210196,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "995b5b7b811d5caffd992ce27ce49f11a65af20ab4741d510dbf399572fef114"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "above_25",
+      "mode": "saved_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "no",
+      "text": "YES",
+      "correct": false,
+      "tokens": [
+        14004,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4599792999215424,
+      "new_input_tokens": 20,
+      "receipt": {
+        "answer_id": "answer:f62180b1a4366255560781265bf74c890cd76393e84beacaaac5456caed30fe8",
+        "text": "YES",
+        "dependencies": [
+          "cache:c1a127fb85b489fb32f9542053f601907f67781c04d662a933bb27469da1e3d8"
+        ]
+      },
+      "first_logits_sha256": "995b5b7b811d5caffd992ce27ce49f11a65af20ab4741d510dbf399572fef114"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "above_25",
+      "mode": "wrong_value_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4367313999682665,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "58cd37cb1556a6773f1ddb9d4e13003b9c79930021f602410974c7bb7873d88a"
+    },
+    {
+      "entity": "Vost",
+      "value": 24,
+      "operator": "above_25",
+      "mode": "no_fact",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7734429000411183,
+      "new_input_tokens": 53,
+      "first_logits_sha256": "53a8c4f7ba3cc657c802cef9a3ea648b9b2ab976c0ad2e002b317fa3291a9c51"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "lookup",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "31",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0548714001197368,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "24cfeb1e3b7e154c150b73ab47512101bd2c6c1549537cbe0b2dd7c36b8c77ee"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "lookup",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "31",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4896645999979228,
+      "new_input_tokens": 15,
+      "receipt": {
+        "answer_id": "answer:be14072b85793880fbd03b81a891e1728051beb72bdc688ddf2ee7e781840cf7",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:9675e960fe75a33f9baaaedb8e2c416d043185b7760806efaa20481c01cd60d2"
+        ]
+      },
+      "first_logits_sha256": "24cfeb1e3b7e154c150b73ab47512101bd2c6c1549537cbe0b2dd7c36b8c77ee"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "lookup",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "42",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4395270999521017,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "9672090c9fa8567b7aef1dd77af4ad9e9c0291e652ba7d277a197c414eb04f22"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "lookup",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.6442506997846067,
+      "new_input_tokens": 48,
+      "first_logits_sha256": "8702a79b14cf23f5ff379d534da383986ee90380ada490ca087b05c206b218ec"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "plus_two",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "33",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0242965000215918,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "a5c330647a4055efcdc444588143434923666d5d8e2f9a814fba0642cb7aabb5"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "plus_two",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "33",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.49097079993225634,
+      "new_input_tokens": 19,
+      "receipt": {
+        "answer_id": "answer:be14072b85793880fbd03b81a891e1728051beb72bdc688ddf2ee7e781840cf7",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:9675e960fe75a33f9baaaedb8e2c416d043185b7760806efaa20481c01cd60d2"
+        ]
+      },
+      "first_logits_sha256": "a5c330647a4055efcdc444588143434923666d5d8e2f9a814fba0642cb7aabb5"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "plus_two",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "44",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.43567609996534884,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "874cbeff06afa4c98f7ecb88bf4c4ff60de0d3bfd80103f4cff3548bcc3dc6d1"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "plus_two",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7749262999277562,
+      "new_input_tokens": 52,
+      "first_logits_sha256": "e71cd97b9026562f5e7d2c0fe35325a85e5e843b6141b64ca2517098b5eaa4d6"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "above_25",
+      "mode": "fresh_text_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0934574001003057,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "58cd37cb1556a6773f1ddb9d4e13003b9c79930021f602410974c7bb7873d88a"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "above_25",
+      "mode": "saved_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4005720999557525,
+      "new_input_tokens": 20,
+      "receipt": {
+        "answer_id": "answer:be14072b85793880fbd03b81a891e1728051beb72bdc688ddf2ee7e781840cf7",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:9675e960fe75a33f9baaaedb8e2c416d043185b7760806efaa20481c01cd60d2"
+        ]
+      },
+      "first_logits_sha256": "58cd37cb1556a6773f1ddb9d4e13003b9c79930021f602410974c7bb7873d88a"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "above_25",
+      "mode": "wrong_value_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4667235999368131,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "38cb6800605537dfe55d8da6978421f4b4457a2e8d3b810b6026422970d2c27e"
+    },
+    {
+      "entity": "Vost",
+      "value": 31,
+      "operator": "above_25",
+      "mode": "no_fact",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.7628305999096483,
+      "new_input_tokens": 53,
+      "first_logits_sha256": "53a8c4f7ba3cc657c802cef9a3ea648b9b2ab976c0ad2e002b317fa3291a9c51"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "lookup",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "42",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.054253299953416,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "9672090c9fa8567b7aef1dd77af4ad9e9c0291e652ba7d277a197c414eb04f22"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "lookup",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "42",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.42631709994748235,
+      "new_input_tokens": 15,
+      "receipt": {
+        "answer_id": "answer:149063ec006b43f067767a40decaddae7ebd4ed28c97d73a8a2c0504fead59cb",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:cb0d94665b9eeab1184b92287bbc1dae05ad0efc6ea826550b0eee95a85448ce"
+        ]
+      },
+      "first_logits_sha256": "9672090c9fa8567b7aef1dd77af4ad9e9c0291e652ba7d277a197c414eb04f22"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "lookup",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "18",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.4363981999922544,
+      "new_input_tokens": 15,
+      "first_logits_sha256": "ffaf8d3a65df0bf4821ac48cb4de79dcf61298c0981a92e2a1e525064ca09ebc"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "lookup",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Vost?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.627234100131318,
+      "new_input_tokens": 48,
+      "first_logits_sha256": "8702a79b14cf23f5ff379d534da383986ee90380ada490ca087b05c206b218ec"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "plus_two",
+      "mode": "fresh_text_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "44",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0851277001202106,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "874cbeff06afa4c98f7ecb88bf4c4ff60de0d3bfd80103f4cff3548bcc3dc6d1"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "plus_two",
+      "mode": "saved_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "44",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.40141050005331635,
+      "new_input_tokens": 19,
+      "receipt": {
+        "answer_id": "answer:149063ec006b43f067767a40decaddae7ebd4ed28c97d73a8a2c0504fead59cb",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:cb0d94665b9eeab1184b92287bbc1dae05ad0efc6ea826550b0eee95a85448ce"
+        ]
+      },
+      "first_logits_sha256": "874cbeff06afa4c98f7ecb88bf4c4ff60de0d3bfd80103f4cff3548bcc3dc6d1"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "plus_two",
+      "mode": "wrong_value_prefix",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "20",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.39052220014855266,
+      "new_input_tokens": 19,
+      "first_logits_sha256": "4924cb325b81ce08cf0c725d76da7b92e22f0b0e2f562147bbbb94e561777802"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "plus_two",
+      "mode": "no_fact",
+      "question": "What is the delivery lead time of Vost plus 2 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.8172128000296652,
+      "new_input_tokens": 52,
+      "first_logits_sha256": "e71cd97b9026562f5e7d2c0fe35325a85e5e843b6141b64ca2517098b5eaa4d6"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "above_25",
+      "mode": "fresh_text_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 1.0839001999702305,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "38cb6800605537dfe55d8da6978421f4b4457a2e8d3b810b6026422970d2c27e"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "above_25",
+      "mode": "saved_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "yes",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.44943380006588995,
+      "new_input_tokens": 20,
+      "receipt": {
+        "answer_id": "answer:149063ec006b43f067767a40decaddae7ebd4ed28c97d73a8a2c0504fead59cb",
+        "text": "UNKNOWN",
+        "dependencies": [
+          "cache:cb0d94665b9eeab1184b92287bbc1dae05ad0efc6ea826550b0eee95a85448ce"
+        ]
+      },
+      "first_logits_sha256": "38cb6800605537dfe55d8da6978421f4b4457a2e8d3b810b6026422970d2c27e"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "above_25",
+      "mode": "wrong_value_prefix",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "no",
+      "text": "UNKNOWN",
+      "correct": false,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.8433354999870062,
+      "new_input_tokens": 20,
+      "first_logits_sha256": "60cbc4c7f331a61b5e3e509d72972ec5d69647edf876556097e3ec75f151a9c9"
+    },
+    {
+      "entity": "Vost",
+      "value": 42,
+      "operator": "above_25",
+      "mode": "no_fact",
+      "question": "Is the delivery lead time of Vost greater than 25 days?",
+      "expected": "UNKNOWN",
+      "text": "UNKNOWN",
+      "correct": true,
+      "tokens": [
+        51378,
+        151645
+      ],
+      "eos": true,
+      "elapsed_s": 0.829860599944368,
+      "new_input_tokens": 53,
+      "first_logits_sha256": "53a8c4f7ba3cc657c802cef9a3ea648b9b2ab976c0ad2e002b317fa3291a9c51"
+    }
+  ],
+  "lifecycle": {
+    "stale_load": true,
+    "stale_commit": true,
+    "revoked_load": true,
+    "revoked_commit": true,
+    "acl": true,
+    "unrelated_still_active": true
+  },
+  "fictional_data": true,
+  "elapsed_s": 84.76801969995722,
+  "base_sha256": "d1d89e3038b5123f25bd62068e1dee3d2d2b6f0f5f89c36862a4542120e27450",
+  "capsule_tensor_bytes": {
+    "Neral_18": 1277952,
+    "Neral_24": 1277952,
+    "Neral_31": 1277952,
+    "Neral_42": 1277952,
+    "Vost_18": 1277952,
+    "Vost_24": 1277952,
+    "Vost_31": 1277952,
+    "Vost_42": 1277952
+  },
+  "update_answer": "UNKNOWN",
+  "update_correct": false,
+  "base_unchanged": true,
+  "scores": {
+    "fresh_text_prefix": {
+      "correct": 1,
+      "total": 24,
+      "median_s": 1.0734367001568899
+    },
+    "saved_prefix": {
+      "correct": 1,
+      "total": 24,
+      "median_s": 0.4601654000580311
+    },
+    "wrong_value_prefix": {
+      "correct": 1,
+      "total": 24,
+      "median_s": 0.4619805000256747
+    },
+    "no_fact": {
+      "correct": 24,
+      "total": 24,
+      "median_s": 0.764978849911131
+    }
+  },
+  "exact_serialization_cases": 24,
+  "scientific_gate_passed": false
+}

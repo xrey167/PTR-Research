@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "dev:podmodel:router_function:0",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 1.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:0",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:1",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 2.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:1",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:2",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 3.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:2",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:3",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 4.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:3",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:4",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 5.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:4",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:5",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 6.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:5",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:6",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 7.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:6",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:7",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 8.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:7",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:8",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 9.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:8",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:9",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 10.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:9",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:10",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 11.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:10",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 10
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:11",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 12.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:11",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 11
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:12",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 13.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:12",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 12
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:13",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 14.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:13",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 13
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:14",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 15.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:14",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 14
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:15",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 16.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:15",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 15
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:16",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 17.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:16",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 16
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:17",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 18.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:17",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 17
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:18",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 19.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:18",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 18
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:19",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 20.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:19",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 19
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:20",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 21.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:20",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 20
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:21",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 22.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:21",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 21
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:22",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 23.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:22",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 22
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:23",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 24.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:23",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 23
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:24",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 25.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:24",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 24
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:25",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 26.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:25",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 25
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:26",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 27.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:26",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 26
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:27",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 28.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:27",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 27
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:28",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 29.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:28",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 28
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:29",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 30.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:29",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 29
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:30",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 31.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:30",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 30
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:31",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 32.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:31",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 31
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:32",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 33.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:32",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 32
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:33",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 34.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:33",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 33
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:34",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 35.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:34",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 34
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:35",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 36.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:35",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 35
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:36",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 37.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:36",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 36
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:37",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 38.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:37",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 37
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:38",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 39.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:38",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 38
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:39",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 40.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:39",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 39
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:40",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 41.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:40",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 40
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:41",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 42.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:41",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 41
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:42",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 43.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:42",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 42
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:43",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 44.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:43",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 43
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:44",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 45.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:44",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 44
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:45",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 46.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:45",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 45
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:46",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 47.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:46",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 46
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:47",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 48.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"graph_neighbors\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:47",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 47
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:48",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 49.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"ann_search\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:48",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 48
+    }
+  },
+  {
+    "id": "dev:podmodel:router_function:49",
+    "task": "router_function",
+    "pod_type": "model",
+    "model_track": "FunctionGemma-270M",
+    "language": "en",
+    "question": "Select the strict tool call for request 50.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"tool\":\"metadata_filter\",\"strict_json\":true,\"deny_unknown_fields\":true}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:router_function:49",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "router_function",
+      "pod_type": "model",
+      "model_track": "FunctionGemma-270M",
+      "example_index": 49
+    }
+  }
+]

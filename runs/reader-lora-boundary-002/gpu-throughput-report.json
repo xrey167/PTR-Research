@@ -1,0 +1,13 @@
+{
+  "schema": "qwen-gpu-throughput:v1",
+  "device": "NVIDIA GeForce RTX 3090",
+  "batch_size": 4,
+  "runs": 10,
+  "max_new_tokens": 16,
+  "elapsed_s": 5.855085524992319,
+  "batch_latency_ms": 585.5085524992319,
+  "generated_tokens": 140,
+  "tokens_per_s": 23.9108377499206,
+  "sequences_per_s": 6.831667928548742,
+  "sample": "Use the supplied typed Pod fact. Question: What is the supplier lead time? Answer briefly. 1 week\nThe supplier lead time is 1 week."
+}

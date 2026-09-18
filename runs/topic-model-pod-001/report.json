@@ -1,0 +1,11 @@
+{
+  "status": "linked_existing_adapter_topic_generation",
+  "source": "origin:96a0054bbf5d9a9e6ed49858e0d241aeb71f8d822197b4529a63406b1b76d139",
+  "generation": "knowledge:2c71e60f491de7794c2e40e2ce34e86de07376517937017569a827bfff416263",
+  "pod_artifact": "lora:295136d52629fe823fcd6920a07504125f25a80bc14453bf3cf1750d07e84a51",
+  "pod_identity": "pod:main-model-typed-topics",
+  "adapter_path": "C:\\Users\\ReyDa\\neural-pods\\runs\\reader-lora-gpu-004\\adapter",
+  "training_mix": "runs/pod-training-mix-001/report.json",
+  "training_status": "prepared_not_retrained",
+  "reason": "No free GPU on current Windows host; existing adapter is real Qwen LoRA artifact"
+}

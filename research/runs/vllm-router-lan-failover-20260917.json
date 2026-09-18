@@ -1,0 +1,10 @@
+{
+  "host": "192.168.1.223",
+  "count": 32,
+  "ok": 32,
+  "errors": 0,
+  "requests_per_s": 9.7989,
+  "health": {"gpu0": false, "gpu1": true},
+  "failovers": 16,
+  "per_replica": {"gpu0": {"failures": 16}, "gpu1": {"successes": 32}}
+}

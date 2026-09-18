@@ -1,0 +1,3721 @@
+{
+  "status": "completed",
+  "phase": "done",
+  "rows": [
+    {
+      "id": "test:multihop:G17:en",
+      "text": "59 days",
+      "guarded_text": "59 days",
+      "guarded_exact_target_match": true,
+      "tokens": [
+        20,
+        24,
+        2849,
+        151645
+      ],
+      "eos": true,
+      "exact_target_match": true,
+      "prefix_ids": [
+        151644,
+        8948,
+        198,
+        10253,
+        279,
+        17221,
+        2097,
+        311,
+        4226,
+        279,
+        3405,
+        13,
+        11112,
+        279,
+        4226,
+        3561,
+        11223,
+        304,
+        279,
+        3405,
+        13,
+        1416,
+        279,
+        2097,
+        374,
+        7402,
+        11,
+        4226,
+        61395,
+        13,
+        1752,
+        264,
+        21428,
+        11,
+        5508,
+        1449,
+        2003,
+        311,
+        220,
+        22,
+        2849,
+        11,
+        912,
+        894,
+        4960,
+        2849,
+        11,
+        323,
+        4226,
+        7414,
+        1172,
+        979,
+        279,
+        12942,
+        21428,
+        374,
+        518,
+        3245,
+        279,
+        2990,
+        882,
+        26,
+        5937,
+        4226,
+        2308,
+        13,
+        1752,
+        264,
+        4147,
+        3405,
+        11,
+        912,
+        279,
+        11223,
+        4147,
+        2849,
+        311,
+        279,
+        2990,
+        882,
+        13,
+        52232,
+        614,
+        11464,
+        4494,
+        25,
+        2266,
+        52232,
+        3410,
+        60701,
+        13064,
+        11,
+        6888,
+        52232,
+        1373,
+        72349,
+        4982,
+        34784,
+        11,
+        323,
+        1614,
+        52232,
+        7512,
+        458,
+        32156,
+        12956,
+        13,
+        14695,
+        990,
+        264,
+        1614,
+        16821,
+        438,
+        421,
+        432,
+        1033,
+        264,
+        2097,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        17417,
+        25,
+        16821,
+        943,
+        25,
+        6888,
+        13,
+        31704,
+        479,
+        402,
+        1440,
+        26303,
+        3880,
+        220,
+        20,
+        17,
+        2849,
+        369,
+        3692,
+        479,
+        16,
+        22,
+        13,
+        45671,
+        369,
+        3692,
+        479,
+        16,
+        22,
+        11367,
+        220,
+        22,
+        2849,
+        624,
+        14582,
+        25,
+        220
+      ],
+      "suffix_ids": [
+        3838,
+        374,
+        279,
+        2790,
+        18647,
+        882,
+        369,
+        479,
+        16,
+        22,
+        504,
+        479,
+        402,
+        1440,
+        26303,
+        421,
+        18823,
+        7557,
+        4990,
+        220,
+        20,
+        17,
+        2849,
+        323,
+        34769,
+        11367,
+        220,
+        22,
+        2849,
+        5267,
+        16141,
+        279,
+        5535,
+        1196,
+        3405,
+        26753,
+        13,
+        5443,
+        264,
+        1372,
+        315,
+        2849,
+        369,
+        264,
+        8090,
+        11,
+        323,
+        9834,
+        33100,
+        448,
+        264,
+        9814,
+        2874,
+        369,
+        264,
+        9834,
+        33100,
+        3405,
+        13,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "seconds": 0.5683456140031922
+    },
+    {
+      "id": "test:multihop:G17:de",
+      "text": "59 Tage",
+      "guarded_text": "59 Tage",
+      "guarded_exact_target_match": true,
+      "tokens": [
+        20,
+        24,
+        71177,
+        151645
+      ],
+      "eos": true,
+      "exact_target_match": true,
+      "prefix_ids": [
+        151644,
+        8948,
+        198,
+        10253,
+        279,
+        17221,
+        2097,
+        311,
+        4226,
+        279,
+        3405,
+        13,
+        11112,
+        279,
+        4226,
+        3561,
+        11223,
+        304,
+        279,
+        3405,
+        13,
+        1416,
+        279,
+        2097,
+        374,
+        7402,
+        11,
+        4226,
+        61395,
+        13,
+        1752,
+        264,
+        21428,
+        11,
+        5508,
+        1449,
+        2003,
+        311,
+        220,
+        22,
+        2849,
+        11,
+        912,
+        894,
+        4960,
+        2849,
+        11,
+        323,
+        4226,
+        7414,
+        1172,
+        979,
+        279,
+        12942,
+        21428,
+        374,
+        518,
+        3245,
+        279,
+        2990,
+        882,
+        26,
+        5937,
+        4226,
+        2308,
+        13,
+        1752,
+        264,
+        4147,
+        3405,
+        11,
+        912,
+        279,
+        11223,
+        4147,
+        2849,
+        311,
+        279,
+        2990,
+        882,
+        13,
+        52232,
+        614,
+        11464,
+        4494,
+        25,
+        2266,
+        52232,
+        3410,
+        60701,
+        13064,
+        11,
+        6888,
+        52232,
+        1373,
+        72349,
+        4982,
+        34784,
+        11,
+        323,
+        1614,
+        52232,
+        7512,
+        458,
+        32156,
+        12956,
+        13,
+        14695,
+        990,
+        264,
+        1614,
+        16821,
+        438,
+        421,
+        432,
+        1033,
+        264,
+        2097,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        17417,
+        25,
+        16821,
+        943,
+        25,
+        6888,
+        13,
+        21491,
+        802,
+        517,
+        479,
+        402,
+        1440,
+        26303,
+        20112,
+        32030,
+        220,
+        20,
+        17,
+        71177,
+        7180,
+        26692,
+        1146,
+        68,
+        479,
+        16,
+        22,
+        13,
+        12741,
+        1863,
+        965,
+        7180,
+        26692,
+        1146,
+        68,
+        479,
+        16,
+        22,
+        282,
+        2391,
+        5178,
+        220,
+        22,
+        71177,
+        51721,
+        25655,
+        624,
+        14582,
+        25,
+        220
+      ],
+      "suffix_ids": [
+        65835,
+        52287,
+        88280,
+        529,
+        2746,
+        14410,
+        309,
+        665,
+        56815,
+        60730,
+        6538,
+        479,
+        16,
+        22,
+        13279,
+        479,
+        402,
+        1440,
+        26303,
+        11,
+        22075,
+        2694,
+        21491,
+        802,
+        517,
+        220,
+        20,
+        17,
+        71177,
+        2030,
+        2694,
+        1863,
+        965,
+        220,
+        22,
+        71177,
+        20112,
+        32030,
+        5267,
+        16141,
+        279,
+        5535,
+        1196,
+        3405,
+        26753,
+        13,
+        5443,
+        264,
+        1372,
+        315,
+        2849,
+        369,
+        264,
+        8090,
+        11,
+        323,
+        9834,
+        33100,
+        448,
+        264,
+        9814,
+        2874,
+        369,
+        264,
+        9834,
+        33100,
+        3405,
+        13,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "seconds": 0.21735912199801533
+    },
+    {
+      "id": "test:multihop:H28:en",
+      "text": "59 days",
+      "guarded_text": "59 days",
+      "guarded_exact_target_match": true,
+      "tokens": [
+        20,
+        24,
+        2849,
+        151645
+      ],
+      "eos": true,
+      "exact_target_match": true,
+      "prefix_ids": [
+        151644,
+        8948,
+        198,
+        10253,
+        279,
+        17221,
+        2097,
+        311,
+        4226,
+        279,
+        3405,
+        13,
+        11112,
+        279,
+        4226,
+        3561,
+        11223,
+        304,
+        279,
+        3405,
+        13,
+        1416,
+        279,
+        2097,
+        374,
+        7402,
+        11,
+        4226,
+        61395,
+        13,
+        1752,
+        264,
+        21428,
+        11,
+        5508,
+        1449,
+        2003,
+        311,
+        220,
+        22,
+        2849,
+        11,
+        912,
+        894,
+        4960,
+        2849,
+        11,
+        323,
+        4226,
+        7414,
+        1172,
+        979,
+        279,
+        12942,
+        21428,
+        374,
+        518,
+        3245,
+        279,
+        2990,
+        882,
+        26,
+        5937,
+        4226,
+        2308,
+        13,
+        1752,
+        264,
+        4147,
+        3405,
+        11,
+        912,
+        279,
+        11223,
+        4147,
+        2849,
+        311,
+        279,
+        2990,
+        882,
+        13,
+        52232,
+        614,
+        11464,
+        4494,
+        25,
+        2266,
+        52232,
+        3410,
+        60701,
+        13064,
+        11,
+        6888,
+        52232,
+        1373,
+        72349,
+        4982,
+        34784,
+        11,
+        323,
+        1614,
+        52232,
+        7512,
+        458,
+        32156,
+        12956,
+        13,
+        14695,
+        990,
+        264,
+        1614,
+        16821,
+        438,
+        421,
+        432,
+        1033,
+        264,
+        2097,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        17417,
+        25,
+        16821,
+        943,
+        25,
+        6888,
+        13,
+        31704,
+        15806,
+        85,
+        6721,
+        21104,
+        3880,
+        220,
+        20,
+        21,
+        2849,
+        369,
+        3692,
+        472,
+        17,
+        23,
+        13,
+        45671,
+        369,
+        3692,
+        472,
+        17,
+        23,
+        11367,
+        220,
+        18,
+        2849,
+        624,
+        14582,
+        25,
+        220
+      ],
+      "suffix_ids": [
+        3838,
+        374,
+        279,
+        2790,
+        18647,
+        882,
+        369,
+        472,
+        17,
+        23,
+        504,
+        15806,
+        85,
+        6721,
+        21104,
+        421,
+        18823,
+        7557,
+        4990,
+        220,
+        20,
+        21,
+        2849,
+        323,
+        34769,
+        11367,
+        220,
+        18,
+        2849,
+        5267,
+        16141,
+        279,
+        5535,
+        1196,
+        3405,
+        26753,
+        13,
+        5443,
+        264,
+        1372,
+        315,
+        2849,
+        369,
+        264,
+        8090,
+        11,
+        323,
+        9834,
+        33100,
+        448,
+        264,
+        9814,
+        2874,
+        369,
+        264,
+        9834,
+        33100,
+        3405,
+        13,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "seconds": 0.21532317499804776
+    },
+    {
+      "id": "test:multihop:H28:de",
+      "text": "59 Tage",
+      "guarded_text": "59 Tage",
+      "guarded_exact_target_match": true,
+      "tokens": [
+        20,
+        24,
+        71177,
+        151645
+      ],
+      "eos": true,
+      "exact_target_match": true,
+      "prefix_ids": [
+        151644,
+        8948,
+        198,
+        10253,
+        279,
+        17221,
+        2097,
+        311,
+        4226,
+        279,
+        3405,
+        13,
+        11112,
+        279,
+        4226,
+        3561,
+        11223,
+        304,
+        279,
+        3405,
+        13,
+        1416,
+        279,
+        2097,
+        374,
+        7402,
+        11,
+        4226,
+        61395,
+        13,
+        1752,
+        264,
+        21428,
+        11,
+        5508,
+        1449,
+        2003,
+        311,
+        220,
+        22,
+        2849,
+        11,
+        912,
+        894,
+        4960,
+        2849,
+        11,
+        323,
+        4226,
+        7414,
+        1172,
+        979,
+        279,
+        12942,
+        21428,
+        374,
+        518,
+        3245,
+        279,
+        2990,
+        882,
+        26,
+        5937,
+        4226,
+        2308,
+        13,
+        1752,
+        264,
+        4147,
+        3405,
+        11,
+        912,
+        279,
+        11223,
+        4147,
+        2849,
+        311,
+        279,
+        2990,
+        882,
+        13,
+        52232,
+        614,
+        11464,
+        4494,
+        25,
+        2266,
+        52232,
+        3410,
+        60701,
+        13064,
+        11,
+        6888,
+        52232,
+        1373,
+        72349,
+        4982,
+        34784,
+        11,
+        323,
+        1614,
+        52232,
+        7512,
+        458,
+        32156,
+        12956,
+        13,
+        14695,
+        990,
+        264,
+        1614,
+        16821,
+        438,
+        421,
+        432,
+        1033,
+        264,
+        2097,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        17417,
+        25,
+        16821,
+        943,
+        25,
+        6888,
+        13,
+        21491,
+        802,
+        517,
+        15806,
+        85,
+        6721,
+        21104,
+        20112,
+        32030,
+        220,
+        20,
+        21,
+        71177,
+        7180,
+        26692,
+        1146,
+        68,
+        472,
+        17,
+        23,
+        13,
+        12741,
+        1863,
+        965,
+        7180,
+        26692,
+        1146,
+        68,
+        472,
+        17,
+        23,
+        282,
+        2391,
+        5178,
+        220,
+        18,
+        71177,
+        51721,
+        25655,
+        624,
+        14582,
+        25,
+        220
+      ],
+      "suffix_ids": [
+        65835,
+        52287,
+        88280,
+        529,
+        2746,
+        14410,
+        309,
+        665,
+        56815,
+        60730,
+        6538,
+        472,
+        17,
+        23,
+        13279,
+        15806,
+        85,
+        6721,
+        21104,
+        11,
+        22075,
+        2694,
+        21491,
+        802,
+        517,
+        220,
+        20,
+        21,
+        71177,
+        2030,
+        2694,
+        1863,
+        965,
+        220,
+        18,
+        71177,
+        20112,
+        32030,
+        5267,
+        16141,
+        279,
+        5535,
+        1196,
+        3405,
+        26753,
+        13,
+        5443,
+        264,
+        1372,
+        315,
+        2849,
+        369,
+        264,
+        8090,
+        11,
+        323,
+        9834,
+        33100,
+        448,
+        264,
+        9814,
+        2874,
+        369,
+        264,
+        9834,
+        33100,
+        3405,
+        13,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "seconds": 0.216328597998654
+    }
+  ],
+  "split": "test",
+  "variant": "adapter",
+  "protocol_sha256": "d8d7fc9428145582e1620ddbb02b205b8355edad9672fa00649000d9b6b300cd",
+  "cases_sha256": "1ba4fb084d1f66b509871f31fab9c4f8a6535e1bd9f89e747f49cc324b0d14e3",
+  "sources": {
+    "evaluate_reader.py": "4f656eb1150234a68e970e4fc0b2047a8f69b5fe6b5e5b3d8fe0843d4b98e9e5",
+    "train_reader.py": "a316440c1532a45756b839a834320fbd0f8f6a0210125803ec013cb0dca425e5",
+    "reader_prompt.py": "fa787553139cd3be46ff7a7b06acda4c515c9a79cf66c21c32a5300a5375f282",
+    "reader_answer_guard.py": "08bd4edd3ba4d642994623919094a17615ac87d2402d6ad3ad40f5da3ad9e518",
+    "reader_identity.py": "4d86dde5f51573d9c8fb67558aaa34a68457c34b8f6e9962b417da361a4b6feb",
+    "prefix_capsule.py": "3d47c65623043497cea4b59c1e7d82286a4c74721db9a985e657e95afae86c64",
+    "progress_json.py": "bf47bea7b578eb85323000be77be1b459bb4da75be2e2922128ebf879fb22a4c"
+  },
+  "source_adapter_report_sha256": "e9057a014c1a68d86fc4516ff708f92a96e3630b3bf4f5648ab2c8f0893ae0eb",
+  "max_new_tokens": 64,
+  "attention_implementation": "eager",
+  "precision": "bfloat16",
+  "device": "cuda",
+  "full_research_goal_complete": false,
+  "scope": "Reader-only supplied-fact generation; no routing/lifecycle or no-runtime-text claim",
+  "scoring": "Exact target match is a format metric only; semantic quality needs separate review",
+  "elapsed_s": 24.021772583997517,
+  "pid": 702156,
+  "model_files_verified": true,
+  "reader_identity": {
+    "sha256": "3d533ce14b6a47534b4479346280f10018116cc80b6f1a7793824be6a2a58a34",
+    "payload": {
+      "schema": "research-reader-identity:v1",
+      "weights_sha256": "abacf75d3b96f66de001b8518e01016910b0ed285d0d2c2c4117e37a0a045428",
+      "model_config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "output_hidden_states": false,
+        "return_dict": true,
+        "dtype": "bfloat16",
+        "chunk_size_feed_forward": 0,
+        "is_encoder_decoder": false,
+        "id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "label2id": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        },
+        "problem_type": null,
+        "vocab_size": 151936,
+        "hidden_size": 2048,
+        "intermediate_size": 11008,
+        "num_hidden_layers": 36,
+        "num_attention_heads": 16,
+        "num_key_value_heads": 2,
+        "hidden_act": "silu",
+        "max_position_embeddings": 32768,
+        "initializer_range": 0.02,
+        "rms_norm_eps": 1e-06,
+        "use_cache": true,
+        "tie_word_embeddings": true,
+        "rope_parameters": {
+          "rope_theta": 1000000.0,
+          "rope_type": "default"
+        },
+        "use_sliding_window": false,
+        "sliding_window": null,
+        "max_window_layers": 70,
+        "layer_types": [
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention"
+        ],
+        "attention_dropout": 0.0,
+        "pad_token_id": null,
+        "bos_token_id": 151643,
+        "eos_token_id": 151645,
+        "model_type": "qwen2",
+        "output_attentions": false
+      },
+      "attention_implementation": "eager",
+      "adapter_configs": {
+        "default": {
+          "task_type": "CAUSAL_LM",
+          "peft_type": "LORA",
+          "auto_mapping": null,
+          "peft_version": "0.20.0",
+          "base_model_name_or_path": "/home/xrey/neural-pods/models/qwen3b",
+          "revision": null,
+          "inference_mode": true,
+          "r": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "exclude_modules": null,
+          "lora_alpha": 32,
+          "lora_dropout": 0.0,
+          "fan_in_fan_out": false,
+          "bias": "none",
+          "use_rslora": false,
+          "modules_to_save": null,
+          "init_lora_weights": true,
+          "layers_to_transform": null,
+          "layers_pattern": null,
+          "rank_pattern": {},
+          "alpha_pattern": {},
+          "megatron_config": null,
+          "megatron_core": "megatron.core",
+          "trainable_token_indices": null,
+          "loftq_config": {},
+          "eva_config": null,
+          "corda_config": null,
+          "lora_ga_config": null,
+          "use_dora": false,
+          "velora_config": null,
+          "alora_invocation_tokens": null,
+          "use_qalora": false,
+          "qalora_group_size": 16,
+          "monteclora_config": null,
+          "layer_replication": null,
+          "lora_bias": false,
+          "target_parameters": null,
+          "use_bdlora": null,
+          "arrow_config": null,
+          "ensure_weight_tying": false
+        }
+      },
+      "lora_runtime": {
+        "base_model.model.model.layers.0.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.0.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.0.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.0.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.0.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.0.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.0.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.1.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.1.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.1.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.1.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.1.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.1.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.1.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.2.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.2.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.2.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.2.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.2.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.2.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.2.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.3.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.3.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.3.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.3.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.3.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.3.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.3.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.4.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.4.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.4.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.4.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.4.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.4.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.4.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.5.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.5.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.5.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.5.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.5.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.5.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.5.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.6.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.6.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.6.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.6.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.6.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.6.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.6.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.7.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.7.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.7.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.7.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.7.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.7.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.7.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.8.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.8.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.8.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.8.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.8.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.8.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.8.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.9.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.9.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.9.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.9.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.9.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.9.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.9.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.10.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.10.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.10.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.10.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.10.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.10.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.10.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.11.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.11.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.11.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.11.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.11.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.11.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.11.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.12.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.12.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.12.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.12.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.12.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.12.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.12.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.13.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.13.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.13.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.13.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.13.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.13.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.13.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.14.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.14.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.14.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.14.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.14.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.14.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.14.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.15.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.15.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.15.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.15.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.15.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.15.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.15.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.16.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.16.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.16.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.16.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.16.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.16.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.16.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.17.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.17.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.17.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.17.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.17.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.17.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.17.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.18.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.18.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.18.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.18.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.18.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.18.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.18.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.19.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.19.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.19.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.19.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.19.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.19.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.19.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.20.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.20.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.20.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.20.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.20.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.20.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.20.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.21.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.21.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.21.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.21.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.21.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.21.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.21.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.22.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.22.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.22.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.22.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.22.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.22.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.22.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.23.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.23.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.23.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.23.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.23.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.23.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.23.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.24.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.24.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.24.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.24.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.24.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.24.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.24.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.25.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.25.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.25.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.25.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.25.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.25.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.25.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.26.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.26.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.26.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.26.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.26.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.26.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.26.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.27.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.27.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.27.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.27.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.27.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.27.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.27.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.28.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.28.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.28.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.28.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.28.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.28.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.28.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.29.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.29.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.29.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.29.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.29.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.29.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.29.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.30.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.30.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.30.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.30.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.30.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.30.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.30.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.31.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.31.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.31.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.31.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.31.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.31.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.31.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.32.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.32.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.32.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.32.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.32.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.32.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.32.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.33.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.33.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.33.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.33.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.33.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.33.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.33.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.34.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.34.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.34.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.34.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.34.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.34.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.34.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.35.self_attn.q_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.35.self_attn.k_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.35.self_attn.v_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.35.self_attn.o_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.35.mlp.gate_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.35.mlp.up_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        },
+        "base_model.model.model.layers.35.mlp.down_proj": {
+          "scaling": {
+            "default": 2.0
+          },
+          "active": [
+            "default"
+          ],
+          "disabled": false,
+          "merged": []
+        }
+      }
+    }
+  },
+  "forward_calls": 20,
+  "current_case": "test:multihop:H28:de",
+  "reader_unchanged": true,
+  "exact_target_matches": 4,
+  "guarded_exact_target_matches": 4,
+  "total": 4,
+  "first_logits_sha256": "7b21c05df8e9a0de5da7690aad29a10776b8667fdd0332f1622dd45f569cbddd"
+}

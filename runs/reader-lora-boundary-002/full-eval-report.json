@@ -1,0 +1,616 @@
+{
+  "schema": "full-multihop-eval:v1",
+  "adapter": "runs/reader-lora-boundary-002",
+  "two-hop-test": {
+    "correct": 86,
+    "total": 96,
+    "rows": [
+      {
+        "id": "test:G17:52:en:lookup",
+        "answer": "52 days",
+        "target": "52 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:buffer",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:deadline_days_short",
+        "answer": "No; 52 days",
+        "target": "No; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:deadline_days_equal",
+        "answer": "Yes; 52 days",
+        "target": "Yes; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:deadline_days_long",
+        "answer": "Yes; 52 days",
+        "target": "Yes; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:deadline_weeks_short",
+        "answer": "Yes; 52 days",
+        "target": "No; 52 days",
+        "exact": false
+      },
+      {
+        "id": "test:G17:52:en:deadline_weeks_equal",
+        "answer": "Yes; 52 days",
+        "target": "Yes; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:deadline_weeks_long",
+        "answer": "Yes; 52 days",
+        "target": "Yes; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:missing",
+        "answer": "UNKNOWN",
+        "target": "UNKNOWN",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:followup_lookup",
+        "answer": "52 days",
+        "target": "52 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:followup_buffer",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:en:stale_followup",
+        "answer": "52 days",
+        "target": "52 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:lookup",
+        "answer": "52 Tage",
+        "target": "52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:buffer",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:deadline_days_short",
+        "answer": "Nein; 52 Tage",
+        "target": "Nein; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:deadline_days_equal",
+        "answer": "Ja; 52 Tage",
+        "target": "Ja; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:deadline_days_long",
+        "answer": "Ja; 52 Tage",
+        "target": "Ja; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:deadline_weeks_short",
+        "answer": "Ja; 52 Tage",
+        "target": "Nein; 52 Tage",
+        "exact": false
+      },
+      {
+        "id": "test:G17:52:de:deadline_weeks_equal",
+        "answer": "Ja; 52 Tage",
+        "target": "Ja; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:deadline_weeks_long",
+        "answer": "Ja; 52 Tage",
+        "target": "Ja; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:missing",
+        "answer": "UNKNOWN",
+        "target": "UNKNOWN",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:followup_lookup",
+        "answer": "52 Tage",
+        "target": "52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:followup_buffer",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:52:de:stale_followup",
+        "answer": "52 Tage",
+        "target": "52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:lookup",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:buffer",
+        "answer": "60 days",
+        "target": "60 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:deadline_days_short",
+        "answer": "No; 56 days",
+        "target": "No; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:deadline_days_equal",
+        "answer": "Yes; 56 days",
+        "target": "Yes; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:deadline_days_long",
+        "answer": "Yes; 56 days",
+        "target": "Yes; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:deadline_weeks_short",
+        "answer": "Yes; 56 days",
+        "target": "No; 56 days",
+        "exact": false
+      },
+      {
+        "id": "test:G17:56:en:deadline_weeks_equal",
+        "answer": "Yes; 56 days",
+        "target": "Yes; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:deadline_weeks_long",
+        "answer": "Yes; 56 days",
+        "target": "Yes; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:followup_lookup",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:en:followup_buffer",
+        "answer": "56 days",
+        "target": "60 days",
+        "exact": false
+      },
+      {
+        "id": "test:G17:56:en:stale_followup",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:lookup",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:buffer",
+        "answer": "60 Tage",
+        "target": "60 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:deadline_days_short",
+        "answer": "Nein; 56 Tage",
+        "target": "Nein; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:deadline_days_equal",
+        "answer": "Ja; 56 Tage",
+        "target": "Ja; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:deadline_days_long",
+        "answer": "Ja; 56 Tage",
+        "target": "Ja; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:deadline_weeks_short",
+        "answer": "Ja; 56 Tage",
+        "target": "Nein; 56 Tage",
+        "exact": false
+      },
+      {
+        "id": "test:G17:56:de:deadline_weeks_equal",
+        "answer": "Ja; 56 Tage",
+        "target": "Ja; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:deadline_weeks_long",
+        "answer": "Ja; 56 Tage",
+        "target": "Ja; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:followup_lookup",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:followup_buffer",
+        "answer": "60 Tage",
+        "target": "60 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:G17:56:de:stale_followup",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:lookup",
+        "answer": "52 days",
+        "target": "52 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:buffer",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:deadline_days_short",
+        "answer": "No; 52 days",
+        "target": "No; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:deadline_days_equal",
+        "answer": "Yes; 52 days",
+        "target": "Yes; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:deadline_days_long",
+        "answer": "Yes; 52 days",
+        "target": "Yes; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:deadline_weeks_short",
+        "answer": "Yes; 52 days",
+        "target": "No; 52 days",
+        "exact": false
+      },
+      {
+        "id": "test:H28:52:en:deadline_weeks_equal",
+        "answer": "Yes; 52 days",
+        "target": "Yes; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:deadline_weeks_long",
+        "answer": "Yes; 52 days",
+        "target": "Yes; 52 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:missing",
+        "answer": "UNKNOWN",
+        "target": "UNKNOWN",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:followup_lookup",
+        "answer": "52 days",
+        "target": "52 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:followup_buffer",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:en:stale_followup",
+        "answer": "52 days",
+        "target": "52 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:lookup",
+        "answer": "52 Tage",
+        "target": "52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:buffer",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:deadline_days_short",
+        "answer": "Nein; 52 Tage",
+        "target": "Nein; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:deadline_days_equal",
+        "answer": "Ja; 52 Tage",
+        "target": "Ja; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:deadline_days_long",
+        "answer": "Ja; 52 Tage",
+        "target": "Ja; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:deadline_weeks_short",
+        "answer": "Ja; 52 Tage",
+        "target": "Nein; 52 Tage",
+        "exact": false
+      },
+      {
+        "id": "test:H28:52:de:deadline_weeks_equal",
+        "answer": "Ja; 52 Tage",
+        "target": "Ja; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:deadline_weeks_long",
+        "answer": "Ja; 52 Tage",
+        "target": "Ja; 52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:missing",
+        "answer": "UNKNOWN",
+        "target": "UNKNOWN",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:followup_lookup",
+        "answer": "52 Tage",
+        "target": "52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:followup_buffer",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:52:de:stale_followup",
+        "answer": "52 Tage",
+        "target": "52 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:lookup",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:buffer",
+        "answer": "60 days",
+        "target": "60 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:deadline_days_short",
+        "answer": "No; 56 days",
+        "target": "No; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:deadline_days_equal",
+        "answer": "Yes; 56 days",
+        "target": "Yes; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:deadline_days_long",
+        "answer": "Yes; 56 days",
+        "target": "Yes; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:deadline_weeks_short",
+        "answer": "Yes; 56 days",
+        "target": "No; 56 days",
+        "exact": false
+      },
+      {
+        "id": "test:H28:56:en:deadline_weeks_equal",
+        "answer": "Yes; 56 days",
+        "target": "Yes; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:deadline_weeks_long",
+        "answer": "Yes; 56 days",
+        "target": "Yes; 56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:followup_lookup",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:en:followup_buffer",
+        "answer": "56 days",
+        "target": "60 days",
+        "exact": false
+      },
+      {
+        "id": "test:H28:56:en:stale_followup",
+        "answer": "56 days",
+        "target": "56 days",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:lookup",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:buffer",
+        "answer": "60 Tage",
+        "target": "60 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:deadline_days_short",
+        "answer": "Nein; 56 Tage",
+        "target": "Nein; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:deadline_days_equal",
+        "answer": "Ja; 56 Tage",
+        "target": "Ja; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:deadline_days_long",
+        "answer": "Ja; 56 Tage",
+        "target": "Ja; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:deadline_weeks_short",
+        "answer": "Ja; 56 Tage",
+        "target": "Nein; 56 Tage",
+        "exact": false
+      },
+      {
+        "id": "test:H28:56:de:deadline_weeks_equal",
+        "answer": "Ja; 56 Tage",
+        "target": "Ja; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:deadline_weeks_long",
+        "answer": "Ja; 56 Tage",
+        "target": "Ja; 56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:followup_lookup",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:followup_buffer",
+        "answer": "60 Tage",
+        "target": "60 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:H28:56:de:stale_followup",
+        "answer": "56 Tage",
+        "target": "56 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:multihop:G17:en",
+        "answer": "59 days",
+        "target": "59 days",
+        "exact": true
+      },
+      {
+        "id": "test:multihop:G17:de",
+        "answer": "59 Tage",
+        "target": "59 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:multihop:H28:en",
+        "answer": "59 days",
+        "target": "59 days",
+        "exact": true
+      },
+      {
+        "id": "test:multihop:H28:de",
+        "answer": "59 Tage",
+        "target": "59 Tage",
+        "exact": true
+      }
+    ]
+  },
+  "three-hop-test": {
+    "correct": 4,
+    "total": 4,
+    "rows": [
+      {
+        "id": "test:three-hop:G17:en",
+        "answer": "67 days",
+        "target": "67 days",
+        "exact": true
+      },
+      {
+        "id": "test:three-hop:G17:de",
+        "answer": "67 Tage",
+        "target": "67 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:three-hop:H28:en",
+        "answer": "68 days",
+        "target": "68 days",
+        "exact": true
+      },
+      {
+        "id": "test:three-hop:H28:de",
+        "answer": "68 Tage",
+        "target": "68 Tage",
+        "exact": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "saved_rows_verified": 3,
+  "logit_tensors_verified": 6,
+  "tampering_rejected": [
+    "order",
+    "text",
+    "token",
+    "model"
+  ],
+  "source_status": "failed",
+  "failure_sha256": "36d280106703a30da29dec20bf74e2148545c8b235b592fce6709118c91e268c",
+  "full_run_completed": false,
+  "independent_inference_replay": false
+}

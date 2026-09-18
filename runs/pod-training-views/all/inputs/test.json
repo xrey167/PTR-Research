@@ -1,0 +1,2202 @@
+[
+  {
+    "id": "test:podmodel:lifecycle:0",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 1 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:0",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:1",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 2 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:1",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:2",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 3 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:2",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:3",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 4 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:3",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:4",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 5 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:4",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:5",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 6 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:5",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:6",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 7 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:6",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:7",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 8 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:7",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:8",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 9 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:8",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:9",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 10 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:9",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:10",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 11 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:10",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 10
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:11",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 12 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:11",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 11
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:12",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 13 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:12",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 12
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:13",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 14 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:13",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 13
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:14",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 15 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:14",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 14
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:15",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 16 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:15",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 15
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:16",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 17 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:16",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 16
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:17",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 18 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:17",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 17
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:18",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 19 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:18",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 18
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:19",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 20 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:19",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 19
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:20",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 21 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:20",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 20
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:21",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 22 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:21",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 21
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:22",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 23 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:22",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 22
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:23",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 24 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:23",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 23
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:24",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 25 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:24",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 24
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:25",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 26 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:25",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 25
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:26",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 27 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:26",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 26
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:27",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 28 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:27",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 27
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:28",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 29 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:28",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 28
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:29",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 30 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:29",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 29
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:30",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 31 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:30",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 30
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:31",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 32 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:31",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 31
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:32",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 33 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:32",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 32
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:33",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 34 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:33",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 33
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:34",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 35 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:34",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 34
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:35",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 36 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:35",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 35
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:36",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 37 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:36",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 36
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:37",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 38 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:37",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 37
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:38",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 39 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:38",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 38
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:39",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 40 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:39",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 39
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:40",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 41 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:40",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 40
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:41",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 42 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:41",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 41
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:42",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 43 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:42",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 42
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:43",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 44 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:43",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 43
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:44",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 45 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:44",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 44
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:45",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 46 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:45",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 45
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:46",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 47 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:46",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 46
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:47",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 48 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:47",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 47
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:48",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 49 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:48",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 48
+    }
+  },
+  {
+    "id": "test:podmodel:lifecycle:49",
+    "task": "lifecycle",
+    "pod_type": "lifecycle",
+    "model_track": "all",
+    "language": "en",
+    "question": "Decide whether candidate Pod generation 50 may become active.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"transition\":\"candidate_to_active\",\"require\":[\"tests_pass\",\"manifest_hash\",\"attestation\"],\"block_if\":[\"revoked\",\"stale_generation\",\"acl_failure\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:lifecycle:49",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "lifecycle",
+      "pod_type": "lifecycle",
+      "model_track": "all",
+      "example_index": 49
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:0",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 1 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:0",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:1",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 2 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:1",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:2",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 3 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:2",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:3",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 4 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:3",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:4",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 5 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:4",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:5",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 6 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:5",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:6",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 7 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:6",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:7",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 8 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:7",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:8",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 9 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:8",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:9",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 10 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:9",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:10",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 11 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:10",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 10
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:11",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 12 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:11",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 11
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:12",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 13 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:12",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 12
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:13",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 14 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:13",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 13
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:14",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 15 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:14",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 14
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:15",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 16 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:15",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 15
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:16",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 17 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:16",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 16
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:17",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 18 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:17",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 17
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:18",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 19 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:18",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 18
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:19",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 20 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:19",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 19
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:20",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 21 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:20",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 20
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:21",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 22 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:21",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 21
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:22",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 23 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:22",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 22
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:23",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 24 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:23",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 23
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:24",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 25 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:24",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 24
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:25",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 26 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:25",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 25
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:26",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 27 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:26",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 26
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:27",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 28 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:27",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 27
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:28",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 29 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:28",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 28
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:29",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 30 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:29",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 29
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:30",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 31 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:30",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 30
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:31",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 32 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:31",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 31
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:32",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 33 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:32",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 32
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:33",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 34 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:33",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 33
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:34",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 35 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:34",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 34
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:35",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 36 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:35",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 35
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:36",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 37 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:36",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 36
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:37",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 38 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:37",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 37
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:38",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 39 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:38",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 38
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:39",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 40 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:39",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 39
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:40",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 41 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:40",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 40
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:41",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 42 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:41",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 41
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:42",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 43 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:42",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 42
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:43",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 44 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:43",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 43
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:44",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 45 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:44",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 44
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:45",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 46 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:45",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 45
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:46",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 47 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:46",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 46
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:47",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 48 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:47",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 47
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:48",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 49 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:48",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 48
+    }
+  },
+  {
+    "id": "test:podmodel:evaluation:49",
+    "task": "evaluation",
+    "pod_type": "evaluation",
+    "model_track": "all",
+    "language": "en",
+    "question": "Record frozen evaluation 50 for a Pod/model artifact.",
+    "history": [],
+    "evidence": null,
+    "target": "{\"protocol_frozen\":true,\"metrics\":[\"recall_at_k\",\"exact_match\",\"latency_p95\",\"qps\",\"memory\",\"provenance_violations\"],\"compare\":[\"baseline\",\"previous_generation\"]}",
+    "provenance": {
+      "origin_key": "src:synthetic:podmodel:evaluation:49",
+      "dataset_version": "podmodel_v1",
+      "source": "research_curriculum_generator"
+    },
+    "assessment": {
+      "capability": "evaluation",
+      "pod_type": "evaluation",
+      "model_track": "all",
+      "example_index": 49
+    }
+  }
+]

@@ -1,0 +1,1184 @@
+{
+  "status": "passed",
+  "source": "C:\\Users\\ReyDa\\neural-pods\\runs\\semantic-003",
+  "training": [
+    {
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "schema": "dragonfly-pod-address:v2",
+      "encoder_id": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "features": [
+        "semantic_similarity",
+        "subject_match",
+        "component_match",
+        "predicate_match",
+        "role_match",
+        "current_generation",
+        "time_valid",
+        "authorized",
+        "tag_overlap"
+      ],
+      "dimension": 384,
+      "bias": 0.06551051139831543,
+      "steps": 300,
+      "loss_before": 4.190029621124268,
+      "loss_after": 0.1027664989233017,
+      "training_accuracy": 1.0,
+      "z_delta_l2": 5.27473258972168,
+      "alias_training": {
+        "policy": "trusted-alias-expansion:v1",
+        "aliases": [
+          "Mueller",
+          "Mueller GmbH",
+          "Muller GmbH",
+          "Müller",
+          "Müller GmbH"
+        ],
+        "scores": {
+          "Mueller": 0.9853402972221375,
+          "Mueller GmbH": 0.9957700371742249,
+          "Muller GmbH": 0.9793779253959656,
+          "Müller": 0.8482460379600525,
+          "Müller GmbH": 0.9793779253959656
+        },
+        "positive_count": 49,
+        "negative_count": 9
+      },
+      "representation_key": "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+      "training_origin": "origin:8ebff210d560a5a4d2d856acddbea9cd6f32daa538b545faf2198826046a09bc"
+    },
+    {
+      "knowledge_key": "knowledge:supplier:muller-werke:x12:lead_time",
+      "schema": "dragonfly-pod-address:v2",
+      "encoder_id": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "features": [
+        "semantic_similarity",
+        "subject_match",
+        "component_match",
+        "predicate_match",
+        "role_match",
+        "current_generation",
+        "time_valid",
+        "authorized",
+        "tag_overlap"
+      ],
+      "dimension": 384,
+      "bias": 1.0353105068206787,
+      "steps": 300,
+      "loss_before": 4.305287837982178,
+      "loss_after": 0.07233972102403641,
+      "training_accuracy": 1.0,
+      "z_delta_l2": 5.47454309463501,
+      "alias_training": {
+        "policy": "trusted-alias-expansion:v1",
+        "aliases": [
+          "Müller Werke"
+        ],
+        "scores": {
+          "Müller Werke": 0.9487069249153137
+        },
+        "positive_count": 10,
+        "negative_count": 14
+      },
+      "representation_key": "router:acfaa1cee78e1f9fba302fb2d2275a221bcc5484ca4db45cfddf0c0b96a3b938",
+      "training_origin": "origin:733d4cdf87a8123c9fb58518cf594174ff32e578f7e5cdeb66c167d0dbd085f1"
+    }
+  ],
+  "routing": [
+    {
+      "question": "Current delivery lead time for supplier Müller?",
+      "expected_index": 0,
+      "scores": [
+        0.8915553689002991,
+        0.16172204911708832
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "X12 procurement delay from Müller GmbH?",
+      "expected_index": 0,
+      "scores": [
+        0.9239333271980286,
+        0.07901836186647415
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "How long does Mueller need for X12?",
+      "expected_index": 0,
+      "scores": [
+        0.9524575471878052,
+        0.3307630717754364
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "Wie lange braucht Muller GmbH fuer X12?",
+      "expected_index": 0,
+      "scores": [
+        0.9055728316307068,
+        0.03746650740504265
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "Welche Lieferzeit hat Müller fuer X12?",
+      "expected_index": 0,
+      "scores": [
+        0.7107742428779602,
+        0.3210003674030304
+      ],
+      "correct": true,
+      "cosine_correct": false,
+      "z_only_correct": true
+    },
+    {
+      "question": "What is the delivery lead time for Muller?",
+      "expected_index": 0,
+      "scores": [
+        0.7511338591575623,
+        0.40781620144844055
+      ],
+      "correct": true,
+      "cosine_correct": false,
+      "z_only_correct": true
+    },
+    {
+      "question": "Give the current lead time for supplier Mueller and part X12.",
+      "expected_index": 0,
+      "scores": [
+        0.9666185975074768,
+        0.14289844036102295
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "State the recorded delivery duration for X12 from Muller GmbH.",
+      "expected_index": 0,
+      "scores": [
+        0.916843056678772,
+        0.11018896102905273
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "Tell me the procurement delay for Mueller GmbH and component X12.",
+      "expected_index": 0,
+      "scores": [
+        0.9665372967720032,
+        0.061325039714574814
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "Current delivery lead time for supplier Müller Werke?",
+      "expected_index": 1,
+      "scores": [
+        0.27797579765319824,
+        0.7244826555252075
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "X12 procurement delay from Müller Werke?",
+      "expected_index": 1,
+      "scores": [
+        0.10545843094587326,
+        0.9094753861427307
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "How long does Müller Werke need for X12?",
+      "expected_index": 1,
+      "scores": [
+        0.03839728608727455,
+        0.9752299189567566
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "Wie lange braucht Müller Werke fuer X12?",
+      "expected_index": 1,
+      "scores": [
+        0.2894342541694641,
+        0.6192954182624817
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "Welche Lieferzeit hat Müller Werke fuer X12?",
+      "expected_index": 1,
+      "scores": [
+        0.28625091910362244,
+        0.6969853043556213
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "What is the delivery lead time for Müller Werke?",
+      "expected_index": 1,
+      "scores": [
+        0.0599675290286541,
+        0.9495999217033386
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "Give the current lead time for supplier Müller Werke and part X12.",
+      "expected_index": 1,
+      "scores": [
+        0.20616483688354492,
+        0.8210672736167908
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "State the recorded delivery duration for X12 from Müller Werke.",
+      "expected_index": 1,
+      "scores": [
+        0.10381699353456497,
+        0.935396134853363
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    },
+    {
+      "question": "Tell me the procurement delay for Müller Werke and component X12.",
+      "expected_index": 1,
+      "scores": [
+        0.1184832975268364,
+        0.8662221431732178
+      ],
+      "correct": true,
+      "cosine_correct": true,
+      "z_only_correct": true
+    }
+  ],
+  "answers": [
+    {
+      "question": "Current delivery lead time for supplier Müller?",
+      "text": "24 days",
+      "correct": true,
+      "selection": {
+        "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+        "generation_key": "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6",
+        "generation": 3,
+        "artifact_key": "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+        "query_semantics": {
+          "subject": "supplier:muller",
+          "component": null,
+          "predicate": "lead_time",
+          "role": "FACT",
+          "intent": "supplier_metric_lookup",
+          "tags": []
+        },
+        "evidence": "The delivery lead time for X12 from Müller GmbH is 24 days.",
+        "features": {
+          "semantic_similarity": 0.6925719874922018,
+          "subject_match": 1.0,
+          "component_match": 1.0,
+          "predicate_match": 1.0,
+          "role_match": 1.0,
+          "current_generation": 1.0,
+          "time_valid": 1.0,
+          "authorized": 1.0,
+          "tag_overlap": 1.0
+        },
+        "score": 0.8915553689002991,
+        "snapshot": {
+          "artifacts": [
+            "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+            "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+            "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+          ],
+          "principal": "buyer"
+        },
+        "ann_eligible_count": 1,
+        "qdrant_filter": {
+          "must": [
+            {
+              "key": "generation_key",
+              "match": {
+                "any": [
+                  "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6"
+                ]
+              }
+            },
+            {
+              "key": "subject",
+              "match": {
+                "value": "supplier:muller"
+              }
+            },
+            {
+              "key": "predicate",
+              "match": {
+                "value": "lead_time"
+              }
+            },
+            {
+              "key": "role",
+              "match": {
+                "value": "FACT"
+              }
+            },
+            {
+              "key": "status",
+              "match": {
+                "value": "active"
+              }
+            },
+            {
+              "key": "acl",
+              "match": {
+                "any": [
+                  "*",
+                  "buyer"
+                ]
+              }
+            },
+            {
+              "key": "valid_from",
+              "range": {
+                "lte": 1789469274.351916
+              }
+            },
+            {
+              "key": "valid_until",
+              "range": {
+                "gt": 1789469274.352229
+              }
+            }
+          ]
+        },
+        "routing_mode": "dragonfly-pod-address:v2",
+        "representation_key": "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+        "alias_training": {
+          "aliases": [
+            "Mueller",
+            "Mueller GmbH",
+            "Muller GmbH",
+            "Müller",
+            "Müller GmbH"
+          ],
+          "negative_count": 9,
+          "policy": "trusted-alias-expansion:v1",
+          "positive_count": 49,
+          "scores": {
+            "Mueller": 0.9853402972221375,
+            "Mueller GmbH": 0.9957700371742249,
+            "Muller GmbH": 0.9793779253959656,
+            "Müller": 0.8482460379600525,
+            "Müller GmbH": 0.9793779253959656
+          }
+        }
+      },
+      "receipt": {
+        "answer_id": "answer:7601af5435dfab97428e83b29eba473d766a3e196e0919784b89e63658c68262",
+        "text": "24 days",
+        "dependencies": [
+          "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+          "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+          "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+        ]
+      }
+    },
+    {
+      "question": "X12 procurement delay from Müller GmbH?",
+      "text": "24 days",
+      "correct": true,
+      "selection": {
+        "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+        "generation_key": "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6",
+        "generation": 3,
+        "artifact_key": "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+        "query_semantics": {
+          "subject": "supplier:muller",
+          "component": "x12",
+          "predicate": "lead_time",
+          "role": "FACT",
+          "intent": "supplier_metric_lookup",
+          "tags": []
+        },
+        "evidence": "The delivery lead time for X12 from Müller GmbH is 24 days.",
+        "features": {
+          "semantic_similarity": 0.6373215648504836,
+          "subject_match": 1.0,
+          "component_match": 1.0,
+          "predicate_match": 1.0,
+          "role_match": 1.0,
+          "current_generation": 1.0,
+          "time_valid": 1.0,
+          "authorized": 1.0,
+          "tag_overlap": 1.0
+        },
+        "score": 0.9239333271980286,
+        "snapshot": {
+          "artifacts": [
+            "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+            "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+            "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+          ],
+          "principal": "buyer"
+        },
+        "ann_eligible_count": 1,
+        "qdrant_filter": {
+          "must": [
+            {
+              "key": "generation_key",
+              "match": {
+                "any": [
+                  "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6"
+                ]
+              }
+            },
+            {
+              "key": "subject",
+              "match": {
+                "value": "supplier:muller"
+              }
+            },
+            {
+              "key": "predicate",
+              "match": {
+                "value": "lead_time"
+              }
+            },
+            {
+              "key": "role",
+              "match": {
+                "value": "FACT"
+              }
+            },
+            {
+              "key": "status",
+              "match": {
+                "value": "active"
+              }
+            },
+            {
+              "key": "acl",
+              "match": {
+                "any": [
+                  "*",
+                  "buyer"
+                ]
+              }
+            },
+            {
+              "key": "valid_from",
+              "range": {
+                "lte": 1789469277.509208
+              }
+            },
+            {
+              "key": "valid_until",
+              "range": {
+                "gt": 1789469277.509269
+              }
+            },
+            {
+              "key": "component",
+              "match": {
+                "value": "x12"
+              }
+            }
+          ]
+        },
+        "routing_mode": "dragonfly-pod-address:v2",
+        "representation_key": "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+        "alias_training": {
+          "aliases": [
+            "Mueller",
+            "Mueller GmbH",
+            "Muller GmbH",
+            "Müller",
+            "Müller GmbH"
+          ],
+          "negative_count": 9,
+          "policy": "trusted-alias-expansion:v1",
+          "positive_count": 49,
+          "scores": {
+            "Mueller": 0.9853402972221375,
+            "Mueller GmbH": 0.9957700371742249,
+            "Muller GmbH": 0.9793779253959656,
+            "Müller": 0.8482460379600525,
+            "Müller GmbH": 0.9793779253959656
+          }
+        }
+      },
+      "receipt": {
+        "answer_id": "answer:7601af5435dfab97428e83b29eba473d766a3e196e0919784b89e63658c68262",
+        "text": "24 days",
+        "dependencies": [
+          "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+          "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+          "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+        ]
+      }
+    },
+    {
+      "question": "How long does Mueller need for X12?",
+      "text": "24 days",
+      "correct": true,
+      "selection": {
+        "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+        "generation_key": "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6",
+        "generation": 3,
+        "artifact_key": "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+        "query_semantics": {
+          "subject": "supplier:muller",
+          "component": "x12",
+          "predicate": "lead_time",
+          "role": "FACT",
+          "intent": "supplier_metric_lookup",
+          "tags": []
+        },
+        "evidence": "The delivery lead time for X12 from Müller GmbH is 24 days.",
+        "features": {
+          "semantic_similarity": 0.45132991774130826,
+          "subject_match": 1.0,
+          "component_match": 1.0,
+          "predicate_match": 1.0,
+          "role_match": 1.0,
+          "current_generation": 1.0,
+          "time_valid": 1.0,
+          "authorized": 1.0,
+          "tag_overlap": 1.0
+        },
+        "score": 0.9524575471878052,
+        "snapshot": {
+          "artifacts": [
+            "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+            "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+            "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+          ],
+          "principal": "buyer"
+        },
+        "ann_eligible_count": 1,
+        "qdrant_filter": {
+          "must": [
+            {
+              "key": "generation_key",
+              "match": {
+                "any": [
+                  "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6"
+                ]
+              }
+            },
+            {
+              "key": "subject",
+              "match": {
+                "value": "supplier:muller"
+              }
+            },
+            {
+              "key": "predicate",
+              "match": {
+                "value": "lead_time"
+              }
+            },
+            {
+              "key": "role",
+              "match": {
+                "value": "FACT"
+              }
+            },
+            {
+              "key": "status",
+              "match": {
+                "value": "active"
+              }
+            },
+            {
+              "key": "acl",
+              "match": {
+                "any": [
+                  "*",
+                  "buyer"
+                ]
+              }
+            },
+            {
+              "key": "valid_from",
+              "range": {
+                "lte": 1789469278.79703
+              }
+            },
+            {
+              "key": "valid_until",
+              "range": {
+                "gt": 1789469278.797044
+              }
+            },
+            {
+              "key": "component",
+              "match": {
+                "value": "x12"
+              }
+            }
+          ]
+        },
+        "routing_mode": "dragonfly-pod-address:v2",
+        "representation_key": "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+        "alias_training": {
+          "aliases": [
+            "Mueller",
+            "Mueller GmbH",
+            "Muller GmbH",
+            "Müller",
+            "Müller GmbH"
+          ],
+          "negative_count": 9,
+          "policy": "trusted-alias-expansion:v1",
+          "positive_count": 49,
+          "scores": {
+            "Mueller": 0.9853402972221375,
+            "Mueller GmbH": 0.9957700371742249,
+            "Muller GmbH": 0.9793779253959656,
+            "Müller": 0.8482460379600525,
+            "Müller GmbH": 0.9793779253959656
+          }
+        }
+      },
+      "receipt": {
+        "answer_id": "answer:7601af5435dfab97428e83b29eba473d766a3e196e0919784b89e63658c68262",
+        "text": "24 days",
+        "dependencies": [
+          "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+          "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+          "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+        ]
+      }
+    },
+    {
+      "question": "Wie lange braucht Muller GmbH fuer X12?",
+      "text": "24 days",
+      "correct": true,
+      "selection": {
+        "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+        "generation_key": "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6",
+        "generation": 3,
+        "artifact_key": "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+        "query_semantics": {
+          "subject": "supplier:muller",
+          "component": "x12",
+          "predicate": "lead_time",
+          "role": "FACT",
+          "intent": "supplier_metric_lookup",
+          "tags": []
+        },
+        "evidence": "The delivery lead time for X12 from Müller GmbH is 24 days.",
+        "features": {
+          "semantic_similarity": 0.522957774676002,
+          "subject_match": 1.0,
+          "component_match": 1.0,
+          "predicate_match": 1.0,
+          "role_match": 1.0,
+          "current_generation": 1.0,
+          "time_valid": 1.0,
+          "authorized": 1.0,
+          "tag_overlap": 1.0
+        },
+        "score": 0.9055728316307068,
+        "snapshot": {
+          "artifacts": [
+            "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+            "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+            "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+          ],
+          "principal": "buyer"
+        },
+        "ann_eligible_count": 1,
+        "qdrant_filter": {
+          "must": [
+            {
+              "key": "generation_key",
+              "match": {
+                "any": [
+                  "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6"
+                ]
+              }
+            },
+            {
+              "key": "subject",
+              "match": {
+                "value": "supplier:muller"
+              }
+            },
+            {
+              "key": "predicate",
+              "match": {
+                "value": "lead_time"
+              }
+            },
+            {
+              "key": "role",
+              "match": {
+                "value": "FACT"
+              }
+            },
+            {
+              "key": "status",
+              "match": {
+                "value": "active"
+              }
+            },
+            {
+              "key": "acl",
+              "match": {
+                "any": [
+                  "*",
+                  "buyer"
+                ]
+              }
+            },
+            {
+              "key": "valid_from",
+              "range": {
+                "lte": 1789469280.073998
+              }
+            },
+            {
+              "key": "valid_until",
+              "range": {
+                "gt": 1789469280.074023
+              }
+            },
+            {
+              "key": "component",
+              "match": {
+                "value": "x12"
+              }
+            }
+          ]
+        },
+        "routing_mode": "dragonfly-pod-address:v2",
+        "representation_key": "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+        "alias_training": {
+          "aliases": [
+            "Mueller",
+            "Mueller GmbH",
+            "Muller GmbH",
+            "Müller",
+            "Müller GmbH"
+          ],
+          "negative_count": 9,
+          "policy": "trusted-alias-expansion:v1",
+          "positive_count": 49,
+          "scores": {
+            "Mueller": 0.9853402972221375,
+            "Mueller GmbH": 0.9957700371742249,
+            "Muller GmbH": 0.9793779253959656,
+            "Müller": 0.8482460379600525,
+            "Müller GmbH": 0.9793779253959656
+          }
+        }
+      },
+      "receipt": {
+        "answer_id": "answer:7601af5435dfab97428e83b29eba473d766a3e196e0919784b89e63658c68262",
+        "text": "24 days",
+        "dependencies": [
+          "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+          "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+          "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+        ]
+      }
+    },
+    {
+      "question": "Welche Lieferzeit hat Müller fuer X12?",
+      "text": "24 days",
+      "correct": true,
+      "selection": {
+        "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+        "generation_key": "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6",
+        "generation": 3,
+        "artifact_key": "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+        "query_semantics": {
+          "subject": "supplier:muller",
+          "component": "x12",
+          "predicate": "lead_time",
+          "role": "FACT",
+          "intent": "supplier_metric_lookup",
+          "tags": []
+        },
+        "evidence": "The delivery lead time for X12 from Müller GmbH is 24 days.",
+        "features": {
+          "semantic_similarity": 0.45664578161640357,
+          "subject_match": 1.0,
+          "component_match": 1.0,
+          "predicate_match": 1.0,
+          "role_match": 1.0,
+          "current_generation": 1.0,
+          "time_valid": 1.0,
+          "authorized": 1.0,
+          "tag_overlap": 1.0
+        },
+        "score": 0.710774302482605,
+        "snapshot": {
+          "artifacts": [
+            "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+            "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+            "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+          ],
+          "principal": "buyer"
+        },
+        "ann_eligible_count": 1,
+        "qdrant_filter": {
+          "must": [
+            {
+              "key": "generation_key",
+              "match": {
+                "any": [
+                  "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6"
+                ]
+              }
+            },
+            {
+              "key": "subject",
+              "match": {
+                "value": "supplier:muller"
+              }
+            },
+            {
+              "key": "predicate",
+              "match": {
+                "value": "lead_time"
+              }
+            },
+            {
+              "key": "role",
+              "match": {
+                "value": "FACT"
+              }
+            },
+            {
+              "key": "status",
+              "match": {
+                "value": "active"
+              }
+            },
+            {
+              "key": "acl",
+              "match": {
+                "any": [
+                  "*",
+                  "buyer"
+                ]
+              }
+            },
+            {
+              "key": "valid_from",
+              "range": {
+                "lte": 1789469281.426969
+              }
+            },
+            {
+              "key": "valid_until",
+              "range": {
+                "gt": 1789469281.42699
+              }
+            },
+            {
+              "key": "component",
+              "match": {
+                "value": "x12"
+              }
+            }
+          ]
+        },
+        "routing_mode": "dragonfly-pod-address:v2",
+        "representation_key": "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+        "alias_training": {
+          "aliases": [
+            "Mueller",
+            "Mueller GmbH",
+            "Muller GmbH",
+            "Müller",
+            "Müller GmbH"
+          ],
+          "negative_count": 9,
+          "policy": "trusted-alias-expansion:v1",
+          "positive_count": 49,
+          "scores": {
+            "Mueller": 0.9853402972221375,
+            "Mueller GmbH": 0.9957700371742249,
+            "Muller GmbH": 0.9793779253959656,
+            "Müller": 0.8482460379600525,
+            "Müller GmbH": 0.9793779253959656
+          }
+        }
+      },
+      "receipt": {
+        "answer_id": "answer:7601af5435dfab97428e83b29eba473d766a3e196e0919784b89e63658c68262",
+        "text": "24 days",
+        "dependencies": [
+          "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+          "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+          "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+        ]
+      }
+    },
+    {
+      "question": "What is the delivery lead time for Muller?",
+      "text": "24 days",
+      "correct": true,
+      "selection": {
+        "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+        "generation_key": "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6",
+        "generation": 3,
+        "artifact_key": "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+        "query_semantics": {
+          "subject": "supplier:muller",
+          "component": null,
+          "predicate": "lead_time",
+          "role": "FACT",
+          "intent": "supplier_metric_lookup",
+          "tags": []
+        },
+        "evidence": "The delivery lead time for X12 from Müller GmbH is 24 days.",
+        "features": {
+          "semantic_similarity": 0.5395531051290432,
+          "subject_match": 1.0,
+          "component_match": 1.0,
+          "predicate_match": 1.0,
+          "role_match": 1.0,
+          "current_generation": 1.0,
+          "time_valid": 1.0,
+          "authorized": 1.0,
+          "tag_overlap": 1.0
+        },
+        "score": 0.7511338591575623,
+        "snapshot": {
+          "artifacts": [
+            "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+            "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+            "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+          ],
+          "principal": "buyer"
+        },
+        "ann_eligible_count": 1,
+        "qdrant_filter": {
+          "must": [
+            {
+              "key": "generation_key",
+              "match": {
+                "any": [
+                  "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6"
+                ]
+              }
+            },
+            {
+              "key": "subject",
+              "match": {
+                "value": "supplier:muller"
+              }
+            },
+            {
+              "key": "predicate",
+              "match": {
+                "value": "lead_time"
+              }
+            },
+            {
+              "key": "role",
+              "match": {
+                "value": "FACT"
+              }
+            },
+            {
+              "key": "status",
+              "match": {
+                "value": "active"
+              }
+            },
+            {
+              "key": "acl",
+              "match": {
+                "any": [
+                  "*",
+                  "buyer"
+                ]
+              }
+            },
+            {
+              "key": "valid_from",
+              "range": {
+                "lte": 1789469282.915191
+              }
+            },
+            {
+              "key": "valid_until",
+              "range": {
+                "gt": 1789469282.915316
+              }
+            }
+          ]
+        },
+        "routing_mode": "dragonfly-pod-address:v2",
+        "representation_key": "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+        "alias_training": {
+          "aliases": [
+            "Mueller",
+            "Mueller GmbH",
+            "Muller GmbH",
+            "Müller",
+            "Müller GmbH"
+          ],
+          "negative_count": 9,
+          "policy": "trusted-alias-expansion:v1",
+          "positive_count": 49,
+          "scores": {
+            "Mueller": 0.9853402972221375,
+            "Mueller GmbH": 0.9957700371742249,
+            "Muller GmbH": 0.9793779253959656,
+            "Müller": 0.8482460379600525,
+            "Müller GmbH": 0.9793779253959656
+          }
+        }
+      },
+      "receipt": {
+        "answer_id": "answer:7601af5435dfab97428e83b29eba473d766a3e196e0919784b89e63658c68262",
+        "text": "24 days",
+        "dependencies": [
+          "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+          "router:89b3173f1b0028a1605d89a725cd82280640098d8ddc959b4bd1db15d5a28382",
+          "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+        ]
+      }
+    }
+  ],
+  "blocked": [
+    {
+      "question": "What is the delivery lead time for X99 from Mueller GmbH?",
+      "principal": "buyer",
+      "blocked": true,
+      "reason": "Unresolved component or unsupported query content"
+    },
+    {
+      "question": "How long has Mueller GmbH existed?",
+      "principal": "buyer",
+      "blocked": true,
+      "reason": "Unsupported or unclear query intent"
+    },
+    {
+      "question": "Current delivery lead time for supplier Müller?",
+      "principal": "outsider",
+      "blocked": true,
+      "reason": "Supplier is missing or ambiguous"
+    }
+  ],
+  "scope": "New address-vector training; unchanged saved LoRA weights; synthetic procurement fixture",
+  "elapsed_s": 27.561773699941114,
+  "training_questions": [
+    [
+      "What is the lead time for X12 from Müller GmbH?",
+      "How many days does Müller GmbH need to deliver X12?",
+      "State the delivery time of X12 from Müller GmbH.",
+      "Give the lead time in days for X12, supplied by Müller GmbH.",
+      "What delivery delay should I plan for Müller GmbH and X12?",
+      "How long is the procurement lead time for Müller GmbH X12?",
+      "Tell me the delivery duration in days of Müller GmbH for X12.",
+      "What is the recorded lead time for Müller GmbH, component X12?"
+    ],
+    [
+      "What is the lead time for X12 from Müller Werke?",
+      "How many days does Müller Werke need to deliver X12?",
+      "State the delivery time of X12 from Müller Werke.",
+      "Give the lead time in days for X12, supplied by Müller Werke.",
+      "What delivery delay should I plan for Müller Werke and X12?",
+      "How long is the procurement lead time for Müller Werke X12?",
+      "Tell me the delivery duration in days of Müller Werke for X12.",
+      "What is the recorded lead time for Müller Werke, component X12?"
+    ]
+  ],
+  "alias_recognition": [
+    {
+      "alias": "Müller GmbH",
+      "subject": "supplier:muller",
+      "score": 0.9793779253959656,
+      "correct": true
+    },
+    {
+      "alias": "Müller",
+      "subject": "supplier:muller",
+      "score": 0.8482460379600525,
+      "correct": true
+    },
+    {
+      "alias": "Muller GmbH",
+      "subject": "supplier:muller",
+      "score": 0.9793779253959656,
+      "correct": true
+    },
+    {
+      "alias": "Muller",
+      "subject": "supplier:muller",
+      "score": 0.8482460379600525,
+      "correct": true
+    },
+    {
+      "alias": "Mueller GmbH",
+      "subject": "supplier:muller",
+      "score": 0.9957700371742249,
+      "correct": true
+    },
+    {
+      "alias": "Mueller",
+      "subject": "supplier:muller",
+      "score": 0.9853402972221375,
+      "correct": true
+    },
+    {
+      "alias": "Müller Werke",
+      "subject": "supplier:muller-werke",
+      "score": 0.9487069249153137,
+      "correct": true
+    }
+  ],
+  "reload_equal": true,
+  "revocation": {
+    "representation_in_closure": true,
+    "answer_in_closure": true,
+    "pending_commit_blocked": true,
+    "other_representation_valid": true
+  },
+  "base_unchanged": true,
+  "summary": {
+    "routing_correct": 18,
+    "cosine_correct": 16,
+    "z_only_correct": 18,
+    "routing_n": 18,
+    "answers_correct": 6,
+    "answers_n": 6
+  }
+}

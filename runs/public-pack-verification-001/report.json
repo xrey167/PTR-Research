@@ -1,0 +1,25 @@
+{
+  "schema": "public-pack-verification:v1",
+  "entries": 78,
+  "zip_test": null,
+  "required": {
+    "project-gate-001.json": true,
+    "generalization-gate-001.json": true,
+    "combined-evaluation-001.json": true,
+    "neohorse-real-checkpoint-probe-001.json": true,
+    "local-stack-benchmark-002.json": true,
+    "xrserver-reference-serving-probe-001.json": true,
+    "PROJECT-SYNTHESIS-20260916.md": true,
+    "COMPLETION-AUDIT-20260916.md": true,
+    "routing_harness.py": true,
+    "test_routing_harness.py": true
+  },
+  "all_required": true,
+  "workspace_inventory_hash": "4f8c99add2c20e84ff66e8ee8689b30e35d5070b078ca40990e095af03237920",
+  "pack_inventory_hash": "4f8c99add2c20e84ff66e8ee8689b30e35d5070b078ca40990e095af03237920",
+  "pack_payload_hash": "dc1cc9fb5d6ae4f0d5fd13850632a9aecb5cc99e914becdedd5db376a6524fc4",
+  "desktop_payload_hash": "dc1cc9fb5d6ae4f0d5fd13850632a9aecb5cc99e914becdedd5db376a6524fc4",
+  "inventory_equal": true,
+  "desktop_equal": true,
+  "passed": true
+}

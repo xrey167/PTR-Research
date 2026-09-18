@@ -1,0 +1,5190 @@
+{
+  "train": [
+    {
+      "id": "train:direct:0",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Belvia Works for B22."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:direct:1",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Ceron Parts for C33."
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "train:direct:2",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Belvia Works for B22."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:direct:3",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Arden Supply for A11."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:direct:4",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Daxel Trade for D44."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:direct:5",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Arden Supply for A11."
+          }
+        ]
+      },
+      "target": "ADDRESS 3"
+    },
+    {
+      "id": "train:direct:6",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Daxel Trade for D44."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:direct:7",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Daxel Trade for D44."
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "train:direct:8",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Ceron Parts for C33."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:direct:9",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Daxel Trade for D44."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:direct:10",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Ceron Parts for C33."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:direct:11",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "State the delivery lead time of Arden Supply for A11."
+          }
+        ]
+      },
+      "target": "ADDRESS 3"
+    },
+    {
+      "id": "train:planning:0",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order D44 at Daxel Trade. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:planning:1",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order A11 at Arden Supply. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "train:planning:2",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order C33 at Ceron Parts. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:planning:3",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order A11 at Arden Supply. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:planning:4",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order B22 at Belvia Works. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:planning:5",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order B22 at Belvia Works. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 3"
+    },
+    {
+      "id": "train:planning:6",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order D44 at Daxel Trade. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:planning:7",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order B22 at Belvia Works. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "train:planning:8",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order D44 at Daxel Trade. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:planning:9",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order A11 at Arden Supply. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:planning:10",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order A11 at Arden Supply. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:planning:11",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We order B22 at Belvia Works. How long until the shipment arrives?"
+          }
+        ]
+      },
+      "target": "ADDRESS 3"
+    },
+    {
+      "id": "train:buffer:0",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for B22 from Belvia Works."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:buffer:1",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for C33 from Ceron Parts."
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "train:buffer:2",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for D44 from Daxel Trade."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:buffer:3",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for C33 from Ceron Parts."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:buffer:4",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for D44 from Daxel Trade."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:buffer:5",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for C33 from Ceron Parts."
+          }
+        ]
+      },
+      "target": "ADDRESS 3"
+    },
+    {
+      "id": "train:buffer:6",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for A11 from Arden Supply."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:buffer:7",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for D44 from Daxel Trade."
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "train:buffer:8",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for C33 from Ceron Parts."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:buffer:9",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for B22 from Belvia Works."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:buffer:10",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for B22 from Belvia Works."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:buffer:11",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Add three days of buffer to the delivery lead time for C33 from Ceron Parts."
+          }
+        ]
+      },
+      "target": "ADDRESS 3"
+    },
+    {
+      "id": "train:followup:0",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing A11 from Arden Supply."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:followup:1",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing B22 from Belvia Works."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "train:followup:2",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing A11 from Arden Supply."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:followup:3",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing A11 from Arden Supply."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:followup:4",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing D44 from Daxel Trade."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:followup:5",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing D44 from Daxel Trade."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 3"
+    },
+    {
+      "id": "train:followup:6",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing B22 from Belvia Works."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:followup:7",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing B22 from Belvia Works."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "train:followup:8",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing A11 from Arden Supply."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:followup:9",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing A11 from Arden Supply."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:followup:10",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing D44 from Daxel Trade."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "train:followup:11",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "We are discussing A11 from Arden Supply."
+          },
+          {
+            "role": "user",
+            "content": "And how many days should we allow for delivery?"
+          }
+        ]
+      },
+      "target": "ADDRESS 3"
+    },
+    {
+      "id": "train:price:0",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Daxel Trade charge for D44?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:1",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Belvia Works charge for B22?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:2",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Belvia Works charge for B22?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:3",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Ceron Parts charge for C33?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:4",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Arden Supply charge for A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:5",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Arden Supply charge for A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:6",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Arden Supply charge for A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:7",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Daxel Trade charge for D44?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:8",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Arden Supply charge for A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:9",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Arden Supply charge for A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:10",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Belvia Works charge for B22?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:price:11",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What price does Arden Supply charge for A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:0",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Arden Supply founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:1",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Arden Supply founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:2",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Belvia Works founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:3",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Belvia Works founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:4",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Daxel Trade founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:5",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Belvia Works founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:6",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Daxel Trade founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:7",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Belvia Works founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:8",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Arden Supply founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:9",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Ceron Parts founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:10",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Arden Supply founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:age:11",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "When was Daxel Trade founded?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:0",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Belvia Works and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:1",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Belvia Works and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:2",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Ceron Parts and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:3",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Arden Supply and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:4",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Daxel Trade and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:5",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Ceron Parts and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:6",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Belvia Works and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:7",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Ceron Parts and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:8",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Ceron Parts and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:9",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Daxel Trade and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:10",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Arden Supply and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_part:11",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What is the delivery lead time for Ceron Parts and Z99?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:0",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver C33?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:1",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:2",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver C33?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:3",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:4",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver B22?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:5",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver D44?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:6",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver C33?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:7",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver C33?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:8",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver B22?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:9",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Arden Supply",
+            "aliases": [
+              "Arden Supply"
+            ],
+            "component": "A11",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver A11?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:10",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver C33?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "train:unknown_name:11",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Belvia Works",
+            "aliases": [
+              "Belvia Works"
+            ],
+            "component": "B22",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ceron Parts",
+            "aliases": [
+              "Ceron Parts"
+            ],
+            "component": "C33",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Daxel Trade",
+            "aliases": [
+              "Daxel Trade"
+            ],
+            "component": "D44",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long does Faron Unknown need to deliver D44?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    }
+  ],
+  "test": [
+    {
+      "id": "test:direct:0",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Tell procurement the waiting period for M62 supplied by Montri Works."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:direct:1",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Tell procurement the waiting period for N73 supplied by Nesvara Parts."
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "test:direct:2",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Tell procurement the waiting period for M62 supplied by Montri Works."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:direct:3",
+      "family": "direct",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Tell procurement the waiting period for M62 supplied by Montri Works."
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:planning:0",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "If Lurena Supply receives our L51 order now, how far ahead can we schedule its arrival?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:planning:1",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "If Montri Works receives our M62 order now, how far ahead can we schedule its arrival?"
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "test:planning:2",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "If Lurena Supply receives our L51 order now, how far ahead can we schedule its arrival?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:planning:3",
+      "family": "planning",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "If Nesvara Parts receives our N73 order now, how far ahead can we schedule its arrival?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:buffer:0",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "For Lurena Supply and L51, would the normal delivery duration plus four extra days be enough?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:buffer:1",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "For Montri Works and M62, would the normal delivery duration plus four extra days be enough?"
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "test:buffer:2",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "For Nesvara Parts and N73, would the normal delivery duration plus four extra days be enough?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:buffer:3",
+      "family": "buffer",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "For Lurena Supply and L51, would the normal delivery duration plus four extra days be enough?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:followup:0",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Our supplier is Nesvara Parts; the component under discussion is N73."
+          },
+          {
+            "role": "user",
+            "content": "How long do they need for that component?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:followup:1",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Our supplier is Montri Works; the component under discussion is M62."
+          },
+          {
+            "role": "user",
+            "content": "How long do they need for that component?"
+          }
+        ]
+      },
+      "target": "ADDRESS 2"
+    },
+    {
+      "id": "test:followup:2",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Our supplier is Ordel Trade; the component under discussion is P84."
+          },
+          {
+            "role": "user",
+            "content": "How long do they need for that component?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:followup:3",
+      "family": "followup",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Our supplier is Lurena Supply; the component under discussion is L51."
+          },
+          {
+            "role": "user",
+            "content": "How long do they need for that component?"
+          }
+        ]
+      },
+      "target": "ADDRESS 1"
+    },
+    {
+      "id": "test:price:0",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Give the unit cost of L51 purchased from Lurena Supply."
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:price:1",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Give the unit cost of M62 purchased from Montri Works."
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:price:2",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Give the unit cost of P84 purchased from Ordel Trade."
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:price:3",
+      "family": "price",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Give the unit cost of M62 purchased from Montri Works."
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:age:0",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How many years has Nesvara Parts been operating?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:age:1",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How many years has Montri Works been operating?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:age:2",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How many years has Ordel Trade been operating?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:age:3",
+      "family": "age",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How many years has Montri Works been operating?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:unknown_part:0",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long must we wait for R98 supplied by Nesvara Parts?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:unknown_part:1",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long must we wait for R98 supplied by Ordel Trade?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:unknown_part:2",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long must we wait for R98 supplied by Ordel Trade?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:unknown_part:3",
+      "family": "unknown_part",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "How long must we wait for R98 supplied by Nesvara Parts?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:unknown_name:0",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What waiting period applies when Pelmin Unknown supplies N73?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:unknown_name:1",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Nesvara Parts",
+            "aliases": [
+              "Nesvara Parts"
+            ],
+            "component": "N73",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What waiting period applies when Pelmin Unknown supplies N73?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:unknown_name:2",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What waiting period applies when Pelmin Unknown supplies P84?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    },
+    {
+      "id": "test:unknown_name:3",
+      "family": "unknown_name",
+      "input": {
+        "catalogue": [
+          {
+            "address": 1,
+            "subject": "Lurena Supply",
+            "aliases": [
+              "Lurena Supply"
+            ],
+            "component": "L51",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 2,
+            "subject": "Ordel Trade",
+            "aliases": [
+              "Ordel Trade"
+            ],
+            "component": "P84",
+            "predicate": "lead_time",
+            "role": "FACT"
+          },
+          {
+            "address": 3,
+            "subject": "Montri Works",
+            "aliases": [
+              "Montri Works"
+            ],
+            "component": "M62",
+            "predicate": "lead_time",
+            "role": "FACT"
+          }
+        ],
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "What waiting period applies when Pelmin Unknown supplies L51?"
+          }
+        ]
+      },
+      "target": "UNKNOWN"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "writes": 100,
+  "healthy_p50_ms": 1.6884840006241575,
+  "healthy_p95_ms": 1.8439749983372167,
+  "degraded_write_ms": 1.2042029993608594,
+  "latest": 100,
+  "replicas": 3,
+  "quorum": 2,
+  "tables": [
+    "np_replicas.np_replica_bench_1380158_0",
+    "np_replicas.np_replica_bench_1380158_1",
+    "np_replicas.np_replica_bench_1380158_2"
+  ]
+}

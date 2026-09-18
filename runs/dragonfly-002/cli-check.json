@@ -1,0 +1,34 @@
+{
+  "status": "committed",
+  "text": "24 days",
+  "input_tokens": 45,
+  "output_tokens": 4,
+  "generation_s": 0.891800400102511,
+  "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+  "generation": 3,
+  "generation_key": "knowledge:1195534e321f92a34d6f52ca70095a209f162f55c41f3e8961af0e07245e4af6",
+  "artifact_key": "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+  "origin_keys": [
+    "origin:a6c8b56f37261c7b8c8e449c492b040bf41c560269c0ecea670fd8593844f694",
+    "origin:ff1ab609d1dd113e68ec534d31ea56de8c63f76929558a909e4b4cda9bc821dc"
+  ],
+  "receipt": {
+    "answer_id": "answer:366abfd0f9f1b06e2e900fc047da8b78514b966b3690d04322fda941f3362ef3",
+    "text": "24 days",
+    "dependencies": [
+      "lora:5d06b2aa493a77c029b36c6d517a979710b87534b27ff81f0860c293f387fc9a",
+      "router:33744bb02d8d9bb989efbc5ce1dab18421c218dfba1f41eebdafa5dc6b0e2d6a",
+      "vector:b17057b6ef1e76f8e9208f97afdde20541d5ab2204eaf2c3b9a9293ed43d33bd"
+    ]
+  },
+  "query_semantics": {
+    "subject": "supplier:muller",
+    "component": "x12",
+    "predicate": "lead_time",
+    "role": "FACT",
+    "intent": "supplier_metric_lookup",
+    "tags": []
+  },
+  "routing_mode": "dragonfly-pod-address:v1",
+  "representation_key": "router:33744bb02d8d9bb989efbc5ce1dab18421c218dfba1f41eebdafa5dc6b0e2d6a"
+}

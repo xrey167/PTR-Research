@@ -1,0 +1,54 @@
+{
+  "method": "Codex content review, not independent human rating. Require faithful entity, requested answer and no factual contradiction. Extraneous Yes/No on duration answers recorded as discourse defects rather than false factual values.",
+  "reader_report_sha256": "7d81a9426dde95a3baabc77def9fe5f6109f4a1cdaa8bcc0468a6414672ce28c",
+  "rows": [
+    {
+      "id": "direct",
+      "passed": true,
+      "reason": "Correct duration 27 and part X12; extraneous Yes is stylistically poor."
+    },
+    {
+      "id": "planning",
+      "passed": false,
+      "reason": "Unsupported production claim and arrival by order date contradict the future arrival implied by lead time."
+    },
+    {
+      "id": "deadline",
+      "passed": false,
+      "reason": "Correct No but false reasoning: says 20 is longer than 12 while fact is 27."
+    },
+    {
+      "id": "buffer",
+      "passed": false,
+      "reason": "Changes X12 to X1 and switches language; numerical 29 alone is insufficient."
+    },
+    {
+      "id": "followup_buffer",
+      "passed": true,
+      "reason": "Correct 27+2=29 and explanation; extraneous No is a discourse defect."
+    },
+    {
+      "id": "followup_reference",
+      "passed": true,
+      "reason": "Correct duration 27; extraneous Yes is a discourse defect."
+    },
+    {
+      "id": "german_followup",
+      "passed": false,
+      "reason": "Says No but states 3 weeks until delivery instead of 27 days; inconsistent/insufficient explanation."
+    },
+    {
+      "id": "missing_part",
+      "passed": true,
+      "reason": "Actual planner UNKNOWN; no unsupported fact used."
+    },
+    {
+      "id": "unsupported_metric",
+      "passed": true,
+      "reason": "Actual planner UNKNOWN; no price inferred."
+    }
+  ],
+  "passed": 5,
+  "total": 9,
+  "full_research_goal_complete": false
+}

@@ -1,0 +1,55 @@
+{
+  "audit_passed": true,
+  "graph_nodes_verified": 112,
+  "reader_sequences": 7,
+  "full_logit_pairs_equal": 7,
+  "controls": {
+    "planner_training_blocks_commit": true,
+    "planner_revocation_preserves_other_payloads": true,
+    "request_blocks_commit": true,
+    "request_revocation_selective": true,
+    "link_blocks_commit": true,
+    "fact_blocks_commit": true
+  },
+  "answers": [
+    {
+      "id": "direct",
+      "text": "No, the delivery lead time is not provided for Mueller GmbH or X1对手。Fact: Mueller GmbH (also known as Müller GmbH) has a delivery lead time of 27 days. X1 is not recognized."
+    },
+    {
+      "id": "planning",
+      "text": "Yes, the production plan should have a duration of 27 days for the arrival of X11 from Mueller GmbH."
+    },
+    {
+      "id": "deadline",
+      "text": "No, the delivery lead time is 27 days, not 20 days. Therefore, they cannot get the component (X11) within 20 days."
+    },
+    {
+      "id": "buffer",
+      "text": "The delivery lead time for Mueller GmbH X1 enemy is 27 days. A two-day buffer would add 2 more days, making the total delivery lead time 29 days. Yes, because adding a two-day buffer to the given 27-day lead time results in a total of 29 days"
+    },
+    {
+      "id": "followup_buffer",
+      "text": "Yes, with a buffer of 2 extra days, Mueller GmbH would need a total of 29 days for X12."
+    },
+    {
+      "id": "followup_reference",
+      "text": "X11 order from Mueller GmbH needs 27 days for delivery. Yes."
+    },
+    {
+      "id": "german_followup",
+      "text": "Use the information provided to answer the question. The latest user question was: \"Reichen drei Wochen bis zur Lieferung?\" with a follow-up: \"Ja/Nein?\" with a brief reason for the yes/no question being: \"Es geht um X12 von Müller GmbH.\""
+    },
+    {
+      "id": "missing_part",
+      "text": "UNKNOWN"
+    },
+    {
+      "id": "unsupported_metric",
+      "text": "UNKNOWN"
+    }
+  ],
+  "answer_quality_gate_evaluated": false,
+  "full_research_goal_complete": false,
+  "limits": "Stored evidence audit and local clone revocations; no independent model replay or answer-semantic scoring. Local imported planner snapshot has no future source synchronization."
+}

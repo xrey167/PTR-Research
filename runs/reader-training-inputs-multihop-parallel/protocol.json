@@ -1,0 +1,66 @@
+{
+  "status": "prepared_not_trained_multihop_parallel",
+  "full_research_goal_complete": false,
+  "rows": {
+    "train": 400,
+    "dev": 400,
+    "test": 400
+  },
+  "input_hashes": {
+    "config.json": "0add08e5a4819536466ab36c3a381e4792f993794fa0560a45333ad104a726cc",
+    "dev.json": "34134cba5e29ee834ad42ccd1280af08829664e562e9aeb71217fb1700c845b5",
+    "model-manifest.json": "69d8d1ae7281e71e601da8d792bb609e74da2c7cd7ddc9eaf4629a315a95bef5",
+    "test.json": "6007ca58e80ae20d56dde06ee9ca7c39ca30775593903d92684abfe58cc169d9",
+    "train.json": "14d2f19678f7545542e9ddea235e6a6e5ca338a7475ce6e0eb68cb7284483561"
+  },
+  "source_hashes": {
+    "research/reader_training_data.py": "2f284d97f4f881cca94408da557ac2f310bdb70f016e9eb6b0cdd709d33aa417",
+    "research/progress_json.py": "bf47bea7b578eb85323000be77be1b459bb4da75be2e2922128ebf879fb22a4c",
+    "research/reader_prompt.py": "fa787553139cd3be46ff7a7b06acda4c515c9a79cf66c21c32a5300a5375f282",
+    "research/prefix_capsule.py": "93ef63c16879c4de55bb5cc6dc1c36c33510ee9abdb814d1e947a460d2ce3dc5",
+    "research/reader_identity.py": "4d86dde5f51573d9c8fb67558aaa34a68457c34b8f6e9962b417da361a4b6feb",
+    "research/reader_training.py": "43a099ad88119ef521f9955700d22b3c9a28f0922beb27f0532b148499352109",
+    "research/prepare_reader_training.py": "6ade18d32a64b09e67be66ecfb8cc6dc17a983f024ddc0188e1ad7141525ec5c",
+    "neural_pods/registry.py": "2c83b8c1a17d0bba60d47f83a8b1c893b001a2b61e1cabcf0dc9409a9274a955"
+  },
+  "model_path": "/home/xrey/neural-pods/models/qwen3b",
+  "model_repo": "Qwen/Qwen2.5-3B-Instruct",
+  "model_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "model_weight_files_reverified_in_this_preparation": false,
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.17.0",
+    "peft": "0.20.0"
+  },
+  "max_sequence_tokens": 512,
+  "evaluation_max_new_tokens": 64,
+  "optimizer_updates_per_epoch": 25,
+  "optimizer_updates": 50,
+  "warmup_updates": 3,
+  "last_window_microbatches": 4,
+  "selection_policy": "Two fixed epochs for this candidate; development used for diagnosis, final test not for checkpoint selection",
+  "evaluation_policy": "Save real unconstrained outputs; exact target matching is a format metric, not a complete semantic-quality metric",
+  "limitations": "Synthetic procurement data. Training CLI, actual-device memory preflight, model training and integrated trained-reader evaluation remain to be executed.",
+  "examples_per_tool": {
+    "ann_search": 50,
+    "bm25_search": 50,
+    "metadata_filter": 50,
+    "graph_neighbors": 50,
+    "registry_snapshot": 50,
+    "calculator": 50,
+    "workspace_search": 50
+  },
+  "tool_count": 7,
+  "purpose": "Variable-hop reasoning and parallel search planning curriculum",
+  "examples_per_capability": {
+    "multihop_reasoning": 50,
+    "multihop_tool_plan": 50,
+    "parallel_fanout": 50,
+    "hybrid_parallel": 50,
+    "parallel_safety": 50,
+    "hop_validation": 50,
+    "latency_reward": 50,
+    "multihop_negative": 50
+  },
+  "capability_count": 8
+}

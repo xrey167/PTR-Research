@@ -1,0 +1,230 @@
+{
+  "status": "completed",
+  "stage": "capsules",
+  "rows": [
+    {
+      "question": "Current delivery lead time for supplier Müller?",
+      "text": "27",
+      "expected": "27",
+      "correct": true,
+      "tokens": [
+        17,
+        22,
+        151645
+      ],
+      "eos": true,
+      "proof_key": "answer:5703757f23a8a8d9f01814688df2a34317d09bf74836e4cb18fd3673ce432c1c",
+      "reader_s": 3.440424600150436,
+      "receipt": {
+        "answer_id": "answer:4030c8b31e657c1c9dfcb43fb6618070b416827b6ad10fbe5fd35b4f157cffcd",
+        "text": "27",
+        "dependencies": [
+          "answer:5703757f23a8a8d9f01814688df2a34317d09bf74836e4cb18fd3673ce432c1c",
+          "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d",
+          "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "text:06bb1d99e38b308af4bdc39da25561e4eb8c275508d20774edc9269a19ef9958",
+          "vector:12f6ca85c695c140f9fa817b5a23ee3584517e4cd3b026b23287a202fbd99395"
+        ]
+      },
+      "fresh_reference_equal": true,
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "artifact_key": "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d"
+    },
+    {
+      "question": "X12 procurement delay from Müller GmbH?",
+      "text": "27",
+      "expected": "27",
+      "correct": true,
+      "tokens": [
+        17,
+        22,
+        151645
+      ],
+      "eos": true,
+      "proof_key": "answer:57387499f935b28d83d98370bb1d4cfbe5c01949086e4a6972922326b3256b84",
+      "reader_s": 1.1667073999997228,
+      "receipt": {
+        "answer_id": "answer:6e55174ae7b6690289475a13420e51dfa435ff7082baf194967d7e280766240f",
+        "text": "27",
+        "dependencies": [
+          "answer:57387499f935b28d83d98370bb1d4cfbe5c01949086e4a6972922326b3256b84",
+          "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d",
+          "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "text:06bb1d99e38b308af4bdc39da25561e4eb8c275508d20774edc9269a19ef9958",
+          "vector:12f6ca85c695c140f9fa817b5a23ee3584517e4cd3b026b23287a202fbd99395"
+        ]
+      },
+      "fresh_reference_equal": true,
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "artifact_key": "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d"
+    },
+    {
+      "question": "How long does Mueller need for X12?",
+      "text": "27",
+      "expected": "27",
+      "correct": true,
+      "tokens": [
+        17,
+        22,
+        151645
+      ],
+      "eos": true,
+      "proof_key": "answer:5a66e68dd0028c34268037510f91485acd02e3a87a7a1721f7e8e3b98906aebd",
+      "reader_s": 1.0980322000104934,
+      "receipt": {
+        "answer_id": "answer:0d27b4a1b73f1fd8372f91b7c5e076039ccc061f923595326dafacaf659d04ad",
+        "text": "27",
+        "dependencies": [
+          "answer:5a66e68dd0028c34268037510f91485acd02e3a87a7a1721f7e8e3b98906aebd",
+          "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d",
+          "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "text:06bb1d99e38b308af4bdc39da25561e4eb8c275508d20774edc9269a19ef9958",
+          "vector:12f6ca85c695c140f9fa817b5a23ee3584517e4cd3b026b23287a202fbd99395"
+        ]
+      },
+      "fresh_reference_equal": true,
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "artifact_key": "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d"
+    },
+    {
+      "question": "Wie lange braucht Muller GmbH fuer X12?",
+      "text": "Fact: Muller GmbH has a delivery lead time of",
+      "expected": "27",
+      "correct": false,
+      "tokens": [
+        17417,
+        25,
+        51527,
+        261,
+        31477,
+        702,
+        264,
+        9691,
+        2990,
+        882,
+        315,
+        220
+      ],
+      "eos": false,
+      "proof_key": "answer:1a2bd83b1a3d814b52ba47238118d9ce4b237ea4290d0a9606d4eadf44a24456",
+      "reader_s": 3.451320599997416,
+      "receipt": {
+        "answer_id": "answer:754d38accb693ca4a4bf4cd5a6b437c6dceb96ed2bc825f78a46a88ec97d29f7",
+        "text": "Fact: Muller GmbH has a delivery lead time of",
+        "dependencies": [
+          "answer:1a2bd83b1a3d814b52ba47238118d9ce4b237ea4290d0a9606d4eadf44a24456",
+          "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d",
+          "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "text:06bb1d99e38b308af4bdc39da25561e4eb8c275508d20774edc9269a19ef9958",
+          "vector:12f6ca85c695c140f9fa817b5a23ee3584517e4cd3b026b23287a202fbd99395"
+        ]
+      },
+      "fresh_reference_equal": true,
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "artifact_key": "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d"
+    },
+    {
+      "question": "Welche Lieferzeit hat Müller fuer X12?",
+      "text": "27",
+      "expected": "27",
+      "correct": true,
+      "tokens": [
+        17,
+        22,
+        151645
+      ],
+      "eos": true,
+      "proof_key": "answer:63a4eb156fbea28fdc4a82903ebb6714a229b76642c7157fb4ffd1098068bbb5",
+      "reader_s": 1.0443866001442075,
+      "receipt": {
+        "answer_id": "answer:62adbd6ee7141e0cf1e3944e628edd237a32d25f25e461f82244fcce026ba4af",
+        "text": "27",
+        "dependencies": [
+          "answer:63a4eb156fbea28fdc4a82903ebb6714a229b76642c7157fb4ffd1098068bbb5",
+          "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d",
+          "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "text:06bb1d99e38b308af4bdc39da25561e4eb8c275508d20774edc9269a19ef9958",
+          "vector:12f6ca85c695c140f9fa817b5a23ee3584517e4cd3b026b23287a202fbd99395"
+        ]
+      },
+      "fresh_reference_equal": true,
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "artifact_key": "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d"
+    },
+    {
+      "question": "What is the delivery lead time for Muller?",
+      "text": "27",
+      "expected": "27",
+      "correct": true,
+      "tokens": [
+        17,
+        22,
+        151645
+      ],
+      "eos": true,
+      "proof_key": "answer:16696cded9f53497b79f4b04ab178f7e6290571ee6f04e7f02e33a437f41e40a",
+      "reader_s": 0.928724099881947,
+      "receipt": {
+        "answer_id": "answer:2e46d57d173f52b8f3ca3fdf6325897d0953b7038c7b81829c32754c35e5db5c",
+        "text": "27",
+        "dependencies": [
+          "answer:16696cded9f53497b79f4b04ab178f7e6290571ee6f04e7f02e33a437f41e40a",
+          "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d",
+          "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "text:06bb1d99e38b308af4bdc39da25561e4eb8c275508d20774edc9269a19ef9958",
+          "vector:12f6ca85c695c140f9fa817b5a23ee3584517e4cd3b026b23287a202fbd99395"
+        ]
+      },
+      "fresh_reference_equal": true,
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "artifact_key": "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d"
+    }
+  ],
+  "fictional_data": true,
+  "elapsed_s": 154.37192000006326,
+  "quantization": {
+    "schema": "torch-layerwise-dynamic-int8:v1",
+    "linear_layers": 253,
+    "quantized_weight_elements": 3085697024,
+    "embedding_storage": "bfloat16",
+    "activations": "float32",
+    "engine": "onednn"
+  },
+  "reader_base_sha256": "5ff3ddc40a1c36ec07b0f535a3b281f319ebcf3613f6f1ec9348d2a6af30db5b",
+  "capsule_artifacts": {
+    "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8": "cache:ff3f152bfc8f8e88722b46a3ad3d9f8d300bc48aff2b6c67616679066d39d56d"
+  },
+  "controls": {
+    "proof_blocks_commit": true,
+    "proof_revocation_is_selective": true,
+    "source_blocks_commit": true,
+    "update_blocks_commit": true
+  },
+  "base_unchanged": true,
+  "lookup_regression_passed": false,
+  "full_research_goal_complete": false
+}

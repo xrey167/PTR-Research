@@ -1,0 +1,94 @@
+[
+  {
+    "id": "dev:three-hop:E75:en",
+    "task": "multi_hop_total",
+    "pod_type": "reasoning",
+    "language": "en",
+    "evidence": {
+      "facts": [
+        "Supplier transport: 35 days.",
+        "Customs: 6 days.",
+        "Warehouse handling: 3 days."
+      ]
+    },
+    "question": "Compute the final arrival time for E75 from Evrana Components: supplier transport is 35 days, customs takes 6 days, and warehouse handling takes 3 days.",
+    "history": [],
+    "target": "44 days",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 44,
+      "answer": 44,
+      "hop_count": 3
+    }
+  },
+  {
+    "id": "dev:three-hop:E75:de",
+    "task": "multi_hop_total",
+    "pod_type": "reasoning",
+    "language": "de",
+    "evidence": {
+      "facts": [
+        "Lieferantentransport: 35 Tage.",
+        "Zoll: 6 Tage.",
+        "Lagerbearbeitung: 3 Tage."
+      ]
+    },
+    "question": "Berechne die endgültige Ankunftszeit für E75 von Evrana Components: Lieferant 35 Tage, Zoll 6 Tage und Lager 3 Tage.",
+    "history": [],
+    "target": "44 Tage",
+    "assessment": {
+      "supplier": "Evrana Components",
+      "component": "E75",
+      "value": 44,
+      "answer": 44,
+      "hop_count": 3
+    }
+  },
+  {
+    "id": "dev:three-hop:F86:en",
+    "task": "multi_hop_total",
+    "pod_type": "reasoning",
+    "language": "en",
+    "evidence": {
+      "facts": [
+        "Supplier transport: 39 days.",
+        "Customs: 1 days.",
+        "Warehouse handling: 5 days."
+      ]
+    },
+    "question": "Compute the final arrival time for F86 from Faldor Supply: supplier transport is 39 days, customs takes 1 days, and warehouse handling takes 5 days.",
+    "history": [],
+    "target": "45 days",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 45,
+      "answer": 45,
+      "hop_count": 3
+    }
+  },
+  {
+    "id": "dev:three-hop:F86:de",
+    "task": "multi_hop_total",
+    "pod_type": "reasoning",
+    "language": "de",
+    "evidence": {
+      "facts": [
+        "Lieferantentransport: 39 Tage.",
+        "Zoll: 1 Tage.",
+        "Lagerbearbeitung: 5 Tage."
+      ]
+    },
+    "question": "Berechne die endgültige Ankunftszeit für F86 von Faldor Supply: Lieferant 39 Tage, Zoll 1 Tage und Lager 5 Tage.",
+    "history": [],
+    "target": "45 Tage",
+    "assessment": {
+      "supplier": "Faldor Supply",
+      "component": "F86",
+      "value": 45,
+      "answer": 45,
+      "hop_count": 3
+    }
+  }
+]

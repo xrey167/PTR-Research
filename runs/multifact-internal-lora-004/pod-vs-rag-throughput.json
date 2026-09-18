@@ -1,0 +1,26 @@
+{
+  "schema": "qwen-pod-vs-rag-throughput:v1",
+  "device": "NVIDIA GeForce RTX 3090",
+  "batch_size": 4,
+  "runs": 10,
+  "max_new_tokens": 16,
+  "pod": {
+    "input_tokens": 61,
+    "elapsed_s": 1.9086446950095706,
+    "batch_latency_ms": 190.86446950095706,
+    "generated_tokens": 40,
+    "tokens_per_s": 20.957279322120993,
+    "sequences_per_s": 20.957279322120993,
+    "sample_output": "system\nAnswer only the exact delivery duration in days.\nuser\nActivated Pod type=context; knowledge_key=supplier:muller:x12:lead_time; generation=g8. What is the supplier lead time for Müller GmbH X12? Answer briefly.\nassistant\n18 days"
+  },
+  "rag": {
+    "input_tokens": 303,
+    "elapsed_s": 4.125038901998778,
+    "batch_latency_ms": 412.5038901998778,
+    "generated_tokens": 40,
+    "tokens_per_s": 9.696878247770728,
+    "sequences_per_s": 9.696878247770728,
+    "sample_output": "system\nAnswer only the exact delivery duration in days.\nuser\nUser question: What is the supplier lead time for Müller GmbH X12? Answer briefly.\nRetrieved documents:\nSupplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days. Supplier Müller GmbH, component X12, historical procurement evidence: lead time is 18 days.\nSynthesize the answer briefly.\nassistant\n18 days"
+  },
+  "interpretation": "same Qwen3B LoRA and GPU; Pod path uses compact typed activation metadata, RAG path uses repeated retrieved evidence; quality is not inferred from latency"
+}

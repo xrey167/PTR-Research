@@ -1,0 +1,131 @@
+{
+  "source": "runs\\reader-training-inputs-pod-model-curriculum",
+  "dataset_version": "podmodel_v1",
+  "views": {
+    "FunctionGemma-270M": {
+      "path": "runs\\pod-training-views\\functiongemma-270m",
+      "rows": {
+        "train": 50,
+        "dev": 50,
+        "test": 50
+      },
+      "objective": "tool_call_sft",
+      "trainer": "causal_sft",
+      "needs": [
+        "schema_validator"
+      ]
+    },
+    "LoftQ-QAT": {
+      "path": "runs\\pod-training-views\\loftq-qat",
+      "rows": {
+        "train": 50,
+        "dev": 50,
+        "test": 50
+      },
+      "objective": "quantization_recipe",
+      "trainer": "quantization",
+      "needs": [
+        "calibration_split",
+        "unseen_holdout"
+      ]
+    },
+    "MoE-experts": {
+      "path": "runs\\pod-training-views\\moe-experts",
+      "rows": {
+        "train": 50,
+        "dev": 50,
+        "test": 50
+      },
+      "objective": "expert_routing",
+      "trainer": "router_sft_or_rl",
+      "needs": [
+        "capacity_metrics",
+        "load_balance"
+      ]
+    },
+    "PaddleOCR-1B": {
+      "path": "runs\\pod-training-views\\paddleocr-1b",
+      "rows": {
+        "train": 50,
+        "dev": 50,
+        "test": 50
+      },
+      "objective": "vision_ocr",
+      "trainer": "vision_sft",
+      "needs": [
+        "image_or_page_payload",
+        "redaction_validator"
+      ]
+    },
+    "Qwen3-4B-SFT": {
+      "path": "runs\\pod-training-views\\qwen3-4b-sft",
+      "rows": {
+        "train": 50,
+        "dev": 50,
+        "test": 50
+      },
+      "objective": "grounded_reader_sft",
+      "trainer": "causal_sft",
+      "needs": [
+        "chat_conversion",
+        "citation_validator"
+      ]
+    },
+    "Qwen3-GRPO": {
+      "path": "runs\\pod-training-views\\qwen3-grpo",
+      "rows": {
+        "train": 100,
+        "dev": 100,
+        "test": 100
+      },
+      "objective": "parallel_reasoning_rl",
+      "trainer": "grpo",
+      "needs": [
+        "rollout_server",
+        "reward_harness",
+        "anti_hacking"
+      ]
+    },
+    "Qwen3-SFT": {
+      "path": "runs\\pod-training-views\\qwen3-sft",
+      "rows": {
+        "train": 100,
+        "dev": 100,
+        "test": 100
+      },
+      "objective": "link_and_multihop_sft",
+      "trainer": "causal_sft",
+      "needs": [
+        "chat_conversion",
+        "provenance_validator"
+      ]
+    },
+    "Zephyr-DPO": {
+      "path": "runs\\pod-training-views\\zephyr-dpo",
+      "rows": {
+        "train": 50,
+        "dev": 50,
+        "test": 50
+      },
+      "objective": "preference_optimization",
+      "trainer": "dpo_or_orpo",
+      "needs": [
+        "chosen_rejected_pairs"
+      ]
+    },
+    "all": {
+      "path": "runs\\pod-training-views\\all",
+      "rows": {
+        "train": 100,
+        "dev": 100,
+        "test": 100
+      },
+      "objective": "lifecycle_evaluation",
+      "trainer": "symbolic_gate_plus_eval",
+      "needs": [
+        "frozen_protocol",
+        "manifest_validator"
+      ]
+    }
+  }
+}

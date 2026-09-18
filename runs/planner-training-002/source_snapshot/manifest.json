@@ -1,0 +1,29 @@
+{
+  "timing": "During baseline; runtime files unchanged since launch.",
+  "files": [
+    {
+      "path": "research/train_dialogue_planner.py",
+      "sha256": "d48e7187d4c64abc5d641bb2598731e6e9fe6995e204c7e6ce6a47cf25c41f53"
+    },
+    {
+      "path": "research/planner_training_data.py",
+      "sha256": "ff0f023ef6af8a66cdaff4124273e4eef2777eeb4ce2ae945e22b3a369f35b57"
+    },
+    {
+      "path": "research/dialogue_access.py",
+      "sha256": "43295e1e34b20f2761eb1d7d11a8b37507538bca0013b6ab47bca5e51551e642"
+    },
+    {
+      "path": "neural_pods/model.py",
+      "sha256": "e235c1d566eade434d428b59dadcceca03d7db132fe0503123df7cc6afa54e66"
+    },
+    {
+      "path": "neural_pods/registry.py",
+      "sha256": "2c83b8c1a17d0bba60d47f83a8b1c893b001a2b61e1cabcf0dc9409a9274a955"
+    },
+    {
+      "path": "tests/test_planner_training_data.py",
+      "sha256": "ef096165f07cf7c9649fb8fb36eb79c0c683b81e9f24c403e555b981dda49595"
+    }
+  ]
+}

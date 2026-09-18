@@ -1,0 +1,44 @@
+{
+  "status": "prepared_not_trained",
+  "full_research_goal_complete": false,
+  "rows": {
+    "train": 372,
+    "dev": 96,
+    "test": 96
+  },
+  "input_hashes": {
+    "config.json": "0add08e5a4819536466ab36c3a381e4792f993794fa0560a45333ad104a726cc",
+    "dev.json": "566ad7febff7028f58c7a6a0466ecd62b8ded250abf44407b2cff34b650d1a9d",
+    "model-manifest.json": "69d8d1ae7281e71e601da8d792bb609e74da2c7cd7ddc9eaf4629a315a95bef5",
+    "test.json": "4a7ec1096c96d4c0f52c2c4a0ce822df2b222a5c25118ca84f2468adcd866c50",
+    "train.json": "fa074753c90c1a64c0835019e0c9c8a78a4bf5ef2192b92785d32bf3256f5b24"
+  },
+  "source_hashes": {
+    "neural_pods/registry.py": "b4ca229457d75c0248f598be0cee33047361d32f76e7036e516c59c4788c1d07",
+    "research/prefix_capsule.py": "93ef63c16879c4de55bb5cc6dc1c36c33510ee9abdb814d1e947a460d2ce3dc5",
+    "research/prepare_reader_training.py": "6ade18d32a64b09e67be66ecfb8cc6dc17a983f024ddc0188e1ad7141525ec5c",
+    "research/progress_json.py": "bf47bea7b578eb85323000be77be1b459bb4da75be2e2922128ebf879fb22a4c",
+    "research/reader_identity.py": "4d86dde5f51573d9c8fb67558aaa34a68457c34b8f6e9962b417da361a4b6feb",
+    "research/reader_prompt.py": "fa787553139cd3be46ff7a7b06acda4c515c9a79cf66c21c32a5300a5375f282",
+    "research/reader_training.py": "43a099ad88119ef521f9955700d22b3c9a28f0922beb27f0532b148499352109",
+    "research/reader_training_data.py": "2f284d97f4f881cca94408da557ac2f310bdb70f016e9eb6b0cdd709d33aa417"
+  },
+  "model_path": "C:\\Users\\ReyDa\\neural-pods\\models\\qwen3b",
+  "model_repo": "Qwen/Qwen2.5-3B-Instruct",
+  "model_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "model_weight_files_reverified_in_this_preparation": false,
+  "packages": {
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "peft": "0.20.0"
+  },
+  "max_sequence_tokens": 512,
+  "evaluation_max_new_tokens": 64,
+  "optimizer_updates_per_epoch": 24,
+  "optimizer_updates": 48,
+  "warmup_updates": 3,
+  "last_window_microbatches": 4,
+  "selection_policy": "Two fixed epochs for this candidate; development used for diagnosis, final test not for checkpoint selection",
+  "evaluation_policy": "Save real unconstrained outputs; exact target matching is a format metric, not a complete semantic-quality metric",
+  "limitations": "Synthetic procurement data. Training CLI, actual-device memory preflight, model training and integrated trained-reader evaluation remain to be executed."
+}

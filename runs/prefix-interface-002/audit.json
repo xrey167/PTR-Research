@@ -1,0 +1,23 @@
+{
+  "audit_passed": true,
+  "sequences": 96,
+  "exact_logits_and_tokens": 24,
+  "audit_schema": "prefix-evidence:v2",
+  "token_text_greedy_eos_verified": 96,
+  "tokenizer_files": {
+    "generation_config.json": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+    "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "correct": {
+    "fresh_text_prefix": 12,
+    "saved_prefix": 12,
+    "wrong_value_prefix": 12,
+    "no_fact": 0
+  },
+  "wrong_state_changes": 16,
+  "scientific_gate_passed": false,
+  "limitation": "Recounts saved evidence; lifecycle and weight hashes are runner assertions, not independently replayed here."
+}

@@ -1,0 +1,13 @@
+{
+  "host": "192.168.1.223",
+  "count": 128,
+  "workers": 16,
+  "requests_per_s": 46.2977,
+  "tokens_per_s": 370.3817,
+  "ok": 128,
+  "errors": 0,
+  "p50_ms": 316.21,
+  "p95_ms": 485.93,
+  "health": {"gpu0": true, "gpu1": true},
+  "per_replica": {"gpu0": 64, "gpu1": 64}
+}

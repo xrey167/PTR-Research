@@ -1,0 +1,64 @@
+{
+  "schema": "three-hop-regression:v1",
+  "adapter": "runs/reader-lora-mixed-multihop-001",
+  "two-hop": {
+    "correct": 4,
+    "total": 4,
+    "rows": [
+      {
+        "id": "test:multihop:G17:en",
+        "answer": "59 days",
+        "target": "59 days",
+        "exact": true
+      },
+      {
+        "id": "test:multihop:G17:de",
+        "answer": "59 Tage",
+        "target": "59 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:multihop:H28:en",
+        "answer": "59 days",
+        "target": "59 days",
+        "exact": true
+      },
+      {
+        "id": "test:multihop:H28:de",
+        "answer": "59 Tage",
+        "target": "59 Tage",
+        "exact": true
+      }
+    ]
+  },
+  "three-hop": {
+    "correct": 4,
+    "total": 4,
+    "rows": [
+      {
+        "id": "test:three-hop:G17:en",
+        "answer": "67 days",
+        "target": "67 days",
+        "exact": true
+      },
+      {
+        "id": "test:three-hop:G17:de",
+        "answer": "67 Tage",
+        "target": "67 Tage",
+        "exact": true
+      },
+      {
+        "id": "test:three-hop:H28:en",
+        "answer": "68 days",
+        "target": "68 days",
+        "exact": true
+      },
+      {
+        "id": "test:three-hop:H28:de",
+        "answer": "68 Tage",
+        "target": "68 Tage",
+        "exact": true
+      }
+    ]
+  }
+}

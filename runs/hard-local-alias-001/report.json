@@ -1,0 +1,8 @@
+{
+  "schema": "hard-local-alias-resolution:v1",
+  "queries": 50,
+  "plain_recall_at_3": 0.0,
+  "alias_resolved_recall_at_3": 1.0,
+  "aliases": 10,
+  "resolver": "exact longest-match advisory rewrite"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "trained_and_evaluated_full_load_ngu",
+  "parent": "topic-lora-gpu-generation2-001",
+  "train_rows": 404,
+  "test_rows": 132,
+  "optimizer_updates": 52,
+  "micro_batch_size": 2,
+  "gradient_accumulation_steps": 8,
+  "effective_batch_size": 16,
+  "training_elapsed_s": 185.6145661430055,
+  "evaluation_elapsed_s": 83.69452887799707,
+  "exact_target_matches": 111,
+  "guarded_matches": 92,
+  "cuda_peak_allocated_bytes": 8157132288,
+  "cuda_peak_allocated_gib": 7.596921443939209,
+  "adapter_sha256": "950703afd8a44c7bd332033add8764342bb26976a27d713c7bebc68c56a1b9c7",
+  "method": "NGU-style oversampling of generation2 hard cases (three retries); larger microbatch for higher occupancy",
+  "quality_note": "Format/guard metrics only; no claim of general intelligence or fair external benchmark."
+}

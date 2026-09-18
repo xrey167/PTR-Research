@@ -1,0 +1,37 @@
+{
+  "schema": "local-stack-benchmark:v1",
+  "status": "completed",
+  "host": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.15",
+    "cpu": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel"
+  },
+  "corpus": 10000,
+  "sequential_searches": 100,
+  "parallel_searches": 800,
+  "parallel_workers": 8,
+  "search_latency_s": {
+    "p50": 0.05381749989464879,
+    "p95": 0.10573350009508431,
+    "max": 0.13529929984360933
+  },
+  "parallel_elapsed_s": 51.472145000007,
+  "parallel_qps": 15.542387052256927,
+  "episodes": 50,
+  "episode_recall": 1.0,
+  "episode_mrr": 1.0,
+  "episode_latency_s": {
+    "p50": 0.27531910000834614,
+    "p95": 0.3122781999409199
+  },
+  "manifest_validations": 1000,
+  "manifest_validation_s": {
+    "p50": 5.340017378330231e-05,
+    "p95": 6.54999166727066e-05,
+    "max": 0.0004431998822838068
+  },
+  "elapsed_total_s": 87.01878820010461,
+  "limitations": [
+    "exact vector scan; synthetic 10000-row corpus; local SQLite only; no ROCm/vLLM server"
+  ]
+}

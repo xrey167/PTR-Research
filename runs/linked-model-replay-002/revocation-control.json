@@ -1,0 +1,7 @@
+{
+  "origin": "origin:7bee9717ca440ef2eb5f121a20fe58dba1e94b74afa5e42984850d2fac995331",
+  "revoked_count": 19,
+  "answer_id": "answer:14c9a4a3441836e3a48800e6b784f0dc098170776cb436c44e056ab38ce2b33a",
+  "receipt_blocked": true,
+  "scope": "copied replay registry; selective origin revocation"
+}

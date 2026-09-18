@@ -1,0 +1,109 @@
+{
+  "schema": "three-hop-qwen-lora-training:v1",
+  "base": "models/qwen3b",
+  "init_adapter": "runs/reader-lora-multihop-004/adapter",
+  "epochs": 2,
+  "rows": 8,
+  "optimizer_steps": 16,
+  "steps": [
+    {
+      "epoch": 1,
+      "row": 1,
+      "loss": 0.010341859422624111,
+      "elapsed_s": 0.5298373000114225
+    },
+    {
+      "epoch": 1,
+      "row": 2,
+      "loss": 0.0037511170376092196,
+      "elapsed_s": 0.6875914440024644
+    },
+    {
+      "epoch": 1,
+      "row": 3,
+      "loss": 0.00038019943167455494,
+      "elapsed_s": 0.8440672040014761
+    },
+    {
+      "epoch": 1,
+      "row": 4,
+      "loss": 0.0009339454118162394,
+      "elapsed_s": 1.002587210998172
+    },
+    {
+      "epoch": 1,
+      "row": 5,
+      "loss": 0.00028844852931797504,
+      "elapsed_s": 1.1583907890017144
+    },
+    {
+      "epoch": 1,
+      "row": 6,
+      "loss": 0.00019639151287265122,
+      "elapsed_s": 1.318798271997366
+    },
+    {
+      "epoch": 1,
+      "row": 7,
+      "loss": 1.5943175554275513,
+      "elapsed_s": 1.4812618410069263
+    },
+    {
+      "epoch": 1,
+      "row": 8,
+      "loss": 1.3761643171310425,
+      "elapsed_s": 1.6423454260075232
+    },
+    {
+      "epoch": 2,
+      "row": 1,
+      "loss": 0.0008697299635969102,
+      "elapsed_s": 1.800241871009348
+    },
+    {
+      "epoch": 2,
+      "row": 2,
+      "loss": 0.00024216092424467206,
+      "elapsed_s": 1.960801054010517
+    },
+    {
+      "epoch": 2,
+      "row": 3,
+      "loss": 0.00016183967818506062,
+      "elapsed_s": 2.11700545300846
+    },
+    {
+      "epoch": 2,
+      "row": 4,
+      "loss": 0.0003210750001017004,
+      "elapsed_s": 2.2767800240108045
+    },
+    {
+      "epoch": 2,
+      "row": 5,
+      "loss": 0.1896887570619583,
+      "elapsed_s": 2.4360348230111413
+    },
+    {
+      "epoch": 2,
+      "row": 6,
+      "loss": 0.0004133647307753563,
+      "elapsed_s": 2.595716023002751
+    },
+    {
+      "epoch": 2,
+      "row": 7,
+      "loss": 0.01401998195797205,
+      "elapsed_s": 2.7545571710070362
+    },
+    {
+      "epoch": 2,
+      "row": 8,
+      "loss": 0.01998685672879219,
+      "elapsed_s": 2.9155037450109376
+    }
+  ],
+  "status": "trained",
+  "device": "cuda:0",
+  "scope": "continuation training on synthetic held-out-entity three-hop curriculum"
+}

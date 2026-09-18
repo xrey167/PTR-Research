@@ -1,0 +1,94 @@
+[
+  {
+    "id": "test:multihop:G17:en",
+    "task": "multi_hop_total",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "facts": [
+        "Supplier Gavren Parts needs 52 days for component G17.",
+        "Customs for component G17 adds 7 days."
+      ]
+    },
+    "question": "What is the total arrival time for G17 from Gavren Parts if supplier transport takes 52 days and customs adds 7 days?",
+    "history": [],
+    "target": "59 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 59,
+      "answer": 59,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "test:multihop:G17:de",
+    "task": "multi_hop_total",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "facts": [
+        "Lieferant Gavren Parts braucht 52 Tage für Komponente G17.",
+        "Der Zoll für Komponente G17 fügt 7 Tage hinzu."
+      ]
+    },
+    "question": "Wie lange dauert die gesamte Ankunft von G17 bei Gavren Parts, wenn der Lieferant 52 Tage und der Zoll 7 Tage braucht?",
+    "history": [],
+    "target": "59 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 59,
+      "answer": 59,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "test:multihop:H28:en",
+    "task": "multi_hop_total",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "facts": [
+        "Supplier Helvona Works needs 56 days for component H28.",
+        "Customs for component H28 adds 3 days."
+      ]
+    },
+    "question": "What is the total arrival time for H28 from Helvona Works if supplier transport takes 56 days and customs adds 3 days?",
+    "history": [],
+    "target": "59 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 59,
+      "answer": 59,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "test:multihop:H28:de",
+    "task": "multi_hop_total",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "facts": [
+        "Lieferant Helvona Works braucht 56 Tage für Komponente H28.",
+        "Der Zoll für Komponente H28 fügt 3 Tage hinzu."
+      ]
+    },
+    "question": "Wie lange dauert die gesamte Ankunft von H28 bei Helvona Works, wenn der Lieferant 56 Tage und der Zoll 3 Tage braucht?",
+    "history": [],
+    "target": "59 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 59,
+      "answer": 59,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "method": "Codex content review of exact saved outputs against preexisting cases; not an independent human rating or model-inference replay. Require faithful entity, requested answer, no contradiction, and EOS when reader invoked.",
+  "reader_report_sha256": "e697617102d7039085208b137cdd4405349b1f9ff3d9b4252ef164545952495e",
+  "rows": [
+    {
+      "id": "direct",
+      "passed": false,
+      "reason": "Contradictory missing-fact claim and wrong part X1."
+    },
+    {
+      "id": "planning",
+      "passed": false,
+      "reason": "Correct duration but wrong part X11."
+    },
+    {
+      "id": "deadline",
+      "passed": false,
+      "reason": "Correct comparison but wrong part X11."
+    },
+    {
+      "id": "buffer",
+      "passed": false,
+      "reason": "Wrong part X1 and token limit reached without EOS."
+    },
+    {
+      "id": "followup_buffer",
+      "passed": true,
+      "reason": "Correct 27+2=29 days with X12 and EOS."
+    },
+    {
+      "id": "followup_reference",
+      "passed": false,
+      "reason": "Wrong part X11."
+    },
+    {
+      "id": "german_followup",
+      "passed": false,
+      "reason": "Repeats instructions/question instead of answering."
+    },
+    {
+      "id": "missing_part",
+      "passed": true,
+      "reason": "Actual planner UNKNOWN, no unsupported fact used."
+    },
+    {
+      "id": "unsupported_metric",
+      "passed": true,
+      "reason": "Actual planner UNKNOWN, no unsupported price inferred."
+    }
+  ],
+  "passed": 3,
+  "total": 9,
+  "full_research_goal_complete": false
+}

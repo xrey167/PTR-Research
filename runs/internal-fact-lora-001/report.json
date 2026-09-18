@@ -1,0 +1,52 @@
+{
+  "train_rows": 20,
+  "steps": 120,
+  "loss_initial": 3.7566144466400146,
+  "loss_final": 7.818926678737625e-05,
+  "test_rows": [
+    {
+      "question": "Current delivery lead time for supplier Müller?",
+      "text": "18 days",
+      "target": "18 days",
+      "correct": true,
+      "fact_in_input": false
+    },
+    {
+      "question": "X12 procurement delay from Muller GmbH?",
+      "text": "18 days",
+      "target": "18 days",
+      "correct": true,
+      "fact_in_input": false
+    },
+    {
+      "question": "How long does Mueller need for X12?",
+      "text": "18 days",
+      "target": "18 days",
+      "correct": true,
+      "fact_in_input": false
+    },
+    {
+      "question": "Welche Lieferdauer gilt für den Lieferanten Müller bei X12?",
+      "text": "18 days",
+      "target": "18 days",
+      "correct": true,
+      "fact_in_input": false
+    },
+    {
+      "question": "Give the current X12 transit time for Muller.",
+      "text": "18 days",
+      "target": "18 days",
+      "correct": true,
+      "fact_in_input": false
+    },
+    {
+      "question": "Nenne die aktuelle X12-Lieferzeit von Müller GmbH.",
+      "text": "18 days",
+      "target": "18 days",
+      "correct": true,
+      "fact_in_input": false
+    }
+  ],
+  "accuracy": 1.0,
+  "scope": "value-bearing Qwen LoRA Pod; no evidence text in test prompts"
+}

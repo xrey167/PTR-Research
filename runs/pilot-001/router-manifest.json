@@ -1,0 +1,27 @@
+{
+  "artifact": "router:7fab7287eeb4343a0d6c8285d17a43c7259dc129a527601324a2ababfa7c63d5",
+  "sha256": "ed3b3f584c56b531f6b2f62fed9b0ba0b4bf1fd11aa32c19a761b8668b22fd7c",
+  "facts": [
+    {
+      "key": "supplier:velora:x12:lead_time",
+      "entity": "Velora Components",
+      "component": "X12",
+      "value": 24,
+      "generation": 1
+    },
+    {
+      "key": "supplier:norvex:z47:lead_time",
+      "entity": "Norvex Supply",
+      "component": "Z47",
+      "value": 37,
+      "generation": 1
+    },
+    {
+      "key": "supplier:talmira:k83:lead_time",
+      "entity": "Talmira Industrial",
+      "component": "K83",
+      "value": 16,
+      "generation": 1
+    }
+  ]
+}

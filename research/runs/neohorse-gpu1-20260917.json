@@ -1,0 +1,11 @@
+{
+  "count": 32,
+  "workers": 8,
+  "elapsed_s": 2.1643166720023146,
+  "requests_per_s": 14.785267060940415,
+  "tokens_per_s": 118.28213648752332,
+  "persistent_sessions": true,
+  "responses": 32,
+  "correct": true,
+  "errors": 0
+}

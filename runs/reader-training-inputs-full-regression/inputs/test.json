@@ -1,0 +1,4280 @@
+[
+  {
+    "id": "regression:tool:test:tool:ann_search:0",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which tool finds semantically similar papers in research? (case 1)",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"semantically similar papers\",\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "ann_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:ann_search:1",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find related supplier lead-time knowledge. (case 2)",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"arguments\":{\"namespace\":\"suppliers\",\"query\":\"supplier lead time\",\"top_k\":10}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "ann_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:ann_search:2",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which tool finds semantically similar papers in research? (case 3)",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"semantically similar papers\",\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "ann_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:ann_search:3",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find related supplier lead-time knowledge. (case 4)",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"arguments\":{\"namespace\":\"suppliers\",\"query\":\"supplier lead time\",\"top_k\":10}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "ann_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:ann_search:4",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which tool finds semantically similar papers in research? (case 5)",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"semantically similar papers\",\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "ann_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:ann_search:5",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find related supplier lead-time knowledge. (case 6)",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"arguments\":{\"namespace\":\"suppliers\",\"query\":\"supplier lead time\",\"top_k\":10}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "ann_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:ann_search:6",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which tool finds semantically similar papers in research? (case 7)",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"semantically similar papers\",\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "ann_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:bm25_search:0",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find exact mentions of retrieval augmented generation. (case 1)",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"retrieval augmented generation\",\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "bm25_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:bm25_search:1",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search the exact identifier CQP1-R144. (case 2)",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"CQP1-R144\",\"top_k\":10}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "bm25_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:bm25_search:2",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find exact mentions of retrieval augmented generation. (case 3)",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"retrieval augmented generation\",\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "bm25_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:bm25_search:3",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search the exact identifier CQP1-R144. (case 4)",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"CQP1-R144\",\"top_k\":10}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "bm25_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:bm25_search:4",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find exact mentions of retrieval augmented generation. (case 5)",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"retrieval augmented generation\",\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "bm25_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:bm25_search:5",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search the exact identifier CQP1-R144. (case 6)",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"CQP1-R144\",\"top_k\":10}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "bm25_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:bm25_search:6",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find exact mentions of retrieval augmented generation. (case 7)",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"arguments\":{\"namespace\":\"research\",\"query\":\"retrieval augmented generation\",\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "bm25_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:metadata_filter:0",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Filter active Pods tagged multi-hop. (case 1)",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"arguments\":{\"namespace\":\"research\",\"filters\":{\"status\":\"active\",\"tags\":\"multi-hop\"},\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "metadata_filter"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:metadata_filter:1",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "List approved model Pods in the programming domain. (case 2)",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"arguments\":{\"namespace\":\"models\",\"filters\":{\"status\":\"active\",\"domain\":\"programming\"},\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "metadata_filter"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:metadata_filter:2",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Filter active Pods tagged multi-hop. (case 3)",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"arguments\":{\"namespace\":\"research\",\"filters\":{\"status\":\"active\",\"tags\":\"multi-hop\"},\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "metadata_filter"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:metadata_filter:3",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "List approved model Pods in the programming domain. (case 4)",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"arguments\":{\"namespace\":\"models\",\"filters\":{\"status\":\"active\",\"domain\":\"programming\"},\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "metadata_filter"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:metadata_filter:4",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Filter active Pods tagged multi-hop. (case 5)",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"arguments\":{\"namespace\":\"research\",\"filters\":{\"status\":\"active\",\"tags\":\"multi-hop\"},\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "metadata_filter"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:metadata_filter:5",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "List approved model Pods in the programming domain. (case 6)",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"arguments\":{\"namespace\":\"models\",\"filters\":{\"status\":\"active\",\"domain\":\"programming\"},\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "metadata_filter"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:metadata_filter:6",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Filter active Pods tagged multi-hop. (case 7)",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"arguments\":{\"namespace\":\"research\",\"filters\":{\"status\":\"active\",\"tags\":\"multi-hop\"},\"top_k\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "metadata_filter"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:graph_neighbors:0",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Follow depends_on from knowledge K42 for two hops. (case 1)",
+    "history": [],
+    "target": "{\"tool\":\"graph_neighbors\",\"arguments\":{\"knowledge_key\":\"K42\",\"relation\":\"depends_on\",\"depth\":2}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "graph_neighbors"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:graph_neighbors:1",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Traverse linked facts from supplier:muller for three hops. (case 2)",
+    "history": [],
+    "target": "{\"tool\":\"graph_neighbors\",\"arguments\":{\"knowledge_key\":\"supplier:muller\",\"depth\":3}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "graph_neighbors"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:graph_neighbors:2",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Follow depends_on from knowledge K42 for two hops. (case 3)",
+    "history": [],
+    "target": "{\"tool\":\"graph_neighbors\",\"arguments\":{\"knowledge_key\":\"K42\",\"relation\":\"depends_on\",\"depth\":2}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "graph_neighbors"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:graph_neighbors:3",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Traverse linked facts from supplier:muller for three hops. (case 4)",
+    "history": [],
+    "target": "{\"tool\":\"graph_neighbors\",\"arguments\":{\"knowledge_key\":\"supplier:muller\",\"depth\":3}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "graph_neighbors"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:graph_neighbors:4",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Follow depends_on from knowledge K42 for two hops. (case 5)",
+    "history": [],
+    "target": "{\"tool\":\"graph_neighbors\",\"arguments\":{\"knowledge_key\":\"K42\",\"relation\":\"depends_on\",\"depth\":2}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "graph_neighbors"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:graph_neighbors:5",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Traverse linked facts from supplier:muller for three hops. (case 6)",
+    "history": [],
+    "target": "{\"tool\":\"graph_neighbors\",\"arguments\":{\"knowledge_key\":\"supplier:muller\",\"depth\":3}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "graph_neighbors"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:graph_neighbors:6",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Follow depends_on from knowledge K42 for two hops. (case 7)",
+    "history": [],
+    "target": "{\"tool\":\"graph_neighbors\",\"arguments\":{\"knowledge_key\":\"K42\",\"relation\":\"depends_on\",\"depth\":2}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "graph_neighbors"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:registry_snapshot:0",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Verify the lineage of Pod research generation g8. (case 1)",
+    "history": [],
+    "target": "{\"tool\":\"registry_snapshot\",\"arguments\":{\"keys\":[\"pod:research\"],\"generation\":\"g8\",\"principal\":\"local\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "registry_snapshot"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:registry_snapshot:1",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Inspect the active generation of the model Pod. (case 2)",
+    "history": [],
+    "target": "{\"tool\":\"registry_snapshot\",\"arguments\":{\"keys\":[\"pod:model\"],\"principal\":\"local\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "registry_snapshot"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:registry_snapshot:2",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Verify the lineage of Pod research generation g8. (case 3)",
+    "history": [],
+    "target": "{\"tool\":\"registry_snapshot\",\"arguments\":{\"keys\":[\"pod:research\"],\"generation\":\"g8\",\"principal\":\"local\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "registry_snapshot"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:registry_snapshot:3",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Inspect the active generation of the model Pod. (case 4)",
+    "history": [],
+    "target": "{\"tool\":\"registry_snapshot\",\"arguments\":{\"keys\":[\"pod:model\"],\"principal\":\"local\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "registry_snapshot"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:registry_snapshot:4",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Verify the lineage of Pod research generation g8. (case 5)",
+    "history": [],
+    "target": "{\"tool\":\"registry_snapshot\",\"arguments\":{\"keys\":[\"pod:research\"],\"generation\":\"g8\",\"principal\":\"local\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "registry_snapshot"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:registry_snapshot:5",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Inspect the active generation of the model Pod. (case 6)",
+    "history": [],
+    "target": "{\"tool\":\"registry_snapshot\",\"arguments\":{\"keys\":[\"pod:model\"],\"principal\":\"local\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "registry_snapshot"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:registry_snapshot:6",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Verify the lineage of Pod research generation g8. (case 7)",
+    "history": [],
+    "target": "{\"tool\":\"registry_snapshot\",\"arguments\":{\"keys\":[\"pod:research\"],\"generation\":\"g8\",\"principal\":\"local\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "registry_snapshot"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:calculator:0",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Compute the mean of 18 and 24 days. (case 1)",
+    "history": [],
+    "target": "{\"tool\":\"calculator\",\"arguments\":{\"expression\":\"(18+24)/2\",\"unit\":\"days\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "calculator"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:calculator:1",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Calculate 12 percent of 250 euros. (case 2)",
+    "history": [],
+    "target": "{\"tool\":\"calculator\",\"arguments\":{\"expression\":\"250*0.12\",\"unit\":\"EUR\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "calculator"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:calculator:2",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Compute the mean of 18 and 24 days. (case 3)",
+    "history": [],
+    "target": "{\"tool\":\"calculator\",\"arguments\":{\"expression\":\"(18+24)/2\",\"unit\":\"days\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "calculator"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:calculator:3",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Calculate 12 percent of 250 euros. (case 4)",
+    "history": [],
+    "target": "{\"tool\":\"calculator\",\"arguments\":{\"expression\":\"250*0.12\",\"unit\":\"EUR\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "calculator"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:calculator:4",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Compute the mean of 18 and 24 days. (case 5)",
+    "history": [],
+    "target": "{\"tool\":\"calculator\",\"arguments\":{\"expression\":\"(18+24)/2\",\"unit\":\"days\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "calculator"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:calculator:5",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Calculate 12 percent of 250 euros. (case 6)",
+    "history": [],
+    "target": "{\"tool\":\"calculator\",\"arguments\":{\"expression\":\"250*0.12\",\"unit\":\"EUR\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "calculator"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:calculator:6",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Compute the mean of 18 and 24 days. (case 7)",
+    "history": [],
+    "target": "{\"tool\":\"calculator\",\"arguments\":{\"expression\":\"(18+24)/2\",\"unit\":\"days\"}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "calculator"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:workspace_search:0",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find theorem 4 in the approved workspace. (case 1)",
+    "history": [],
+    "target": "{\"tool\":\"workspace_search\",\"arguments\":{\"path\":\"approved\",\"pattern\":\"theorem 4\",\"file_types\":[\".md\",\".tex\"],\"max_results\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "workspace_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:workspace_search:1",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search research notes for the term SPFresh. (case 2)",
+    "history": [],
+    "target": "{\"tool\":\"workspace_search\",\"arguments\":{\"path\":\"research\",\"pattern\":\"SPFresh\",\"file_types\":[\".md\"],\"max_results\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "workspace_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:workspace_search:2",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find theorem 4 in the approved workspace. (case 3)",
+    "history": [],
+    "target": "{\"tool\":\"workspace_search\",\"arguments\":{\"path\":\"approved\",\"pattern\":\"theorem 4\",\"file_types\":[\".md\",\".tex\"],\"max_results\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "workspace_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:workspace_search:3",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search research notes for the term SPFresh. (case 4)",
+    "history": [],
+    "target": "{\"tool\":\"workspace_search\",\"arguments\":{\"path\":\"research\",\"pattern\":\"SPFresh\",\"file_types\":[\".md\"],\"max_results\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "workspace_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:workspace_search:4",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find theorem 4 in the approved workspace. (case 5)",
+    "history": [],
+    "target": "{\"tool\":\"workspace_search\",\"arguments\":{\"path\":\"approved\",\"pattern\":\"theorem 4\",\"file_types\":[\".md\",\".tex\"],\"max_results\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "workspace_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:workspace_search:5",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search research notes for the term SPFresh. (case 6)",
+    "history": [],
+    "target": "{\"tool\":\"workspace_search\",\"arguments\":{\"path\":\"research\",\"pattern\":\"SPFresh\",\"file_types\":[\".md\"],\"max_results\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "workspace_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:workspace_search:6",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Find theorem 4 in the approved workspace. (case 7)",
+    "history": [],
+    "target": "{\"tool\":\"workspace_search\",\"arguments\":{\"path\":\"approved\",\"pattern\":\"theorem 4\",\"file_types\":[\".md\",\".tex\"],\"max_results\":20}}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "tool": "workspace_search"
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:guardrail:0",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Use ANN without a namespace.",
+    "history": [],
+    "target": "{\"error\":\"invalid_tool_call\",\"reason\":\"ann_search requires namespace\"}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "negative": true
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:guardrail:1",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Use generation without Pod identity.",
+    "history": [],
+    "target": "{\"error\":\"invalid_tool_call\",\"reason\":\"generation requires pod_identity\"}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "negative": true
+    }
+  },
+  {
+    "id": "regression:tool:test:tool:guardrail:2",
+    "task": "research_tool_choice",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search outside approved roots.",
+    "history": [],
+    "target": "{\"error\":\"denied\",\"reason\":\"workspace_search path is outside approved roots\"}",
+    "assessment": {
+      "tool_contract_v2": true,
+      "negative": true
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:0",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 1 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:0\",\"status\":\"active\",\"generation\":\"g1\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:1",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 2 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:1\",\"status\":\"active\",\"generation\":\"g2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:2",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 3 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:2\",\"status\":\"active\",\"generation\":\"g3\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:3",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 4 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:3\",\"status\":\"active\",\"generation\":\"g4\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:4",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 5 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:4\",\"status\":\"active\",\"generation\":\"g5\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:5",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 6 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:5\",\"status\":\"active\",\"generation\":\"g6\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:6",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 7 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:6\",\"status\":\"active\",\"generation\":\"g7\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:7",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 8 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:7\",\"status\":\"active\",\"generation\":\"g8\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:8",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 9 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:8\",\"status\":\"active\",\"generation\":\"g9\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:pod_lifecycle:9",
+    "task": "pod_lifecycle",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the active generation for research Pod 10 after a superseding update.",
+    "history": [],
+    "target": "{\"action\":\"resolve_generation\",\"knowledge_key\":\"knowledge:research:9\",\"status\":\"active\",\"generation\":\"g1\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "pod_lifecycle",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:0",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: similar papers?",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:1",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: exact identifier?",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:2",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: active Pods?",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:3",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: linked facts?",
+    "history": [],
+    "target": "{\"tool\":\"graph_neighbors\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:4",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: lineage?",
+    "history": [],
+    "target": "{\"tool\":\"registry_snapshot\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:5",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: mean of 18 and 24?",
+    "history": [],
+    "target": "{\"tool\":\"calculator\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:6",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: approved files?",
+    "history": [],
+    "target": "{\"tool\":\"workspace_search\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:7",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: similar papers?",
+    "history": [],
+    "target": "{\"tool\":\"ann_search\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:8",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: exact identifier?",
+    "history": [],
+    "target": "{\"tool\":\"bm25_search\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:tool_selection:9",
+    "task": "tool_selection",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which research tool should handle this request: active Pods?",
+    "history": [],
+    "target": "{\"tool\":\"metadata_filter\",\"contract\":\"research_tool_v2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "tool_selection",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:0",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 1 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:0\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:1",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 2 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:1\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:2",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 3 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:2\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:3",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 4 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:3\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:4",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 5 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:4\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:5",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 6 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:5\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:6",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 7 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:6\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:7",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 8 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:7\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:8",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 9 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:8\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:contextual_chunking:9",
+    "task": "contextual_chunking",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Create a retrieval chunk for section 10 while retaining its heading, table labels, and leading statement.",
+    "history": [],
+    "target": "{\"action\":\"contextual_chunk\",\"preserve\":[\"heading_path\",\"table_headers\",\"leading_statement\"],\"leaf_only\":true,\"chunk_id\":\"chunk:9\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "contextual_chunking",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:0",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 1 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":1,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:1",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 2 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":2,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:2",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 3 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":3,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:3",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 4 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":4,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:4",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 5 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":1,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:5",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 6 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":2,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:6",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 7 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":3,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:7",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 8 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":4,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:8",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 9 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":1,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:statement_chaining:9",
+    "task": "statement_chaining",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve the antecedent chain for statement 10 before embedding it.",
+    "history": [],
+    "target": "{\"action\":\"statement_chain\",\"max_hops\":2,\"include_dependencies\":true,\"leaf_only\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "statement_chaining",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:0",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 1 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-0\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:1",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 2 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-1\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:2",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 3 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-2\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:3",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 4 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-3\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:4",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 5 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-4\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:5",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 6 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-5\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:6",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 7 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-6\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:7",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 8 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-7\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:8",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 9 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-8\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:namespace_cache:9",
+    "task": "namespace_cache",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the storage and cache policy for namespace 10 during a bursty training run.",
+    "history": [],
+    "target": "{\"namespace\":\"pod-ns-9\",\"cache\":\"memory_then_nvme_then_object\",\"consistency\":\"strong\",\"branch_before_update\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "namespace_cache",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:0",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 1 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:1",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 2 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:2",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 3 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:3",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 4 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:4",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 5 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:5",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 6 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:6",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 7 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:7",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 8 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:8",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 9 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:routing_ranker:9",
+    "task": "routing_ranker",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Route query 10 to a Pod using entity, type, tag, generation, and learned representation.",
+    "history": [],
+    "target": "{\"action\":\"route\",\"signals\":[\"entity\",\"pod_type\",\"tags\",\"generation\",\"pod_embedding\"],\"hard_filter\":\"active_generation\",\"ranker\":\"hybrid_ann_bm25\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "routing_ranker",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:0",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 1 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:1",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 2 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:2",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 3 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:3",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 4 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:4",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 5 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:5",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 6 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:6",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 7 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:7",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 8 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:8",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 9 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:index_performance:9",
+    "task": "index_performance",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Build an index for workload 10 with many updates and high-QPS reads.",
+    "history": [],
+    "target": "{\"index\":\"block_postings\",\"block_target\":256,\"merge\":\"batched_vectorized\",\"storage\":\"lsm_object_storage\",\"writes\":\"group_commit\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "index_performance",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:0",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 1 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:1",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 2 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:2",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 3 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:3",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 4 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:4",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 5 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:5",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 6 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:6",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 7 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:7",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 8 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:8",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 9 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:provenance_acl:9",
+    "task": "provenance_acl",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Check whether derived artifact 10 may influence inference after its source is revoked.",
+    "history": [],
+    "target": "{\"action\":\"lifecycle_barrier\",\"check\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\",\"acl\",\"revocation\"],\"allow\":false}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "provenance_acl",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:0",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 1 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:1",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 2 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:2",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 3 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:3",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 4 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:4",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 5 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:5",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 6 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:6",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 7 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:7",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 8 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:8",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 9 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:model_pod:9",
+    "task": "model_pod",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Prepare model Pod 10 for adapter activation without changing the base model identity.",
+    "history": [],
+    "target": "{\"pod_type\":\"model\",\"action\":\"activate_adapter\",\"stable_identity\":true,\"resolve_generation\":true,\"base_model\":\"qwen3b\",\"artifact\":\"lora\"}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "model_pod",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:0",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 1 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:1",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 2 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:2",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 3 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:3",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 4 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:4",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 5 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:5",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 6 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:6",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 7 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:7",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 8 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:8",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 9 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:curriculum:test:curriculum:evaluation:9",
+    "task": "evaluation",
+    "pod_type": "research",
+    "language": "en",
+    "evidence": null,
+    "question": "Evaluate experiment 10 against the frozen retrieval and generation protocol.",
+    "history": [],
+    "target": "{\"action\":\"evaluate\",\"metrics\":[\"recall_at_k\",\"exact_target_match\",\"guardrail_accuracy\",\"latency\",\"qps\"],\"freeze_protocol\":true,\"compare_baseline\":true}",
+    "assessment": {
+      "curriculum_v1": true,
+      "capability": "evaluation",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:0",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 2-hop chain from knowledge:K1 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K0\",\"hops\":2,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:1",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 3-hop chain from knowledge:K2 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K1\",\"hops\":3,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:2",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 4-hop chain from knowledge:K3 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K2\",\"hops\":4,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:3",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 5-hop chain from knowledge:K4 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K3\",\"hops\":5,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:4",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 2-hop chain from knowledge:K5 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K4\",\"hops\":2,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:5",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 3-hop chain from knowledge:K6 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K5\",\"hops\":3,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:6",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 4-hop chain from knowledge:K7 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K6\",\"hops\":4,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:7",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 5-hop chain from knowledge:K8 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K7\",\"hops\":5,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:8",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 2-hop chain from knowledge:K9 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K8\",\"hops\":2,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_reasoning:9",
+    "task": "multihop_reasoning",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Resolve a 3-hop chain from knowledge:K10 through linked knowledge and return the final value.",
+    "history": [],
+    "target": "{\"action\":\"resolve_chain\",\"start\":\"knowledge:K9\",\"hops\":3,\"follow_relations\":[\"depends_on\",\"supports\"],\"return\":\"final_value\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_reasoning",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:0",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 2 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":2,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:1",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 3 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":3,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:2",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 4 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":4,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:3",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 5 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":5,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:4",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 2 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":2,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:5",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 3 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":3,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:6",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 4 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":4,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:7",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 5 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":5,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:8",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 2 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":2,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_tool_plan:9",
+    "task": "multihop_tool_plan",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Plan retrieval for a question requiring 3 linked facts.",
+    "history": [],
+    "target": "{\"action\":\"iterative_retrieval\",\"hops\":3,\"steps\":[\"ann_search\",\"graph_neighbors\",\"metadata_filter\"],\"stop\":\"all_required_facts_found\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_tool_plan",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:0",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:1",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:2",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:3",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:4",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:5",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:6",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:7",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:8",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_fanout:9",
+    "task": "parallel_fanout",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Search for independent clues A, B, C, and D in parallel before combining them.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[\"clue_a\",\"clue_b\",\"clue_c\",\"clue_d\"],\"max_concurrency\":4,\"join\":\"rank_and_merge\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_fanout",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:0",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 1, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:1",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 2, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:2",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 3, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:3",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 4, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:4",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 5, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:5",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 6, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:6",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 7, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:7",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 8, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:8",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 9, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hybrid_parallel:9",
+    "task": "hybrid_parallel",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Run semantic and exact retrieval concurrently for query 10, then fuse the results.",
+    "history": [],
+    "target": "{\"action\":\"parallel_search\",\"branches\":[{\"tool\":\"ann_search\"},{\"tool\":\"bm25_search\"},{\"tool\":\"metadata_filter\"}],\"join\":\"rrf\",\"deduplicate\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hybrid_parallel",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:0",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 1: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:1",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 2: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:2",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 3: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:3",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 4: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:4",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 5: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:5",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 6: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:6",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 7: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:7",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 8: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:8",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 9: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:parallel_safety:9",
+    "task": "parallel_safety",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Which plan is valid for query 10: parallelize independent searches but preserve dependency order?",
+    "history": [],
+    "target": "{\"action\":\"schedule\",\"parallel\":[\"independent_searches\"],\"sequential\":[\"dependent_graph_hops\"],\"barrier\":\"all_inputs_ready\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "parallel_safety",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:0",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 1 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:1",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 2 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:2",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 3 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:3",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 4 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:4",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 5 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:5",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 6 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:6",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 7 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:7",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 8 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:8",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 9 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:hop_validation:9",
+    "task": "hop_validation",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Validate whether the result for chain 10 contains every required hop and provenance link.",
+    "history": [],
+    "target": "{\"action\":\"validate_chain\",\"required\":[\"origin_key\",\"knowledge_key\",\"generation_key\",\"artifact_key\"],\"minimum_hops\":2,\"reject_incomplete\":true}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "hop_validation",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:0",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 1 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:1",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 2 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:2",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 3 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":3,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:3",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 4 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":4,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:4",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 5 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:5",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 6 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:6",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 7 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":7,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:7",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 8 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":8,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:8",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 9 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:latency_reward:9",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Choose the faster plan for hard search case 10 while preserving recall.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "latency_reward",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:0",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 1 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 0
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:1",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 2 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 1
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:2",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 3 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 2
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:3",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 4 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 3
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:4",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 5 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 4
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:5",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 6 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 5
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:6",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 7 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 6
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:7",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 8 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 7
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:8",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 9 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 8
+    }
+  },
+  {
+    "id": "regression:mhparallel:test:mhparallel:multihop_negative:9",
+    "task": "multihop_negative",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Reject chain 10 because an intermediate fact is missing or revoked.",
+    "history": [],
+    "target": "{\"action\":\"reject\",\"reason\":\"missing_or_revoked_intermediate\",\"allow_inference\":false}",
+    "assessment": {
+      "mh_parallel_v1": true,
+      "capability": "multihop_negative",
+      "example_index": 9
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:0",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 1 independent branches, dependency depth 0, burst 100 QPS, case 1.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"qps\":100,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 1,
+      "dependency_depth": 0,
+      "qps": 100,
+      "parallel_calls": 1
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:1",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 2 independent branches, dependency depth 1, burst 200 QPS, case 2.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"qps\":200,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 2,
+      "dependency_depth": 1,
+      "qps": 200,
+      "parallel_calls": 2
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:2",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 3 independent branches, dependency depth 2, burst 300 QPS, case 3.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":3,\"metric\":\"end_to_end_ms\",\"qps\":300,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 3,
+      "dependency_depth": 2,
+      "qps": 300,
+      "parallel_calls": 3
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:3",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 4 independent branches, dependency depth 3, burst 400 QPS, case 4.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":4,\"metric\":\"end_to_end_ms\",\"qps\":400,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 4,
+      "dependency_depth": 3,
+      "qps": 400,
+      "parallel_calls": 4
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:4",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 5 independent branches, dependency depth 0, burst 500 QPS, case 5.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":500,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 5,
+      "dependency_depth": 0,
+      "qps": 500,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:5",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 6 independent branches, dependency depth 1, burst 600 QPS, case 6.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":600,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 6,
+      "dependency_depth": 1,
+      "qps": 600,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:6",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 7 independent branches, dependency depth 2, burst 700 QPS, case 7.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":700,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 7,
+      "dependency_depth": 2,
+      "qps": 700,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:7",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 8 independent branches, dependency depth 3, burst 800 QPS, case 8.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":800,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 8,
+      "dependency_depth": 3,
+      "qps": 800,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:8",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 1 independent branches, dependency depth 0, burst 900 QPS, case 9.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"qps\":900,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 1,
+      "dependency_depth": 0,
+      "qps": 900,
+      "parallel_calls": 1
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:9",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 2 independent branches, dependency depth 1, burst 1000 QPS, case 10.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"qps\":1000,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 2,
+      "dependency_depth": 1,
+      "qps": 1000,
+      "parallel_calls": 2
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:10",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 3 independent branches, dependency depth 2, burst 100 QPS, case 11.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":3,\"metric\":\"end_to_end_ms\",\"qps\":100,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 3,
+      "dependency_depth": 2,
+      "qps": 100,
+      "parallel_calls": 3
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:11",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 4 independent branches, dependency depth 3, burst 200 QPS, case 12.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":4,\"metric\":\"end_to_end_ms\",\"qps\":200,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 4,
+      "dependency_depth": 3,
+      "qps": 200,
+      "parallel_calls": 4
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:12",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 5 independent branches, dependency depth 0, burst 300 QPS, case 13.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":300,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 5,
+      "dependency_depth": 0,
+      "qps": 300,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:13",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 6 independent branches, dependency depth 1, burst 400 QPS, case 14.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":400,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 6,
+      "dependency_depth": 1,
+      "qps": 400,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:14",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 7 independent branches, dependency depth 2, burst 500 QPS, case 15.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":500,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 7,
+      "dependency_depth": 2,
+      "qps": 500,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:15",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 8 independent branches, dependency depth 3, burst 600 QPS, case 16.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":600,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 8,
+      "dependency_depth": 3,
+      "qps": 600,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:16",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 1 independent branches, dependency depth 0, burst 700 QPS, case 17.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"qps\":700,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 1,
+      "dependency_depth": 0,
+      "qps": 700,
+      "parallel_calls": 1
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:17",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 2 independent branches, dependency depth 1, burst 800 QPS, case 18.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"qps\":800,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 2,
+      "dependency_depth": 1,
+      "qps": 800,
+      "parallel_calls": 2
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:18",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 3 independent branches, dependency depth 2, burst 900 QPS, case 19.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":3,\"metric\":\"end_to_end_ms\",\"qps\":900,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 3,
+      "dependency_depth": 2,
+      "qps": 900,
+      "parallel_calls": 3
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:19",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 4 independent branches, dependency depth 3, burst 1000 QPS, case 20.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":4,\"metric\":\"end_to_end_ms\",\"qps\":1000,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 4,
+      "dependency_depth": 3,
+      "qps": 1000,
+      "parallel_calls": 4
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:20",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 5 independent branches, dependency depth 0, burst 100 QPS, case 21.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":100,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 5,
+      "dependency_depth": 0,
+      "qps": 100,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:21",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 6 independent branches, dependency depth 1, burst 200 QPS, case 22.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":200,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 6,
+      "dependency_depth": 1,
+      "qps": 200,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:22",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 7 independent branches, dependency depth 2, burst 300 QPS, case 23.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":300,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 7,
+      "dependency_depth": 2,
+      "qps": 300,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:23",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 8 independent branches, dependency depth 3, burst 400 QPS, case 24.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":400,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 8,
+      "dependency_depth": 3,
+      "qps": 400,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:24",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 1 independent branches, dependency depth 0, burst 500 QPS, case 25.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"qps\":500,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 1,
+      "dependency_depth": 0,
+      "qps": 500,
+      "parallel_calls": 1
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:25",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 2 independent branches, dependency depth 1, burst 600 QPS, case 26.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"qps\":600,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 2,
+      "dependency_depth": 1,
+      "qps": 600,
+      "parallel_calls": 2
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:26",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 3 independent branches, dependency depth 2, burst 700 QPS, case 27.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":3,\"metric\":\"end_to_end_ms\",\"qps\":700,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 3,
+      "dependency_depth": 2,
+      "qps": 700,
+      "parallel_calls": 3
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:27",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 4 independent branches, dependency depth 3, burst 800 QPS, case 28.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":4,\"metric\":\"end_to_end_ms\",\"qps\":800,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 4,
+      "dependency_depth": 3,
+      "qps": 800,
+      "parallel_calls": 4
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:28",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 5 independent branches, dependency depth 0, burst 900 QPS, case 29.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":900,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 5,
+      "dependency_depth": 0,
+      "qps": 900,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:29",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 6 independent branches, dependency depth 1, burst 1000 QPS, case 30.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":1000,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 6,
+      "dependency_depth": 1,
+      "qps": 1000,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:30",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 7 independent branches, dependency depth 2, burst 100 QPS, case 31.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":100,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 7,
+      "dependency_depth": 2,
+      "qps": 100,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:31",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 8 independent branches, dependency depth 3, burst 200 QPS, case 32.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":200,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 8,
+      "dependency_depth": 3,
+      "qps": 200,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:32",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 1 independent branches, dependency depth 0, burst 300 QPS, case 33.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"qps\":300,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 1,
+      "dependency_depth": 0,
+      "qps": 300,
+      "parallel_calls": 1
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:33",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 2 independent branches, dependency depth 1, burst 400 QPS, case 34.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"qps\":400,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 2,
+      "dependency_depth": 1,
+      "qps": 400,
+      "parallel_calls": 2
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:34",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 3 independent branches, dependency depth 2, burst 500 QPS, case 35.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":3,\"metric\":\"end_to_end_ms\",\"qps\":500,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 3,
+      "dependency_depth": 2,
+      "qps": 500,
+      "parallel_calls": 3
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:35",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 4 independent branches, dependency depth 3, burst 600 QPS, case 36.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":4,\"metric\":\"end_to_end_ms\",\"qps\":600,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 4,
+      "dependency_depth": 3,
+      "qps": 600,
+      "parallel_calls": 4
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:36",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 5 independent branches, dependency depth 0, burst 700 QPS, case 37.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":700,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 5,
+      "dependency_depth": 0,
+      "qps": 700,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:37",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 6 independent branches, dependency depth 1, burst 800 QPS, case 38.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":800,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 6,
+      "dependency_depth": 1,
+      "qps": 800,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:38",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 7 independent branches, dependency depth 2, burst 900 QPS, case 39.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":900,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 7,
+      "dependency_depth": 2,
+      "qps": 900,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:39",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 8 independent branches, dependency depth 3, burst 1000 QPS, case 40.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":1000,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 8,
+      "dependency_depth": 3,
+      "qps": 1000,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:40",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 1 independent branches, dependency depth 0, burst 100 QPS, case 41.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"qps\":100,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 1,
+      "dependency_depth": 0,
+      "qps": 100,
+      "parallel_calls": 1
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:41",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 2 independent branches, dependency depth 1, burst 200 QPS, case 42.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"qps\":200,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 2,
+      "dependency_depth": 1,
+      "qps": 200,
+      "parallel_calls": 2
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:42",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 3 independent branches, dependency depth 2, burst 300 QPS, case 43.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":3,\"metric\":\"end_to_end_ms\",\"qps\":300,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 3,
+      "dependency_depth": 2,
+      "qps": 300,
+      "parallel_calls": 3
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:43",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 4 independent branches, dependency depth 3, burst 400 QPS, case 44.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":4,\"metric\":\"end_to_end_ms\",\"qps\":400,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 4,
+      "dependency_depth": 3,
+      "qps": 400,
+      "parallel_calls": 4
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:44",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 5 independent branches, dependency depth 0, burst 500 QPS, case 45.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":500,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 5,
+      "dependency_depth": 0,
+      "qps": 500,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:45",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 6 independent branches, dependency depth 1, burst 600 QPS, case 46.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":600,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 6,
+      "dependency_depth": 1,
+      "qps": 600,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:46",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 7 independent branches, dependency depth 2, burst 700 QPS, case 47.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":6,\"metric\":\"end_to_end_ms\",\"qps\":700,\"dependency_depth\":2,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 7,
+      "dependency_depth": 2,
+      "qps": 700,
+      "parallel_calls": 6
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:47",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 8 independent branches, dependency depth 3, burst 800 QPS, case 48.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":5,\"metric\":\"end_to_end_ms\",\"qps\":800,\"dependency_depth\":3,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 8,
+      "dependency_depth": 3,
+      "qps": 800,
+      "parallel_calls": 5
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:48",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 1 independent branches, dependency depth 0, burst 900 QPS, case 49.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":1,\"metric\":\"end_to_end_ms\",\"qps\":900,\"dependency_depth\":0,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 1,
+      "dependency_depth": 0,
+      "qps": 900,
+      "parallel_calls": 1
+    }
+  },
+  {
+    "id": "regression:latencyv2:test:mhparallel:latency_reward_v2:49",
+    "task": "latency_reward",
+    "pod_type": "model",
+    "language": "en",
+    "evidence": null,
+    "question": "Optimize search workload: 2 independent branches, dependency depth 1, burst 1000 QPS, case 50.",
+    "history": [],
+    "target": "{\"objective\":\"maximize_recall_minimize_latency\",\"parallel_calls\":2,\"metric\":\"end_to_end_ms\",\"qps\":1000,\"dependency_depth\":1,\"fallback\":\"sequential_if_dependency\"}",
+    "assessment": {
+      "mh_parallel_v2": true,
+      "branches": 2,
+      "dependency_depth": 1,
+      "qps": 1000,
+      "parallel_calls": 2
+    }
+  }
+]

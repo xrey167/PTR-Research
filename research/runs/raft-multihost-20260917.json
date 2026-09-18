@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-17",
+  "topology": "3 LXD containers (np-node1..3) on xrserver, bridged lxdbr0 10.50.0.0/24",
+  "binding": "neural_pods_raft 0.1.0 with tick_pending + restore (rebuilt)",
+  "results": {
+    "election_s": 0.001,
+    "proposals": 100,
+    "replicated_all": true,
+    "proposals_per_s": 3338.3,
+    "failover": {
+      "killed": "np-node1",
+      "failover_s": 0.001,
+      "ok": true,
+      "quorum_writes": 50,
+      "node_rejoined": false
+    }
+  },
+  "notes": "Election, replication and leader-kill failover with quorum writes are measured green. Rejoin catch-up of a restarted node is an open item: raft-rs rejects the candidate log (100/150) and the restarted node enters a vote-retry loop instead of receiving AppendEntries backfill; WAL persistence (restore) is implemented and verified, snapshot-based catch-up is the likely fix."
+}

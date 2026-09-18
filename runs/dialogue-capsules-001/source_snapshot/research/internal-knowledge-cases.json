@@ -1,0 +1,16 @@
+{
+  "schema": "internal-knowledge-dialog-contract:v1",
+  "fixture": "Muller GmbH X12 delivery lead time is 27 days; no other entity is implicitly interchangeable",
+  "scope": "New authored acceptance cases; not used for training. Full dialogue pipeline must eventually execute them. Parser-only diagnostics do not establish answer quality.",
+  "cases": [
+    {"id": "direct", "history": [], "question": "What is the delivery lead time for Mueller GmbH and X12?", "expected_subject": "supplier:muller", "expected_answer": "27 days"},
+    {"id": "planning", "history": [], "question": "We order X12 from Mueller GmbH today. How many days ahead should production plan for its arrival?", "expected_subject": "supplier:muller", "expected_answer": "27 days"},
+    {"id": "deadline", "history": [], "question": "Can Mueller GmbH get X12 here within 20 days under its current delivery lead time?", "expected_subject": "supplier:muller", "expected_answer": "No; 27 days exceeds 20 days"},
+    {"id": "buffer", "history": [], "question": "What is the delivery lead time for Mueller GmbH X12 plus a two-day buffer?", "expected_subject": "supplier:muller", "expected_answer": "29 days"},
+    {"id": "followup_buffer", "history": [{"role": "user", "content": "How long does Mueller GmbH need for X12?"}, {"role": "assistant", "content": "27 days."}], "question": "And with two extra days of buffer?", "expected_subject": "supplier:muller", "expected_answer": "29 days"},
+    {"id": "followup_reference", "history": [{"role": "user", "content": "We are planning an X12 order from Mueller GmbH."}], "question": "How long do they need?", "expected_subject": "supplier:muller", "expected_answer": "27 days"},
+    {"id": "german_followup", "history": [{"role": "user", "content": "Es geht um X12 von Müller GmbH."}], "question": "Reichen drei Wochen bis zur Lieferung?", "expected_subject": "supplier:muller", "expected_answer": "Nein; 27 Tage sind mehr als 21 Tage"},
+    {"id": "missing_part", "history": [], "question": "What is the delivery lead time for Mueller GmbH and X99?", "expected_subject": null, "expected_answer": "Unknown; do not substitute X12"},
+    {"id": "unsupported_metric", "history": [], "question": "What does X12 from Mueller GmbH cost?", "expected_subject": null, "expected_answer": "Unknown; lead time does not establish price"}
+  ]
+}

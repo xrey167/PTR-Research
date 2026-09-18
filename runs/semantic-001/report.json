@@ -1,0 +1,85 @@
+{
+  "status": "failed",
+  "models": {
+    "qwen": {
+      "repo": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "path": "C:\\Users\\ReyDa\\neural-pods\\models\\qwen"
+    },
+    "encoder": {
+      "repo": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "path": "C:\\Users\\ReyDa\\neural-pods\\models\\encoder"
+    }
+  },
+  "fictional_source_data": true,
+  "training_questions": [
+    "What is the lead time for X12 from Müller GmbH?",
+    "How many days does Müller GmbH need to deliver X12?",
+    "State the delivery time of X12 from Müller GmbH.",
+    "Give the lead time in days for X12, supplied by Müller GmbH.",
+    "What delivery delay should I plan for Müller GmbH and X12?",
+    "How long is the procurement lead time for Müller GmbH X12?",
+    "Tell me the delivery duration in days of Müller GmbH for X12.",
+    "What is the recorded lead time for Müller GmbH, component X12?"
+  ],
+  "held_out_questions": [
+    "Current delivery lead time for supplier Müller?",
+    "X12 procurement delay from Müller GmbH?",
+    "How long does Mueller need for X12?",
+    "Wie lange braucht Muller GmbH fuer X12?",
+    "Welche Lieferzeit hat Müller fuer X12?",
+    "What is the delivery lead time for Muller?"
+  ],
+  "training": [
+    {
+      "name": "muller_g1",
+      "path": "C:\\Users\\ReyDa\\neural-pods\\runs\\semantic-001\\adapters\\muller_g1",
+      "steps": 32,
+      "learning_rate": 0.003,
+      "losses": [
+        1.4083455801010132,
+        1.9116771221160889,
+        1.0287748575210571,
+        0.7303106784820557,
+        0.5993954539299011,
+        7.249922275543213,
+        3.4151134490966797,
+        1.878325343132019,
+        0.2521417737007141,
+        0.08079846948385239,
+        0.0053147138096392155,
+        0.004214237444102764,
+        0.000536769162863493,
+        0.0035106674768030643,
+        0.0001386795483995229,
+        0.000538746768143028,
+        0.00010074891179101542,
+        0.00012253171007614583,
+        0.0002571902296040207,
+        0.00012399404658935964,
+        6.970268441364169e-05,
+        4.1185317968484014e-05,
+        9.592711285222322e-05,
+        6.070354356779717e-05,
+        7.771622040309012e-05,
+        4.821755283046514e-05,
+        3.8979564124019817e-05,
+        7.229160110000521e-05,
+        4.008170071756467e-05,
+        6.579644104931504e-05,
+        4.67859317723196e-05,
+        4.255469320924021e-05
+      ],
+      "elapsed_s": 40.94524980010465,
+      "trainable_parameters": 540672,
+      "rank": 8,
+      "reload_equal": true
+    }
+  ],
+  "answers": [],
+  "lifecycle": {},
+  "elapsed_s": 53.32655630004592,
+  "base_weights_sha256": "61d18c9f3f74c524d94dbdc9bd0d124ee22979f0fea5ce5e591b4424dfe027e4",
+  "failure": "Query parser did not recognize need to deliver; corrected before semantic-002"
+}

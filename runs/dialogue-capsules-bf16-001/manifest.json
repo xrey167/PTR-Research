@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "models": {
+    "qwen": {
+      "repo": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "path": "C:\\Users\\ReyDa\\neural-pods\\models\\qwen"
+    },
+    "encoder": {
+      "repo": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "path": "C:\\Users\\ReyDa\\neural-pods\\models\\encoder"
+    }
+  },
+  "base_weights_sha256": "61d18c9f3f74c524d94dbdc9bd0d124ee22979f0fea5ce5e591b4424dfe027e4",
+  "router_kind": "identity-dragonfly",
+  "embedded_links": true,
+  "copied_from": "C:\\Users\\ReyDa\\neural-pods\\runs\\dragonfly-alias-002",
+  "model_manifest_source": "C:\\Users\\ReyDa\\neural-pods\\runs\\embedded-symlink-002\\report.json",
+  "questions": [
+    "Current delivery lead time for supplier Müller?",
+    "X12 procurement delay from Müller GmbH?",
+    "How long does Mueller need for X12?",
+    "Wie lange braucht Muller GmbH fuer X12?",
+    "Welche Lieferzeit hat Müller fuer X12?",
+    "What is the delivery lead time for Muller?"
+  ],
+  "transfer_source_sha256": "6979c54bf6ea4d979385835c853ede444b21068799866666a72fa5e0807c054b",
+  "source_run": "C:\\Users\\ReyDa\\neural-pods\\runs\\identity-transfer-002",
+  "reader_model": "C:\\Users\\ReyDa\\neural-pods\\models\\qwen3b",
+  "experiment": "staged-real-link-capsule:v1"
+}

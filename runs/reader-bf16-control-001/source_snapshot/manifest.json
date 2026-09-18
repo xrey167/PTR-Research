@@ -1,0 +1,17 @@
+{
+  "timing": "During model loading; sources unchanged since launch.",
+  "files": [
+    {
+      "path": "research/probe_reader_precision.py",
+      "sha256": "f9755a91369820f61e0af0bf5b78e6ce34ff6e0cb1104adf66ba55599bfce88b"
+    },
+    {
+      "path": "research/prefix_capsule.py",
+      "sha256": "93ef63c16879c4de55bb5cc6dc1c36c33510ee9abdb814d1e947a460d2ce3dc5"
+    },
+    {
+      "path": "research/run_dialogue_capsules.py",
+      "sha256": "f29744b6679c1dd107484bb3048f7af0210e391ab62d0ca6c0fcc89f9556d8be"
+    }
+  ]
+}

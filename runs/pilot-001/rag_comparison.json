@@ -1,0 +1,248 @@
+{
+  "validation": [
+    {
+      "style": "minimal",
+      "question": "For a purchase of X12, how long would Velora Components make us wait?",
+      "expected": "24 days",
+      "text": "36",
+      "input_tokens": 73,
+      "generation_s": 1.5820632998365909,
+      "numeric_correct": false
+    },
+    {
+      "style": "minimal",
+      "question": "For a purchase of Z47, how long would Norvex Supply make us wait?",
+      "expected": "37 days",
+      "text": "110",
+      "input_tokens": 75,
+      "generation_s": 1.9287632000632584,
+      "numeric_correct": false
+    },
+    {
+      "style": "minimal",
+      "question": "For a purchase of K83, how long would Talmira Industrial make us wait?",
+      "expected": "16 days",
+      "text": "28",
+      "input_tokens": 75,
+      "generation_s": 1.012691699899733,
+      "numeric_correct": false
+    },
+    {
+      "style": "extraction",
+      "question": "For a purchase of X12, how long would Velora Components make us wait?",
+      "expected": "24 days",
+      "text": "24",
+      "input_tokens": 49,
+      "generation_s": 0.7807317997794598,
+      "numeric_correct": true
+    },
+    {
+      "style": "extraction",
+      "question": "For a purchase of Z47, how long would Norvex Supply make us wait?",
+      "expected": "37 days",
+      "text": "37",
+      "input_tokens": 50,
+      "generation_s": 1.0365017999429256,
+      "numeric_correct": true
+    },
+    {
+      "style": "extraction",
+      "question": "For a purchase of K83, how long would Talmira Industrial make us wait?",
+      "expected": "16 days",
+      "text": "16",
+      "input_tokens": 50,
+      "generation_s": 1.2459501998964697,
+      "numeric_correct": true
+    },
+    {
+      "style": "few_shot",
+      "question": "For a purchase of X12, how long would Velora Components make us wait?",
+      "expected": "24 days",
+      "text": "24 days",
+      "input_tokens": 68,
+      "generation_s": 1.428929900052026,
+      "numeric_correct": true
+    },
+    {
+      "style": "few_shot",
+      "question": "For a purchase of Z47, how long would Norvex Supply make us wait?",
+      "expected": "37 days",
+      "text": "37 days",
+      "input_tokens": 69,
+      "generation_s": 1.015865899855271,
+      "numeric_correct": true
+    },
+    {
+      "style": "few_shot",
+      "question": "For a purchase of K83, how long would Talmira Industrial make us wait?",
+      "expected": "16 days",
+      "text": "16 days",
+      "input_tokens": 69,
+      "generation_s": 0.9897968999575824,
+      "numeric_correct": true
+    }
+  ],
+  "test": [
+    {
+      "question": "Please look up the recorded number of delivery days for Velora Components, item X12.",
+      "expected": "24 days",
+      "text": "24",
+      "input_tokens": 49,
+      "generation_s": 1.0140321000944823,
+      "total_s": 1.0392622000072151,
+      "numeric_correct": true,
+      "exact": false
+    },
+    {
+      "question": "What lead-time figure is on file for the X12 item supplied by Velora Components?",
+      "expected": "24 days",
+      "text": "24",
+      "input_tokens": 49,
+      "generation_s": 0.8333672001026571,
+      "total_s": 0.8677722001448274,
+      "numeric_correct": true,
+      "exact": false
+    },
+    {
+      "question": "Welche Anzahl Liefertage ist fuer Velora Components und X12 hinterlegt?",
+      "expected": "24 days",
+      "text": "24",
+      "input_tokens": 49,
+      "generation_s": 1.246098400093615,
+      "total_s": 1.272423200076446,
+      "numeric_correct": true,
+      "exact": false
+    },
+    {
+      "question": "Please look up the recorded number of delivery days for Norvex Supply, item Z47.",
+      "expected": "37 days",
+      "text": "37",
+      "input_tokens": 50,
+      "generation_s": 1.4888647999614477,
+      "total_s": 1.5598740000277758,
+      "numeric_correct": true,
+      "exact": false
+    },
+    {
+      "question": "What lead-time figure is on file for the Z47 item supplied by Norvex Supply?",
+      "expected": "37 days",
+      "text": "37",
+      "input_tokens": 50,
+      "generation_s": 1.2811930000316352,
+      "total_s": 1.3202753998339176,
+      "numeric_correct": true,
+      "exact": false
+    },
+    {
+      "question": "Welche Anzahl Liefertage ist fuer Norvex Supply und Z47 hinterlegt?",
+      "expected": "37 days",
+      "text": "37",
+      "input_tokens": 50,
+      "generation_s": 1.319898199988529,
+      "total_s": 1.359690099954605,
+      "numeric_correct": true,
+      "exact": false
+    },
+    {
+      "question": "Please look up the recorded number of delivery days for Talmira Industrial, item K83.",
+      "expected": "16 days",
+      "text": "16",
+      "input_tokens": 50,
+      "generation_s": 1.4400462999474257,
+      "total_s": 1.4905122998170555,
+      "numeric_correct": true,
+      "exact": false
+    },
+    {
+      "question": "What lead-time figure is on file for the K83 item supplied by Talmira Industrial?",
+      "expected": "16 days",
+      "text": "16",
+      "input_tokens": 50,
+      "generation_s": 1.2792142000980675,
+      "total_s": 1.31943150004372,
+      "numeric_correct": true,
+      "exact": false
+    },
+    {
+      "question": "Welche Anzahl Liefertage ist fuer Talmira Industrial und K83 hinterlegt?",
+      "expected": "16 days",
+      "text": "16",
+      "input_tokens": 50,
+      "generation_s": 1.3084213000256568,
+      "total_s": 1.345567800104618,
+      "numeric_correct": true,
+      "exact": false
+    }
+  ],
+  "structured_lookup": [
+    {
+      "question": "Please look up the recorded number of delivery days for Velora Components, item X12.",
+      "text": "24 days",
+      "numeric_correct": true,
+      "total_s": 0.025323300156742334
+    },
+    {
+      "question": "What lead-time figure is on file for the X12 item supplied by Velora Components?",
+      "text": "24 days",
+      "numeric_correct": true,
+      "total_s": 0.024417500011622906
+    },
+    {
+      "question": "Welche Anzahl Liefertage ist fuer Velora Components und X12 hinterlegt?",
+      "text": "24 days",
+      "numeric_correct": true,
+      "total_s": 0.0497745000757277
+    },
+    {
+      "question": "Please look up the recorded number of delivery days for Norvex Supply, item Z47.",
+      "text": "37 days",
+      "numeric_correct": true,
+      "total_s": 0.029419600032269955
+    },
+    {
+      "question": "What lead-time figure is on file for the Z47 item supplied by Norvex Supply?",
+      "text": "37 days",
+      "numeric_correct": true,
+      "total_s": 0.034637799952179193
+    },
+    {
+      "question": "Welche Anzahl Liefertage ist fuer Norvex Supply und Z47 hinterlegt?",
+      "text": "37 days",
+      "numeric_correct": true,
+      "total_s": 0.03549499996006489
+    },
+    {
+      "question": "Please look up the recorded number of delivery days for Talmira Industrial, item K83.",
+      "text": "16 days",
+      "numeric_correct": true,
+      "total_s": 0.03437000000849366
+    },
+    {
+      "question": "What lead-time figure is on file for the K83 item supplied by Talmira Industrial?",
+      "text": "16 days",
+      "numeric_correct": true,
+      "total_s": 0.04236530000343919
+    },
+    {
+      "question": "Welche Anzahl Liefertage ist fuer Talmira Industrial und K83 hinterlegt?",
+      "text": "16 days",
+      "numeric_correct": true,
+      "total_s": 0.03718929993920028
+    }
+  ],
+  "protocol": "3 prompt candidates selected by validation value accuracy; test templates unseen; extraction rewrites the known fact-lookup task",
+  "selected_prompt": "extraction",
+  "summary": {
+    "test": {
+      "correct_value": 9,
+      "n": 9,
+      "mean_latency_s": 1.2860898555566866
+    },
+    "structured_lookup": {
+      "correct_value": 9,
+      "n": 9,
+      "mean_latency_s": 0.0347769222377489
+    }
+  },
+  "status": "completed"
+}

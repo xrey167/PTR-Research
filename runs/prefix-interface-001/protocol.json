@@ -1,0 +1,29 @@
+{
+  "schema": "local-prefix-interface:v1",
+  "entities": [
+    "Neral",
+    "Vost"
+  ],
+  "values": [
+    18,
+    24,
+    31,
+    42
+  ],
+  "operators": [
+    "lookup",
+    "plus_two",
+    "above_25"
+  ],
+  "modes": [
+    "fresh_text_prefix",
+    "saved_prefix",
+    "wrong_value_prefix",
+    "no_fact"
+  ],
+  "max_tokens": 12,
+  "training_steps": 0,
+  "reconstruction_not_original_cqp1": true,
+  "gate": "All full first logits and complete tokens equal for fresh/saved; all answers including EOS correct; wrong states follow wrong values.",
+  "token_boundary": "Prefix and question tokenized separately; reference uses the same boundary and cache execution schedule."
+}

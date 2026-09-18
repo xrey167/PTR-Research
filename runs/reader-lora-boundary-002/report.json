@@ -1,0 +1,9 @@
+{
+  "schema": "boundary-qwen-lora-training:v1",
+  "rows": 64,
+  "epochs": 2,
+  "optimizer_steps": 128,
+  "learning_rate": 5e-06,
+  "device": "cuda:0",
+  "status": "trained"
+}

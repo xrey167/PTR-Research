@@ -1,0 +1,2 @@
+{"server":"vllm-0.29.0","model":"NeoHorse-1-4B","gpu":"0","flashinfer_sampler":false,"workers":1,"count":32,"requests_per_s":4.7471,"tokens_per_s":37.9769,"ok":32,"errors":0,"p50_ms":204.91,"p95_ms":230.81}
+{"server":"vllm-0.29.0","model":"NeoHorse-1-4B","gpu":"0","flashinfer_sampler":false,"workers":8,"count":64,"requests_per_s":31.3497,"tokens_per_s":250.7976,"ok":64,"errors":0,"p50_ms":242.95,"p95_ms":337.77}

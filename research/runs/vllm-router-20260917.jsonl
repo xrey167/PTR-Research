@@ -1,0 +1,2 @@
+{"test":"healthy_round_robin","replicas":2,"count":128,"ok":128,"errors":0,"tokens_per_s":369.4735,"p50_ms":321.40,"p95_ms":435.20,"per_replica":{"gpu0":64,"gpu1":64}}
+{"test":"one_replica_down","replicas":2,"count":32,"ok":32,"errors":0,"failovers":16,"health":{"gpu0":false,"gpu1":true},"per_replica":{"gpu0":{"failures":16},"gpu1":{"successes":32}}}

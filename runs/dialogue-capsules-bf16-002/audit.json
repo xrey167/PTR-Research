@@ -1,0 +1,57 @@
+{
+  "audit_passed": true,
+  "graph_nodes_verified": 127,
+  "reader_sequences": 7,
+  "source_files_verified": 43,
+  "inherited_saved_rows_verified": 3,
+  "full_logit_pairs_equal": 7,
+  "controls": {
+    "planner_training_blocks_commit": true,
+    "planner_revocation_preserves_other_payloads": true,
+    "request_blocks_commit": true,
+    "request_revocation_selective": true,
+    "link_blocks_commit": true,
+    "fact_blocks_commit": true
+  },
+  "answers": [
+    {
+      "id": "direct",
+      "text": "27 days"
+    },
+    {
+      "id": "planning",
+      "text": "Yes, 27 days. The delivery lead time for component X12 from Mueller GmbH is 27 days."
+    },
+    {
+      "id": "deadline",
+      "text": "No, because the delivery lead time is 27 days, which is longer than 20 days."
+    },
+    {
+      "id": "buffer",
+      "text": "The delivery lead time for Mueller GmbH X12 with a two-day buffer is 29 days. Yes, because adding 2 days to the original 27 days equals 29 days."
+    },
+    {
+      "id": "followup_buffer",
+      "text": "Yes, because adding two extra days to the 27 days lead time results in 29 days."
+    },
+    {
+      "id": "followup_reference",
+      "text": "Yes, 27 days. The supplier Mueller GmbH has a delivery lead time of 27 days for component x12."
+    },
+    {
+      "id": "german_followup",
+      "text": "Yes, 27 days. The delivery lead time for component X12 from Müller GmbH (alias Mueller GmbH) is 27 days."
+    },
+    {
+      "id": "missing_part",
+      "text": "UNKNOWN"
+    },
+    {
+      "id": "unsupported_metric",
+      "text": "UNKNOWN"
+    }
+  ],
+  "answer_quality_gate_evaluated": false,
+  "full_research_goal_complete": false,
+  "limits": "Stored evidence audit and local clone revocations; no independent model replay or answer-semantic scoring. Local imported planner snapshot has no future source synchronization. Inherited rows retain their interrupted source-run evidence; its final weight hash was not measured."
+}

@@ -1,0 +1,28 @@
+{
+  "status": "trained_and_evaluated_topic_generation2",
+  "pod_type": "model",
+  "semantic_role": "reader",
+  "domain": "procurement+pod_architecture",
+  "generation": "g2",
+  "parent_generation": "g1",
+  "initialized_from": "runs/topic-lora-gpu-001/adapter",
+  "adapter_sha256": "a29904583f4ad68b0937176658cc6048e34c8d2e0cc1ee6d36c6be51bf72fddf",
+  "training_report": "runs/topic-lora-gpu-generation2-001/report.json",
+  "evaluation_report": "runs/topic-reader-eval-generation2-001/report.json",
+  "rows": {
+    "train": 380,
+    "dev": 108,
+    "test": 108
+  },
+  "exact_target_matches": 78,
+  "guarded_matches": 92,
+  "evaluation_elapsed_s": 64.37590927699057,
+  "quality_note": "Exact/guarded target match is a format metric; semantic quality requires separate human or judge evaluation.",
+  "source_links": [
+    "https://spacy.io/api",
+    "https://spacy.io/api/inmemorylookupkb",
+    "https://turbopuffer.com/docs/query",
+    "https://turbopuffer.com/docs/embedding",
+    "https://turbopuffer.com/docs/concepts"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "host": "xrserver",
+  "date": "2026-09-17",
+  "tests": {"passed": 268, "skipped": 1, "warnings": 15},
+  "retrieval": {"recall_at_5": 1.0, "mrr": 1.0, "hnsw_recall_at_10": 1.0},
+  "cache": {"hit_rate": 0.985, "p50_ms": 0.174, "p95_ms": 0.184, "p99_ms": 0.213},
+  "transport": {"mtls_hmac_manifest_p50_ms": 0.102, "mtls_hmac_manifest_p95_ms": 0.151, "model_tok_s": 253.96, "raft_frame_ops_s": 113449.7, "raft_frame_valid": 10000, "subject_allowlist_allowed": 1, "subject_allowlist_after_denied": 1},
+  "raft": {"nodes": 3, "in_process_proposals_s": 88795.5, "persistent_tcp_proposals_s": 9908.6, "persistent_mtls_proposals_s": 2326.7, "replicated": {"leader": 100, "follower_2": 100, "follower_3": 100}},
+  "replication": {"healthy_ops_s": 160688.6, "one_failed_replica_ops_s": 936.4, "quorum_successes": 1000},
+  "resources": {"gpu_memory_after_bytes": [1048576, 1048576], "active_leases_after": 0}
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "run_prefix_probe.py",
+    "sha256": "550ba258158c335540b2f307782d3048d62e7edf1e93f1d0f012c53ce6b42001"
+  },
+  {
+    "name": "prefix_capsule.py",
+    "sha256": "93ef63c16879c4de55bb5cc6dc1c36c33510ee9abdb814d1e947a460d2ce3dc5"
+  },
+  {
+    "name": "audit_prefix_probe.py",
+    "sha256": "1c7ec1513cf453ecb191ff2d7a3a9c8320439073e0994156b1e07d1bd5d00e66"
+  },
+  {
+    "name": "cpu_int8.py",
+    "sha256": "054294165fc091f96874f638551c3c6f392e58cd6f66343ae1d7403fa8a71c14"
+  }
+]

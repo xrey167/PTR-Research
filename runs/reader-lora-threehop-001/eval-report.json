@@ -1,0 +1,38 @@
+{
+  "schema": "three-hop-qwen-lora-gpu-eval:v1",
+  "adapter": "runs/reader-lora-threehop-001",
+  "rows": [
+    {
+      "id": "test:three-hop:G17:en",
+      "answer": "67 days",
+      "target": "67 days",
+      "exact": true,
+      "seconds": 0.5759669550025137
+    },
+    {
+      "id": "test:three-hop:G17:de",
+      "answer": "67 Tage",
+      "target": "67 Tage",
+      "exact": true,
+      "seconds": 0.19192340099834837
+    },
+    {
+      "id": "test:three-hop:H28:en",
+      "answer": "68 days",
+      "target": "68 days",
+      "exact": true,
+      "seconds": 0.19439008900371846
+    },
+    {
+      "id": "test:three-hop:H28:de",
+      "answer": "68 Tage",
+      "target": "68 Tage",
+      "exact": true,
+      "seconds": 0.18713949600351043
+    }
+  ],
+  "correct": 4,
+  "total": 4,
+  "device": "cuda:0",
+  "fresh_reload": true
+}\n

@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "stage": "links",
+  "rows": [
+    {
+      "question": "Current delivery lead time for supplier Müller?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 53,
+      "output_tokens": 8,
+      "generation_s": 1.2928216001018882,
+      "proof_key": "answer:5703757f23a8a8d9f01814688df2a34317d09bf74836e4cb18fd3673ce432c1c",
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0"
+    },
+    {
+      "question": "X12 procurement delay from Müller GmbH?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 54,
+      "output_tokens": 8,
+      "generation_s": 1.207016099942848,
+      "proof_key": "answer:57387499f935b28d83d98370bb1d4cfbe5c01949086e4a6972922326b3256b84",
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0"
+    },
+    {
+      "question": "How long does Mueller need for X12?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 55,
+      "output_tokens": 8,
+      "generation_s": 1.198271500179544,
+      "proof_key": "answer:5a66e68dd0028c34268037510f91485acd02e3a87a7a1721f7e8e3b98906aebd",
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0"
+    },
+    {
+      "question": "Wie lange braucht Muller GmbH fuer X12?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 57,
+      "output_tokens": 8,
+      "generation_s": 1.2047496000304818,
+      "proof_key": "answer:1a2bd83b1a3d814b52ba47238118d9ce4b237ea4290d0a9606d4eadf44a24456",
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0"
+    },
+    {
+      "question": "Welche Lieferzeit hat Müller fuer X12?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 57,
+      "output_tokens": 8,
+      "generation_s": 1.1567375999875367,
+      "proof_key": "answer:63a4eb156fbea28fdc4a82903ebb6714a229b76642c7157fb4ffd1098068bbb5",
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0"
+    },
+    {
+      "question": "What is the delivery lead time for Muller?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 55,
+      "output_tokens": 8,
+      "generation_s": 1.21910829981789,
+      "proof_key": "answer:16696cded9f53497b79f4b04ab178f7e6290571ee6f04e7f02e33a437f41e40a",
+      "knowledge_key": "knowledge:supplier:muller:x12:lead_time",
+      "generation_key": "knowledge:9097dd26a04448f277157ecde5aacd56f5600681fd1d912d48e43f879de9c7c8",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0"
+    }
+  ],
+  "fictional_data": true,
+  "elapsed_s": 15.383153900038451,
+  "base_unchanged": true
+}

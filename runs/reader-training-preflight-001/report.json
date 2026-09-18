@@ -1,0 +1,22 @@
+{
+  "status": "running",
+  "phase": "preflight",
+  "mode": "preflight",
+  "pid": 27116,
+  "device": "cpu",
+  "protocol_sha256": "84a3912fae1ea6a23d22a3d93a1a5f690d0ed87c9cdecd0110623646ad3cb2a4",
+  "runner_sha256": "66da9f63d1ace761ddff7b6f3a34787dc2c18ae96d5db779c11d224596124670",
+  "steps": [],
+  "full_research_goal_complete": false,
+  "held_out_evaluation_completed": false,
+  "capsule_integration_completed": false,
+  "elapsed_s": 196.57504010014236,
+  "model_files_verified": true,
+  "frozen_parameters_before": "f216e6b3c77f09bff02158130b4974417b78d0111f146b20d217459ad27a21bb",
+  "adapter_parameters_before": "aad12d089ba7105fac141f954f8f0d583c2844e2341cdcbb95324f907bd839d9",
+  "trainable_parameters": 29933568,
+  "maximum_training_tokens": 143,
+  "forward_calls": 1,
+  "progress_write_failures": 0,
+  "current_rss_bytes": 119992320
+}

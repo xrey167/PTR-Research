@@ -1,0 +1,25 @@
+{
+  "schema": "pod-taxonomy-balance:v1",
+  "dataset": "runs/taxonomy-routing-balanced-003.jsonl",
+  "rows": 500,
+  "pod_types": {
+    "context": 100,
+    "math": 100,
+    "model": 100,
+    "reasoning": 100,
+    "retrieval": 100
+  },
+  "domains": {
+    "business": 100,
+    "economics": 100,
+    "law": 100,
+    "science": 100,
+    "engineering": 100
+  },
+  "balanced": true,
+  "router_test_type_accuracy": 0.72,
+  "router_test_domain_accuracy": 0.9,
+  "dragonfly_test_top1": 0.84,
+  "tag_accuracy": 0.934,
+  "scope": "held-out synthetic taxonomy; balance and routing evidence, not broad external QA"
+}

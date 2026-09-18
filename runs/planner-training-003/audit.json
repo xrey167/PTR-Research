@@ -1,0 +1,97 @@
+{
+  "audit_passed": true,
+  "scores": {
+    "baseline": 0,
+    "trained": 49
+  },
+  "families": {
+    "baseline": {
+      "direct": {
+        "correct": 0,
+        "total": 5
+      },
+      "planning": {
+        "correct": 0,
+        "total": 5
+      },
+      "buffer": {
+        "correct": 0,
+        "total": 5
+      },
+      "followup": {
+        "correct": 0,
+        "total": 5
+      },
+      "price": {
+        "correct": 0,
+        "total": 5
+      },
+      "age": {
+        "correct": 0,
+        "total": 5
+      },
+      "unknown_part": {
+        "correct": 0,
+        "total": 5
+      },
+      "unknown_part_present": {
+        "correct": 0,
+        "total": 5
+      },
+      "unknown_name": {
+        "correct": 0,
+        "total": 5
+      },
+      "unknown_name_present": {
+        "correct": 0,
+        "total": 5
+      }
+    },
+    "trained": {
+      "direct": {
+        "correct": 5,
+        "total": 5
+      },
+      "planning": {
+        "correct": 5,
+        "total": 5
+      },
+      "buffer": {
+        "correct": 5,
+        "total": 5
+      },
+      "followup": {
+        "correct": 5,
+        "total": 5
+      },
+      "price": {
+        "correct": 5,
+        "total": 5
+      },
+      "age": {
+        "correct": 4,
+        "total": 5
+      },
+      "unknown_part": {
+        "correct": 5,
+        "total": 5
+      },
+      "unknown_part_present": {
+        "correct": 5,
+        "total": 5
+      },
+      "unknown_name": {
+        "correct": 5,
+        "total": 5
+      },
+      "unknown_name_present": {
+        "correct": 5,
+        "total": 5
+      }
+    }
+  },
+  "sequences_checked": 100,
+  "generalization_gate_passed": false,
+  "full_research_goal_complete": false,
+  "limits": "Saved token/target/split/hash consistency. No independent training or inference replay; synthetic small English task, not end-to-end knowledge use."
+}

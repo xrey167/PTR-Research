@@ -1,0 +1,15 @@
+{
+  "audit_passed": true,
+  "rows": 6,
+  "correct": 6,
+  "full_first_logits_equal": 6,
+  "graph_nodes_hash_verified": 64,
+  "receipt_lineage_verified": 6,
+  "full_research_goal_complete": false,
+  "evidence_sha256": {
+    "links.json": "95bf149d4fdeab2f8a48d03879e5eb5ea3b44552ef2a296dcde499028f5a889a",
+    "capsules.json": "305655357c262b5524f5e3f73bf2effeb9da3ab88b94ba89f5fb498127d624df",
+    "reader-logits.safetensors": "12adf635e668a5de357836f25701f3ee1ea11ed03258a86ba227b7c33efbfb9c"
+  },
+  "limits": "Persisted evidence audit; no independent inference replay, no independent replay of runner lifecycle controls; only six existing lookup queries."
+}

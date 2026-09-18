@@ -1,0 +1,10 @@
+{
+  "audit_passed": true,
+  "cases": 9,
+  "model_decisions_correct": 0,
+  "guarded_outcomes_correct": 1,
+  "syntactically_valid": 1,
+  "eos_terminated": 2,
+  "full_internal_knowledge_gate_passed": false,
+  "limits": "Stored tokenizer/model-output consistency; no inference replay, answer evaluation, or independent catalogue construction replay."
+}

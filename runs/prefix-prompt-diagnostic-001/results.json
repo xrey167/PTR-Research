@@ -1,0 +1,131 @@
+{
+  "post_result_diagnostic": true,
+  "rows": [
+    {
+      "operator": "lookup",
+      "system": "original",
+      "mode": "segmented",
+      "text": "UNKNOWN",
+      "eos": true
+    },
+    {
+      "operator": "lookup",
+      "system": "original",
+      "mode": "one_shot_same_tokens",
+      "text": "UNKNOWN",
+      "eos": true
+    },
+    {
+      "operator": "lookup",
+      "system": "original",
+      "mode": "one_shot_full_tokenization",
+      "text": "UNKNOWN",
+      "eos": true
+    },
+    {
+      "operator": "lookup",
+      "system": "authoritative",
+      "mode": "segmented",
+      "text": "Yes",
+      "eos": true
+    },
+    {
+      "operator": "lookup",
+      "system": "authoritative",
+      "mode": "one_shot_same_tokens",
+      "text": "Yes",
+      "eos": true
+    },
+    {
+      "operator": "lookup",
+      "system": "authoritative",
+      "mode": "one_shot_full_tokenization",
+      "text": "Yes",
+      "eos": true
+    },
+    {
+      "operator": "plus_two",
+      "system": "original",
+      "mode": "segmented",
+      "text": "NO",
+      "eos": true
+    },
+    {
+      "operator": "plus_two",
+      "system": "original",
+      "mode": "one_shot_same_tokens",
+      "text": "NO",
+      "eos": true
+    },
+    {
+      "operator": "plus_two",
+      "system": "original",
+      "mode": "one_shot_full_tokenization",
+      "text": "NO",
+      "eos": true
+    },
+    {
+      "operator": "plus_two",
+      "system": "authoritative",
+      "mode": "segmented",
+      "text": "Yes",
+      "eos": true
+    },
+    {
+      "operator": "plus_two",
+      "system": "authoritative",
+      "mode": "one_shot_same_tokens",
+      "text": "Yes",
+      "eos": true
+    },
+    {
+      "operator": "plus_two",
+      "system": "authoritative",
+      "mode": "one_shot_full_tokenization",
+      "text": "Yes",
+      "eos": true
+    },
+    {
+      "operator": "above_25",
+      "system": "original",
+      "mode": "segmented",
+      "text": "NO",
+      "eos": true
+    },
+    {
+      "operator": "above_25",
+      "system": "original",
+      "mode": "one_shot_same_tokens",
+      "text": "NO",
+      "eos": true
+    },
+    {
+      "operator": "above_25",
+      "system": "original",
+      "mode": "one_shot_full_tokenization",
+      "text": "NO",
+      "eos": true
+    },
+    {
+      "operator": "above_25",
+      "system": "authoritative",
+      "mode": "segmented",
+      "text": "yes",
+      "eos": true
+    },
+    {
+      "operator": "above_25",
+      "system": "authoritative",
+      "mode": "one_shot_same_tokens",
+      "text": "yes",
+      "eos": true
+    },
+    {
+      "operator": "above_25",
+      "system": "authoritative",
+      "mode": "one_shot_full_tokenization",
+      "text": "yes",
+      "eos": true
+    }
+  ]
+}

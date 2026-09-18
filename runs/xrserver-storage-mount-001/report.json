@@ -1,0 +1,19 @@
+{
+  "schema": "xrserver-storage-mount:v1",
+  "host": "xrserver",
+  "device": "/dev/nvme1n1p2",
+  "mountpoint": "/srv/ai/extra-ssd",
+  "filesystem": "ntfs",
+  "size": "932G",
+  "used": "584G",
+  "available": "349G",
+  "mode": "read-write",
+  "reason": "NTFS unclean state; ntfs-3g refused read-write and safely fell back to read-only",
+  "top_level": [
+    "LAN",
+    ".BIN",
+    "System Volume Information"
+  ],
+  "repair": "ntfsfix completed successfully; no format performed",
+  "write_test": true
+}

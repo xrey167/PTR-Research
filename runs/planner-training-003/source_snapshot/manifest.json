@@ -1,0 +1,33 @@
+{
+  "timing": "During baseline; runtime sources unchanged since launch.",
+  "files": [
+    {
+      "path": "research/train_dialogue_planner.py",
+      "sha256": "cc0499bf43fbbe5970914349ff0315ee2a220cad16a0254320fc256435cf2b57"
+    },
+    {
+      "path": "research/planner_training_data.py",
+      "sha256": "91f222ce3e6df834ca2c2462805029e87c59bb4352a41be8717e6e0db16448dd"
+    },
+    {
+      "path": "research/dialogue_access.py",
+      "sha256": "43295e1e34b20f2761eb1d7d11a8b37507538bca0013b6ab47bca5e51551e642"
+    },
+    {
+      "path": "research/audit_planner_training.py",
+      "sha256": "ace4f333cefcd53aae77f80f50058f5b18c7023b181d5e327cf0ceca0e54aed6"
+    },
+    {
+      "path": "neural_pods/model.py",
+      "sha256": "e235c1d566eade434d428b59dadcceca03d7db132fe0503123df7cc6afa54e66"
+    },
+    {
+      "path": "neural_pods/registry.py",
+      "sha256": "2c83b8c1a17d0bba60d47f83a8b1c893b001a2b61e1cabcf0dc9409a9274a955"
+    },
+    {
+      "path": "tests/test_planner_training_data.py",
+      "sha256": "96857b4216435bdf6f8df8d96b9940a77976d2d45d0464a9fd25542a20478b83"
+    }
+  ]
+}

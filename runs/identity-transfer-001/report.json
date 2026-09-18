@@ -1,0 +1,221 @@
+{
+  "status": "failed",
+  "scope": "Existing fictional lookup regression; identity training once, then zero gradients on value update",
+  "training": [
+    {
+      "schema": "dragonfly-identity-address:research-v1",
+      "encoder_id": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "features": [
+        "semantic_similarity",
+        "subject_match",
+        "component_match",
+        "predicate_match",
+        "role_match",
+        "current_generation",
+        "time_valid",
+        "authorized",
+        "tag_overlap"
+      ],
+      "identity_key": "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+      "dimension": 384,
+      "bias": -0.16451938450336456,
+      "steps": 300,
+      "loss_before": 1.4337010383605957,
+      "loss_after": 0.10290639847517014,
+      "negative_accuracy": 1.0,
+      "z_delta_l2": 4.152506351470947,
+      "alias_training": {
+        "aliases": [
+          "Mueller",
+          "Mueller GmbH",
+          "Muller GmbH",
+          "Müller",
+          "Müller GmbH"
+        ],
+        "scores": {
+          "Mueller": 0.986111044883728,
+          "Mueller GmbH": 0.9958338737487793,
+          "Muller GmbH": 0.9775089025497437,
+          "Müller": 0.8491676449775696,
+          "Müller GmbH": 0.9775089025497437
+        }
+      },
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5"
+    },
+    {
+      "schema": "dragonfly-identity-address:research-v1",
+      "encoder_id": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "features": [
+        "semantic_similarity",
+        "subject_match",
+        "component_match",
+        "predicate_match",
+        "role_match",
+        "current_generation",
+        "time_valid",
+        "authorized",
+        "tag_overlap"
+      ],
+      "identity_key": "knowledge:b97d6aab39a96ff76a816f6a42e8a91e17e204de6248f388d267ead9b40ac68a",
+      "dimension": 384,
+      "bias": 0.9563944935798645,
+      "steps": 300,
+      "loss_before": 1.6876726150512695,
+      "loss_after": 0.07360653579235077,
+      "negative_accuracy": 1.0,
+      "z_delta_l2": 4.308403015136719,
+      "alias_training": {
+        "aliases": [
+          "Müller Werke"
+        ],
+        "scores": {
+          "Müller Werke": 0.9537420868873596
+        }
+      },
+      "representation_key": "router:dca62d59f8de73c49828f5c7fce3545c9cb87fcef5910294c60d111d0e898193"
+    }
+  ],
+  "predictions": [
+    {
+      "stage": "before",
+      "question": "Current delivery lead time for supplier Müller?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 53,
+      "output_tokens": 8,
+      "generation_s": 1.536656300071627,
+      "generation_key": "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+      "receipt": {
+        "answer_id": "answer:d06b4772e11e8bf60269c036ee24ed5e0a9eea622bdff3e1ad5cb0fcb1c76f6b",
+        "text": "LINK 1 CLUSTER 1",
+        "dependencies": [
+          "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "lora:f1837c9760765d982c91ee5b54b18a99169f296b0b98734504ee1dab663791a5",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "vector:c447cb6f4f91b03aa2e2a3e10f4353a8a75ff7c250e59678b6eb69ae7f1dabc1"
+        ]
+      }
+    },
+    {
+      "stage": "before",
+      "question": "X12 procurement delay from Müller GmbH?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 54,
+      "output_tokens": 8,
+      "generation_s": 1.7089466999750584,
+      "generation_key": "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+      "receipt": {
+        "answer_id": "answer:d06b4772e11e8bf60269c036ee24ed5e0a9eea622bdff3e1ad5cb0fcb1c76f6b",
+        "text": "LINK 1 CLUSTER 1",
+        "dependencies": [
+          "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "lora:f1837c9760765d982c91ee5b54b18a99169f296b0b98734504ee1dab663791a5",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "vector:c447cb6f4f91b03aa2e2a3e10f4353a8a75ff7c250e59678b6eb69ae7f1dabc1"
+        ]
+      }
+    },
+    {
+      "stage": "before",
+      "question": "How long does Mueller need for X12?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 55,
+      "output_tokens": 8,
+      "generation_s": 1.589935999829322,
+      "generation_key": "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+      "receipt": {
+        "answer_id": "answer:d06b4772e11e8bf60269c036ee24ed5e0a9eea622bdff3e1ad5cb0fcb1c76f6b",
+        "text": "LINK 1 CLUSTER 1",
+        "dependencies": [
+          "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "lora:f1837c9760765d982c91ee5b54b18a99169f296b0b98734504ee1dab663791a5",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "vector:c447cb6f4f91b03aa2e2a3e10f4353a8a75ff7c250e59678b6eb69ae7f1dabc1"
+        ]
+      }
+    },
+    {
+      "stage": "before",
+      "question": "Wie lange braucht Muller GmbH fuer X12?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 57,
+      "output_tokens": 8,
+      "generation_s": 1.8229691998567432,
+      "generation_key": "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+      "receipt": {
+        "answer_id": "answer:d06b4772e11e8bf60269c036ee24ed5e0a9eea622bdff3e1ad5cb0fcb1c76f6b",
+        "text": "LINK 1 CLUSTER 1",
+        "dependencies": [
+          "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "lora:f1837c9760765d982c91ee5b54b18a99169f296b0b98734504ee1dab663791a5",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "vector:c447cb6f4f91b03aa2e2a3e10f4353a8a75ff7c250e59678b6eb69ae7f1dabc1"
+        ]
+      }
+    },
+    {
+      "stage": "before",
+      "question": "Welche Lieferzeit hat Müller fuer X12?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 57,
+      "output_tokens": 8,
+      "generation_s": 1.2604787000454962,
+      "generation_key": "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+      "receipt": {
+        "answer_id": "answer:d06b4772e11e8bf60269c036ee24ed5e0a9eea622bdff3e1ad5cb0fcb1c76f6b",
+        "text": "LINK 1 CLUSTER 1",
+        "dependencies": [
+          "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "lora:f1837c9760765d982c91ee5b54b18a99169f296b0b98734504ee1dab663791a5",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "vector:c447cb6f4f91b03aa2e2a3e10f4353a8a75ff7c250e59678b6eb69ae7f1dabc1"
+        ]
+      }
+    },
+    {
+      "stage": "before",
+      "question": "What is the delivery lead time for Muller?",
+      "text": "LINK 1 CLUSTER 1",
+      "input_tokens": 55,
+      "output_tokens": 8,
+      "generation_s": 1.2369317000266165,
+      "generation_key": "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+      "representation_key": "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+      "adapter_key": "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+      "receipt": {
+        "answer_id": "answer:d06b4772e11e8bf60269c036ee24ed5e0a9eea622bdff3e1ad5cb0fcb1c76f6b",
+        "text": "LINK 1 CLUSTER 1",
+        "dependencies": [
+          "knowledge:1cb75dcf90e6896b54a2e1153d82fd5c01ee89bec7635c9c88296acc7a1e6109",
+          "knowledge:a6f51ce5be0e1ae580199021615bae516674814d375ced7e3d6df3059e0939d7",
+          "lora:0f85e4c13369bc72ab9122c1c5a1174536c5a968aa68d89229e53700837f22b0",
+          "lora:f1837c9760765d982c91ee5b54b18a99169f296b0b98734504ee1dab663791a5",
+          "router:854db8edd1223b21a025ac2831b61a30d2dc80ddbdbeec055c8244ab5b4ae7a5",
+          "vector:c447cb6f4f91b03aa2e2a3e10f4353a8a75ff7c250e59678b6eb69ae7f1dabc1"
+        ]
+      }
+    }
+  ],
+  "full_research_goal_complete": false,
+  "elapsed_s": 17.151672299951315,
+  "error": "KeyError('lifecycle')"
+}

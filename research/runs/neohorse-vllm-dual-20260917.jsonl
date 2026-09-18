@@ -1,0 +1,2 @@
+{"server":"vllm-0.29.0","model":"NeoHorse-1-4B","gpus":"0,1","replicas":2,"workers":8,"count":64,"requests_per_s":24.2963,"tokens_per_s":194.3702,"ok":64,"errors":0,"p50_ms":323.12,"p95_ms":369.63}
+{"server":"vllm-0.29.0","model":"NeoHorse-1-4B","gpus":"0,1","replicas":2,"workers":16,"count":128,"requests_per_s":50.1838,"tokens_per_s":401.4703,"ok":128,"errors":0,"p50_ms":305.61,"p95_ms":401.28}

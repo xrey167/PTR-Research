@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "test:G17:52:en:lookup",
+    "task": "lookup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. state the delivery duration in days.",
+    "history": [],
+    "target": "52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": null,
+      "answer": 52
+    }
+  },
+  {
+    "id": "test:G17:52:en:buffer",
+    "task": "buffer",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. include a four-day allowance in the total duration.",
+    "history": [],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": null,
+      "answer": 56
+    }
+  },
+  {
+    "id": "test:G17:52:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than 50 days after ordering?",
+    "history": [],
+    "target": "No; 52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 50,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:G17:52:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than 52 days after ordering?",
+    "history": [],
+    "target": "Yes; 52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 52,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:52:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than 55 days after ordering?",
+    "history": [],
+    "target": "Yes; 52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 55,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:52:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than seven weeks and 1 days after ordering?",
+    "history": [],
+    "target": "No; 52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 50,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:G17:52:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than seven weeks and 3 days after ordering?",
+    "history": [],
+    "target": "Yes; 52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 52,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:52:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than seven weeks and 6 days after ordering?",
+    "history": [],
+    "target": "Yes; 52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 55,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:52:en:missing",
+    "task": "missing",
+    "language": "en",
+    "evidence": null,
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. state the delivery duration in days.",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "test:G17:52:en:followup_lookup",
+    "task": "followup_lookup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "State the waiting time for that order.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling G17 supplied by Gavren Parts."
+      }
+    ],
+    "target": "52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "answer": 52,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:G17:52:en:followup_buffer",
+    "task": "followup_buffer",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Extend that period by four days and give the result.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling G17 supplied by Gavren Parts."
+      }
+    ],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:G17:52:en:stale_followup",
+    "task": "stale_followup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Which duration applies to the order at present?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling G17 supplied by Gavren Parts."
+      },
+      {
+        "role": "assistant",
+        "content": "Earlier estimate: 56 days."
+      }
+    ],
+    "target": "52 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "answer": 52,
+      "deadline_days": null,
+      "prior_value": 56
+    }
+  },
+  {
+    "id": "test:G17:52:de:lookup",
+    "task": "lookup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Nenne die Lieferdauer in Tagen.",
+    "history": [],
+    "target": "52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": null,
+      "answer": 52
+    }
+  },
+  {
+    "id": "test:G17:52:de:buffer",
+    "task": "buffer",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Berücksichtige einen Zuschlag von vier Tagen in der Gesamtdauer.",
+    "history": [],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": null,
+      "answer": 56
+    }
+  },
+  {
+    "id": "test:G17:52:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens 50 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Nein; 52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 50,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:G17:52:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens 52 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 52,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:52:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens 55 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 55,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:52:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens sieben Wochen und 1 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Nein; 52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 50,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:G17:52:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens sieben Wochen und 3 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 52,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:52:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens sieben Wochen und 6 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": 55,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:52:de:missing",
+    "task": "missing",
+    "language": "de",
+    "evidence": null,
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Nenne die Lieferdauer in Tagen.",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "test:G17:52:de:followup_lookup",
+    "task": "followup_lookup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Gib die Wartezeit für diese Bestellung an.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts."
+      }
+    ],
+    "target": "52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "answer": 52,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:G17:52:de:followup_buffer",
+    "task": "followup_buffer",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Verlängere diese Dauer um vier Tage und nenne das Ergebnis.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts."
+      }
+    ],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:G17:52:de:stale_followup",
+    "task": "stale_followup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 52
+    },
+    "question": "Welche Dauer trifft derzeit auf diese Bestellung zu?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts."
+      },
+      {
+        "role": "assistant",
+        "content": "Frühere Schätzung: 56 Tage."
+      }
+    ],
+    "target": "52 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 52,
+      "answer": 52,
+      "deadline_days": null,
+      "prior_value": 56
+    }
+  },
+  {
+    "id": "test:G17:56:en:lookup",
+    "task": "lookup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. state the delivery duration in days.",
+    "history": [],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 56
+    }
+  },
+  {
+    "id": "test:G17:56:en:buffer",
+    "task": "buffer",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. include a four-day allowance in the total duration.",
+    "history": [],
+    "target": "60 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 60
+    }
+  },
+  {
+    "id": "test:G17:56:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than 54 days after ordering?",
+    "history": [],
+    "target": "No; 56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 54,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:G17:56:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than 56 days after ordering?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:56:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than 59 days after ordering?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 59,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:56:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than seven weeks and 5 days after ordering?",
+    "history": [],
+    "target": "No; 56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 54,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:G17:56:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than eight weeks after ordering?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:56:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling G17 supplied by Gavren Parts. will the order arrive no later than eight weeks and 3 days after ordering?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 59,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:56:en:followup_lookup",
+    "task": "followup_lookup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "State the waiting time for that order.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling G17 supplied by Gavren Parts."
+      }
+    ],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:G17:56:en:followup_buffer",
+    "task": "followup_buffer",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Extend that period by four days and give the result.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling G17 supplied by Gavren Parts."
+      }
+    ],
+    "target": "60 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "answer": 60,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:G17:56:en:stale_followup",
+    "task": "stale_followup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Which duration applies to the order at present?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling G17 supplied by Gavren Parts."
+      },
+      {
+        "role": "assistant",
+        "content": "Earlier estimate: 52 days."
+      }
+    ],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": 52
+    }
+  },
+  {
+    "id": "test:G17:56:de:lookup",
+    "task": "lookup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Nenne die Lieferdauer in Tagen.",
+    "history": [],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 56
+    }
+  },
+  {
+    "id": "test:G17:56:de:buffer",
+    "task": "buffer",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Berücksichtige einen Zuschlag von vier Tagen in der Gesamtdauer.",
+    "history": [],
+    "target": "60 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 60
+    }
+  },
+  {
+    "id": "test:G17:56:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens 54 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Nein; 56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 54,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:G17:56:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens 56 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:56:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens 59 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 59,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:56:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens sieben Wochen und 5 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Nein; 56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 54,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:G17:56:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens acht Wochen nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:56:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts. Trifft die Bestellung spätestens acht Wochen und 3 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "deadline_days": 59,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:G17:56:de:followup_lookup",
+    "task": "followup_lookup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Gib die Wartezeit für diese Bestellung an.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts."
+      }
+    ],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:G17:56:de:followup_buffer",
+    "task": "followup_buffer",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Verlängere diese Dauer um vier Tage und nenne das Ergebnis.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts."
+      }
+    ],
+    "target": "60 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "answer": 60,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:G17:56:de:stale_followup",
+    "task": "stale_followup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "lead_time_days": 56
+    },
+    "question": "Welche Dauer trifft derzeit auf diese Bestellung zu?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit G17 vom Lieferanten Gavren Parts."
+      },
+      {
+        "role": "assistant",
+        "content": "Frühere Schätzung: 52 Tage."
+      }
+    ],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Gavren Parts",
+      "component": "G17",
+      "value": 56,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": 52
+    }
+  },
+  {
+    "id": "test:H28:52:en:lookup",
+    "task": "lookup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. state the delivery duration in days.",
+    "history": [],
+    "target": "52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": null,
+      "answer": 52
+    }
+  },
+  {
+    "id": "test:H28:52:en:buffer",
+    "task": "buffer",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. include a four-day allowance in the total duration.",
+    "history": [],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": null,
+      "answer": 56
+    }
+  },
+  {
+    "id": "test:H28:52:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than 50 days after ordering?",
+    "history": [],
+    "target": "No; 52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 50,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:H28:52:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than 52 days after ordering?",
+    "history": [],
+    "target": "Yes; 52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 52,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:52:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than 55 days after ordering?",
+    "history": [],
+    "target": "Yes; 52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 55,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:52:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than seven weeks and 1 days after ordering?",
+    "history": [],
+    "target": "No; 52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 50,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:H28:52:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than seven weeks and 3 days after ordering?",
+    "history": [],
+    "target": "Yes; 52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 52,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:52:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than seven weeks and 6 days after ordering?",
+    "history": [],
+    "target": "Yes; 52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 55,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:52:en:missing",
+    "task": "missing",
+    "language": "en",
+    "evidence": null,
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. state the delivery duration in days.",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "test:H28:52:en:followup_lookup",
+    "task": "followup_lookup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "State the waiting time for that order.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling H28 supplied by Helvona Works."
+      }
+    ],
+    "target": "52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "answer": 52,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:H28:52:en:followup_buffer",
+    "task": "followup_buffer",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Extend that period by four days and give the result.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling H28 supplied by Helvona Works."
+      }
+    ],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:H28:52:en:stale_followup",
+    "task": "stale_followup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Which duration applies to the order at present?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling H28 supplied by Helvona Works."
+      },
+      {
+        "role": "assistant",
+        "content": "Earlier estimate: 56 days."
+      }
+    ],
+    "target": "52 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "answer": 52,
+      "deadline_days": null,
+      "prior_value": 56
+    }
+  },
+  {
+    "id": "test:H28:52:de:lookup",
+    "task": "lookup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Nenne die Lieferdauer in Tagen.",
+    "history": [],
+    "target": "52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": null,
+      "answer": 52
+    }
+  },
+  {
+    "id": "test:H28:52:de:buffer",
+    "task": "buffer",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Berücksichtige einen Zuschlag von vier Tagen in der Gesamtdauer.",
+    "history": [],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": null,
+      "answer": 56
+    }
+  },
+  {
+    "id": "test:H28:52:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens 50 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Nein; 52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 50,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:H28:52:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens 52 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 52,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:52:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens 55 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 55,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:52:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens sieben Wochen und 1 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Nein; 52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 50,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:H28:52:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens sieben Wochen und 3 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 52,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:52:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens sieben Wochen und 6 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": 55,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:52:de:missing",
+    "task": "missing",
+    "language": "de",
+    "evidence": null,
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Nenne die Lieferdauer in Tagen.",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "test:H28:52:de:followup_lookup",
+    "task": "followup_lookup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Gib die Wartezeit für diese Bestellung an.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works."
+      }
+    ],
+    "target": "52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "answer": 52,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:H28:52:de:followup_buffer",
+    "task": "followup_buffer",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Verlängere diese Dauer um vier Tage und nenne das Ergebnis.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works."
+      }
+    ],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:H28:52:de:stale_followup",
+    "task": "stale_followup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 52
+    },
+    "question": "Welche Dauer trifft derzeit auf diese Bestellung zu?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works."
+      },
+      {
+        "role": "assistant",
+        "content": "Frühere Schätzung: 56 Tage."
+      }
+    ],
+    "target": "52 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 52,
+      "answer": 52,
+      "deadline_days": null,
+      "prior_value": 56
+    }
+  },
+  {
+    "id": "test:H28:56:en:lookup",
+    "task": "lookup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. state the delivery duration in days.",
+    "history": [],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 56
+    }
+  },
+  {
+    "id": "test:H28:56:en:buffer",
+    "task": "buffer",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. include a four-day allowance in the total duration.",
+    "history": [],
+    "target": "60 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 60
+    }
+  },
+  {
+    "id": "test:H28:56:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than 54 days after ordering?",
+    "history": [],
+    "target": "No; 56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 54,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:H28:56:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than 56 days after ordering?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:56:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than 59 days after ordering?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 59,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:56:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than seven weeks and 5 days after ordering?",
+    "history": [],
+    "target": "No; 56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 54,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:H28:56:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than eight weeks after ordering?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:56:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Procurement is scheduling H28 supplied by Helvona Works. will the order arrive no later than eight weeks and 3 days after ordering?",
+    "history": [],
+    "target": "Yes; 56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 59,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:56:en:followup_lookup",
+    "task": "followup_lookup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "State the waiting time for that order.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling H28 supplied by Helvona Works."
+      }
+    ],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:H28:56:en:followup_buffer",
+    "task": "followup_buffer",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Extend that period by four days and give the result.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling H28 supplied by Helvona Works."
+      }
+    ],
+    "target": "60 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "answer": 60,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:H28:56:en:stale_followup",
+    "task": "stale_followup",
+    "language": "en",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Which duration applies to the order at present?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Procurement is scheduling H28 supplied by Helvona Works."
+      },
+      {
+        "role": "assistant",
+        "content": "Earlier estimate: 52 days."
+      }
+    ],
+    "target": "56 days",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": 52
+    }
+  },
+  {
+    "id": "test:H28:56:de:lookup",
+    "task": "lookup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Nenne die Lieferdauer in Tagen.",
+    "history": [],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 56
+    }
+  },
+  {
+    "id": "test:H28:56:de:buffer",
+    "task": "buffer",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Berücksichtige einen Zuschlag von vier Tagen in der Gesamtdauer.",
+    "history": [],
+    "target": "60 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": null,
+      "answer": 60
+    }
+  },
+  {
+    "id": "test:H28:56:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens 54 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Nein; 56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 54,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:H28:56:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens 56 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:56:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens 59 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 59,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:56:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens sieben Wochen und 5 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Nein; 56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 54,
+      "answer": false
+    }
+  },
+  {
+    "id": "test:H28:56:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens acht Wochen nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 56,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:56:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works. Trifft die Bestellung spätestens acht Wochen und 3 Tage nach Bestellung ein?",
+    "history": [],
+    "target": "Ja; 56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "deadline_days": 59,
+      "answer": true
+    }
+  },
+  {
+    "id": "test:H28:56:de:followup_lookup",
+    "task": "followup_lookup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Gib die Wartezeit für diese Bestellung an.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works."
+      }
+    ],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:H28:56:de:followup_buffer",
+    "task": "followup_buffer",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Verlängere diese Dauer um vier Tage und nenne das Ergebnis.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works."
+      }
+    ],
+    "target": "60 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "answer": 60,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "test:H28:56:de:stale_followup",
+    "task": "stale_followup",
+    "language": "de",
+    "evidence": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "lead_time_days": 56
+    },
+    "question": "Welche Dauer trifft derzeit auf diese Bestellung zu?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Der Einkauf plant mit H28 vom Lieferanten Helvona Works."
+      },
+      {
+        "role": "assistant",
+        "content": "Frühere Schätzung: 52 Tage."
+      }
+    ],
+    "target": "56 Tage",
+    "assessment": {
+      "supplier": "Helvona Works",
+      "component": "H28",
+      "value": 56,
+      "answer": 56,
+      "deadline_days": null,
+      "prior_value": 52
+    }
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "audit_passed": true,
+  "sequences": 7,
+  "input_sequences_verified": 7,
+  "report_sha256": "5ab52c470ac8aab89f6c5e1d07f9f35c3f1fc74c807743588e10e78bfd7f6324",
+  "logits_sha256": "ec190d4a5916076f607739b429dd21bc5b45c7826ff00cb83a6cf046fad67fae",
+  "protocol_sha256": "92b18a01ae53f940ceae2874b7a225598781eac800be55a8df661795b3d608e3",
+  "runner_snapshot_verified": true,
+  "base_unchanged_reported": true,
+  "changed_from_int8": [
+    "direct",
+    "planning",
+    "deadline",
+    "buffer",
+    "followup_buffer",
+    "followup_reference",
+    "german_followup"
+  ],
+  "answer_quality_evaluated": false,
+  "full_research_goal_complete": false,
+  "limits": "Saved token/greedy/EOS/input consistency. BF16 versus layerwise Int8 variant, not independent model replay; no routing or lifecycle integration in this control."
+}

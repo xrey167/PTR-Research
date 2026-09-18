@@ -1,0 +1,57 @@
+{
+  "training_status": "completed",
+  "training_steps": [
+    32,
+    32
+  ],
+  "model_results": {
+    "g1": {
+      "correct": 6,
+      "n": 6
+    },
+    "g2": {
+      "correct": 14,
+      "n": 14
+    }
+  },
+  "base_unchanged": true,
+  "revocation_paths_blocked": 14,
+  "test_suite": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "49",
+    "time": "34.782",
+    "timestamp": "2026-09-15T12:02:25.815671+02:00",
+    "hostname": "xr_thinkcentre"
+  },
+  "lineage_audit": {
+    "status": "passed",
+    "nodes_verified": 26,
+    "adapter_artifacts_verified": 3,
+    "scenarios": [
+      {
+        "scenario": "generation_revocation",
+        "closure_size": 6,
+        "exact_closure": true,
+        "stale_commit_rejected": true,
+        "unrelated_generations_preserved": 2
+      },
+      {
+        "scenario": "source_revocation",
+        "closure_size": 7,
+        "exact_closure": true,
+        "stale_commit_rejected": true,
+        "unrelated_generations_preserved": 2
+      }
+    ],
+    "stable_knowledge_distinct_generations_and_artifacts": true
+  },
+  "build": {
+    "wheel": "dist\\neural_pods-0.1.0-py3-none-any.whl",
+    "sha256": "a2ee7269635977c3fcd04e405be6dd55707ff2a6e2a1679088ad8507b76a25ee",
+    "verified_source_files": 7,
+    "source_matches": true
+  }
+}

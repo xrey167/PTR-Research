@@ -1,0 +1,31 @@
+{
+  "schema": "xrserver-reference-serving-probe:v1",
+  "host": "xrserver",
+  "endpoint": "127.0.0.1:18080",
+  "model": "qwen38",
+  "gpu": "2x NVIDIA RTX 3090",
+  "process": "llama-server",
+  "runs": [
+    {
+      "elapsed_s": 6.089165904006222,
+      "tokens_predicted": 64,
+      "wall_clock_tokens_per_s": 10.51047072931495
+    },
+    {
+      "elapsed_s": 3.4689986890007276,
+      "tokens_predicted": 64,
+      "wall_clock_tokens_per_s": 18.4491277563543
+    },
+    {
+      "elapsed_s": 3.211625682990416,
+      "tokens_predicted": 64,
+      "wall_clock_tokens_per_s": 19.92760250329303
+    }
+  ],
+  "p50_elapsed_s": 3.4689986890007276,
+  "warm_runs_p50_s": 3.340998294860573,
+  "scope": "read-only reference probe; not NeoHorse and not vLLM/SGLang",
+  "limitation": "GPU occupied; generation endpoint did not expose tokens_per_second",
+  "wall_clock_tokens_per_s_p50": 18.4491277563543,
+  "measurement_note": "wall-clock throughput = tokens_predicted / request elapsed; includes server request overhead"
+}

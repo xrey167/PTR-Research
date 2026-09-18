@@ -1,0 +1,46 @@
+{
+  "status": "candidate_not_trained",
+  "purpose": "Learn general use of current supplied Pod knowledge, including bilingual deadline decisions; do not memorize supplier values",
+  "model_path": "models/qwen3b",
+  "base_precision": "bfloat16",
+  "lora": {
+    "r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.0,
+    "bias": "none",
+    "task_type": "CAUSAL_LM",
+    "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    "use_rslora": false
+  },
+  "training": {
+    "learning_rate": 0.0002,
+    "epochs": 2,
+    "micro_batch_size": 1,
+    "gradient_accumulation_steps": 16,
+    "world_size": 1,
+    "effective_batch_size": 16,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "scheduler": "linear",
+    "seed": 3407,
+    "max_grad_norm": 1.0,
+    "gradient_checkpointing": true,
+    "assistant_only_loss": true,
+    "loss_normalization": "sum over supervised shifted tokens divided by the supervised token count of the actual accumulation window"
+  },
+  "required_before_training": [
+    "Implement and verify the reader training path; this file alone does not configure the existing trainers",
+    "Measure memory on the actual training device; BF16 inference already pages on this Windows CPU host",
+    "Freeze disjoint train, development and final evaluation sets by entity, values and phrasing",
+    "Keep the known nine dialogue cases and twelve deadline diagnostic cases out of training",
+    "Use varied supplied values, units, sufficient/insufficient/equal deadlines, abstention and dialogue references",
+    "Verify token-normalized accumulation including a short final accumulation window"
+  ],
+  "evaluation": [
+    "Fresh held-out answer quality and transfer, not a fixed training-loss threshold",
+    "Compare against the same frozen base and the same inputs",
+    "Verify unchanged base hash and changed adapter tensors",
+    "Compile new capsules for the exact trained reader identity; do not reuse old BF16 or Int8 KV states",
+    "Verify planner, link, model, generation and source revocations in the integrated path"
+  ]
+}
