@@ -7,7 +7,9 @@ benchmark. The control port accepts newline-delimited JSON commands:
 """
 from __future__ import annotations
 import argparse
+import base64
 import json
+import os
 import socket
 import socketserver
 import struct
@@ -19,6 +21,50 @@ from neural_pods_raft import RaftNode
 RAFT_PORT = 45300
 CONTROL_PORT = 45400
 TICK_INTERVAL_S = 0.05
+WAL_PATH = "/tmp/raft-node-{ident}.wal"
+
+
+def _wal_encode(entries, hard_state) -> str:
+    return json.dumps({
+        "entries": [[i, t, base64.b64encode(d).decode("ascii")] for i, t, d in entries],
+        "hard_state": list(hard_state) if hard_state else None,
+    })
+
+
+def _wal_decode(line: str):
+    event = json.loads(line)
+    entries = [(i, t, base64.b64decode(d)) for i, t, d in event.get("entries", [])]
+    hard_state = tuple(event["hard_state"]) if event.get("hard_state") else None
+    return entries, hard_state
+
+
+class Wal:
+    """Crash-recovery write-ahead log: one JSON line per acknowledged Ready."""
+
+    def __init__(self, path: str):
+        self.path = path
+        self.handle = open(path, "a", encoding="utf-8")
+
+    def append(self, entries, hard_state) -> None:
+        self.handle.write(_wal_encode(entries, hard_state) + "\n")
+        self.handle.flush()
+        os.fsync(self.handle.fileno())
+
+    def load(self) -> tuple[list, list | None]:
+        """Fold the WAL into (log entries, latest hard state)."""
+        log: dict[int, tuple] = {}
+        hard_state = None
+        try:
+            with open(self.path, encoding="utf-8") as handle:
+                for line in handle:
+                    entries, hs = _wal_decode(line)
+                    for entry in entries:
+                        log[entry[0]] = entry
+                    if hs is not None:
+                        hard_state = hs
+        except FileNotFoundError:
+            pass
+        return sorted(log.values()), hard_state
 
 
 def read_exact(conn: socket.socket, n: int) -> bytes | None:
@@ -32,12 +78,19 @@ def read_exact(conn: socket.socket, n: int) -> bytes | None:
 
 
 class RaftPeerServer:
+    PEER_CONN_TTL_S = 30.0
+
     def __init__(self, ident: int, cluster: list[int], peers: dict[int, str]):
         self.ident = ident
         self.node = RaftNode(ident, cluster)
         self.peers = peers  # ident -> hostname
+        self.wal = Wal(WAL_PATH.format(ident=ident))
+        entries, hard_state = self.wal.load()
+        if entries or hard_state:
+            self.node.restore(entries, hard_state)
         self.lock = threading.RLock()
         self.applied: list[bytes] = []
+        self.ready_batch: list[tuple] = []
         self.stop = False
         self.out: dict[int, socket.socket] = {}
         self.server = socket.socket()
@@ -67,19 +120,32 @@ class RaftPeerServer:
                     return
                 with self.lock:
                     try:
-                        if self.node.step_message(data) is not None:
-                            self.emit()
+                        ready = self.node.step_message(data)
+                        if ready is not None:
+                            self.ready_batch.append(ready)
                     except Exception:
                         pass  # malformed/stale frames are dropped
+                    self.emit()
 
     def send(self, target: int, data: bytes) -> None:
-        conn = self.out.get(target)
+        entry = self.out.get(target)
+        now = time.monotonic()
+        if entry is not None and now - entry[1] > self.PEER_CONN_TTL_S:
+            entry[0].close()
+            entry = None
+        conn = entry[0] if entry else None
         if conn is None:
             try:
                 conn = socket.create_connection((self.peers[target], RAFT_PORT), timeout=2)
             except OSError:
                 return  # peer down; raft retries via progress
-            self.out[target] = conn
+            # Detect half-open connections (peer container restarted): without
+            # keepalive, sends into a dead socket succeed silently forever.
+            conn.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+            conn.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPIDLE, 5)
+            conn.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPINTVL, 2)
+            conn.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPCNT, 3)
+            self.out[target] = (conn, now)
         try:
             conn.sendall(struct.pack("!I", len(data)) + data)
         except OSError:
@@ -87,33 +153,54 @@ class RaftPeerServer:
             self.out.pop(target, None)
 
     def emit(self) -> None:
-        for target, payload in zip(self.node.pending_message_targets(), self.node.pending_messages()):
-            self.send(target, payload)
-        self.applied.extend(self.node.ack_ready())
+        # Raft invariant: persist the Ready (entries + hard state) before it is
+        # acknowledged and before its messages are released to peers.
+        ready = self.node.poll_ready()
+        if ready is not None:
+            self.ready_batch.append(ready)
+        if not self.ready_batch:
+            return
+        try:
+            for entries, hard_state, _committed in self.ready_batch:
+                if entries or hard_state is not None:
+                    self.wal.append(entries, hard_state)
+            for target, payload in zip(self.node.pending_message_targets(),
+                                       self.node.pending_messages()):
+                self.send(target, payload)
+            committed, released = self.node.ack_ready_messages()
+            self.applied.extend(committed)
+            for target, payload in released:
+                self.send(target, payload)
+        except RuntimeError:
+            return
+        finally:
+            self.ready_batch.clear()
 
     def tick_loop(self) -> None:
         while not self.stop:
             with self.lock:
-                self.node.tick()
+                try:
+                    ready = self.node.tick_pending()
+                    if ready is not None:
+                        self.ready_batch.append(ready)
+                except RuntimeError:
+                    pass
                 self.emit()
             time.sleep(TICK_INTERVAL_S)
 
     def status(self) -> dict:
+        import re
         term, _commit, soft = self.node.status()
-        leader = 0
-        state = ""
-        for part in soft.split(";"):
-            part = part.strip()
-            if part.startswith("raft_state:"):
-                state = part.split(":", 1)[1].strip().rstrip(" }")
-            if part.startswith("leader_id:"):
-                leader = int(part.split(":", 1)[1].strip().rstrip(" }"))
-        return {"ident": self.ident, "term": term, "leader": leader, "state": state,
+        leader_match = re.search(r"leader_id:\s*(\d+)", soft)
+        state_match = re.search(r"raft_state:\s*(\w+)", soft)
+        return {"ident": self.ident, "term": term,
+                "leader": int(leader_match.group(1)) if leader_match else 0,
+                "state": state_match.group(1) if state_match else "",
                 "applied": len(self.applied)}
 
     def close(self) -> None:
         self.stop = True
-        for conn in self.out.values():
+        for conn, _since in self.out.values():
             conn.close()
         self.server.close()
 
@@ -128,11 +215,15 @@ class ControlHandler(socketserver.StreamRequestHandler):
             with self.server.peer.lock:
                 kind = cmd.get("cmd")
                 if kind == "campaign":
-                    self.server.peer.node.campaign_pending()
+                    ready = self.server.peer.node.campaign_pending()
+                    if ready is not None:
+                        self.server.peer.ready_batch.append(ready)
                     self.server.peer.emit()
                     result = {"ok": True}
                 elif kind == "propose":
-                    self.server.peer.node.propose_pending(cmd["data"].encode())
+                    ready = self.server.peer.node.propose_pending(cmd["data"].encode())
+                    if ready is not None:
+                        self.server.peer.ready_batch.append(ready)
                     self.server.peer.emit()
                     result = {"ok": True}
                 elif kind == "status":

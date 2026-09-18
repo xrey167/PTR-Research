@@ -45,6 +45,11 @@ def control(ip: str, cmd: dict, timeout: float = 5.0) -> dict:
 
 
 def launch_server(ident: int, peers: dict[int, str]) -> None:
+    # pkill runs in its own exec: its target pattern must not appear in the
+    # launching shell's own command line.
+    subprocess.run(["lxc", "exec", NODES[ident - 1], "--", "pkill", "-f",
+                    "raft_node_server"], capture_output=True)
+    time.sleep(0.3)
     peer_spec = ",".join(f"{i}={host}" for i, host in peers.items())
     script = (f"nohup {VENV_PY} {SERVER} --ident {ident} --peers '{peer_spec}' "
               f">/tmp/raft-node-{ident}.log 2>&1 &")
@@ -101,9 +106,14 @@ def run(count: int = 100, failover_count: int = 50) -> dict:
         deadline = time.time() + 15
         ready = []
         while time.time() < deadline and len(ready) < 3:
-            ready = [ip for ip in ips
-                     if (lambda s: s.get("state") in ("Leader", "Follower", "Candidate"))
-                     (control(ip, {"cmd": "status"}, timeout=1.0))]
+            ready = []
+            for ip in ips:
+                try:
+                    state = control(ip, {"cmd": "status"}, timeout=1.0).get("state")
+                except OSError:
+                    continue
+                if state in ("Leader", "Follower", "Candidate"):
+                    ready.append(ip)
             time.sleep(0.3)
 
         control(ips[0], {"cmd": "campaign"})
@@ -155,6 +165,14 @@ def run(count: int = 100, failover_count: int = 50) -> dict:
         launch_server(NODES.index(leader_name) + 1, peers)
         catchup = wait_applied([node_ips()[leader_name]], count + failover_count, 60.0)
         result["failover"]["node_rejoined"] = bool(catchup)
+        if not catchup:
+            diag = {}
+            for name, ip in node_ips().items():
+                try:
+                    diag[name] = control(ip, {"cmd": "status"}, timeout=2.0)
+                except OSError as exc:
+                    diag[name] = f"unreachable: {exc}"
+            result["failover"]["diagnosis"] = diag
 
         for ip in ips:
             stop_server(ip)

@@ -3,6 +3,7 @@ use raft::prelude::*;
 use raft::storage::MemStorage;
 use slog::Drain;
 use protobuf::Message as ProtoMessage;
+use bytes::Bytes;
 
 /// Thin PyO3 binding around raft-rs' RawNode. Durable storage and transport
 /// stay outside this object and are supplied by the Python Pod control plane.
@@ -57,6 +58,14 @@ impl RaftNode {
         self.drain_ready()
     }
 
+    /// Tick and poll a Ready without acknowledging it. The caller must send
+    /// the pending messages (election votes, heartbeats) and call
+    /// `ack_ready_messages` afterwards — `tick()` would silently drop them.
+    fn tick_pending(&mut self) -> PyResult<Option<(Vec<(u64, u64, Vec<u8>)>, Option<(u64, u64, u64)>, Vec<(u64, u64, Vec<u8>)>)>> {
+        self.node.tick();
+        self.poll_ready()
+    }
+
     /// Propose without applying the Ready. The caller must persist the
     /// returned entries/HardState and call `ack_ready` afterwards.
     fn propose_pending(&mut self, data: &[u8]) -> PyResult<Option<(Vec<(u64, u64, Vec<u8>)>, Option<(u64, u64, u64)>, Vec<(u64, u64, Vec<u8>)>)>> {
@@ -104,6 +113,32 @@ impl RaftNode {
         let committed = committed.into_iter().filter(|e| e.get_entry_type() == EntryType::EntryNormal && !e.data.is_empty())
             .map(|e| e.data.to_vec()).collect();
         Ok((committed, messages))
+    }
+
+    /// Restore a durable log and hard state after a crash-restart. Must be
+    /// called before the node rejoins the cluster; without it, a restarted
+    /// node has an empty log and can only be caught up via snapshot.
+    #[pyo3(signature = (entries, hard_state=None))]
+    fn restore(&mut self, entries: Vec<(u64, u64, Vec<u8>)>, hard_state: Option<(u64, u64, u64)>) -> PyResult<()> {
+        let es: Vec<Entry> = entries.into_iter().map(|(index, term, data)| {
+            let mut e = Entry::default();
+            e.set_index(index);
+            e.set_term(term);
+            e.set_data(Bytes::from(data));
+            e
+        }).collect();
+        if !es.is_empty() {
+            self.node.mut_store().wl().append(&es)
+                .map_err(|e| pyo3::exceptions::PyRuntimeError::new_err(e.to_string()))?;
+        }
+        if let Some((term, vote, commit)) = hard_state {
+            let mut hs = HardState::default();
+            hs.set_term(term);
+            hs.set_vote(vote);
+            hs.set_commit(commit);
+            self.node.mut_store().wl().set_hardstate(hs);
+        }
+        Ok(())
     }
 
     /// Return outbound Raft messages from the pending Ready as protobuf bytes.

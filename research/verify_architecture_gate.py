@@ -27,6 +27,8 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     batch = json.loads(batch_path.read_text(encoding="utf-8")) if batch_path.exists() else {}
     postgres_path = Path(path).with_name("postgres-quorum-20260917.json")
     postgres = json.loads(postgres_path.read_text(encoding="utf-8")) if postgres_path.exists() else {}
+    multihost_path = Path(path).with_name("raft-multihost-20260917.json")
+    multihost = json.loads(multihost_path.read_text(encoding="utf-8")) if multihost_path.exists() else {}
     project_root = Path(path).resolve().parents[2]
     lora_adapter_path = project_root / "runs" / "qwen3b-eval-test-adapter-20260917-report.json"
     lora_base_path = project_root / "runs" / "qwen3b-eval-test-base-20260917-report.json"
@@ -51,6 +53,10 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "vllm_router_lan_failover": lan_failover_ok,
         "adaptive_batcher": batch.get("correct") is True and batch.get("requests_per_s", 0) >= 5000 and batch.get("stats", {}).get("errors") == 0 and batch.get("stats", {}).get("queued") == 0,
         "postgres_quorum": postgres.get("replicas") == 3 and postgres.get("quorum") == 2 and postgres.get("latest") == postgres.get("writes") and postgres.get("healthy_p95_ms", 999) < 10.0,
+        "raft_multihost": multihost.get("results", {}).get("replicated_all") is True
+            and multihost.get("results", {}).get("failover", {}).get("ok") is True
+            and multihost.get("results", {}).get("failover", {}).get("quorum_writes", 0) >= 50,
+        "raft_multihost_rejoin": multihost.get("results", {}).get("failover", {}).get("node_rejoined") is True,
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
     }
