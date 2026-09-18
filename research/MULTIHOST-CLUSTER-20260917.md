@@ -74,3 +74,25 @@ cd /home/xrey/neural-pods
 PYTHONPATH=. /srv/ai/workspaces/llm-lora/.venv/bin/python \
   research/benchmark_raft_cluster_multihost.py   # Benchmark inkl. Failover
 ```
+
+
+## Verteilter Postgres-Quorum (A3, 2026-09-19)
+
+Setup: `research/prepare_postgres_hosts.sh` (idempotent) — PostgreSQL 16 in
+allen 3 Containern lauscht auf TCP mit trust-Regel für das lxdbr0-Subnetz
+(10.50.0.0/24, lab-only). `np_replicas`-Schema einmalig je Instanz.
+
+Benchmark: `research/benchmark_postgres_quorum.py --hosts <ip1>,<ip2>,<ip3>`
+(drei echte Instanzen über das Containernetz; ohne --hosts wie bisher lokal).
+
+Ergebnis (`research/runs/postgres-quorum-multihost-20260919.json`):
+
+| Metrik | Single-Host (20260917) | **Multi-Host (20260919)** |
+|---|---:|---:|
+| Writes | 100/100 | **1000/1000** |
+| p50 | 1,69 ms | 2,12 ms |
+| p95 | 1,84 ms | **3,03 ms** |
+| Degraded write | 1,20 ms | 1,49 ms |
+
+Read-back korrekt nach Verbindungskill einer Replica. Gate-Check
+`postgres_quorum_multihost` (Schwelle p95 < 25 ms) ist Teil des Gates.

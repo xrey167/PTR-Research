@@ -1,0 +1,19 @@
+{
+  "writes": 1000,
+  "healthy_p50_ms": 2.115715000400087,
+  "healthy_p95_ms": 3.031396998267155,
+  "degraded_write_ms": 1.493464002123801,
+  "latest": 1000,
+  "replicas": 3,
+  "quorum": 2,
+  "hosts": [
+    "10.50.0.121",
+    "10.50.0.153",
+    "10.50.0.7"
+  ],
+  "tables": [
+    "np_replicas.np_replica_bench_1494124_0",
+    "np_replicas.np_replica_bench_1494124_1",
+    "np_replicas.np_replica_bench_1494124_2"
+  ]
+}
