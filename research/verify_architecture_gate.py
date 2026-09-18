@@ -38,6 +38,10 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     dev_base_path = project_root / "runs" / "qwen3b-eval-dev-base-20260917-report.json"
     dev_adapter = json.loads(dev_adapter_path.read_text(encoding="utf-8")) if dev_adapter_path.exists() else {}
     dev_base = json.loads(dev_base_path.read_text(encoding="utf-8")) if dev_base_path.exists() else {}
+    gen4_adapter_path = project_root / "runs" / "qwen3b-eval-test-gen4-adapter-20260917-report.json"
+    gen4_dev_adapter_path = project_root / "runs" / "qwen3b-eval-dev-gen4-adapter-20260917-report.json"
+    gen4_adapter = json.loads(gen4_adapter_path.read_text(encoding="utf-8")) if gen4_adapter_path.exists() else {}
+    gen4_dev_adapter = json.loads(gen4_dev_adapter_path.read_text(encoding="utf-8")) if gen4_dev_adapter_path.exists() else {}
     checks = {
         "tests": d["tests"]["passed"] >= 260,
         "retrieval_recall": d["retrieval"]["recall_at_5"] >= 0.99 and d["retrieval"]["hnsw_recall_at_10"] >= 0.99,
@@ -59,6 +63,12 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "raft_multihost_rejoin": multihost.get("results", {}).get("failover", {}).get("node_rejoined") is True,
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
+        "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True
+            and gen4_adapter.get("exact_target_matches", 0) > lora_adapter.get("exact_target_matches", 0)
+            and gen4_adapter.get("guarded_exact_target_matches", 0) >= lora_adapter.get("guarded_exact_target_matches", 0),
+        "lora_ab_gen4_dev": gen4_dev_adapter.get("status") == "completed" and gen4_dev_adapter.get("reader_unchanged") is True
+            and gen4_dev_adapter.get("exact_target_matches", 0) > dev_adapter.get("exact_target_matches", 0)
+            and gen4_dev_adapter.get("guarded_exact_target_matches", 0) >= dev_adapter.get("guarded_exact_target_matches", 0),
     }
     failed = [name for name, ok in checks.items() if not ok]
     if failed:
