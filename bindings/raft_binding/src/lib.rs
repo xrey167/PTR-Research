@@ -21,13 +21,35 @@ fn logger() -> slog::Logger {
 #[pymethods]
 impl RaftNode {
     #[new]
-    #[pyo3(signature = (id, peers=None))]
-    fn new(id: u64, peers: Option<Vec<u64>>) -> PyResult<Self> {
+    #[pyo3(signature = (id, peers=None, entries=None, hard_state=None))]
+    fn new(id: u64, peers: Option<Vec<u64>>, entries: Option<Vec<(u64, u64, Vec<u8>)>>, hard_state: Option<(u64, u64, u64)>) -> PyResult<Self> {
         if id == 0 { return Err(pyo3::exceptions::PyValueError::new_err("id must be positive")); }
         let mut voters = peers.unwrap_or_else(|| vec![id]);
         if !voters.contains(&id) { voters.push(id); }
         voters.sort_unstable(); voters.dedup();
         let storage = MemStorage::new_with_conf_state(ConfState::from((voters, vec![])));
+        // Initial state must be in the storage BEFORE RawNode exists; filling
+        // the unstable region afterwards panics in raft-rs' log_unstable.
+        if let Some(entries) = entries {
+            if !entries.is_empty() {
+                let es: Vec<Entry> = entries.into_iter().map(|(index, term, data)| {
+                    let mut e = Entry::default();
+                    e.set_index(index);
+                    e.set_term(term);
+                    e.set_data(Bytes::from(data));
+                    e
+                }).collect();
+                storage.wl().append(&es)
+                    .map_err(|e| pyo3::exceptions::PyRuntimeError::new_err(e.to_string()))?;
+            }
+        }
+        if let Some((term, vote, commit)) = hard_state {
+            let mut hs = HardState::default();
+            hs.set_term(term);
+            hs.set_vote(vote);
+            hs.set_commit(commit);
+            storage.wl().set_hardstate(hs);
+        }
         let cfg = Config {
             id,
             election_tick: 10,

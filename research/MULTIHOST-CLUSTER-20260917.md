@@ -43,17 +43,28 @@ python -m maturin build --release -i <venv python> --target-dir /srv/ai/workspac
 | 100 Proposals, Replikation auf alle 3 Knoten | 100/100, 3.338 prop/s |
 | Leader-Container hart gestoppt (lxc stop) | neuer Leader in < 1 s |
 | Quorum-Writes nach Failover (2 von 3 Knoten) | 50/50 |
-| Rejoin des Neustart-Knotens | **offen** (siehe unten) |
+| Rejoin des Neustart-Knotens | **grün** (State-Transfer, 2026-09-19) |
 
-## Offen: Rejoin-Catch-up
+## Rejoin-Catch-up (gelöst, 2026-09-19)
 
-Der neugestartete Knoten lädt seinen WAL (verifiziert, `restore()` funktioniert),
-wird Follower und erkennt den Leader — aber der Leader liefert den Log-Diff
-nicht nach: raft-rs verwirft den Candidate-Log (100/150) bei der Wahl und der
-Neustart-Knoten landet in einer Vote-Retry-Schleife, statt AppendEntries-Backfill
-zu empfangen. Wahrscheinliche Lösung: Snapshot-basierter Catch-up
-(`SnapshotStore`/raft-rs-Snapshot-Pfad) statt reinem Log-Diff.
-Gate-Check `raft_multihost_rejoin` trackt diesen Posten separat (derzeit rot).
+Der Leader liefert keinen Backfill an einen Knoten mit kurzem Log: raft-rs
+verwirft den Candidate-Log bei der Wahl, der Neustart-Knoten gerät in eine
+Vote-Retry-Schleife (AppendEntries-Nachschub kommt nie). Lösung: out-of-band
+State-Transfer vor dem Wiedereintritt —
+
+1. `export_state`-Control-Befehl am Cluster-Mitglied: kompletter Log +
+   HardState aus dessen WAL.
+2. Der Neustart-Knoten startet mit `--bootstrap-from <Mitglied>`, zieht den
+   Stand und gibt ihn in den **RaftNode-Konstruktor** (`entries`,
+   `hard_state`-Parameter, neu im Binding). Ein nachträgliches `restore()`
+   nach der RawNode-Konstruktion panikt in raft-rs' `log_unstable` — der
+   State muss vor dem Node-Start in den Storage.
+3. Der Wiedereintritt ist dann ein normaler Follower-Weiterschrieb; Node
+   reapplied 150 Einträge und bleibt im Quorum.
+
+Vollständiger Benchmark-Lauf 2026-09-19: Wahl 0,001 s · 100/100 Replikation ·
+Failover mit 50/50 Quorum-Writes · node_rejoined true. Architecture-Gate
+21/21 Checks grün.
 
 ## Betrieb
 

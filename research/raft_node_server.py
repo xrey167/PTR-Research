@@ -50,6 +50,10 @@ class Wal:
         self.handle.flush()
         os.fsync(self.handle.fileno())
 
+    def reset(self) -> None:
+        self.handle.close()
+        self.handle = open(self.path, "w", encoding="utf-8")
+
     def load(self) -> tuple[list, list | None]:
         """Fold the WAL into (log entries, latest hard state)."""
         log: dict[int, tuple] = {}
@@ -80,14 +84,28 @@ def read_exact(conn: socket.socket, n: int) -> bytes | None:
 class RaftPeerServer:
     PEER_CONN_TTL_S = 30.0
 
-    def __init__(self, ident: int, cluster: list[int], peers: dict[int, str]):
+    def __init__(self, ident: int, cluster: list[int], peers: dict[int, str],
+                 bootstrap: str | None = None):
         self.ident = ident
-        self.node = RaftNode(ident, cluster)
         self.peers = peers  # ident -> hostname
         self.wal = Wal(WAL_PATH.format(ident=ident))
         entries, hard_state = self.wal.load()
-        if entries or hard_state:
-            self.node.restore(entries, hard_state)
+        init_entries, init_hard_state = [], None
+        if bootstrap:
+            # Out-of-band state transfer from a live cluster member before
+            # joining: a short/empty log triggers a raft-rs vote-retry
+            # livelock instead of AppendEntries backfill on rejoin.
+            entries, hard_state = self._bootstrap_from(bootstrap)
+            self.wal.reset()
+            for entry in entries:
+                self.wal.append([entry], None)
+            if hard_state:
+                self.wal.append([], hard_state)
+            print(json.dumps({"bootstrapped_from": bootstrap,
+                              "entries": len(entries)}), flush=True)
+        if entries:
+            init_entries, init_hard_state = entries, hard_state
+        self.node = RaftNode(ident, cluster, init_entries, init_hard_state)
         self.lock = threading.RLock()
         self.applied: list[bytes] = []
         self.ready_batch: list[tuple] = []
@@ -99,6 +117,21 @@ class RaftPeerServer:
         self.server.listen(32)
         threading.Thread(target=self.accept_loop, daemon=True).start()
         threading.Thread(target=self.tick_loop, daemon=True).start()
+
+    def _bootstrap_from(self, control_host: str) -> tuple[list, tuple | None]:
+        with socket.create_connection((control_host, CONTROL_PORT), timeout=10) as conn:
+            conn.settimeout(10)
+            conn.sendall(json.dumps({"cmd": "export_state"}).encode() + b"\n")
+            buf = b""
+            while not buf.endswith(b"\n"):
+                part = conn.recv(65536)
+                if not part:
+                    break
+                buf += part
+        payload = json.loads(buf)
+        entries = [(i, t, base64.b64decode(d)) for i, t, d in payload["entries"]]
+        hard_state = tuple(payload["hard_state"]) if payload.get("hard_state") else None
+        return entries, hard_state
 
     def accept_loop(self) -> None:
         while not self.stop:
@@ -228,6 +261,11 @@ class ControlHandler(socketserver.StreamRequestHandler):
                     result = {"ok": True}
                 elif kind == "status":
                     result = self.server.peer.status()
+                elif kind == "export_state":
+                    entries, hard_state = self.server.peer.wal.load()
+                    result = {"entries": [[i, t, base64.b64encode(d).decode("ascii")]
+                                           for i, t, d in entries],
+                              "hard_state": list(hard_state) if hard_state else None}
                 elif kind == "shutdown":
                     self.server.peer.close()
                     result = {"ok": True}
@@ -248,10 +286,12 @@ def main() -> None:
     parser.add_argument("--ident", type=int, required=True)
     parser.add_argument("--peers", required=True,
                         help="peer spec, e.g. '2=np-node2,3=np-node3'")
+    parser.add_argument("--bootstrap-from", default=None,
+                        help="control host of a live member to pull state from")
     args = parser.parse_args()
     peers = {int(k): v for k, v in (item.split("=", 1) for item in args.peers.split(","))}
     cluster = sorted([args.ident, *peers])
-    peer = RaftPeerServer(args.ident, cluster, peers)
+    peer = RaftPeerServer(args.ident, cluster, peers, bootstrap=args.bootstrap_from)
     control = ControlServer(("0.0.0.0", CONTROL_PORT), ControlHandler)
     control.peer = peer
     print(json.dumps({"node_ready": args.ident, "cluster": cluster}), flush=True)

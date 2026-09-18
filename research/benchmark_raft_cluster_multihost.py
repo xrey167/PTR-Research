@@ -44,15 +44,17 @@ def control(ip: str, cmd: dict, timeout: float = 5.0) -> dict:
     return json.loads(buf)
 
 
-def launch_server(ident: int, peers: dict[int, str]) -> None:
+def launch_server(ident: int, peers: dict[int, str], bootstrap: str | None = None) -> None:
     # pkill runs in its own exec: its target pattern must not appear in the
     # launching shell's own command line.
     subprocess.run(["lxc", "exec", NODES[ident - 1], "--", "pkill", "-f",
                     "raft_node_server"], capture_output=True)
     time.sleep(0.3)
     peer_spec = ",".join(f"{i}={host}" for i, host in peers.items())
-    script = (f"nohup {VENV_PY} {SERVER} --ident {ident} --peers '{peer_spec}' "
-              f">/tmp/raft-node-{ident}.log 2>&1 &")
+    boot_flag = f" --bootstrap-from {bootstrap}" if bootstrap else ""
+    script = (f"rm -f /tmp/raft-node-{ident}.wal; "
+              f"nohup {VENV_PY} {SERVER} --ident {ident} --peers '{peer_spec}'"
+              f"{boot_flag} >/tmp/raft-node-{ident}.log 2>&1 &")
     lxc("exec", NODES[ident - 1], "--", "bash", "-c", script)
 
 
@@ -161,8 +163,10 @@ def run(count: int = 100, failover_count: int = 50) -> dict:
                 pass
             time.sleep(1)
         time.sleep(3)
-        peers = {i: NODES[i - 1] for i in (1, 2, 3) if i != NODES.index(leader_name) + 1}
-        launch_server(NODES.index(leader_name) + 1, peers)
+        rejoin_ident = NODES.index(leader_name) + 1
+        new_leader_name = next(n for n, ip in ips_by_name.items() if ip == new_leader)
+        peers = {i: NODES[i - 1] for i in (1, 2, 3) if i != rejoin_ident}
+        launch_server(rejoin_ident, peers, bootstrap=new_leader_name)
         catchup = wait_applied([node_ips()[leader_name]], count + failover_count, 60.0)
         result["failover"]["node_rejoined"] = bool(catchup)
         if not catchup:

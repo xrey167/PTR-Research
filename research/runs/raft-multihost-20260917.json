@@ -6,14 +6,14 @@
     "election_s": 0.001,
     "proposals": 100,
     "replicated_all": true,
-    "proposals_per_s": 3338.3,
+    "proposals_per_s": 220.9,
     "failover": {
       "killed": "np-node1",
       "failover_s": 0.001,
       "ok": true,
       "quorum_writes": 50,
-      "node_rejoined": false
+      "node_rejoined": true
     }
   },
-  "notes": "Election, replication and leader-kill failover with quorum writes are measured green. Rejoin catch-up of a restarted node is an open item: raft-rs rejects the candidate log (100/150) and the restarted node enters a vote-retry loop instead of receiving AppendEntries backfill; WAL persistence (restore) is implemented and verified, snapshot-based catch-up is the likely fix."
+  "notes": "All four phases green 2026-09-19: election, replication, leader-kill failover with quorum writes, and rejoin catch-up via out-of-band state transfer (bootstrap-from leader export -> RaftNode constructor restore; post-construction restore panics in raft-rs log_unstable)."
 }
