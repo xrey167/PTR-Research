@@ -42,6 +42,10 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     gen4_dev_adapter_path = project_root / "runs" / "qwen3b-eval-dev-gen4-adapter-20260917-report.json"
     gen4_adapter = json.loads(gen4_adapter_path.read_text(encoding="utf-8")) if gen4_adapter_path.exists() else {}
     gen4_dev_adapter = json.loads(gen4_dev_adapter_path.read_text(encoding="utf-8")) if gen4_dev_adapter_path.exists() else {}
+    gen5_adapter_path = project_root / "runs" / "qwen3b-eval-test-gen5-20260919-report.json"
+    gen5_dev_adapter_path = project_root / "runs" / "qwen3b-eval-dev-gen5-20260919-report.json"
+    gen5_adapter = json.loads(gen5_adapter_path.read_text(encoding="utf-8")) if gen5_adapter_path.exists() else {}
+    gen5_dev_adapter = json.loads(gen5_dev_adapter_path.read_text(encoding="utf-8")) if gen5_dev_adapter_path.exists() else {}
     checks = {
         "tests": d["tests"]["passed"] >= 260,
         "retrieval_recall": d["retrieval"]["recall_at_5"] >= 0.99 and d["retrieval"]["hnsw_recall_at_10"] >= 0.99,
@@ -69,6 +73,12 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "lora_ab_gen4_dev": gen4_dev_adapter.get("status") == "completed" and gen4_dev_adapter.get("reader_unchanged") is True
             and gen4_dev_adapter.get("exact_target_matches", 0) > dev_adapter.get("exact_target_matches", 0)
             and gen4_dev_adapter.get("guarded_exact_target_matches", 0) >= dev_adapter.get("guarded_exact_target_matches", 0),
+        "lora_ab_gen5": gen5_adapter.get("status") == "completed" and gen5_adapter.get("reader_unchanged") is True
+            and gen5_adapter.get("exact_target_matches", 0) > gen4_adapter.get("exact_target_matches", 0)
+            and gen5_adapter.get("guarded_exact_target_matches", 0) >= gen4_adapter.get("guarded_exact_target_matches", 0),
+        "lora_ab_gen5_dev": gen5_dev_adapter.get("status") == "completed" and gen5_dev_adapter.get("reader_unchanged") is True
+            and gen5_dev_adapter.get("exact_target_matches", 0) > gen4_dev_adapter.get("exact_target_matches", 0)
+            and gen5_dev_adapter.get("guarded_exact_target_matches", 0) >= gen4_dev_adapter.get("guarded_exact_target_matches", 0),
     }
     failed = [name for name, ok in checks.items() if not ok]
     if failed:
