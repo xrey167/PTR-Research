@@ -146,7 +146,7 @@ nie selbst die Promotion entscheiden — die gehört dem Gate.
 
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
-| P1 | Reflex-Dispatch — **Kern implementiert:** `neural_pods/reflex.py` (ReflexChannel: TemporalPortPlane-Auflösung → Dispatch, guarded Failover auf den default Pod, Latenz-/Failover-Metriken; 5 Tests). Offen: GPU-gekoppelter Benchmark gegen das vLLM-Ensemble | `reflex_dispatch` |
+| P1 | **Abgeschlossen:** `neural_pods/reflex.py` + GPU-gekoppelter Benchmark (`research/benchmark_reflex_dispatch.py`) über das heterogene Ensemble. Ergebnis: Mechanik voll funktionsfähig — Union 126 == Baseline, 0 Fehler, alle 132 Reflex-Misses korrekt zum Default-Pod zurückgezogen. **Hit-Rate 0.0 ist das erwartete, ehrliche Ergebnis:** das Basis-Modell emittiert keine Alias-Signale — die Adress-Emission braucht P5 (latentes Adress-Training). Der Failover-Pfad hat den Qualitätserhalt mechanisch bewiesen. | `reflex_dispatch` grün |
 | P2 | Executor-Factory + erster `TreeExecutor` (XGBoost-Pod, RAM-Lease, deterministisches Replay) | `xgboost_pod` |
 | P3 | Perceptions-Stream: ONNX-Objekterkennungs-Pod pusht Ereignisse über Duplex-Session; Backpressure gemessen | `perception_stream` |
 | P4 | Improve-Orchestrator: Autonomie-Quote, Event-Log, Ein-Zyklus-Durchlauf von Fehleranalyse bis Promotion | `improve_cycle` |

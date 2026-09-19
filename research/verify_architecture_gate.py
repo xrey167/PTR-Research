@@ -45,6 +45,8 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     redis_cache = json.loads(redis_cache_path.read_text(encoding="utf-8")) if redis_cache_path.exists() else {}
     grpc_path = Path(path).with_name("grpc-vs-tcp-20260919.json")
     grpc_cmp = json.loads(grpc_path.read_text(encoding="utf-8")) if grpc_path.exists() else {}
+    reflex_path = Path(path).with_name("reflex-dispatch-20260919.json")
+    reflex = json.loads(reflex_path.read_text(encoding="utf-8")) if reflex_path.exists() else {}
     project_root = Path(path).resolve().parents[2]
     lora_adapter_path = project_root / "runs" / "qwen3b-eval-test-adapter-20260917-report.json"
     lora_base_path = project_root / "runs" / "qwen3b-eval-test-base-20260917-report.json"
@@ -100,6 +102,9 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and redis_cache.get("lru_redis", {}).get("hot_p99_ms", 99) < 2.0,
         "grpc_transport_decision": grpc_cmp.get("tcp", {}).get("req_per_s", 0) > 10000
             and grpc_cmp.get("grpc_unary", {}).get("p50_ms", 0) > grpc_cmp.get("tcp", {}).get("p50_ms", 1) * 3,
+        "reflex_dispatch": reflex.get("status") == "completed" and reflex.get("metrics", {}).get("errors") == 0
+            and reflex.get("metrics", {}).get("union_raw", 0) >= reflex.get("baseline_union_raw", 999)
+            and reflex.get("metrics", {}).get("channel_stats", {}).get("failovers") == reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_misses"),
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
         "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True

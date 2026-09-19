@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "split": "test",
+  "baseline_union_raw": 126,
+  "metrics": {
+    "n": 132,
+    "errors": 0,
+    "selected_gen5": 132,
+    "selected_gen6": 0,
+    "reflex_raw": 119,
+    "reflex_guarded": 92,
+    "union_raw": 126,
+    "other_pod_correct": 7,
+    "reflex_p50_ms": 305.44,
+    "reflex_p99_ms": 791.81,
+    "channel_stats": {
+      "invocations": 132,
+      "reflex_hits": 0,
+      "reflex_misses": 132,
+      "failovers": 132,
+      "errors": 0,
+      "hit_rate": 0.0
+    },
+    "elapsed_s": 94.3
+  }
+}
