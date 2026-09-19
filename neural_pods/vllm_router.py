@@ -20,6 +20,10 @@ class VllmReplica:
         return self.base_url.rstrip("/") + "/v1/chat/completions"
 
     @property
+    def completions_url(self) -> str:
+        return self.base_url.rstrip("/") + "/v1/completions"
+
+    @property
     def health_url(self) -> str:
         return self.base_url.rstrip("/") + "/health"
 
@@ -87,6 +91,36 @@ class VllmReplicaRouter:
                 self.metrics.per_replica[replica.name]["requests"] += 1
             try:
                 request = urllib.request.Request(replica.chat_url, body, request_headers, method="POST")
+                with urllib.request.urlopen(request, timeout=self.timeout_s,
+                                            context=self.ssl_context) as response:
+                    result = json.loads(response.read().decode("utf-8"))
+                with self._lock:
+                    self.metrics.successes += 1
+                    self.metrics.per_replica[replica.name]["successes"] += 1
+                    if attempt:
+                        self.metrics.failovers += 1
+                return result
+            except (OSError, urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
+                last_error = error
+                with self._lock:
+                    self.metrics.per_replica[replica.name]["failures"] += 1
+        with self._lock:
+            self.metrics.failures += 1
+        raise RuntimeError(f"all vLLM replicas failed after {len(ordered)} attempts") from last_error
+
+    def completion(self, payload: dict[str, Any], *, headers: dict[str, str] | None = None) -> dict[str, Any]:
+        """Send one raw /v1/completions request with the same failover as chat."""
+        body = json.dumps(payload).encode("utf-8")
+        request_headers = {"Content-Type": "application/json", **(headers or {})}
+        ordered = self._ordered()[:self.max_attempts]
+        with self._lock:
+            self.metrics.requests += 1
+        last_error: Exception | None = None
+        for attempt, replica in enumerate(ordered):
+            with self._lock:
+                self.metrics.per_replica[replica.name]["requests"] += 1
+            try:
+                request = urllib.request.Request(replica.completions_url, body, request_headers, method="POST")
                 with urllib.request.urlopen(request, timeout=self.timeout_s,
                                             context=self.ssl_context) as response:
                     result = json.loads(response.read().decode("utf-8"))

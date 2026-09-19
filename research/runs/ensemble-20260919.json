@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "primary": "reader-gen5",
+  "fallback": "reader-gen3",
+  "split": "test",
+  "metrics": {
+    "n": 132,
+    "errors": 0,
+    "gen5_raw": 119,
+    "gen5_guarded": 92,
+    "gen3_raw": 0,
+    "fallback_used": 13,
+    "union_raw": 119,
+    "union_guarded": 92,
+    "elapsed_s": 57.1,
+    "router_metrics": {
+      "requests": 145,
+      "successes": 145,
+      "failovers": 0
+    },
+    "failover": {
+      "ok": 32,
+      "errors": 0,
+      "failovers": 16,
+      "health": {
+        "gpu0": false,
+        "gpu1": true
+      }
+    }
+  }
+}
