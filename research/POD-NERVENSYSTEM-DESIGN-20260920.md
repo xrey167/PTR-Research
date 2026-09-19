@@ -164,3 +164,19 @@ Messdatei + Design-Doku-Abschlussvermerk.
   grün → **Gate 35/35, 295 Tests.**
 - Offen in N2: TCP-Frame-Ausführung über echte Mesh-Knoten (LXD), Integration
   in den Task-Graph (N3).
+
+## N3-Status (2026-09-20, ABGESCHLOSSEN)
+
+- `neural_pods/taskgraph.py`: TaskGraph — DAG mit Token-Fluss (Output eines
+  Knotens wird als context in abhängige Knoten injiziert; Einzel-Vorgänger
+  direkt, mehrere als {node_id: output}-Dict), parallele Ausführung
+  unabhängiger Knoten (ThreadPool, max_parallel), Zyklus- und
+  Unbekannten-Abhängigkeits-Prüfung, Fehler werden je Knoten aufgezeichnet
+  statt den Graphen abzubrechen. 5 Tests.
+- **Gemessen (`research/runs/taskgraph-20260920.json`):** 6-Knoten-DAG über
+  Mesh-Endpunkte (4 ingests parallel, 2 abhängige plan/verify, je ~100 ms
+  Remote-Verarbeitung): **Speedup 2,59×** (Wall 0,64 s vs. sequenziell
+  1,67 s), alle Knoten korrekt. Gate-Check `taskgraph_parallel` grün →
+  **Gate 36/36, 300 Tests.**
+- Benchmark-Lehren: TaskResult-Serialisierung (asdict), seq-Vergabe unter
+  Parallelität braucht Lock, Multi-Dep-Context ist ein {node_id: output}-Dict.

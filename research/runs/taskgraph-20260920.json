@@ -1,0 +1,80 @@
+{
+  "wall_s": 0.643,
+  "sequential_equivalent_s": 1.665,
+  "speedup": 2.59,
+  "results": {
+    "ingest_a": {
+      "node_id": "ingest_a",
+      "output": {
+        "echo": "ingest-a",
+        "processed_by": "tg-responder"
+      },
+      "error": null,
+      "started": 50991.876232182,
+      "finished": 50992.017195219,
+      "inputs_from": []
+    },
+    "ingest_b": {
+      "node_id": "ingest_b",
+      "output": {
+        "echo": "ingest-b",
+        "processed_by": "tg-responder"
+      },
+      "error": null,
+      "started": 50991.876468082,
+      "finished": 50992.117408599,
+      "inputs_from": []
+    },
+    "ingest_c": {
+      "node_id": "ingest_c",
+      "output": {
+        "echo": "ingest-c",
+        "processed_by": "tg-responder"
+      },
+      "error": null,
+      "started": 50991.876715383,
+      "finished": 50992.217621239,
+      "inputs_from": []
+    },
+    "ingest_d": {
+      "node_id": "ingest_d",
+      "output": {
+        "echo": "ingest-d",
+        "processed_by": "tg-responder"
+      },
+      "error": null,
+      "started": 50991.876944703,
+      "finished": 50992.318025539,
+      "inputs_from": []
+    },
+    "plan": {
+      "node_id": "plan",
+      "output": {
+        "echo": "plan:ingest-a+ingest-b",
+        "processed_by": "tg-responder"
+      },
+      "error": null,
+      "started": 50992.117610169,
+      "finished": 50992.418403679,
+      "inputs_from": [
+        "ingest_a",
+        "ingest_b"
+      ]
+    },
+    "verify": {
+      "node_id": "verify",
+      "output": {
+        "echo": "verify:ingest-c+ingest-d",
+        "processed_by": "tg-responder"
+      },
+      "error": null,
+      "started": 50992.318067279,
+      "finished": 50992.518610049,
+      "inputs_from": [
+        "ingest_c",
+        "ingest_d"
+      ]
+    }
+  },
+  "correct": true
+}
