@@ -1,0 +1,9 @@
+{
+  "status": "completed",
+  "rounds": 30,
+  "integrity_ok": 30,
+  "refused_or_invalid": 0,
+  "acl_blocked_forbidden": true,
+  "rtt_p50_ms": 60.25,
+  "rtt_p99_ms": 60.9
+}

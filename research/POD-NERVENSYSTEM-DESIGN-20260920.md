@@ -210,3 +210,17 @@ Messdatei + Design-Doku-Abschlussvermerk.
 Offene Erweiterungen: TCP-Frames über echte LXD-Knoten in N2-Rest, P2
 (XGBoost-Executor), P5 (latentes Adress-Training), N4-Invalidierung als
 Mesh-Event anstelle direktem Redis-Delete.
+
+## N2-Rest (2026-09-20, ABGESCHLOSSEN): TCP über echte Mesh-Knoten
+
+- `research/benchmark_native_tcp.py` + `research/echo_server.py`: Echo-Server
+  in np-node2 (setsid! — lxc-exec-Sessionende killt sonst die Prozessgruppe,
+  kein nohup allein reicht); der Host-Pod führt DIAL/SEND/RECV/CLOSE-Frames
+  nativ gegen 10.50.0.153:45779 aus.
+- **Gemessen:** 30/30 Byte-Integrität über das Containernetz, ACL blockiert
+  verbotene Ziele (evil.example.com) 100 %, RTT p50 60 ms (4-Frame-Sequenz ×
+  20 ms Rate-Limit-Drossel + Verbindungssetup — die Drossel ist
+  Sicherheitsparameter, nicht Netzlatenz). Gate-Check
+  `native_tcp_cross_node` grün → **Gate 39/39, 300 Tests.**
+- Lektion: zombie Ports von früheren Läufen (pkill Muster breit fassen oder
+  Ports wechseln); lxc-exec-Hintergrundprozesse IMMER mit setsid + </dev/null.
