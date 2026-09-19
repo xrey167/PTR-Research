@@ -109,6 +109,7 @@ class PodCache:
                             return list(result)
                     except Exception:
                         self.redis_errors += 1  # L2 is best-effort
+                break
             event.wait(max(0.001, self.ttl))
         hard = dict(filters or {})
         if pod_type is not None: hard["type"] = pod_type

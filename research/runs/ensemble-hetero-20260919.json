@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "primary": "reader-gen5",
+  "fallback": "reader-gen6",
+  "split": "test",
+  "metrics": {
+    "n": 132,
+    "errors": 0,
+    "primary_raw": 119,
+    "primary_guarded": 92,
+    "fallback_raw": 7,
+    "fallback_used": 13,
+    "union_raw": 126,
+    "union_guarded": 92,
+    "elapsed_s": 53.9
+  }
+}

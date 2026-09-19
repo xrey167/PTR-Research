@@ -1,0 +1,36 @@
+{
+  "lru_only": {
+    "stats": {
+      "entries": 2000,
+      "hits": 2000,
+      "misses": 2000,
+      "hit_rate": 0.5,
+      "inflight": 0,
+      "max_entries": 2000,
+      "pinned": 0,
+      "evictions": 0,
+      "redis_hits": 0,
+      "redis_stores": 0,
+      "redis_errors": 0
+    },
+    "hot_p50_ms": 0.5199719998927321,
+    "hot_p99_ms": 0.5535710006370209
+  },
+  "lru_redis": {
+    "stats": {
+      "entries": 2000,
+      "hits": 2000,
+      "misses": 2000,
+      "hit_rate": 0.5,
+      "inflight": 2000,
+      "max_entries": 2000,
+      "pinned": 0,
+      "evictions": 0,
+      "redis_hits": 2000,
+      "redis_stores": 0,
+      "redis_errors": 0
+    },
+    "hot_p50_ms": 0.38418100029957714,
+    "hot_p99_ms": 0.7569520003016805
+  }
+}

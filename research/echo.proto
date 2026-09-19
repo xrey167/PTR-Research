@@ -1,0 +1,10 @@
+syntax = "proto3";
+package npbench;
+
+service Echo {
+  rpc RoundTrip (Frame) returns (Frame);
+}
+
+message Frame {
+  bytes payload = 1;
+}

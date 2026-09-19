@@ -37,7 +37,7 @@ def main():
 
     for label, make_cache in (('lru_only', lambda: PodCache(max_entries=args.count, ttl_seconds=600)),
                               ('lru_redis', lambda: PodCache(max_entries=args.count, ttl_seconds=600,
-                                                             redis_client=redis.Redis(host=args.redis_host),
+                                                             redis_client=redis.Redis(host=args.redis_host, socket_connect_timeout=3, socket_timeout=3),
                                                              redis_ttl_seconds=600))):
         cache = make_cache()
         for text in warm:

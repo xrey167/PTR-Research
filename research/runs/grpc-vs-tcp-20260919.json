@@ -1,0 +1,17 @@
+{
+  "date": "2026-09-19",
+  "host": "xrserver",
+  "payload_bytes": 256,
+  "rounds": 2000,
+  "tcp": {
+    "p50_ms": 0.0238,
+    "p99_ms": 0.0351,
+    "req_per_s": 40704.3
+  },
+  "grpc_unary": {
+    "p50_ms": 0.2281,
+    "p99_ms": 0.3154,
+    "req_per_s": 4184.3
+  },
+  "conclusion": "Length-framed TCP is 9.7x faster than gRPC unary on the same host; the deferred grpc-rs adoption stays rejected for the single-host transport. Revisit only for cross-language peer interop."
+}

@@ -35,6 +35,15 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     ensemble = json.loads(ensemble_path.read_text(encoding="utf-8")) if ensemble_path.exists() else {}
     ensemble_metrics = ensemble.get("metrics", {})
     project_root = Path(path).resolve().parents[2]
+    gen6_path = project_root / "runs" / "qwen3b-eval-test-gen6-20260919-report.json"
+    gen6 = json.loads(gen6_path.read_text(encoding="utf-8")) if gen6_path.exists() else {}
+    hetero_path = Path(path).with_name("ensemble-hetero-20260919.json")
+    hetero = json.loads(hetero_path.read_text(encoding="utf-8")) if hetero_path.exists() else {}
+    redis_cache_path = Path(path).with_name("redis-cache-20260919.json")
+    redis_cache = json.loads(redis_cache_path.read_text(encoding="utf-8")) if redis_cache_path.exists() else {}
+    grpc_path = Path(path).with_name("grpc-vs-tcp-20260919.json")
+    grpc_cmp = json.loads(grpc_path.read_text(encoding="utf-8")) if grpc_path.exists() else {}
+    project_root = Path(path).resolve().parents[2]
     lora_adapter_path = project_root / "runs" / "qwen3b-eval-test-adapter-20260917-report.json"
     lora_base_path = project_root / "runs" / "qwen3b-eval-test-base-20260917-report.json"
     lora_adapter = json.loads(lora_adapter_path.read_text(encoding="utf-8")) if lora_adapter_path.exists() else {}
@@ -77,6 +86,15 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and ensemble_metrics.get("gen5_raw") == 119 and ensemble_metrics.get("gen5_guarded") == 92,
         "ensemble_failover": ensemble_metrics.get("failover", {}).get("ok") == 32
             and ensemble_metrics.get("failover", {}).get("failovers") == 16,
+        "gen6_hetero_pod": gen6.get("status") == "completed" and gen6.get("reader_unchanged") is True
+            and gen6.get("exact_target_matches", 0) >= 125 and gen6.get("guarded_exact_target_matches", 0) >= 92,
+        "ensemble_hetero_union": hetero.get("status") == "completed" and hetero.get("metrics", {}).get("errors") == 0
+            and hetero.get("metrics", {}).get("union_raw", 0) >= 126,
+        "redis_cache_tier": redis_cache.get("lru_redis", {}).get("stats", {}).get("redis_hits", 0) >= 2000
+            and redis_cache.get("lru_redis", {}).get("stats", {}).get("redis_errors") == 0
+            and redis_cache.get("lru_redis", {}).get("hot_p99_ms", 99) < 2.0,
+        "grpc_transport_decision": grpc_cmp.get("tcp", {}).get("req_per_s", 0) > 10000
+            and grpc_cmp.get("grpc_unary", {}).get("p50_ms", 0) > grpc_cmp.get("tcp", {}).get("p50_ms", 1) * 3,
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
         "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True
