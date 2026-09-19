@@ -30,10 +30,18 @@ class PodCache:
     hard metadata filters before calling the backend, so cached results cannot
     cross Pod classes or branches.
     """
-    def __init__(self, max_entries: int = 4096, ttl_seconds: float = 60.0):
+    def __init__(self, max_entries: int = 4096, ttl_seconds: float = 60.0,
+                 redis_client: Any = None, redis_ttl_seconds: float = 300.0):
         if max_entries < 1 or ttl_seconds <= 0:
             raise ValueError("max_entries and ttl_seconds must be positive")
         self.max_entries, self.ttl = max_entries, float(ttl_seconds)
+        # Optional L2 cache-aside tier. Keys carry every ACL/lineage component
+        # (namespace, branch, principal, generation, revision, ...) via the
+        # canonical CacheKey digest, so a shared Redis cannot leak results
+        # across tenants or stale revisions.
+        self.redis = redis_client
+        self.redis_ttl = float(redis_ttl_seconds)
+        self.redis_hits = self.redis_stores = self.redis_errors = 0
         self._data: OrderedDict[CacheKey, tuple[float, tuple[Any, ...]]] = OrderedDict()
         self._inflight: dict[CacheKey, threading.Event] = {}
         # Explicit hot entries.  Pinning is opt-in because a learned hot set
@@ -42,6 +50,13 @@ class PodCache:
         self._lock = threading.RLock()
         self.hits = self.misses = 0
         self.evictions = 0
+
+    def _redis_key(self, key: "CacheKey") -> str:
+        payload = self._canonical([key.namespace, key.branch, key.pod_type, key.tags,
+                                   key.query, key.vector_digest, key.filters,
+                                   key.principal, key.generation, key.rank_profile,
+                                   key.namespace_revision, key.top_k])
+        return "np:" + key.namespace + ":" + hashlib.sha256(payload.encode()).hexdigest()
 
     @staticmethod
     def _canonical(value: Any) -> str:
@@ -80,7 +95,20 @@ class PodCache:
                 if owner:
                     self._inflight[key] = threading.Event(); self.misses += 1
                 event = self._inflight[key]
-            if owner: break
+            if owner:
+                if self.redis is not None:
+                    try:
+                        cached = self.redis.get(self._redis_key(key))
+                        if cached is not None:
+                            result = tuple(json.loads(cached.decode("utf-8")))
+                            with self._lock:
+                                self._data[key] = (time.monotonic(), result)
+                                self._data.move_to_end(key)
+                                self.hits += 1
+                                self.redis_hits += 1
+                            return list(result)
+                    except Exception:
+                        self.redis_errors += 1  # L2 is best-effort
             event.wait(max(0.001, self.ttl))
         hard = dict(filters or {})
         if pod_type is not None: hard["type"] = pod_type
@@ -89,6 +117,14 @@ class PodCache:
             result = tuple(backend.search(namespace, branch=branch, text=text, vector=vector,
                                           filters=hard, principal=principal, top_k=top_k,
                                           rank_profile=rank_profile, **kwargs))
+            if self.redis is not None:
+                try:
+                    self.redis.set(self._redis_key(key),
+                                   json.dumps(result, ensure_ascii=False, default=str),
+                                   ex=int(self.redis_ttl))
+                    self.redis_stores += 1
+                except Exception:
+                    self.redis_errors += 1  # L2 is best-effort
             with self._lock:
                 self._data[key] = (time.monotonic(), result); self._data.move_to_end(key)
                 while len(self._data) > self.max_entries:
@@ -183,4 +219,6 @@ class PodCache:
             return {"entries": len(self._data), "hits": self.hits, "misses": self.misses,
                     "hit_rate": self.hits / total if total else 0.0,
                     "inflight": len(self._inflight), "max_entries": self.max_entries,
-                    "pinned": len(self._pinned), "evictions": self.evictions}
+                    "pinned": len(self._pinned), "evictions": self.evictions,
+                    "redis_hits": self.redis_hits, "redis_stores": self.redis_stores,
+                    "redis_errors": self.redis_errors}
