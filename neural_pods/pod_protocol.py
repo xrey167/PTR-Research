@@ -29,6 +29,7 @@ class PodRequest:
     epoch: int = 0
     manifest_hash: str | None = None
     signature: str | None = None
+    protocol_version: int = 1
 
     def validate(self, *, now_ms: int | None = None) -> None:
         if not self.source_pod or not self.target_pod or not self.capability:
@@ -80,6 +81,7 @@ class PodResponse:
     server_event_seq: int = 0
     epoch: int = 0
     latency_ms: float = 0.0
+    protocol_version: int = 1
 
     @property
     def ok(self) -> bool:

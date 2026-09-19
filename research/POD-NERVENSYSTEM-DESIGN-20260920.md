@@ -124,3 +124,24 @@ SEND <base64 frame>
 
 Akzeptanz: keine der bestehenden 33 Checks bricht; jede Phase liefert
 Messdatei + Design-Doku-Abschlussvermerk.
+
+
+## N1-Status (2026-09-20, ABGESCHLOSSEN)
+
+- Mosquitto 2.0.18 in np-node1 (listener 0.0.0.0:1883, lab-only anonymous).
+- `neural_pods/mesh.py`: MeshEndpoint (Presence retained + Heartbeat,
+  Envelope mit manifest_hash/protocol_version/principal, Topic-ACL,
+  Fail-closed Envelope-Validierung), `protocol_version: int = 1` in
+  PodRequest/PodResponse.
+- Gemessen (`research/runs/mesh-presence-20260920.json`): Presence-Discovery
+  Host↔Container-Peer (np-node2) über den Broker; RTT **p50 0,30 ms /
+  p99 0,58 ms bei 100/100 Round-Trips** über den remote Broker.
+- Drei während der Umsetzung gefundene und behobene Fehler (alle
+  dokumentiert, weil sie für jede MQTT-Nutzung relevant sind):
+  1. wait_for_publish im paho-Callback-Thread blockiert den eigenen
+     Network-Loop (Deadlock-artig: 400 ms RTT + Verluste) → nie im
+     Callback blockieren.
+  2. Wiederverwendete client_ids flappen gegen Zombie-Sessions → UUID-Suffix.
+  3. Ein globaler Manifest-Hash-Vergleich im Envelope verwirft legitime
+     Nachrichten fremder Pods → Hash-Prüfung gehört pro Kanal/PodTransport.
+- Gate-Check `mesh_presence` grün → **Gate 34/34, 289 Tests**.

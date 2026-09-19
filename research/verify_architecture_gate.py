@@ -47,6 +47,8 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     grpc_cmp = json.loads(grpc_path.read_text(encoding="utf-8")) if grpc_path.exists() else {}
     reflex_path = Path(path).with_name("reflex-dispatch-20260919.json")
     reflex = json.loads(reflex_path.read_text(encoding="utf-8")) if reflex_path.exists() else {}
+    mesh_path = Path(path).with_name("mesh-presence-20260920.json")
+    mesh = json.loads(mesh_path.read_text(encoding="utf-8")) if mesh_path.exists() else {}
     dream_path = Path(path).with_name("dream-cycle-20260920.json")
     dream = json.loads(dream_path.read_text(encoding="utf-8")) if dream_path.exists() else {}
     dream_ev_path = project_root / "runs" / "qwen3b-eval-test-gen7-20260920-report.json"
@@ -115,6 +117,9 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "gen7_dream_validated": dream_ev.get("status") == "completed" and dream_ev.get("reader_unchanged") is True
             and dream_ev.get("exact_target_matches", 0) >= 125
             and dream_ev.get("guarded_exact_target_matches", 0) >= 92,
+        "mesh_presence": mesh.get("discovery", {}).get("discovered") is True
+            and mesh.get("rounds_ok", 0) == 100
+            and (mesh.get("rtt_p50_ms") or 999) < 10.0,
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
         "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True
