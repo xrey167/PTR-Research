@@ -1,0 +1,15 @@
+{
+  "status": "completed",
+  "intents": 31,
+  "hits": 31,
+  "hit_rate": 1.0,
+  "elapsed_s": 14.5,
+  "per_pod": {
+    "raft-pod": "4/4",
+    "cache-pod": "5/5",
+    "reader-gen7": "10/10",
+    "vision-pod": "10/10",
+    "planner-pod": "2/2"
+  },
+  "baseline": "P1 base-model hit rate was 0.0 (untrained emission)"
+}
