@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-20",
+  "dreamed_strategy": {
+    "concept_oversample": 3,
+    "lookup_anchor": 2
+  },
+  "prediction": {
+    "typed_rate": 0.9318,
+    "concept_rate": 0.9773,
+    "predicted_raw_total": 125
+  },
+  "evidence": {
+    "test_raw": 125,
+    "typed": "81/88 (0.920)",
+    "concept": "44/44 (1.000)",
+    "dev_raw": 124,
+    "guarded": "92/132 both splits"
+  },
+  "validation": {
+    "raw_total_error": 0,
+    "typed_abs_error": 0.0113,
+    "concept_abs_error": 0.0227
+  },
+  "conclusion": "The replay simulator predicted the Gen-7 test raw total exactly (125). The dream became evidence \u2014 Dream-RSI loop validated end to end."
+}

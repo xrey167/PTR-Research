@@ -49,6 +49,8 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     reflex = json.loads(reflex_path.read_text(encoding="utf-8")) if reflex_path.exists() else {}
     dream_path = Path(path).with_name("dream-cycle-20260920.json")
     dream = json.loads(dream_path.read_text(encoding="utf-8")) if dream_path.exists() else {}
+    dream_ev_path = project_root / "runs" / "qwen3b-eval-test-gen7-20260920-report.json"
+    dream_ev = json.loads(dream_ev_path.read_text(encoding="utf-8")) if dream_ev_path.exists() else {}
     project_root = Path(path).resolve().parents[2]
     lora_adapter_path = project_root / "runs" / "qwen3b-eval-test-adapter-20260917-report.json"
     lora_base_path = project_root / "runs" / "qwen3b-eval-test-base-20260917-report.json"
@@ -110,6 +112,9 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "dream_pipeline": dream.get("status") == "dream_cycle_completed"
             and dream.get("backtest", {}).get("max_abs_error", 1) < 0.15
             and bool(dream.get("winner", {}).get("decisions")),
+        "gen7_dream_validated": dream_ev.get("status") == "completed" and dream_ev.get("reader_unchanged") is True
+            and dream_ev.get("exact_target_matches", 0) >= 125
+            and dream_ev.get("guarded_exact_target_matches", 0) >= 92,
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
         "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True

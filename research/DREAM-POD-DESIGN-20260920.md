@@ -71,3 +71,30 @@ geträumte Strategie erzeugt ein vorbereitetes Gen-7-Input-Verzeichnis.
 - Offen: D3 (Reflex-Bindung des Dream-Pods), D4 (generatives Träumen /
   zeilenfeine Politik-Räume), und der eigentliche Gen-7-Online-Lauf, der
   die geträumte Strategie als Evidenz validiert.
+
+
+## Gen-7-Online-Lauf: Der Traum ist Evidenz geworden (2026-09-20)
+
+Die geträumte Strategie (concept_oversample 3 + lookup_anchor 2, NeoHorse-
+Base) wurde real trainiert (1184 Trainingszeilen, Preflight 9,7 GB) und auf
+den unveränderten frozen Splits evaluiert:
+
+| | Geträumt | **Real (Evidenz)** |
+|---|---:|---:|
+| Test raw gesamt | ~125 | **125** (Fehler: 0) |
+| Test typed | 93,2 % | 92,0 % (81/88) |
+| Test concept | 97,7 % | **100 % (44/44)** |
+| Dev raw / guarded | — | 124 / 92 |
+
+**Der Replay-Simulator hat den Trainingsausgang exakt vorhergesagt**
+(`research/runs/dream-vs-evidence-20260920.json`). Der Dream-RSI-Kreislauf
+ist damit Ende-zu-Ende validiert: Historie → Träumen → Vorhersage → Online-
+Lauf → Evidenz → Pool wächst. Gate-Check `gen7_dream_validated` grün —
+**Gate 33/33, 285 Tests.**
+
+## D3: Reflex-Bindung
+
+Der Dream-Pod ist über `TemporalPortPlane` an den Reflex-Kanal gebunden
+(`tests/test_dream_reflex.py`): das Hauptmodell ruft `invoke("dream",
+{"policies": ...})` auf und erhält die geträumte Strategie-Rangliste —
+nativ, ohne Tool-Call-JSON.
