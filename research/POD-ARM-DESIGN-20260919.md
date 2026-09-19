@@ -146,7 +146,7 @@ nie selbst die Promotion entscheiden — die gehört dem Gate.
 
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
-| P1 | Reflex-Dispatch: Hauptmodell (Gen-6) wählt Pod über Adress-Signal; Ensemble-Eval zeigt Gleichwertigkeit mit explizitem Routing | `reflex_dispatch` |
+| P1 | Reflex-Dispatch — **Kern implementiert:** `neural_pods/reflex.py` (ReflexChannel: TemporalPortPlane-Auflösung → Dispatch, guarded Failover auf den default Pod, Latenz-/Failover-Metriken; 5 Tests). Offen: GPU-gekoppelter Benchmark gegen das vLLM-Ensemble | `reflex_dispatch` |
 | P2 | Executor-Factory + erster `TreeExecutor` (XGBoost-Pod, RAM-Lease, deterministisches Replay) | `xgboost_pod` |
 | P3 | Perceptions-Stream: ONNX-Objekterkennungs-Pod pusht Ereignisse über Duplex-Session; Backpressure gemessen | `perception_stream` |
 | P4 | Improve-Orchestrator: Autonomie-Quote, Event-Log, Ein-Zyklus-Durchlauf von Fehleranalyse bis Promotion | `improve_cycle` |
