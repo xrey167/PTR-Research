@@ -225,6 +225,19 @@ class Registry:
             self._event("revoke", {"root": node_id, "affected": affected})
             return sorted(affected)
 
+    def events(self, *, action: str | None = None, limit: int = 1000) -> list[dict]:
+        """List provenance events, newest first; optionally filter by action."""
+        if action is not None:
+            rows = self.db.execute(
+                "SELECT ts, action, payload FROM events WHERE action=? "
+                "ORDER BY rowid DESC LIMIT ?", (action, limit)).fetchall()
+        else:
+            rows = self.db.execute(
+                "SELECT ts, action, payload FROM events ORDER BY rowid DESC LIMIT ?",
+                (limit,)).fetchall()
+        return [{"ts": r[0], "action": r[1], "payload": json.loads(r[2])}
+                for r in rows]
+
     def head(self, knowledge_key):
         row = self.db.execute("SELECT node_id FROM heads WHERE knowledge_key=?", (knowledge_key,)).fetchone()
         if not row:
