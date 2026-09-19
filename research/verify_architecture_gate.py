@@ -129,7 +129,7 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and comm.get("metrics", {}).get("acl_refused_forbidden") is True,
         "taskgraph_parallel": tg.get("correct") is True
             and (tg.get("speedup") or 0) > 1.5
-            and tg.get("nodes") == 6,
+            and len(tg.get("results", {})) == 6,
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
         "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True
