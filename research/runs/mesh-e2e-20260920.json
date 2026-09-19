@@ -1,0 +1,11 @@
+{
+  "status": "completed",
+  "rounds": 20,
+  "acks_received": 20,
+  "pod_b_validated_all": true,
+  "elapsed_s": 7.49,
+  "executor_stats": {
+    "refused": 0
+  },
+  "peer_report": {}
+}

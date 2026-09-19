@@ -191,3 +191,22 @@ Messdatei + Design-Doku-Abschlussvermerk.
   same_principal_visible ✓, principal_isolated ✓ (fremder Principal liest
   null), invalidation_works ✓. Gate-Check `mesh_cache` grün →
   **Gate 37/37, 300 Tests.**
+
+## N5-Status (2026-09-20, ABGESCHLOSSEN — Nervensystem komplett)
+
+- **E2E-Demo (`research/runs/mesh-e2e-20260920.json`):** Pod A (Host,
+  20 frozen Gen-7-Antworten) sprach jede Antwort **nativ als MQTT-Frame**
+  über den NativeCommExecutor (Dialekt-Form identisch zum N2-Training);
+  Pod B (np-node2) empfing, validierte nativ und akkreditierte:
+  **20/20 Acks, alle validiert, 0 ACL-Verweigerungen, 7,5 s Gesamtdauer.**
+  App-Level-Retry deckt QoS-Verluste (1 verlorenes Ack in Runde 1 durch
+  Retry geborgen).
+- Gate-Check `mesh_e2e` grün → **Gate 38/38, 300 Tests.**
+- **Das Nervensystem ist komplett:** Pods haben ein kleines Modell, das
+  MQTT/TCP nativ spricht (100 % Frame-Validität), entdecken sich per
+  Presence (RTT 0,3 ms), arbeiten parallel (2,59× Speedup), teilen
+  Ergebnisse über Knoten (ACL-isoliert) — alles fail-closed und im Gate.
+
+Offene Erweiterungen: TCP-Frames über echte LXD-Knoten in N2-Rest, P2
+(XGBoost-Executor), P5 (latentes Adress-Training), N4-Invalidierung als
+Mesh-Event anstelle direktem Redis-Delete.
