@@ -45,6 +45,8 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     redis_cache = json.loads(redis_cache_path.read_text(encoding="utf-8")) if redis_cache_path.exists() else {}
     grpc_path = Path(path).with_name("grpc-vs-tcp-20260919.json")
     grpc_cmp = json.loads(grpc_path.read_text(encoding="utf-8")) if grpc_path.exists() else {}
+    mc_path = Path(path).with_name("mesh-cache-20260920.json")
+    mc = json.loads(mc_path.read_text(encoding="utf-8")) if mc_path.exists() else {}
     tg_path = Path(path).with_name("taskgraph-20260920.json")
     tg = json.loads(tg_path.read_text(encoding="utf-8")) if tg_path.exists() else {}
     comm_path = project_root / "runs" / "native-comm-eval-20260920-report.json"
@@ -130,6 +132,10 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "taskgraph_parallel": tg.get("correct") is True
             and (tg.get("speedup") or 0) > 1.5
             and len(tg.get("results", {})) == 6,
+        "mesh_cache": mc.get("status") == "completed"
+            and mc.get("cross_node_read") is True
+            and mc.get("principal_isolated") is True
+            and mc.get("invalidation_works") is True,
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
         "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True

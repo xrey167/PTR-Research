@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "cross_node_read": true,
+  "same_principal_visible": true,
+  "principal_isolated": true,
+  "invalidation_works": true,
+  "cache_a_stats": {
+    "pod_id": "mesh-cache-a",
+    "hits": 0,
+    "misses": 0,
+    "writes": 1
+  },
+  "peer_result": {
+    "shared": {
+      "value": 42,
+      "unit": "days"
+    },
+    "secret": {
+      "value": 9999,
+      "unit": "days"
+    },
+    "other_principal": null,
+    "after_invalidate": null
+  }
+}

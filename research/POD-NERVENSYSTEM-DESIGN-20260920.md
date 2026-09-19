@@ -180,3 +180,14 @@ Messdatei + Design-Doku-Abschlussvermerk.
   **Gate 36/36, 300 Tests.**
 - Benchmark-Lehren: TaskResult-Serialisierung (asdict), seq-Vergabe unter
   Parallelität braucht Lock, Multi-Dep-Context ist ein {node_id: output}-Dict.
+
+## N4-Status (2026-09-20, ABGESCHLOSSEN)
+
+- `neural_pods/mesh_cache.py`: MeshCache — Redis-getragene Ergebnis-Teilung
+  über Knoten; Keys tragen namespace+principal (ACL-Isolation per Hash);
+  Invalidierung löscht gezielt.
+- **Gemessen (`research/runs/mesh-cache-20260920.json`):** Pod A (Host)
+  schreibt, Pod B (np-node2) liest über das Netz: cross_node_read ✓,
+  same_principal_visible ✓, principal_isolated ✓ (fremder Principal liest
+  null), invalidation_works ✓. Gate-Check `mesh_cache` grün →
+  **Gate 37/37, 300 Tests.**
