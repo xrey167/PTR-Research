@@ -45,6 +45,8 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     redis_cache = json.loads(redis_cache_path.read_text(encoding="utf-8")) if redis_cache_path.exists() else {}
     grpc_path = Path(path).with_name("grpc-vs-tcp-20260919.json")
     grpc_cmp = json.loads(grpc_path.read_text(encoding="utf-8")) if grpc_path.exists() else {}
+    comm_path = project_root / "runs" / "native-comm-eval-20260920-report.json"
+    comm = json.loads(comm_path.read_text(encoding="utf-8")) if comm_path.exists() else {}
     reflex_path = Path(path).with_name("reflex-dispatch-20260919.json")
     reflex = json.loads(reflex_path.read_text(encoding="utf-8")) if reflex_path.exists() else {}
     mesh_path = Path(path).with_name("mesh-presence-20260920.json")
@@ -120,6 +122,9 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "mesh_presence": mesh.get("discovery", {}).get("discovered") is True
             and mesh.get("rounds_ok", 0) == 100
             and (mesh.get("rtt_p50_ms") or 999) < 10.0,
+        "native_protocol": comm.get("status") == "completed"
+            and comm.get("metrics", {}).get("frames_valid_rate", 0) >= 0.98
+            and comm.get("metrics", {}).get("acl_refused_forbidden") is True,
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
         "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True

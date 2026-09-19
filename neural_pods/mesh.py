@@ -115,6 +115,11 @@ class MeshEndpoint:
             raise MeshACLError(f"topic not allowed for {self.pod_id}: {topic}")
         self._publish_raw(topic, {"body": body})
 
+    def publish_raw(self, topic: str, body: Any, *, retain: bool = False) -> None:
+        """Publish on an arbitrary np/ topic; the caller (e.g. the native
+        comm executor's egress ACL) is responsible for access control."""
+        self._publish_raw(topic, {"body": body}, retain=retain)
+
     def _publish_raw(self, topic: str, envelope: dict, *, retain: bool = False) -> None:
         envelope.setdefault("manifest_hash", self.manifest_hash)
         envelope.setdefault("principal", self.principal)

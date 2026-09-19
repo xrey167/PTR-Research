@@ -145,3 +145,22 @@ Messdatei + Design-Doku-Abschlussvermerk.
   3. Ein globaler Manifest-Hash-Vergleich im Envelope verwirft legitime
      Nachrichten fremder Pods → Hash-Prüfung gehört pro Kanal/PodTransport.
 - Gate-Check `mesh_presence` grün → **Gate 34/34, 289 Tests**.
+
+## N2-Status (2026-09-20, KERN ABGESCHLOSSEN)
+
+- Basis-Modell: **Qwen2.5-Coder-1.5B-Instruct** (lokal, unsloth-Cache;
+  statt 0.5B — instruct-tuned, thematisch passend, 4,1 GB CUDA-Peak).
+- `neural_pods/native_comm.py`: FrameParser (fail-closed, max 16 Frames,
+  b64/JSON/Topic-Validierung), EgressACL (Topics + Hosts/Ports aus dem
+  Link-Contract, Violation-Zähler), NativeCommExecutor (MQTT via
+  MeshEndpoint.publish_raw, TCP via echte Sockets; Rate-Limiter drosselt
+  statt verwirft — DIAL/SEND/RECV/CLOSE laufen in Mikrosekunden).
+- `research/train_native_comm.py`: 500 synthetische Transkripte (mechanisch
+  verifiziert), SFT-LoRA r16, 3 Epochs, ~10 min GPU.
+- **Gemessen (`runs/native-comm-eval-20260920-report.json`):**
+  Frame-Validitätsrate **1.0** auf 80 held-out Transkripten (Schwelle 0.98),
+  exact_rate 0.55 (valide Varianten zulässig), **ACL verweigert verbotene
+  Ziele** (refused=true, violation gezählt). Gate-Check `native_protocol`
+  grün → **Gate 35/35, 295 Tests.**
+- Offen in N2: TCP-Frame-Ausführung über echte Mesh-Knoten (LXD), Integration
+  in den Task-Graph (N3).

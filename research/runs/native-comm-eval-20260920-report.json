@@ -1,0 +1,22 @@
+{
+  "status": "completed",
+  "mode": "evaluate",
+  "model_path": "/srv/ai/models/downloaded/unsloth--Qwen2.5-Coder-1.5B-Instruct--b9f2b422413d50e652bf90364af0efe50b48f92e",
+  "rows": {
+    "train": 500,
+    "val": 80,
+    "test": 80
+  },
+  "sources": {
+    "train_native_comm.py": "d7c7cac2f7e65169c98fe45429e1aed767a41271d391ba822865588bdb285cf1",
+    "progress_json.py": "bf47bea7b578eb85323000be77be1b459bb4da75be2e2922128ebf879fb22a4c"
+  },
+  "elapsed_s": 76.71475608299806,
+  "metrics": {
+    "frames_valid_rate": 1.0,
+    "exact_rate": 0.55,
+    "total": 80,
+    "acl_refused_forbidden": true,
+    "acl_violations": 1
+  }
+}
