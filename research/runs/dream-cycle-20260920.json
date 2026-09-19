@@ -1,0 +1,113 @@
+{
+  "status": "dream_cycle_completed",
+  "pool_generations": [
+    "gen3",
+    "gen4",
+    "gen5",
+    "gen6"
+  ],
+  "backtest": {
+    "generations": 4,
+    "mean_abs_error": 0.01,
+    "max_abs_error": 0.0569
+  },
+  "ranking": [
+    {
+      "decisions": {
+        "concept_oversample": 3,
+        "lookup_anchor": 2
+      },
+      "prediction": {
+        "typed": {
+          "predicted_rate": 0.9318
+        },
+        "concept": {
+          "predicted_rate": 0.9773
+        }
+      },
+      "score": 1.9091,
+      "pool_hash": "b44c7c5972b8"
+    },
+    {
+      "decisions": {
+        "concept_oversample": 6,
+        "lookup_anchor": 2
+      },
+      "prediction": {
+        "typed": {
+          "predicted_rate": 0.8864
+        },
+        "concept": {
+          "predicted_rate": 1.0
+        }
+      },
+      "score": 1.8864,
+      "pool_hash": "b44c7c5972b8"
+    },
+    {
+      "decisions": {
+        "concept_oversample": 3,
+        "lookup_anchor": 1
+      },
+      "prediction": {
+        "typed": {
+          "predicted_rate": 0.8636
+        },
+        "concept": {
+          "predicted_rate": 0.9773
+        }
+      },
+      "score": 1.8409,
+      "pool_hash": "b44c7c5972b8"
+    },
+    {
+      "decisions": {
+        "concept_oversample": 3,
+        "lookup_anchor": 1,
+        "base_model": "neohorse"
+      },
+      "prediction": {
+        "typed": {
+          "predicted_rate": 0.8636
+        },
+        "concept": {
+          "predicted_rate": 0.9773
+        }
+      },
+      "score": 1.8409,
+      "pool_hash": "b44c7c5972b8"
+    },
+    {
+      "decisions": {
+        "concept_oversample": 5,
+        "lookup_anchor": 1
+      },
+      "prediction": {
+        "typed": {
+          "predicted_rate": 0.8333
+        },
+        "concept": {
+          "predicted_rate": 1.0
+        }
+      },
+      "score": 1.8333,
+      "pool_hash": "b44c7c5972b8"
+    }
+  ],
+  "winner": {
+    "decisions": {
+      "concept_oversample": 3,
+      "lookup_anchor": 2
+    },
+    "prediction": {
+      "typed": {
+        "predicted_rate": 0.9318
+      },
+      "concept": {
+        "predicted_rate": 0.9773
+      }
+    },
+    "score": 1.9091,
+    "pool_hash": "b44c7c5972b8"
+  }
+}
