@@ -1,10 +1,53 @@
 # Neural Pods – lokales Forschungsexperiment
 
+**Status 2026-09-20:** Forschungsplattform mit validierter Self-Improvement-Pipeline.
+Architecture-Gate: **33/33 Checks grün** · 285 Tests · Reader-Adapter: **Gen-7 (NeoHorse-1-4B)**.
+
+## Aktuelle Architektur (Kurzfassung)
+
+```
+Hauptmodell ──Reflex-Kanal (Symlinks/Dragonfly)──▶ Pods
+   │                                               │
+   │   ┌───────────────────────────────────────────┤
+   │   │ Serving: vLLM Multi-LoRA (2 Basen, 2 GPUs)│
+   │   │ Konsens: Raft 3 Knoten (LXD, mTLS)        │
+   │   │ Persistenz: Postgres-Quorum (3 Knoten)    │
+   │   │ Cache: LRU → Redis-L2 (0.38 ms)           │
+   │   └───────────────────────────────────────────┤
+   ▼                                               ▼
+Dream-Pod ◀── Historie als Replay-Simulator ── Eval-Outcomes
+   │      (Dream-RSI-Muster: träumt Curriculum-Strategien,
+   │       Vorhersage durch Evidenz validiert: 125 predicted,
+   │       125 real)
+   ▼
+Improve-Kreislauf: Curriculum → preflight → train → frozen A/B
+                   → Architecture-Gate (fail-closed) → Promotion
+```
+
+Kernkomponenten: `neural_pods/` (47+ Module: Registry/Provenance, Serving,
+Retrieval, Raft, Ressourcen), `bindings/raft_binding/` (Rust/PyO3, TiKV
+raft-rs), `research/` (86+ Design- und Messdokumente, Benchmarks, Gate).
+
+**Design-Dokumente (Einstieg):**
+- `HANDOVER-20260917.md` — vollständiger Projektstand, Workflows, Server
+- `research/POD-ARM-DESIGN-20260919.md` — Pod-Arm-Architektur (Phasen P1–P5)
+- `research/DREAM-POD-DESIGN-20260920.md` — Dream-Pod (Dream-RSI-Adaption)
+- `research/ARCHITECTURE-VALIDATION-20260917.md` — Gate & Messwerte
+- `research/MULTIHOST-CLUSTER-20260917.md` — Multi-Host-Topologie
+
+**Gate:** `research/verify_architecture_gate.py` — fail-closed, 33 Checks
+über alle Schichten (Retrieval, Cache, mTLS-Transport, Raft/Multi-Host,
+Quorum, vLLM/Failover, Batcher, LoRA-A/B Gen-3…7, Ensemble, Redis, gRPC-,
+Dream-Validierung). Betrieb auf xrserver; Git-Flow: lokal → GitHub →
+Server-Klon (`git fetch && git reset origin/main`).
+
+## Historischer Ausgangs-Prototyp (v0.1–0.3, unten unveraendert)
+
 Umsetzung der Idee aus [Working Prototype Status](https://chatgpt.com/share/6aa9082a-85d4-83eb-ba37-63f8dfc1398e).
 Ein echtes vortrainiertes Qwen-Modell lernt kleine, austauschbare LoRA-Wissens-Pods.
 Eine SQLite-Registry kontrolliert deren Herkunft und Lebenszyklus.
 
-## Aktueller zusammengeführter Stand
+## Zusammengeführter Stand des Prototyps (historisch)
 
 Der aktuelle Stack ist mit zwei reproduzierbaren Gates abgesichert:
 
