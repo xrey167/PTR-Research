@@ -37,6 +37,8 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     project_root = Path(path).resolve().parents[2]
     gen6_path = project_root / "runs" / "qwen3b-eval-test-gen6-20260919-report.json"
     gen6 = json.loads(gen6_path.read_text(encoding="utf-8")) if gen6_path.exists() else {}
+    gen6_dev_path = project_root / "runs" / "qwen3b-eval-dev-gen6-20260919-report.json"
+    gen6_dev = json.loads(gen6_dev_path.read_text(encoding="utf-8")) if gen6_dev_path.exists() else {}
     hetero_path = Path(path).with_name("ensemble-hetero-20260919.json")
     hetero = json.loads(hetero_path.read_text(encoding="utf-8")) if hetero_path.exists() else {}
     redis_cache_path = Path(path).with_name("redis-cache-20260919.json")
@@ -88,6 +90,9 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and ensemble_metrics.get("failover", {}).get("failovers") == 16,
         "gen6_hetero_pod": gen6.get("status") == "completed" and gen6.get("reader_unchanged") is True
             and gen6.get("exact_target_matches", 0) >= 125 and gen6.get("guarded_exact_target_matches", 0) >= 92,
+        "gen6_promoted_dev": gen6_dev.get("status") == "completed" and gen6_dev.get("reader_unchanged") is True
+            and gen6_dev.get("exact_target_matches", 0) >= gen4_dev_adapter.get("exact_target_matches", 0)
+            and gen6_dev.get("guarded_exact_target_matches", 0) >= gen4_dev_adapter.get("guarded_exact_target_matches", 0),
         "ensemble_hetero_union": hetero.get("status") == "completed" and hetero.get("metrics", {}).get("errors") == 0
             and hetero.get("metrics", {}).get("union_raw", 0) >= 126,
         "redis_cache_tier": redis_cache.get("lru_redis", {}).get("stats", {}).get("redis_hits", 0) >= 2000

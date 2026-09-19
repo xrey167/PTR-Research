@@ -54,3 +54,17 @@ Neue Checks (alle grün): `gen6_hetero_pod`, `ensemble_hetero_union`,
 
 Messdateien: `research/runs/{ensemble-hetero,redis-cache,grpc-vs-tcp}-20260919.json`,
 `runs/qwen3b-eval-test-gen6-20260919-report.json`.
+
+
+## Gen-6 Promotion (2026-09-19, final)
+
+Dev-Split-Eval bestätigt: **raw 124, guarded 92, typed 80, concept 44/44
+(periode)** — Gen-6 dominiert Gen-5 per Familie auf beiden Splits und ist
+damit der promoted Reader-Adapter. Gate-Check `gen6_promoted_dev` ergänzt;
+Gate steht bei **30/30 grün** (268 Tests).
+
+| Split | Gen-5 (Qwen3B) | **Gen-6 (NeoHorse, promoted)** |
+|---|---:|---:|
+| Test raw / guarded | 119 / 92 | **125 / 92** |
+| Dev raw / guarded | 124 / 92 | **124 / 92** |
+| Dev typed / concept | 76 / 43 | **80 / 44** |
