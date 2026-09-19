@@ -75,3 +75,22 @@ Zusatz-Phasen:
 |---|---|---|
 | H5 | Training im Haushalt: request_training mit Donor-Approval + Autonomie-Budget, Dream-Pod-Kopplung | `household_training` |
 | H6 | TokenCache: Prefix-/Session-Affinity über Pods, saved_tokens-Metrik, Failover-Verhalten | `token_cache` |
+
+
+## Erweiterung: Trainingsdaten bauen, speichern, verwalten
+
+Die Dataset-Pipeline (bisher prepare_generation*-Skripte) wird zum
+Haushalts-First-Class-Objekt:
+
+| Verhalten | Umsetzung |
+|---|---|
+| **Bauen** | `DatasetBuilder`: Zeilen aus Dream-Pod-Synthese (verifizierte Träume), fakt-basierten Generatoren und importierten Datensätzen zusammenstellen; Splits (train/dev/test) einfrieren; Split-Größen + Kurriculum-Gewichte (oversample/anchor) als Builder-Parameter — das prepare_generation*-Wissen wird API |
+| **Speichern** | `DatasetStore` — jeder Datensatz als versionierte Einheit: inputs/ (train/dev/test.json + protocol.json mit Hashes, wie gewohnt) PLUS Lance-Tabelle in L2 (abfragbar: Zeilen nach Familie/Split/Quelle); Registry-Event mit input_hashes = Provenance |
+| **Verwalten** | Versionen (supersedes-Kette: gen3→gen7), Leakage-Prüfung als一等 Funktion (dev/test-Fragen+Ziele als Blockliste gegen Trainingszeilen), Wiederverwendung: ein gespeicherter Datensatz ist per Namen+Version für Trainingsläufe adressierbar (`train_reader --inputs name@version`) |
+| **Quellen trennen** | Zeilen tragen Quelle: `real` (Fakt-Generator), `dream` (Dream-Pod, Zyklus-ID), `imported` (extern) — Provenance pro Zeile bleibt im assessment-Feld (Dream-Konvention) |
+
+Zusatz-Phase:
+
+| Phase | Inhalt | Gate-Check |
+|---|---|---|
+| H7 | DatasetStore: bauen/speichern/verwalten (Versionen, Leakage-Prüfung, Lance-Abfrage) | `dataset_store` |
