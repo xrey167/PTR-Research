@@ -224,3 +224,26 @@ Mesh-Event anstelle direktem Redis-Delete.
   `native_tcp_cross_node` grün → **Gate 39/39, 300 Tests.**
 - Lektion: zombie Ports von früheren Läufen (pkill Muster breit fassen oder
   Ports wechseln); lxc-exec-Hintergrundprozesse IMMER mit setsid + </dev/null.
+
+## Breiter getracer Test + Performance-Optimierung (2026-09-20, ABGESCHLOSSEN)
+
+- **Getracer Pipeline-Lauf** (`research/benchmark_traced_pipeline.py`,
+  Trace-Log `research/runs/traced-pipeline-20260920.jsonl`, 500+ Hop-Records):
+  alle 132 frozen Cases durch cache → mesh-lookup → Antwort (Gen-7-Evidenz)
+  → native MQTT-Frame-Publikation; je Hop trace_id/case/latency/flags.
+- **P2-XGBoostExecutor** (`neural_pods/pod_executor.py`): ExecutorFactory +
+  GovernedExecutorPool (Budget-Verweigerung), deterministische Inferenz
+  verifiziert. P5: trainiertes Dialekt-Modell emittiert Pod-Adressen —
+  **Reflex-Hit-Rate 1.0 (31/31)** vs. 0.0 untrainiert
+  (`research/runs/reflex-trained-20260920.json`). P3: PerceptionStream,
+  2000/2000 Events lossless (~13.3k Events/s), Backpressure droppt sauber
+  (`research/runs/perception-20260920.json`).
+- **Trace-Befund → Optimierung:** die sequenziellen Mesh-Lookups dominieren
+  (20 ms Remote-Delay × 132). Optimierung: Batch-Async (alle Lookups sofort
+  feuern, Replies parallel sammeln; Responder schläft NICHT im paho-Loop-
+  Thread). **Gemessen: 2,845 s → 1,012 s = 2,81× schneller** bei identisch
+  132/132 validen Frames. Gate-Check `traced_pipeline` grün →
+  **Gate 40/40, 305 Tests.**
+- Nächste Optimierungshebel aus den Traces: Redis-Puts batchen (132 Round-
+  Trips ~0.05 s), Antwort-Stage als echter vLLM-Call mit Stream, Responder
+  mit Thread-Pool statt Thread-je-Call.

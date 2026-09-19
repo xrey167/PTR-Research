@@ -1,0 +1,1056 @@
+{"trace_id": "206823b0-058c-46fc-959b-ccf7948e619a", "case": "test:G17:52:en:lookup", "stage": "cache", "latency_ms": 0.072, "hit": false}
+{"trace_id": "206823b0-058c-46fc-959b-ccf7948e619a", "case": "test:G17:52:en:lookup", "stage": "lookup", "latency_ms": 51.252, "answered": true}
+{"trace_id": "206823b0-058c-46fc-959b-ccf7948e619a", "case": "test:G17:52:en:lookup", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "206823b0-058c-46fc-959b-ccf7948e619a", "case": "test:G17:52:en:lookup", "stage": "publish", "latency_ms": 0.119, "frames_valid": true}
+{"trace_id": "68b593dc-44b0-4a14-9c5b-0995d269e579", "case": "test:G17:52:en:buffer", "stage": "cache", "latency_ms": 0.156, "hit": false}
+{"trace_id": "68b593dc-44b0-4a14-9c5b-0995d269e579", "case": "test:G17:52:en:buffer", "stage": "lookup", "latency_ms": 61.444, "answered": true}
+{"trace_id": "68b593dc-44b0-4a14-9c5b-0995d269e579", "case": "test:G17:52:en:buffer", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "68b593dc-44b0-4a14-9c5b-0995d269e579", "case": "test:G17:52:en:buffer", "stage": "publish", "latency_ms": 0.031, "frames_valid": true}
+{"trace_id": "8e2a065c-b120-4005-8173-f5f8a9ea7241", "case": "test:G17:52:en:deadline_days_short", "stage": "cache", "latency_ms": 0.139, "hit": false}
+{"trace_id": "8e2a065c-b120-4005-8173-f5f8a9ea7241", "case": "test:G17:52:en:deadline_days_short", "stage": "lookup", "latency_ms": 20.524, "answered": true}
+{"trace_id": "8e2a065c-b120-4005-8173-f5f8a9ea7241", "case": "test:G17:52:en:deadline_days_short", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "8e2a065c-b120-4005-8173-f5f8a9ea7241", "case": "test:G17:52:en:deadline_days_short", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "64df3b44-1fb1-4b7c-9057-584b1e7a63b9", "case": "test:G17:52:en:deadline_days_equal", "stage": "cache", "latency_ms": 0.111, "hit": false}
+{"trace_id": "64df3b44-1fb1-4b7c-9057-584b1e7a63b9", "case": "test:G17:52:en:deadline_days_equal", "stage": "lookup", "latency_ms": 20.57, "answered": true}
+{"trace_id": "64df3b44-1fb1-4b7c-9057-584b1e7a63b9", "case": "test:G17:52:en:deadline_days_equal", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "64df3b44-1fb1-4b7c-9057-584b1e7a63b9", "case": "test:G17:52:en:deadline_days_equal", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "24c7ed7b-a547-4c26-a309-6eb8cc3370ab", "case": "test:G17:52:en:deadline_days_long", "stage": "cache", "latency_ms": 0.102, "hit": false}
+{"trace_id": "24c7ed7b-a547-4c26-a309-6eb8cc3370ab", "case": "test:G17:52:en:deadline_days_long", "stage": "lookup", "latency_ms": 20.705, "answered": true}
+{"trace_id": "24c7ed7b-a547-4c26-a309-6eb8cc3370ab", "case": "test:G17:52:en:deadline_days_long", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "24c7ed7b-a547-4c26-a309-6eb8cc3370ab", "case": "test:G17:52:en:deadline_days_long", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "c232341c-0788-401b-8be4-b1ac992d85e3", "case": "test:G17:52:en:deadline_weeks_short", "stage": "cache", "latency_ms": 0.116, "hit": false}
+{"trace_id": "c232341c-0788-401b-8be4-b1ac992d85e3", "case": "test:G17:52:en:deadline_weeks_short", "stage": "lookup", "latency_ms": 20.685, "answered": true}
+{"trace_id": "c232341c-0788-401b-8be4-b1ac992d85e3", "case": "test:G17:52:en:deadline_weeks_short", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "c232341c-0788-401b-8be4-b1ac992d85e3", "case": "test:G17:52:en:deadline_weeks_short", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "686a89fe-6780-4507-8fe8-f9fcf0ea114d", "case": "test:G17:52:en:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.252, "hit": false}
+{"trace_id": "686a89fe-6780-4507-8fe8-f9fcf0ea114d", "case": "test:G17:52:en:deadline_weeks_equal", "stage": "lookup", "latency_ms": 20.496, "answered": true}
+{"trace_id": "686a89fe-6780-4507-8fe8-f9fcf0ea114d", "case": "test:G17:52:en:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "686a89fe-6780-4507-8fe8-f9fcf0ea114d", "case": "test:G17:52:en:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "66a35dd7-6246-42df-a70b-a98d86636053", "case": "test:G17:52:en:deadline_weeks_long", "stage": "cache", "latency_ms": 0.167, "hit": false}
+{"trace_id": "66a35dd7-6246-42df-a70b-a98d86636053", "case": "test:G17:52:en:deadline_weeks_long", "stage": "lookup", "latency_ms": 20.529, "answered": true}
+{"trace_id": "66a35dd7-6246-42df-a70b-a98d86636053", "case": "test:G17:52:en:deadline_weeks_long", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "66a35dd7-6246-42df-a70b-a98d86636053", "case": "test:G17:52:en:deadline_weeks_long", "stage": "publish", "latency_ms": 0.022, "frames_valid": true}
+{"trace_id": "bbab97eb-ce2f-4afa-b469-8b0dcb7eeb5c", "case": "test:G17:52:en:missing", "stage": "cache", "latency_ms": 0.132, "hit": false}
+{"trace_id": "bbab97eb-ce2f-4afa-b469-8b0dcb7eeb5c", "case": "test:G17:52:en:missing", "stage": "lookup", "latency_ms": 20.584, "answered": true}
+{"trace_id": "bbab97eb-ce2f-4afa-b469-8b0dcb7eeb5c", "case": "test:G17:52:en:missing", "stage": "answer", "latency_ms": 0.001, "tokens": 1}
+{"trace_id": "bbab97eb-ce2f-4afa-b469-8b0dcb7eeb5c", "case": "test:G17:52:en:missing", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "e2370dc3-1eca-42a0-ae32-545b4bfa354f", "case": "test:G17:52:en:followup_lookup", "stage": "cache", "latency_ms": 0.147, "hit": false}
+{"trace_id": "e2370dc3-1eca-42a0-ae32-545b4bfa354f", "case": "test:G17:52:en:followup_lookup", "stage": "lookup", "latency_ms": 20.59, "answered": true}
+{"trace_id": "e2370dc3-1eca-42a0-ae32-545b4bfa354f", "case": "test:G17:52:en:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "e2370dc3-1eca-42a0-ae32-545b4bfa354f", "case": "test:G17:52:en:followup_lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "4d0a1164-baba-4a8a-ada2-ba6ff5bbd5c5", "case": "test:G17:52:en:followup_buffer", "stage": "cache", "latency_ms": 0.157, "hit": false}
+{"trace_id": "4d0a1164-baba-4a8a-ada2-ba6ff5bbd5c5", "case": "test:G17:52:en:followup_buffer", "stage": "lookup", "latency_ms": 20.577, "answered": true}
+{"trace_id": "4d0a1164-baba-4a8a-ada2-ba6ff5bbd5c5", "case": "test:G17:52:en:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "4d0a1164-baba-4a8a-ada2-ba6ff5bbd5c5", "case": "test:G17:52:en:followup_buffer", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "17f489b5-d208-4c10-b790-e2929e499699", "case": "test:G17:52:en:stale_followup", "stage": "cache", "latency_ms": 0.257, "hit": false}
+{"trace_id": "17f489b5-d208-4c10-b790-e2929e499699", "case": "test:G17:52:en:stale_followup", "stage": "lookup", "latency_ms": 20.539, "answered": true}
+{"trace_id": "17f489b5-d208-4c10-b790-e2929e499699", "case": "test:G17:52:en:stale_followup", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "17f489b5-d208-4c10-b790-e2929e499699", "case": "test:G17:52:en:stale_followup", "stage": "publish", "latency_ms": 0.026, "frames_valid": true}
+{"trace_id": "3e8b98f8-f878-4951-8773-32d44aba0294", "case": "test:G17:52:de:lookup", "stage": "cache", "latency_ms": 0.136, "hit": false}
+{"trace_id": "3e8b98f8-f878-4951-8773-32d44aba0294", "case": "test:G17:52:de:lookup", "stage": "lookup", "latency_ms": 20.583, "answered": true}
+{"trace_id": "3e8b98f8-f878-4951-8773-32d44aba0294", "case": "test:G17:52:de:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "3e8b98f8-f878-4951-8773-32d44aba0294", "case": "test:G17:52:de:lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "fad319c1-4d18-4f74-8f80-d46e6c26e402", "case": "test:G17:52:de:buffer", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "fad319c1-4d18-4f74-8f80-d46e6c26e402", "case": "test:G17:52:de:buffer", "stage": "lookup", "latency_ms": 20.589, "answered": true}
+{"trace_id": "fad319c1-4d18-4f74-8f80-d46e6c26e402", "case": "test:G17:52:de:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "fad319c1-4d18-4f74-8f80-d46e6c26e402", "case": "test:G17:52:de:buffer", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "d1bcc572-eca6-45ef-8f09-52ef5d1ca40d", "case": "test:G17:52:de:deadline_days_short", "stage": "cache", "latency_ms": 0.122, "hit": false}
+{"trace_id": "d1bcc572-eca6-45ef-8f09-52ef5d1ca40d", "case": "test:G17:52:de:deadline_days_short", "stage": "lookup", "latency_ms": 20.536, "answered": true}
+{"trace_id": "d1bcc572-eca6-45ef-8f09-52ef5d1ca40d", "case": "test:G17:52:de:deadline_days_short", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "d1bcc572-eca6-45ef-8f09-52ef5d1ca40d", "case": "test:G17:52:de:deadline_days_short", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "ac5d430f-0ab4-4d8c-b954-2b005b725e7d", "case": "test:G17:52:de:deadline_days_equal", "stage": "cache", "latency_ms": 0.163, "hit": false}
+{"trace_id": "ac5d430f-0ab4-4d8c-b954-2b005b725e7d", "case": "test:G17:52:de:deadline_days_equal", "stage": "lookup", "latency_ms": 20.501, "answered": true}
+{"trace_id": "ac5d430f-0ab4-4d8c-b954-2b005b725e7d", "case": "test:G17:52:de:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "ac5d430f-0ab4-4d8c-b954-2b005b725e7d", "case": "test:G17:52:de:deadline_days_equal", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "269e5e37-f751-458b-a786-524d0e137bfd", "case": "test:G17:52:de:deadline_days_long", "stage": "cache", "latency_ms": 0.208, "hit": false}
+{"trace_id": "269e5e37-f751-458b-a786-524d0e137bfd", "case": "test:G17:52:de:deadline_days_long", "stage": "lookup", "latency_ms": 20.571, "answered": true}
+{"trace_id": "269e5e37-f751-458b-a786-524d0e137bfd", "case": "test:G17:52:de:deadline_days_long", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "269e5e37-f751-458b-a786-524d0e137bfd", "case": "test:G17:52:de:deadline_days_long", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "b35b0cfd-aa9c-401f-9f3e-a1fc90b8c673", "case": "test:G17:52:de:deadline_weeks_short", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "b35b0cfd-aa9c-401f-9f3e-a1fc90b8c673", "case": "test:G17:52:de:deadline_weeks_short", "stage": "lookup", "latency_ms": 20.53, "answered": true}
+{"trace_id": "b35b0cfd-aa9c-401f-9f3e-a1fc90b8c673", "case": "test:G17:52:de:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "b35b0cfd-aa9c-401f-9f3e-a1fc90b8c673", "case": "test:G17:52:de:deadline_weeks_short", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "4e54c7c4-6a4a-491a-b7e1-52213f906265", "case": "test:G17:52:de:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.13, "hit": false}
+{"trace_id": "4e54c7c4-6a4a-491a-b7e1-52213f906265", "case": "test:G17:52:de:deadline_weeks_equal", "stage": "lookup", "latency_ms": 20.48, "answered": true}
+{"trace_id": "4e54c7c4-6a4a-491a-b7e1-52213f906265", "case": "test:G17:52:de:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "4e54c7c4-6a4a-491a-b7e1-52213f906265", "case": "test:G17:52:de:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "5d701c4b-bb13-4c90-8e46-a548e3929d32", "case": "test:G17:52:de:deadline_weeks_long", "stage": "cache", "latency_ms": 0.133, "hit": false}
+{"trace_id": "5d701c4b-bb13-4c90-8e46-a548e3929d32", "case": "test:G17:52:de:deadline_weeks_long", "stage": "lookup", "latency_ms": 20.575, "answered": true}
+{"trace_id": "5d701c4b-bb13-4c90-8e46-a548e3929d32", "case": "test:G17:52:de:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "5d701c4b-bb13-4c90-8e46-a548e3929d32", "case": "test:G17:52:de:deadline_weeks_long", "stage": "publish", "latency_ms": 0.046, "frames_valid": true}
+{"trace_id": "b3b8c18e-7e2b-4406-8613-d5e79f83dc28", "case": "test:G17:52:de:missing", "stage": "cache", "latency_ms": 0.163, "hit": false}
+{"trace_id": "b3b8c18e-7e2b-4406-8613-d5e79f83dc28", "case": "test:G17:52:de:missing", "stage": "lookup", "latency_ms": 20.55, "answered": true}
+{"trace_id": "b3b8c18e-7e2b-4406-8613-d5e79f83dc28", "case": "test:G17:52:de:missing", "stage": "answer", "latency_ms": 0.001, "tokens": 1}
+{"trace_id": "b3b8c18e-7e2b-4406-8613-d5e79f83dc28", "case": "test:G17:52:de:missing", "stage": "publish", "latency_ms": 0.049, "frames_valid": true}
+{"trace_id": "e3a467d3-2d63-47b2-92c4-8199b400452e", "case": "test:G17:52:de:followup_lookup", "stage": "cache", "latency_ms": 0.171, "hit": false}
+{"trace_id": "e3a467d3-2d63-47b2-92c4-8199b400452e", "case": "test:G17:52:de:followup_lookup", "stage": "lookup", "latency_ms": 20.564, "answered": true}
+{"trace_id": "e3a467d3-2d63-47b2-92c4-8199b400452e", "case": "test:G17:52:de:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "e3a467d3-2d63-47b2-92c4-8199b400452e", "case": "test:G17:52:de:followup_lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "8df3f4db-7e52-441b-91f6-78b17a118996", "case": "test:G17:52:de:followup_buffer", "stage": "cache", "latency_ms": 0.168, "hit": false}
+{"trace_id": "8df3f4db-7e52-441b-91f6-78b17a118996", "case": "test:G17:52:de:followup_buffer", "stage": "lookup", "latency_ms": 20.547, "answered": true}
+{"trace_id": "8df3f4db-7e52-441b-91f6-78b17a118996", "case": "test:G17:52:de:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "8df3f4db-7e52-441b-91f6-78b17a118996", "case": "test:G17:52:de:followup_buffer", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "0b770a0e-8d74-46a6-86b3-2027194bb325", "case": "test:G17:52:de:stale_followup", "stage": "cache", "latency_ms": 0.139, "hit": false}
+{"trace_id": "0b770a0e-8d74-46a6-86b3-2027194bb325", "case": "test:G17:52:de:stale_followup", "stage": "lookup", "latency_ms": 21.483, "answered": true}
+{"trace_id": "0b770a0e-8d74-46a6-86b3-2027194bb325", "case": "test:G17:52:de:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "0b770a0e-8d74-46a6-86b3-2027194bb325", "case": "test:G17:52:de:stale_followup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "57746007-dfbf-49b8-b89a-1035e9d5d98f", "case": "test:G17:56:en:lookup", "stage": "cache", "latency_ms": 0.131, "hit": false}
+{"trace_id": "57746007-dfbf-49b8-b89a-1035e9d5d98f", "case": "test:G17:56:en:lookup", "stage": "lookup", "latency_ms": 20.79, "answered": true}
+{"trace_id": "57746007-dfbf-49b8-b89a-1035e9d5d98f", "case": "test:G17:56:en:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "57746007-dfbf-49b8-b89a-1035e9d5d98f", "case": "test:G17:56:en:lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "2e9a74d1-1a07-4c1d-8c37-0d5483dd11d8", "case": "test:G17:56:en:buffer", "stage": "cache", "latency_ms": 0.185, "hit": false}
+{"trace_id": "2e9a74d1-1a07-4c1d-8c37-0d5483dd11d8", "case": "test:G17:56:en:buffer", "stage": "lookup", "latency_ms": 21.359, "answered": true}
+{"trace_id": "2e9a74d1-1a07-4c1d-8c37-0d5483dd11d8", "case": "test:G17:56:en:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "2e9a74d1-1a07-4c1d-8c37-0d5483dd11d8", "case": "test:G17:56:en:buffer", "stage": "publish", "latency_ms": 0.022, "frames_valid": true}
+{"trace_id": "9e6adf13-3f8d-42fa-bb2d-3b8549da31f9", "case": "test:G17:56:en:deadline_days_short", "stage": "cache", "latency_ms": 0.134, "hit": false}
+{"trace_id": "9e6adf13-3f8d-42fa-bb2d-3b8549da31f9", "case": "test:G17:56:en:deadline_days_short", "stage": "lookup", "latency_ms": 20.678, "answered": true}
+{"trace_id": "9e6adf13-3f8d-42fa-bb2d-3b8549da31f9", "case": "test:G17:56:en:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "9e6adf13-3f8d-42fa-bb2d-3b8549da31f9", "case": "test:G17:56:en:deadline_days_short", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "07017103-ef11-428d-a83b-081d86dda7fa", "case": "test:G17:56:en:deadline_days_equal", "stage": "cache", "latency_ms": 0.17, "hit": false}
+{"trace_id": "07017103-ef11-428d-a83b-081d86dda7fa", "case": "test:G17:56:en:deadline_days_equal", "stage": "lookup", "latency_ms": 20.575, "answered": true}
+{"trace_id": "07017103-ef11-428d-a83b-081d86dda7fa", "case": "test:G17:56:en:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "07017103-ef11-428d-a83b-081d86dda7fa", "case": "test:G17:56:en:deadline_days_equal", "stage": "publish", "latency_ms": 0.026, "frames_valid": true}
+{"trace_id": "d36ad9ff-d75d-4da9-85df-0c1c1dd23cd2", "case": "test:G17:56:en:deadline_days_long", "stage": "cache", "latency_ms": 0.17, "hit": false}
+{"trace_id": "d36ad9ff-d75d-4da9-85df-0c1c1dd23cd2", "case": "test:G17:56:en:deadline_days_long", "stage": "lookup", "latency_ms": 20.566, "answered": true}
+{"trace_id": "d36ad9ff-d75d-4da9-85df-0c1c1dd23cd2", "case": "test:G17:56:en:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "d36ad9ff-d75d-4da9-85df-0c1c1dd23cd2", "case": "test:G17:56:en:deadline_days_long", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "b8420770-0815-4988-9ef5-a032f5283673", "case": "test:G17:56:en:deadline_weeks_short", "stage": "cache", "latency_ms": 0.707, "hit": false}
+{"trace_id": "b8420770-0815-4988-9ef5-a032f5283673", "case": "test:G17:56:en:deadline_weeks_short", "stage": "lookup", "latency_ms": 20.53, "answered": true}
+{"trace_id": "b8420770-0815-4988-9ef5-a032f5283673", "case": "test:G17:56:en:deadline_weeks_short", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "b8420770-0815-4988-9ef5-a032f5283673", "case": "test:G17:56:en:deadline_weeks_short", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "c306e659-4155-443c-b551-d4a1ba85318e", "case": "test:G17:56:en:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.137, "hit": false}
+{"trace_id": "c306e659-4155-443c-b551-d4a1ba85318e", "case": "test:G17:56:en:deadline_weeks_equal", "stage": "lookup", "latency_ms": 20.468, "answered": true}
+{"trace_id": "c306e659-4155-443c-b551-d4a1ba85318e", "case": "test:G17:56:en:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "c306e659-4155-443c-b551-d4a1ba85318e", "case": "test:G17:56:en:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "5ddee96c-4870-4edc-b654-055dd717ebb1", "case": "test:G17:56:en:deadline_weeks_long", "stage": "cache", "latency_ms": 0.151, "hit": false}
+{"trace_id": "5ddee96c-4870-4edc-b654-055dd717ebb1", "case": "test:G17:56:en:deadline_weeks_long", "stage": "lookup", "latency_ms": 20.444, "answered": true}
+{"trace_id": "5ddee96c-4870-4edc-b654-055dd717ebb1", "case": "test:G17:56:en:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "5ddee96c-4870-4edc-b654-055dd717ebb1", "case": "test:G17:56:en:deadline_weeks_long", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "6d25015c-1ca8-49b3-ade3-ded59c9da086", "case": "test:G17:56:en:followup_lookup", "stage": "cache", "latency_ms": 0.135, "hit": false}
+{"trace_id": "6d25015c-1ca8-49b3-ade3-ded59c9da086", "case": "test:G17:56:en:followup_lookup", "stage": "lookup", "latency_ms": 20.522, "answered": true}
+{"trace_id": "6d25015c-1ca8-49b3-ade3-ded59c9da086", "case": "test:G17:56:en:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "6d25015c-1ca8-49b3-ade3-ded59c9da086", "case": "test:G17:56:en:followup_lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "a3ad2c6f-7fa9-4a3a-96f2-3beb069a01a2", "case": "test:G17:56:en:followup_buffer", "stage": "cache", "latency_ms": 0.141, "hit": false}
+{"trace_id": "a3ad2c6f-7fa9-4a3a-96f2-3beb069a01a2", "case": "test:G17:56:en:followup_buffer", "stage": "lookup", "latency_ms": 20.514, "answered": true}
+{"trace_id": "a3ad2c6f-7fa9-4a3a-96f2-3beb069a01a2", "case": "test:G17:56:en:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "a3ad2c6f-7fa9-4a3a-96f2-3beb069a01a2", "case": "test:G17:56:en:followup_buffer", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "7fe6c244-6cb4-4a34-8568-608bf34bcd7a", "case": "test:G17:56:en:stale_followup", "stage": "cache", "latency_ms": 0.169, "hit": false}
+{"trace_id": "7fe6c244-6cb4-4a34-8568-608bf34bcd7a", "case": "test:G17:56:en:stale_followup", "stage": "lookup", "latency_ms": 20.539, "answered": true}
+{"trace_id": "7fe6c244-6cb4-4a34-8568-608bf34bcd7a", "case": "test:G17:56:en:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "7fe6c244-6cb4-4a34-8568-608bf34bcd7a", "case": "test:G17:56:en:stale_followup", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "d75e777a-0250-4228-93fd-ce1adb5e2804", "case": "test:G17:56:de:lookup", "stage": "cache", "latency_ms": 0.144, "hit": false}
+{"trace_id": "d75e777a-0250-4228-93fd-ce1adb5e2804", "case": "test:G17:56:de:lookup", "stage": "lookup", "latency_ms": 20.516, "answered": true}
+{"trace_id": "d75e777a-0250-4228-93fd-ce1adb5e2804", "case": "test:G17:56:de:lookup", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "d75e777a-0250-4228-93fd-ce1adb5e2804", "case": "test:G17:56:de:lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "27d48172-15e4-4f26-8767-63e9c4f2f8e7", "case": "test:G17:56:de:buffer", "stage": "cache", "latency_ms": 0.131, "hit": false}
+{"trace_id": "27d48172-15e4-4f26-8767-63e9c4f2f8e7", "case": "test:G17:56:de:buffer", "stage": "lookup", "latency_ms": 20.587, "answered": true}
+{"trace_id": "27d48172-15e4-4f26-8767-63e9c4f2f8e7", "case": "test:G17:56:de:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "27d48172-15e4-4f26-8767-63e9c4f2f8e7", "case": "test:G17:56:de:buffer", "stage": "publish", "latency_ms": 0.026, "frames_valid": true}
+{"trace_id": "dd0aa137-9f92-4ffa-9e32-102ba54942bb", "case": "test:G17:56:de:deadline_days_short", "stage": "cache", "latency_ms": 0.236, "hit": false}
+{"trace_id": "dd0aa137-9f92-4ffa-9e32-102ba54942bb", "case": "test:G17:56:de:deadline_days_short", "stage": "lookup", "latency_ms": 20.484, "answered": true}
+{"trace_id": "dd0aa137-9f92-4ffa-9e32-102ba54942bb", "case": "test:G17:56:de:deadline_days_short", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "dd0aa137-9f92-4ffa-9e32-102ba54942bb", "case": "test:G17:56:de:deadline_days_short", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "cf93bd70-2ed0-4521-a5d8-276bef840b3e", "case": "test:G17:56:de:deadline_days_equal", "stage": "cache", "latency_ms": 0.145, "hit": false}
+{"trace_id": "cf93bd70-2ed0-4521-a5d8-276bef840b3e", "case": "test:G17:56:de:deadline_days_equal", "stage": "lookup", "latency_ms": 20.497, "answered": true}
+{"trace_id": "cf93bd70-2ed0-4521-a5d8-276bef840b3e", "case": "test:G17:56:de:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "cf93bd70-2ed0-4521-a5d8-276bef840b3e", "case": "test:G17:56:de:deadline_days_equal", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "c13dd7ce-0873-4763-b8cd-dae26e364307", "case": "test:G17:56:de:deadline_days_long", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "c13dd7ce-0873-4763-b8cd-dae26e364307", "case": "test:G17:56:de:deadline_days_long", "stage": "lookup", "latency_ms": 20.398, "answered": true}
+{"trace_id": "c13dd7ce-0873-4763-b8cd-dae26e364307", "case": "test:G17:56:de:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "c13dd7ce-0873-4763-b8cd-dae26e364307", "case": "test:G17:56:de:deadline_days_long", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "514dffc1-f823-49a8-83b6-41f5eaa5881a", "case": "test:G17:56:de:deadline_weeks_short", "stage": "cache", "latency_ms": 0.142, "hit": false}
+{"trace_id": "514dffc1-f823-49a8-83b6-41f5eaa5881a", "case": "test:G17:56:de:deadline_weeks_short", "stage": "lookup", "latency_ms": 20.425, "answered": true}
+{"trace_id": "514dffc1-f823-49a8-83b6-41f5eaa5881a", "case": "test:G17:56:de:deadline_weeks_short", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "514dffc1-f823-49a8-83b6-41f5eaa5881a", "case": "test:G17:56:de:deadline_weeks_short", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "1c58023c-7e68-41cd-8ec2-bd5149c7a961", "case": "test:G17:56:de:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.122, "hit": false}
+{"trace_id": "1c58023c-7e68-41cd-8ec2-bd5149c7a961", "case": "test:G17:56:de:deadline_weeks_equal", "stage": "lookup", "latency_ms": 20.524, "answered": true}
+{"trace_id": "1c58023c-7e68-41cd-8ec2-bd5149c7a961", "case": "test:G17:56:de:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.001, "tokens": 3}
+{"trace_id": "1c58023c-7e68-41cd-8ec2-bd5149c7a961", "case": "test:G17:56:de:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "4b1ab4e1-4f27-44e4-aaf7-16b588072123", "case": "test:G17:56:de:deadline_weeks_long", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "4b1ab4e1-4f27-44e4-aaf7-16b588072123", "case": "test:G17:56:de:deadline_weeks_long", "stage": "lookup", "latency_ms": 20.476, "answered": true}
+{"trace_id": "4b1ab4e1-4f27-44e4-aaf7-16b588072123", "case": "test:G17:56:de:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "4b1ab4e1-4f27-44e4-aaf7-16b588072123", "case": "test:G17:56:de:deadline_weeks_long", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "fe7d1e1b-8ee2-440e-9b1c-9ac724c2b841", "case": "test:G17:56:de:followup_lookup", "stage": "cache", "latency_ms": 0.101, "hit": false}
+{"trace_id": "fe7d1e1b-8ee2-440e-9b1c-9ac724c2b841", "case": "test:G17:56:de:followup_lookup", "stage": "lookup", "latency_ms": 20.414, "answered": true}
+{"trace_id": "fe7d1e1b-8ee2-440e-9b1c-9ac724c2b841", "case": "test:G17:56:de:followup_lookup", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "fe7d1e1b-8ee2-440e-9b1c-9ac724c2b841", "case": "test:G17:56:de:followup_lookup", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "ddb2156c-6b88-46ee-a9d9-48def5b2de91", "case": "test:G17:56:de:followup_buffer", "stage": "cache", "latency_ms": 0.118, "hit": false}
+{"trace_id": "ddb2156c-6b88-46ee-a9d9-48def5b2de91", "case": "test:G17:56:de:followup_buffer", "stage": "lookup", "latency_ms": 20.37, "answered": true}
+{"trace_id": "ddb2156c-6b88-46ee-a9d9-48def5b2de91", "case": "test:G17:56:de:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "ddb2156c-6b88-46ee-a9d9-48def5b2de91", "case": "test:G17:56:de:followup_buffer", "stage": "publish", "latency_ms": 0.031, "frames_valid": true}
+{"trace_id": "7fe7b749-1391-442a-95da-2ab1bf558714", "case": "test:G17:56:de:stale_followup", "stage": "cache", "latency_ms": 0.129, "hit": false}
+{"trace_id": "7fe7b749-1391-442a-95da-2ab1bf558714", "case": "test:G17:56:de:stale_followup", "stage": "lookup", "latency_ms": 20.446, "answered": true}
+{"trace_id": "7fe7b749-1391-442a-95da-2ab1bf558714", "case": "test:G17:56:de:stale_followup", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "7fe7b749-1391-442a-95da-2ab1bf558714", "case": "test:G17:56:de:stale_followup", "stage": "publish", "latency_ms": 0.022, "frames_valid": true}
+{"trace_id": "6395ba08-4098-43e8-a26a-74e0c2fc0664", "case": "test:H28:52:en:lookup", "stage": "cache", "latency_ms": 0.129, "hit": false}
+{"trace_id": "6395ba08-4098-43e8-a26a-74e0c2fc0664", "case": "test:H28:52:en:lookup", "stage": "lookup", "latency_ms": 20.528, "answered": true}
+{"trace_id": "6395ba08-4098-43e8-a26a-74e0c2fc0664", "case": "test:H28:52:en:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "6395ba08-4098-43e8-a26a-74e0c2fc0664", "case": "test:H28:52:en:lookup", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "83920217-7d9e-41ce-babc-8e457ebdbe33", "case": "test:H28:52:en:buffer", "stage": "cache", "latency_ms": 0.128, "hit": false}
+{"trace_id": "83920217-7d9e-41ce-babc-8e457ebdbe33", "case": "test:H28:52:en:buffer", "stage": "lookup", "latency_ms": 20.455, "answered": true}
+{"trace_id": "83920217-7d9e-41ce-babc-8e457ebdbe33", "case": "test:H28:52:en:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "83920217-7d9e-41ce-babc-8e457ebdbe33", "case": "test:H28:52:en:buffer", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "c60c7af0-53c9-4a25-a282-ee72fd8c3dc0", "case": "test:H28:52:en:deadline_days_short", "stage": "cache", "latency_ms": 0.128, "hit": false}
+{"trace_id": "c60c7af0-53c9-4a25-a282-ee72fd8c3dc0", "case": "test:H28:52:en:deadline_days_short", "stage": "lookup", "latency_ms": 20.49, "answered": true}
+{"trace_id": "c60c7af0-53c9-4a25-a282-ee72fd8c3dc0", "case": "test:H28:52:en:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "c60c7af0-53c9-4a25-a282-ee72fd8c3dc0", "case": "test:H28:52:en:deadline_days_short", "stage": "publish", "latency_ms": 0.023, "frames_valid": true}
+{"trace_id": "73ad886c-fcec-4b43-a3ae-1f4adcea2677", "case": "test:H28:52:en:deadline_days_equal", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "73ad886c-fcec-4b43-a3ae-1f4adcea2677", "case": "test:H28:52:en:deadline_days_equal", "stage": "lookup", "latency_ms": 20.517, "answered": true}
+{"trace_id": "73ad886c-fcec-4b43-a3ae-1f4adcea2677", "case": "test:H28:52:en:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "73ad886c-fcec-4b43-a3ae-1f4adcea2677", "case": "test:H28:52:en:deadline_days_equal", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "c0283d7d-5fcb-4d78-852d-003e79c46985", "case": "test:H28:52:en:deadline_days_long", "stage": "cache", "latency_ms": 0.137, "hit": false}
+{"trace_id": "c0283d7d-5fcb-4d78-852d-003e79c46985", "case": "test:H28:52:en:deadline_days_long", "stage": "lookup", "latency_ms": 20.507, "answered": true}
+{"trace_id": "c0283d7d-5fcb-4d78-852d-003e79c46985", "case": "test:H28:52:en:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "c0283d7d-5fcb-4d78-852d-003e79c46985", "case": "test:H28:52:en:deadline_days_long", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "709c7701-27aa-4cd4-b50b-c1b6f112e24b", "case": "test:H28:52:en:deadline_weeks_short", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "709c7701-27aa-4cd4-b50b-c1b6f112e24b", "case": "test:H28:52:en:deadline_weeks_short", "stage": "lookup", "latency_ms": 20.492, "answered": true}
+{"trace_id": "709c7701-27aa-4cd4-b50b-c1b6f112e24b", "case": "test:H28:52:en:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "709c7701-27aa-4cd4-b50b-c1b6f112e24b", "case": "test:H28:52:en:deadline_weeks_short", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "68f592a7-1f2b-4fea-9485-908987b31b8f", "case": "test:H28:52:en:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.134, "hit": false}
+{"trace_id": "68f592a7-1f2b-4fea-9485-908987b31b8f", "case": "test:H28:52:en:deadline_weeks_equal", "stage": "lookup", "latency_ms": 20.453, "answered": true}
+{"trace_id": "68f592a7-1f2b-4fea-9485-908987b31b8f", "case": "test:H28:52:en:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "68f592a7-1f2b-4fea-9485-908987b31b8f", "case": "test:H28:52:en:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.029, "frames_valid": true}
+{"trace_id": "f05f651b-471f-4b93-aa6c-22887e3a70e6", "case": "test:H28:52:en:deadline_weeks_long", "stage": "cache", "latency_ms": 0.397, "hit": false}
+{"trace_id": "f05f651b-471f-4b93-aa6c-22887e3a70e6", "case": "test:H28:52:en:deadline_weeks_long", "stage": "lookup", "latency_ms": 20.684, "answered": true}
+{"trace_id": "f05f651b-471f-4b93-aa6c-22887e3a70e6", "case": "test:H28:52:en:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "f05f651b-471f-4b93-aa6c-22887e3a70e6", "case": "test:H28:52:en:deadline_weeks_long", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "ea81932a-2bbb-42ed-b399-033959651254", "case": "test:H28:52:en:missing", "stage": "cache", "latency_ms": 0.136, "hit": false}
+{"trace_id": "ea81932a-2bbb-42ed-b399-033959651254", "case": "test:H28:52:en:missing", "stage": "lookup", "latency_ms": 20.688, "answered": true}
+{"trace_id": "ea81932a-2bbb-42ed-b399-033959651254", "case": "test:H28:52:en:missing", "stage": "answer", "latency_ms": 0.0, "tokens": 1}
+{"trace_id": "ea81932a-2bbb-42ed-b399-033959651254", "case": "test:H28:52:en:missing", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "c2206830-ba74-4732-9c67-7f597b5fa4d5", "case": "test:H28:52:en:followup_lookup", "stage": "cache", "latency_ms": 0.105, "hit": false}
+{"trace_id": "c2206830-ba74-4732-9c67-7f597b5fa4d5", "case": "test:H28:52:en:followup_lookup", "stage": "lookup", "latency_ms": 20.606, "answered": true}
+{"trace_id": "c2206830-ba74-4732-9c67-7f597b5fa4d5", "case": "test:H28:52:en:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "c2206830-ba74-4732-9c67-7f597b5fa4d5", "case": "test:H28:52:en:followup_lookup", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "856ccf0a-76b3-46f6-9974-1575b72d2b92", "case": "test:H28:52:en:followup_buffer", "stage": "cache", "latency_ms": 0.199, "hit": false}
+{"trace_id": "856ccf0a-76b3-46f6-9974-1575b72d2b92", "case": "test:H28:52:en:followup_buffer", "stage": "lookup", "latency_ms": 20.447, "answered": true}
+{"trace_id": "856ccf0a-76b3-46f6-9974-1575b72d2b92", "case": "test:H28:52:en:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "856ccf0a-76b3-46f6-9974-1575b72d2b92", "case": "test:H28:52:en:followup_buffer", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "25bb9ff3-9cf1-46b7-84b1-1cde9e002256", "case": "test:H28:52:en:stale_followup", "stage": "cache", "latency_ms": 0.299, "hit": false}
+{"trace_id": "25bb9ff3-9cf1-46b7-84b1-1cde9e002256", "case": "test:H28:52:en:stale_followup", "stage": "lookup", "latency_ms": 20.467, "answered": true}
+{"trace_id": "25bb9ff3-9cf1-46b7-84b1-1cde9e002256", "case": "test:H28:52:en:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "25bb9ff3-9cf1-46b7-84b1-1cde9e002256", "case": "test:H28:52:en:stale_followup", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "03b24739-9d4d-44a4-b8a9-185412eaac7e", "case": "test:H28:52:de:lookup", "stage": "cache", "latency_ms": 0.296, "hit": false}
+{"trace_id": "03b24739-9d4d-44a4-b8a9-185412eaac7e", "case": "test:H28:52:de:lookup", "stage": "lookup", "latency_ms": 20.725, "answered": true}
+{"trace_id": "03b24739-9d4d-44a4-b8a9-185412eaac7e", "case": "test:H28:52:de:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "03b24739-9d4d-44a4-b8a9-185412eaac7e", "case": "test:H28:52:de:lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "c1e5eea4-738c-426b-b5de-bb7bd67bf9a4", "case": "test:H28:52:de:buffer", "stage": "cache", "latency_ms": 0.122, "hit": false}
+{"trace_id": "c1e5eea4-738c-426b-b5de-bb7bd67bf9a4", "case": "test:H28:52:de:buffer", "stage": "lookup", "latency_ms": 20.672, "answered": true}
+{"trace_id": "c1e5eea4-738c-426b-b5de-bb7bd67bf9a4", "case": "test:H28:52:de:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "c1e5eea4-738c-426b-b5de-bb7bd67bf9a4", "case": "test:H28:52:de:buffer", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "7fe1fe4f-5281-4003-ad44-568ed96347aa", "case": "test:H28:52:de:deadline_days_short", "stage": "cache", "latency_ms": 0.268, "hit": false}
+{"trace_id": "7fe1fe4f-5281-4003-ad44-568ed96347aa", "case": "test:H28:52:de:deadline_days_short", "stage": "lookup", "latency_ms": 20.557, "answered": true}
+{"trace_id": "7fe1fe4f-5281-4003-ad44-568ed96347aa", "case": "test:H28:52:de:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "7fe1fe4f-5281-4003-ad44-568ed96347aa", "case": "test:H28:52:de:deadline_days_short", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "317f85b3-6626-493e-97da-2a83528c8bc7", "case": "test:H28:52:de:deadline_days_equal", "stage": "cache", "latency_ms": 0.128, "hit": false}
+{"trace_id": "317f85b3-6626-493e-97da-2a83528c8bc7", "case": "test:H28:52:de:deadline_days_equal", "stage": "lookup", "latency_ms": 20.632, "answered": true}
+{"trace_id": "317f85b3-6626-493e-97da-2a83528c8bc7", "case": "test:H28:52:de:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "317f85b3-6626-493e-97da-2a83528c8bc7", "case": "test:H28:52:de:deadline_days_equal", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "fdef52e8-3bcd-4e37-8a47-016c580bcde5", "case": "test:H28:52:de:deadline_days_long", "stage": "cache", "latency_ms": 0.146, "hit": false}
+{"trace_id": "fdef52e8-3bcd-4e37-8a47-016c580bcde5", "case": "test:H28:52:de:deadline_days_long", "stage": "lookup", "latency_ms": 20.414, "answered": true}
+{"trace_id": "fdef52e8-3bcd-4e37-8a47-016c580bcde5", "case": "test:H28:52:de:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "fdef52e8-3bcd-4e37-8a47-016c580bcde5", "case": "test:H28:52:de:deadline_days_long", "stage": "publish", "latency_ms": 0.024, "frames_valid": true}
+{"trace_id": "cc75a6e1-a90d-43a3-81da-95fa6c42adb0", "case": "test:H28:52:de:deadline_weeks_short", "stage": "cache", "latency_ms": 0.139, "hit": false}
+{"trace_id": "cc75a6e1-a90d-43a3-81da-95fa6c42adb0", "case": "test:H28:52:de:deadline_weeks_short", "stage": "lookup", "latency_ms": 20.78, "answered": true}
+{"trace_id": "cc75a6e1-a90d-43a3-81da-95fa6c42adb0", "case": "test:H28:52:de:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "cc75a6e1-a90d-43a3-81da-95fa6c42adb0", "case": "test:H28:52:de:deadline_weeks_short", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "56f4ee45-20cb-4657-83d8-efe532a22207", "case": "test:H28:52:de:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.132, "hit": false}
+{"trace_id": "56f4ee45-20cb-4657-83d8-efe532a22207", "case": "test:H28:52:de:deadline_weeks_equal", "stage": "lookup", "latency_ms": 20.635, "answered": true}
+{"trace_id": "56f4ee45-20cb-4657-83d8-efe532a22207", "case": "test:H28:52:de:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "56f4ee45-20cb-4657-83d8-efe532a22207", "case": "test:H28:52:de:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "7946ecea-2a62-4dc0-9059-005cc3cbd279", "case": "test:H28:52:de:deadline_weeks_long", "stage": "cache", "latency_ms": 0.156, "hit": false}
+{"trace_id": "7946ecea-2a62-4dc0-9059-005cc3cbd279", "case": "test:H28:52:de:deadline_weeks_long", "stage": "lookup", "latency_ms": 20.466, "answered": true}
+{"trace_id": "7946ecea-2a62-4dc0-9059-005cc3cbd279", "case": "test:H28:52:de:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "7946ecea-2a62-4dc0-9059-005cc3cbd279", "case": "test:H28:52:de:deadline_weeks_long", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "4ddf2a60-d945-4e0e-b3d3-a3ec53972350", "case": "test:H28:52:de:missing", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "4ddf2a60-d945-4e0e-b3d3-a3ec53972350", "case": "test:H28:52:de:missing", "stage": "lookup", "latency_ms": 20.698, "answered": true}
+{"trace_id": "4ddf2a60-d945-4e0e-b3d3-a3ec53972350", "case": "test:H28:52:de:missing", "stage": "answer", "latency_ms": 0.0, "tokens": 1}
+{"trace_id": "4ddf2a60-d945-4e0e-b3d3-a3ec53972350", "case": "test:H28:52:de:missing", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "9be52e91-0c01-4320-a112-0e691eccdde7", "case": "test:H28:52:de:followup_lookup", "stage": "cache", "latency_ms": 0.207, "hit": false}
+{"trace_id": "9be52e91-0c01-4320-a112-0e691eccdde7", "case": "test:H28:52:de:followup_lookup", "stage": "lookup", "latency_ms": 20.418, "answered": true}
+{"trace_id": "9be52e91-0c01-4320-a112-0e691eccdde7", "case": "test:H28:52:de:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "9be52e91-0c01-4320-a112-0e691eccdde7", "case": "test:H28:52:de:followup_lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "a9f2d5cc-cd5d-4d33-b8d1-8089f3d4634f", "case": "test:H28:52:de:followup_buffer", "stage": "cache", "latency_ms": 0.137, "hit": false}
+{"trace_id": "a9f2d5cc-cd5d-4d33-b8d1-8089f3d4634f", "case": "test:H28:52:de:followup_buffer", "stage": "lookup", "latency_ms": 20.695, "answered": true}
+{"trace_id": "a9f2d5cc-cd5d-4d33-b8d1-8089f3d4634f", "case": "test:H28:52:de:followup_buffer", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "a9f2d5cc-cd5d-4d33-b8d1-8089f3d4634f", "case": "test:H28:52:de:followup_buffer", "stage": "publish", "latency_ms": 0.042, "frames_valid": true}
+{"trace_id": "e61f65e4-917b-459d-932c-c5639257fd1c", "case": "test:H28:52:de:stale_followup", "stage": "cache", "latency_ms": 0.2, "hit": false}
+{"trace_id": "e61f65e4-917b-459d-932c-c5639257fd1c", "case": "test:H28:52:de:stale_followup", "stage": "lookup", "latency_ms": 20.439, "answered": true}
+{"trace_id": "e61f65e4-917b-459d-932c-c5639257fd1c", "case": "test:H28:52:de:stale_followup", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "e61f65e4-917b-459d-932c-c5639257fd1c", "case": "test:H28:52:de:stale_followup", "stage": "publish", "latency_ms": 0.025, "frames_valid": true}
+{"trace_id": "7f465fe8-a3d1-4fbd-86d4-3ebf889526c7", "case": "test:H28:56:en:lookup", "stage": "cache", "latency_ms": 0.161, "hit": false}
+{"trace_id": "7f465fe8-a3d1-4fbd-86d4-3ebf889526c7", "case": "test:H28:56:en:lookup", "stage": "lookup", "latency_ms": 20.517, "answered": true}
+{"trace_id": "7f465fe8-a3d1-4fbd-86d4-3ebf889526c7", "case": "test:H28:56:en:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "7f465fe8-a3d1-4fbd-86d4-3ebf889526c7", "case": "test:H28:56:en:lookup", "stage": "publish", "latency_ms": 0.026, "frames_valid": true}
+{"trace_id": "ac206b00-eb51-4eb5-a290-f54a3fb549f6", "case": "test:H28:56:en:buffer", "stage": "cache", "latency_ms": 0.169, "hit": false}
+{"trace_id": "ac206b00-eb51-4eb5-a290-f54a3fb549f6", "case": "test:H28:56:en:buffer", "stage": "lookup", "latency_ms": 20.768, "answered": true}
+{"trace_id": "ac206b00-eb51-4eb5-a290-f54a3fb549f6", "case": "test:H28:56:en:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "ac206b00-eb51-4eb5-a290-f54a3fb549f6", "case": "test:H28:56:en:buffer", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "d29c5378-0c26-4f4d-8c38-81558457a747", "case": "test:H28:56:en:deadline_days_short", "stage": "cache", "latency_ms": 0.142, "hit": false}
+{"trace_id": "d29c5378-0c26-4f4d-8c38-81558457a747", "case": "test:H28:56:en:deadline_days_short", "stage": "lookup", "latency_ms": 20.574, "answered": true}
+{"trace_id": "d29c5378-0c26-4f4d-8c38-81558457a747", "case": "test:H28:56:en:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "d29c5378-0c26-4f4d-8c38-81558457a747", "case": "test:H28:56:en:deadline_days_short", "stage": "publish", "latency_ms": 0.026, "frames_valid": true}
+{"trace_id": "77f5538b-6280-4267-b354-e08f0a566dfb", "case": "test:H28:56:en:deadline_days_equal", "stage": "cache", "latency_ms": 0.156, "hit": false}
+{"trace_id": "77f5538b-6280-4267-b354-e08f0a566dfb", "case": "test:H28:56:en:deadline_days_equal", "stage": "lookup", "latency_ms": 20.575, "answered": true}
+{"trace_id": "77f5538b-6280-4267-b354-e08f0a566dfb", "case": "test:H28:56:en:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "77f5538b-6280-4267-b354-e08f0a566dfb", "case": "test:H28:56:en:deadline_days_equal", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "600d32c4-7561-4cf2-861a-255c22a02f15", "case": "test:H28:56:en:deadline_days_long", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "600d32c4-7561-4cf2-861a-255c22a02f15", "case": "test:H28:56:en:deadline_days_long", "stage": "lookup", "latency_ms": 20.478, "answered": true}
+{"trace_id": "600d32c4-7561-4cf2-861a-255c22a02f15", "case": "test:H28:56:en:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "600d32c4-7561-4cf2-861a-255c22a02f15", "case": "test:H28:56:en:deadline_days_long", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "50f329ed-b0a0-4024-aba1-670a852b462b", "case": "test:H28:56:en:deadline_weeks_short", "stage": "cache", "latency_ms": 0.139, "hit": false}
+{"trace_id": "50f329ed-b0a0-4024-aba1-670a852b462b", "case": "test:H28:56:en:deadline_weeks_short", "stage": "lookup", "latency_ms": 20.482, "answered": true}
+{"trace_id": "50f329ed-b0a0-4024-aba1-670a852b462b", "case": "test:H28:56:en:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "50f329ed-b0a0-4024-aba1-670a852b462b", "case": "test:H28:56:en:deadline_weeks_short", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "b557de40-1070-4515-9159-dcc9ec6d1306", "case": "test:H28:56:en:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "b557de40-1070-4515-9159-dcc9ec6d1306", "case": "test:H28:56:en:deadline_weeks_equal", "stage": "lookup", "latency_ms": 20.484, "answered": true}
+{"trace_id": "b557de40-1070-4515-9159-dcc9ec6d1306", "case": "test:H28:56:en:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "b557de40-1070-4515-9159-dcc9ec6d1306", "case": "test:H28:56:en:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.023, "frames_valid": true}
+{"trace_id": "a71438ec-6137-44c6-ab27-a82d01a507bc", "case": "test:H28:56:en:deadline_weeks_long", "stage": "cache", "latency_ms": 0.197, "hit": false}
+{"trace_id": "a71438ec-6137-44c6-ab27-a82d01a507bc", "case": "test:H28:56:en:deadline_weeks_long", "stage": "lookup", "latency_ms": 20.665, "answered": true}
+{"trace_id": "a71438ec-6137-44c6-ab27-a82d01a507bc", "case": "test:H28:56:en:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "a71438ec-6137-44c6-ab27-a82d01a507bc", "case": "test:H28:56:en:deadline_weeks_long", "stage": "publish", "latency_ms": 0.024, "frames_valid": true}
+{"trace_id": "5f0f52a2-0007-4778-85bd-4a06de8f4df4", "case": "test:H28:56:en:followup_lookup", "stage": "cache", "latency_ms": 0.147, "hit": false}
+{"trace_id": "5f0f52a2-0007-4778-85bd-4a06de8f4df4", "case": "test:H28:56:en:followup_lookup", "stage": "lookup", "latency_ms": 20.473, "answered": true}
+{"trace_id": "5f0f52a2-0007-4778-85bd-4a06de8f4df4", "case": "test:H28:56:en:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "5f0f52a2-0007-4778-85bd-4a06de8f4df4", "case": "test:H28:56:en:followup_lookup", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "f05fdd50-9c94-474f-9a6a-3feef058822b", "case": "test:H28:56:en:followup_buffer", "stage": "cache", "latency_ms": 0.145, "hit": false}
+{"trace_id": "f05fdd50-9c94-474f-9a6a-3feef058822b", "case": "test:H28:56:en:followup_buffer", "stage": "lookup", "latency_ms": 20.498, "answered": true}
+{"trace_id": "f05fdd50-9c94-474f-9a6a-3feef058822b", "case": "test:H28:56:en:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "f05fdd50-9c94-474f-9a6a-3feef058822b", "case": "test:H28:56:en:followup_buffer", "stage": "publish", "latency_ms": 0.026, "frames_valid": true}
+{"trace_id": "16f39b0f-36c8-4112-be16-3fd0d6f5d03c", "case": "test:H28:56:en:stale_followup", "stage": "cache", "latency_ms": 0.14, "hit": false}
+{"trace_id": "16f39b0f-36c8-4112-be16-3fd0d6f5d03c", "case": "test:H28:56:en:stale_followup", "stage": "lookup", "latency_ms": 20.494, "answered": true}
+{"trace_id": "16f39b0f-36c8-4112-be16-3fd0d6f5d03c", "case": "test:H28:56:en:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "16f39b0f-36c8-4112-be16-3fd0d6f5d03c", "case": "test:H28:56:en:stale_followup", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "e8e69d31-0bda-415e-a6c3-810bb10e652a", "case": "test:H28:56:de:lookup", "stage": "cache", "latency_ms": 0.137, "hit": false}
+{"trace_id": "e8e69d31-0bda-415e-a6c3-810bb10e652a", "case": "test:H28:56:de:lookup", "stage": "lookup", "latency_ms": 20.54, "answered": true}
+{"trace_id": "e8e69d31-0bda-415e-a6c3-810bb10e652a", "case": "test:H28:56:de:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "e8e69d31-0bda-415e-a6c3-810bb10e652a", "case": "test:H28:56:de:lookup", "stage": "publish", "latency_ms": 0.024, "frames_valid": true}
+{"trace_id": "95dbbb91-5d87-4492-a117-5755d734f351", "case": "test:H28:56:de:buffer", "stage": "cache", "latency_ms": 0.147, "hit": false}
+{"trace_id": "95dbbb91-5d87-4492-a117-5755d734f351", "case": "test:H28:56:de:buffer", "stage": "lookup", "latency_ms": 20.489, "answered": true}
+{"trace_id": "95dbbb91-5d87-4492-a117-5755d734f351", "case": "test:H28:56:de:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "95dbbb91-5d87-4492-a117-5755d734f351", "case": "test:H28:56:de:buffer", "stage": "publish", "latency_ms": 0.026, "frames_valid": true}
+{"trace_id": "72225831-6740-4f4a-aeab-d1c786e908f6", "case": "test:H28:56:de:deadline_days_short", "stage": "cache", "latency_ms": 0.146, "hit": false}
+{"trace_id": "72225831-6740-4f4a-aeab-d1c786e908f6", "case": "test:H28:56:de:deadline_days_short", "stage": "lookup", "latency_ms": 20.504, "answered": true}
+{"trace_id": "72225831-6740-4f4a-aeab-d1c786e908f6", "case": "test:H28:56:de:deadline_days_short", "stage": "answer", "latency_ms": 0.002, "tokens": 3}
+{"trace_id": "72225831-6740-4f4a-aeab-d1c786e908f6", "case": "test:H28:56:de:deadline_days_short", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "123fde8c-8341-458b-ae17-9a7e713fc316", "case": "test:H28:56:de:deadline_days_equal", "stage": "cache", "latency_ms": 0.224, "hit": false}
+{"trace_id": "123fde8c-8341-458b-ae17-9a7e713fc316", "case": "test:H28:56:de:deadline_days_equal", "stage": "lookup", "latency_ms": 20.47, "answered": true}
+{"trace_id": "123fde8c-8341-458b-ae17-9a7e713fc316", "case": "test:H28:56:de:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "123fde8c-8341-458b-ae17-9a7e713fc316", "case": "test:H28:56:de:deadline_days_equal", "stage": "publish", "latency_ms": 0.022, "frames_valid": true}
+{"trace_id": "08fbc6c9-8f13-4f83-a65f-e6948bd5eba6", "case": "test:H28:56:de:deadline_days_long", "stage": "cache", "latency_ms": 0.939, "hit": false}
+{"trace_id": "08fbc6c9-8f13-4f83-a65f-e6948bd5eba6", "case": "test:H28:56:de:deadline_days_long", "stage": "lookup", "latency_ms": 20.535, "answered": true}
+{"trace_id": "08fbc6c9-8f13-4f83-a65f-e6948bd5eba6", "case": "test:H28:56:de:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "08fbc6c9-8f13-4f83-a65f-e6948bd5eba6", "case": "test:H28:56:de:deadline_days_long", "stage": "publish", "latency_ms": 0.024, "frames_valid": true}
+{"trace_id": "71804615-afb0-4965-be1b-fad7a34f9ba3", "case": "test:H28:56:de:deadline_weeks_short", "stage": "cache", "latency_ms": 0.144, "hit": false}
+{"trace_id": "71804615-afb0-4965-be1b-fad7a34f9ba3", "case": "test:H28:56:de:deadline_weeks_short", "stage": "lookup", "latency_ms": 20.519, "answered": true}
+{"trace_id": "71804615-afb0-4965-be1b-fad7a34f9ba3", "case": "test:H28:56:de:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "71804615-afb0-4965-be1b-fad7a34f9ba3", "case": "test:H28:56:de:deadline_weeks_short", "stage": "publish", "latency_ms": 0.024, "frames_valid": true}
+{"trace_id": "fed9f523-c295-4348-9c9a-a4ede0444281", "case": "test:H28:56:de:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.134, "hit": false}
+{"trace_id": "fed9f523-c295-4348-9c9a-a4ede0444281", "case": "test:H28:56:de:deadline_weeks_equal", "stage": "lookup", "latency_ms": 20.52, "answered": true}
+{"trace_id": "fed9f523-c295-4348-9c9a-a4ede0444281", "case": "test:H28:56:de:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "fed9f523-c295-4348-9c9a-a4ede0444281", "case": "test:H28:56:de:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "34cb41d1-2a60-42cc-b303-2c657f4064f8", "case": "test:H28:56:de:deadline_weeks_long", "stage": "cache", "latency_ms": 0.213, "hit": false}
+{"trace_id": "34cb41d1-2a60-42cc-b303-2c657f4064f8", "case": "test:H28:56:de:deadline_weeks_long", "stage": "lookup", "latency_ms": 20.481, "answered": true}
+{"trace_id": "34cb41d1-2a60-42cc-b303-2c657f4064f8", "case": "test:H28:56:de:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "34cb41d1-2a60-42cc-b303-2c657f4064f8", "case": "test:H28:56:de:deadline_weeks_long", "stage": "publish", "latency_ms": 0.023, "frames_valid": true}
+{"trace_id": "8d046f82-3a5e-4e00-94ae-85e4b6a16ba6", "case": "test:H28:56:de:followup_lookup", "stage": "cache", "latency_ms": 0.13, "hit": false}
+{"trace_id": "8d046f82-3a5e-4e00-94ae-85e4b6a16ba6", "case": "test:H28:56:de:followup_lookup", "stage": "lookup", "latency_ms": 20.499, "answered": true}
+{"trace_id": "8d046f82-3a5e-4e00-94ae-85e4b6a16ba6", "case": "test:H28:56:de:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "8d046f82-3a5e-4e00-94ae-85e4b6a16ba6", "case": "test:H28:56:de:followup_lookup", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "9ab1b60b-2b7d-4efd-b426-e132a16abb70", "case": "test:H28:56:de:followup_buffer", "stage": "cache", "latency_ms": 0.208, "hit": false}
+{"trace_id": "9ab1b60b-2b7d-4efd-b426-e132a16abb70", "case": "test:H28:56:de:followup_buffer", "stage": "lookup", "latency_ms": 20.485, "answered": true}
+{"trace_id": "9ab1b60b-2b7d-4efd-b426-e132a16abb70", "case": "test:H28:56:de:followup_buffer", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "9ab1b60b-2b7d-4efd-b426-e132a16abb70", "case": "test:H28:56:de:followup_buffer", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "7e301625-887f-4fd8-8123-6bd5212b5d7c", "case": "test:H28:56:de:stale_followup", "stage": "cache", "latency_ms": 0.145, "hit": false}
+{"trace_id": "7e301625-887f-4fd8-8123-6bd5212b5d7c", "case": "test:H28:56:de:stale_followup", "stage": "lookup", "latency_ms": 20.566, "answered": true}
+{"trace_id": "7e301625-887f-4fd8-8123-6bd5212b5d7c", "case": "test:H28:56:de:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "7e301625-887f-4fd8-8123-6bd5212b5d7c", "case": "test:H28:56:de:stale_followup", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "2b3de617-c943-4abe-b689-e64b62f43ea4", "case": "test:topic:0", "stage": "cache", "latency_ms": 0.141, "hit": false}
+{"trace_id": "2b3de617-c943-4abe-b689-e64b62f43ea4", "case": "test:topic:0", "stage": "lookup", "latency_ms": 20.499, "answered": true}
+{"trace_id": "2b3de617-c943-4abe-b689-e64b62f43ea4", "case": "test:topic:0", "stage": "answer", "latency_ms": 0.001, "tokens": 9}
+{"trace_id": "2b3de617-c943-4abe-b689-e64b62f43ea4", "case": "test:topic:0", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "4ccd34c7-4099-4f22-a791-a1c0d8bc7077", "case": "test:topic:1", "stage": "cache", "latency_ms": 0.141, "hit": false}
+{"trace_id": "4ccd34c7-4099-4f22-a791-a1c0d8bc7077", "case": "test:topic:1", "stage": "lookup", "latency_ms": 20.494, "answered": true}
+{"trace_id": "4ccd34c7-4099-4f22-a791-a1c0d8bc7077", "case": "test:topic:1", "stage": "answer", "latency_ms": 0.001, "tokens": 8}
+{"trace_id": "4ccd34c7-4099-4f22-a791-a1c0d8bc7077", "case": "test:topic:1", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "f5972509-8567-475e-bfcd-68dedb762291", "case": "test:topic:2", "stage": "cache", "latency_ms": 0.155, "hit": false}
+{"trace_id": "f5972509-8567-475e-bfcd-68dedb762291", "case": "test:topic:2", "stage": "lookup", "latency_ms": 20.43, "answered": true}
+{"trace_id": "f5972509-8567-475e-bfcd-68dedb762291", "case": "test:topic:2", "stage": "answer", "latency_ms": 0.0, "tokens": 8}
+{"trace_id": "f5972509-8567-475e-bfcd-68dedb762291", "case": "test:topic:2", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "fc1da5df-00eb-4aca-9371-87567f553c41", "case": "test:topic:3", "stage": "cache", "latency_ms": 0.179, "hit": false}
+{"trace_id": "fc1da5df-00eb-4aca-9371-87567f553c41", "case": "test:topic:3", "stage": "lookup", "latency_ms": 20.405, "answered": true}
+{"trace_id": "fc1da5df-00eb-4aca-9371-87567f553c41", "case": "test:topic:3", "stage": "answer", "latency_ms": 0.001, "tokens": 10}
+{"trace_id": "fc1da5df-00eb-4aca-9371-87567f553c41", "case": "test:topic:3", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "c5ba705d-2cb0-4f2e-aa8e-4baf88594484", "case": "test:topic:4", "stage": "cache", "latency_ms": 0.152, "hit": false}
+{"trace_id": "c5ba705d-2cb0-4f2e-aa8e-4baf88594484", "case": "test:topic:4", "stage": "lookup", "latency_ms": 20.505, "answered": true}
+{"trace_id": "c5ba705d-2cb0-4f2e-aa8e-4baf88594484", "case": "test:topic:4", "stage": "answer", "latency_ms": 0.001, "tokens": 8}
+{"trace_id": "c5ba705d-2cb0-4f2e-aa8e-4baf88594484", "case": "test:topic:4", "stage": "publish", "latency_ms": 0.021, "frames_valid": true}
+{"trace_id": "73046fe9-bed6-4e50-9b33-f866e541c401", "case": "test:topic:5", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "73046fe9-bed6-4e50-9b33-f866e541c401", "case": "test:topic:5", "stage": "lookup", "latency_ms": 20.528, "answered": true}
+{"trace_id": "73046fe9-bed6-4e50-9b33-f866e541c401", "case": "test:topic:5", "stage": "answer", "latency_ms": 0.001, "tokens": 11}
+{"trace_id": "73046fe9-bed6-4e50-9b33-f866e541c401", "case": "test:topic:5", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "afd52d61-d2a2-4568-9ab6-45f7c088ff8c", "case": "test:topic:6", "stage": "cache", "latency_ms": 0.126, "hit": false}
+{"trace_id": "afd52d61-d2a2-4568-9ab6-45f7c088ff8c", "case": "test:topic:6", "stage": "lookup", "latency_ms": 20.465, "answered": true}
+{"trace_id": "afd52d61-d2a2-4568-9ab6-45f7c088ff8c", "case": "test:topic:6", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "afd52d61-d2a2-4568-9ab6-45f7c088ff8c", "case": "test:topic:6", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "d4662cb5-207b-477d-98a4-1a7e1b7e861f", "case": "test:topic:7", "stage": "cache", "latency_ms": 0.129, "hit": false}
+{"trace_id": "d4662cb5-207b-477d-98a4-1a7e1b7e861f", "case": "test:topic:7", "stage": "lookup", "latency_ms": 20.483, "answered": true}
+{"trace_id": "d4662cb5-207b-477d-98a4-1a7e1b7e861f", "case": "test:topic:7", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "d4662cb5-207b-477d-98a4-1a7e1b7e861f", "case": "test:topic:7", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "f5d81ef1-73ca-4dee-aa80-4d750f4c2146", "case": "test:generation2:0", "stage": "cache", "latency_ms": 0.137, "hit": false}
+{"trace_id": "f5d81ef1-73ca-4dee-aa80-4d750f4c2146", "case": "test:generation2:0", "stage": "lookup", "latency_ms": 20.477, "answered": true}
+{"trace_id": "f5d81ef1-73ca-4dee-aa80-4d750f4c2146", "case": "test:generation2:0", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "f5d81ef1-73ca-4dee-aa80-4d750f4c2146", "case": "test:generation2:0", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "cbb45e58-8ecc-49a6-ae23-279e893acf40", "case": "test:generation2:1", "stage": "cache", "latency_ms": 0.139, "hit": false}
+{"trace_id": "cbb45e58-8ecc-49a6-ae23-279e893acf40", "case": "test:generation2:1", "stage": "lookup", "latency_ms": 20.57, "answered": true}
+{"trace_id": "cbb45e58-8ecc-49a6-ae23-279e893acf40", "case": "test:generation2:1", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "cbb45e58-8ecc-49a6-ae23-279e893acf40", "case": "test:generation2:1", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "b7deaff5-d198-466d-b5a7-40b6a83e0f8a", "case": "test:generation2:2", "stage": "cache", "latency_ms": 0.289, "hit": false}
+{"trace_id": "b7deaff5-d198-466d-b5a7-40b6a83e0f8a", "case": "test:generation2:2", "stage": "lookup", "latency_ms": 20.429, "answered": true}
+{"trace_id": "b7deaff5-d198-466d-b5a7-40b6a83e0f8a", "case": "test:generation2:2", "stage": "answer", "latency_ms": 0.001, "tokens": 13}
+{"trace_id": "b7deaff5-d198-466d-b5a7-40b6a83e0f8a", "case": "test:generation2:2", "stage": "publish", "latency_ms": 0.023, "frames_valid": true}
+{"trace_id": "7f86b20f-2fdf-429c-b861-5fd26972d002", "case": "test:generation2:3", "stage": "cache", "latency_ms": 0.299, "hit": false}
+{"trace_id": "7f86b20f-2fdf-429c-b861-5fd26972d002", "case": "test:generation2:3", "stage": "lookup", "latency_ms": 20.469, "answered": true}
+{"trace_id": "7f86b20f-2fdf-429c-b861-5fd26972d002", "case": "test:generation2:3", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "7f86b20f-2fdf-429c-b861-5fd26972d002", "case": "test:generation2:3", "stage": "publish", "latency_ms": 0.023, "frames_valid": true}
+{"trace_id": "f7227456-2af8-499d-80db-ab0733846d73", "case": "test:generation2:4", "stage": "cache", "latency_ms": 0.271, "hit": false}
+{"trace_id": "f7227456-2af8-499d-80db-ab0733846d73", "case": "test:generation2:4", "stage": "lookup", "latency_ms": 20.49, "answered": true}
+{"trace_id": "f7227456-2af8-499d-80db-ab0733846d73", "case": "test:generation2:4", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "f7227456-2af8-499d-80db-ab0733846d73", "case": "test:generation2:4", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "108b6aa3-91e2-43fc-9cb7-7f95b1329a57", "case": "test:generation2:5", "stage": "cache", "latency_ms": 0.104, "hit": false}
+{"trace_id": "108b6aa3-91e2-43fc-9cb7-7f95b1329a57", "case": "test:generation2:5", "stage": "lookup", "latency_ms": 20.477, "answered": true}
+{"trace_id": "108b6aa3-91e2-43fc-9cb7-7f95b1329a57", "case": "test:generation2:5", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "108b6aa3-91e2-43fc-9cb7-7f95b1329a57", "case": "test:generation2:5", "stage": "publish", "latency_ms": 0.022, "frames_valid": true}
+{"trace_id": "c6f325df-97d3-4793-b392-164a4853fb3f", "case": "test:generation2:6", "stage": "cache", "latency_ms": 0.183, "hit": false}
+{"trace_id": "c6f325df-97d3-4793-b392-164a4853fb3f", "case": "test:generation2:6", "stage": "lookup", "latency_ms": 20.556, "answered": true}
+{"trace_id": "c6f325df-97d3-4793-b392-164a4853fb3f", "case": "test:generation2:6", "stage": "answer", "latency_ms": 0.001, "tokens": 10}
+{"trace_id": "c6f325df-97d3-4793-b392-164a4853fb3f", "case": "test:generation2:6", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "b88cb557-1800-418d-aeb0-b24c94684d13", "case": "test:generation2:7", "stage": "cache", "latency_ms": 0.303, "hit": false}
+{"trace_id": "b88cb557-1800-418d-aeb0-b24c94684d13", "case": "test:generation2:7", "stage": "lookup", "latency_ms": 20.484, "answered": true}
+{"trace_id": "b88cb557-1800-418d-aeb0-b24c94684d13", "case": "test:generation2:7", "stage": "answer", "latency_ms": 0.001, "tokens": 10}
+{"trace_id": "b88cb557-1800-418d-aeb0-b24c94684d13", "case": "test:generation2:7", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "f5dcb562-11cf-49f3-a816-3b87f1076776", "case": "test:ngu:0:0", "stage": "cache", "latency_ms": 0.299, "hit": false}
+{"trace_id": "f5dcb562-11cf-49f3-a816-3b87f1076776", "case": "test:ngu:0:0", "stage": "lookup", "latency_ms": 20.48, "answered": true}
+{"trace_id": "f5dcb562-11cf-49f3-a816-3b87f1076776", "case": "test:ngu:0:0", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "f5dcb562-11cf-49f3-a816-3b87f1076776", "case": "test:ngu:0:0", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "382299b3-dd7a-425e-b68b-1693f2d70e1c", "case": "test:ngu:0:1", "stage": "cache", "latency_ms": 0.173, "hit": false}
+{"trace_id": "382299b3-dd7a-425e-b68b-1693f2d70e1c", "case": "test:ngu:0:1", "stage": "lookup", "latency_ms": 20.494, "answered": true}
+{"trace_id": "382299b3-dd7a-425e-b68b-1693f2d70e1c", "case": "test:ngu:0:1", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "382299b3-dd7a-425e-b68b-1693f2d70e1c", "case": "test:ngu:0:1", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "c400fd14-483f-4375-bcc2-92dab6a19ab9", "case": "test:ngu:0:2", "stage": "cache", "latency_ms": 0.173, "hit": false}
+{"trace_id": "c400fd14-483f-4375-bcc2-92dab6a19ab9", "case": "test:ngu:0:2", "stage": "lookup", "latency_ms": 20.485, "answered": true}
+{"trace_id": "c400fd14-483f-4375-bcc2-92dab6a19ab9", "case": "test:ngu:0:2", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "c400fd14-483f-4375-bcc2-92dab6a19ab9", "case": "test:ngu:0:2", "stage": "publish", "latency_ms": 0.024, "frames_valid": true}
+{"trace_id": "9069b6a9-7361-44f6-a905-20fb2dc3cae7", "case": "test:ngu:0:3", "stage": "cache", "latency_ms": 0.238, "hit": false}
+{"trace_id": "9069b6a9-7361-44f6-a905-20fb2dc3cae7", "case": "test:ngu:0:3", "stage": "lookup", "latency_ms": 20.448, "answered": true}
+{"trace_id": "9069b6a9-7361-44f6-a905-20fb2dc3cae7", "case": "test:ngu:0:3", "stage": "answer", "latency_ms": 0.001, "tokens": 11}
+{"trace_id": "9069b6a9-7361-44f6-a905-20fb2dc3cae7", "case": "test:ngu:0:3", "stage": "publish", "latency_ms": 0.024, "frames_valid": true}
+{"trace_id": "ff097f46-e693-4ba8-a369-e5fd5d31e3e4", "case": "test:ngu:0:4", "stage": "cache", "latency_ms": 0.293, "hit": false}
+{"trace_id": "ff097f46-e693-4ba8-a369-e5fd5d31e3e4", "case": "test:ngu:0:4", "stage": "lookup", "latency_ms": 20.46, "answered": true}
+{"trace_id": "ff097f46-e693-4ba8-a369-e5fd5d31e3e4", "case": "test:ngu:0:4", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "ff097f46-e693-4ba8-a369-e5fd5d31e3e4", "case": "test:ngu:0:4", "stage": "publish", "latency_ms": 0.025, "frames_valid": true}
+{"trace_id": "c704a9fa-9ddc-4457-be61-e339b926022f", "case": "test:ngu:0:5", "stage": "cache", "latency_ms": 0.121, "hit": false}
+{"trace_id": "c704a9fa-9ddc-4457-be61-e339b926022f", "case": "test:ngu:0:5", "stage": "lookup", "latency_ms": 20.503, "answered": true}
+{"trace_id": "c704a9fa-9ddc-4457-be61-e339b926022f", "case": "test:ngu:0:5", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "c704a9fa-9ddc-4457-be61-e339b926022f", "case": "test:ngu:0:5", "stage": "publish", "latency_ms": 0.023, "frames_valid": true}
+{"trace_id": "749fc052-88b9-4e40-9f67-c21a1dc0966a", "case": "test:ngu:0:6", "stage": "cache", "latency_ms": 0.127, "hit": false}
+{"trace_id": "749fc052-88b9-4e40-9f67-c21a1dc0966a", "case": "test:ngu:0:6", "stage": "lookup", "latency_ms": 20.512, "answered": true}
+{"trace_id": "749fc052-88b9-4e40-9f67-c21a1dc0966a", "case": "test:ngu:0:6", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "749fc052-88b9-4e40-9f67-c21a1dc0966a", "case": "test:ngu:0:6", "stage": "publish", "latency_ms": 0.015, "frames_valid": true}
+{"trace_id": "aecc6f65-c03e-4abd-966a-13a75923ef7a", "case": "test:ngu:0:7", "stage": "cache", "latency_ms": 0.14, "hit": false}
+{"trace_id": "aecc6f65-c03e-4abd-966a-13a75923ef7a", "case": "test:ngu:0:7", "stage": "lookup", "latency_ms": 20.492, "answered": true}
+{"trace_id": "aecc6f65-c03e-4abd-966a-13a75923ef7a", "case": "test:ngu:0:7", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "aecc6f65-c03e-4abd-966a-13a75923ef7a", "case": "test:ngu:0:7", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "106c6d69-b69c-4af9-8b5a-d4e215a63c97", "case": "test:ngu:1:0", "stage": "cache", "latency_ms": 0.131, "hit": false}
+{"trace_id": "106c6d69-b69c-4af9-8b5a-d4e215a63c97", "case": "test:ngu:1:0", "stage": "lookup", "latency_ms": 20.494, "answered": true}
+{"trace_id": "106c6d69-b69c-4af9-8b5a-d4e215a63c97", "case": "test:ngu:1:0", "stage": "answer", "latency_ms": 0.001, "tokens": 13}
+{"trace_id": "106c6d69-b69c-4af9-8b5a-d4e215a63c97", "case": "test:ngu:1:0", "stage": "publish", "latency_ms": 0.03, "frames_valid": true}
+{"trace_id": "514cc099-002d-457e-9c7d-3ee0797ac609", "case": "test:ngu:1:1", "stage": "cache", "latency_ms": 0.127, "hit": false}
+{"trace_id": "514cc099-002d-457e-9c7d-3ee0797ac609", "case": "test:ngu:1:1", "stage": "lookup", "latency_ms": 20.501, "answered": true}
+{"trace_id": "514cc099-002d-457e-9c7d-3ee0797ac609", "case": "test:ngu:1:1", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "514cc099-002d-457e-9c7d-3ee0797ac609", "case": "test:ngu:1:1", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "6dcaa7ac-3568-49e4-b147-d2fd1e966782", "case": "test:ngu:1:2", "stage": "cache", "latency_ms": 0.13, "hit": false}
+{"trace_id": "6dcaa7ac-3568-49e4-b147-d2fd1e966782", "case": "test:ngu:1:2", "stage": "lookup", "latency_ms": 20.503, "answered": true}
+{"trace_id": "6dcaa7ac-3568-49e4-b147-d2fd1e966782", "case": "test:ngu:1:2", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "6dcaa7ac-3568-49e4-b147-d2fd1e966782", "case": "test:ngu:1:2", "stage": "publish", "latency_ms": 0.031, "frames_valid": true}
+{"trace_id": "ee33f736-2db8-4fbb-b4a4-0610a693cab7", "case": "test:ngu:1:3", "stage": "cache", "latency_ms": 0.138, "hit": false}
+{"trace_id": "ee33f736-2db8-4fbb-b4a4-0610a693cab7", "case": "test:ngu:1:3", "stage": "lookup", "latency_ms": 20.503, "answered": true}
+{"trace_id": "ee33f736-2db8-4fbb-b4a4-0610a693cab7", "case": "test:ngu:1:3", "stage": "answer", "latency_ms": 0.001, "tokens": 11}
+{"trace_id": "ee33f736-2db8-4fbb-b4a4-0610a693cab7", "case": "test:ngu:1:3", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "eb21a552-ade2-40d5-b020-b7abdbfea919", "case": "test:ngu:1:4", "stage": "cache", "latency_ms": 0.281, "hit": false}
+{"trace_id": "eb21a552-ade2-40d5-b020-b7abdbfea919", "case": "test:ngu:1:4", "stage": "lookup", "latency_ms": 20.44, "answered": true}
+{"trace_id": "eb21a552-ade2-40d5-b020-b7abdbfea919", "case": "test:ngu:1:4", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "eb21a552-ade2-40d5-b020-b7abdbfea919", "case": "test:ngu:1:4", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "f133e5af-67c8-4ede-9f36-c03067be80d9", "case": "test:ngu:1:5", "stage": "cache", "latency_ms": 0.187, "hit": false}
+{"trace_id": "f133e5af-67c8-4ede-9f36-c03067be80d9", "case": "test:ngu:1:5", "stage": "lookup", "latency_ms": 20.541, "answered": true}
+{"trace_id": "f133e5af-67c8-4ede-9f36-c03067be80d9", "case": "test:ngu:1:5", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "f133e5af-67c8-4ede-9f36-c03067be80d9", "case": "test:ngu:1:5", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "ec9867ff-7421-441e-a859-d8e2980482ae", "case": "test:ngu:1:6", "stage": "cache", "latency_ms": 0.147, "hit": false}
+{"trace_id": "ec9867ff-7421-441e-a859-d8e2980482ae", "case": "test:ngu:1:6", "stage": "lookup", "latency_ms": 20.481, "answered": true}
+{"trace_id": "ec9867ff-7421-441e-a859-d8e2980482ae", "case": "test:ngu:1:6", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "ec9867ff-7421-441e-a859-d8e2980482ae", "case": "test:ngu:1:6", "stage": "publish", "latency_ms": 0.02, "frames_valid": true}
+{"trace_id": "a4983d85-e80b-48c1-a915-539050926436", "case": "test:ngu:1:7", "stage": "cache", "latency_ms": 0.178, "hit": false}
+{"trace_id": "a4983d85-e80b-48c1-a915-539050926436", "case": "test:ngu:1:7", "stage": "lookup", "latency_ms": 20.501, "answered": true}
+{"trace_id": "a4983d85-e80b-48c1-a915-539050926436", "case": "test:ngu:1:7", "stage": "answer", "latency_ms": 0.001, "tokens": 10}
+{"trace_id": "a4983d85-e80b-48c1-a915-539050926436", "case": "test:ngu:1:7", "stage": "publish", "latency_ms": 0.023, "frames_valid": true}
+{"trace_id": "25ef08bd-286a-44af-909d-a484b44e4c78", "case": "test:ngu:2:0", "stage": "cache", "latency_ms": 0.181, "hit": false}
+{"trace_id": "25ef08bd-286a-44af-909d-a484b44e4c78", "case": "test:ngu:2:0", "stage": "lookup", "latency_ms": 20.499, "answered": true}
+{"trace_id": "25ef08bd-286a-44af-909d-a484b44e4c78", "case": "test:ngu:2:0", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "25ef08bd-286a-44af-909d-a484b44e4c78", "case": "test:ngu:2:0", "stage": "publish", "latency_ms": 0.023, "frames_valid": true}
+{"trace_id": "27960c15-8f92-466c-8129-3a5729efcf24", "case": "test:ngu:2:1", "stage": "cache", "latency_ms": 0.166, "hit": false}
+{"trace_id": "27960c15-8f92-466c-8129-3a5729efcf24", "case": "test:ngu:2:1", "stage": "lookup", "latency_ms": 20.72, "answered": true}
+{"trace_id": "27960c15-8f92-466c-8129-3a5729efcf24", "case": "test:ngu:2:1", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "27960c15-8f92-466c-8129-3a5729efcf24", "case": "test:ngu:2:1", "stage": "publish", "latency_ms": 0.027, "frames_valid": true}
+{"trace_id": "f107d8c7-2b49-4efe-8ba2-bcfc3db76e98", "case": "test:ngu:2:2", "stage": "cache", "latency_ms": 0.225, "hit": false}
+{"trace_id": "f107d8c7-2b49-4efe-8ba2-bcfc3db76e98", "case": "test:ngu:2:2", "stage": "lookup", "latency_ms": 20.684, "answered": true}
+{"trace_id": "f107d8c7-2b49-4efe-8ba2-bcfc3db76e98", "case": "test:ngu:2:2", "stage": "answer", "latency_ms": 0.001, "tokens": 13}
+{"trace_id": "f107d8c7-2b49-4efe-8ba2-bcfc3db76e98", "case": "test:ngu:2:2", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "f6094d46-2b64-4292-8e1a-16950d47e0c2", "case": "test:ngu:2:3", "stage": "cache", "latency_ms": 0.153, "hit": false}
+{"trace_id": "f6094d46-2b64-4292-8e1a-16950d47e0c2", "case": "test:ngu:2:3", "stage": "lookup", "latency_ms": 20.523, "answered": true}
+{"trace_id": "f6094d46-2b64-4292-8e1a-16950d47e0c2", "case": "test:ngu:2:3", "stage": "answer", "latency_ms": 0.001, "tokens": 11}
+{"trace_id": "f6094d46-2b64-4292-8e1a-16950d47e0c2", "case": "test:ngu:2:3", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "afd0d13c-32c5-4d91-854b-712f7742faff", "case": "test:ngu:2:4", "stage": "cache", "latency_ms": 0.182, "hit": false}
+{"trace_id": "afd0d13c-32c5-4d91-854b-712f7742faff", "case": "test:ngu:2:4", "stage": "lookup", "latency_ms": 20.699, "answered": true}
+{"trace_id": "afd0d13c-32c5-4d91-854b-712f7742faff", "case": "test:ngu:2:4", "stage": "answer", "latency_ms": 0.001, "tokens": 10}
+{"trace_id": "afd0d13c-32c5-4d91-854b-712f7742faff", "case": "test:ngu:2:4", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "042d5d35-cd7c-477a-8d68-fc1b690628d9", "case": "test:ngu:2:5", "stage": "cache", "latency_ms": 0.211, "hit": false}
+{"trace_id": "042d5d35-cd7c-477a-8d68-fc1b690628d9", "case": "test:ngu:2:5", "stage": "lookup", "latency_ms": 20.504, "answered": true}
+{"trace_id": "042d5d35-cd7c-477a-8d68-fc1b690628d9", "case": "test:ngu:2:5", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "042d5d35-cd7c-477a-8d68-fc1b690628d9", "case": "test:ngu:2:5", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "66a73ab1-65fa-4bc2-b413-f5a23b4bd290", "case": "test:ngu:2:6", "stage": "cache", "latency_ms": 0.131, "hit": false}
+{"trace_id": "66a73ab1-65fa-4bc2-b413-f5a23b4bd290", "case": "test:ngu:2:6", "stage": "lookup", "latency_ms": 20.492, "answered": true}
+{"trace_id": "66a73ab1-65fa-4bc2-b413-f5a23b4bd290", "case": "test:ngu:2:6", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "66a73ab1-65fa-4bc2-b413-f5a23b4bd290", "case": "test:ngu:2:6", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "9aeaa049-a082-4583-a8c2-ff8fee3dda55", "case": "test:ngu:2:7", "stage": "cache", "latency_ms": 0.147, "hit": false}
+{"trace_id": "9aeaa049-a082-4583-a8c2-ff8fee3dda55", "case": "test:ngu:2:7", "stage": "lookup", "latency_ms": 20.72, "answered": true}
+{"trace_id": "9aeaa049-a082-4583-a8c2-ff8fee3dda55", "case": "test:ngu:2:7", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "9aeaa049-a082-4583-a8c2-ff8fee3dda55", "case": "test:ngu:2:7", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "b792c80a-b421-4698-877e-d26ea5e39614", "case": "test:G17:52:en:lookup", "stage": "cache", "latency_ms": 0.066, "hit": false}
+{"trace_id": "c9b00971-30e2-470f-a853-7f4c317f3dec", "case": "test:G17:52:en:buffer", "stage": "cache", "latency_ms": 0.067, "hit": false}
+{"trace_id": "1a5ca160-4d45-4f01-afa6-46c5671a5ba9", "case": "test:G17:52:en:deadline_days_short", "stage": "cache", "latency_ms": 0.065, "hit": false}
+{"trace_id": "8e74597d-3ae9-4435-8b5c-224fffad807c", "case": "test:G17:52:en:deadline_days_equal", "stage": "cache", "latency_ms": 0.064, "hit": false}
+{"trace_id": "154a9eff-9bb4-477f-a693-c65cb5bfb526", "case": "test:G17:52:en:deadline_days_long", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "53c8c468-89b8-4f5a-aacc-1a1e108c8f67", "case": "test:G17:52:en:deadline_weeks_short", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "04d2a9f4-8c87-4907-b825-f8b434fe64fb", "case": "test:G17:52:en:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "43a0f74b-28cf-4558-b8ea-24977435814f", "case": "test:G17:52:en:deadline_weeks_long", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "4de096b0-5019-43b5-a199-eba02b2b09be", "case": "test:G17:52:en:missing", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "994be370-d769-4502-a79c-1124859cc3b6", "case": "test:G17:52:en:followup_lookup", "stage": "cache", "latency_ms": 0.069, "hit": false}
+{"trace_id": "9f95be9f-3e45-43c5-965f-6d6a2d3227ff", "case": "test:G17:52:en:followup_buffer", "stage": "cache", "latency_ms": 0.065, "hit": false}
+{"trace_id": "714e0ddd-d78c-4b71-9564-deb7ba3265f2", "case": "test:G17:52:en:stale_followup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "108b11e0-bf7d-480d-b8fe-bc643e2fcd3f", "case": "test:G17:52:de:lookup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "a59f7085-639b-4566-9d14-f64f0f83009c", "case": "test:G17:52:de:buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "dfe46376-2766-4de8-b5ad-4ccdfa1b0151", "case": "test:G17:52:de:deadline_days_short", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "e8c58509-f128-45dd-8993-5a6640eda147", "case": "test:G17:52:de:deadline_days_equal", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "8bcc4645-ccff-46ae-b5b9-bea8565bb8a6", "case": "test:G17:52:de:deadline_days_long", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "fbcdb4d3-ab46-4115-9113-68199351f7c5", "case": "test:G17:52:de:deadline_weeks_short", "stage": "cache", "latency_ms": 0.064, "hit": false}
+{"trace_id": "66c192c9-917f-4761-9711-0abf1cc29444", "case": "test:G17:52:de:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "212ecaa6-8497-4d72-9e2e-50d781467fb7", "case": "test:G17:52:de:deadline_weeks_long", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "79f2acb7-a684-4303-a113-3f3dd75ab8ae", "case": "test:G17:52:de:missing", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "89933583-d2d2-4c21-94a0-31cc966d9cc4", "case": "test:G17:52:de:followup_lookup", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "7fbaced5-4e0f-4086-ab96-160af5378a13", "case": "test:G17:52:de:followup_buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "7f274bf4-0d23-463a-9207-72a3e2e9ef3f", "case": "test:G17:52:de:stale_followup", "stage": "cache", "latency_ms": 0.067, "hit": false}
+{"trace_id": "5f70e668-bcc2-4a62-b564-3df40214c931", "case": "test:G17:56:en:lookup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "1ba7904b-1069-47bb-b78a-57b8d1bc5e3c", "case": "test:G17:56:en:buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "5d63ce08-e464-4fda-acec-27e930704789", "case": "test:G17:56:en:deadline_days_short", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "8cf929b2-f331-4630-a70a-433cbea56979", "case": "test:G17:56:en:deadline_days_equal", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "44963fea-05e7-4ea7-b6da-abbe827ca22c", "case": "test:G17:56:en:deadline_days_long", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "24a68465-d3e2-423a-ba83-03bc8be77b0f", "case": "test:G17:56:en:deadline_weeks_short", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "2d057acd-f834-472b-8574-9ffdc3aa3058", "case": "test:G17:56:en:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "6fa3482c-75c0-49a6-ac9c-338734cd8d09", "case": "test:G17:56:en:deadline_weeks_long", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "61e27b5b-0aa9-4a6d-ad55-03a1246a19b8", "case": "test:G17:56:en:followup_lookup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "cea9c16b-1e99-4892-b3ae-b8faaa03ddf7", "case": "test:G17:56:en:followup_buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "9f410f5e-2fe7-4baf-80ec-653b08b6212b", "case": "test:G17:56:en:stale_followup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "2fa1b81d-8aae-4e40-9ea9-073d109e58ca", "case": "test:G17:56:de:lookup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "10f44685-bb92-425a-9306-22382a37501d", "case": "test:G17:56:de:buffer", "stage": "cache", "latency_ms": 0.102, "hit": false}
+{"trace_id": "fa6d3dfd-2e11-478c-8f03-6c7afc6b69f5", "case": "test:G17:56:de:deadline_days_short", "stage": "cache", "latency_ms": 0.109, "hit": false}
+{"trace_id": "33ad22a7-b265-4d79-b85a-2f64f9f2fa81", "case": "test:G17:56:de:deadline_days_equal", "stage": "cache", "latency_ms": 0.092, "hit": false}
+{"trace_id": "07e71c5f-5543-4733-998a-5930a1ed30ac", "case": "test:G17:56:de:deadline_days_long", "stage": "cache", "latency_ms": 0.085, "hit": false}
+{"trace_id": "d65ba6e1-ff96-4ebc-9365-8f174eecbc58", "case": "test:G17:56:de:deadline_weeks_short", "stage": "cache", "latency_ms": 0.082, "hit": false}
+{"trace_id": "39eecfb2-7fd5-4012-acec-eea926771f60", "case": "test:G17:56:de:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.081, "hit": false}
+{"trace_id": "8899fcef-3ede-4c08-b8ec-439cecedab2c", "case": "test:G17:56:de:deadline_weeks_long", "stage": "cache", "latency_ms": 0.078, "hit": false}
+{"trace_id": "519a51e3-4a7c-4948-8f73-089d7314c5bc", "case": "test:G17:56:de:followup_lookup", "stage": "cache", "latency_ms": 0.076, "hit": false}
+{"trace_id": "43bbe3cc-f260-4c06-aaf0-4e2989ea5dc4", "case": "test:G17:56:de:followup_buffer", "stage": "cache", "latency_ms": 0.075, "hit": false}
+{"trace_id": "a842dac3-f080-42a1-b6e4-f591a98e21c5", "case": "test:G17:56:de:stale_followup", "stage": "cache", "latency_ms": 0.065, "hit": false}
+{"trace_id": "e997637d-c5c4-4e7d-9372-8f45c4917176", "case": "test:H28:52:en:lookup", "stage": "cache", "latency_ms": 0.065, "hit": false}
+{"trace_id": "1a429bd2-ac3c-4ca8-9aba-b3734c83da59", "case": "test:H28:52:en:buffer", "stage": "cache", "latency_ms": 0.068, "hit": false}
+{"trace_id": "3127903c-eea7-4d02-afff-900b8e09e0d9", "case": "test:H28:52:en:deadline_days_short", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "90128ac0-253a-4aea-8534-eb75d16033f3", "case": "test:H28:52:en:deadline_days_equal", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "8367a797-979f-4456-a76d-9188836ac682", "case": "test:H28:52:en:deadline_days_long", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "1277bb1c-346b-40fd-9ccb-aae2af1c9f4c", "case": "test:H28:52:en:deadline_weeks_short", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "67271568-d88f-4e42-ac26-b90a68719308", "case": "test:H28:52:en:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "20fbad93-745a-426a-a644-1a1918f3be84", "case": "test:H28:52:en:deadline_weeks_long", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "f0936921-7406-4e87-862b-e51a923d4fee", "case": "test:H28:52:en:missing", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "386e76ff-2f36-45c7-a9b2-eba134688cf5", "case": "test:H28:52:en:followup_lookup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "c0d37ae3-b183-4e28-81f9-59ac4f19276b", "case": "test:H28:52:en:followup_buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "10d14ba6-a765-4866-98f7-d057bc1750da", "case": "test:H28:52:en:stale_followup", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "7a81fcb6-5b93-4732-aeb2-1a79cacde369", "case": "test:H28:52:de:lookup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "45fec43a-0136-4b2f-be50-c8ad3935c8c6", "case": "test:H28:52:de:buffer", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "58bc3990-0080-43e9-b6c6-d6e6e5df6dfc", "case": "test:H28:52:de:deadline_days_short", "stage": "cache", "latency_ms": 0.067, "hit": false}
+{"trace_id": "fd9f136e-108b-4680-8db8-5c85810961ba", "case": "test:H28:52:de:deadline_days_equal", "stage": "cache", "latency_ms": 0.065, "hit": false}
+{"trace_id": "edf61c1d-f78d-48b1-bffb-13a41304bc68", "case": "test:H28:52:de:deadline_days_long", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "6acc63b0-bfe2-4636-ac43-afe363f16f60", "case": "test:H28:52:de:deadline_weeks_short", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "492d9e53-0b33-4da1-8788-6939a8dbc0aa", "case": "test:H28:52:de:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "1c9d94c7-c48e-43c3-8f16-d85faa0b0958", "case": "test:H28:52:de:deadline_weeks_long", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "42108840-d67e-49f4-b9ef-812c4733a8ce", "case": "test:H28:52:de:missing", "stage": "cache", "latency_ms": 0.068, "hit": false}
+{"trace_id": "b627cb71-c86b-49d2-aa6a-dfaca45bea3d", "case": "test:H28:52:de:followup_lookup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "0be1146a-27c2-4c88-89bc-24201771a2a3", "case": "test:H28:52:de:followup_buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "84f28dec-e33d-4aee-9db4-69092e4bd279", "case": "test:H28:52:de:stale_followup", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "0c1cda0f-f1c8-44f8-a6a2-407eaaf583ba", "case": "test:H28:56:en:lookup", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "67426b12-991e-48e8-802d-5298cc796f39", "case": "test:H28:56:en:buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "8e86e4ba-699d-4ca3-b402-58a3515cc8c0", "case": "test:H28:56:en:deadline_days_short", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "513ddc71-a239-47df-8897-98fd66fc37d3", "case": "test:H28:56:en:deadline_days_equal", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "8e8b595a-7e97-4045-83e3-335d6bc745e6", "case": "test:H28:56:en:deadline_days_long", "stage": "cache", "latency_ms": 0.069, "hit": false}
+{"trace_id": "1199734b-4240-47c3-bcc0-541b6ea3d363", "case": "test:H28:56:en:deadline_weeks_short", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "45b2a8f8-3936-48bd-9574-075cdac3b69f", "case": "test:H28:56:en:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "12bac77e-2d58-449c-b59d-b2b662dcc9c1", "case": "test:H28:56:en:deadline_weeks_long", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "0984a889-237f-4f6b-83eb-388d6b9bc5cf", "case": "test:H28:56:en:followup_lookup", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "74a9ee7f-abfd-47db-a7b0-4eb789a3ecfb", "case": "test:H28:56:en:followup_buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "1b97784a-0476-42eb-9048-c009b56b7977", "case": "test:H28:56:en:stale_followup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "e1811c1a-b0ad-41ac-abc3-9904a56f4d1b", "case": "test:H28:56:de:lookup", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "2fe77e5a-1246-44fa-85f6-9f1ac0ef414a", "case": "test:H28:56:de:buffer", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "3e0fe11b-77e7-4d47-92ec-f0a4d6ff9dbc", "case": "test:H28:56:de:deadline_days_short", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "a8fb7f7d-800d-4ec9-936e-c917cbfbc935", "case": "test:H28:56:de:deadline_days_equal", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "e2b937a2-ffad-4c3f-b7b1-5a9c919a88aa", "case": "test:H28:56:de:deadline_days_long", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "0d179d7c-5dc2-4406-bd98-b855bf3ba54f", "case": "test:H28:56:de:deadline_weeks_short", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "87730265-a6a9-45e2-afa4-69e1f9b5c6e1", "case": "test:H28:56:de:deadline_weeks_equal", "stage": "cache", "latency_ms": 0.072, "hit": false}
+{"trace_id": "1e526831-6ab9-41f0-9e59-be5dbdc26f54", "case": "test:H28:56:de:deadline_weeks_long", "stage": "cache", "latency_ms": 0.065, "hit": false}
+{"trace_id": "0a636b85-648f-402f-8471-92d9dcf87ba7", "case": "test:H28:56:de:followup_lookup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "d1186a32-60a2-4a28-a604-5efc519a33da", "case": "test:H28:56:de:followup_buffer", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "b62f51f8-977c-4351-8be5-522cfdc68d27", "case": "test:H28:56:de:stale_followup", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "17d0de1e-0611-4a15-af81-8f56cb388084", "case": "test:topic:0", "stage": "cache", "latency_ms": 0.067, "hit": false}
+{"trace_id": "1e01ff07-072d-4b11-ab11-19134269ce4e", "case": "test:topic:1", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "2937d5e9-a7a6-4c01-9d99-f2dbfd9af16d", "case": "test:topic:2", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "1e2dbb85-ad0c-4d3d-8dc4-97512d93753f", "case": "test:topic:3", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "06424857-6c3f-42dc-9b3a-0b8351910fb0", "case": "test:topic:4", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "66afcd45-a16e-4740-93bb-3c43fa02d4e2", "case": "test:topic:5", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "607c9dcc-3f8f-444d-998b-1c60ec2d4a7e", "case": "test:topic:6", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "c2dbae67-e97b-4c4f-b023-951accdadda1", "case": "test:topic:7", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "f7b217af-4678-4bfe-89bf-b833af553f96", "case": "test:generation2:0", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "c7954a69-1d07-4053-b959-0be7d32f8c31", "case": "test:generation2:1", "stage": "cache", "latency_ms": 0.07, "hit": false}
+{"trace_id": "b4d32843-b719-4b28-91b4-87e66b4c10ab", "case": "test:generation2:2", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "6dd54152-d850-4a13-b95f-13431a9edb5d", "case": "test:generation2:3", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "bd3cdf54-27d8-4729-a443-b7bd4472befb", "case": "test:generation2:4", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "781c0c9d-1af8-4eec-97ba-bb6a38f544a4", "case": "test:generation2:5", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "77e34a20-f62f-4072-ae9b-f41a2d6bdf89", "case": "test:generation2:6", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "0ba2a550-9bd8-40f1-854d-ade457e67431", "case": "test:generation2:7", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "edc28c56-aadf-4cd6-9714-2258ca1fa134", "case": "test:ngu:0:0", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "60b6c1eb-4e23-47b0-bbf6-9d6de2a4649f", "case": "test:ngu:0:1", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "33cfcb83-5c55-492b-9366-bfd3220aa44d", "case": "test:ngu:0:2", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "da285c33-b4e4-4c55-b045-cddb9cda6509", "case": "test:ngu:0:3", "stage": "cache", "latency_ms": 0.067, "hit": false}
+{"trace_id": "3dd5827e-32fe-4ba4-a612-5ad7aeb6289b", "case": "test:ngu:0:4", "stage": "cache", "latency_ms": 0.064, "hit": false}
+{"trace_id": "eb9d6e26-ab15-4cf9-a091-ad273f99fda6", "case": "test:ngu:0:5", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "01c12ad5-ff08-4c7e-945e-250414bd7169", "case": "test:ngu:0:6", "stage": "cache", "latency_ms": 0.067, "hit": false}
+{"trace_id": "5af08d07-f7c9-4e41-990a-60c69f447a60", "case": "test:ngu:0:7", "stage": "cache", "latency_ms": 0.065, "hit": false}
+{"trace_id": "f8a22a9c-d258-4f08-90ea-af3b6f32e091", "case": "test:ngu:1:0", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "c78d1e55-8c44-44ca-bee6-d316e9788d69", "case": "test:ngu:1:1", "stage": "cache", "latency_ms": 0.066, "hit": false}
+{"trace_id": "579cbe73-8b77-4423-a1c1-fdb6bb8a3cde", "case": "test:ngu:1:2", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "be662cf4-d580-417e-820c-57d3ce62292a", "case": "test:ngu:1:3", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "6e8e28d9-6dba-4f4c-99f1-f8391de27caf", "case": "test:ngu:1:4", "stage": "cache", "latency_ms": 0.063, "hit": false}
+{"trace_id": "49beb1fe-4af1-4704-b195-b270cbd15028", "case": "test:ngu:1:5", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "9e48feb0-2500-46a3-8173-baa097679f9e", "case": "test:ngu:1:6", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "1c9e9c91-9440-4e49-92b5-d571d28c744c", "case": "test:ngu:1:7", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "195eaca2-a60d-407f-b775-94ca4200c33e", "case": "test:ngu:2:0", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "051f6d81-0b48-497b-86de-22bcfc957b68", "case": "test:ngu:2:1", "stage": "cache", "latency_ms": 0.061, "hit": false}
+{"trace_id": "b3f689f3-595c-4532-b500-0a214c3d7c41", "case": "test:ngu:2:2", "stage": "cache", "latency_ms": 0.129, "hit": false}
+{"trace_id": "bd96a22e-4504-476a-b18e-0bb942e100af", "case": "test:ngu:2:3", "stage": "cache", "latency_ms": 0.067, "hit": false}
+{"trace_id": "c44a1640-9a7d-4570-a04c-1041211e69da", "case": "test:ngu:2:4", "stage": "cache", "latency_ms": 0.064, "hit": false}
+{"trace_id": "71c2fbc5-f8c5-4c40-abbf-fee09c78d981", "case": "test:ngu:2:5", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "191927c6-8a40-4f52-b5e0-e9ce80276468", "case": "test:ngu:2:6", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "a92f8e14-2c43-4dee-a05b-8f6c502e0a44", "case": "test:ngu:2:7", "stage": "cache", "latency_ms": 0.062, "hit": false}
+{"trace_id": "b792c80a-b421-4698-877e-d26ea5e39614", "case": "test:G17:52:en:lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "b792c80a-b421-4698-877e-d26ea5e39614", "case": "test:G17:52:en:lookup", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "b792c80a-b421-4698-877e-d26ea5e39614", "case": "test:G17:52:en:lookup", "stage": "publish", "latency_ms": 0.035, "frames_valid": true}
+{"trace_id": "c9b00971-30e2-470f-a853-7f4c317f3dec", "case": "test:G17:52:en:buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "c9b00971-30e2-470f-a853-7f4c317f3dec", "case": "test:G17:52:en:buffer", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "c9b00971-30e2-470f-a853-7f4c317f3dec", "case": "test:G17:52:en:buffer", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "1a5ca160-4d45-4f01-afa6-46c5671a5ba9", "case": "test:G17:52:en:deadline_days_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1a5ca160-4d45-4f01-afa6-46c5671a5ba9", "case": "test:G17:52:en:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "1a5ca160-4d45-4f01-afa6-46c5671a5ba9", "case": "test:G17:52:en:deadline_days_short", "stage": "publish", "latency_ms": 0.013, "frames_valid": true}
+{"trace_id": "8e74597d-3ae9-4435-8b5c-224fffad807c", "case": "test:G17:52:en:deadline_days_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "8e74597d-3ae9-4435-8b5c-224fffad807c", "case": "test:G17:52:en:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "8e74597d-3ae9-4435-8b5c-224fffad807c", "case": "test:G17:52:en:deadline_days_equal", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "154a9eff-9bb4-477f-a693-c65cb5bfb526", "case": "test:G17:52:en:deadline_days_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "154a9eff-9bb4-477f-a693-c65cb5bfb526", "case": "test:G17:52:en:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "154a9eff-9bb4-477f-a693-c65cb5bfb526", "case": "test:G17:52:en:deadline_days_long", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "53c8c468-89b8-4f5a-aacc-1a1e108c8f67", "case": "test:G17:52:en:deadline_weeks_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "53c8c468-89b8-4f5a-aacc-1a1e108c8f67", "case": "test:G17:52:en:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "53c8c468-89b8-4f5a-aacc-1a1e108c8f67", "case": "test:G17:52:en:deadline_weeks_short", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "04d2a9f4-8c87-4907-b825-f8b434fe64fb", "case": "test:G17:52:en:deadline_weeks_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "04d2a9f4-8c87-4907-b825-f8b434fe64fb", "case": "test:G17:52:en:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "04d2a9f4-8c87-4907-b825-f8b434fe64fb", "case": "test:G17:52:en:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "43a0f74b-28cf-4558-b8ea-24977435814f", "case": "test:G17:52:en:deadline_weeks_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "43a0f74b-28cf-4558-b8ea-24977435814f", "case": "test:G17:52:en:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "43a0f74b-28cf-4558-b8ea-24977435814f", "case": "test:G17:52:en:deadline_weeks_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "4de096b0-5019-43b5-a199-eba02b2b09be", "case": "test:G17:52:en:missing", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "4de096b0-5019-43b5-a199-eba02b2b09be", "case": "test:G17:52:en:missing", "stage": "answer", "latency_ms": 0.0, "tokens": 1}
+{"trace_id": "4de096b0-5019-43b5-a199-eba02b2b09be", "case": "test:G17:52:en:missing", "stage": "publish", "latency_ms": 0.017, "frames_valid": true}
+{"trace_id": "994be370-d769-4502-a79c-1124859cc3b6", "case": "test:G17:52:en:followup_lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "994be370-d769-4502-a79c-1124859cc3b6", "case": "test:G17:52:en:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "994be370-d769-4502-a79c-1124859cc3b6", "case": "test:G17:52:en:followup_lookup", "stage": "publish", "latency_ms": 0.019, "frames_valid": true}
+{"trace_id": "9f95be9f-3e45-43c5-965f-6d6a2d3227ff", "case": "test:G17:52:en:followup_buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "9f95be9f-3e45-43c5-965f-6d6a2d3227ff", "case": "test:G17:52:en:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "9f95be9f-3e45-43c5-965f-6d6a2d3227ff", "case": "test:G17:52:en:followup_buffer", "stage": "publish", "latency_ms": 0.016, "frames_valid": true}
+{"trace_id": "714e0ddd-d78c-4b71-9564-deb7ba3265f2", "case": "test:G17:52:en:stale_followup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "714e0ddd-d78c-4b71-9564-deb7ba3265f2", "case": "test:G17:52:en:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "714e0ddd-d78c-4b71-9564-deb7ba3265f2", "case": "test:G17:52:en:stale_followup", "stage": "publish", "latency_ms": 0.014, "frames_valid": true}
+{"trace_id": "108b11e0-bf7d-480d-b8fe-bc643e2fcd3f", "case": "test:G17:52:de:lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "108b11e0-bf7d-480d-b8fe-bc643e2fcd3f", "case": "test:G17:52:de:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "108b11e0-bf7d-480d-b8fe-bc643e2fcd3f", "case": "test:G17:52:de:lookup", "stage": "publish", "latency_ms": 0.014, "frames_valid": true}
+{"trace_id": "a59f7085-639b-4566-9d14-f64f0f83009c", "case": "test:G17:52:de:buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "a59f7085-639b-4566-9d14-f64f0f83009c", "case": "test:G17:52:de:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "a59f7085-639b-4566-9d14-f64f0f83009c", "case": "test:G17:52:de:buffer", "stage": "publish", "latency_ms": 0.013, "frames_valid": true}
+{"trace_id": "dfe46376-2766-4de8-b5ad-4ccdfa1b0151", "case": "test:G17:52:de:deadline_days_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "dfe46376-2766-4de8-b5ad-4ccdfa1b0151", "case": "test:G17:52:de:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "dfe46376-2766-4de8-b5ad-4ccdfa1b0151", "case": "test:G17:52:de:deadline_days_short", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "e8c58509-f128-45dd-8993-5a6640eda147", "case": "test:G17:52:de:deadline_days_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "e8c58509-f128-45dd-8993-5a6640eda147", "case": "test:G17:52:de:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "e8c58509-f128-45dd-8993-5a6640eda147", "case": "test:G17:52:de:deadline_days_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "8bcc4645-ccff-46ae-b5b9-bea8565bb8a6", "case": "test:G17:52:de:deadline_days_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "8bcc4645-ccff-46ae-b5b9-bea8565bb8a6", "case": "test:G17:52:de:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "8bcc4645-ccff-46ae-b5b9-bea8565bb8a6", "case": "test:G17:52:de:deadline_days_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "fbcdb4d3-ab46-4115-9113-68199351f7c5", "case": "test:G17:52:de:deadline_weeks_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "fbcdb4d3-ab46-4115-9113-68199351f7c5", "case": "test:G17:52:de:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "fbcdb4d3-ab46-4115-9113-68199351f7c5", "case": "test:G17:52:de:deadline_weeks_short", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "66c192c9-917f-4761-9711-0abf1cc29444", "case": "test:G17:52:de:deadline_weeks_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "66c192c9-917f-4761-9711-0abf1cc29444", "case": "test:G17:52:de:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "66c192c9-917f-4761-9711-0abf1cc29444", "case": "test:G17:52:de:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "212ecaa6-8497-4d72-9e2e-50d781467fb7", "case": "test:G17:52:de:deadline_weeks_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "212ecaa6-8497-4d72-9e2e-50d781467fb7", "case": "test:G17:52:de:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "212ecaa6-8497-4d72-9e2e-50d781467fb7", "case": "test:G17:52:de:deadline_weeks_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "79f2acb7-a684-4303-a113-3f3dd75ab8ae", "case": "test:G17:52:de:missing", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "79f2acb7-a684-4303-a113-3f3dd75ab8ae", "case": "test:G17:52:de:missing", "stage": "answer", "latency_ms": 0.0, "tokens": 1}
+{"trace_id": "79f2acb7-a684-4303-a113-3f3dd75ab8ae", "case": "test:G17:52:de:missing", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "89933583-d2d2-4c21-94a0-31cc966d9cc4", "case": "test:G17:52:de:followup_lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "89933583-d2d2-4c21-94a0-31cc966d9cc4", "case": "test:G17:52:de:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "89933583-d2d2-4c21-94a0-31cc966d9cc4", "case": "test:G17:52:de:followup_lookup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "7fbaced5-4e0f-4086-ab96-160af5378a13", "case": "test:G17:52:de:followup_buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "7fbaced5-4e0f-4086-ab96-160af5378a13", "case": "test:G17:52:de:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "7fbaced5-4e0f-4086-ab96-160af5378a13", "case": "test:G17:52:de:followup_buffer", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "7f274bf4-0d23-463a-9207-72a3e2e9ef3f", "case": "test:G17:52:de:stale_followup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "7f274bf4-0d23-463a-9207-72a3e2e9ef3f", "case": "test:G17:52:de:stale_followup", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "7f274bf4-0d23-463a-9207-72a3e2e9ef3f", "case": "test:G17:52:de:stale_followup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "5f70e668-bcc2-4a62-b564-3df40214c931", "case": "test:G17:56:en:lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "5f70e668-bcc2-4a62-b564-3df40214c931", "case": "test:G17:56:en:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "5f70e668-bcc2-4a62-b564-3df40214c931", "case": "test:G17:56:en:lookup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "1ba7904b-1069-47bb-b78a-57b8d1bc5e3c", "case": "test:G17:56:en:buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1ba7904b-1069-47bb-b78a-57b8d1bc5e3c", "case": "test:G17:56:en:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "1ba7904b-1069-47bb-b78a-57b8d1bc5e3c", "case": "test:G17:56:en:buffer", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "5d63ce08-e464-4fda-acec-27e930704789", "case": "test:G17:56:en:deadline_days_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "5d63ce08-e464-4fda-acec-27e930704789", "case": "test:G17:56:en:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "5d63ce08-e464-4fda-acec-27e930704789", "case": "test:G17:56:en:deadline_days_short", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "8cf929b2-f331-4630-a70a-433cbea56979", "case": "test:G17:56:en:deadline_days_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "8cf929b2-f331-4630-a70a-433cbea56979", "case": "test:G17:56:en:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "8cf929b2-f331-4630-a70a-433cbea56979", "case": "test:G17:56:en:deadline_days_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "44963fea-05e7-4ea7-b6da-abbe827ca22c", "case": "test:G17:56:en:deadline_days_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "44963fea-05e7-4ea7-b6da-abbe827ca22c", "case": "test:G17:56:en:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "44963fea-05e7-4ea7-b6da-abbe827ca22c", "case": "test:G17:56:en:deadline_days_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "24a68465-d3e2-423a-ba83-03bc8be77b0f", "case": "test:G17:56:en:deadline_weeks_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "24a68465-d3e2-423a-ba83-03bc8be77b0f", "case": "test:G17:56:en:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "24a68465-d3e2-423a-ba83-03bc8be77b0f", "case": "test:G17:56:en:deadline_weeks_short", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "2d057acd-f834-472b-8574-9ffdc3aa3058", "case": "test:G17:56:en:deadline_weeks_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "2d057acd-f834-472b-8574-9ffdc3aa3058", "case": "test:G17:56:en:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "2d057acd-f834-472b-8574-9ffdc3aa3058", "case": "test:G17:56:en:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "6fa3482c-75c0-49a6-ac9c-338734cd8d09", "case": "test:G17:56:en:deadline_weeks_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "6fa3482c-75c0-49a6-ac9c-338734cd8d09", "case": "test:G17:56:en:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "6fa3482c-75c0-49a6-ac9c-338734cd8d09", "case": "test:G17:56:en:deadline_weeks_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "61e27b5b-0aa9-4a6d-ad55-03a1246a19b8", "case": "test:G17:56:en:followup_lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "61e27b5b-0aa9-4a6d-ad55-03a1246a19b8", "case": "test:G17:56:en:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "61e27b5b-0aa9-4a6d-ad55-03a1246a19b8", "case": "test:G17:56:en:followup_lookup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "cea9c16b-1e99-4892-b3ae-b8faaa03ddf7", "case": "test:G17:56:en:followup_buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "cea9c16b-1e99-4892-b3ae-b8faaa03ddf7", "case": "test:G17:56:en:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "cea9c16b-1e99-4892-b3ae-b8faaa03ddf7", "case": "test:G17:56:en:followup_buffer", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "9f410f5e-2fe7-4baf-80ec-653b08b6212b", "case": "test:G17:56:en:stale_followup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "9f410f5e-2fe7-4baf-80ec-653b08b6212b", "case": "test:G17:56:en:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "9f410f5e-2fe7-4baf-80ec-653b08b6212b", "case": "test:G17:56:en:stale_followup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "2fa1b81d-8aae-4e40-9ea9-073d109e58ca", "case": "test:G17:56:de:lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "2fa1b81d-8aae-4e40-9ea9-073d109e58ca", "case": "test:G17:56:de:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "2fa1b81d-8aae-4e40-9ea9-073d109e58ca", "case": "test:G17:56:de:lookup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "10f44685-bb92-425a-9306-22382a37501d", "case": "test:G17:56:de:buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "10f44685-bb92-425a-9306-22382a37501d", "case": "test:G17:56:de:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "10f44685-bb92-425a-9306-22382a37501d", "case": "test:G17:56:de:buffer", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "fa6d3dfd-2e11-478c-8f03-6c7afc6b69f5", "case": "test:G17:56:de:deadline_days_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "fa6d3dfd-2e11-478c-8f03-6c7afc6b69f5", "case": "test:G17:56:de:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "fa6d3dfd-2e11-478c-8f03-6c7afc6b69f5", "case": "test:G17:56:de:deadline_days_short", "stage": "publish", "latency_ms": 0.009, "frames_valid": true}
+{"trace_id": "33ad22a7-b265-4d79-b85a-2f64f9f2fa81", "case": "test:G17:56:de:deadline_days_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "33ad22a7-b265-4d79-b85a-2f64f9f2fa81", "case": "test:G17:56:de:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "33ad22a7-b265-4d79-b85a-2f64f9f2fa81", "case": "test:G17:56:de:deadline_days_equal", "stage": "publish", "latency_ms": 0.009, "frames_valid": true}
+{"trace_id": "07e71c5f-5543-4733-998a-5930a1ed30ac", "case": "test:G17:56:de:deadline_days_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "07e71c5f-5543-4733-998a-5930a1ed30ac", "case": "test:G17:56:de:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "07e71c5f-5543-4733-998a-5930a1ed30ac", "case": "test:G17:56:de:deadline_days_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "d65ba6e1-ff96-4ebc-9365-8f174eecbc58", "case": "test:G17:56:de:deadline_weeks_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "d65ba6e1-ff96-4ebc-9365-8f174eecbc58", "case": "test:G17:56:de:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "d65ba6e1-ff96-4ebc-9365-8f174eecbc58", "case": "test:G17:56:de:deadline_weeks_short", "stage": "publish", "latency_ms": 0.009, "frames_valid": true}
+{"trace_id": "39eecfb2-7fd5-4012-acec-eea926771f60", "case": "test:G17:56:de:deadline_weeks_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "39eecfb2-7fd5-4012-acec-eea926771f60", "case": "test:G17:56:de:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "39eecfb2-7fd5-4012-acec-eea926771f60", "case": "test:G17:56:de:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "8899fcef-3ede-4c08-b8ec-439cecedab2c", "case": "test:G17:56:de:deadline_weeks_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "8899fcef-3ede-4c08-b8ec-439cecedab2c", "case": "test:G17:56:de:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "8899fcef-3ede-4c08-b8ec-439cecedab2c", "case": "test:G17:56:de:deadline_weeks_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "519a51e3-4a7c-4948-8f73-089d7314c5bc", "case": "test:G17:56:de:followup_lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "519a51e3-4a7c-4948-8f73-089d7314c5bc", "case": "test:G17:56:de:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "519a51e3-4a7c-4948-8f73-089d7314c5bc", "case": "test:G17:56:de:followup_lookup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "43bbe3cc-f260-4c06-aaf0-4e2989ea5dc4", "case": "test:G17:56:de:followup_buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "43bbe3cc-f260-4c06-aaf0-4e2989ea5dc4", "case": "test:G17:56:de:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "43bbe3cc-f260-4c06-aaf0-4e2989ea5dc4", "case": "test:G17:56:de:followup_buffer", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "a842dac3-f080-42a1-b6e4-f591a98e21c5", "case": "test:G17:56:de:stale_followup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "a842dac3-f080-42a1-b6e4-f591a98e21c5", "case": "test:G17:56:de:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "a842dac3-f080-42a1-b6e4-f591a98e21c5", "case": "test:G17:56:de:stale_followup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "e997637d-c5c4-4e7d-9372-8f45c4917176", "case": "test:H28:52:en:lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "e997637d-c5c4-4e7d-9372-8f45c4917176", "case": "test:H28:52:en:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "e997637d-c5c4-4e7d-9372-8f45c4917176", "case": "test:H28:52:en:lookup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "1a429bd2-ac3c-4ca8-9aba-b3734c83da59", "case": "test:H28:52:en:buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1a429bd2-ac3c-4ca8-9aba-b3734c83da59", "case": "test:H28:52:en:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "1a429bd2-ac3c-4ca8-9aba-b3734c83da59", "case": "test:H28:52:en:buffer", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "3127903c-eea7-4d02-afff-900b8e09e0d9", "case": "test:H28:52:en:deadline_days_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "3127903c-eea7-4d02-afff-900b8e09e0d9", "case": "test:H28:52:en:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "3127903c-eea7-4d02-afff-900b8e09e0d9", "case": "test:H28:52:en:deadline_days_short", "stage": "publish", "latency_ms": 0.009, "frames_valid": true}
+{"trace_id": "90128ac0-253a-4aea-8534-eb75d16033f3", "case": "test:H28:52:en:deadline_days_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "90128ac0-253a-4aea-8534-eb75d16033f3", "case": "test:H28:52:en:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "90128ac0-253a-4aea-8534-eb75d16033f3", "case": "test:H28:52:en:deadline_days_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "8367a797-979f-4456-a76d-9188836ac682", "case": "test:H28:52:en:deadline_days_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "8367a797-979f-4456-a76d-9188836ac682", "case": "test:H28:52:en:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "8367a797-979f-4456-a76d-9188836ac682", "case": "test:H28:52:en:deadline_days_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "1277bb1c-346b-40fd-9ccb-aae2af1c9f4c", "case": "test:H28:52:en:deadline_weeks_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1277bb1c-346b-40fd-9ccb-aae2af1c9f4c", "case": "test:H28:52:en:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "1277bb1c-346b-40fd-9ccb-aae2af1c9f4c", "case": "test:H28:52:en:deadline_weeks_short", "stage": "publish", "latency_ms": 0.009, "frames_valid": true}
+{"trace_id": "67271568-d88f-4e42-ac26-b90a68719308", "case": "test:H28:52:en:deadline_weeks_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "67271568-d88f-4e42-ac26-b90a68719308", "case": "test:H28:52:en:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "67271568-d88f-4e42-ac26-b90a68719308", "case": "test:H28:52:en:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "20fbad93-745a-426a-a644-1a1918f3be84", "case": "test:H28:52:en:deadline_weeks_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "20fbad93-745a-426a-a644-1a1918f3be84", "case": "test:H28:52:en:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "20fbad93-745a-426a-a644-1a1918f3be84", "case": "test:H28:52:en:deadline_weeks_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "f0936921-7406-4e87-862b-e51a923d4fee", "case": "test:H28:52:en:missing", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "f0936921-7406-4e87-862b-e51a923d4fee", "case": "test:H28:52:en:missing", "stage": "answer", "latency_ms": 0.0, "tokens": 1}
+{"trace_id": "f0936921-7406-4e87-862b-e51a923d4fee", "case": "test:H28:52:en:missing", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "386e76ff-2f36-45c7-a9b2-eba134688cf5", "case": "test:H28:52:en:followup_lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "386e76ff-2f36-45c7-a9b2-eba134688cf5", "case": "test:H28:52:en:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "386e76ff-2f36-45c7-a9b2-eba134688cf5", "case": "test:H28:52:en:followup_lookup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "c0d37ae3-b183-4e28-81f9-59ac4f19276b", "case": "test:H28:52:en:followup_buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "c0d37ae3-b183-4e28-81f9-59ac4f19276b", "case": "test:H28:52:en:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "c0d37ae3-b183-4e28-81f9-59ac4f19276b", "case": "test:H28:52:en:followup_buffer", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "10d14ba6-a765-4866-98f7-d057bc1750da", "case": "test:H28:52:en:stale_followup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "10d14ba6-a765-4866-98f7-d057bc1750da", "case": "test:H28:52:en:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "10d14ba6-a765-4866-98f7-d057bc1750da", "case": "test:H28:52:en:stale_followup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "7a81fcb6-5b93-4732-aeb2-1a79cacde369", "case": "test:H28:52:de:lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "7a81fcb6-5b93-4732-aeb2-1a79cacde369", "case": "test:H28:52:de:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "7a81fcb6-5b93-4732-aeb2-1a79cacde369", "case": "test:H28:52:de:lookup", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "45fec43a-0136-4b2f-be50-c8ad3935c8c6", "case": "test:H28:52:de:buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "45fec43a-0136-4b2f-be50-c8ad3935c8c6", "case": "test:H28:52:de:buffer", "stage": "answer", "latency_ms": 0.001, "tokens": 2}
+{"trace_id": "45fec43a-0136-4b2f-be50-c8ad3935c8c6", "case": "test:H28:52:de:buffer", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "58bc3990-0080-43e9-b6c6-d6e6e5df6dfc", "case": "test:H28:52:de:deadline_days_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "58bc3990-0080-43e9-b6c6-d6e6e5df6dfc", "case": "test:H28:52:de:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "58bc3990-0080-43e9-b6c6-d6e6e5df6dfc", "case": "test:H28:52:de:deadline_days_short", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "fd9f136e-108b-4680-8db8-5c85810961ba", "case": "test:H28:52:de:deadline_days_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "fd9f136e-108b-4680-8db8-5c85810961ba", "case": "test:H28:52:de:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "fd9f136e-108b-4680-8db8-5c85810961ba", "case": "test:H28:52:de:deadline_days_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "edf61c1d-f78d-48b1-bffb-13a41304bc68", "case": "test:H28:52:de:deadline_days_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "edf61c1d-f78d-48b1-bffb-13a41304bc68", "case": "test:H28:52:de:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "edf61c1d-f78d-48b1-bffb-13a41304bc68", "case": "test:H28:52:de:deadline_days_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "6acc63b0-bfe2-4636-ac43-afe363f16f60", "case": "test:H28:52:de:deadline_weeks_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "6acc63b0-bfe2-4636-ac43-afe363f16f60", "case": "test:H28:52:de:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "6acc63b0-bfe2-4636-ac43-afe363f16f60", "case": "test:H28:52:de:deadline_weeks_short", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "492d9e53-0b33-4da1-8788-6939a8dbc0aa", "case": "test:H28:52:de:deadline_weeks_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "492d9e53-0b33-4da1-8788-6939a8dbc0aa", "case": "test:H28:52:de:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "492d9e53-0b33-4da1-8788-6939a8dbc0aa", "case": "test:H28:52:de:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "1c9d94c7-c48e-43c3-8f16-d85faa0b0958", "case": "test:H28:52:de:deadline_weeks_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1c9d94c7-c48e-43c3-8f16-d85faa0b0958", "case": "test:H28:52:de:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "1c9d94c7-c48e-43c3-8f16-d85faa0b0958", "case": "test:H28:52:de:deadline_weeks_long", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "42108840-d67e-49f4-b9ef-812c4733a8ce", "case": "test:H28:52:de:missing", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "42108840-d67e-49f4-b9ef-812c4733a8ce", "case": "test:H28:52:de:missing", "stage": "answer", "latency_ms": 0.0, "tokens": 1}
+{"trace_id": "42108840-d67e-49f4-b9ef-812c4733a8ce", "case": "test:H28:52:de:missing", "stage": "publish", "latency_ms": 0.015, "frames_valid": true}
+{"trace_id": "b627cb71-c86b-49d2-aa6a-dfaca45bea3d", "case": "test:H28:52:de:followup_lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "b627cb71-c86b-49d2-aa6a-dfaca45bea3d", "case": "test:H28:52:de:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "b627cb71-c86b-49d2-aa6a-dfaca45bea3d", "case": "test:H28:52:de:followup_lookup", "stage": "publish", "latency_ms": 0.013, "frames_valid": true}
+{"trace_id": "0be1146a-27c2-4c88-89bc-24201771a2a3", "case": "test:H28:52:de:followup_buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "0be1146a-27c2-4c88-89bc-24201771a2a3", "case": "test:H28:52:de:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "0be1146a-27c2-4c88-89bc-24201771a2a3", "case": "test:H28:52:de:followup_buffer", "stage": "publish", "latency_ms": 0.013, "frames_valid": true}
+{"trace_id": "84f28dec-e33d-4aee-9db4-69092e4bd279", "case": "test:H28:52:de:stale_followup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "84f28dec-e33d-4aee-9db4-69092e4bd279", "case": "test:H28:52:de:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "84f28dec-e33d-4aee-9db4-69092e4bd279", "case": "test:H28:52:de:stale_followup", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "0c1cda0f-f1c8-44f8-a6a2-407eaaf583ba", "case": "test:H28:56:en:lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "0c1cda0f-f1c8-44f8-a6a2-407eaaf583ba", "case": "test:H28:56:en:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "0c1cda0f-f1c8-44f8-a6a2-407eaaf583ba", "case": "test:H28:56:en:lookup", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "67426b12-991e-48e8-802d-5298cc796f39", "case": "test:H28:56:en:buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "67426b12-991e-48e8-802d-5298cc796f39", "case": "test:H28:56:en:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "67426b12-991e-48e8-802d-5298cc796f39", "case": "test:H28:56:en:buffer", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "8e86e4ba-699d-4ca3-b402-58a3515cc8c0", "case": "test:H28:56:en:deadline_days_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "8e86e4ba-699d-4ca3-b402-58a3515cc8c0", "case": "test:H28:56:en:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "8e86e4ba-699d-4ca3-b402-58a3515cc8c0", "case": "test:H28:56:en:deadline_days_short", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "513ddc71-a239-47df-8897-98fd66fc37d3", "case": "test:H28:56:en:deadline_days_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "513ddc71-a239-47df-8897-98fd66fc37d3", "case": "test:H28:56:en:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "513ddc71-a239-47df-8897-98fd66fc37d3", "case": "test:H28:56:en:deadline_days_equal", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "8e8b595a-7e97-4045-83e3-335d6bc745e6", "case": "test:H28:56:en:deadline_days_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "8e8b595a-7e97-4045-83e3-335d6bc745e6", "case": "test:H28:56:en:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "8e8b595a-7e97-4045-83e3-335d6bc745e6", "case": "test:H28:56:en:deadline_days_long", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "1199734b-4240-47c3-bcc0-541b6ea3d363", "case": "test:H28:56:en:deadline_weeks_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1199734b-4240-47c3-bcc0-541b6ea3d363", "case": "test:H28:56:en:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "1199734b-4240-47c3-bcc0-541b6ea3d363", "case": "test:H28:56:en:deadline_weeks_short", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "45b2a8f8-3936-48bd-9574-075cdac3b69f", "case": "test:H28:56:en:deadline_weeks_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "45b2a8f8-3936-48bd-9574-075cdac3b69f", "case": "test:H28:56:en:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "45b2a8f8-3936-48bd-9574-075cdac3b69f", "case": "test:H28:56:en:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "12bac77e-2d58-449c-b59d-b2b662dcc9c1", "case": "test:H28:56:en:deadline_weeks_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "12bac77e-2d58-449c-b59d-b2b662dcc9c1", "case": "test:H28:56:en:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "12bac77e-2d58-449c-b59d-b2b662dcc9c1", "case": "test:H28:56:en:deadline_weeks_long", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "0984a889-237f-4f6b-83eb-388d6b9bc5cf", "case": "test:H28:56:en:followup_lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "0984a889-237f-4f6b-83eb-388d6b9bc5cf", "case": "test:H28:56:en:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "0984a889-237f-4f6b-83eb-388d6b9bc5cf", "case": "test:H28:56:en:followup_lookup", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "74a9ee7f-abfd-47db-a7b0-4eb789a3ecfb", "case": "test:H28:56:en:followup_buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "74a9ee7f-abfd-47db-a7b0-4eb789a3ecfb", "case": "test:H28:56:en:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "74a9ee7f-abfd-47db-a7b0-4eb789a3ecfb", "case": "test:H28:56:en:followup_buffer", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "1b97784a-0476-42eb-9048-c009b56b7977", "case": "test:H28:56:en:stale_followup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1b97784a-0476-42eb-9048-c009b56b7977", "case": "test:H28:56:en:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "1b97784a-0476-42eb-9048-c009b56b7977", "case": "test:H28:56:en:stale_followup", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "e1811c1a-b0ad-41ac-abc3-9904a56f4d1b", "case": "test:H28:56:de:lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "e1811c1a-b0ad-41ac-abc3-9904a56f4d1b", "case": "test:H28:56:de:lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "e1811c1a-b0ad-41ac-abc3-9904a56f4d1b", "case": "test:H28:56:de:lookup", "stage": "publish", "latency_ms": 0.015, "frames_valid": true}
+{"trace_id": "2fe77e5a-1246-44fa-85f6-9f1ac0ef414a", "case": "test:H28:56:de:buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "2fe77e5a-1246-44fa-85f6-9f1ac0ef414a", "case": "test:H28:56:de:buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "2fe77e5a-1246-44fa-85f6-9f1ac0ef414a", "case": "test:H28:56:de:buffer", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "3e0fe11b-77e7-4d47-92ec-f0a4d6ff9dbc", "case": "test:H28:56:de:deadline_days_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "3e0fe11b-77e7-4d47-92ec-f0a4d6ff9dbc", "case": "test:H28:56:de:deadline_days_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "3e0fe11b-77e7-4d47-92ec-f0a4d6ff9dbc", "case": "test:H28:56:de:deadline_days_short", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "a8fb7f7d-800d-4ec9-936e-c917cbfbc935", "case": "test:H28:56:de:deadline_days_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "a8fb7f7d-800d-4ec9-936e-c917cbfbc935", "case": "test:H28:56:de:deadline_days_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "a8fb7f7d-800d-4ec9-936e-c917cbfbc935", "case": "test:H28:56:de:deadline_days_equal", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "e2b937a2-ffad-4c3f-b7b1-5a9c919a88aa", "case": "test:H28:56:de:deadline_days_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "e2b937a2-ffad-4c3f-b7b1-5a9c919a88aa", "case": "test:H28:56:de:deadline_days_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "e2b937a2-ffad-4c3f-b7b1-5a9c919a88aa", "case": "test:H28:56:de:deadline_days_long", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "0d179d7c-5dc2-4406-bd98-b855bf3ba54f", "case": "test:H28:56:de:deadline_weeks_short", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "0d179d7c-5dc2-4406-bd98-b855bf3ba54f", "case": "test:H28:56:de:deadline_weeks_short", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "0d179d7c-5dc2-4406-bd98-b855bf3ba54f", "case": "test:H28:56:de:deadline_weeks_short", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "87730265-a6a9-45e2-afa4-69e1f9b5c6e1", "case": "test:H28:56:de:deadline_weeks_equal", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "87730265-a6a9-45e2-afa4-69e1f9b5c6e1", "case": "test:H28:56:de:deadline_weeks_equal", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "87730265-a6a9-45e2-afa4-69e1f9b5c6e1", "case": "test:H28:56:de:deadline_weeks_equal", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "1e526831-6ab9-41f0-9e59-be5dbdc26f54", "case": "test:H28:56:de:deadline_weeks_long", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1e526831-6ab9-41f0-9e59-be5dbdc26f54", "case": "test:H28:56:de:deadline_weeks_long", "stage": "answer", "latency_ms": 0.0, "tokens": 3}
+{"trace_id": "1e526831-6ab9-41f0-9e59-be5dbdc26f54", "case": "test:H28:56:de:deadline_weeks_long", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "0a636b85-648f-402f-8471-92d9dcf87ba7", "case": "test:H28:56:de:followup_lookup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "0a636b85-648f-402f-8471-92d9dcf87ba7", "case": "test:H28:56:de:followup_lookup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "0a636b85-648f-402f-8471-92d9dcf87ba7", "case": "test:H28:56:de:followup_lookup", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "d1186a32-60a2-4a28-a604-5efc519a33da", "case": "test:H28:56:de:followup_buffer", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "d1186a32-60a2-4a28-a604-5efc519a33da", "case": "test:H28:56:de:followup_buffer", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "d1186a32-60a2-4a28-a604-5efc519a33da", "case": "test:H28:56:de:followup_buffer", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "b62f51f8-977c-4351-8be5-522cfdc68d27", "case": "test:H28:56:de:stale_followup", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "b62f51f8-977c-4351-8be5-522cfdc68d27", "case": "test:H28:56:de:stale_followup", "stage": "answer", "latency_ms": 0.0, "tokens": 2}
+{"trace_id": "b62f51f8-977c-4351-8be5-522cfdc68d27", "case": "test:H28:56:de:stale_followup", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "17d0de1e-0611-4a15-af81-8f56cb388084", "case": "test:topic:0", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "17d0de1e-0611-4a15-af81-8f56cb388084", "case": "test:topic:0", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "17d0de1e-0611-4a15-af81-8f56cb388084", "case": "test:topic:0", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "1e01ff07-072d-4b11-ab11-19134269ce4e", "case": "test:topic:1", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1e01ff07-072d-4b11-ab11-19134269ce4e", "case": "test:topic:1", "stage": "answer", "latency_ms": 0.0, "tokens": 8}
+{"trace_id": "1e01ff07-072d-4b11-ab11-19134269ce4e", "case": "test:topic:1", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "2937d5e9-a7a6-4c01-9d99-f2dbfd9af16d", "case": "test:topic:2", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "2937d5e9-a7a6-4c01-9d99-f2dbfd9af16d", "case": "test:topic:2", "stage": "answer", "latency_ms": 0.0, "tokens": 8}
+{"trace_id": "2937d5e9-a7a6-4c01-9d99-f2dbfd9af16d", "case": "test:topic:2", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "1e2dbb85-ad0c-4d3d-8dc4-97512d93753f", "case": "test:topic:3", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1e2dbb85-ad0c-4d3d-8dc4-97512d93753f", "case": "test:topic:3", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "1e2dbb85-ad0c-4d3d-8dc4-97512d93753f", "case": "test:topic:3", "stage": "publish", "latency_ms": 0.01, "frames_valid": true}
+{"trace_id": "06424857-6c3f-42dc-9b3a-0b8351910fb0", "case": "test:topic:4", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "06424857-6c3f-42dc-9b3a-0b8351910fb0", "case": "test:topic:4", "stage": "answer", "latency_ms": 0.0, "tokens": 8}
+{"trace_id": "06424857-6c3f-42dc-9b3a-0b8351910fb0", "case": "test:topic:4", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "66afcd45-a16e-4740-93bb-3c43fa02d4e2", "case": "test:topic:5", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "66afcd45-a16e-4740-93bb-3c43fa02d4e2", "case": "test:topic:5", "stage": "answer", "latency_ms": 0.001, "tokens": 11}
+{"trace_id": "66afcd45-a16e-4740-93bb-3c43fa02d4e2", "case": "test:topic:5", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "607c9dcc-3f8f-444d-998b-1c60ec2d4a7e", "case": "test:topic:6", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "607c9dcc-3f8f-444d-998b-1c60ec2d4a7e", "case": "test:topic:6", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "607c9dcc-3f8f-444d-998b-1c60ec2d4a7e", "case": "test:topic:6", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "c2dbae67-e97b-4c4f-b023-951accdadda1", "case": "test:topic:7", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "c2dbae67-e97b-4c4f-b023-951accdadda1", "case": "test:topic:7", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "c2dbae67-e97b-4c4f-b023-951accdadda1", "case": "test:topic:7", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "f7b217af-4678-4bfe-89bf-b833af553f96", "case": "test:generation2:0", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "f7b217af-4678-4bfe-89bf-b833af553f96", "case": "test:generation2:0", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "f7b217af-4678-4bfe-89bf-b833af553f96", "case": "test:generation2:0", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "c7954a69-1d07-4053-b959-0be7d32f8c31", "case": "test:generation2:1", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "c7954a69-1d07-4053-b959-0be7d32f8c31", "case": "test:generation2:1", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "c7954a69-1d07-4053-b959-0be7d32f8c31", "case": "test:generation2:1", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "b4d32843-b719-4b28-91b4-87e66b4c10ab", "case": "test:generation2:2", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "b4d32843-b719-4b28-91b4-87e66b4c10ab", "case": "test:generation2:2", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "b4d32843-b719-4b28-91b4-87e66b4c10ab", "case": "test:generation2:2", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "6dd54152-d850-4a13-b95f-13431a9edb5d", "case": "test:generation2:3", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "6dd54152-d850-4a13-b95f-13431a9edb5d", "case": "test:generation2:3", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "6dd54152-d850-4a13-b95f-13431a9edb5d", "case": "test:generation2:3", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "bd3cdf54-27d8-4729-a443-b7bd4472befb", "case": "test:generation2:4", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "bd3cdf54-27d8-4729-a443-b7bd4472befb", "case": "test:generation2:4", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "bd3cdf54-27d8-4729-a443-b7bd4472befb", "case": "test:generation2:4", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "781c0c9d-1af8-4eec-97ba-bb6a38f544a4", "case": "test:generation2:5", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "781c0c9d-1af8-4eec-97ba-bb6a38f544a4", "case": "test:generation2:5", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "781c0c9d-1af8-4eec-97ba-bb6a38f544a4", "case": "test:generation2:5", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "77e34a20-f62f-4072-ae9b-f41a2d6bdf89", "case": "test:generation2:6", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "77e34a20-f62f-4072-ae9b-f41a2d6bdf89", "case": "test:generation2:6", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "77e34a20-f62f-4072-ae9b-f41a2d6bdf89", "case": "test:generation2:6", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "0ba2a550-9bd8-40f1-854d-ade457e67431", "case": "test:generation2:7", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "0ba2a550-9bd8-40f1-854d-ade457e67431", "case": "test:generation2:7", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "0ba2a550-9bd8-40f1-854d-ade457e67431", "case": "test:generation2:7", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "edc28c56-aadf-4cd6-9714-2258ca1fa134", "case": "test:ngu:0:0", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "edc28c56-aadf-4cd6-9714-2258ca1fa134", "case": "test:ngu:0:0", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "edc28c56-aadf-4cd6-9714-2258ca1fa134", "case": "test:ngu:0:0", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "60b6c1eb-4e23-47b0-bbf6-9d6de2a4649f", "case": "test:ngu:0:1", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "60b6c1eb-4e23-47b0-bbf6-9d6de2a4649f", "case": "test:ngu:0:1", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "60b6c1eb-4e23-47b0-bbf6-9d6de2a4649f", "case": "test:ngu:0:1", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "33cfcb83-5c55-492b-9366-bfd3220aa44d", "case": "test:ngu:0:2", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "33cfcb83-5c55-492b-9366-bfd3220aa44d", "case": "test:ngu:0:2", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "33cfcb83-5c55-492b-9366-bfd3220aa44d", "case": "test:ngu:0:2", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "da285c33-b4e4-4c55-b045-cddb9cda6509", "case": "test:ngu:0:3", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "da285c33-b4e4-4c55-b045-cddb9cda6509", "case": "test:ngu:0:3", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "da285c33-b4e4-4c55-b045-cddb9cda6509", "case": "test:ngu:0:3", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "3dd5827e-32fe-4ba4-a612-5ad7aeb6289b", "case": "test:ngu:0:4", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "3dd5827e-32fe-4ba4-a612-5ad7aeb6289b", "case": "test:ngu:0:4", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "3dd5827e-32fe-4ba4-a612-5ad7aeb6289b", "case": "test:ngu:0:4", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "eb9d6e26-ab15-4cf9-a091-ad273f99fda6", "case": "test:ngu:0:5", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "eb9d6e26-ab15-4cf9-a091-ad273f99fda6", "case": "test:ngu:0:5", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "eb9d6e26-ab15-4cf9-a091-ad273f99fda6", "case": "test:ngu:0:5", "stage": "publish", "latency_ms": 0.018, "frames_valid": true}
+{"trace_id": "01c12ad5-ff08-4c7e-945e-250414bd7169", "case": "test:ngu:0:6", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "01c12ad5-ff08-4c7e-945e-250414bd7169", "case": "test:ngu:0:6", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "01c12ad5-ff08-4c7e-945e-250414bd7169", "case": "test:ngu:0:6", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "5af08d07-f7c9-4e41-990a-60c69f447a60", "case": "test:ngu:0:7", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "5af08d07-f7c9-4e41-990a-60c69f447a60", "case": "test:ngu:0:7", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "5af08d07-f7c9-4e41-990a-60c69f447a60", "case": "test:ngu:0:7", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "f8a22a9c-d258-4f08-90ea-af3b6f32e091", "case": "test:ngu:1:0", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "f8a22a9c-d258-4f08-90ea-af3b6f32e091", "case": "test:ngu:1:0", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "f8a22a9c-d258-4f08-90ea-af3b6f32e091", "case": "test:ngu:1:0", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "c78d1e55-8c44-44ca-bee6-d316e9788d69", "case": "test:ngu:1:1", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "c78d1e55-8c44-44ca-bee6-d316e9788d69", "case": "test:ngu:1:1", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "c78d1e55-8c44-44ca-bee6-d316e9788d69", "case": "test:ngu:1:1", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "579cbe73-8b77-4423-a1c1-fdb6bb8a3cde", "case": "test:ngu:1:2", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "579cbe73-8b77-4423-a1c1-fdb6bb8a3cde", "case": "test:ngu:1:2", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "579cbe73-8b77-4423-a1c1-fdb6bb8a3cde", "case": "test:ngu:1:2", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "be662cf4-d580-417e-820c-57d3ce62292a", "case": "test:ngu:1:3", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "be662cf4-d580-417e-820c-57d3ce62292a", "case": "test:ngu:1:3", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "be662cf4-d580-417e-820c-57d3ce62292a", "case": "test:ngu:1:3", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "6e8e28d9-6dba-4f4c-99f1-f8391de27caf", "case": "test:ngu:1:4", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "6e8e28d9-6dba-4f4c-99f1-f8391de27caf", "case": "test:ngu:1:4", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "6e8e28d9-6dba-4f4c-99f1-f8391de27caf", "case": "test:ngu:1:4", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "49beb1fe-4af1-4704-b195-b270cbd15028", "case": "test:ngu:1:5", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "49beb1fe-4af1-4704-b195-b270cbd15028", "case": "test:ngu:1:5", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "49beb1fe-4af1-4704-b195-b270cbd15028", "case": "test:ngu:1:5", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "9e48feb0-2500-46a3-8173-baa097679f9e", "case": "test:ngu:1:6", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "9e48feb0-2500-46a3-8173-baa097679f9e", "case": "test:ngu:1:6", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "9e48feb0-2500-46a3-8173-baa097679f9e", "case": "test:ngu:1:6", "stage": "publish", "latency_ms": 0.012, "frames_valid": true}
+{"trace_id": "1c9e9c91-9440-4e49-92b5-d571d28c744c", "case": "test:ngu:1:7", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "1c9e9c91-9440-4e49-92b5-d571d28c744c", "case": "test:ngu:1:7", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "1c9e9c91-9440-4e49-92b5-d571d28c744c", "case": "test:ngu:1:7", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "195eaca2-a60d-407f-b775-94ca4200c33e", "case": "test:ngu:2:0", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "195eaca2-a60d-407f-b775-94ca4200c33e", "case": "test:ngu:2:0", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "195eaca2-a60d-407f-b775-94ca4200c33e", "case": "test:ngu:2:0", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "051f6d81-0b48-497b-86de-22bcfc957b68", "case": "test:ngu:2:1", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "051f6d81-0b48-497b-86de-22bcfc957b68", "case": "test:ngu:2:1", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "051f6d81-0b48-497b-86de-22bcfc957b68", "case": "test:ngu:2:1", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "b3f689f3-595c-4532-b500-0a214c3d7c41", "case": "test:ngu:2:2", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "b3f689f3-595c-4532-b500-0a214c3d7c41", "case": "test:ngu:2:2", "stage": "answer", "latency_ms": 0.0, "tokens": 13}
+{"trace_id": "b3f689f3-595c-4532-b500-0a214c3d7c41", "case": "test:ngu:2:2", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "bd96a22e-4504-476a-b18e-0bb942e100af", "case": "test:ngu:2:3", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "bd96a22e-4504-476a-b18e-0bb942e100af", "case": "test:ngu:2:3", "stage": "answer", "latency_ms": 0.0, "tokens": 11}
+{"trace_id": "bd96a22e-4504-476a-b18e-0bb942e100af", "case": "test:ngu:2:3", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "c44a1640-9a7d-4570-a04c-1041211e69da", "case": "test:ngu:2:4", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "c44a1640-9a7d-4570-a04c-1041211e69da", "case": "test:ngu:2:4", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "c44a1640-9a7d-4570-a04c-1041211e69da", "case": "test:ngu:2:4", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "71c2fbc5-f8c5-4c40-abbf-fee09c78d981", "case": "test:ngu:2:5", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "71c2fbc5-f8c5-4c40-abbf-fee09c78d981", "case": "test:ngu:2:5", "stage": "answer", "latency_ms": 0.0, "tokens": 9}
+{"trace_id": "71c2fbc5-f8c5-4c40-abbf-fee09c78d981", "case": "test:ngu:2:5", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "191927c6-8a40-4f52-b5e0-e9ce80276468", "case": "test:ngu:2:6", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "191927c6-8a40-4f52-b5e0-e9ce80276468", "case": "test:ngu:2:6", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "191927c6-8a40-4f52-b5e0-e9ce80276468", "case": "test:ngu:2:6", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}
+{"trace_id": "a92f8e14-2c43-4dee-a05b-8f6c502e0a44", "case": "test:ngu:2:7", "stage": "lookup", "latency_ms": -1, "parallel": true, "answered": true}
+{"trace_id": "a92f8e14-2c43-4dee-a05b-8f6c502e0a44", "case": "test:ngu:2:7", "stage": "answer", "latency_ms": 0.0, "tokens": 10}
+{"trace_id": "a92f8e14-2c43-4dee-a05b-8f6c502e0a44", "case": "test:ngu:2:7", "stage": "publish", "latency_ms": 0.011, "frames_valid": true}

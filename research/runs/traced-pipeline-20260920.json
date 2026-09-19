@@ -1,0 +1,43 @@
+{
+  "status": "completed",
+  "cases": 132,
+  "runs": [
+    {
+      "run": "cold",
+      "wall_s": 2.845,
+      "cache_hits": 0,
+      "reflex_frames_valid": 132,
+      "stage_p50_ms": {
+        "cache": 0.144,
+        "lookup": 20.512,
+        "answer": 0.0,
+        "publish": 0.019
+      },
+      "stage_p95_ms": {
+        "cache": 0.299,
+        "lookup": 20.768,
+        "answer": 0.001,
+        "publish": 0.031
+      }
+    },
+    {
+      "run": "parallel-lookups",
+      "wall_s": 1.012,
+      "cache_hits": 0,
+      "reflex_frames_valid": 132,
+      "stage_p50_ms": {
+        "cache": 0.062,
+        "lookup": 0.05,
+        "answer": 0.0,
+        "publish": 0.011
+      },
+      "stage_p95_ms": {
+        "cache": 0.081,
+        "lookup": 0.05,
+        "answer": 0.0,
+        "publish": 0.015
+      }
+    }
+  ],
+  "improvement_factor": 2.81
+}
