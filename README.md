@@ -31,6 +31,7 @@ raft-rs), `research/` (86+ Design- und Messdokumente, Benchmarks, Gate).
 **Design-Dokumente (Einstieg):**
 - `HANDOVER-20260917.md` — vollständiger Projektstand, Workflows, Server
 - `research/POD-ARM-DESIGN-20260919.md` — Pod-Arm-Architektur (Phasen P1–P5)
+- `research/POD-NERVENSYSTEM-DESIGN-20260920.md` — Mesh, native Protokoll-Sprache (MQTT/TCP ohne Tool-Use), Task-Graph
 - `research/DREAM-POD-DESIGN-20260920.md` — Dream-Pod (Dream-RSI-Adaption)
 - `research/ARCHITECTURE-VALIDATION-20260917.md` — Gate & Messwerte
 - `research/MULTIHOST-CLUSTER-20260917.md` — Multi-Host-Topologie
