@@ -21,8 +21,10 @@ def test_join_and_members(household):
 
 
 def test_allocation_requires_full_approval_and_respects_busy(household):
+    # 5 GiB VRAM: the first segment fills it, the second overflows to RAM —
+    # exercising the vram->ram tier preference chain.
     household.join("donor-1", "household-secret", ram_bytes=16_000_000_000,
-                   vram_bytes=24_000_000_000)
+                   vram_bytes=5_000_000_000)
     segments = [Segment("reader-adapter", 4_000_000_000),
                 Segment("raft-segment", 2_000_000_000)]
     request = household.request_allocation("reader-gen7", segments, ["donor-1"])
@@ -67,6 +69,6 @@ def test_approvals_are_provenance_events(household):
     request = household.request_allocation("m", [Segment("s", 1)], ["donor-1"])
     household.approve(request.request_id, "donor-1")
     events = [e for e in household.registry.events()
-              if e.get("kind") in ("allocation_request", "allocation_approved")]
-    kinds = [e["kind"] for e in events]
+              if e["action"] in ("allocation_request", "allocation_approved")]
+    kinds = [e["action"] for e in events]
     assert "allocation_request" in kinds and "allocation_approved" in kinds

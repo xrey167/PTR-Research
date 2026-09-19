@@ -229,13 +229,13 @@ class Registry:
         """List provenance events, newest first; optionally filter by action."""
         if action is not None:
             rows = self.db.execute(
-                "SELECT ts, action, payload FROM events WHERE action=? "
-                "ORDER BY rowid DESC LIMIT ?", (action, limit)).fetchall()
+                "SELECT seq, action, payload FROM events WHERE action=? "
+                "ORDER BY seq DESC LIMIT ?", (action, limit)).fetchall()
         else:
             rows = self.db.execute(
-                "SELECT ts, action, payload FROM events ORDER BY rowid DESC LIMIT ?",
+                "SELECT seq, action, payload FROM events ORDER BY seq DESC LIMIT ?",
                 (limit,)).fetchall()
-        return [{"ts": r[0], "action": r[1], "payload": json.loads(r[2])}
+        return [{"seq": r[0], "action": r[1], "payload": json.loads(r[2])}
                 for r in rows]
 
     def head(self, knowledge_key):

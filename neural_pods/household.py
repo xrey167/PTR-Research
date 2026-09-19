@@ -15,6 +15,7 @@ via the L1 Redis tier.
 """
 from __future__ import annotations
 import hashlib
+import json
 import threading
 import time
 from dataclasses import dataclass, field
@@ -156,28 +157,35 @@ class Household:
         if request.status != "approved":
             raise PermissionError("allocation not fully approved")
         plan = []
+        claimed: dict[str, int] = {}
         with self._lock:
+            # Place ALL segments first (a donor's remaining budget shrinks as
+            # segments of the SAME request claim it), then mark donors BUSY.
             for segment in request.segments:
                 placed = False
                 for pod_id in request.donors:
                     offer = self.offers[pod_id]
                     if offer.busy:
                         continue
-                    if segment.bytes_needed <= offer.vram_bytes and \
-                            "vram" in segment.tier_preference:
+                    used = claimed.get(pod_id, 0)
+                    if "vram" in segment.tier_preference and \
+                            used + segment.bytes_needed <= offer.vram_bytes:
+                        claimed[pod_id] = used + segment.bytes_needed
                         plan.append({"segment": segment.name, "pod": pod_id,
                                      "tier": "vram"})
-                        offer.busy, offer.busy_with = True, request_id
                         placed = True
                         break
-                    if segment.bytes_needed <= offer.ram_bytes:
+                    if used + segment.bytes_needed <= offer.ram_bytes:
+                        claimed[pod_id] = used + segment.bytes_needed
                         plan.append({"segment": segment.name, "pod": pod_id,
                                      "tier": "ram"})
-                        offer.busy, offer.busy_with = True, request_id
                         placed = True
                         break
                 if not placed:
                     raise RuntimeError(f"no donor fits segment {segment.name}")
+            for pod_id in {p["pod"] for p in plan}:
+                self.offers[pod_id].busy = True
+                self.offers[pod_id].busy_with = request_id
             self.reservations[request_id] = {"plan": plan,
                                              "started_at": time.time()}
             request.status = "started"
