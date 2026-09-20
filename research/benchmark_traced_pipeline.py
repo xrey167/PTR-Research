@@ -25,7 +25,18 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods.mesh import MeshEndpoint  # noqa: E402
 from neural_pods.mesh_cache import MeshCache  # noqa: E402
 from neural_pods.native_comm import parse_frames  # noqa: E402
+from research.evidence import write as write_evidence  # noqa: E402
 from research.train_reader import file_sha, load_bundle  # noqa: E402
+
+#: The modules these numbers are evidence ABOUT. research/evidence.py
+#: hashes them into the report, and the gate refuses the file once any
+#: of them changes: a measurement of code that no longer exists is not
+#: evidence, however carefully it was recorded.
+SUBJECT = [
+    "neural_pods/mesh.py",
+    "neural_pods/mesh_cache.py",
+    "neural_pods/native_comm.py",
+]
 
 BROKER = "10.50.0.121"
 REMOTE_DELAY_S = 0.02
@@ -182,7 +193,14 @@ def run_pipeline(endpoint, cache, rows, gen7_answers, tracer, run_name,
 
     return {"run": run_name, "wall_s": round(wall, 3),
             "cache_hits": cache_hits,
-            "reflex_frames_valid": reflex_valid,
+            "cases": len(rows),
+            # Renamed from `reflex_frames_valid`, which claimed far more than
+            # it measured: the frame is built here with json.dumps and parsed
+            # two lines later, so this count equals `cases` by construction.
+            # It says the serialiser and the parser agree. It says nothing
+            # about the reflex, and nothing about a model producing frames —
+            # that is research/benchmark_native_comm.py's exact_rate.
+            "serialised_frames_valid": reflex_valid,
             "stage_p50_ms": {k: percentile(v, 0.5) for k, v in stage_stats.items()},
             "stage_p95_ms": {k: percentile(v, 0.95) for k, v in stage_stats.items()}}
 
@@ -243,8 +261,8 @@ def main() -> None:
                   "runs": [run1, run2],
                   "improvement_factor": round(
                       run1["wall_s"] / max(run2["wall_s"], 1e-9), 2)}
-        Path(PROJECT / "research/runs/traced-pipeline-20260920.json").write_text(
-            json.dumps(result, indent=2), encoding="utf-8")
+        write_evidence(result, PROJECT / "research/runs/traced-pipeline-20260920.json",
+                       __file__, subject=SUBJECT)
         print(json.dumps(result, indent=2))
     finally:
         tracer.close()

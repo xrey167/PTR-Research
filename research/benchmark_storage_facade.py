@@ -27,6 +27,15 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods.storage import PodStorage  # noqa: E402
+from research.evidence import write as write_evidence  # noqa: E402
+
+#: The modules these numbers are evidence ABOUT. research/evidence.py
+#: hashes them into the report, and the gate refuses the file once any
+#: of them changes: a measurement of code that no longer exists is not
+#: evidence, however carefully it was recorded.
+SUBJECT = [
+    "neural_pods/storage.py",
+]
 
 OUT = Path(__file__).resolve().parent / "runs" / "storage-facade-20260920.json"
 DOCUMENTS = 200
@@ -207,8 +216,7 @@ def main() -> None:
                       "real Redis is measured by benchmark_redis_cache_tier.py"),
         }
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    write_evidence(result, OUT, __file__, subject=SUBJECT)
     print(json.dumps(result, indent=2))
 
 

@@ -236,8 +236,14 @@ Mesh-Event anstelle direktem Redis-Delete.
   verifiziert. P5: trainiertes Dialekt-Modell emittiert Pod-Adressen —
   **Reflex-Hit-Rate 1.0 (31/31)** vs. 0.0 untrainiert
   (`research/runs/reflex-trained-20260920.json`). P3: PerceptionStream,
-  2000/2000 Events lossless (~13.3k Events/s), Backpressure droppt sauber
-  (`research/runs/perception-20260920.json`).
+  2000/2000 Events lossless (~13.3k Events/s), Backpressure droppt sauber —
+  **Evidenz zurückgezogen.** Die Messung stammt von einem Drain-Loop, der
+  Events auch ohne Consumer als `consumed` zählte, und von einem `drain()`,
+  das eine leere Queue für Zustellung hielt. `research/runs/perception-
+  20260920.json` wurde deshalb entfernt statt weitergereicht; der Benchmark
+  (`research/benchmark_perception.py`) schreibt seit dem Pod-Audit über
+  `research.evidence.write()` und muss am Broker neu laufen. Kein Gate-Check
+  liest diese Datei, die Zahl trug also nie eine Zusicherung.
 - **Trace-Befund → Optimierung:** die sequenziellen Mesh-Lookups dominieren
   (20 ms Remote-Delay × 132). Optimierung: Batch-Async (alle Lookups sofort
   feuern, Replies parallel sammeln; Responder schläft NICHT im paho-Loop-

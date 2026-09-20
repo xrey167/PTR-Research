@@ -29,6 +29,7 @@ instead of assuming. Three properties matter:
 from __future__ import annotations
 import hashlib
 import json
+import time
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -63,9 +64,31 @@ class HistoryPool:
 
     def __init__(self):
         self.generations: list[dict[str, Any]] = []
+        self._max_order: int | None = None
 
     def add_generation(self, name: str, decisions: dict[str, Any],
-                       split: str, report: dict[str, Any], cases: list[dict]) -> None:
+                       split: str, report: dict[str, Any], cases: list[dict],
+                       *, order: int | None = None) -> None:
+        """Append one generation's outcome.
+
+        Safety rule 3 of the Dream-Pod design: the pool is append-only and a
+        policy is never fitted on future outcomes. The response coefficients
+        come from CONSECUTIVE pairs, so insertion order IS the time axis —
+        adding a generation out of order would silently make a later run
+        explain an earlier one. `order` makes that explicit and is refused
+        when it goes backwards; without it the call order is the order.
+        """
+        # Validate everything BEFORE touching state: a refused call that had
+        # already advanced `_max_order` would reject the next legitimate
+        # generation for occupying a position nothing ever took.
+        if any(existing["name"] == name for existing in self.generations):
+            raise ValueError(f"generation already in the pool: {name!r}")
+        if order is not None:
+            if self._max_order is not None and order <= self._max_order:
+                raise ValueError(
+                    f"generation {name!r} has order {order}, not after "
+                    f"{self._max_order}: the pool is append-only")
+            self._max_order = order
         cases_by_id = {c["id"]: c for c in cases}
         rows = report.get("rows", [])
         outcome = {family: [0, 0] for family in FAMILIES}
@@ -79,7 +102,7 @@ class HistoryPool:
         pool_hash = hashlib.sha256(json.dumps(decisions, sort_keys=True).encode()).hexdigest()[:12]
         self.generations.append({
             "name": name, "split": split, "decisions": decisions,
-            "levels": _levels(decisions),
+            "levels": _levels(decisions), "order": order,
             "outcome": {k: {"correct": v[0], "total": v[1],
                             "rate": v[0] / v[1] if v[1] else 0.0}
                         for k, v in outcome.items()},
@@ -111,7 +134,7 @@ class HistoryPool:
         ]
         search = [project_root / "research" / "runs", project_root / "runs"]
         skipped = []
-        for name, report_name, cases_name, decisions in known:
+        for order, (name, report_name, cases_name, decisions) in enumerate(known):
             report_file = next((d / report_name for d in search
                                 if (d / report_name).exists()), None)
             cases_file = next((d / cases_name for d in search
@@ -122,7 +145,7 @@ class HistoryPool:
             pool.add_generation(
                 name, decisions, split,
                 json.loads(report_file.read_text(encoding="utf-8")),
-                json.loads(cases_file.read_text(encoding="utf-8")))
+                json.loads(cases_file.read_text(encoding="utf-8")), order=order)
         if len(pool.generations) < 2:
             raise ValueError(
                 "history pool needs at least two generations to dream over; "
@@ -325,3 +348,123 @@ class ReplaySimulator:
                 "per_generation": per_generation,
             },
         }
+
+
+# --- Pod contract: provenance, autonomy budget ------------------------------
+#
+# The Dream-Pod design states three obligations the code did not meet: every
+# cycle is a provenance artifact with the pool hash, candidates and winner as
+# parents; cycles consume an autonomy quota visible in the event log; and the
+# replay is a CPU/RAM lease, not a free action. The first two live here (the
+# lease belongs to whoever runs the cycle, research/run_dream_cycle.py).
+
+DREAM_CYCLE_EVENT = "dream_cycle"
+
+
+def pool_fingerprint(pool: HistoryPool) -> str:
+    """Identity of the history a cycle dreamed over.
+
+    Covers the generations AND their outcomes, so a cycle recorded against
+    one pool cannot be confused with a cycle over the same names after a
+    generation was re-evaluated.
+    """
+    material = [{"name": generation["name"], "decisions": generation["decisions"],
+                 "outcome": generation["outcome"]}
+                for generation in pool.generations]
+    return hashlib.sha256(
+        json.dumps(material, sort_keys=True).encode()).hexdigest()[:16]
+
+
+class CycleBudget:
+    """Safety rule 4: self-directed cycles consume a visible quota.
+
+    The event log is the counter — there is no second place to keep in sync.
+    Events carry the registry's own clock, so the window is read off that
+    same clock and is not the caller's to assert: a registry constructed with
+    an injected clock (`Registry(path, clock=...)`, which tests and replays
+    do use) would otherwise write timestamps that fall outside every window
+    the budget computes from `time.time()`, and the quota would never bind.
+    """
+
+    def __init__(self, registry: Any, *, max_per_window: int = 8,
+                 window_s: float = 24 * 3600.0, clock: Any = None):
+        self.registry = registry
+        self.max_per_window = int(max_per_window)
+        self.window_s = float(window_s)
+        self.clock = clock or self._registry_clock
+
+    def _registry_clock(self) -> float:
+        """Seconds since the epoch on the same clock the events were stamped
+        with. Falls back to wall time for a registry without one."""
+        registry_clock = getattr(self.registry, "clock", None)
+        if registry_clock is None:
+            return time.time()
+        now = registry_clock()
+        return now.timestamp() if hasattr(now, "timestamp") else float(now)
+
+    def recent(self) -> list[dict[str, Any]]:
+        cutoff = self.clock() - self.window_s
+        return [event for event in self.registry.events(action=DREAM_CYCLE_EVENT)
+                if (event.get("ts") or 0.0) >= cutoff]
+
+    def used(self) -> int:
+        return len(self.recent())
+
+    def remaining(self) -> int:
+        return max(self.max_per_window - self.used(), 0)
+
+    def check(self) -> None:
+        """Raise before a cycle starts, not after it has spent the resources."""
+        if self.remaining() <= 0:
+            raise PermissionError(
+                f"dream cycle budget exhausted: {self.used()} cycles in the "
+                f"last {self.window_s / 3600:.0f}h, limit {self.max_per_window}")
+
+    def stats(self) -> dict[str, Any]:
+        return {"used": self.used(), "remaining": self.remaining(),
+                "max_per_window": self.max_per_window,
+                "window_hours": round(self.window_s / 3600, 2)}
+
+
+def record_cycle(registry: Any, *, pool: HistoryPool | None = None,
+                 ranked: list[dict[str, Any]] | None = None,
+                 winner: dict[str, Any] | None = None,
+                 backtest: dict[str, Any] | None = None,
+                 lease: dict[str, Any] | None = None,
+                 status: str = "completed",
+                 reason: str | None = None) -> dict[str, Any]:
+    """Write one dream cycle into the provenance log and return the payload.
+
+    Parents in the Dream-Pod design's sense: the pool the cycle read, every
+    candidate it considered, and the policy it picked. A cycle that is not in
+    the log cannot be rolled back or argued with later.
+
+    An ABORTED cycle is recorded too, with `status` saying so and whatever it
+    got as far as. That is not bookkeeping pedantry: `CycleBudget` counts these
+    events, so recording only the cycles that reached a winner would let every
+    failing run — which has already read the pool, run the backtest and dreamed
+    every candidate — repeat without ever spending quota. The quota bounds work
+    performed, not work that succeeded.
+    """
+    ranked = list(ranked or [])
+    backtest = backtest or {}
+    payload = {
+        "status": status,
+        "reason": reason,
+        "pool_fingerprint": pool_fingerprint(pool) if pool is not None else None,
+        "generations": ([generation["name"] for generation in pool.generations]
+                        if pool is not None else []),
+        "candidates": [entry["decisions"] for entry in ranked],
+        "winner": winner["decisions"] if winner else None,
+        "winner_estimable": winner.get("estimable") if winner else None,
+        "winner_extrapolates": (winner.get("extrapolates") or []) if winner else [],
+        "backtest_mode": backtest.get("mode"),
+        "out_of_sample_generations": backtest.get("out_of_sample", {}).get("generations"),
+        "out_of_sample_max_abs_error": backtest.get("out_of_sample", {}).get("max_abs_error"),
+        "in_sample_degenerate": backtest.get("in_sample", {}).get("degenerate"),
+        "lease": lease,
+        "at": time.time(),
+    }
+    with registry.transaction():
+        registry.record_event(DREAM_CYCLE_EVENT, payload)
+    return payload

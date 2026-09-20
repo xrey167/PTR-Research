@@ -70,7 +70,7 @@ LAYER_OF: dict[str, str] = {
 #: reaches these through PodStorage / MeshEndpoint.
 BACKEND_OWNERS: dict[str, set[str]] = {
     "lancedb": {"storage"},
-    "paho": {"mesh", "mesh_cache"},
+    "paho": {"mesh"},          # mesh_cache imported it for show only
     "psycopg": {"postgres_store", "replication"},
     "qdrant_client": {"routing", "semantic_routing"},
 }

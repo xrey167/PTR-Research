@@ -28,6 +28,22 @@ What that does and does not buy you:
 `secret` is optional so an existing deployment keeps working, but an endpoint
 that has one refuses everything unsigned — mixing signed and unsigned pods on
 one topic does not silently degrade to unsigned.
+
+HOP BUDGET AND DEADLINE TRAVEL WITH THE MESSAGE. `PodLink` has carried
+`hop_budget` and `deadline_ms` since the contract was written, and
+`PodLink.validate()` enforces both — but only for a call that goes through a
+PodLink object. Nothing of either reached the wire, so the moment a request
+crossed the mesh the budget it was supposed to be bounded by no longer
+existed: the receiving pod built a fresh link, with a fresh budget, and a
+loop of pods could pass work around forever while every individual hop
+validated. An envelope now carries `trace_id`, `hop_budget`, `deadline_ms`,
+`visited` and its ORIGINAL `ts_ms`, `forward()` is the only way to pass one
+on, and the receiving side drops an envelope whose budget is spent or whose
+deadline has passed (`hop_exhausted`, `expired_envelopes`).
+
+The original `ts_ms` is what makes the deadline mean anything: re-stamping it
+on each hop would give every hop the full deadline again, which is the same
+defect one level down.
 """
 from __future__ import annotations
 import hashlib
@@ -38,6 +54,40 @@ import time
 from typing import Any, Callable
 
 PROTOCOL_VERSION = 1
+
+
+def envelope_refusal(envelope: dict, *, pod_id: str, now_ms: float | None = None,
+                     forwarding: bool = False) -> str | None:
+    """Why this envelope must not be acted on, or None.
+
+    Pure and module level on purpose: the decision that bounds a message is
+    the one part of the mesh that has to be testable without a broker, and a
+    rule that can only be exercised against live MQTT is a rule nobody
+    exercises. `_on_message` and `forward` both defer to it, so the arriving
+    and the departing side cannot drift apart.
+
+    An envelope with no `hop_budget` and no `deadline_ms` is unbounded and
+    accepted on arrival — that is every message the system sent before the
+    bounds existed. Forwarding one is refused, because passing an unbounded
+    message further is precisely what creates the loop.
+    """
+    now_ms = time.time() * 1000 if now_ms is None else now_ms
+    budget = envelope.get("hop_budget")
+    visited = tuple(envelope.get("visited") or ())
+    deadline = envelope.get("deadline_ms")
+    started = envelope.get("ts_ms")
+
+    if deadline is not None and started is not None:
+        if now_ms > float(started) + float(deadline):
+            return "expired"
+    if budget is None:
+        return "unbounded" if forwarding else None
+    if forwarding and pod_id in visited:
+        return "cycle"
+    remaining = int(budget) - 1 if forwarding else int(budget)
+    if remaining <= 0:
+        return "hop_exhausted"
+    return None
 PRESENCE_PREFIX = "np/presence/"
 
 
@@ -68,6 +118,9 @@ class MeshEndpoint:
         self.unsigned_rejected = 0
         self.published = 0
         self.received = 0
+        self.hop_exhausted = 0
+        self.expired_envelopes = 0
+        self.forwarded = 0
         self._handlers: dict[str, Callable[[dict], None]] = {}
         self._lock = threading.RLock()
         # Unique client id: a reused pod_id must never collide with a zombie
@@ -133,11 +186,75 @@ class MeshEndpoint:
         self._client.disconnect()
 
     # --- messaging -------------------------------------------------------
-    def publish(self, channel: str, body: Any, *, target_pod: str | None = None) -> None:
+    def publish(self, channel: str, body: Any, *, target_pod: str | None = None,
+                link: Any = None, hop_budget: int | None = None,
+                deadline_ms: int | None = None,
+                trace_id: str | None = None) -> None:
+        """Publish one message, optionally under a link contract's bounds.
+
+        With `link` (a PodLink) the envelope carries that contract's trace id,
+        hop budget and deadline onto the wire, so the next pod inherits the
+        bounds instead of starting fresh ones. The three can also be given
+        directly for a caller that has no PodLink at hand.
+        """
         topic = f"np/{target_pod}/{channel}" if target_pod else f"np/{self.pod_id}/{channel}"
         if not self._topic_allowed(topic):
             raise MeshACLError(f"topic not allowed for {self.pod_id}: {topic}")
-        self._publish_raw(topic, {"body": body})
+        envelope: dict[str, Any] = {"body": body}
+        if link is not None:
+            hop_budget = hop_budget if hop_budget is not None else getattr(link, "hop_budget", None)
+            deadline_ms = deadline_ms if deadline_ms is not None else getattr(link, "deadline_ms", None)
+            trace_id = trace_id or getattr(link, "trace_id", None)
+            envelope["visited"] = list(getattr(link, "visited", ()) or ())
+        if hop_budget is not None:
+            envelope["hop_budget"] = int(hop_budget)
+            envelope.setdefault("visited", [])
+        if deadline_ms is not None:
+            envelope["deadline_ms"] = int(deadline_ms)
+        if trace_id is not None:
+            envelope["trace_id"] = trace_id
+        self._publish_raw(topic, envelope)
+
+    def forward(self, topic: str, envelope: dict[str, Any], *,
+                body: Any = None) -> bool:
+        """Pass a received envelope one hop further. False when refused.
+
+        The budget is spent HERE, and the original `ts_ms` is kept so the
+        deadline keeps counting from when the work was requested rather than
+        from the last hop. A pod that already appears in `visited` refuses:
+        that is a cycle, and a cycle with a budget is only a slower loop.
+        """
+        visited = list(envelope.get("visited") or ())
+        refusal = envelope_refusal(envelope, pod_id=self.pod_id, forwarding=True)
+        if refusal == "unbounded":
+            raise ValueError(
+                "cannot forward an envelope without a hop budget: forwarding "
+                "an unbounded message is what this method exists to prevent")
+        if refusal == "expired":
+            with self._lock:
+                self.expired_envelopes += 1
+            return False
+        if refusal is not None:
+            with self._lock:
+                self.hop_exhausted += 1
+            return False
+        budget = envelope["hop_budget"]
+        if not self._topic_allowed(topic):
+            raise MeshACLError(f"topic not allowed for {self.pod_id}: {topic}")
+        onward = {key: value for key, value in envelope.items()
+                  if key not in ("sig",)}
+        onward["hop_budget"] = int(budget) - 1
+        onward["visited"] = [*visited, self.pod_id]
+        if body is not None:
+            onward["body"] = body
+        # Everything else is re-stamped by _publish_raw EXCEPT ts_ms, which is
+        # already present and must stay at its original value.
+        onward["principal"] = self.principal
+        onward["manifest_hash"] = self.manifest_hash
+        self._publish_raw(topic, onward)
+        with self._lock:
+            self.forwarded += 1
+        return True
 
     def publish_raw(self, topic: str, body: Any, *, retain: bool = False) -> None:
         """Publish on an arbitrary np/ topic, BYPASSING this endpoint's topic
@@ -234,6 +351,19 @@ class MeshEndpoint:
             with self._lock:
                 self.bad_envelopes += 1
             return
+        # Bounds carried by the envelope are enforced on ARRIVAL, before any
+        # handler sees the message. A handler that answers is one more hop,
+        # so letting an out-of-budget or expired message through would make
+        # both bounds advisory.
+        refusal = envelope_refusal(envelope, pod_id=self.pod_id)
+        if refusal == "expired":
+            with self._lock:
+                self.expired_envelopes += 1
+            return
+        if refusal is not None:
+            with self._lock:
+                self.hop_exhausted += 1
+            return
         with self._lock:
             self.received += 1
             handlers = [(p, h) for p, h in self._handlers.items() if self._topic_matches(p, topic)]
@@ -265,4 +395,7 @@ class MeshEndpoint:
                     "signed": self.secret is not None,
                     "unsigned_rejected": self.unsigned_rejected,
                     "topic_acl_enforced_by": "client",
+                    "forwarded": self.forwarded,
+                    "hop_exhausted": self.hop_exhausted,
+                    "expired_envelopes": self.expired_envelopes,
                     "subscriptions": len(self._handlers)}

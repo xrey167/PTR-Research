@@ -2,6 +2,19 @@
 emits a pod address signal itself; the ReflexChannel resolves it via the
 TemporalPortPlane and dispatches. Compares against the static primary/
 fallback baseline (ensemble-hetero-20260919.json) on the frozen test split.
+
+WHAT THE 2026-09-19 RECORDING ACTUALLY SHOWED, and why this script now
+records more. Its channel stats were reflex_hits 0, reflex_misses 132,
+failovers 132: not one address signal resolved, and all 132 answers came
+from the default pod. The quality numbers (union_raw 126) therefore describe
+the FAILOVER path, not the reflex — and the gate passed it, because the
+check looked at neither the hit count nor the real error counter.
+
+Nothing in the recording said which step failed, so it could not be
+diagnosed after the fact. The raw selector output, the alias it was mapped
+to, and the per-reason miss counts are now part of the evidence. `errors`,
+a key that was initialised to zero and never incremented, is gone: the
+channel keeps that counter itself and it is reported from there.
 """
 import json
 import re
@@ -16,7 +29,19 @@ from neural_pods.reflex import ReflexChannel
 from neural_pods.vllm_router import VllmReplica, VllmReplicaRouter
 from research.reader_prompt import render_segments
 from research.reader_answer_guard import guarded_answer
+from research.evidence import write as write_evidence
 from research.train_reader import file_sha, load_bundle
+
+#: The modules these numbers are evidence ABOUT. research/evidence.py
+#: hashes them into the report, and the gate refuses the file once any
+#: of them changes: a measurement of code that no longer exists is not
+#: evidence, however carefully it was recorded.
+SUBJECT = [
+    "neural_pods/reflex.py",
+    "neural_pods/symlink.py",
+    "neural_pods/registry.py",
+    "neural_pods/vllm_router.py",
+]
 
 ALIASES = ["reader-gen5", "reader-gen6"]
 SELECTOR_SYSTEM = (
@@ -65,9 +90,13 @@ def main():
     channel = ReflexChannel(plane, dispatch, default_pod='pod:reader-gen5')
 
     started = time.perf_counter()
-    stats = {'n': 0, 'errors': 0, 'selected_gen5': 0, 'selected_gen6': 0,
+    stats = {'n': 0, 'selected_gen5': 0, 'selected_gen6': 0,
              'reflex_raw': 0, 'reflex_guarded': 0, 'union_raw': 0,
              'other_pod_correct': 0}
+    # Diagnosable next time: what the model emitted, what it was mapped to,
+    # and how often the mapping failed outright.
+    signal_samples: list[dict] = []
+    unmapped_signals = 0
     latencies = []
     for row in rows:
         # The main model emits its own address signal (in-band, no JSON).
@@ -78,8 +107,13 @@ def main():
             'messages': [{'role': 'system', 'content': SELECTOR_SYSTEM},
                          {'role': 'user', 'content': selector_prompt}],
             'max_tokens': 8, 'temperature': 0.0})
-        signal = chat['choices'][0]['message']['content'].strip().split()[0]
+        raw_signal = chat['choices'][0]['message']['content'].strip()
+        signal = raw_signal.split()[0] if raw_signal.split() else ''
         alias = next((a for a in ALIASES if a in signal), 'unknown-alias')
+        if alias == 'unknown-alias':
+            unmapped_signals += 1
+        if len(signal_samples) < 20:
+            signal_samples.append({'raw': raw_signal[:120], 'alias': alias})
 
         prefix_q, suffix_q = render_segments(tok_qwen, row)
         prefix_n, suffix_n = render_segments(tok_neo, row)
@@ -113,11 +147,16 @@ def main():
     stats['reflex_p50_ms'] = round(latencies[len(latencies) // 2], 2)
     stats['reflex_p99_ms'] = round(latencies[int(len(latencies) * 0.99)], 2)
     stats['channel_stats'] = channel.stats()
+    stats['unmapped_signals'] = unmapped_signals
+    stats['signal_samples'] = signal_samples
+    stats['answers_from_reflex'] = stats['channel_stats']['reflex_hits']
+    stats['answers_from_failover'] = stats['channel_stats']['failovers']
     stats['elapsed_s'] = round(time.perf_counter() - started, 1)
     result = {'status': 'completed', 'split': 'test',
               'baseline_union_raw': 126, 'metrics': stats}
-    Path('research/runs/reflex-dispatch-20260919.json').write_text(
-        json.dumps(result, indent=2), encoding='utf-8')
+    write_evidence(result,
+                   Path('research/runs/reflex-dispatch-20260919.json'),
+                   __file__, subject=SUBJECT)
     print(json.dumps(result, indent=2))
 
 

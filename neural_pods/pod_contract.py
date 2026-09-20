@@ -73,6 +73,16 @@ class PodLink:
     hop_budget: int = 3
     visited: tuple[str, ...] = ()
     attestation: str = ""
+    # What the linked pod may ADDRESS, as opposed to who may use the link.
+    # `acl` above is a principal allowlist; these three are the egress
+    # allowlist neural_pods/native_comm.py enforces. It used to say in its
+    # docstring that its EgressACL came "from the link contract" while the
+    # contract carried nothing of the kind and every ACL was hand-built at
+    # the call site, which is the same defect one level up: a statement whose
+    # subject did not exist.
+    egress_topics: tuple[str, ...] = ()
+    egress_hosts: tuple[str, ...] = ()
+    egress_ports: tuple[int, ...] = ()
 
     def validate(self, target: PodManifest, *, principal: str, now=None):
         if self.target_pod_id != target.pod_id or self.target_generation != target.generation:
@@ -99,10 +109,18 @@ class PodLink:
         return True
 
     def next_hop(self) -> "PodLink":
+        """The same link, one hop further along.
+
+        Every field is carried, the egress allowlist included: a hop that
+        dropped it would hand the next pod an unrestricted ACL, which is the
+        opposite of what a hop budget is for.
+        """
         return PodLink(self.trace_id, self.source_pod_id, self.target_pod_id,
                        self.target_generation, self.artifact_id, self.transport,
                        self.capability, self.acl, self.deadline_ms,
-                       self.hop_budget - 1, (*self.visited, self.source_pod_id), self.attestation)
+                       self.hop_budget - 1, (*self.visited, self.source_pod_id),
+                       self.attestation, self.egress_topics, self.egress_hosts,
+                       self.egress_ports)
 
 
 class LifecycleGate:

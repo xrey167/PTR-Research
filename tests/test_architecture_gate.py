@@ -4,6 +4,7 @@ The gate compares recorded numbers; these tests cover how it behaves when a
 recorded file is absent, which used to be indistinguishable from a threshold
 violation and in one case let a check pass with no evidence at all.
 """
+import json
 import shutil
 from pathlib import Path
 
@@ -159,3 +160,135 @@ def test_removing_an_evidence_file_reddens_exactly_the_checks_that_read_it(evide
             mismatches[filename] = {"went_red": sorted(newly_red),
                                     "reads_it": sorted(expected)}
     assert mismatches == {}
+
+
+# ---------------------------------------------------------------------------
+# The producer-stamp ratchet. Unstamped evidence fails the gate; the
+# grandfather set is the list of files recorded before research/evidence.py
+# existed. It is the last hand-kept list in the gate, so it gets the same
+# treatment as `baseline_of`: a test that fails when it drifts.
+
+
+def test_the_grandfather_set_only_names_files_that_are_actually_unstamped(evidence_dir):
+    """A name that stays in the set after its benchmark was re-run through
+    research.evidence.write() would silently exempt a file that no longer
+    needs exempting — and the next unstamped recording of it would pass."""
+    still_needed = []
+    for name in sorted(gate.UNSTAMPED_GRANDFATHERED):
+        path = evidence_dir / name
+        if not path.exists():
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if not data.get("producer"):
+            still_needed.append(name)
+    stamped_but_exempt = [
+        name for name in sorted(gate.UNSTAMPED_GRANDFATHERED)
+        if (evidence_dir / name).exists()
+        and json.loads((evidence_dir / name).read_text(encoding="utf-8")).get("producer")
+    ]
+    assert stamped_but_exempt == [], (
+        "these files carry a producer stamp and must be removed from "
+        "UNSTAMPED_GRANDFATHERED: " + ", ".join(stamped_but_exempt))
+    assert still_needed, "the grandfather set has gone empty - delete it"
+
+
+def test_unstamped_evidence_outside_the_grandfather_set_fails_the_gate(evidence_dir):
+    """The ratchet: the debt may be paid off, never taken on again."""
+    stamped = next(
+        path for path in evidence_dir.iterdir()
+        if path.suffix == ".json"
+        and path.name not in gate.UNSTAMPED_GRANDFATHERED
+        and json.loads(path.read_text(encoding="utf-8")).get("producer"))
+    backup = stamped.read_bytes()
+    data = json.loads(backup.decode("utf-8"))
+    data.pop("producer")
+    data.pop("producer_sha256", None)
+    stamped.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    try:
+        with pytest.raises(SystemExit) as failure:
+            gate.verify(evidence_dir / ARCHITECTURE)
+        assert "without a producer stamp" in str(failure.value)
+        assert stamped.name in str(failure.value)
+    finally:
+        stamped.write_bytes(backup)
+
+
+def test_every_evidence_file_the_gate_reads_goes_through_the_staleness_pass(evidence_dir):
+    """The staleness pass used to iterate a hand-kept 8-tuple while the gate
+    read 37 files, so 30 of them were exempt by omission. It now iterates
+    what `_read` registered, which cannot fall behind."""
+    try:
+        gate.verify(evidence_dir / ARCHITECTURE)
+    except SystemExit:
+        pass
+    registered = set(gate._LOADED)
+    dependencies = _evidence_dependencies()
+    read_by_a_check = {f for files in dependencies.values() for f in files
+                       if f.endswith(".json")}
+    assert read_by_a_check, "no JSON evidence is referenced by any check"
+    assert read_by_a_check <= registered, (
+        "read by a check but never registered for the staleness pass: "
+        + ", ".join(sorted(read_by_a_check - registered)))
+
+
+def test_changing_the_measured_code_makes_its_evidence_stale(evidence_dir, tmp_path):
+    """The drift the producer stamp could not see.
+
+    Evidence bound only to its producer stays green while the SYSTEM changes
+    underneath it. Measured before this existed: replacing any of seven core
+    modules with one that raises on import turned zero of forty-five checks
+    red. A file that names a `subject` now goes stale the moment that subject
+    does, which is the property the gate is supposed to have.
+    """
+    subject_file = REPO / "neural_pods" / "storage.py"
+    stamped = next(
+        path for path in evidence_dir.iterdir()
+        if path.suffix == ".json"
+        and json.loads(path.read_text(encoding="utf-8")).get("subject"))
+    data = json.loads(stamped.read_text(encoding="utf-8"))
+    assert str(subject_file.relative_to(REPO)) in data["subject"] or data["subject"]
+
+    # Not by editing the repository: by recomputing the stamp against a tree
+    # in which the measured module differs.
+    import evidence as evidence_module
+
+    original = data["subject_sha256"]
+    moved_on = dict(data)
+    fake_root = tmp_path / "tree"
+    for relative in data["subject"]:
+        target = fake_root / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("raise RuntimeError('gutted')\n", encoding="utf-8")
+    moved_on["subject_sha256"] = evidence_module.subject_sha256(
+        data["subject"], project_root=fake_root)
+    assert moved_on["subject_sha256"] != original
+
+    backup = stamped.read_bytes()
+    stamped.write_text(json.dumps(moved_on, indent=2), encoding="utf-8")
+    try:
+        with pytest.raises(SystemExit) as failure:
+            gate.verify(evidence_dir / ARCHITECTURE)
+        assert "the code it measured has changed" in str(failure.value)
+        assert stamped.name in str(failure.value)
+    finally:
+        stamped.write_bytes(backup)
+
+
+def test_evidence_that_names_no_subject_is_reported_not_hidden():
+    """A file bound to its producer alone is a known gap. It is named in the
+    gate's own output so it cannot quietly become the normal case again."""
+    try:
+        result = gate.verify(EVIDENCE / ARCHITECTURE)
+        reported = result["evidence_without_a_subject"]
+    except SystemExit:
+        # A red gate still has to have computed the list.
+        gate.verify_partial = None
+        reported = sorted(
+            name for name, data in gate._LOADED.items()
+            if data and data.get("producer") and not data.get("subject"))
+    assert isinstance(reported, list)
+    stamped_with_subject = sorted(
+        name for name, data in gate._LOADED.items()
+        if data and data.get("subject"))
+    assert stamped_with_subject, "no evidence file names its subject at all"
+    assert not set(reported) & set(stamped_with_subject)

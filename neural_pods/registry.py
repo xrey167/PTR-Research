@@ -66,6 +66,25 @@ class Registry:
         CREATE TABLE IF NOT EXISTS events(
             seq INTEGER PRIMARY KEY, action TEXT NOT NULL, payload TEXT NOT NULL);
         """)
+        # The event log had no time axis, so "how many self-directed cycles
+        # in the last day" - the autonomy budget every design document asks
+        # for - could not be answered from it. Added in place; older
+        # databases keep their rows and get NULL for events written before.
+        #
+        # Under the lock and inside an IMMEDIATE transaction: two processes
+        # opening the same file at once would otherwise both read a table
+        # without `ts` and the loser would get `duplicate column name`.
+        # SQLite's write lock makes that hard to hit, which is exactly why it
+        # would show up once, in production, and never in a test.
+        with self._lock:
+            self.db.execute("BEGIN IMMEDIATE")
+            try:
+                columns = {row[1] for row
+                           in self.db.execute("PRAGMA table_info(events)")}
+                if "ts" not in columns:
+                    self.db.execute("ALTER TABLE events ADD COLUMN ts REAL")
+            finally:
+                self.db.commit()
 
     def close(self):
         self.db.close()
@@ -99,8 +118,9 @@ class Registry:
         that carries the audit trail was the one marked private.
         """
         with self._lock:
-            self.db.execute("INSERT INTO events(action,payload) VALUES(?,?)",
-                            (action, canonical(payload)))
+            self.db.execute("INSERT INTO events(action,payload,ts) VALUES(?,?,?)",
+                            (action, canonical(payload),
+                             self.clock().timestamp()))
 
     # Internal callers predate record_event(); same function, one name.
     _event = record_event
@@ -263,14 +283,14 @@ class Registry:
         """List provenance events, newest first; optionally filter by action."""
         if action is not None:
             rows = self.db.execute(
-                "SELECT seq, action, payload FROM events WHERE action=? "
+                "SELECT seq, action, payload, ts FROM events WHERE action=? "
                 "ORDER BY seq DESC LIMIT ?", (action, limit)).fetchall()
         else:
             rows = self.db.execute(
-                "SELECT seq, action, payload FROM events ORDER BY seq DESC LIMIT ?",
+                "SELECT seq, action, payload, ts FROM events ORDER BY seq DESC LIMIT ?",
                 (limit,)).fetchall()
-        return [{"seq": r[0], "action": r[1], "payload": json.loads(r[2])}
-                for r in rows]
+        return [{"seq": r[0], "action": r[1], "payload": json.loads(r[2]),
+                 "ts": r[3]} for r in rows]
 
     def head(self, knowledge_key):
         row = self.db.execute("SELECT node_id FROM heads WHERE knowledge_key=?", (knowledge_key,)).fetchone()

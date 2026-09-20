@@ -1,6 +1,10 @@
 """P3 perception stream benchmark: emit 2000 synthetic detector events over
 the mesh (host endpoint -> consumer), measure throughput, lossless delivery
 at bounded queue, and backpressure behavior when the queue overflows.
+
+Neither stream sets `max_events_s`: this measures QUEUE backpressure, and
+the rate limiter (opt-in since the pod audit, previously a parameter that
+did nothing) would drop events for an unrelated reason and hide it.
 """
 import json
 import sys
@@ -11,6 +15,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods.mesh import MeshEndpoint  # noqa: E402
 from neural_pods.perception import PerceptionStream, synthetic_detector_event  # noqa: E402
+from research.evidence import write as write_evidence  # noqa: E402
+
+#: The modules these numbers are evidence ABOUT. research/evidence.py
+#: hashes them into the report, and the gate refuses the file once any
+#: of them changes: a measurement of code that no longer exists is not
+#: evidence, however carefully it was recorded.
+SUBJECT = [
+    "neural_pods/perception.py",
+    "neural_pods/mesh.py",
+]
 
 BROKER = "10.50.0.121"
 COUNT = 2000
@@ -18,7 +32,7 @@ COUNT = 2000
 
 def main() -> None:
     endpoint = MeshEndpoint(BROKER, "perception-host", manifest_hash="p-manifest")
-    stream = PerceptionStream(pod_id="vision-pod", max_queue=COUNT, max_events_s=5000)
+    stream = PerceptionStream(pod_id="vision-pod", max_queue=COUNT)
     mesh_received = []
     mesh_done = threading.Event()
 
@@ -37,7 +51,10 @@ def main() -> None:
     elapsed = time.perf_counter() - started
 
     # Backpressure: overflow a tiny queue, expect drops not deadlock.
-    tiny = PerceptionStream(pod_id="vision-tiny", max_queue=5, max_events_s=10)
+    # No consumer on purpose: with nothing draining, the queue fills and the
+    # overflow is deterministic. The drain thread used to pop events even
+    # without a consumer, which made this race-dependent.
+    tiny = PerceptionStream(pod_id="vision-tiny", max_queue=5)
     time.sleep(0.5)
     drop_result = [tiny.emit(synthetic_detector_event(i)) for i in range(50)]
     dropped = drop_result.count("dropped")
@@ -50,10 +67,10 @@ def main() -> None:
         "elapsed_s": round(elapsed, 2),
         "stream_stats": stream.stats(),
         "backpressure": {"dropped": dropped, "no_deadlock": dropped == 45,
-                         "queue_cap_respected": tiny.stats()["queued"] <= 5},
+                         "queue_cap_respected": tiny.stats()["queued"] <= 5,
+                         "rate_dropped": tiny.stats()["rate_dropped"]},
     }
-    Path("research/runs/perception-20260920.json").write_text(
-        json.dumps(result, indent=2), encoding="utf-8")
+    write_evidence(result, Path("research/runs/perception-20260920.json"), __file__, subject=SUBJECT)
     print(json.dumps(result, indent=2))
     endpoint.close()
     stream.close()

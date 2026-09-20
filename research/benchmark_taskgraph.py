@@ -25,6 +25,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods.mesh import MeshEndpoint  # noqa: E402
 from neural_pods.taskgraph import TaskGraph, TaskNode  # noqa: E402
+from research.evidence import write as write_evidence  # noqa: E402
+
+#: The modules these numbers are evidence ABOUT. research/evidence.py
+#: hashes them into the report, and the gate refuses the file once any
+#: of them changes: a measurement of code that no longer exists is not
+#: evidence, however carefully it was recorded.
+SUBJECT = [
+    "neural_pods/taskgraph.py",
+    "neural_pods/mesh.py",
+]
 
 BROKER = "10.50.0.121"
 REMOTE_DELAY_S = 0.1
@@ -94,8 +104,8 @@ def main() -> None:
         result["dag_delay_bound_s"] = round(2 * REMOTE_DELAY_S, 3)
         result["wall_within_bound"] = result["wall_s"] <= 2.0 * result["dag_delay_bound_s"]
         result["results"] = {k: asdict(v) | {"output": v.output} for k, v in result["results"].items()}
-        Path("research/runs/taskgraph-20260920.json").write_text(
-            json.dumps(result, indent=2, default=str), encoding="utf-8")
+        write_evidence(result, Path("research/runs/taskgraph-20260920.json"),
+                       __file__, subject=SUBJECT, default=str)
         print(json.dumps({"wall_s": result["wall_s"],
                           "dag_delay_bound_s": result["dag_delay_bound_s"],
                           "wall_within_bound": result["wall_within_bound"],

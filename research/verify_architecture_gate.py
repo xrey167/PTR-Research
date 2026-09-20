@@ -22,7 +22,60 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods import architecture  # noqa: E402
+from evidence import script_sha256, subject_sha256  # noqa: E402
 from record_test_run import run_pytest, source_fingerprint  # noqa: E402
+
+
+RESEARCH = Path(__file__).resolve().parent
+
+#: Evidence files loaded during the current verify() call, name -> parsed
+#: JSON. Filled by _read() so the staleness pass below covers EVERY file the
+#: gate reads instead of a hand-kept tuple that fell 30 files behind. The one
+#: list a person still maintains is the grandfather set.
+_LOADED: dict[str, dict] = {}
+
+#: Evidence recorded before research/evidence.py existed (2026-09-20) and not
+#: reproducible without the server. Unstamped evidence normally FAILS the
+#: gate — a file whose producer cannot be identified is not evidence — and
+#: this set is the ratchet that lets the existing debt be paid off without
+#: the gate being permanently red in the meantime. It may only ever shrink:
+#: tests/test_architecture_gate.py fails if a name in here is now stamped, or
+#: if a file outside it is unstamped. Remove a name by re-running its
+#: benchmark through research.evidence.write().
+UNSTAMPED_GRANDFATHERED = frozenset({
+    "adaptive-batcher-20260917.json",
+    "dream-cycle-20260920.json",
+    "ensemble-20260919.json",
+    "ensemble-hetero-20260919.json",
+    "grpc-vs-tcp-20260919.json",
+    "mesh-cache-20260920.json",
+    "mesh-e2e-20260920.json",
+    "mesh-presence-20260920.json",
+    "native-comm-eval-20260920-report.json",
+    "native-tcp-cross-20260920.json",
+    "postgres-quorum-20260917.json",
+    "postgres-quorum-multihost-20260919.json",
+    "qwen3b-eval-dev-adapter-20260917-report.json",
+    "qwen3b-eval-dev-base-20260917-report.json",
+    "qwen3b-eval-dev-gen4-adapter-20260917-report.json",
+    "qwen3b-eval-dev-gen5-20260919-report.json",
+    "qwen3b-eval-dev-gen6-20260919-report.json",
+    "qwen3b-eval-test-adapter-20260917-report.json",
+    "qwen3b-eval-test-base-20260917-report.json",
+    "qwen3b-eval-test-gen4-adapter-20260917-report.json",
+    "qwen3b-eval-test-gen5-20260919-report.json",
+    "qwen3b-eval-test-gen6-20260919-report.json",
+    "qwen3b-eval-test-gen7-20260920-report.json",
+    "raft-multihost-20260917.json",
+    "reader-holdout-manifest-20260920.json",
+    "redis-cache-20260919.json",
+    "reflex-dispatch-20260919.json",
+    "taskgraph-20260920.json",
+    "tests-20260920.json",
+    "traced-pipeline-20260920.json",
+    "vllm-router-lan-20260917.json",
+    "vllm-router-lan-failover-20260917.json",
+})
 
 
 def _search_dirs(path: str | Path) -> list[Path]:
@@ -39,12 +92,56 @@ def _find(name: str, dirs: list[Path]) -> Path | None:
 
 
 def _read(name: str, dirs: list[Path], missing: list[str]) -> dict:
-    """Parsed JSON evidence, or {} when the file exists nowhere."""
+    """Parsed JSON evidence, or {} when the file exists nowhere.
+
+    Every file read here is registered in `_LOADED`, which is what the
+    producer-staleness pass iterates. Registering at the point of reading is
+    the whole point: a new check cannot acquire evidence that escapes the
+    staleness pass by someone forgetting to add it to a second list.
+    """
     found = _find(name, dirs)
     if found is None:
         missing.append(name)
+        _LOADED[name] = {}
         return {}
-    return json.loads(found.read_text(encoding="utf-8"))
+    data = json.loads(found.read_text(encoding="utf-8"))
+    _LOADED[name] = data
+    return data
+
+
+def _producer_status(name: str, data: dict) -> tuple[str | None, str | None]:
+    """(stale, unstamped) for one evidence file.
+
+    TWO drifts, both fail-closed.
+
+    The producer drift: a benchmark is edited while its recorded output stays
+    behind, and research/runs/ holds numbers the repository can no longer
+    produce — the defect the 2026-09-20 review found in the frozen evaluation
+    splits and which this gate then reproduced for taskgraph and
+    traced-pipeline.
+
+    The subject drift, which is the wider one: the SYSTEM changes while the
+    benchmark does not. Before `subject_sha256`, gutting any of seven core
+    modules turned not one check red, because no evidence was bound to the
+    code it was evidence about. A file that names a subject is now checked
+    against that subject's current bytes.
+    """
+    producer = data.get("producer")
+    if not data:
+        return None, None
+    if not producer:
+        return None, name
+    script = RESEARCH / producer
+    if not script.exists():
+        return f"{name}: its producer {producer} no longer exists", None
+    if data.get("producer_sha256") != script_sha256(script):
+        return (f"{name}: {producer} has changed since this was recorded - "
+                "re-run it"), None
+    subject = data.get("subject")
+    if subject and data.get("subject_sha256") != subject_sha256(subject):
+        return (f"{name}: the code it measured has changed since this was "
+                f"recorded ({', '.join(subject)}) - re-run {producer}"), None
+    return None, None
 
 
 def _read_lines(name: str, dirs: list[Path], missing: list[str]) -> list[dict]:
@@ -103,6 +200,7 @@ def _dream_backtest_ok(backtest: dict) -> bool:
 def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-20260917.json",
            *, run_tests: bool = False) -> dict:
     dirs = _search_dirs(path)
+    _LOADED.clear()
     missing: list[str] = []
     # Evidence recorded before 2026-09-20 carries older shapes that several
     # checks still accept. Which ones took that path is reported rather than
@@ -145,7 +243,11 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     dream = _read("dream-cycle-20260920.json", dirs, missing)
     dream_ev = _read("qwen3b-eval-test-gen7-20260920-report.json", dirs, missing)
     holdout = _read("reader-holdout-manifest-20260920.json", dirs, missing)
+    dream_reflex = _read("dream-reflex-20260920.json", dirs, missing)
     storage = _read("storage-facade-20260920.json", dirs, missing)
+    stale_evidence: list[str] = []
+    unstamped_evidence: list[str] = []
+
     # Static analysis, not recorded evidence: it costs milliseconds and it
     # describes the tree as it is right now, so there is nothing to record.
     layering = architecture.check()
@@ -218,7 +320,23 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and redis_cache.get("lru_redis", {}).get("hot_p99_ms", 99) < 2.0,
         "grpc_transport_decision": grpc_cmp.get("tcp", {}).get("req_per_s", 0) > 10000
             and grpc_cmp.get("grpc_unary", {}).get("p50_ms", 0) > grpc_cmp.get("tcp", {}).get("p50_ms", 1) * 3,
-        "reflex_dispatch": reflex.get("status") == "completed" and reflex.get("metrics", {}).get("errors") == 0
+        # Three corrections to this check, all of the same kind.
+        #
+        # 1. It read metrics.errors, a key the benchmark initialises to 0 and
+        #    never increments. The clause was trivially true. ReflexChannel
+        #    counts errors itself, so channel_stats.errors is the real one.
+        # 2. It never looked at whether the reflex RESOLVED anything. The
+        #    recorded 2026-09-19 evidence says reflex_hits 0, reflex_misses
+        #    132, failovers 132: every answer came from the default pod, the
+        #    binding this phase exists to demonstrate carried nothing, and the
+        #    check was green. `reflex_hits > 0` is the minimum a check named
+        #    "reflex_dispatch" has to assert.
+        # 3. failovers == reflex_misses was the whole safety statement while
+        #    reflex_misses could be 132 out of 132. It stays, as the retract
+        #    invariant, but it is no longer the only thing asserted.
+        "reflex_dispatch": reflex.get("status") == "completed"
+            and reflex.get("metrics", {}).get("channel_stats", {}).get("errors") == 0
+            and reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_hits", 0) > 0
             and reflex.get("metrics", {}).get("union_raw", 0) >= reflex.get("baseline_union_raw", 999)
             and reflex.get("metrics", {}).get("channel_stats", {}).get("failovers") == reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_misses"),
         # `estimable is not False` also accepts legacy evidence, which has no
@@ -230,9 +348,28 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "gen7_dream_validated": dream_ev.get("status") == "completed" and dream_ev.get("reader_unchanged") is True
             and dream_ev.get("exact_target_matches", 0) >= 125
             and dream_ev.get("guarded_exact_target_matches", 0) >= 92,
+        # D3 of the Dream-Pod design counted as done with no check behind it.
+        # This one covers the binding, not the policy: the alias resolves, the
+        # dream pod answers deterministically, a miss retracts to the default
+        # pod, and resolution stays under the Pod-Arm latency target.
+        # pool_source is checked, not just recorded: the benchmark falls back
+        # to a two-generation synthetic pool in a checkout without the
+        # generation reports, and a latency measured over that says nothing
+        # about the real one. The producer hash cannot catch it — same script,
+        # different input.
+        "dream_reflex": dream_reflex.get("status") == "completed"
+            and str(dream_reflex.get("pool_source", "")).startswith("recorded")
+            and dream_reflex.get("miss_retracted_to_default") is True
+            and dream_reflex.get("winner_deterministic") is True
+            and dream_reflex.get("resolve_within_target") is True
+            and dream_reflex.get("reflex", {}).get("all_misses_covered") is True
+            and dream_reflex.get("reflex", {}).get("errors") == 0,
         "mesh_presence": mesh.get("discovery", {}).get("discovered") is True
             and mesh.get("rounds_ok", 0) == 100
-            and (mesh.get("rtt_p50_ms") or 999) < 10.0,
+            # `or 999` here would have turned a legitimate 0.0 into a
+            # failure: only a MISSING measurement may fail this clause.
+            and mesh.get("rtt_p50_ms") is not None
+            and mesh["rtt_p50_ms"] < 10.0,
         # frames_valid_rate only says the dialect parses; exact_rate says it
         # emitted the RIGHT frame. The measured 0.55 had no threshold at all,
         # so a model that produced well-formed nonsense scored 1.0 here.
@@ -275,9 +412,17 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "taskgraph_parallel": tg.get("correct") is True
             and len(tg.get("results", {})) == 6
             and _taskgraph_ok(tg, legacy),
+        # `principal_isolated` used to be the third condition. The benchmark
+        # produced it by reading a principal nothing had ever been written
+        # under, so it was true by construction — while the same script read
+        # another principal's entry across the node boundary two lines
+        # earlier. What is checkable is the client-side refusal; that the
+        # entries themselves are reachable with the Redis credential is
+        # recorded as a fact, not asserted away.
         "mesh_cache": mc.get("status") == "completed"
             and mc.get("cross_node_read") is True
-            and mc.get("principal_isolated") is True
+            and mc.get("cross_principal_refused_by_client") is True
+            and mc.get("isolation") == "client-side key derivation"
             and mc.get("invalidation_works") is True,
         "mesh_e2e": e2e.get("status") == "completed"
             and e2e.get("acks_received") == 20
@@ -286,9 +431,19 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "native_tcp_cross_node": tcp.get("status") == "completed"
             and tcp.get("integrity_ok") == 30
             and tcp.get("acl_blocked_forbidden") is True,
+        # `reflex_frames_valid` was neither about the reflex nor a test: the
+        # benchmark builds the frame with an f-string over json.dumps and then
+        # parses its own output, so the count equalled the case count by
+        # construction. It is now recorded under the name of what it actually
+        # checks — that the SERIALISER produces frames the parser accepts —
+        # and read under that name here. Whether the MODEL can produce them is
+        # what native_protocol measures (exact_rate 0.55), and nothing in this
+        # check may be read as saying anything about that.
         "traced_pipeline": tp.get("status") == "completed"
             and (tp.get("improvement_factor") or 0) >= 2.0
-            and all(r["reflex_frames_valid"] == 132 for r in tp.get("runs", [])),
+            and all(r.get("serialised_frames_valid",
+                          r.get("reflex_frames_valid")) == r.get("cases", 132)
+                    for r in tp.get("runs", [])),
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),
         "lora_ab_gen4": gen4_adapter.get("status") == "completed" and gen4_adapter.get("reader_unchanged") is True
@@ -305,6 +460,16 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and gen5_dev_adapter.get("guarded_exact_target_matches", 0) >= gen4_dev_adapter.get("guarded_exact_target_matches", 0),
     }
     missing = sorted(set(missing))
+    # Producer staleness over EVERY file this call read, in load order made
+    # deterministic by sorting. JSONL evidence is exempt because a
+    # line-oriented file carries no place to put a stamp; that is recorded in
+    # the docstring of _read_lines rather than silently assumed.
+    for _name in sorted(_LOADED):
+        _stale, _unstamped = _producer_status(_name, _LOADED[_name])
+        if _stale:
+            stale_evidence.append(_stale)
+        if _unstamped and _unstamped not in UNSTAMPED_GRANDFATHERED:
+            unstamped_evidence.append(_unstamped)
     # Comparative checks need BOTH sides present. With the baseline absent,
     # `>= baseline.get(field, 0)` is trivially true, so the check would pass
     # on no evidence at all - gen6_promoted_dev did exactly that once the
@@ -322,11 +487,26 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         if baseline in missing:
             checks[check_name] = False
     failed = [name for name, ok in checks.items() if not ok]
-    if failed:
-        report = ["architecture gate failed: " + ", ".join(failed)]
+    # Unstamped evidence fails. It used to be reported only when something
+    # else was already red, which made the report cosmetic: a file nobody can
+    # tie to a producing script is not evidence, whatever it says.
+    if failed or stale_evidence or unstamped_evidence:
+        report = []
+        if failed:
+            report.append("architecture gate failed: " + ", ".join(failed))
+        if stale_evidence:
+            # Fail-closed: evidence whose producer moved on is not evidence.
+            report.append("stale evidence: " + "; ".join(stale_evidence))
         if layering["violations"]:
             report.append("architecture violations: "
                           + json.dumps(layering["violations"]))
+        if unstamped_evidence:
+            report.append(
+                "evidence without a producer stamp (cannot be checked against "
+                "the code that made it, re-run through research/evidence.write; "
+                "pre-2026-09-20 files are listed in UNSTAMPED_GRANDFATHERED "
+                "and are exempt until re-recorded): "
+                + ", ".join(unstamped_evidence))
         if legacy:
             report.append("legacy evidence accepted: " + "; ".join(legacy))
         if missing:
@@ -341,6 +521,18 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         raise SystemExit("\n".join(report))
     return {"ok": True, "checks": checks, "missing_evidence": missing,
             "legacy_evidence": legacy,
+            "unstamped_evidence": unstamped_evidence,
+            "evidence_files_read": len(_LOADED),
+            # An evidence file with no `subject` is bound to its producer
+            # only: editing the module it measures leaves it green. Named so
+            # the gap is a known quantity rather than an invisible one.
+            "evidence_without_a_subject": sorted(
+                name for name, data in _LOADED.items()
+                if data and data.get("producer") and not data.get("subject")),
+            "unstamped_grandfathered": sorted(
+                name for name in _LOADED
+                if name in UNSTAMPED_GRANDFATHERED
+                and _LOADED[name] and not _LOADED[name].get("producer")),
             "layering": {"modules": layering["modules"],
                          "runtime_edges": layering["runtime_edges"]},
             "tests_evidence": ("executed now" if run_tests else

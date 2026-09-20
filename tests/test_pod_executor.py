@@ -75,3 +75,88 @@ def test_predict_gate_shape(model_path):
     outputs = {json.dumps(executor.infer(payload), sort_keys=True) for _ in range(5)}
     assert len(outputs) == 1
     executor.release()
+
+
+# --- regression tests for the P2 defects found in the pod audit ------------
+
+
+def test_reactivating_a_pod_id_does_not_leak_the_budget():
+    """The entry was overwritten and the first executor's bytes were never
+    given back: the budget shrank with every restart."""
+    factory = ExecutorFactory()
+    factory.register("dummy", lambda: PodExecutor(ram_bytes=100))
+    pool = GovernedExecutorPool(factory, budget_bytes=250)
+
+    pool.activate("pod-1", "dummy")
+    with pytest.raises(RuntimeError, match="already active"):
+        pool.activate("pod-1", "dummy")
+    assert pool.stats()["used_bytes"] == 100
+
+    pool.release("pod-1")
+    assert pool.stats()["used_bytes"] == 0
+    pool.activate("pod-1", "dummy")            # restart is fine after release
+    assert pool.stats()["used_bytes"] == 100
+
+
+def test_releasing_an_already_released_executor_does_not_raise():
+    """release() read executor.lease.amount_bytes, so an executor that had
+    been released directly made the pool raise AttributeError and stranded
+    its bytes."""
+    factory = ExecutorFactory()
+    factory.register("dummy", lambda: PodExecutor(ram_bytes=100))
+    pool = GovernedExecutorPool(factory, budget_bytes=250)
+
+    executor = pool.activate("pod-1", "dummy")
+    executor.release()                          # released out from under the pool
+    pool.release("pod-1")
+    assert pool.stats()["used_bytes"] == 0
+    pool.release("pod-1")                       # idempotent
+    assert pool.stats()["used_bytes"] == 0
+
+
+def test_the_pool_admits_through_a_resource_governor_when_given_one():
+    """Pod-Arm-Design says the ResourceGovernor docks on here; the pool used
+    to keep a second, independent byte counter instead."""
+    from neural_pods.resource_runtime import ResourceBudget, ResourceGovernor
+
+    governor = ResourceGovernor(
+        ResourceBudget(ram_bytes=250, vram_bytes={}, disk_bytes=None))
+    factory = ExecutorFactory()
+    factory.register("dummy", lambda: PodExecutor(ram_bytes=100))
+    pool = GovernedExecutorPool(factory, governor=governor)
+
+    pool.activate("pod-1", "dummy")
+    pool.activate("pod-2", "dummy")
+    assert pool.stats()["governed"] is True
+    with pytest.raises(RuntimeError, match="budget exhausted"):
+        pool.activate("pod-3", "dummy")        # the governor refuses, not the pool
+
+    pool.release("pod-1")
+    pool.activate("pod-3", "dummy")            # the governor got its bytes back
+
+
+def test_a_pool_without_budget_or_governor_is_rejected():
+    with pytest.raises(ValueError, match="governor or a budget_bytes"):
+        GovernedExecutorPool(ExecutorFactory())
+
+
+def test_inference_counter_survives_concurrent_calls():
+    """`with threading.Lock():` built a fresh lock per call and guarded
+    nothing."""
+    import threading
+
+    class Counting(PodExecutor):
+        runtime = "counting"
+
+        def _infer(self, payload):
+            return {"ok": True}
+
+    executor = Counting(ram_bytes=1)
+    executor.activate()
+    threads = [threading.Thread(target=lambda: [executor.infer({}) for _ in range(50)])
+               for _ in range(8)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    assert executor.stats()["inferences"] == 400

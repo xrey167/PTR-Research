@@ -1,7 +1,12 @@
 import json
+import time
 from pathlib import Path
 
-from neural_pods.dream import HistoryPool, ReplaySimulator
+import pytest
+
+from neural_pods.dream import (DREAM_CYCLE_EVENT, CycleBudget, HistoryPool,
+                               ReplaySimulator, pool_fingerprint, record_cycle)
+from neural_pods.registry import Registry
 
 
 def _report(rows):
@@ -183,3 +188,166 @@ def test_from_project_raises_without_history():
         raise AssertionError("expected ValueError")
     except ValueError as error:
         assert "at least two generations" in str(error)
+
+
+# --- the pod contract from DREAM-POD-DESIGN, which the code did not meet ---
+
+
+def _pool_with(*names):
+    pool = HistoryPool()
+    cases = _cases()
+    for index, name in enumerate(names):
+        pool.add_generation(name, {"concept_oversample": index}, "test",
+                            _report([("test:topic:0", 1)]), cases, order=index)
+    return pool
+
+
+def test_pool_refuses_a_generation_out_of_order():
+    """Safety rule 3: the pool is append-only and a policy is never fitted on
+    future outcomes. The coefficients come from CONSECUTIVE pairs, so
+    insertion order is the time axis."""
+    pool = _pool_with("gen1", "gen2")
+    with pytest.raises(ValueError, match="append-only"):
+        pool.add_generation("gen0", {"concept_oversample": 9}, "test",
+                            _report([("test:topic:0", 1)]), _cases(), order=0)
+
+
+def test_pool_refuses_a_duplicate_generation():
+    pool = _pool_with("gen1")
+    with pytest.raises(ValueError, match="already in the pool"):
+        pool.add_generation("gen1", {}, "test", _report([]), _cases())
+
+
+def test_cycle_budget_counts_the_event_log_and_blocks_when_spent():
+    """Safety rule 4: self-directed cycles consume a quota visible in the
+    event log. The log is the counter — there is no second place."""
+    registry = Registry(":memory:")
+    budget = CycleBudget(registry, max_per_window=2)
+    assert budget.stats() == {"used": 0, "remaining": 2, "max_per_window": 2,
+                              "window_hours": 24.0}
+    for _ in range(2):
+        with registry.transaction():
+            registry.record_event(DREAM_CYCLE_EVENT, {"probe": True})
+    assert budget.used() == 2 and budget.remaining() == 0
+    with pytest.raises(PermissionError, match="budget exhausted"):
+        budget.check()
+
+
+def test_cycle_budget_ignores_events_outside_the_window():
+    registry = Registry(":memory:")
+    with registry.transaction():
+        registry.record_event(DREAM_CYCLE_EVENT, {"probe": True})
+    future = time.time() + 48 * 3600
+    budget = CycleBudget(registry, max_per_window=1, clock=lambda: future)
+    assert budget.used() == 0
+    budget.check()                      # the old cycle no longer counts
+
+
+def test_a_cycle_is_written_into_the_provenance_log():
+    """Pod contract: every cycle is an artifact carrying the pool it read,
+    the candidates it weighed and the policy it picked."""
+    registry = Registry(":memory:")
+    pool = _pool_with("gen1", "gen2")
+    sim = ReplaySimulator(pool)
+    ranked = sim.dream([{"concept_oversample": 1}], allow_extrapolation=True)
+    payload = record_cycle(registry, pool=pool, ranked=ranked, winner=ranked[0],
+                           backtest=sim.backtest(),
+                           lease={"tier": "ram", "amount_bytes": 1024})
+
+    events = registry.events(action=DREAM_CYCLE_EVENT)
+    assert len(events) == 1
+    recorded = events[0]["payload"]
+    assert recorded["generations"] == ["gen1", "gen2"]
+    assert recorded["candidates"] == [{"concept_oversample": 1}]
+    assert recorded["winner"] == ranked[0]["decisions"]
+    assert recorded["lease"] == {"tier": "ram", "amount_bytes": 1024}
+    assert recorded["backtest_mode"] == "leave_one_generation_out"
+    assert recorded["pool_fingerprint"] == payload["pool_fingerprint"]
+    assert events[0]["ts"] is not None       # the log has a time axis now
+
+
+def test_the_pool_fingerprint_covers_outcomes_not_just_names():
+    """Two cycles over the same generation names but different measured
+    outcomes must not share an identity."""
+    first = _pool_with("gen1", "gen2")
+    second = HistoryPool()
+    second.add_generation("gen1", {"concept_oversample": 0}, "test",
+                          _report([("test:topic:0", 1)]), _cases(), order=0)
+    second.add_generation("gen2", {"concept_oversample": 1}, "test",
+                          _report([("test:topic:0", 0)]), _cases(), order=1)
+    assert pool_fingerprint(first) != pool_fingerprint(second)
+
+
+def test_a_refused_generation_does_not_advance_the_pool_order():
+    """`_max_order` used to be written before the duplicate-name check, so a
+    refused call left the time axis moved on. The next legitimate generation
+    was then rejected for taking a position nothing had ever occupied."""
+    pool = HistoryPool()
+    pool.add_generation("gen1", {"concept_oversample": 0}, "test",
+                        _report([("test:topic:0", 1)]), _cases(), order=0)
+
+    with pytest.raises(ValueError, match="already in the pool"):
+        pool.add_generation("gen1", {"concept_oversample": 1}, "test",
+                            _report([("test:topic:0", 1)]), _cases(), order=1)
+
+    # Order 1 is still free, because the refused call took nothing.
+    pool.add_generation("gen2", {"concept_oversample": 1}, "test",
+                        _report([("test:topic:0", 0)]), _cases(), order=1)
+    assert [generation["name"] for generation in pool.generations] == ["gen1", "gen2"]
+
+
+def test_the_cycle_budget_reads_the_registrys_clock_not_the_wall_clock():
+    """Events are stamped with the registry's clock. A budget that computes
+    its window from `time.time()` therefore sees every event of a registry
+    with an injected clock as outside the window, and the quota never binds —
+    which is the opposite of what a safety quota is for."""
+    import datetime as dt
+
+    long_ago = dt.datetime(2025, 8, 15, 12, 0, tzinfo=dt.timezone.utc)
+    registry = Registry(":memory:", clock=lambda: long_ago)
+    pool = _pool_with("gen1", "gen2")
+    sim = ReplaySimulator(pool)
+    ranked = sim.dream([{"concept_oversample": 1}], allow_extrapolation=True)
+    record_cycle(registry, pool=pool, ranked=ranked, winner=ranked[0],
+                 backtest=sim.backtest())
+
+    budget = CycleBudget(registry, max_per_window=1)
+    assert budget.used() == 1
+    assert budget.remaining() == 0
+    with pytest.raises(PermissionError, match="budget exhausted"):
+        budget.check()
+
+
+def test_an_aborted_cycle_is_recorded_and_counts_against_the_quota():
+    """A cycle that reads the pool, runs the backtest and dreams every
+    candidate has spent the resources the quota exists to bound. Recording
+    only the cycles that reached a winner let a failing run repeat without
+    limit while the quota kept reading zero."""
+    registry = Registry(":memory:")
+    pool = _pool_with("gen1", "gen2")
+    sim = ReplaySimulator(pool)
+
+    payload = record_cycle(registry, pool=pool, ranked=None, winner=None,
+                           backtest=sim.backtest(), status="aborted",
+                           reason="no candidate policy is identified")
+    assert payload["status"] == "aborted"
+    assert payload["winner"] is None
+    assert payload["generations"] == ["gen1", "gen2"]
+    assert payload["reason"].startswith("no candidate policy")
+
+    budget = CycleBudget(registry, max_per_window=1)
+    assert budget.used() == 1
+    with pytest.raises(PermissionError):
+        budget.check()
+
+
+def test_a_cycle_that_never_started_records_nothing_but_still_parses():
+    """The abort path may fire before the pool exists. The event must still
+    be writable, because that is the case the quota most needs to see."""
+    registry = Registry(":memory:")
+    payload = record_cycle(registry, status="aborted",
+                           reason="history pool needs at least two generations")
+    assert payload["pool_fingerprint"] is None
+    assert payload["generations"] == []
+    assert payload["candidates"] == []
+    assert CycleBudget(registry, max_per_window=8).used() == 1

@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "pool_source": "synthetic (generation reports not in this checkout)",
+  "pool_generations": [
+    "gen-a",
+    "gen-b"
+  ],
+  "invocations": 201,
+  "elapsed_s": 0.0191,
+  "reflex": {
+    "invocations": 201,
+    "reflex_hits": 200,
+    "reflex_misses": 1,
+    "failovers": 1,
+    "errors": 0,
+    "hit_rate": 0.9950248756218906,
+    "miss_reasons": {
+      "unresolved_alias": 1
+    },
+    "all_misses_covered": true,
+    "resolve_p50_ms": 0.057,
+    "resolve_p95_ms": 0.0907,
+    "total_p50_ms": 0.0807,
+    "total_p95_ms": 0.1185,
+    "latency_samples": 201,
+    "latency_sample_window": 4096
+  },
+  "dispatched": {
+    "dream": 200,
+    "default": 1
+  },
+  "miss_retracted_to_default": true,
+  "winner_deterministic": true,
+  "latency_target_ms": 5.0,
+  "resolve_within_target": true,
+  "scope": "binding mechanism and its latency only; policy quality is the backtest's job, not this benchmark's",
+  "producer": "benchmark_dream_reflex.py",
+  "producer_sha256": "9be5daca40e552fb95d79477499bbeae74d823c7191dd8c24107f9c15b94f590",
+  "subject": [
+    "neural_pods/dream.py",
+    "neural_pods/reflex.py",
+    "neural_pods/registry.py",
+    "neural_pods/symlink.py"
+  ],
+  "subject_sha256": "d49ff76e8d4daae67a0a8ca3e9cfb41a95a371c652c9a0424121cf6d72c34014"
+}
