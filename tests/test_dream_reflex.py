@@ -38,7 +38,10 @@ def test_dream_pod_reflex_binding_returns_strategy():
     def dispatch(pod_key, request):
         assert pod_key == "pod:dream"
         sim = ReplaySimulator(pool)
-        ranked = sim.dream(request.get("policies", [{"concept_oversample": 3, "lookup_anchor": 2}]))
+        # lookup_anchor 2 was never observed in this toy history; the reflex
+        # path dreams past it on purpose, so it says so explicitly.
+        ranked = sim.dream(request.get("policies", [{"concept_oversample": 3, "lookup_anchor": 2}]),
+                           allow_extrapolation=True)
         return {"winner": ranked[0], "pool_size": len(pool.generations)}
 
     channel = ReflexChannel(plane, dispatch, default_pod="pod:dream")

@@ -38,6 +38,24 @@ def build(per_type=100):
     return rows
 
 
+def render(per_type: int = 100) -> str:
+    """The dataset as it is written to disk. Deterministic: same input, same
+    bytes, so the checked-in artifact can be compared against the code."""
+    return "".join(json.dumps(r) + "\n" for r in build(per_type))
+
+
+# Default output lives under research/runs/, which .gitignore keeps (see the
+# !research/runs/ exception). The dataset is pure code output, so shipping it
+# with the repository is what lets a clone run the routing tests at all.
+DEFAULT_OUTPUT = Path(__file__).resolve().parent / "runs" / "taxonomy-routing-balanced-003.jsonl"
+
+
 if __name__=="__main__":
-    rows=build(); Path("runs/taxonomy-routing-balanced-001.jsonl").write_text("".join(json.dumps(r)+"\n" for r in rows),encoding="utf-8")
-    print(json.dumps({"rows":len(rows),"per_type":{t:sum(r["pod_type"]==t for r in rows) for t in TEMPLATES},"splits":{s:sum(r["split"]==s for r in rows) for s in ("train","validation","test")}},indent=2))
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    args = parser.parse_args()
+    rows = build()
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(render(), encoding="utf-8")
+    print(json.dumps({"output": str(args.output), "rows":len(rows),"per_type":{t:sum(r["pod_type"]==t for r in rows) for t in TEMPLATES},"splits":{s:sum(r["split"]==s for r in rows) for s in ("train","validation","test")}},indent=2))

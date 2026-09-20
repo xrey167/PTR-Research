@@ -9,8 +9,29 @@ MQTT. Subscriptions are matched by paho's topic filters (``+``/``#``).
 Fail-closed rules: a malformed envelope is counted and dropped (never
 executed); topic access is checked against the endpoint's ACL before
 publish/subscribe.
+
+What that does and does not buy you:
+
+  * The topic ACL is enforced in THIS client, before it publishes or
+    subscribes. The broker enforces nothing, and publish_raw() bypasses the
+    check by design. It is a guard rail for cooperating pods, not a security
+    boundary against one that is not cooperating.
+  * Without `secret`, envelope validation is a protocol-version comparison.
+    `manifest_hash` and `principal` ride along as metadata and anyone who can
+    reach the broker can set them to anything.
+  * With `secret`, every envelope carries an HMAC-SHA256 over its canonical
+    form and an unsigned or wrongly signed envelope is counted and dropped.
+    That is what makes `principal` mean something. The signature model
+    follows A2A v1.0's signed Agent Cards; the key is shared per household,
+    not per pod, so it authenticates the household, not the individual pod.
+
+`secret` is optional so an existing deployment keeps working, but an endpoint
+that has one refuses everything unsigned — mixing signed and unsigned pods on
+one topic does not silently degrade to unsigned.
 """
 from __future__ import annotations
+import hashlib
+import hmac
 import json
 import threading
 import time
@@ -29,7 +50,8 @@ class MeshEndpoint:
 
     def __init__(self, broker_host: str, pod_id: str, *, principal: str = "local",
                  manifest_hash: str = "", allowed_topics: tuple[str, ...] | None = None,
-                 port: int = 1883, heartbeat_s: float = 5.0):
+                 port: int = 1883, heartbeat_s: float = 5.0,
+                 secret: bytes | str | None = None):
         import paho.mqtt.client as mqtt
         if allowed_topics is None:
             # Default: unrestricted pod mesh access. A pod's link_contract
@@ -41,7 +63,9 @@ class MeshEndpoint:
         self.allowed_topics = tuple(allowed_topics)
         self.heartbeat_s = float(heartbeat_s)
         self.protocol_version = PROTOCOL_VERSION
+        self.secret = (secret.encode("utf-8") if isinstance(secret, str) else secret)
         self.bad_envelopes = 0
+        self.unsigned_rejected = 0
         self.published = 0
         self.received = 0
         self._handlers: dict[str, Callable[[dict], None]] = {}
@@ -116,15 +140,41 @@ class MeshEndpoint:
         self._publish_raw(topic, {"body": body})
 
     def publish_raw(self, topic: str, body: Any, *, retain: bool = False) -> None:
-        """Publish on an arbitrary np/ topic; the caller (e.g. the native
-        comm executor's egress ACL) is responsible for access control."""
+        """Publish on an arbitrary np/ topic, BYPASSING this endpoint's topic
+        ACL; the caller (e.g. the native comm executor's egress ACL) is
+        responsible for access control. The envelope is still signed when the
+        endpoint has a key."""
         self._publish_raw(topic, {"body": body}, retain=retain)
+
+    @staticmethod
+    def _canonical(envelope: dict) -> bytes:
+        """Signed bytes: the whole envelope except the signature itself."""
+        return json.dumps({k: v for k, v in envelope.items() if k != "sig"},
+                          sort_keys=True, separators=(",", ":"),
+                          default=str).encode("utf-8")
+
+    def _sign(self, envelope: dict) -> None:
+        if self.secret is not None:
+            envelope["sig"] = hmac.new(self.secret, self._canonical(envelope),
+                                       hashlib.sha256).hexdigest()
+
+    def _signature_ok(self, envelope: dict) -> bool:
+        """An endpoint with a key accepts nothing without a matching one."""
+        if self.secret is None:
+            return True
+        signature = envelope.get("sig")
+        if not isinstance(signature, str):
+            return False
+        return hmac.compare_digest(
+            signature, hmac.new(self.secret, self._canonical(envelope),
+                                hashlib.sha256).hexdigest())
 
     def _publish_raw(self, topic: str, envelope: dict, *, retain: bool = False) -> None:
         envelope.setdefault("manifest_hash", self.manifest_hash)
         envelope.setdefault("principal", self.principal)
         envelope.setdefault("protocol_version", self.protocol_version)
         envelope.setdefault("ts_ms", int(time.time() * 1000))
+        self._sign(envelope)
         # Retry until the broker accepts (the initial announce can race the
         # connection setup and would otherwise silently vanish).
         # NEVER wait_for_publish here: callbacks (on_message handlers that
@@ -166,8 +216,20 @@ class MeshEndpoint:
             if envelope.get("protocol_version") != self.protocol_version:
                 raise ValueError("protocol version mismatch")
             # Manifest hashes differ legitimately between pods (each carries
-            # its own artifact lineage); integrity is enforced per channel
-            # and by PodTransport, not by rejecting foreign hashes here.
+            # its own artifact lineage), so a foreign hash is not rejected
+            # here - but it must be PRESENT, and with a key it must also be
+            # covered by the signature, which is what stops anyone with
+            # broker access from inventing a principal.
+            for field in ("manifest_hash", "principal"):
+                if field not in envelope:
+                    raise ValueError(f"envelope without {field}")
+            if not self._signature_ok(envelope):
+                raise PermissionError("envelope signature missing or invalid")
+        except PermissionError:
+            with self._lock:
+                self.bad_envelopes += 1
+                self.unsigned_rejected += 1
+            return
         except Exception:
             with self._lock:
                 self.bad_envelopes += 1
@@ -198,4 +260,9 @@ class MeshEndpoint:
             return {"pod_id": self.pod_id, "published": self.published,
                     "received": self.received, "bad_envelopes": self.bad_envelopes,
                     "protocol_version": self.protocol_version,
+                    # Reported, not implied: an unsigned endpoint authenticates
+                    # nothing, and the topic ACL is this client's own rule.
+                    "signed": self.secret is not None,
+                    "unsigned_rejected": self.unsigned_rejected,
+                    "topic_acl_enforced_by": "client",
                     "subscriptions": len(self._handlers)}

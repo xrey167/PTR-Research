@@ -1,0 +1,39 @@
+{
+  "status": "completed",
+  "l1_backend": "in-process stub (no redis host given)",
+  "elapsed_s": 9.164,
+  "kv": {
+    "keys": 200,
+    "rows": 200,
+    "duplicate_rows": 0,
+    "rows_after_reput": 200,
+    "stale_read_after_reput": false,
+    "read_miss_tables_created": 0,
+    "l1_backfilled_after_l2_hit": 200,
+    "quoted_key_roundtrip": true,
+    "write_p50_ms": 14.6144,
+    "l1_read_p50_ms": 0.0565,
+    "l2_read_p50_ms": 23.3911,
+    "l1_faster_than_l2": true
+  },
+  "l2_lance": {
+    "documents": 200,
+    "document_rows": 200,
+    "duplicate_document_rows": 0,
+    "document_write_ms": 6.352,
+    "top_k_requested": 10,
+    "top_k_distinct": 10,
+    "vector_dim": 16,
+    "namespaces_created": 14,
+    "tables_listed": 14,
+    "trace_rows": 100,
+    "duplicate_trace_rows": 0,
+    "quoted_stage_matches": 50
+  },
+  "session_affinity": {
+    "sessions": 1,
+    "failovers": 1,
+    "reuses": 1
+  },
+  "scope": "facade contract and L2 behaviour; L1 latency against a real Redis is measured by benchmark_redis_cache_tier.py"
+}

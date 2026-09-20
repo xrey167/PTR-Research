@@ -1,0 +1,38 @@
+{
+  "schema": "reader-holdout-split:v1",
+  "split": "holdout",
+  "purpose": "uncontaminated evaluation split; the frozen test split saturated at 125/132 raw and 44/44 concept, so it can no longer separate one reader generation from the next",
+  "rows": 96,
+  "families": {
+    "buffer": 8,
+    "deadline_days_equal": 8,
+    "deadline_days_long": 8,
+    "deadline_days_short": 8,
+    "deadline_weeks_equal": 8,
+    "deadline_weeks_long": 8,
+    "deadline_weeks_short": 8,
+    "followup_buffer": 8,
+    "followup_lookup": 8,
+    "lookup": 8,
+    "missing": 4,
+    "multi_hop_total": 4,
+    "stale_followup": 8
+  },
+  "languages": [
+    "de",
+    "en"
+  ],
+  "cases_sha256": "68831eb1a3a63ab94ddc5d0d618e2965f61f7d8d5f80eb5a2767dc95aa661836",
+  "generator": "reader_holdout_data.py",
+  "generator_sha256": "54225e5e477d1d70ea0939aba607c949ffc282437c0276c2ad87adafe5ed234e",
+  "disjoint_from_frozen_splits": true,
+  "overlaps": {
+    "ids": [],
+    "questions": [],
+    "suppliers": [],
+    "components": [],
+    "values": []
+  },
+  "frozen_rows_compared": 564,
+  "scope": "generation only - no model was run against this split here; evaluating it needs the reader checkpoint on the server"
+}

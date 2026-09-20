@@ -1,7 +1,22 @@
 # Neural-Pods v1.0 — Gesamtarchitektur (Master-Dokument)
 
-Stand: 2026-09-20 · Gate 40/40 grün · 305 Tests · 33 Commits ·
-GitHub `xrey167/PTR-Research` · Server-Klon pull-basiert.
+**Dieses Dokument ist die einzige Quelle der Wahrheit für den Projektstand.**
+README und HANDOVER verweisen hierher und führen keine eigenen Zählstände mehr.
+
+## Stand (2026-09-20, aus einem frischen Klon nachgemessen)
+
+| Größe | Wert | womit geprüft |
+|---|---|---|
+| Gate-Checks definiert | **43** | `research/verify_architecture_gate.py` |
+| Gate-Checks grün im Klon | **36** | `python research/verify_architecture_gate.py` |
+| Gate-Checks rot | **7** — alle mangels Evidenz, keine Regression | Gate nennt die 8 fehlenden Dateien |
+| Tests | **350 passed, 0 failed, 8 skipped** | `python research/record_test_run.py` |
+| Module `neural_pods/` | 57 Dateien | `wc -l neural_pods/*.py` |
+
+Die sieben roten Checks brauchen Eval-Reports, die nur auf dem Server liegen
+(`runs/`, gitignoriert). Die `.gitignore`-Ausnahme `!research/runs/*.json`
+existiert; es fehlt ein Commit vom Server, dann sind 43/43 aus einem Klon
+prüfbar. Der Befundbericht dazu: `research/STATE-DEEP-RESEARCH-20260920.md`.
 
 Dieses Dokument integriert alle fünf Design-Dokumente zu einer kohärenten
 Architektur und legt die Umsetzung der offenen Bausteine fest.
@@ -47,11 +62,11 @@ Pods sprechen Storage nur über die PodStorage-Fassade, nie Backends direkt.
 |---|---|---|---|
 | Registry/Provenance | registry.py | tests, authenticated_transport | — |
 | Reader Gen-3→7 | research/train_reader.py | lora_ab…gen5_dev, gen7_dream_validated | raw 125/124 |
-| Dream-Pod | dream.py + run_dream_cycle.py | dream_pipeline | Backtest 0,01 |
+| Dream-Pod | dream.py + run_dream_cycle.py | dream_pipeline | out-of-sample: **0 Generationen** |
 | vLLM Multi-LoRA | research/run_vllm_ensemble.sh | ensemble_routing/failover | 20/20 acks |
-| Mesh | mesh.py | mesh_presence | RTT 0,30 ms |
-| Native Protokolle | native_comm.py + train_native_comm.py | native_protocol | Validität 1.0 |
-| Task-Graph | taskgraph.py | taskgraph_parallel | Speedup 2,59× |
+| Mesh | mesh.py | mesh_presence | RTT 0,30 ms (zwei Endpunkte **auf einem Host**) |
+| Native Protokolle | native_comm.py + train_native_comm.py | native_protocol | Frames 1.0, **exact 0.55** |
+| Task-Graph | taskgraph.py | taskgraph_parallel | mean_concurrency 2,59 (**kein Speedup**) |
 | Mesh-Cache | mesh_cache.py | mesh_cache | Cross-Knoten ✓ |
 | Executor-Factory | pod_executor.py | (tests) | deterministisch ✓ |
 | Reflex | reflex.py | reflex_dispatch | Mechanik ✓ |
@@ -60,10 +75,14 @@ Pods sprechen Storage nur über die PodStorage-Fassade, nie Backends direkt.
 
 ### Implementiert, aber ungeprüft/defekt
 
-| Komponente | Problem | Fix geplant in |
+| Komponente | Problem | Status |
 |---|---|---|
-| household.py H1–H3/H6 | Tests schlagen fehl: registry.events() fehlt als öffentliche API | F1 |
-| perception.py, mesh_cache.py | keine Unit-Tests (nur Benchmarks) | Tests in H4/S2 nachziehen |
+| household.py H1–H3/H6 | registry.events() fehlte als öffentliche API | **erledigt (F1)** |
+| storage.py (F3/F4) | sechs Defekte, u. a. doppelt geschriebener Erstbatch | **erledigt**, Gate-Checks `storage_facade`/`storage_l2_lance` |
+| household.py H2 | BUSY wurde nie freigegeben, start() ohne Event, VRAM/RAM ein Zähler | **erledigt**: `release()`, `restore_from_events()` |
+| taskgraph.py | `speedup` maß Contention | **erledigt**: `mean_concurrency` + `critical_path_ratio` |
+| Reader-Eval | frozen Split gesättigt **und aus dem Repo nicht regenerierbar** (132 vs. 96 Zeilen) | Holdout-Split erzeugt, Bewertung offen |
+| perception.py, mesh_cache.py | keine Unit-Tests (nur Benchmarks) | offen |
 
 ### Design-only (Umsetzung in diesem Plan)
 
@@ -91,6 +110,8 @@ Pods sprechen Storage nur über die PodStorage-Fassade, nie Backends direkt.
 | ADR-6 (lumabri) | Donor-Approval + BUSY als Haushaltsvertrag | Provenance-Events machen Approvals auditierbar; BUSY ersetzt stillen Override |
 | ADR-7 (colibri) | Tier-Preference vram→ram→disk, harte Semantik | Präzision steht im Pod-Manifest; Änderung = neue Generation |
 | ADR-8 (Datasets) | Frozen JSON führend, Lance als abfragbarer Spiegel | bewährte train_reader-Pipeline bleibt; Lance liefert SQL-Abfragen |
+| ADR-9 (A2A/MCP) | Eigener Dialekt bleibt, Signaturmodell wird übernommen | A2A v1.0 (Jan 2026, Linux Foundation/AAIF) löst Interoperabilität; unser Ziel ist ein anderes: Wegfall des Tool-Use-Overheads im Reflex-Pfad. Was A2A besser gelöst hat, ist die Authentizität — signierte Agent Cards. Deshalb: Dialekt behalten, aber `mesh.py` signiert Envelopes per HMAC (`secret=`), sonst bliebe `principal` ein Etikett |
+| ADR-10 (Adapter-Pool) | Vier-Tier-Modell deckt L1–L3, **nicht** den GPU-Adapterpool | S-LoRA (Unified Paging, 2.000 Adapter, bis 4× Durchsatz) und Punica (SGMV-Kernel) zeigen: der Sprung von 2 auf viele Adapter ist ein Problem des GPU-Speicherpools und des Batching-Kernels, nicht der Registry. Offener Baustein, bewusst noch nicht terminiert |
 
 ## 4. Umsetzungsplan (Abhängigkeitsreihenfolge)
 
@@ -118,6 +139,23 @@ Getracer Regressionslauf über alles → README/HANDOVER v1.0 → Gate 48/48
 3. Autonomie-Budget im Event-Log · 4. Delete-Tokens als Endabschaltung ·
 5. Frozen Splits tabu · 6. Egress-ACL je Pod · 7. Fail-closed Parser ·
 8. Kdump-Crash-Capture aktiv (System-Freeze-Ursache lesbar beim nächsten Mal)
+
+Zwei dieser Regeln beschreiben weniger, als ihr Wortlaut nahelegt — hier steht,
+was sie tatsächlich leisten:
+
+- **Regel 6 (Egress-ACL):** Die Topic-ACL wird im Client geprüft, nicht im
+  Broker, und `publish_raw()` umgeht sie bewusst. Das ist eine Leitplanke für
+  kooperierende Pods, keine Grenze gegen einen, der nicht kooperiert.
+- **Regel 7 (Fail-closed Parser):** Ohne `secret=` besteht die
+  Envelope-Prüfung aus einem Vergleich der Protokollversion und der Präsenz
+  von `manifest_hash`/`principal`. Erst mit gesetztem `secret` signiert
+  `mesh.py` jeden Envelope (HMAC-SHA256) und weist unsignierte ab — das ist
+  die Stelle, an der `principal` etwas bedeutet (siehe ADR-9).
+- **Regel 1 (Promotion nie ohne Gate):** Das Gate führt seit 2026-09-20 die
+  Tests wirklich aus (`--run-tests`) bzw. prüft eine aufgezeichnete
+  Testausführung gegen einen Quellcode-Hash. Die übrigen 42 Checks lesen
+  weiterhin aufgezeichnete Messdateien; das Gate ist dort ein
+  Regressions-Journal, kein Verifikationslauf.
 
 ## 6. Betriebs-Fakten (Server)
 

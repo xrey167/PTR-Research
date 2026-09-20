@@ -59,7 +59,16 @@ typer==0.27.2
 typing-inspection==0.4.4
 typing_extensions==4.16.0
 urllib3==2.7.0
-lancedb
-paho-mqtt
-xgboost
-redis
+
+# Added with the storage/mesh/executor work (commit 4f8bf7d) and left
+# unpinned in a file whose only job is pinning. Versions below are the ones
+# the F3/F4 fixes and research/benchmark_storage_facade.py were verified
+# against (Linux, Python 3.11). lancedb in particular has already moved
+# table_names() -> list_tables() and changed the return type, so an
+# unpinned install is not a neutral choice here.
+# Reconcile with the server before the next install:
+#   pip freeze | grep -iE '^(lancedb|paho-mqtt|xgboost|redis)=='
+lancedb==0.39.0
+paho-mqtt==2.1.0
+xgboost==3.2.0
+redis==8.1.0

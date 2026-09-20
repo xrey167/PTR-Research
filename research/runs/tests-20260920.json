@@ -1,0 +1,17 @@
+{
+  "schema": "pytest-run:v1",
+  "command": "-m pytest -q -p no:cacheprovider",
+  "exit_code": 0,
+  "summary_line": "356 passed, 8 skipped in 23.77s",
+  "passed": 356,
+  "failed": 0,
+  "skipped": 8,
+  "python": "3.11.15",
+  "recorded_at": "2026-09-20T01:48:57+00:00",
+  "sources_sha256": "338bf1516e21dd8c18e75f625834fff9d9a038106bd4579f974176f543b5ed6a",
+  "source_dirs": [
+    "neural_pods",
+    "research",
+    "tests"
+  ]
+}
