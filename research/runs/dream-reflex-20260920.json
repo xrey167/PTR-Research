@@ -6,7 +6,7 @@
     "gen-b"
   ],
   "invocations": 201,
-  "elapsed_s": 0.0191,
+  "elapsed_s": 0.0189,
   "reflex": {
     "invocations": 201,
     "reflex_hits": 200,
@@ -18,10 +18,10 @@
       "unresolved_alias": 1
     },
     "all_misses_covered": true,
-    "resolve_p50_ms": 0.057,
-    "resolve_p95_ms": 0.0907,
-    "total_p50_ms": 0.0807,
-    "total_p95_ms": 0.1185,
+    "resolve_p50_ms": 0.0557,
+    "resolve_p95_ms": 0.089,
+    "total_p50_ms": 0.0794,
+    "total_p95_ms": 0.1181,
     "latency_samples": 201,
     "latency_sample_window": 4096
   },
@@ -35,7 +35,7 @@
   "resolve_within_target": true,
   "scope": "binding mechanism and its latency only; policy quality is the backtest's job, not this benchmark's",
   "producer": "benchmark_dream_reflex.py",
-  "producer_sha256": "9be5daca40e552fb95d79477499bbeae74d823c7191dd8c24107f9c15b94f590",
+  "producer_sha256": "b23e1b71d844321194d3f57d51ae14dc098e72c38952f7d31cb2122c61944798",
   "subject": [
     "neural_pods/dream.py",
     "neural_pods/reflex.py",

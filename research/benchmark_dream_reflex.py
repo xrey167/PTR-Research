@@ -75,7 +75,14 @@ def _load_pool() -> tuple[HistoryPool, str]:
         return _synthetic_pool(), "synthetic (generation reports not in this checkout)"
 
 
-def main() -> None:
+def measure() -> dict:
+    """The measurement, as a function that returns its result.
+
+    Needs no server: the pool comes from the checked-in generation reports
+    when they are present and from a deterministic synthetic pool otherwise,
+    and the dispatch is in-process. Split out so the verdict fields the gate
+    reads can be checked against a known run.
+    """
     pool, pool_source = _load_pool()
     simulator = ReplaySimulator(pool)
 
@@ -129,6 +136,11 @@ def main() -> None:
         "scope": ("binding mechanism and its latency only; policy quality is "
                   "the backtest's job, not this benchmark's"),
     }
+    return result
+
+
+def main() -> None:
+    result = measure()
     write_evidence(result, OUT, __file__, subject=SUBJECT)
     print(json.dumps(result, indent=2))
 

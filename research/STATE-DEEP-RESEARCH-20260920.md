@@ -1459,6 +1459,132 @@ Schichten    56 Module · 0 Verstöße
 Evidenz      10 von 37 Dateien an den gemessenen Code gebunden
 ```
 
+## 15. Messcode testbar machen
+
+Die wirksamste offene Maßnahme aus 14.7, umgesetzt. Ausgangslage: **85
+Benchmark-Skripte, 6.575 Zeilen, erzeugen die gesamte Gate-Evidenz; sechs
+davon sind von einem Test erreichbar.** Fünf der acht Review-Befunde aus
+13.2 lagen in dieser Schicht.
+
+### 15.1 Warum ausgerechnet dort
+
+Das Projekt kennt zwei Codequalitäten, und die Grenze verläuft nicht entlang
+der Wichtigkeit, sondern entlang der **Importierbarkeit**:
+
+| | Test/Code-Verhältnis |
+|---|---|
+| `neural_pods/` — importierbarer Bibliothekscode | 0,43 |
+| `research/` — Skripte ohne Einstiegspunkt | ≈ 0,05 |
+
+Ein Benchmark, der als `if __name__ == "__main__"`-Monolith geschrieben ist,
+bietet nichts zum Testen an. Und weil die einzige Instanz, die seine Ausgabe
+liest — das Gate — nur Zahlen gegen Schwellen vergleicht, fällt eine
+**falsch messende Messung** nie auf. Das ist die Wurzel der Fehlerklasse
+„Kennzahl misst etwas anderes als ihr Name sagt".
+
+### 15.2 Das Muster
+
+```
+collect()    braucht Broker, Redis, LXD, GPU.
+             Misst und gibt Beobachtungen zurück. Zieht keine Schlüsse.
+summarise()  rein. Macht aus den Beobachtungen das Urteil,
+             das das Gate liest. Testbar ohne alles.
+main()       verdrahtet, stempelt, schreibt.
+```
+
+Entscheidend ist die Richtung der Tests. Ein Test, der nur den grünen Fall
+zeigt, belegt, dass die Rechnung *läuft* — nicht, dass sie *unterscheidet*.
+Jede der unten stehenden Suiten füttert deshalb auch einen Beobachtungssatz,
+bei dem das Urteil **kippen muss**.
+
+### 15.3 Stand: alle 16 gate-relevanten Skripte
+
+69 Skripte schreiben Evidenz, aber nur 16 schreiben Evidenz, die das Gate
+liest — und das Gate entscheidet über Promotion. Das ist die Menge, die
+zählt, und sie ist vollständig:
+
+| Skript | reine Funktionen | Tests |
+|---|---|---|
+| `benchmark_taskgraph` | `summarise`, `collect` | 9 |
+| `benchmark_traced_pipeline` | `summarise`, `percentile` | 10 |
+| `benchmark_storage_facade` | `summarise`, `collect` | 12 |
+| `benchmark_mesh` | `summarise`, `percentile` | 4 |
+| `benchmark_mesh_cache` | `summarise` | 4 |
+| `benchmark_mesh_e2e` | `summarise` | 5 |
+| `benchmark_native_tcp` | `summarise`, `percentile` | 4 |
+| `benchmark_redis_cache_tier` | `summarise_tier`, `percentile` | 2 |
+| `benchmark_reflex_dispatch` | `summarise`, `percentile` | 4 |
+| `benchmark_ensemble_router` | `summarise` | 4 |
+| `benchmark_hetero_ensemble` | `summarise` | 2 |
+| `benchmark_xgboost_pod` | `measure` | 6 |
+| `benchmark_dream_reflex` | `measure` | 3 |
+| `benchmark_kvcache_affinity` | `summarize`, `compare`, `measure` | vorhanden |
+| `generate_holdout_split` | `render` | vorhanden |
+| `record_test_run` | `source_fingerprint`, `run_pytest` | vorhanden |
+
+### 15.4 Was der Umbau freigelegt hat
+
+Fünf Defekte, die nicht gesucht, sondern beim Zerlegen sichtbar wurden:
+
+1. **`benchmark_storage_facade` prüfte mit `assert` innerhalb der Messung.**
+   Ein Assert, der feuert, tötet den Lauf — der eine Fall, der
+   aufzeichnenswert ist (*die Fassade hat es falsch gemacht*), erzeugte einen
+   Traceback und **keine Evidenz**. Das Gate meldet dann „keine Evidenz"
+   statt „Evidenz sagt nein". Das sind verschiedene Befunde mit verschiedenen
+   Konsequenzen, und die Unterscheidung war genau der Punkt, den P0 am Gate
+   repariert hatte — im Benchmark war sie nie angekommen.
+2. **`quoted_key_roundtrip` stand als Literal `True` im Bericht.** Der
+   Gate-Check `is True` darauf konnte nicht fehlschlagen — dieselbe Klasse
+   wie `reflex_frames_valid == 132`. Er wird jetzt aus einer Zählung
+   abgeleitet, und mein erster Lauf nach dem Umbau zeigte sofort, dass ich
+   400 Round-Trips gegen 200 Schlüssel verglichen hatte.
+3. **`benchmark_mesh_e2e` meldete `pod_b_validated_all: true` für einen
+   Lauf, in dem gar kein Ack ankam.** `all()` über ein leeres Dict ist
+   `True`. Die Anzahl wird jetzt mitgeprüft.
+4. **`benchmark_hetero_ensemble` konnte `fallback_used > n` erzeugen.** Ein
+   fehlgeschlagener Fallback-Aufruf übersprang den Fall — nachdem
+   `fallback_used` bereits hochgezählt war. Die beiden Zähler beschrieben
+   verschiedene Fallmengen.
+5. **`benchmark_ensemble_router` enthielt eine Tautologie in einer
+   Promotionsmetrik:** `g3_raw and row['target'] == row['target']`. Zur
+   Genauigkeit: der Ausdruck reduziert sich auf `g3_raw`, die aufgezeichneten
+   **Zahlen waren also nie falsch**. Falsch war, dass ein Leser nicht
+   erkennen konnte, welche Bedingung gemeint war — und eine Bedingung, die
+   nicht falsch werden kann, ist von einer Absicherung, die still aufgehört
+   hat abzusichern, nicht zu unterscheiden.
+
+Dazu eine Berichtigung im Bericht selbst: `mesh-presence` schreibt jetzt
+`rtt_is_cross_node: false` in die Evidenz. Die 0,30 ms wurden zwischen zwei
+Endpunkten **auf demselben Host** gemessen; nur der Broker ist entfernt. Die
+Zahl war im Master-Dokument und in drei Design-Dokumenten als
+knotenübergreifende Mesh-Latenz zitiert (siehe 3.4).
+
+### 15.5 Was das an der Fehlerklasse ändert
+
+Die Kernaussage aus 14.1 lautet: *Aussage und Beleg entstehen im selben
+Arbeitsschritt, und der Beleg ist nicht an das gebunden, worüber er etwas
+aussagt.* Abschnitt 14.2 hat die zweite Hälfte adressiert (`subject_sha256`
+bindet die Evidenz an den gemessenen Code). Dieser Abschnitt adressiert die
+erste: **die Rechnung, die aus Beobachtungen ein Urteil macht, ist jetzt von
+der Messung getrennt und kann gegen bekannte Antworten geprüft werden.**
+
+Was das nicht leistet: `collect()` bleibt ungetestet, und damit die Frage,
+ob die Beobachtungen selbst stimmen. Ein `collect()`, das die falschen
+Zahlen sammelt, produziert weiterhin ein korrekt gerechnetes falsches
+Urteil. Diese Hälfte braucht den Server.
+
+### 15.6 Stand nach diesem Durchgang
+
+```
+Tests        517 grün · 0 rot · 0 errors · 8 übersprungen
+             davon 63 neu über Messcode, der vorher nicht erreichbar war
+Gate         47 Checks · 37 grün · 10 rot (unverändert, siehe 14.8)
+Schichten    56 Module · 0 Verstöße
+Messcode     16 von 16 gate-relevanten Skripten importierbar
+             69 Skripte schreiben Evidenz insgesamt; die übrigen 53
+             schreiben nichts, was das Gate liest
+```
+
 ## Quellen (externe Einordnung)
 
 - [S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv:2311.03285)](https://arxiv.org/abs/2311.03285) · [MLSys 2024 Paper](https://proceedings.mlsys.org/paper_files/paper/2024/file/906419cd502575b617cc489a1a696a67-Paper-Conference.pdf) · [LMSYS-Blog](https://www.lmsys.org/blog/2023-11-15-slora/)
