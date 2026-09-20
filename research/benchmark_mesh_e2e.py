@@ -66,6 +66,33 @@ print(json.dumps({{"validated": sum(answers), "total": len(answers)}}))
 '''
 
 
+def summarise(*, acks: dict, rounds: int, elapsed_s: float,
+              executor_stats: dict, peer_report: dict) -> dict:
+    """Turn the observed acknowledgements into evidence. Pure.
+
+    `pod_b_validated_all` requires BOTH that every ack says validated and
+    that there are as many acks as rounds: `all()` over an empty dict is
+    True, so the count is what stops a run where nothing arrived from
+    reporting perfect validation.
+    """
+    return {
+        "status": "completed",
+        "rounds": rounds,
+        "acks_received": len(acks),
+        "acks_missing": rounds - len(acks),
+        "pod_b_validated_all": bool(
+            len(acks) == rounds and rounds > 0
+            and all(ack.get("validated") for ack in acks.values())),
+        "elapsed_s": round(elapsed_s, 2),
+        "executor_stats": executor_stats,
+        # Stated in the evidence, so no reader has to go back to the source
+        # to find out whether a model was involved. It was not.
+        "frames_produced_by": "serialiser",
+        "model_dialect_measured_in": "native-comm-eval-20260920-report.json",
+        "peer_report": peer_report,
+    }
+
+
 def main() -> None:
     protocol, _config, _ = load_bundle(Path("runs/reader-training-inputs-generation7"))
     rows = json.loads((Path("runs/reader-training-inputs-generation7") / "inputs" / "test.json")
@@ -147,20 +174,10 @@ def main() -> None:
                 break
             time.sleep(1.0)
 
-        all_validated = all(a.get("validated") for a in acks.values()) and len(acks) == ROUNDS
-        result = {
-            "status": "completed",
-            "rounds": ROUNDS,
-            "acks_received": len(acks),
-            "pod_b_validated_all": bool(all_validated),
-            "elapsed_s": round(elapsed, 2),
-            "executor_stats": executor.stats() | {"refused": executor.acl.violations},
-            # Stated in the evidence, so no reader has to go back to the
-            # source to find out whether a model was involved. It was not.
-            "frames_produced_by": "serialiser",
-            "model_dialect_measured_in": "native-comm-eval-20260920-report.json",
-            "peer_report": peer_report,
-        }
+        result = summarise(acks=acks, rounds=ROUNDS, elapsed_s=elapsed,
+                           executor_stats=executor.stats() | {
+                               "refused": executor.acl.violations},
+                           peer_report=peer_report)
         write_evidence(result, Path("research/runs/mesh-e2e-20260920.json"),
                        __file__, subject=SUBJECT)
         print(json.dumps(result, indent=2))

@@ -422,6 +422,14 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and storage_kv.get("l1_backfilled_after_l2_hit") == storage_kv.get("keys")
             and storage_kv.get("l1_faster_than_l2") is True
             and storage_kv.get("quoted_key_roundtrip") is True
+            # `quoted_key_roundtrip` used to be the literal True in the
+            # report, so this clause asserted nothing. It is now derived
+            # from a count of round-trips that returned what was written.
+            and storage_kv.get("quoted_key_roundtrips_attempted", 0) > 0
+            # A read must leave nothing behind AND return nothing. The
+            # second half used to be an assert inside the benchmark, which
+            # killed the run instead of recording the failure.
+            and storage_kv.get("read_miss_returned_nothing") is True
             and storage.get("session_affinity", {}).get("reuses") == 1
             and storage.get("session_affinity", {}).get("failovers") == 1,
         "storage_l2_lance": storage.get("status") == "completed"
@@ -469,10 +477,19 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         # and read under that name here. Whether the MODEL can produce them is
         # what native_protocol measures (exact_rate 0.55), and nothing in this
         # check may be read as saying anything about that.
+        # `runs_comparable is not False` rather than `is True`: evidence
+        # recorded before the field existed carries the case count only at
+        # the top level, and the fallback below reads it from there. What is
+        # ruled out is a recording that KNOWS the two runs covered different
+        # work — a ratio between a 132-case run and a 96-case one is
+        # arithmetic, and the number alone does not show which it was.
         "traced_pipeline": tp.get("status") == "completed"
             and (tp.get("improvement_factor") or 0) >= 2.0
+            and tp.get("runs_comparable") is not False
+            and bool(tp.get("runs"))
             and all(r.get("serialised_frames_valid",
-                          r.get("reflex_frames_valid")) == r.get("cases", 132)
+                          r.get("reflex_frames_valid"))
+                    == r.get("cases", tp.get("cases"))
                     for r in tp.get("runs", [])),
         "lora_ab": lora_adapter.get("status") == "completed" and lora_base.get("status") == "completed" and lora_adapter.get("reader_unchanged") is True and lora_base.get("reader_unchanged") is True and lora_adapter.get("guarded_exact_target_matches", 0) > lora_base.get("guarded_exact_target_matches", 0),
         "lora_ab_dev": dev_adapter.get("status") == "completed" and dev_base.get("status") == "completed" and dev_adapter.get("reader_unchanged") is True and dev_base.get("reader_unchanged") is True and dev_adapter.get("guarded_exact_target_matches", 0) > dev_base.get("guarded_exact_target_matches", 0),

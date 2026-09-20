@@ -13,6 +13,14 @@ constant 0.05 for run 2's lookup stage and wrote latency_ms = -1 into the
 trace, so the reported "20.5 ms -> 0.05 ms" was not a measurement; the
 per-case time from publish to reply is now recorded for both runs, which
 makes them comparable.
+
+STRUCTURE. `collect()` needs the broker and Redis; `summarise()` needs
+neither. `improvement_factor` — the number the gate reads and the headline
+this file has produced twice — is one division over two observations, and
+until now it could not be checked without a broker. It is pure and tested
+now, including the comparison's precondition: two runs over different case
+counts, or a run whose frames did not all serialise, are not comparable at
+all, and a ratio computed over them is a number with no referent.
 """
 import json
 import sys
@@ -205,6 +213,37 @@ def run_pipeline(endpoint, cache, rows, gen7_answers, tracer, run_name,
             "stage_p95_ms": {k: percentile(v, 0.95) for k, v in stage_stats.items()}}
 
 
+def summarise(run1: dict, run2: dict) -> dict:
+    """Combine the two runs into the evidence the gate reads.
+
+    Pure. The `improvement_factor` is only meaningful if the two runs are
+    comparable, so the preconditions are checked here rather than assumed:
+    the same number of cases, and every frame serialised in both. A ratio
+    between a 132-case run and a 96-case one is arithmetic, not a finding,
+    and the gate has no way to notice the difference from the number alone.
+    """
+    cases1, cases2 = run1.get("cases"), run2.get("cases")
+    comparable = cases1 == cases2 and cases1 is not None
+    frames_ok = all(
+        run.get("serialised_frames_valid",
+                run.get("reflex_frames_valid")) == run.get("cases")
+        for run in (run1, run2))
+    result = {
+        "status": "completed",
+        "cases": cases1,
+        "runs": [run1, run2],
+        "runs_comparable": comparable,
+        "all_frames_serialised": frames_ok,
+        "improvement_factor": round(
+            run1["wall_s"] / max(run2["wall_s"], 1e-9), 2) if comparable else None,
+    }
+    if not comparable:
+        result["comparability_note"] = (
+            f"run 1 covered {cases1} cases, run 2 covered {cases2}: the two "
+            "wall times do not describe the same work, so no ratio is reported")
+    return result
+
+
 def main() -> None:
     import redis
     protocol, _config, _ = load_bundle(PROJECT / "runs/reader-training-inputs-generation7")
@@ -257,10 +296,7 @@ def main() -> None:
             cache.invalidate(f"reader:{row['id']}")
         run2 = run_pipeline(endpoint, cache, rows, gen7_answers, tracer,
                             "parallel-lookups", parallel_lookups=True)
-        result = {"status": "completed", "cases": len(rows),
-                  "runs": [run1, run2],
-                  "improvement_factor": round(
-                      run1["wall_s"] / max(run2["wall_s"], 1e-9), 2)}
+        result = summarise(run1, run2)
         write_evidence(result, PROJECT / "research/runs/traced-pipeline-20260920.json",
                        __file__, subject=SUBJECT)
         print(json.dumps(result, indent=2))

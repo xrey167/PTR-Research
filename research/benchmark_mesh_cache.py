@@ -44,6 +44,37 @@ PROJECT = Path(__file__).resolve().parents[1]
 OUT = PROJECT / "research" / "runs" / "mesh-cache-20260920.json"
 
 
+SHARED_VALUE = {"value": 42, "unit": "days"}
+
+
+def summarise(peer: dict, *, cache_a_stats: dict | None = None) -> dict:
+    """Turn the peer node's observations into evidence. Pure.
+
+    `principal_isolated` is deliberately absent. It used to be produced by
+    reading a principal nothing had ever been written under, so it was true
+    whatever the cache did; the two statements that replace it are checkable
+    in opposite directions, and one of them is expected to be True because
+    the isolation does NOT hold.
+    """
+    return {
+        "status": "completed",
+        "cross_node_read": peer.get("shared") == SHARED_VALUE,
+        "invalidation_works": peer.get("after_invalidate") is None,
+        # The two halves of what "principal isolation" used to assert.
+        "cross_principal_refused_by_client": bool(peer.get("cross_principal_refused")),
+        "cross_principal_reachable_via_redis": bool(
+            peer.get("cross_principal_reachable_via_redis")),
+        "isolation": "client-side key derivation",
+        "isolation_note": (
+            "A MeshCache refuses principals it was not built for. The entries "
+            "themselves are not isolated: one Redis database, one credential, "
+            "so the peer node reads another principal's key with a raw GET. "
+            "Real isolation needs Redis ACLs per principal."),
+        "cache_a_stats": cache_a_stats or {},
+        "peer_result": peer,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--redis-host", default=REDIS_HOST)
@@ -106,22 +137,7 @@ print(json.dumps({{"shared": shared, "cross_principal_refused": refused,
         ["lxc", "exec", args.peer_node, "--", sys.executable, "-c", peer_code],
         capture_output=True, text=True, check=True).stdout.strip().splitlines()[-1])
 
-    outcome = {
-        "status": "completed",
-        "cross_node_read": result["shared"] == {"value": 42, "unit": "days"},
-        "invalidation_works": result["after_invalidate"] is None,
-        # The two halves of what "principal isolation" used to assert.
-        "cross_principal_refused_by_client": result["cross_principal_refused"],
-        "cross_principal_reachable_via_redis": result["cross_principal_reachable_via_redis"],
-        "isolation": "client-side key derivation",
-        "isolation_note": (
-            "A MeshCache refuses principals it was not built for. The entries "
-            "themselves are not isolated: one Redis database, one credential, "
-            "so the peer node reads another principal's key with a raw GET. "
-            "Real isolation needs Redis ACLs per principal."),
-        "cache_a_stats": cache_a.stats(),
-        "peer_result": result,
-    }
+    outcome = summarise(result, cache_a_stats=cache_a.stats())
     write_evidence(outcome, OUT, __file__, subject=SUBJECT)
     print(json.dumps(outcome, indent=2))
 

@@ -4,6 +4,17 @@
    LXD node np-node2 purely via MQTT presence (no static peer config).
 2. RTT: two host endpoints exchange ping/pong over the remote broker in
    np-node1; 100 sequential round trips, p50/p99 reported.
+
+WHAT THE RTT IS BETWEEN, recorded as a field and not only as prose. The two
+endpoints both run ON THE HOST; only the broker is remote. The 0.30 ms this
+produces has been quoted as a cross-node mesh latency in the master document
+and in three design documents, and it is not one. `rtt_scope` now says so
+inside the evidence, where a reader of the number will see it.
+
+STRUCTURE. `collect()` needs the broker and LXD; `summarise()` needs neither.
+The percentiles and the "did every round come back" verdict are arithmetic
+over the samples, and arithmetic that cannot be run without a broker is
+arithmetic nobody checks.
 """
 import json
 import subprocess
@@ -14,6 +25,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods.mesh import MeshEndpoint  # noqa: E402
+from research.evidence import write as write_evidence  # noqa: E402
+
+#: The modules these numbers are evidence ABOUT.
+SUBJECT = ["neural_pods/mesh.py"]
 
 BROKER = "10.50.0.121"
 PEER_NODE = "np-node2"
@@ -43,7 +58,44 @@ def run_discovery(endpoint: MeshEndpoint) -> dict:
     return {"discovered": ok, "peer_state": seen["state"]}
 
 
-def main() -> None:
+def percentile(values: list[float], p: float) -> float | None:
+    """The repository's convention, used identically in every benchmark.
+
+    None for an empty sample: the gate must be able to tell "fast" from
+    "never measured", and a 0.0 here would read as the former.
+    """
+    if not values:
+        return None
+    ordered = sorted(values)
+    return round(ordered[min(len(ordered) - 1, int(len(ordered) * p))], 2)
+
+
+def summarise(*, discovery: dict, rtts: list[float], rounds_sent: int,
+              endpoint_stats: dict, responder_stats: dict) -> dict:
+    """Turn the observations into the evidence the gate reads. Pure."""
+    return {
+        "status": "completed",
+        "discovery": discovery,
+        "rounds_sent": rounds_sent,
+        "rounds_ok": len(rtts),
+        "rounds_lost": rounds_sent - len(rtts),
+        "rtt_p50_ms": percentile(rtts, 0.5),
+        "rtt_p99_ms": percentile(rtts, 0.99),
+        # Stated in the evidence, not only in the note below: both endpoints
+        # run on the host and only the broker is remote. This number has been
+        # quoted as a cross-node mesh latency, and it is not one.
+        "rtt_scope": "host endpoint -> remote broker -> host endpoint",
+        "rtt_is_cross_node": False,
+        "endpoint_stats": endpoint_stats,
+        "responder_stats": responder_stats,
+        "note": ("Presence discovery host<->container peer (np-node2); "
+                 "RTT between two host endpoints over the remote broker "
+                 "in np-node1"),
+    }
+
+
+def collect() -> dict:
+    """Discover the peer and measure the round trips. Needs broker and LXD."""
     endpoint = MeshEndpoint(BROKER, "mesh-host", manifest_hash="host-manifest")
     try:
         discovery = run_discovery(endpoint)
@@ -76,24 +128,18 @@ def main() -> None:
                 rtts.append((time.perf_counter() - start) * 1000)
             else:
                 time.sleep(0.3)  # let a lost ping recover before the next
-        rtts.sort()
-        result = {
-            "status": "completed",
-            "discovery": discovery,
-            "rounds_sent": ROUNDS, "rounds_ok": len(rtts),
-            "rtt_p50_ms": round(rtts[len(rtts) // 2], 2) if rtts else None,
-            "rtt_p99_ms": round(rtts[int(len(rtts) * 0.99) - 1], 2) if rtts else None,
-            "endpoint_stats": endpoint.stats(),
-            "responder_stats": responder.stats(),
-            "note": ("Presence discovery host<->container peer (np-node2); "
-                     "RTT between two host endpoints over the remote broker "
-                     "in np-node1"),
-        }
-        Path("research/runs/mesh-presence-20260920.json").write_text(
-            json.dumps(result, indent=2), encoding="utf-8")
-        print(json.dumps(result, indent=2))
+        return {"discovery": discovery, "rtts": rtts, "rounds_sent": ROUNDS,
+                "endpoint_stats": endpoint.stats(),
+                "responder_stats": responder.stats()}
     finally:
         endpoint.close()
+
+
+def main() -> None:
+    result = summarise(**collect())
+    write_evidence(result, Path("research/runs/mesh-presence-20260920.json"),
+                   __file__, subject=SUBJECT)
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":

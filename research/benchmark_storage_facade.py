@@ -13,6 +13,24 @@ from L1 is "asked first, back-filled after an L2 hit", and that is testable
 without a server. The Redis tier's own latency is measured by
 benchmark_redis_cache_tier.py.
 
+STRUCTURE, and two things the split fixed.
+
+`collect()` exercises the facade and returns raw OBSERVATIONS; `summarise()`
+turns them into the verdict the gate reads, and is pure. That boundary is
+not cosmetic here:
+
+  * The checks used to be `assert` statements inside the measurement. An
+    assert that fires kills the run, so the one case worth recording — the
+    facade got it wrong — produced a traceback and NO evidence. The gate saw
+    a missing file, which it reports as "no evidence" rather than "evidence
+    says no". Those are different findings and they need different fixes.
+    Every assert is now an observation the summary judges.
+  * `quoted_key_roundtrip` was written into the report as the literal `True`.
+    The gate's `quoted_key_roundtrip is True` therefore asserted nothing at
+    all — the same defect as `reflex_frames_valid == 132`. It is now a count
+    of the round-trips that actually returned what was written, and the
+    boolean follows from the count.
+
 Usage:  python research/benchmark_storage_facade.py [--redis HOST]
 """
 from __future__ import annotations
@@ -101,11 +119,76 @@ def _percentile(values: list[float], p: float) -> float:
     return round(ordered[min(len(ordered) - 1, int(len(ordered) * p))], 4)
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--redis", default=os.environ.get("NEURAL_PODS_REDIS"))
-    args = parser.parse_args()
-    redis_client, l1_backend = _connect_redis(args.redis)
+def summarise(obs: dict) -> dict:
+    """Turn the observations into the evidence the gate reads. Pure.
+
+    Every field the gate compares is derived here, from numbers `collect()`
+    measured. Nothing in this function can reach Redis, LanceDB or a clock,
+    which is what makes it possible to ask it what it says about a facade
+    that got things WRONG — the case the asserts used to make unreportable.
+    """
+    kv_keys = obs["kv_keys"]
+    l1_ms, l2_ms = obs["l1_read_ms"], obs["l2_read_ms"]
+    return {
+        "status": "completed",
+        "l1_backend": obs["l1_backend"],
+        "elapsed_s": obs["elapsed_s"],
+        "kv": {
+            "keys": kv_keys,
+            "rows": obs["kv_rows"],
+            # A first write stored twice was one of the six defects.
+            "duplicate_rows": obs["kv_rows"] - kv_keys,
+            "rows_after_reput": obs["rows_after_reput"],
+            # A re-put must replace. Reading the old value back means the
+            # facade appended and the reader found the stale row first.
+            "stale_read_after_reput": obs["reput_value_read"] != obs["reput_value_written"],
+            # A read must not create tables.
+            "read_miss_tables_created": (obs["tables_after_read_miss"]
+                                         - obs["tables_before"]),
+            "read_miss_returned_nothing": (obs["read_miss_get"] is None
+                                           and obs["read_miss_search"] == 0
+                                           and obs["read_miss_traces"] == 0),
+            "l1_backfilled_after_l2_hit": (obs["l1_entries_after_backfill"]
+                                           - obs["l1_entries_before_backfill"]),
+            # Counted, not asserted: how many keys containing an apostrophe
+            # came back as written. The literal `True` that used to stand
+            # here made the gate's check on it unfalsifiable.
+            "quoted_key_roundtrips_ok": obs["quoted_key_roundtrips_ok"],
+            "quoted_key_roundtrips_attempted": obs["quoted_key_roundtrips_attempted"],
+            "quoted_key_roundtrip": (obs["quoted_key_roundtrips_ok"]
+                                     == obs["quoted_key_roundtrips_attempted"]
+                                     and obs["quoted_key_roundtrips_attempted"] > 0),
+            "write_p50_ms": _percentile(obs["write_ms"], 0.5),
+            "l1_read_p50_ms": _percentile(l1_ms, 0.5),
+            "l2_read_p50_ms": _percentile(l2_ms, 0.5),
+            "l1_faster_than_l2": (statistics.median(l1_ms)
+                                  < statistics.median(l2_ms)),
+        },
+        "l2_lance": {
+            "documents": obs["documents"],
+            "document_rows": obs["document_rows"],
+            "duplicate_document_rows": obs["document_rows"] - obs["documents"],
+            "document_write_ms": round(obs["document_write_ms"], 3),
+            "top_k_requested": obs["top_k_requested"],
+            "top_k_distinct": obs["top_k_distinct"],
+            "vector_dim": VECTOR_DIM,
+            "namespaces_created": obs["namespaces_created"],
+            # The listing truncated at ten, so more namespaces than the
+            # default limit is the point of this number.
+            "tables_listed": obs["tables_listed"],
+            "trace_rows": obs["trace_rows"],
+            "duplicate_trace_rows": obs["trace_rows"] - obs["traces_written"],
+            "quoted_stage_matches": obs["quoted_stage_matches"],
+        },
+        "session_affinity": obs["session_affinity"],
+        "scope": ("facade contract and L2 behaviour; L1 latency against a "
+                  "real Redis is measured by benchmark_redis_cache_tier.py"),
+    }
+
+
+def collect(*, redis_host: str | None = None) -> dict:
+    """Exercise the facade and return raw observations. No verdicts here."""
+    redis_client, l1_backend = _connect_redis(redis_host)
 
     started = time.perf_counter()
     with tempfile.TemporaryDirectory() as workdir:
@@ -114,25 +197,32 @@ def main() -> None:
                            principal="tenant-bench")
 
         # --- a read must not create anything --------------------------------
-        miss_before = store._tables()
-        assert store.get("never-written") is None
-        assert store.search_documents("never-used", [0.0] * VECTOR_DIM) == []
-        assert store.query_traces(stage="never-run") == []
-        read_miss_tables_created = len(store._tables()) - len(miss_before)
+        tables_before = len(store._tables())
+        read_miss_get = store.get("never-written")
+        read_miss_search = len(store.search_documents("never-used",
+                                                      [0.0] * VECTOR_DIM))
+        read_miss_traces = len(store.query_traces(stage="never-run"))
+        tables_after_read_miss = len(store._tables())
 
         # --- KV: write once, read from L1, then from L2 ---------------------
         write_ms, l1_ms, l2_ms = [], [], []
+        # Counted, not derived from KV_KEYS: every key is read twice (once
+        # from L1, once from L2 after the L1 entries are cleared), so an
+        # expectation computed from the key count alone is off by a factor
+        # of two — as the first run of this split showed.
+        roundtrips_ok = roundtrips_attempted = 0
         for index in range(KV_KEYS):
             key = f"case:{index}:O'Brien"      # apostrophe: predicate quoting
             t0 = time.perf_counter()
             store.put(key, {"index": index})
             write_ms.append((time.perf_counter() - t0) * 1000)
             t1 = time.perf_counter()
-            assert store.get(key) == {"index": index}
+            value = store.get(key)
             l1_ms.append((time.perf_counter() - t1) * 1000)
+            roundtrips_attempted += 1
+            roundtrips_ok += 1 if value == {"index": index} else 0
 
         kv_rows = store._open("kv").count_rows()
-        duplicate_kv_rows = kv_rows - KV_KEYS
 
         keys = [f"case:{index}:O'Brien" for index in range(KV_KEYS)]
         l1_keys = _l1_keys(store, keys)
@@ -140,14 +230,17 @@ def main() -> None:
         l1_entries_before = _count_l1(redis_client, l1_keys)
         for index, key in enumerate(keys):
             t0 = time.perf_counter()
-            assert store.get(key) == {"index": index}
+            value = store.get(key)
             l2_ms.append((time.perf_counter() - t0) * 1000)
-        l1_backfilled = _count_l1(redis_client, l1_keys) - l1_entries_before
+            roundtrips_attempted += 1
+            roundtrips_ok += 1 if value == {"index": index} else 0
+        l1_entries_after = _count_l1(redis_client, l1_keys)
 
         # --- re-put replaces, it does not append ----------------------------
-        store.put("case:0:O'Brien", {"index": -1})
+        reput_written = {"index": -1}
+        store.put("case:0:O'Brien", reput_written)
         _clear_l1(redis_client, _l1_keys(store, ["case:0:O'Brien"]))
-        stale_read = store.get("case:0:O'Brien") != {"index": -1}
+        reput_read = store.get("case:0:O'Brien")
         rows_after_reput = store._open("kv").count_rows()
 
         # --- L2 documents and vector search ---------------------------------
@@ -167,9 +260,11 @@ def main() -> None:
         tables_listed = len(store._tables())
 
         # --- traces ----------------------------------------------------------
+        traces_written = 100
         store.write_traces([{"trace_id": f"t{i}", "case": f"c{i}",
                              "stage": "cache" if i % 2 else "O'Hara",
-                             "latency_ms": float(i)} for i in range(100)])
+                             "latency_ms": float(i)}
+                            for i in range(traces_written)])
         trace_rows = store._open("traces").count_rows()
         quoted_stage = len(store.query_traces(stage="O'Hara", limit=100))
 
@@ -179,43 +274,45 @@ def main() -> None:
         store.kv_session("s1", "replica-1")
         affinity = store.stats()["session_affinity"]
 
-        result = {
-            "status": "completed",
+        return {
             "l1_backend": l1_backend,
             "elapsed_s": round(time.perf_counter() - started, 3),
-            "kv": {
-                "keys": KV_KEYS,
-                "rows": kv_rows,
-                "duplicate_rows": duplicate_kv_rows,
-                "rows_after_reput": rows_after_reput,
-                "stale_read_after_reput": stale_read,
-                "read_miss_tables_created": read_miss_tables_created,
-                "l1_backfilled_after_l2_hit": l1_backfilled,
-                "quoted_key_roundtrip": True,
-                "write_p50_ms": _percentile(write_ms, 0.5),
-                "l1_read_p50_ms": _percentile(l1_ms, 0.5),
-                "l2_read_p50_ms": _percentile(l2_ms, 0.5),
-                "l1_faster_than_l2": statistics.median(l1_ms) < statistics.median(l2_ms),
-            },
-            "l2_lance": {
-                "documents": DOCUMENTS,
-                "document_rows": document_rows,
-                "duplicate_document_rows": document_rows - DOCUMENTS,
-                "document_write_ms": round(document_write_ms, 3),
-                "top_k_requested": 10,
-                "top_k_distinct": distinct_top_k,
-                "vector_dim": VECTOR_DIM,
-                "namespaces_created": NAMESPACES + 2,   # + corpus + kv
-                "tables_listed": tables_listed,
-                "trace_rows": trace_rows,
-                "duplicate_trace_rows": trace_rows - 100,
-                "quoted_stage_matches": quoted_stage,
-            },
+            "kv_keys": KV_KEYS,
+            "kv_rows": kv_rows,
+            "tables_before": tables_before,
+            "tables_after_read_miss": tables_after_read_miss,
+            "read_miss_get": read_miss_get,
+            "read_miss_search": read_miss_search,
+            "read_miss_traces": read_miss_traces,
+            "quoted_key_roundtrips_ok": roundtrips_ok,
+            "quoted_key_roundtrips_attempted": roundtrips_attempted,
+            "write_ms": write_ms,
+            "l1_read_ms": l1_ms,
+            "l2_read_ms": l2_ms,
+            "l1_entries_before_backfill": l1_entries_before,
+            "l1_entries_after_backfill": l1_entries_after,
+            "reput_value_written": reput_written,
+            "reput_value_read": reput_read,
+            "rows_after_reput": rows_after_reput,
+            "documents": DOCUMENTS,
+            "document_rows": document_rows,
+            "document_write_ms": document_write_ms,
+            "top_k_requested": 10,
+            "top_k_distinct": distinct_top_k,
+            "namespaces_created": NAMESPACES + 2,   # + corpus + kv
+            "tables_listed": tables_listed,
+            "traces_written": traces_written,
+            "trace_rows": trace_rows,
+            "quoted_stage_matches": quoted_stage,
             "session_affinity": affinity,
-            "scope": ("facade contract and L2 behaviour; L1 latency against a "
-                      "real Redis is measured by benchmark_redis_cache_tier.py"),
         }
 
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--redis", default=os.environ.get("NEURAL_PODS_REDIS"))
+    args = parser.parse_args()
+    result = summarise(collect(redis_host=args.redis))
     write_evidence(result, OUT, __file__, subject=SUBJECT)
     print(json.dumps(result, indent=2))
 

