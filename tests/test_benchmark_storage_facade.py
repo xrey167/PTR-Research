@@ -50,6 +50,15 @@ def _observations(**overrides):
         "trace_rows": 100,
         "quoted_stage_matches": 50,
         "session_affinity": {"reuses": 1, "failovers": 1},
+        # A kv table that predates the l1_eligible column: no flag before,
+        # the write succeeds, the flag is there afterwards, and the legacy
+        # row still reaches L1 on a read.
+        "legacy_table_had_flag": False,
+        "legacy_write_ok": True,
+        "legacy_write_error": None,
+        "legacy_table_has_flag_after": True,
+        "legacy_row_value": {"index": 0},
+        "legacy_row_backfilled_l1": 1,
     }
     obs.update(overrides)
     return obs
@@ -67,6 +76,9 @@ def test_a_clean_run_produces_the_verdict_the_gate_accepts():
     assert l2["duplicate_document_rows"] == 0
     assert l2["duplicate_trace_rows"] == 0
     assert l2["tables_listed"] == l2["namespaces_created"]
+    assert kv["legacy_table_migrated"] is True
+    assert kv["legacy_row_readable"] is True
+    assert kv["legacy_row_backfilled_l1"] == 1
 
 
 def test_the_first_write_stored_twice_shows_up_as_duplicate_rows():
@@ -154,3 +166,22 @@ def test_the_l1_backend_is_carried_into_the_report():
     numbers mean, so it must not be inferable only from context."""
     report = summarise(_observations(l1_backend="redis://10.50.0.121"))
     assert report["l1_backend"] == "redis://10.50.0.121"
+
+
+def test_a_write_that_failed_against_a_legacy_table_is_reported():
+    """lancedb refuses an unknown column outright, so without the migration
+    every put() against a grown store raises. The verdict has to show that
+    rather than the run simply ending."""
+    report = summarise(_observations(
+        legacy_write_ok=False,
+        legacy_write_error="ValueError(\"Field 'l1_eligible' not found\")",
+        legacy_table_has_flag_after=False))
+    assert report["kv"]["legacy_table_migrated"] is False
+    assert "l1_eligible" in report["kv"]["legacy_write_error"]
+
+
+def test_a_legacy_row_that_never_reached_l1_again_is_visible():
+    """The NULL branch in get(): after the migration the column exists and
+    old rows carry NULL, which `dict.get(key, True)` reads as falsy."""
+    report = summarise(_observations(legacy_row_backfilled_l1=0))
+    assert report["kv"]["legacy_row_backfilled_l1"] == 0

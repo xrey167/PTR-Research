@@ -50,7 +50,7 @@ die verbesserte Politik wird als Gen-(N+1) eingesetzt.
 |---|---|---|
 | D1 | `neural_pods/dream.py`: HistoryPool (Per-Case-Outcomes aller Generationen einsammeln), Replay-Simulator (Familien-Effekte), Policy-Bewertung | — |
 | D2 | `research/run_dream_cycle.py`: Zyklus auf dem Server — Pool bauen, Policies träumen, beste Strategie → Generation-7-Curriculum | `dream_pipeline` |
-| D3 | Reflex-Bindung `dream` + Hauptmodell-Demo | `dream_reflex` ✔ |
+| D3 | Reflex-Bindung `dream` + Hauptmodell-Demo | `dream_reflex` **rot**, s. u. |
 | D4 (später) | Feineres Politur-Raum: Entscheidungen auf Zeilen-Ebene statt Familien-Ebene; MCTS über dem Entscheidungsbaum (vollständiges Dream-RSI) | `dream_deep` (offen) |
 
 Akzeptanz D1–D3: kein bestehender Check bricht; der Simulator reproduziert
@@ -73,11 +73,21 @@ Zählstände stehen ausschließlich in `ARCHITECTURE-MASTER-20260920.md`.
   (`CycleBudget`, vor dem Zyklus geprüft) und ein **`dream_cycle`-Provenance-
   Event** mit Pool-Fingerprint, allen Kandidaten und dem Gewinner. Vorher
   hinterließ ein Zyklus nichts außer einer JSON-Datei.
-- **D3 umgesetzt und geprüft:** `research/benchmark_dream_reflex.py` +
-  Gate-Check `dream_reflex`. Gemessen wird die **Bindung**: Alias-Auflösung
-  p95 **0,098 ms** (Ziel des Pod-Arm-Designs: < 5 ms), deterministischer
+- **D3 gebaut, Gate-Check rot:** `research/benchmark_dream_reflex.py` +
+  Gate-Check `dream_reflex`. Gemessen wird die **Bindung**: deterministischer
   Gewinner über 200 Aufrufe, eine bewusste Fehladressierung zieht den Arm
-  korrekt auf den Default-Pod zurück.
+  korrekt auf den Default-Pod zurück, Alias-Auflösung p95 **0,089 ms** gegen
+  das Pod-Arm-Ziel < 5 ms.
+
+  **Zwei Berichtigungen dazu (2026-09-20).** Erstens stand hier „p95 0,098 ms"
+  — diese Zahl steht in keiner dream-reflex-Evidenzdatei; die Aufzeichnung
+  sagt 0,089 ms. Zweitens war der Haken in der Tabelle oben falsch: der
+  Gate-Check ist **rot**, und das zu Recht. Er prüft seit dem Pod-Audit
+  `pool_source`, und in einem Klon ohne die Generationsberichte fällt der
+  Benchmark auf einen **synthetischen Zwei-Generationen-Pool** zurück. Eine
+  Latenz über einem Spielzeugpool ist keine Latenz über dem echten. Die
+  Bindung ist fertig; der Beleg dafür, dass sie über der echten Historie
+  trägt, fehlt bis zur Aufzeichnung auf dem Server.
 - Offen: D4 (zeilenfeine Politik-Räume, MCTS über dem Entscheidungsbaum).
 
 ## Gen-7-Online-Lauf: was der Vergleich wirklich zeigt (berichtigt)

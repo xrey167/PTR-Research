@@ -107,17 +107,58 @@ class PodStorage:
             return None
         return self._lance_db().open_table(name)
 
+    def _evolve_schema(self, table, rows: list[dict[str, Any]]):
+        """Add columns `rows` carry that the table does not have yet.
+
+        Needed because `merge_insert` casts the incoming rows HARD against the
+        table schema and refuses an unknown column outright. Measured against
+        lancedb 0.39.0:
+
+            ValueError: Field 'l1_eligible' not found in target schema
+
+        `allow_subschema` only permits FEWER columns, never more, and the
+        merge builder has no evolution flag. So a table created before a
+        column existed does not lose the value quietly — every single write
+        against it raises. Without this, deploying the `l1_eligible` column
+        would have broken `put()` on every store that already held data.
+
+        The new column is nullable and existing rows get NULL: a metadata
+        operation that does not rewrite a grown table. Reading NULL means
+        "no opinion" — see `get()`, which has to distinguish that from False.
+
+        Idempotent: nothing missing, nothing written, so a fresh table and
+        the settled state are both no-ops.
+        """
+        import pyarrow as pa
+
+        have = set(table.schema.names)
+        incoming = pa.Table.from_pylist(rows).schema
+        missing = [incoming.field(name) for name in incoming.names
+                   if name not in have]
+        if not missing:
+            return table
+        table.add_columns(pa.schema([field.with_nullable(True)
+                                     for field in missing]))
+        return table
+
     def _write(self, name: str, rows: list[dict[str, Any]],
-               *, keys: list[str] | None = None):
+               *, keys: list[str] | None = None, evolve: bool = False):
         """Create-with-rows on the first write, upsert (keys) or append after.
 
         The create branch deliberately does not add() afterwards — the table
         already holds `rows`.
+
+        `evolve` is opt-in per call, not automatic for every table. `docs_*`
+        and `traces` take rows from arbitrary callers; evolving there would
+        turn a typo in a row dict into a silent schema change on a production
+        table. `kv` is the one table whose row shape this module controls.
         """
         db = self._lance_db()
         if name not in self._tables():
             return db.create_table(name, data=rows)
         table = db.open_table(name)
+        if evolve:
+            table = self._evolve_schema(table, rows)
         if keys:
             table.merge_insert(keys).when_matched_update_all() \
                  .when_not_matched_insert_all().execute(rows)
@@ -149,7 +190,7 @@ class PodStorage:
         self._write("kv", [{"key": key, "value": encoded,
                             "principal": self.principal, "ts": time.time(),
                             "l1_eligible": bool(l1)}],
-                    keys=["key", "principal"])
+                    keys=["key", "principal"], evolve=True)
 
     def get(self, key: str) -> Any | None:
         if self.redis is not None:
@@ -169,9 +210,17 @@ class PodStorage:
             return None
         encoded = rows[0]["value"]
         # Warm L1 back up after an L2 hit - but only for values that were
-        # allowed into L1 in the first place. Rows written before the flag
-        # existed carry no opinion and stay eligible.
-        if rows[0].get("l1_eligible", True):
+        # allowed into L1 in the first place.
+        #
+        # "No opinion" has TWO shapes, and `dict.get(key, default)` only
+        # catches the first: the key is absent (a table not yet migrated), or
+        # the key is present with NULL (a row written before the column, in a
+        # table that has since been migrated). `to_list()` returns every
+        # column of the table, so after the migration the key is always there
+        # and the default never applies — None is falsy, and the back-fill
+        # this comment promises would have been skipped in silence.
+        flag = rows[0].get("l1_eligible")
+        if flag is None or bool(flag):
             self._l1_put(key, encoded)
         return json.loads(encoded)
 

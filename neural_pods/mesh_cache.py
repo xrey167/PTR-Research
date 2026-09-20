@@ -98,13 +98,17 @@ class MeshCache:
             with self._lock:
                 self.misses += 1
             return None
-        # redis-py returns bytes by default and str with decode_responses=True;
-        # the hard-coded .decode() broke against the second configuration.
-        if isinstance(raw, bytes):
-            raw = raw.decode("utf-8")
         try:
+            # redis-py returns bytes by default and str with
+            # decode_responses=True; the hard-coded .decode() broke against
+            # the second configuration. It sat OUTSIDE this guard, so invalid
+            # UTF-8 in the store raised UnicodeDecodeError at the caller
+            # instead of being counted — a cache that cannot read an entry
+            # must return a miss, not take the process with it.
+            if isinstance(raw, bytes):
+                raw = raw.decode("utf-8")
             value = json.loads(raw)["value"]
-        except (ValueError, KeyError, TypeError):
+        except (ValueError, KeyError, TypeError, UnicodeDecodeError):
             # Counted as a hit before it was decoded, the hit rate described
             # entries this cache could not actually serve.
             with self._lock:

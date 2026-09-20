@@ -138,3 +138,112 @@ def test_l1_opt_out_survives_a_read(storage):
     storage.redis_stub.data.clear()
     assert storage.get("normal") == {"v": 2}
     assert len(storage.redis_stub.data) == 1      # eligible value is warmed
+
+
+# ---------------------------------------------------------------------------
+# A kv table created before the `l1_eligible` column existed.
+#
+# This is the case no test and no benchmark could see: the benchmark builds a
+# fresh tempfile.TemporaryDirectory() every run, so it never meets a grown
+# table. Measured against lancedb 0.39.0, merge_insert does not drop the
+# unknown column quietly — it raises `ValueError: Field 'l1_eligible' not
+# found in target schema`. Shipping the column without a migration would have
+# broken put() on every store that already held data.
+
+
+def _legacy_kv(store, key, value, *, principal="local"):
+    """The kv table exactly as _write created it before the column existed."""
+    import json as json_mod
+
+    store._lance_db().create_table("kv", data=[{
+        "key": key, "value": json_mod.dumps(value),
+        "principal": principal, "ts": 0.0}])
+
+
+def test_a_legacy_kv_table_has_no_flag_column(storage):
+    """The precondition, pinned: without this the tests below prove nothing."""
+    _legacy_kv(storage, "alt", {"v": 1})
+    assert "l1_eligible" not in storage._open("kv").schema.names
+
+
+def test_writing_to_a_legacy_table_migrates_it_instead_of_raising(storage):
+    _legacy_kv(storage, "alt", {"v": 1})
+    storage.put("neu", {"v": 2})                      # raised ValueError before
+
+    table = storage._open("kv")
+    assert "l1_eligible" in table.schema.names
+    assert table.count_rows() == 2
+    assert storage.get("neu") == {"v": 2}
+
+
+def test_a_legacy_row_carries_null_and_is_still_l1_eligible(storage):
+    """The half `dict.get(key, default)` could not express. After the
+    migration the key IS present, with NULL — so the default never applies,
+    None is falsy, and the back-fill the comment promised was skipped."""
+    _legacy_kv(storage, "alt", {"v": 1})
+    storage.put("neu", {"v": 2})                      # triggers the migration
+
+    row = storage._open("kv").search().where(
+        "key = 'alt'", prefilter=True).limit(1).to_list()[0]
+    assert "l1_eligible" in row          # the key is there ...
+    assert row["l1_eligible"] is None    # ... and it is NULL
+
+    storage.redis_stub.data.clear()
+    assert storage.get("alt") == {"v": 1}
+    assert len(storage.redis_stub.data) == 1, "the legacy row was not warmed"
+
+
+def test_a_read_alone_does_not_migrate(storage):
+    """A lookup must not create or alter anything — the same invariant the
+    gate checks as read_miss_tables_created == 0."""
+    _legacy_kv(storage, "alt", {"v": 1})
+    assert storage.get("alt") == {"v": 1}
+    assert "l1_eligible" not in storage._open("kv").schema.names
+
+
+def test_the_migration_is_idempotent(storage):
+    _legacy_kv(storage, "alt", {"v": 1})
+    storage.put("neu", {"v": 2})
+    table = storage._open("kv")
+    version = table.version
+
+    storage._evolve_schema(table, [{"key": "x", "value": "x",
+                                    "principal": "local", "ts": 0.0,
+                                    "l1_eligible": True}])
+    assert storage._open("kv").version == version
+    assert list(table.schema.names).count("l1_eligible") == 1
+
+
+def test_an_opt_out_survives_the_migration(storage):
+    """False must not be confused with NULL: a value the writer kept out of
+    L1 stays out, even when the migration happens in the same call."""
+    _legacy_kv(storage, "alt", {"v": 1})
+    storage.put("secret", {"v": 9}, l1=False)
+    assert storage.redis_stub.data == {}
+
+    storage.redis_stub.data.clear()
+    assert storage.get("secret") == {"v": 9}
+    assert storage.redis_stub.data == {}, "an l1=False value reached L1"
+
+
+def test_a_reput_over_a_legacy_row_sets_the_flag_without_duplicating(storage):
+    _legacy_kv(storage, "alt", {"v": 1})
+    storage.put("alt", {"v": 2}, l1=False)
+
+    table = storage._open("kv")
+    assert table.count_rows() == 1
+    row = table.search().where("key = 'alt'", prefilter=True).limit(1).to_list()[0]
+    assert row["l1_eligible"] is False
+    storage.redis_stub.data.clear()
+    assert storage.get("alt") == {"v": 2}
+    assert storage.redis_stub.data == {}
+
+
+def test_merge_insert_still_refuses_an_unknown_column(storage):
+    """A library pin. The migration exists because of this behaviour; if a
+    future lancedb evolves or drops silently instead, this goes red and the
+    reasoning above needs revisiting — the fix stays correct either way."""
+    table = storage._lance_db().create_table("probe", data=[{"a": 1}])
+    with pytest.raises(Exception, match="not found in target schema"):
+        table.merge_insert(["a"]).when_matched_update_all() \
+             .when_not_matched_insert_all().execute([{"a": 1, "b": 2}])

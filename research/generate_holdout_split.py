@@ -77,9 +77,17 @@ def main() -> None:
             problems.append(f"missing {MANIFEST_FILE.name}")
         else:
             stored = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-            for key in ("cases_sha256", "generator_sha256", "rows"):
-                if stored.get(key) != manifest[key]:
-                    problems.append(f"manifest {key} is stale")
+            # The WHOLE manifest, not three of its thirteen fields. The gate
+            # check `holdout_split_disjoint` reads `overlaps` and
+            # `disjoint_from_frozen_splits` out of this artifact — neither of
+            # which --check compared, so a stale overlaps list passed the
+            # check and then fed the gate. Same evidence drift the producer
+            # and subject hashes close one level up.
+            drifted = sorted(
+                key for key in set(stored) | set(manifest)
+                if stored.get(key) != manifest.get(key))
+            if drifted:
+                problems.append("manifest is stale in: " + ", ".join(drifted))
         if not manifest["disjoint_from_frozen_splits"]:
             problems.append(f"split overlaps the frozen splits: {manifest['overlaps']}")
         if problems:

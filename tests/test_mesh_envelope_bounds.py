@@ -108,3 +108,72 @@ def test_a_pod_link_can_be_published_under_its_own_bounds():
     assert envelope_refusal(envelope, pod_id="pod-b") is None
     assert envelope["trace_id"] == "t-9"
     assert envelope["hop_budget"] == 3
+
+
+# ---------------------------------------------------------------------------
+# Malformed bounds. These three fields come off the wire, so a sender chooses
+# their types — and `envelope_refusal` does int()/float() on them. Raising
+# reached the paho callback, which re-raises into its network loop
+# (suppress_exceptions defaults to False in 2.1.0) and can end the receiving
+# thread. A field added to BOUND a request would have become a way to silence
+# the pod receiving it, and the message would not even have been counted.
+
+
+@pytest.mark.parametrize("envelope", [
+    {"hop_budget": "x"},
+    {"hop_budget": "3; DROP"},
+    {"hop_budget": []},
+    {"hop_budget": {"n": 3}},
+    {"hop_budget": None, "deadline_ms": "soon", "ts_ms": 1.0},
+    {"hop_budget": 3, "visited": "pod-a"},          # a string, not a list
+    {"hop_budget": 3, "visited": 7},
+])
+def test_a_malformed_bound_is_refused_not_raised(envelope):
+    base = _envelope(**envelope)
+    assert envelope_refusal(base, pod_id="pod-a") == "malformed"
+    assert envelope_refusal(base, pod_id="pod-a", forwarding=True) == "malformed"
+
+
+def test_a_malformed_deadline_is_refused():
+    envelope = _envelope(deadline_ms="eventually", ts_ms=time.time() * 1000)
+    assert envelope_refusal(envelope, pod_id="pod-a") == "malformed"
+
+
+def test_a_numeric_string_budget_is_accepted():
+    """JSON round-trips through other languages; "3" is well-formed input,
+    not an attack. Refusing it would break interoperability for no gain."""
+    envelope = _envelope(hop_budget="3", visited=[])
+    assert envelope_refusal(envelope, pod_id="pod-a") is None
+
+
+def test_a_deadline_without_a_timestamp_leaves_the_deadline_unenforced():
+    """ts_ms is stamped by _publish_raw, so a deadline without one comes from
+    an older sender. That is not malformed — it just cannot be checked."""
+    envelope = {"body": {}, "deadline_ms": 1500, "hop_budget": 3, "visited": []}
+    assert envelope_refusal(envelope, pod_id="pod-a") is None
+
+
+def test_the_bounds_are_evaluated_inside_the_receive_guard():
+    """The structural half of the fix: whatever envelope_refusal does, the
+    call site must sit where an exception is counted rather than escaping
+    into the paho network loop."""
+    import ast
+    import inspect
+
+    from neural_pods import mesh
+
+    source = inspect.getsource(mesh.MeshEndpoint._on_message)
+    tree = ast.parse(source.lstrip())
+    handler = next(n for n in ast.walk(tree)
+                   if isinstance(n, ast.FunctionDef) and n.name == "_on_message")
+    guarded = [n for n in ast.walk(handler) if isinstance(n, ast.Try)]
+    assert guarded, "_on_message has no guard at all"
+
+    def calls_refusal(node):
+        return any(isinstance(inner, ast.Call)
+                   and getattr(inner.func, "id", "") == "envelope_refusal"
+                   for inner in ast.walk(node))
+
+    assert any(calls_refusal(block) for block in guarded), (
+        "envelope_refusal() is called outside the try block: a malformed "
+        "field would escape into the paho network loop")

@@ -52,14 +52,19 @@ def summarise(observations, *, errors: int, elapsed_s: float,
     """
     stats = {'n': len(observations), 'errors': errors,
              'gen5_raw': 0, 'gen5_guarded': 0, 'gen3_raw': 0,
-             'fallback_used': 0, 'union_raw': 0, 'union_guarded': 0}
+             'fallback_used': 0, 'fallback_errors': 0,
+             'union_raw': 0, 'union_guarded': 0}
     for observation in observations:
         target = observation['target']
         g5_raw = observation['primary_answer'] == target
         g5_guarded = observation['primary_guarded'] == target
-        used_fallback = 'fallback_answer' in observation
-        g3_raw = used_fallback and observation['fallback_answer'] == target
-        stats['fallback_used'] += used_fallback
+        # Asked, not answered: a fallback call that raised still counts as
+        # used, or `fallback_used` and `n` would describe different sets.
+        asked_fallback = not g5_raw
+        g3_raw = ('fallback_answer' in observation
+                  and observation['fallback_answer'] == target)
+        stats['fallback_used'] += asked_fallback
+        stats['fallback_errors'] += bool(observation.get('fallback_error'))
         stats['gen5_raw'] += g5_raw
         stats['gen5_guarded'] += g5_guarded
         stats['gen3_raw'] += g3_raw
@@ -95,8 +100,19 @@ def run(inputs, output, port0=18000, port1=18001):
                        'primary_answer': primary,
                        'primary_guarded': guarded_answer(row, primary)}
         if primary != row['target']:
-            observation['fallback_answer'] = ask(
-                router, 'reader-gen3', prompt, protocol['evaluation_max_new_tokens'])
+            # Guarded exactly like the primary call above. VllmReplicaRouter
+            # raises RuntimeError once every replica has failed, and this call
+            # was bare: one fallback failure aborted run(), discarding every
+            # observation collected so far and writing no evidence file at
+            # all. benchmark_hetero_ensemble.py already handled it; this did
+            # not, in the same commit.
+            try:
+                observation['fallback_answer'] = ask(
+                    router, 'reader-gen3', prompt,
+                    protocol['evaluation_max_new_tokens'])
+            except RuntimeError:
+                errors += 1
+                observation['fallback_error'] = True
         observations.append(observation)
 
     result = summarise(

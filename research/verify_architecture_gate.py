@@ -430,6 +430,14 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             # second half used to be an assert inside the benchmark, which
             # killed the run instead of recording the failure.
             and storage_kv.get("read_miss_returned_nothing") is True
+            # A store that already held data before the l1_eligible column
+            # existed. The benchmark starts from a fresh temp dir every run,
+            # so this case was invisible to the gate until it was measured
+            # explicitly — and lancedb refuses the unknown column outright,
+            # which would have broken put() on every grown store.
+            and storage_kv.get("legacy_table_migrated") is True
+            and storage_kv.get("legacy_row_readable") is True
+            and storage_kv.get("legacy_row_backfilled_l1", 0) >= 1
             and storage.get("session_affinity", {}).get("reuses") == 1
             and storage.get("session_affinity", {}).get("failovers") == 1,
         "storage_l2_lance": storage.get("status") == "completed"
@@ -533,59 +541,71 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     for check_name, baseline in baseline_of.items():
         if baseline in missing:
             checks[check_name] = False
+    report = {
+        "ok": True, "checks": checks, "missing_evidence": missing,
+        "legacy_evidence": legacy,
+        "unstamped_evidence": unstamped_evidence,
+        "evidence_files_read": len(_LOADED),
+        # An evidence file with no `subject` is bound to its producer
+        # only: editing the module it measures leaves it green. Named so
+        # the gap is a known quantity rather than an invisible one.
+        "evidence_without_a_subject": sorted(
+            name for name, data in _LOADED.items()
+            if data and data.get("producer") and not data.get("subject")),
+        "unstamped_grandfathered": sorted(
+            name for name in _LOADED
+            if name in UNSTAMPED_GRANDFATHERED
+            and _LOADED[name] and not _LOADED[name].get("producer")),
+        "layering": {"modules": layering["modules"],
+                     "runtime_edges": layering["runtime_edges"]},
+        "tests_evidence": ("executed now" if run_tests else
+                           "tests-20260920.json" if test_run else
+                           "architecture-20260917.json (stale: no digest, "
+                           "predates the code it covers)"),
+    }
+
     failed = [name for name, ok in checks.items() if not ok]
     # Unstamped evidence fails. It used to be reported only when something
     # else was already red, which made the report cosmetic: a file nobody can
     # tie to a producing script is not evidence, whatever it says.
     if failed or stale_evidence or unstamped_evidence:
-        report = []
+        lines = []
         if failed:
-            report.append("architecture gate failed: " + ", ".join(failed))
+            lines.append("architecture gate failed: " + ", ".join(failed))
         if stale_evidence:
             # Fail-closed: evidence whose producer moved on is not evidence.
-            report.append("stale evidence: " + "; ".join(stale_evidence))
+            lines.append("stale evidence: " + "; ".join(stale_evidence))
         if layering["violations"]:
-            report.append("architecture violations: "
+            lines.append("architecture violations: "
                           + json.dumps(layering["violations"]))
         if unstamped_evidence:
-            report.append(
+            lines.append(
                 "evidence without a producer stamp (cannot be checked against "
                 "the code that made it, re-run through research/evidence.write; "
                 "pre-2026-09-20 files are listed in UNSTAMPED_GRANDFATHERED "
                 "and are exempt until re-recorded): "
                 + ", ".join(unstamped_evidence))
         if legacy:
-            report.append("legacy evidence accepted: " + "; ".join(legacy))
+            lines.append("legacy evidence accepted: " + "; ".join(legacy))
         if missing:
-            report.append(
+            lines.append(
                 "missing evidence (" + str(len(missing)) + " file(s) found in "
                 "neither " + " nor ".join(str(p) for p in dirs) + "): "
                 + ", ".join(missing))
-            report.append(
+            lines.append(
                 "a missing file is not a regression - re-run the benchmark, "
                 "or check its output in under research/runs/ so a clone can "
                 "reproduce this verdict.")
-        raise SystemExit("\n".join(report))
-    return {"ok": True, "checks": checks, "missing_evidence": missing,
-            "legacy_evidence": legacy,
-            "unstamped_evidence": unstamped_evidence,
-            "evidence_files_read": len(_LOADED),
-            # An evidence file with no `subject` is bound to its producer
-            # only: editing the module it measures leaves it green. Named so
-            # the gap is a known quantity rather than an invisible one.
-            "evidence_without_a_subject": sorted(
-                name for name, data in _LOADED.items()
-                if data and data.get("producer") and not data.get("subject")),
-            "unstamped_grandfathered": sorted(
-                name for name in _LOADED
-                if name in UNSTAMPED_GRANDFATHERED
-                and _LOADED[name] and not _LOADED[name].get("producer")),
-            "layering": {"modules": layering["modules"],
-                         "runtime_edges": layering["runtime_edges"]},
-            "tests_evidence": ("executed now" if run_tests else
-                               "tests-20260920.json" if test_run else
-                               "architecture-20260917.json (stale: no digest, "
-                               "predates the code it covers)")}
+        report["ok"] = False
+        report["failed"] = failed
+        # The structured report travels WITH the refusal. A red gate had only
+        # a text message, so anything that needed a field from it — a caller,
+        # a test, a person — had to recompute the gate's own logic, and a
+        # reimplementation is not a check of the thing it reimplements.
+        stop = SystemExit("\n".join(lines))
+        stop.report = report
+        raise stop
+    return report
 
 
 if __name__ == "__main__":

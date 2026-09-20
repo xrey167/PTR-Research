@@ -43,6 +43,14 @@ PEER_ID = "mesh-cache-b"
 PROJECT = Path(__file__).resolve().parents[1]
 OUT = PROJECT / "research" / "runs" / "mesh-cache-20260920.json"
 
+#: The modules these numbers are evidence ABOUT. research/evidence.py
+#: hashes them into the report, and the gate refuses the file once any
+#: of them changes: a measurement of code that no longer exists is not
+#: evidence, however carefully it was recorded.
+SUBJECT = [
+    "neural_pods/mesh_cache.py",
+]
+
 
 SHARED_VALUE = {"value": 42, "unit": "days"}
 
@@ -100,14 +108,6 @@ import sys, json
 sys.path.insert(0, "/home/xrey/neural-pods")
 import redis
 from neural_pods.mesh_cache import MeshCache, PrincipalRefused
-
-#: The modules these numbers are evidence ABOUT. research/evidence.py
-#: hashes them into the report, and the gate refuses the file once any
-#: of them changes: a measurement of code that no longer exists is not
-#: evidence, however carefully it was recorded.
-SUBJECT = [
-    "neural_pods/mesh_cache.py",
-]
 client = redis.Redis(host="{args.redis_host}", socket_timeout=3)
 cache_b = MeshCache(redis_client=client, pod_id="{PEER_ID}",
                     principal="tenant-a", namespace="mesh-bench")

@@ -132,6 +132,23 @@ def _evidence_dependencies():
     return dependencies
 
 
+def _gate_report(evidence_dir):
+    """The gate's structured report, red or green.
+
+    A refused gate carries it on the SystemExit. Before that, a test that
+    wanted one of these fields on a red tree had to recompute the gate's own
+    logic — and a reimplementation is not a check of the thing it
+    reimplements. This repository has that defect on record twice; this is
+    how it stops being available.
+    """
+    try:
+        return gate.verify(evidence_dir / ARCHITECTURE)
+    except SystemExit as refused:
+        report = getattr(refused, "report", None)
+        assert report is not None, "a refused gate must carry its report"
+        return report
+
+
 def _red_checks(evidence_dir, removed=None):
     if removed is not None:
         (evidence_dir / removed).unlink()
@@ -241,12 +258,17 @@ def test_changing_the_measured_code_makes_its_evidence_stale(evidence_dir, tmp_p
     does, which is the property the gate is supposed to have.
     """
     subject_file = REPO / "neural_pods" / "storage.py"
-    stamped = next(
-        path for path in evidence_dir.iterdir()
-        if path.suffix == ".json"
-        and json.loads(path.read_text(encoding="utf-8")).get("subject"))
+    # Named, not "whichever file happens to carry a subject": picking by
+    # filter meant that if the storage evidence stopped naming storage.py,
+    # another record would be selected and the test would still pass.
+    stamped = evidence_dir / "storage-facade-20260920.json"
     data = json.loads(stamped.read_text(encoding="utf-8"))
-    assert str(subject_file.relative_to(REPO)) in data["subject"] or data["subject"]
+    # `x in data["subject"] or data["subject"]` stood here. Python reads that
+    # as `(x in list) or (list)`, and a non-empty list is truthy — so the
+    # assertion held whether or not the path was present. The same defect
+    # this PR removed from the benchmarks, written into the test that checks
+    # the removal.
+    assert subject_file.relative_to(REPO).as_posix() in data["subject"]
 
     # Not by editing the repository: by recomputing the stamp against a tree
     # in which the measured module differs.
@@ -274,24 +296,55 @@ def test_changing_the_measured_code_makes_its_evidence_stale(evidence_dir, tmp_p
         stamped.write_bytes(backup)
 
 
-def test_evidence_that_names_no_subject_is_reported_not_hidden():
+def test_evidence_that_names_no_subject_is_reported_not_hidden(evidence_dir):
     """A file bound to its producer alone is a known gap. It is named in the
-    gate's own output so it cannot quietly become the normal case again."""
+    gate's own output so it cannot quietly become the normal case again.
+
+    This test used to recompute the list itself in the `except SystemExit`
+    branch — and since the gate is red on this tree, that branch always ran,
+    so `evidence_without_a_subject` was never read at all. Its closing
+    assertion then compared two sets both derived from `gate._LOADED` by the
+    test, one requiring `subject` and the other requiring its absence: they
+    are disjoint by construction and the assertion could not fail.
+
+    It now asserts a property of the GATE's own output, on a run whose result
+    it actually obtains.
+    """
+    reported = _gate_report(evidence_dir)["evidence_without_a_subject"]
+
+    # Everything the gate names must be a file that really lacks a subject...
+    for name in reported:
+        data = json.loads((evidence_dir / name).read_text(encoding="utf-8"))
+        assert data.get("producer"), f"{name} is not even stamped"
+        assert not data.get("subject"), f"{name} does name a subject"
+
+    # ...and every stamped file the gate READ without one must be named.
+    # Only files a check actually reads are in scope: the gate cannot report
+    # on evidence it never opened, and research/runs/ holds more than that.
+    expected = []
+    for name in gate._LOADED:
+        data = gate._LOADED[name]
+        if isinstance(data, dict) and data.get("producer") and not data.get("subject"):
+            expected.append(name)
+    assert reported == sorted(expected)
+
+
+def test_the_subject_report_goes_red_when_a_subject_is_dropped(evidence_dir):
+    """The direction that matters: remove a subject and the gate must start
+    naming that file. Without this, the test above passes on a gate that
+    reports an empty list forever."""
+    stamped = evidence_dir / "storage-facade-20260920.json"
+    backup = stamped.read_bytes()
+    assert stamped.name not in _gate_report(evidence_dir)["evidence_without_a_subject"]
+
+    data = json.loads(backup.decode("utf-8"))
+    data.pop("subject")
+    data.pop("subject_sha256", None)
+    stamped.write_text(json.dumps(data, indent=2), encoding="utf-8")
     try:
-        result = gate.verify(EVIDENCE / ARCHITECTURE)
-        reported = result["evidence_without_a_subject"]
-    except SystemExit:
-        # A red gate still has to have computed the list.
-        gate.verify_partial = None
-        reported = sorted(
-            name for name, data in gate._LOADED.items()
-            if data and data.get("producer") and not data.get("subject"))
-    assert isinstance(reported, list)
-    stamped_with_subject = sorted(
-        name for name, data in gate._LOADED.items()
-        if data and data.get("subject"))
-    assert stamped_with_subject, "no evidence file names its subject at all"
-    assert not set(reported) & set(stamped_with_subject)
+        assert stamped.name in _gate_report(evidence_dir)["evidence_without_a_subject"]
+    finally:
+        stamped.write_bytes(backup)
 
 
 # ---------------------------------------------------------------------------

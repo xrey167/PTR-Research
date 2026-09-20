@@ -161,3 +161,19 @@ def test_subscribing_without_a_mesh_is_an_error_not_a_no_op():
     cache = MeshCache(redis_client=FakeRedis(), pod_id="pod-a")
     with pytest.raises(RuntimeError, match="no mesh endpoint"):
         cache.subscribe_invalidations()
+
+
+def test_invalid_utf8_is_a_decode_error_not_an_exception():
+    """The decode sat outside the guard, so bytes Redis could not decode
+    raised UnicodeDecodeError at the caller. A cache that cannot read an
+    entry must return a miss, not take the process with it."""
+    store = FakeRedis()
+    cache = MeshCache(redis_client=store, pod_id="pod-a")
+    cache.put("q", {"v": 1})
+    key = next(iter(store.data))
+    store.data[key] = b"\xff\xfe not utf-8 at all"
+
+    assert cache.get("q") is None
+    stats = cache.stats()
+    assert stats["decode_errors"] == 1
+    assert stats["hits"] == 0

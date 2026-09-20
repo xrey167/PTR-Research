@@ -177,3 +177,68 @@ def test_the_hetero_union_counts_either_side():
     assert report["metrics"]["union_raw"] == 2
     assert report["metrics"]["primary_raw"] == 1
     assert report["metrics"]["fallback_raw"] == 1
+
+
+# ---------------------------------------------------------------------------
+# The structural property both ensemble benchmarks need, checked across both.
+# One of them had it and the other did not, in the same commit — so it is the
+# CLASS that needs pinning, not the instance.
+
+
+@pytest.mark.parametrize("module_name", [
+    "benchmark_ensemble_router",
+    "benchmark_hetero_ensemble",
+])
+def test_every_model_call_in_a_benchmark_run_is_guarded(module_name):
+    """`VllmReplicaRouter.completion` raises RuntimeError once every replica
+    has failed. An unguarded call aborts the run and discards every
+    observation gathered so far — the evidence file is never written, and the
+    gate reports "no evidence" where "evidence says no" belongs.
+    """
+    import ast
+    from pathlib import Path
+
+    source = Path("research") / f"{module_name}.py"
+    tree = ast.parse(source.read_text(encoding="utf-8"))
+
+    def catches_runtime_error(handler_node):
+        for handler in handler_node.handlers:
+            if handler.type is None:
+                return True
+            names = [handler.type] if not isinstance(handler.type, ast.Tuple) \
+                else list(handler.type.elts)
+            if any(getattr(n, "id", "") == "RuntimeError" for n in names):
+                return True
+        return False
+
+    guarded_calls = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Try) and catches_runtime_error(node):
+            for inner in ast.walk(node):
+                if isinstance(inner, ast.Call) and getattr(inner.func, "id", "") == "ask":
+                    guarded_calls.add(inner.lineno)
+
+    all_calls = {node.lineno for node in ast.walk(tree)
+                 if isinstance(node, ast.Call)
+                 and getattr(node.func, "id", "") == "ask"}
+    assert all_calls, f"no ask() call found in {module_name}"
+    unguarded = sorted(all_calls - guarded_calls)
+    assert not unguarded, (
+        f"{module_name}: ask() called without a RuntimeError guard at "
+        f"line(s) {unguarded}")
+
+
+def test_a_failed_fallback_in_the_router_benchmark_is_counted_not_fatal():
+    observations = [
+        _case("5 days", "nope", guarded="nope") | {"fallback_error": True},
+        _case("7 days", "7 days"),
+    ]
+    report = benchmark_ensemble_router.summarise(
+        observations, errors=1, elapsed_s=1.0, router_metrics={},
+        primary="p", fallback="f")
+    metrics = report["metrics"]
+    assert metrics["n"] == 2                 # the case survived
+    assert metrics["fallback_errors"] == 1
+    assert metrics["fallback_used"] == 1
+    assert metrics["fallback_used"] <= metrics["n"]
+    assert metrics["union_raw"] == 1         # only the second case

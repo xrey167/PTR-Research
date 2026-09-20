@@ -168,8 +168,11 @@ def _multi_hop_rows() -> list[dict]:
 def disjointness_report(frozen: dict[str, list[dict]] | None = None) -> dict:
     """What the holdout split shares with the frozen splits. Empty is the goal.
 
-    Compared: case ids, full question strings, targets, and the supplier,
-    component and lead-time values recorded in each row's assessment.
+    Compared: case ids, full question strings, and the supplier, component
+    and lead-time values recorded in each row's assessment. Targets are NOT
+    compared — `overlaps` has no such key, and the gate check
+    `holdout_split_disjoint` reads that dict. Naming a comparison the report
+    does not make would overstate what the disjointness evidence covers.
     """
     frozen = frozen if frozen is not None else build_data()
     holdout = build_holdout()

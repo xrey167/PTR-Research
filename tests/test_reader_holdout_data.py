@@ -7,6 +7,8 @@ from the repository at all.
 import json
 from collections import Counter
 
+import pytest
+
 import generate_holdout_split as generator
 from research.reader_holdout_data import (
     build_holdout, disjointness_report)
@@ -56,3 +58,43 @@ def test_checked_in_artifact_matches_the_generator():
     assert stored["cases_sha256"] == manifest["cases_sha256"]
     assert stored["generator_sha256"] == manifest["generator_sha256"]
     assert stored["rows"] == manifest["rows"] == 96
+
+
+def test_the_check_compares_every_manifest_field():
+    """`--check` compared three of thirteen fields. The gate check
+    `holdout_split_disjoint` reads `overlaps` and
+    `disjoint_from_frozen_splits` out of this artifact — neither of which was
+    compared, so a stale overlaps list passed --check and then fed the gate."""
+    import json
+
+
+    _payload, manifest = generator.render()
+    stored = json.loads(generator.MANIFEST_FILE.read_text(encoding="utf-8"))
+    assert stored == manifest, "the checked-in manifest is stale"
+
+    # Every field the gate reads has to be part of that comparison.
+    for field in ("schema", "rows", "overlaps", "disjoint_from_frozen_splits"):
+        assert field in manifest, f"{field} is not produced by render()"
+        assert field in stored, f"{field} is not in the checked-in manifest"
+
+
+def test_a_drifted_field_outside_the_old_three_is_caught(tmp_path, monkeypatch):
+    """The direction that matters: change a field the old check ignored and
+    the check must say so."""
+    import json
+
+
+    _payload, manifest = generator.render()
+    stale = dict(manifest)
+    stale["overlaps"] = {"ids": ["holdout:leaked:1"]}     # was never compared
+
+    target = tmp_path / "manifest.json"
+    target.write_text(json.dumps(stale, indent=2), encoding="utf-8")
+    monkeypatch.setattr(generator, "MANIFEST_FILE", target)
+    monkeypatch.setattr(generator, "SPLIT_FILE", tmp_path / "split.json")
+    (tmp_path / "split.json").write_text(_payload, encoding="utf-8")
+    monkeypatch.setattr("sys.argv", ["generate_holdout_split.py", "--check"])
+
+    with pytest.raises(SystemExit) as refused:
+        generator.main()
+    assert "overlaps" in str(refused.value)

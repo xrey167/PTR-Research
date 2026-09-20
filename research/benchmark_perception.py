@@ -47,7 +47,11 @@ def main() -> None:
     started = time.perf_counter()
     for seq in range(COUNT):
         stream.emit(synthetic_detector_event(seq))
-    mesh_done.wait(timeout=120.0)
+    # The return value decides the status. Discarding it meant a run that
+    # timed out after delivering half its events was still recorded as
+    # "completed" — and this evidence file has to be re-recorded on the
+    # server, so the defect would have produced the replacement.
+    delivered = mesh_done.wait(timeout=120.0)
     elapsed = time.perf_counter() - started
 
     # Backpressure: overflow a tiny queue, expect drops not deadlock.
@@ -59,10 +63,15 @@ def main() -> None:
     drop_result = [tiny.emit(synthetic_detector_event(i)) for i in range(50)]
     dropped = drop_result.count("dropped")
 
+    lossless = bool(delivered) and len(mesh_received) == COUNT
     result = {
-        "status": "completed",
+        # "degraded" is the same distinction benchmark_native_tcp draws: a
+        # partial run is not a smaller success, and the gate must be able to
+        # tell the two apart from the status alone.
+        "status": "completed" if lossless else "degraded",
         "events": COUNT, "mesh_received": len(mesh_received),
-        "lossless": len(mesh_received) == COUNT,
+        "delivery_completed": bool(delivered),
+        "lossless": lossless,
         "throughput_events_s": round(COUNT / max(elapsed, 1e-9), 1),
         "elapsed_s": round(elapsed, 2),
         "stream_stats": stream.stats(),

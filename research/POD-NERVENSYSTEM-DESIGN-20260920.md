@@ -248,8 +248,12 @@ Mesh-Event anstelle direktem Redis-Delete.
   (20 ms Remote-Delay × 132). Optimierung: Batch-Async (alle Lookups sofort
   feuern, Replies parallel sammeln; Responder schläft NICHT im paho-Loop-
   Thread). **Gemessen: 2,845 s → 1,012 s = 2,81× schneller** bei identisch
-  132/132 validen Frames. Gate-Check `traced_pipeline` grün →
-  **Gate 40/40, 305 Tests.**
+  132/132 validen Frames. Gate-Check `traced_pipeline` grün. (Die
+  damaligen Zählstände „Gate 40/40, 305 Tests" sind überholt; aktuelle
+  Zahlen ausschließlich in `ARCHITECTURE-MASTER-20260920.md`. Die
+  „132/132 validen Frames" heißen seit dem Messcode-Umbau
+  `serialised_frames_valid` — der Benchmark parst seinen eigenen
+  f-String, die Zahl belegt Serialisierer und Parser, nicht das Modell.)
 - Nächste Optimierungshebel aus den Traces: Redis-Puts batchen (132 Round-
   Trips ~0.05 s), Antwort-Stage als echter vLLM-Call mit Stream, Responder
   mit Thread-Pool statt Thread-je-Call.

@@ -192,3 +192,40 @@ def test_a_dropped_event_does_not_spend_rate_budget():
         assert stats["emitted"] == 2
     finally:
         stream.close()
+
+
+def test_a_perception_run_that_timed_out_is_not_reported_as_completed():
+    """`mesh_done.wait(timeout=...)` returns False on a timeout and its
+    result was discarded, so a run that delivered half its events still
+    recorded `status: completed`. This evidence file has to be re-recorded on
+    the server — the defect would have produced the replacement."""
+    import ast
+    import inspect
+
+    from research import benchmark_perception
+
+    source = inspect.getsource(benchmark_perception.main)
+    tree = ast.parse(source.lstrip())
+
+    waits = [node for node in ast.walk(tree)
+             if isinstance(node, ast.Call)
+             and getattr(node.func, "attr", "") == "wait"]
+    assert waits, "the benchmark no longer waits for delivery"
+
+    # The result must be bound to a name, not dropped on the floor.
+    bound = [node for node in ast.walk(tree)
+             if isinstance(node, ast.Assign)
+             and any(isinstance(v, ast.Call)
+                     and getattr(v.func, "attr", "") == "wait"
+                     for v in ast.walk(node.value))]
+    assert bound, "the wait() result is discarded, so a timeout reads as success"
+
+    # And the status must depend on it rather than being a literal.
+    statuses = [node for node in ast.walk(tree)
+                if isinstance(node, ast.Dict)
+                for key, value in zip(node.keys, node.values)
+                if isinstance(key, ast.Constant) and key.value == "status"]
+    assert statuses, "no status field found"
+    assert all(not isinstance(value, ast.Constant) for value in statuses), (
+        "status is a literal: a partial run cannot be distinguished from a "
+        "complete one")

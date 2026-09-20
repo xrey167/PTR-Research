@@ -172,10 +172,17 @@ def check(package: Path = PACKAGE, *,
 
     upward = []
     for module, targets in sorted(runtime.items()):
-        if module not in layer_of:
+        # Guarded on membership in `rank`, not in `layer_of`. A module placed
+        # on a layer that does not exist — one typo in LAYER_OF, or a
+        # caller-supplied mapping — passes the second test and then dies in
+        # `rank[layer_of[module]]`. `unknown_layers` above exists precisely
+        # to REPORT that case, and the gate calls check() directly: a raise
+        # here aborts the gate with a traceback instead of turning `layering`
+        # red, which is a crash where a fail-closed verdict belongs.
+        if layer_of.get(module) not in rank:
             continue
         for target in sorted(targets):
-            if target not in layer_of:
+            if layer_of.get(target) not in rank:
                 continue
             if rank[layer_of[target]] > rank[layer_of[module]]:
                 upward.append({"module": module, "layer": layer_of[module],

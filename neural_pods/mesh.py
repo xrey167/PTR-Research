@@ -70,21 +70,44 @@ def envelope_refusal(envelope: dict, *, pod_id: str, now_ms: float | None = None
     accepted on arrival — that is every message the system sent before the
     bounds existed. Forwarding one is refused, because passing an unbounded
     message further is precisely what creates the loop.
+
+    "malformed" is a RESULT, not an exception. These three fields come off
+    the wire, so a sender controls their types, and this function does
+    int()/float() on them. Raising here reached the paho callback, which
+    re-raises into its network loop (suppress_exceptions defaults to False in
+    2.1.0) and can end the receiving thread — a field added to BOUND a
+    request would have become a way to silence the pod receiving it. Naming
+    the case means both the arriving and the departing side refuse it the
+    same way and count it, and it can be tested without a broker.
     """
     now_ms = time.time() * 1000 if now_ms is None else now_ms
     budget = envelope.get("hop_budget")
-    visited = tuple(envelope.get("visited") or ())
+    visited = envelope.get("visited") or ()
     deadline = envelope.get("deadline_ms")
     started = envelope.get("ts_ms")
 
+    if not isinstance(visited, (list, tuple)):
+        return "malformed"
     if deadline is not None and started is not None:
-        if now_ms > float(started) + float(deadline):
+        try:
+            expired = now_ms > float(started) + float(deadline)
+        except (TypeError, ValueError):
+            return "malformed"
+        if expired:
             return "expired"
+    elif deadline is not None or started is not None:
+        # One half of the pair alone cannot be checked. That is not malformed
+        # on arrival (ts_ms is stamped by _publish_raw, so a deadline without
+        # it is an old sender), it just leaves the deadline unenforced.
+        pass
     if budget is None:
         return "unbounded" if forwarding else None
-    if forwarding and pod_id in visited:
+    try:
+        remaining = int(budget) - 1 if forwarding else int(budget)
+    except (TypeError, ValueError):
+        return "malformed"
+    if forwarding and pod_id in tuple(visited):
         return "cycle"
-    remaining = int(budget) - 1 if forwarding else int(budget)
     if remaining <= 0:
         return "hop_exhausted"
     return None
@@ -230,6 +253,10 @@ class MeshEndpoint:
             raise ValueError(
                 "cannot forward an envelope without a hop budget: forwarding "
                 "an unbounded message is what this method exists to prevent")
+        if refusal == "malformed":
+            with self._lock:
+                self.bad_envelopes += 1
+            return False
         if refusal == "expired":
             with self._lock:
                 self.expired_envelopes += 1
@@ -342,6 +369,22 @@ class MeshEndpoint:
                     raise ValueError(f"envelope without {field}")
             if not self._signature_ok(envelope):
                 raise PermissionError("envelope signature missing or invalid")
+            # Bounds carried by the envelope are enforced on ARRIVAL, before
+            # any handler sees the message. A handler that answers is one more
+            # hop, so letting an out-of-budget or expired message through
+            # would make both bounds advisory.
+            #
+            # INSIDE the guard, and that is the whole point: hop_budget,
+            # deadline_ms and visited come off the wire, and envelope_refusal
+            # does int()/float() on them. A sender putting `hop_budget: "x"`
+            # in an envelope raised ValueError out of this callback — and paho
+            # 2.1.0 re-raises callback exceptions into its network loop
+            # (suppress_exceptions defaults to False), which can end the
+            # loop_start() thread and stop the pod receiving anything at all.
+            # The malformed message also bypassed bad_envelopes, so nothing
+            # counted it. A field added to bound a request must not become a
+            # way to silence the pod that receives it.
+            refusal = envelope_refusal(envelope, pod_id=self.pod_id)
         except PermissionError:
             with self._lock:
                 self.bad_envelopes += 1
@@ -351,11 +394,13 @@ class MeshEndpoint:
             with self._lock:
                 self.bad_envelopes += 1
             return
-        # Bounds carried by the envelope are enforced on ARRIVAL, before any
-        # handler sees the message. A handler that answers is one more hop,
-        # so letting an out-of-budget or expired message through would make
-        # both bounds advisory.
-        refusal = envelope_refusal(envelope, pod_id=self.pod_id)
+        if refusal == "malformed":
+            # Counted with the other envelopes this endpoint could not read,
+            # rather than as a spent hop budget: nothing about the budget is
+            # known when its field does not parse.
+            with self._lock:
+                self.bad_envelopes += 1
+            return
         if refusal == "expired":
             with self._lock:
                 self.expired_envelopes += 1

@@ -10,7 +10,7 @@ README und HANDOVER verweisen hierher und führen keine eigenen Zählstände meh
 | Gate-Checks definiert | **47** | `research/verify_architecture_gate.py` |
 | Gate-Checks grün im Klon | **37** | `python research/verify_architecture_gate.py` |
 | Gate-Checks rot | **10** — 7 mangels Server-Evidenz, 3 zu Recht (siehe unten) | Gate nennt die 8 fehlenden Dateien |
-| Tests | **517 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
+| Tests | **675 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
 | Module `neural_pods/` | **56**, alle einer Schicht zugeordnet | `python neural_pods/architecture.py` |
 | Schichtverstöße | **0** | Gate-Check `layering` |
 | Evidenzdateien mit `subject`-Bindung | **10 von 38** | Gate-Ausgabe `evidence_without_a_subject` |
@@ -55,8 +55,8 @@ Architektur und legt die Umsetzung der offenen Bausteine fest.
 │ GATE   verify_architecture_gate.py — fail-closed, 47 Checks     │
 ├─────────────────────────────────────────────────────────────────┤
 │ POD-ARM / DREAM (Schicht 5)                                     │
-│ Reflex-Kanal (reflex.py) · Dream-Pod (dream.py, validiert:      │
-│ 125 predicted → 125 real) · Improve-Kreislauf                   │
+│ Reflex-Kanal (reflex.py) · Dream-Pod (dream.py, NICHT als      │
+│ vorhersagekräftig belegt, s. Prüfbericht 4) · Improve-Kreislauf │
 ├─────────────────────────────────────────────────────────────────┤
 │ NERVENSYSTEM (Schicht 4)                                        │
 │ Mesh (mesh.py, RTT 0,3 ms) · native Protokolle (native_comm.py, │

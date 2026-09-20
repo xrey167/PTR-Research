@@ -163,6 +163,16 @@ def summarise(obs: dict) -> dict:
             "l2_read_p50_ms": _percentile(l2_ms, 0.5),
             "l1_faster_than_l2": (statistics.median(l1_ms)
                                   < statistics.median(l2_ms)),
+            # A store that already held data before the l1_eligible column
+            # existed. Without the schema migration every write against it
+            # raises; without the NULL branch in get() its rows never reach
+            # L1 again. Both halves, measured on one table.
+            "legacy_table_migrated": (obs["legacy_table_had_flag"] is False
+                                      and obs["legacy_write_ok"] is True
+                                      and obs["legacy_table_has_flag_after"] is True),
+            "legacy_write_error": obs["legacy_write_error"],
+            "legacy_row_readable": obs["legacy_row_value"] == {"index": 0},
+            "legacy_row_backfilled_l1": obs["legacy_row_backfilled_l1"],
         },
         "l2_lance": {
             "documents": obs["documents"],
@@ -268,6 +278,34 @@ def collect(*, redis_host: str | None = None) -> dict:
         trace_rows = store._open("traces").count_rows()
         quoted_stage = len(store.query_traces(stage="O'Hara", limit=100))
 
+        # --- a kv table that predates the l1_eligible column ----------------
+        # The reason the gate never saw this case: every run of this benchmark
+        # starts from a fresh TemporaryDirectory, so it only ever meets a
+        # table it created itself. A grown store is the one on the server.
+        # lancedb refuses an unknown column outright ("Field 'l1_eligible'
+        # not found in target schema"), so without the migration every put()
+        # against such a table raises.
+        legacy_dir = Path(workdir) / "legacy"
+        legacy_redis = StubRedis()
+        legacy = PodStorage(redis_client=legacy_redis, lance_dir=legacy_dir,
+                            principal="tenant-bench")
+        legacy._lance_db().create_table("kv", data=[{
+            "key": "old-row", "value": json.dumps({"index": 0}),
+            "principal": "tenant-bench", "ts": 0.0}])
+        legacy_had_flag = "l1_eligible" in legacy._open("kv").schema.names
+        try:
+            legacy.put("after-migration", {"index": 1})
+            legacy_write_ok = True
+        except Exception as error:               # noqa: BLE001 - recorded
+            legacy_write_ok = False
+            legacy_error = repr(error)
+        else:
+            legacy_error = None
+        legacy_has_flag = "l1_eligible" in legacy._open("kv").schema.names
+        legacy_redis.data.clear()
+        legacy_value = legacy.get("old-row")
+        legacy_backfilled = len(legacy_redis.data)
+
         # --- Mooncake session affinity ---------------------------------------
         store.kv_session("s1", "replica-0")
         store.kv_session("s1", "replica-0")
@@ -305,6 +343,12 @@ def collect(*, redis_host: str | None = None) -> dict:
             "trace_rows": trace_rows,
             "quoted_stage_matches": quoted_stage,
             "session_affinity": affinity,
+            "legacy_table_had_flag": legacy_had_flag,
+            "legacy_write_ok": legacy_write_ok,
+            "legacy_write_error": legacy_error,
+            "legacy_table_has_flag_after": legacy_has_flag,
+            "legacy_row_value": legacy_value,
+            "legacy_row_backfilled_l1": legacy_backfilled,
         }
 
 

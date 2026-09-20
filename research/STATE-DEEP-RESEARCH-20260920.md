@@ -1585,6 +1585,161 @@ Messcode     16 von 16 gate-relevanten Skripten importierbar
              schreiben nichts, was das Gate liest
 ```
 
+## 16. Der erste externe Prüfer
+
+PR #1 hat keine CI (siehe 15.6 und den offenen Punkt unten), also war
+CodeRabbit der erste maschinelle Prüfer, der über diesen Diff gelaufen ist.
+Er meldete **11 Inline- und 3 Outside-diff-Befunde**. Ich habe jeden einzeln
+gegen den Code geprüft und drei ausführbar reproduziert.
+
+**Alle 14 waren echt. Kein einziger Fehlalarm.**
+
+### 16.1 Wo sie saßen, und warum das kein Zufall ist
+
+Fast ausnahmslos in Pfaden, die in dieser Umgebung nie ausgeführt werden:
+der Fehlerzweig eines Benchmarks, der zwei GPUs braucht; eine Migration für
+eine gewachsene Tabelle, die es hier nicht gibt; ein Envelope mit kaputtem
+Feld, den nur ein echter Sender schickt.
+
+Das ist wörtlich die Lücke, die Abschnitt 15.5 benannt hatte: *„`collect()`
+bleibt ungetestet … diese Hälfte braucht den Server."* Ein externer Prüfer,
+der den Code liest statt ihn auszuführen, greift genau dort hin. Elf der
+vierzehn Befunde lagen in Code aus meinen eigenen Commits dieser Session.
+
+### 16.2 Die vier Major-Befunde
+
+1. **`architecture.py` warf `KeyError`, statt die unbekannte Schicht zu
+   melden.** `unknown_layers` wird berechnet und als Verstoß ausgegeben — die
+   Absicht ist eindeutig. Die Schleife darunter wachte aber über
+   `module not in layer_of` statt über die Zugehörigkeit zu `rank`. Ein
+   Tippfehler in `LAYER_OF` ließ das Gate mit einem **Traceback abbrechen**,
+   statt `layering` rot zu melden: ein Absturz, wo ein fail-closed-Urteil
+   hingehört. Reproduziert mit `LAYER_OF["dragonfly"] = "kernn"`.
+   Präzisierung, die der Bot nicht hatte: nur Module mit *ausgehenden*
+   Kanten lösen aus — 17 von 56. Mein erster Versuch mit einem Fan-out-0-
+   Modul lief durch und bewies nichts.
+
+2. **Die Mesh-Bounds wurden außerhalb des Schutzblocks ausgewertet.**
+   `envelope_refusal` rechnet `int()`/`float()` auf **Draht-Daten**. Ein
+   Sender mit `hop_budget: "x"` erzeugte einen `ValueError` im
+   paho-Callback; paho 2.1.0 reicht Callback-Ausnahmen in seinen
+   Netzwerk-Loop weiter (`suppress_exceptions` ist standardmäßig `False`),
+   was den Empfangs-Thread beenden kann. Die kaputte Nachricht umging
+   zusätzlich `bad_envelopes`. **Ein Feld, das ich zur Begrenzung von
+   Anfragen eingeführt habe, war ein Weg, den empfangenden Pod
+   stillzulegen.** Behoben über das, was der Bot vorschlug, **und** darüber
+   hinaus: „malformed" ist jetzt ein benanntes Ergebnis statt einer
+   Ausnahme, sodass die Sendeseite (`forward()`, die denselben Fehler hatte)
+   mitprofitiert und die Regel ohne Broker prüfbar ist.
+
+3. **`storage.py`: Altbestand und der NULL-Fall.** Nachgemessen gegen
+   lancedb 0.39.0 — und schlimmer als gemeldet. Der Bot schrieb „does not
+   evolve the schema", was nach stillem Verlust klingt. Tatsächlich:
+
+   ```
+   ValueError: Field 'l1_eligible' not found in target schema
+   ```
+
+   `merge_insert` castet hart gegen das Tabellenschema, `allow_subschema`
+   erlaubt nur *weniger* Spalten. Auf einer `kv`-Tabelle von vor diesem PR
+   hätte **jedes `put()` geworfen**. Dazu die zweite Hälfte: nach der
+   Migration existiert die Spalte und Altzeilen tragen `NULL` — und
+   `dict.get(key, default)` greift nur bei **fehlendem Schlüssel**. `None`
+   ist falsy, der Backfill entfiel, und der Kommentar direkt darüber sagte
+   das Gegenteil. Beide Hälften in einem Commit, denn nur (a) ausgeliefert
+   erzeugt genau die NULL-Zeilen, die (b) braucht.
+
+4. **Der Fallback-Aufruf im Ensemble-Router war ungeschützt**, während der
+   Primär-Aufruf es war. Ein Replica-Ausfall verwarf **alle bis dahin
+   gesammelten Beobachtungen**, keine Evidenzdatei entstand. Ich hatte genau
+   das in `benchmark_hetero_ensemble.py` im selben Commit repariert.
+
+### 16.3 Der Befund, der am meisten über die Methode sagt
+
+Zwei der vierzehn waren **Assertions in meinen eigenen, neu geschriebenen
+Tests, die nicht fehlschlagen können**:
+
+```python
+assert str(subject_file.relative_to(REPO)) in data["subject"] or data["subject"]
+```
+
+Python liest das als `(x in liste) or (liste)`. Eine nichtleere Liste ist
+wahr — die Assertion galt, ob der Pfad enthalten war oder nicht.
+Nachgestellt:
+
+```
+"neural_pods/voellig_falsch.py" in ['neural_pods/storage.py'] or [...]
+  -> ['neural_pods/storage.py']   bool: True
+```
+
+Der zweite Fall war subtiler: ein Test rechnete im `except SystemExit`-Zweig
+die Gate-Logik **selbst nach**, statt das Feld zu lesen, das er prüfen
+sollte. Da das Gate auf diesem Baum rot ist, lief immer dieser Zweig — und
+die Schlussassertion verglich zwei Mengen, die per Konstruktion disjunkt
+sind. Auch nicht fehlschlagbar. **Diesen fand CodeRabbit nicht; ich fand ihn
+beim Nachziehen der Klasse.**
+
+Das ist dieselbe Fehlerklasse wie `quoted_key_roundtrip: True` und
+`reflex_frames_valid == 132` — die ich in diesem PR aus den Benchmarks
+entfernt und gleichzeitig in die Tests eingebaut habe. Ein Test, der nicht
+fehlschlagen kann, ist schlimmer als ein fehlender: er erzeugt die
+Zuversicht, ohne die Prüfung zu leisten.
+
+### 16.4 Was daraus an Struktur entstanden ist
+
+Drei Meta-Tests, jeder mit ausgeführter Gegenprobe:
+
+| Test | prüft | fängt |
+|---|---|---|
+| `test_assertions_can_fail.py` | jede Assertion der Suite per AST | `assert x or <literal>` und `assert x in c or c` |
+| `test_benchmark_subject_scope.py` | jedes Benchmark mit `subject=` | `SUBJECT` in einem String statt auf Modulebene |
+| `test_design_docs_match_the_gate.py` | jedes Design-Dokument gegen das echte Gate | ein `✔` an einem roten Check |
+
+Der letzte adressiert den Fehler, den dieses Projekt am häufigsten gemacht
+hat. Der erste fand beim ersten Lauf nebenbei, dass
+`tests/test_routing_harness.py` ein **UTF-8-BOM** trägt und sich gar nicht
+parsen ließ — meine Regel hätte sonst nur die Dateien geprüft, die zufällig
+parsen, was dieselbe Fehlerklasse gewesen wäre.
+
+Dazu strukturell: **der Gate-Bericht reist jetzt mit der Ablehnung.** Ein
+rotes Gate hatte nur eine Textmeldung, also musste alles, was ein Feld
+daraus brauchte, die Gate-Logik nachrechnen — und eine Nachimplementierung
+ist keine Prüfung dessen, was sie nachimplementiert. Genau daraus entstand
+der zweite vakuume Test.
+
+Und: `benchmark_storage_facade.py` legt jetzt selbst eine Alt-Tabelle an und
+misst die Migration, sodass `storage_facade` den Fall sieht. Er war
+unsichtbar, weil der Benchmark jedes Mal in einem frischen Temp-Verzeichnis
+startet und deshalb nie auf einen gewachsenen Bestand trifft.
+
+### 16.5 Was ich nicht gemacht habe
+
+**Docstring-Coverage 43,28 % gegen eine Schwelle von 80 %** (Pre-Merge-
+Warnung). Das ist eine Bot-Richtlinie, kein Defekt. Die Zahl zählt 372
+Funktionen aus dem Diff, darunter jede Testfunktion und jeden Stub-Helfer.
+Dieses Repo hat die umgekehrte Konvention: lange, begründende Docstrings
+dort, wo eine Entscheidung erklärt werden muss, und gar keine an einem
+dreizeiligen Fake-Redis. 200 Funktionen mit Füllsätzen zu versehen würde die
+Signalqualität der vorhandenen senken — und die ist der Grund, warum die
+Befunde in diesem Projekt auffindbar sind.
+
+### 16.6 Stand nach diesem Durchgang
+
+```
+Tests        675 grün · 0 rot · 0 errors · 8 übersprungen
+             davon 158 neu in diesem Durchgang
+Gate         47 Checks · 37 grün · 10 rot (unverändert, siehe 14.8)
+Schichten    56 Module · 0 Verstöße
+Meta-Tests   3 neu, jeder mit ausgeführter Gegenprobe
+```
+
+**Die Lehre, als offener Punkt formuliert:** dass ein externer Prüfer 14 von
+14 richtig lag und zwei davon in frisch geschriebenen Tests saßen, heißt,
+dass der teuerste blinde Fleck dieses Projekts nicht mehr der ungetestete
+Messcode ist, sondern **die Prüfungen selbst**. Die drei Meta-Tests sind ein
+Anfang. Eine systematische Mutationsprobe — eine Behauptung verfälschen und
+nachsehen, ob irgendein Test rot wird — wäre der nächste Schritt.
+
 ## Quellen (externe Einordnung)
 
 - [S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv:2311.03285)](https://arxiv.org/abs/2311.03285) · [MLSys 2024 Paper](https://proceedings.mlsys.org/paper_files/paper/2024/file/906419cd502575b617cc489a1a696a67-Paper-Conference.pdf) · [LMSYS-Blog](https://www.lmsys.org/blog/2023-11-15-slora/)
@@ -1610,7 +1765,7 @@ git clone <repo> && cd PTR-Research
 python3 -m venv .venv && .venv/bin/pip install pytest numpy psutil \
   torch transformers peft sentence-transformers qdrant-client \
   lancedb paho-mqtt xgboost redis scikit-learn
-.venv/bin/python -m pytest -q                      # 454 passed, 0 failed, 8 skipped
+.venv/bin/python -m pytest -q                      # 675 passed, 0 failed, 8 skipped
 python3 research/verify_architecture_gate.py       # 10 rote Checks (siehe 14.8)
 python3 -c "import ast,pathlib; t=ast.parse(pathlib.Path('research/verify_architecture_gate.py').read_text()); \
   print(sum(len(n.value.keys) for n in ast.walk(t) if isinstance(n,ast.Assign) \

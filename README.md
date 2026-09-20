@@ -23,17 +23,18 @@ Hauptmodell ──Reflex-Kanal (Symlinks/Dragonfly)──▶ Pods
    │   └───────────────────────────────────────────┤
    ▼                                               ▼
 Dream-Pod ◀── Historie als Replay-Simulator ── Eval-Outcomes
-   │      (Dream-RSI-Muster: träumt Curriculum-Strategien,
-   │       Vorhersage durch Evidenz validiert: 125 predicted,
-   │       125 real)
+   │      (Dream-RSI-Muster: träumt Curriculum-Strategien;
+   │       Vorhersagekraft NICHT belegt — siehe Abschnitt 4 des
+   │       Prüfberichts)
    ▼
 Improve-Kreislauf: Curriculum → preflight → train → frozen A/B
                    → Architecture-Gate (fail-closed) → Promotion
 ```
 
-Kernkomponenten: `neural_pods/` (47+ Module: Registry/Provenance, Serving,
-Retrieval, Raft, Ressourcen), `bindings/raft_binding/` (Rust/PyO3, TiKV
-raft-rs), `research/` (86+ Design- und Messdokumente, Benchmarks, Gate).
+Kernkomponenten: `neural_pods/` (Registry/Provenance, Serving, Retrieval,
+Raft, Ressourcen), `bindings/raft_binding/` (Rust/PyO3, TiKV raft-rs),
+`research/` (Design- und Messdokumente, Benchmarks, Gate). Zählstände stehen
+ausschließlich in `ARCHITECTURE-MASTER-20260920.md`.
 
 **Design-Dokumente (Einstieg):**
 - `ARCHITECTURE-MASTER-20260920.md` — **Projektstand und Zählstände (Quelle der Wahrheit)**
