@@ -35,25 +35,37 @@ OUT = Path(__file__).resolve().parent / "runs" / "kvcache-affinity-20260920.json
 
 
 class Router:
-    """Picks a replica per turn, with or without session affinity."""
+    """Picks a replica per turn, with or without session affinity.
+
+    The control arm has to be an actual control. A global round-robin counter
+    is not: with the session loop inside the turn loop, an even number of
+    sessions over two replicas puts every session back on the same replica
+    every turn, so both arms route identically and the comparison measures
+    nothing. The control therefore rotates PER SESSION — a session's
+    consecutive turns land on different replicas, which is exactly the warm
+    prefix that affinity is supposed to preserve.
+    """
 
     def __init__(self, replicas: list[str], *, affinity: bool):
         if not replicas:
             raise ValueError("need at least one replica")
         self.replicas = list(replicas)
         self.affinity = SessionAffinity() if affinity else None
-        self._turn = 0
+        self._home: dict[str, int] = {}      # session -> its first replica
+        self._visits: dict[str, int] = {}    # session -> turns taken so far
 
     def route(self, session_id: str) -> str:
+        if session_id not in self._home:
+            # Sessions still spread across replicas; both arms start a session
+            # in the same place, so the first turn is cold either way.
+            self._home[session_id] = len(self._home) % len(self.replicas)
+        visit = self._visits.get(session_id, 0)
+        self._visits[session_id] = visit + 1
+        home = self._home[session_id]
         if self.affinity is not None:
             # A session sticks to the replica that already holds its prefix.
-            preferred = self.affinity.mapping.get(session_id)
-            if preferred is None:
-                preferred = self.replicas[len(self.affinity.mapping) % len(self.replicas)]
-            return self.affinity.bind(session_id, preferred)
-        replica = self.replicas[self._turn % len(self.replicas)]
-        self._turn += 1
-        return replica
+            return self.affinity.bind(session_id, self.replicas[home])
+        return self.replicas[(home + visit) % len(self.replicas)]
 
     def stats(self) -> dict:
         return (self.affinity.stats() if self.affinity is not None

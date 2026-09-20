@@ -6,14 +6,12 @@ now generated into research/runs/ and shipped; runs/ stays as a fallback for
 the server's own copy.
 """
 import json
-import sys
 from collections import Counter
 from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "research"))
-from generate_taxonomy_dataset import build, render  # noqa: E402
+from generate_taxonomy_dataset import build, render
 
 REPO = Path(__file__).resolve().parents[1]
 CANDIDATES = [REPO / "research" / "runs" / "taxonomy-routing-balanced-003.jsonl",

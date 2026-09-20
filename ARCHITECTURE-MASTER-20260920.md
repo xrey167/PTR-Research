@@ -7,11 +7,12 @@ README und HANDOVER verweisen hierher und führen keine eigenen Zählstände meh
 
 | Größe | Wert | womit geprüft |
 |---|---|---|
-| Gate-Checks definiert | **43** | `research/verify_architecture_gate.py` |
-| Gate-Checks grün im Klon | **36** | `python research/verify_architecture_gate.py` |
+| Gate-Checks definiert | **44** | `research/verify_architecture_gate.py` |
+| Gate-Checks grün im Klon | **37** | `python research/verify_architecture_gate.py` |
 | Gate-Checks rot | **7** — alle mangels Evidenz, keine Regression | Gate nennt die 8 fehlenden Dateien |
-| Tests | **350 passed, 0 failed, 8 skipped** | `python research/record_test_run.py` |
-| Module `neural_pods/` | 57 Dateien | `wc -l neural_pods/*.py` |
+| Tests | **381 passed, 0 failed, 8 skipped** | `python research/record_test_run.py` |
+| Module `neural_pods/` | **56**, alle einer Schicht zugeordnet | `python neural_pods/architecture.py` |
+| Schichtverstöße | **0** | Gate-Check `layering` |
 
 Die sieben roten Checks brauchen Eval-Reports, die nur auf dem Server liegen
 (`runs/`, gitignoriert). Die `.gitignore`-Ausnahme `!research/runs/*.json`
@@ -53,6 +54,21 @@ Architektur und legt die Umsetzung der offenen Bausteine fest.
 
 Abhängigkeitsregel: eine Schicht spricht nur die Schicht darunter an.
 Pods sprechen Storage nur über die PodStorage-Fassade, nie Backends direkt.
+
+**Beide Sätze sind seit 2026-09-20 geprüft, nicht behauptet.**
+`neural_pods/architecture.py` führt das Schichtenmodell als Daten
+(`LAYER_OF`, `BACKEND_OWNERS`) und prüft den Baum statisch dagegen:
+Import nach oben, Backend-Zugriff an der Fassade vorbei, Laufzeit-Zyklus
+oder ein Modul ohne Schichtzuordnung sind Verstöße. Der Gate-Check
+`layering` und `tests/test_architecture_layers.py` (17 Tests, inklusive
+Gegenproben an einem synthetischen Paket) führen ihn aus. Importe in
+`if TYPE_CHECKING:` zählen nicht als Laufzeitkante — `ranking` und
+`local_search` verweisen genau so aufeinander, was sonst als Zyklus
+erschiene. Aktueller Stand: 56 Module, 28 Laufzeitkanten, 0 Verstöße.
+
+Ein neu angelegtes Modul ohne Eintrag in `LAYER_OF` lässt den Check
+durchfallen: die Einordnung wird einmal bewusst entschieden statt später
+entdeckt.
 
 ## 2. Komponentenlandkarte (Stand 2026-09-20)
 
@@ -111,6 +127,7 @@ Pods sprechen Storage nur über die PodStorage-Fassade, nie Backends direkt.
 | ADR-7 (colibri) | Tier-Preference vram→ram→disk, harte Semantik | Präzision steht im Pod-Manifest; Änderung = neue Generation |
 | ADR-8 (Datasets) | Frozen JSON führend, Lance als abfragbarer Spiegel | bewährte train_reader-Pipeline bleibt; Lance liefert SQL-Abfragen |
 | ADR-9 (A2A/MCP) | Eigener Dialekt bleibt, Signaturmodell wird übernommen | A2A v1.0 (Jan 2026, Linux Foundation/AAIF) löst Interoperabilität; unser Ziel ist ein anderes: Wegfall des Tool-Use-Overheads im Reflex-Pfad. Was A2A besser gelöst hat, ist die Authentizität — signierte Agent Cards. Deshalb: Dialekt behalten, aber `mesh.py` signiert Envelopes per HMAC (`secret=`), sonst bliebe `principal` ein Etikett |
+| ADR-11 (ausführbare Architektur) | Schichtenmodell und Fassadenregel als Daten + Gate-Check, nicht als Prosa | Genau die Regeln, die nur im Dokument standen, waren die, die unbemerkt driften konnten. `architecture.py` macht sie zur geprüften Eigenschaft; der Preis ist eine Tabelle, die bei jedem neuen Modul eine Entscheidung erzwingt |
 | ADR-10 (Adapter-Pool) | Vier-Tier-Modell deckt L1–L3, **nicht** den GPU-Adapterpool | S-LoRA (Unified Paging, 2.000 Adapter, bis 4× Durchsatz) und Punica (SGMV-Kernel) zeigen: der Sprung von 2 auf viele Adapter ist ein Problem des GPU-Speicherpools und des Batching-Kernels, nicht der Registry. Offener Baustein, bewusst noch nicht terminiert |
 
 ## 4. Umsetzungsplan (Abhängigkeitsreihenfolge)

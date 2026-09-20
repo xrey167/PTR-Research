@@ -3,13 +3,10 @@
 The HTTP pass needs vLLM replicas; everything that decides where a turn goes
 and what the comparison says does not, and is checked here.
 """
-import sys
-from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "research"))
-from benchmark_kvcache_affinity import Router, compare, summarize  # noqa: E402
+from benchmark_kvcache_affinity import Router, compare, summarize
 
 REPLICAS = ["http://a", "http://b"]
 
@@ -30,6 +27,25 @@ def test_round_robin_moves_every_turn():
     router = Router(REPLICAS, affinity=False)
     assert [router.route("s1") for _ in range(4)] == REPLICAS + REPLICAS
     assert router.stats()["reuses"] == 0
+
+
+def test_the_control_arm_actually_differs_from_the_affinity_arm():
+    """A global round-robin counter is not a control: with the session loop
+    inside the turn loop and an even session count over two replicas, every
+    session lands on the same replica every turn and both arms route
+    identically."""
+    def routes(affinity):
+        router = Router(REPLICAS, affinity=affinity)
+        result = {f"s{i}": [] for i in range(8)}
+        for _turn in range(4):
+            for index in range(8):
+                result[f"s{index}"].append(router.route(f"s{index}"))
+        return result
+
+    pinned, moving = routes(True), routes(False)
+    assert all(len(set(seq)) == 1 for seq in pinned.values())      # never moves
+    assert all(len(set(seq)) == len(REPLICAS) for seq in moving.values())
+    assert pinned != moving
 
 
 def test_empty_replica_list_is_rejected():

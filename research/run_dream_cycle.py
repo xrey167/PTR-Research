@@ -48,6 +48,15 @@ def main() -> None:
     # (lookup_anchor 2 was never observed). That is allowed, but every entry
     # carries an `extrapolates` list saying exactly where it left the data.
     ranked = sim.dream(candidates, allow_extrapolation=True)
+    if not ranked[0]["estimable"]:
+        # Ranking puts estimable policies first, so an unestimable head means
+        # the history identifies none of them. Declaring that entry "winner"
+        # would hand a decision to a model that has no opinion.
+        unidentified = ranked[0]["prediction"]["typed"]["unidentified"]
+        raise SystemExit(
+            "no candidate policy is identified by the recorded history "
+            f"(unidentified: {', '.join(unidentified)}) - record another "
+            "generation before dreaming")
     output = {"status": "dream_cycle_completed",
               "pool_generations": [g["name"] for g in pool.generations],
               "backtest": backtest,

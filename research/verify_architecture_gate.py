@@ -20,6 +20,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from neural_pods import architecture  # noqa: E402
 from record_test_run import run_pytest, source_fingerprint  # noqa: E402
 
 
@@ -56,6 +58,23 @@ def _read_lines(name: str, dirs: list[Path], missing: list[str]) -> list[dict]:
             if line.strip()]
 
 
+def _taskgraph_ok(tg: dict, legacy: list[str]) -> bool:
+    """Prefer wall_within_bound; fall back to the pre-2026-09-20 ratio.
+
+    The fallback is not equivalent. wall_within_bound compares wall time
+    against the delay the DAG injects and so distinguishes parallel from
+    serial execution; the old ratio rises WITH queueing and cannot. Evidence
+    that only carries the old key is recorded in `legacy` so a green check on
+    it is not mistaken for the stricter one having passed.
+    """
+    if "wall_within_bound" in tg:
+        return tg["wall_within_bound"] is True
+    legacy.append("taskgraph_parallel: no wall_within_bound in the recorded "
+                  "evidence, fell back to mean_concurrency/speedup > 1.5; "
+                  "re-run research/benchmark_taskgraph.py")
+    return (tg.get("mean_concurrency", tg.get("speedup")) or 0) > 1.5
+
+
 def _dream_backtest_ok(backtest: dict) -> bool:
     """Whether a dream cycle's backtest clears the bar.
 
@@ -85,6 +104,11 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
            *, run_tests: bool = False) -> dict:
     dirs = _search_dirs(path)
     missing: list[str] = []
+    # Evidence recorded before 2026-09-20 carries older shapes that several
+    # checks still accept. Which ones took that path is reported rather than
+    # left to the reader: an accepted legacy shape means the newer, stricter
+    # criterion has not actually been applied yet.
+    legacy: list[str] = []
     d = json.loads(Path(path).read_text(encoding="utf-8"))
 
     vllm_rows = _read_lines("neohorse-vllm-20260917.jsonl", dirs, missing)
@@ -122,6 +146,9 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     dream_ev = _read("qwen3b-eval-test-gen7-20260920-report.json", dirs, missing)
     holdout = _read("reader-holdout-manifest-20260920.json", dirs, missing)
     storage = _read("storage-facade-20260920.json", dirs, missing)
+    # Static analysis, not recorded evidence: it costs milliseconds and it
+    # describes the tree as it is right now, so there is nothing to record.
+    layering = architecture.check()
     if run_tests:
         # --run-tests: the gate executes the suite instead of reading about it.
         test_run = run_pytest(Path(path).resolve().parents[2])
@@ -145,6 +172,11 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         # recording describes something else and the check fails. Without
         # that file the gate falls back to the 2026-09-17 count, which is
         # exactly the blind spot - so it is reported as stale below.
+        # ARCHITECTURE-MASTER section 1 states the layer rule and the storage
+        # facade rule in prose. This is the same statement, checked: a module
+        # that imports upward, reaches a backend past the facade, is added
+        # without being placed on a layer, or forms a runtime cycle fails it.
+        "layering": layering["ok"],
         "tests": (test_run.get("failed") == 0
                   and test_run.get("passed", 0) >= 260
                   and test_run.get("sources_sha256")
@@ -189,9 +221,12 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "reflex_dispatch": reflex.get("status") == "completed" and reflex.get("metrics", {}).get("errors") == 0
             and reflex.get("metrics", {}).get("union_raw", 0) >= reflex.get("baseline_union_raw", 999)
             and reflex.get("metrics", {}).get("channel_stats", {}).get("failovers") == reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_misses"),
+        # `estimable is not False` also accepts legacy evidence, which has no
+        # such key; what it rules out is a winner the history cannot identify.
         "dream_pipeline": dream.get("status") == "dream_cycle_completed"
             and _dream_backtest_ok(dream.get("backtest", {}))
-            and bool(dream.get("winner", {}).get("decisions")),
+            and bool(dream.get("winner", {}).get("decisions"))
+            and dream.get("winner", {}).get("estimable") is not False,
         "gen7_dream_validated": dream_ev.get("status") == "completed" and dream_ev.get("reader_unchanged") is True
             and dream_ev.get("exact_target_matches", 0) >= 125
             and dream_ev.get("guarded_exact_target_matches", 0) >= 92,
@@ -239,9 +274,7 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         # Evidence recorded before 2026-09-20 only carries the old key.
         "taskgraph_parallel": tg.get("correct") is True
             and len(tg.get("results", {})) == 6
-            and (tg.get("wall_within_bound") is True
-                 if "wall_within_bound" in tg
-                 else (tg.get("mean_concurrency", tg.get("speedup")) or 0) > 1.5),
+            and _taskgraph_ok(tg, legacy),
         "mesh_cache": mc.get("status") == "completed"
             and mc.get("cross_node_read") is True
             and mc.get("principal_isolated") is True
@@ -291,6 +324,11 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     failed = [name for name, ok in checks.items() if not ok]
     if failed:
         report = ["architecture gate failed: " + ", ".join(failed)]
+        if layering["violations"]:
+            report.append("architecture violations: "
+                          + json.dumps(layering["violations"]))
+        if legacy:
+            report.append("legacy evidence accepted: " + "; ".join(legacy))
         if missing:
             report.append(
                 "missing evidence (" + str(len(missing)) + " file(s) found in "
@@ -302,6 +340,9 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
                 "reproduce this verdict.")
         raise SystemExit("\n".join(report))
     return {"ok": True, "checks": checks, "missing_evidence": missing,
+            "legacy_evidence": legacy,
+            "layering": {"modules": layering["modules"],
+                         "runtime_edges": layering["runtime_edges"]},
             "tests_evidence": ("executed now" if run_tests else
                                "tests-20260920.json" if test_run else
                                "architecture-20260917.json (stale: no digest, "

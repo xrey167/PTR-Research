@@ -178,3 +178,53 @@ def test_state_is_reconstructible_from_the_event_log(household):
     assert restored["busy_pods"] == ["donor-1"]
     assert restarted.offers["donor-1"].busy_with == kept.request_id
     assert restarted.offers["donor-2"].busy is False
+
+
+def test_restored_allocation_can_still_be_released(household):
+    """restore_from_events() rebuilt the reservations but not the requests, so
+    release() raised KeyError and the restored donors stayed BUSY forever —
+    exactly the defect release() exists to prevent."""
+    household.join("donor-1", "household-secret", ram_bytes=10, vram_bytes=0)
+    request = _started(household, ["donor-1"], [Segment("s", 1)], model_ref="kept")
+
+    restarted = Household(key="household-secret", registry=household.registry)
+    restarted.join("donor-1", "household-secret", ram_bytes=10, vram_bytes=0)
+    restarted.restore_from_events()
+
+    assert restarted.requests[request.request_id].model_ref == "kept"
+    assert restarted.requests[request.request_id].donors == ("donor-1",)
+    assert restarted.release(request.request_id, "household-secret")["released"] == ["donor-1"]
+    assert restarted.offers["donor-1"].busy is False
+    assert restarted.request_allocation("next", [Segment("s", 1)], ["donor-1"]).status == "pending"
+
+
+def test_concurrent_start_places_the_request_once(household):
+    """The status check used to sit outside the lock: two threads both saw
+    "approved", both placed, and the second overwrote the first reservation."""
+    import threading
+
+    household.join("donor-1", "household-secret", ram_bytes=1000, vram_bytes=0)
+    request = household.request_allocation("m", [Segment("s", 1)], ["donor-1"])
+    household.approve(request.request_id, "donor-1", "household-secret")
+
+    outcomes: list[str] = []
+    barrier = threading.Barrier(2)
+
+    def start():
+        barrier.wait()
+        try:
+            household.start(request.request_id)
+            outcomes.append("started")
+        except PermissionError:
+            outcomes.append("refused")
+
+    threads = [threading.Thread(target=start) for _ in range(2)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    assert sorted(outcomes) == ["refused", "started"]
+    assert len(household.reservations) == 1
+    household.release(request.request_id, "household-secret")
+    assert household.stats()["busy_pods"] == 0

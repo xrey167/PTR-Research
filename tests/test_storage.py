@@ -124,3 +124,17 @@ def test_empty_writes_are_noops(storage):
     storage.add_documents("ns", [])
     storage.write_traces([])
     assert storage._tables() == []
+
+
+def test_l1_opt_out_survives_a_read(storage):
+    """`l1=False` is a property of the value: the back-fill added for L2 hits
+    would otherwise put it into the shared hot tier on the very first read."""
+    storage.put("secret", {"v": 1}, l1=False)
+    assert storage.redis_stub.data == {}
+    assert storage.get("secret") == {"v": 1}
+    assert storage.redis_stub.data == {}          # still not in L1
+
+    storage.put("normal", {"v": 2})
+    storage.redis_stub.data.clear()
+    assert storage.get("normal") == {"v": 2}
+    assert len(storage.redis_stub.data) == 1      # eligible value is warmed

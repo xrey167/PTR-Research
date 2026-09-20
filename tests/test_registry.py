@@ -114,3 +114,46 @@ def test_artifact_tampering(tmp_path):
     verify_files(tmp_path, expected)
     p.write_bytes(b"changed")
     with pytest.raises(InvalidState): verify_files(tmp_path, expected)
+
+
+def test_events_can_be_recorded_from_another_thread():
+    """The registry is written from the threads the rest of the system runs
+    on; without check_same_thread=False the first such write raises
+    sqlite3.ProgrammingError."""
+    import threading
+
+    registry = Registry(":memory:")
+    errors: list[BaseException] = []
+
+    def record(index: int):
+        try:
+            with registry.transaction():
+                registry.record_event("probe", {"index": index})
+        except BaseException as error:        # noqa: BLE001
+            errors.append(error)
+
+    threads = [threading.Thread(target=record, args=(i,)) for i in range(8)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    assert errors == []
+    assert len([e for e in registry.events() if e["action"] == "probe"]) == 8
+
+
+def test_record_event_is_the_public_name_of_event():
+    registry = Registry(":memory:")
+    with registry.transaction():
+        registry.record_event("public", {"a": 1})
+    assert registry.events(action="public")[0]["payload"] == {"a": 1}
+    assert registry._event.__func__ is registry.record_event.__func__
+
+
+def test_nested_transactions_commit_once():
+    registry = Registry(":memory:")
+    with registry.transaction():
+        registry.record_event("outer", {})
+        with registry.transaction():        # re-entrant, same thread
+            registry.record_event("inner", {})
+    assert {e["action"] for e in registry.events()} >= {"outer", "inner"}

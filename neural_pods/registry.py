@@ -5,6 +5,7 @@ Hashes detect changed content; they are not signatures or remote attestation.
 """
 from __future__ import annotations
 
+import threading
 from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -36,7 +37,18 @@ class Snapshot:
 class Registry:
     def __init__(self, path: str | Path, clock=None):
         self.clock = clock or (lambda: datetime.now(timezone.utc))
-        self.db = sqlite3.connect(str(path), isolation_level=None, timeout=30)
+        # The registry is written from the threads the rest of the system runs
+        # on — household allocations, task-graph nodes, mesh handlers, the
+        # adaptive batcher. Without check_same_thread=False any of those
+        # raises sqlite3.ProgrammingError on the first event it records.
+        # Python's sqlite3 is built in serialized mode (threadsafety == 3), so
+        # the connection itself tolerates concurrent statements; what needs
+        # serialising is the multi-statement transaction below, so two threads
+        # cannot interleave BEGIN/COMMIT on one connection.
+        self._lock = threading.RLock()
+        self._in_transaction = False
+        self.db = sqlite3.connect(str(path), isolation_level=None, timeout=30,
+                                  check_same_thread=False)
         self.db.row_factory = sqlite3.Row
         self.db.execute("PRAGMA foreign_keys=ON")
         self.db.execute("PRAGMA journal_mode=WAL")
@@ -60,16 +72,38 @@ class Registry:
 
     @contextmanager
     def transaction(self):
-        self.db.execute("BEGIN IMMEDIATE")
-        try:
-            yield
-            self.db.execute("COMMIT")
-        except BaseException:
-            self.db.execute("ROLLBACK")
-            raise
+        """One writer at a time. Re-entrant, so a transaction may nest inside
+        another on the same thread; the outermost one owns BEGIN/COMMIT."""
+        with self._lock:
+            outermost = not self._in_transaction
+            if outermost:
+                self.db.execute("BEGIN IMMEDIATE")
+                self._in_transaction = True
+            try:
+                yield
+                if outermost:
+                    self.db.execute("COMMIT")
+            except BaseException:
+                if outermost:
+                    self.db.execute("ROLLBACK")
+                raise
+            finally:
+                if outermost:
+                    self._in_transaction = False
 
-    def _event(self, action, payload):
-        self.db.execute("INSERT INTO events(action,payload) VALUES(?,?)", (action, canonical(payload)))
+    def record_event(self, action: str, payload) -> None:
+        """Append a provenance event.
+
+        The public write counterpart to events(). Callers outside this module
+        used the private _event() because nothing else existed, so the API
+        that carries the audit trail was the one marked private.
+        """
+        with self._lock:
+            self.db.execute("INSERT INTO events(action,payload) VALUES(?,?)",
+                            (action, canonical(payload)))
+
+    # Internal callers predate record_event(); same function, one name.
+    _event = record_event
 
     def node(self, node_id):
         row = self.db.execute("SELECT * FROM nodes WHERE id=?", (node_id,)).fetchone()

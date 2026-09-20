@@ -5,13 +5,11 @@ recorded file is absent, which used to be indistinguishable from a threshold
 violation and in one case let a check pass with no evidence at all.
 """
 import shutil
-import sys
 from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "research"))
-import verify_architecture_gate as gate  # noqa: E402
+import verify_architecture_gate as gate
 
 REPO = Path(__file__).resolve().parents[1]
 EVIDENCE = REPO / "research" / "runs"
@@ -80,3 +78,84 @@ def test_threshold_violation_is_not_labelled_missing(evidence_dir):
     failed, message = _failures(evidence_dir)
     assert "mesh_presence" in failed
     assert "mesh-presence-20260920.json" not in message.split("missing evidence")[-1]
+
+
+# --- every evidence file must be load-bearing for the checks that read it ---
+#
+# `gen6_promoted_dev` compared gen6 against gen4 and, with the gen4 report
+# gone, compared against a default of 0 — green on no evidence. A hand-kept
+# table of such comparisons is the same kind of thing that failed in the
+# first place, so the table is checked here rather than trusted: for every
+# evidence file, the set of checks that go red when it disappears must be
+# exactly the set of checks whose predicate reads it.
+
+
+def _evidence_dependencies():
+    """{check name -> {evidence filenames its predicate reads}}, from source."""
+    import ast
+
+    source = Path(gate.__file__).read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    function = next(node for node in tree.body
+                    if isinstance(node, ast.FunctionDef) and node.name == "verify")
+
+    # variable -> evidence file, from `x = _read("file", ...)` / `_read_lines`
+    files: dict[str, str] = {}
+    for node in ast.walk(function):
+        if not (isinstance(node, ast.Assign) and isinstance(node.value, ast.Call)):
+            continue
+        called = getattr(node.value.func, "id", "")
+        if called in ("_read", "_read_lines") and node.value.args:
+            first = node.value.args[0]
+            if isinstance(first, ast.Constant) and len(node.targets) == 1:
+                target = node.targets[0]
+                if isinstance(target, ast.Name):
+                    files[target.id] = first.value
+
+    # variables derived from an evidence variable inherit its file
+    for node in ast.walk(function):
+        if isinstance(node, ast.Assign) and len(node.targets) == 1 \
+                and isinstance(node.targets[0], ast.Name):
+            for inner in ast.walk(node.value):
+                if isinstance(inner, ast.Name) and inner.id in files:
+                    files.setdefault(node.targets[0].id, files[inner.id])
+
+    checks = next(node.value for node in ast.walk(function)
+                  if isinstance(node, ast.Assign)
+                  and any(getattr(t, "id", "") == "checks" for t in node.targets))
+    dependencies: dict[str, set[str]] = {}
+    for key, value in zip(checks.keys, checks.values):
+        used = {files[n.id] for n in ast.walk(value)
+                if isinstance(n, ast.Name) and n.id in files}
+        dependencies[key.value] = used
+    return dependencies
+
+
+def _red_checks(evidence_dir, removed=None):
+    if removed is not None:
+        (evidence_dir / removed).unlink()
+    try:
+        gate.verify(evidence_dir / ARCHITECTURE)
+        return set()
+    except SystemExit as exit_error:
+        return set(str(exit_error).splitlines()[0].split(": ", 1)[1].split(", "))
+
+
+def test_removing_an_evidence_file_reddens_exactly_the_checks_that_read_it(evidence_dir):
+    dependencies = _evidence_dependencies()
+    baseline_red = _red_checks(evidence_dir)
+    present = {path.name for path in evidence_dir.iterdir()}
+    covered = sorted({f for files in dependencies.values() for f in files} & present)
+    assert covered, "no evidence file is both present and referenced"
+
+    mismatches = {}
+    for filename in covered:
+        backup = (evidence_dir / filename).read_bytes()
+        newly_red = _red_checks(evidence_dir, removed=filename) - baseline_red
+        (evidence_dir / filename).write_bytes(backup)
+        expected = {name for name, files in dependencies.items()
+                    if filename in files} - baseline_red
+        if newly_red != expected:
+            mismatches[filename] = {"went_red": sorted(newly_red),
+                                    "reads_it": sorted(expected)}
+    assert mismatches == {}

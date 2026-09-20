@@ -51,6 +51,9 @@ class StubRedis:
         self.gets += 1
         return self.data.get(key)
 
+    def delete(self, key):
+        self.data.pop(key, None)
+
 
 def _connect_redis(host: str | None):
     if not host:
@@ -62,6 +65,26 @@ def _connect_redis(host: str | None):
         return client, f"redis://{host}"
     except Exception as error:                       # noqa: BLE001
         return StubRedis(), f"in-process stub ({type(error).__name__} from {host})"
+
+
+def _l1_keys(store, keys: list[str]) -> list[str]:
+    """The exact L1 keys the facade would use for these values."""
+    return [store._l1_key(key) for key in keys]
+
+
+def _clear_l1(client, l1_keys: list[str]) -> None:
+    """Drop the L1 entries, whichever backend is behind the client.
+
+    The stub used to be cleared by reaching into its dict, so with a real
+    Redis nothing was cleared and the "L2 read" loop below still answered
+    from L1 - producing evidence the gate then rejected.
+    """
+    for key in l1_keys:
+        client.delete(key)
+
+
+def _count_l1(client, l1_keys: list[str]) -> int:
+    return sum(1 for key in l1_keys if client.get(key) is not None)
 
 
 def _percentile(values: list[float], p: float) -> float:
@@ -102,19 +125,19 @@ def main() -> None:
         kv_rows = store._open("kv").count_rows()
         duplicate_kv_rows = kv_rows - KV_KEYS
 
-        redis_client.data.clear() if isinstance(redis_client, StubRedis) else None
-        l1_entries_before = len(getattr(redis_client, "data", {}))
-        for index in range(KV_KEYS):
-            key = f"case:{index}:O'Brien"
+        keys = [f"case:{index}:O'Brien" for index in range(KV_KEYS)]
+        l1_keys = _l1_keys(store, keys)
+        _clear_l1(redis_client, l1_keys)
+        l1_entries_before = _count_l1(redis_client, l1_keys)
+        for index, key in enumerate(keys):
             t0 = time.perf_counter()
             assert store.get(key) == {"index": index}
             l2_ms.append((time.perf_counter() - t0) * 1000)
-        l1_backfilled = len(getattr(redis_client, "data", {})) - l1_entries_before
+        l1_backfilled = _count_l1(redis_client, l1_keys) - l1_entries_before
 
         # --- re-put replaces, it does not append ----------------------------
         store.put("case:0:O'Brien", {"index": -1})
-        if isinstance(redis_client, StubRedis):
-            redis_client.data.clear()
+        _clear_l1(redis_client, _l1_keys(store, ["case:0:O'Brien"]))
         stale_read = store.get("case:0:O'Brien") != {"index": -1}
         rows_after_reput = store._open("kv").count_rows()
 

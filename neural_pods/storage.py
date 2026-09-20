@@ -135,13 +135,20 @@ class PodStorage:
             self.redis.set(self._l1_key(key), encoded, ex=self.ttl_s)
 
     def put(self, key: str, value: Any, *, l1: bool = True) -> None:
+        """Write to L2, and to L1 unless the caller opts out.
+
+        `l1=False` is a property of the VALUE, not of one call, so it is
+        stored with the row. Otherwise the first get() would put the value
+        into the shared hot tier the writer just asked to keep it out of.
+        """
         encoded = json.dumps(value, default=str)
         if l1:
             self._l1_put(key, encoded)
         # (key, principal) is the identity: a re-put replaces, it does not
         # append a second row that a later get() might read instead.
         self._write("kv", [{"key": key, "value": encoded,
-                            "principal": self.principal, "ts": time.time()}],
+                            "principal": self.principal, "ts": time.time(),
+                            "l1_eligible": bool(l1)}],
                     keys=["key", "principal"])
 
     def get(self, key: str) -> Any | None:
@@ -161,7 +168,11 @@ class PodStorage:
         if not rows:
             return None
         encoded = rows[0]["value"]
-        self._l1_put(key, encoded)  # warm L1 back up after an L2 hit
+        # Warm L1 back up after an L2 hit - but only for values that were
+        # allowed into L1 in the first place. Rows written before the flag
+        # existed carry no opinion and stay eligible.
+        if rows[0].get("l1_eligible", True):
+            self._l1_put(key, encoded)
         return json.loads(encoded)
 
     # --- Lance vectors/documents --------------------------------------------

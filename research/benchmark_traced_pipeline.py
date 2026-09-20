@@ -61,6 +61,12 @@ def run_pipeline(endpoint, cache, rows, gen7_answers, tracer, run_name,
     cache_hits = 0
     reflex_valid = 0
     traces = []
+    # Both runs use the same endpoint, so its reply bookkeeping has to start
+    # empty: a case that times out in run 2 would otherwise be timed against
+    # run 1's stamp and record a NEGATIVE latency into the traces and the
+    # percentiles.
+    endpoint._pending_lookup.clear()
+    endpoint._answered_at.clear()
     started = time.perf_counter()
 
     if parallel_lookups:
@@ -97,11 +103,14 @@ def run_pipeline(endpoint, cache, rows, gen7_answers, tracer, run_name,
             while any(not endpoint._pending_lookup[c].is_set()
                       for _t, c in pending) and time.perf_counter() < collect_deadline:
                 time.sleep(0.005)
+            collect_ended = time.perf_counter()
             for trace_id, case in pending:
                 answered = endpoint._pending_lookup[case].is_set()
                 # Real per-case latency: publish -> reply, the same definition
                 # the sequential path uses, so the two runs are comparable.
-                end = endpoint._answered_at.get(case, time.perf_counter())
+                # An unanswered case is timed to the end of the collect loop,
+                # never to a stamp left over from an earlier run.
+                end = endpoint._answered_at[case] if answered else collect_ended
                 lookup_ms = (end - published_at[case]) * 1000
                 tracer.record(trace_id, case, "lookup", lookup_ms,
                               parallel=True, answered=answered)

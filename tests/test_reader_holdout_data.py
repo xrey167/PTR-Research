@@ -5,17 +5,12 @@ hold 132 cases while today's generator produces 96, so they cannot be rebuilt
 from the repository at all.
 """
 import json
-import sys
 from collections import Counter
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "research"))
-
-import generate_holdout_split as generator  # noqa: E402
-from research.reader_holdout_data import (  # noqa: E402
+import generate_holdout_split as generator
+from research.reader_holdout_data import (
     build_holdout, disjointness_report)
-from research.reader_training_data import build_data  # noqa: E402
+from research.reader_training_data import build_data
 
 
 def test_no_entity_value_or_phrasing_is_shared_with_the_frozen_splits():

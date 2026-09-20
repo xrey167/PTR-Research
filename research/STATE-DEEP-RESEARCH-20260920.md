@@ -1048,6 +1048,173 @@ Entscheidung, ihn zu setzen, gehört auf den Server.
    der erzeugende Code wieder auf, oder der Holdout-Split löst sie als
    Messgrundlage ab.
 
+---
+
+## 13. Review vor dem Merge und Architekturarbeit
+
+### 13.1 Messlage
+
+| | `d963123` | nach P0 | nach P1/P2 | jetzt |
+|---|---|---|---|---|
+| Gate-Checks definiert | 40 | 40 | 43 | **44** |
+| Gate-Checks grün | 30 | 33 | 36 | **37** |
+| Tests | 307 / 6 failed | 323 / 2 failed | 356 / 0 failed | **381 / 0 failed / 8 skipped** |
+| Schichtverstöße | nicht geprüft | nicht geprüft | nicht geprüft | **0, geprüft** |
+
+### 13.2 Der Review fand acht Fehler — alle in Code aus diesem PR
+
+Ein vollständiger Review des Diffs gegen `main` vor dem Merge. Jeder Befund
+wurde nachgestellt, behoben und mit einem Test festgenagelt.
+
+| # | Befund | Warum er zählt |
+|---|---|---|
+| 1 | `restore_from_events()` baute die Reservierungen wieder auf, **aber nicht `self.requests`** — `release()` warf `KeyError`, der Donor blieb für immer BUSY | Genau der Defekt, den `release()` beheben sollte, auf dem Wiederherstellungspfad wieder eingebaut |
+| 2 | Der Round-Robin-Arm des KV-Affinitäts-Benchmarks **routete identisch zum Affinitätsarm** (globaler Zähler, Sessions in der inneren Schleife, gerade Sessionzahl über zwei Replicas) | Die Kontrollgruppe war keine; `affinity_helps` hätte Rauschen gemessen |
+| 3 | Der dokumentierte `--redis HOST`-Pfad des Storage-Benchmarks erzeugte **garantiert gate-rote Evidenz**: L1 wurde nie geleert, und die Rückbefüllung wurde an einem Stub-Attribut gezählt | Ein Benchmark, der mit echtem Backend falsch misst, ist schlimmer als keiner |
+| 4 | `_answered_at` wurde **zwischen beiden Läufen geteilt und nie geleert** — ein Timeout in Lauf 2 wurde gegen den Stempel aus Lauf 1 gemessen und schrieb **negative** Latenzen | Dieselbe Klasse wie die hartkodierte 0,05, nur subtiler |
+| 5 | Die neue `wall_within_bound`-Kennzahl wird von der eingecheckten Evidenz **umgangen** | War in Prosa angekündigt, aber nicht im Gate-Output sichtbar |
+| 6 | `start()` prüfte den Status **außerhalb** von `self._lock` | Zwei gleichzeitige Starts überschrieben die Reservierung; ein Donor blieb dauerhaft BUSY |
+| 7 | Ein vollständig unidentifiziertes Ranking lieferte trotzdem einen **`winner` mit `score: None`** | Der Gate-Check prüfte nur, dass der Gewinner Entscheidungen trägt |
+| 8 | Der neue L1-Rückbefüllungspfad in `get()` **hebelte `put(..., l1=False)` aus** | Der erste Lesezugriff legte den Wert in genau den Tier, den der Schreiber ausgeschlossen hatte |
+
+Behebungen im Einzelnen:
+
+- **1+6:** `allocation_started` trägt jetzt `model_ref` und `donors`, damit
+  `restore_from_events()` den Request selbst rekonstruiert; Statusprüfung und
+  Platzierung liegen unter einem Lock. Zwei Tests, einer davon nebenläufig.
+- **2:** Der Kontrollarm rotiert **pro Session** statt global — eine Session
+  landet in aufeinanderfolgenden Zügen auf verschiedenen Replicas, also genau
+  das Gegenteil dessen, was Affinität bewahren soll. Ein Test vergleicht beide
+  Arme über 8 Sessions × 4 Züge.
+- **3:** L1 wird über die Schlüssel der Fassade selbst geleert und gezählt,
+  mit `delete`/`get` — funktioniert gegen Stub und echten Redis gleich.
+- **4:** Beide Bookkeeping-Dicts werden zu Beginn jedes Laufs geleert; ein
+  unbeantworteter Fall wird gegen das Ende der Sammelschleife gemessen, nie
+  gegen einen Stempel aus einem früheren Lauf.
+- **5:** Das Gate meldet akzeptierte Altformen jetzt in `legacy_evidence` und
+  in der Fehlermeldung, statt sie nur im Bericht zu erwähnen.
+- **7:** `run_dream_cycle.py` bricht ab, wenn keine Kandidatenpolitik
+  identifiziert ist; der Gate-Check verlangt `winner.estimable is not False`.
+- **8:** `l1=False` ist eine Eigenschaft des **Werts**, nicht des Aufrufs, und
+  wird als `l1_eligible` in der Zeile gespeichert. Die Rückbefüllung achtet
+  darauf.
+
+Nicht als Befund gewertet und geprüft: die HMAC-Envelope-Signatur (kanonische
+Form schließt `sig` aus, beide Seiten sortieren Schlüssel), die Blätterlogik
+von `_tables()` gegen lancedb 0.39, und `MAX_RENDERABLE_DAYS = 69` als exakte
+Grenze des Wochen-Wortschatzes von `duration()`.
+
+### 13.3 Ein Fehler, den erst der Review-Test sichtbar machte
+
+Der nebenläufige Start-Test schlug zunächst nicht an der Sperre fehl, sondern
+an der Datenbank:
+
+```
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be
+used in that same thread.
+```
+
+**Die Provenance-Registry — die Komponente, in die jede Schicht schreibt —
+war nicht aus den Threads benutzbar, in denen das System läuft.**
+`Household` hat ein Lock, `TaskGraph` einen Thread-Pool, `AdaptiveBatcher`
+einen Hintergrund-Thread, die Mesh-Handler laufen auf dem paho-Loop — und
+jeder Event-Schreibvorgang aus einem dieser Threads wäre abgestürzt. Das war
+kein Befund des Reviews, sondern ein Nebenprodukt davon, dass der Review
+überhaupt einen nebenläufigen Test verlangt hat.
+
+Behoben: `check_same_thread=False` plus ein `RLock`, das die mehrstufige
+Transaktion serialisiert (Pythons sqlite3 läuft im serialized mode, die
+Verbindung selbst verträgt also nebenläufige Statements; was Serialisierung
+braucht, ist `BEGIN`/`COMMIT`). Transaktionen sind jetzt wiedereintrittsfähig.
+Drei Tests, darunter acht Threads, die gleichzeitig Events schreiben.
+
+### 13.4 Architektur: die Schichtenregel ist jetzt eine Eigenschaft
+
+Abschnitt 1 des Master-Dokuments zeichnet fünf Schichten und formuliert die
+Regel in einem Satz. Der Satz war Prosa — also genau die Sorte Zusicherung,
+die dieser Bericht sonst überall als ungeprüft ausweist.
+
+`neural_pods/architecture.py` führt das Modell jetzt als Daten und prüft den
+Baum statisch dagegen. Verstoß ist: ein Import nach oben, ein Backend-Zugriff
+an der Fassade vorbei, ein Laufzeit-Zyklus, ein Modul ohne Schichtzuordnung,
+ein Manifest-Eintrag ohne Modul. Stand: **56 Module, 28 Laufzeitkanten,
+0 Verstöße.**
+
+Zwei Details, die den Unterschied zwischen einem echten und einem
+kosmetischen Check ausmachen:
+
+- **`if TYPE_CHECKING:` zählt nicht.** `ranking` und `local_search` verweisen
+  genau so aufeinander; ein naiver Parser meldet dort einen Zyklus, den es
+  zur Laufzeit nicht gibt. Der Check meldet solche Kanten getrennt.
+- **Der Prüfer wird gegen ein synthetisches Paket geprüft.** Eine Regel, die
+  nie hat fehlschlagen sehen, ist keine Regel: `tests/test_architecture_layers.py`
+  baut Pakete mit einem Import nach oben, einem Backend an der Fassade vorbei,
+  einem echten Zyklus, einem nur annotierten Zyklus und einem gelöschten
+  Manifest-Modul, und verlangt jeweils genau den passenden Verstoß.
+
+Der Gate-Check `layering` führt das bei jeder Promotion aus. Er liest keine
+Evidenzdatei — er analysiert den Baum, wie er gerade ist.
+
+### 13.5 Architektur: das Gate prüft seine eigene Abhängigkeitstabelle
+
+Die handgepflegte `baseline_of`-Tabelle war selbst wieder eine Zusicherung,
+an die sich jemand erinnern muss — dieselbe Fehlerklasse wie der Fail-open,
+den sie behebt. Statt die 44 Prädikate kurz vor dem Merge umzuschreiben
+(Risiko ohne Gegenwert), prüft ein Test die Tabelle jetzt:
+
+Er leitet per AST aus `verify()` ab, welche Evidenzdatei jedes Prädikat
+liest, entfernt dann **jede** Datei einzeln und verlangt, dass genau die
+Checks rot werden, die sie lesen. Ein Check, der ohne seine Evidenz grün
+bleibt, fällt sofort auf — das ist die Prüfung, die `gen6_promoted_dev`
+gefunden hätte, bevor jemand danach suchen musste.
+
+Gegenprobe gelaufen: mit entferntem `baseline_of`-Eintrag schlägt sie fehl.
+
+**Bewusst nicht gemacht:** der vollständige Umbau des Gates auf eine
+deklarative Check-Registry. Er hätte alle 44 Prädikate angefasst, deren
+Korrektheit gerade erst durch Tests festgestellt wurde, und der konkrete
+Schmerz, den er lindern sollte, ist durch die obige Prüfung bereits weg.
+Bleibt als Folgearbeit notiert, nicht als stiller Verzicht.
+
+### 13.6 Architektur: öffentliche Event-API, Paketoberfläche, Testimporte
+
+- **`registry.record_event()`** ist die öffentliche Schreibseite. F1 hatte nur
+  `events()` öffentlich gemacht, also ausgerechnet die API, die den Audit-Trail
+  trägt, blieb privat; `household` und `adopt_lineage` schrieben über `_event`.
+  Der alte Name bleibt als Alias bestehen.
+- **`neural_pods/__init__.py`** war über die Zeit gewachsen: 82 Zeilen, in
+  denen sich Importe und ein Dutzend `__all__ +=`-Anhängsel abwechselten — die
+  öffentliche Oberfläche ließ sich nur durch Ausführen lesen. Jetzt nach
+  Schichten gruppiert, ein einziges `__all__`. **Die Oberfläche ist dabei
+  bitgleich geblieben** (131 Namen, 69 in `__all__`, vorher/nachher
+  verglichen), und drei Tests halten sie fest — einer davon prüft, dass ein
+  unter „layer 2" eingeordneter Import auch wirklich in einem Storage-Modul
+  liegt. Dieser Test hat sofort eine falsche Einordnung von mir gefunden
+  (`adaptive_batcher` unter Schicht 1 statt 4).
+- **`tests/conftest.py`** setzt die Importpfade einmal; vier Testdateien
+  wiederholten das jeweils selbst und hingen damit still an ihrer Tiefe im
+  Baum.
+
+### 13.7 Was offen bleibt
+
+Unverändert die Liste aus 12.15 — acht Eval-Reports vom Server, Bewertung des
+Holdout-Splits, Neuaufzeichnung von `benchmark_taskgraph` und
+`benchmark_traced_pipeline`, Lauf des KV-Affinitäts-Benchmarks,
+`exact_rate`-Schwelle, `secret=` im Mesh — dazu neu:
+
+9. **Deklarative Gate-Registry** (13.5), wenn der nächste Schwung Checks
+   ansteht.
+10. **Träges Laden im Paket-Init:** `import neural_pods` zieht weiterhin
+    Retrieval, Raft-Transport und vLLM-Router mit. PEP 562 (`__getattr__`)
+    würde das entkoppeln, ändert aber, wann ein fehlendes optionales Paket
+    auffällt — eine bewusste Entscheidung, keine Aufräumarbeit.
+11. **Acht Quelldateien tragen ein UTF-8-BOM** (`alias_resolver.py`,
+    `block_postings.py`, `contextual_retrieval.py`, `pod_profiles.py`,
+    `postgres_store.py`, `registry_lookup_kb.py` u. a.). Harmlos, bis ein
+    Werkzeug ohne `utf-8-sig` liest — meine erste Importanalyse ist genau
+    daran gescheitert.
+
+
 ## Quellen (externe Einordnung)
 
 - [S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv:2311.03285)](https://arxiv.org/abs/2311.03285) · [MLSys 2024 Paper](https://proceedings.mlsys.org/paper_files/paper/2024/file/906419cd502575b617cc489a1a696a67-Paper-Conference.pdf) · [LMSYS-Blog](https://www.lmsys.org/blog/2023-11-15-slora/)

@@ -129,7 +129,7 @@ class Household:
                     # the silent override), so it belongs in the event log
                     # like the approvals do.
                     with self.registry.transaction():
-                        self.registry._event("allocation_refused",
+                        self.registry.record_event("allocation_refused",
                                              {"model_ref": model_ref,
                                               "pod": pod_id,
                                               "busy_with": offer.busy_with})
@@ -146,7 +146,7 @@ class Household:
                 plan_hash=_hash(plan))
             self.requests[request_id] = request
             with self.registry.transaction():
-                self.registry._event("allocation_request",
+                self.registry.record_event("allocation_request",
                                      {"request": request_id, "plan_hash": request.plan_hash})
             return request
 
@@ -172,7 +172,7 @@ class Household:
             status = request.status
             plan_hash = request.plan_hash
         with self.registry.transaction():
-            self.registry._event("allocation_approved",
+            self.registry.record_event("allocation_approved",
                                  {"request": request_id, "pod": pod_id,
                                   "plan_hash": plan_hash})
         return status
@@ -187,14 +187,19 @@ class Household:
         preference is also honoured strictly now: a segment that asks only
         for vram is no longer silently placed in ram.
         """
-        request = self.requests[request_id]
-        if request.status != "approved":
-            raise PermissionError("allocation not fully approved")
         plan: list[dict[str, Any]] = []
         claimed: dict[str, dict[str, int]] = {}
         capacity = {"vram": lambda offer: offer.vram_bytes,
                     "ram": lambda offer: offer.ram_bytes}
         with self._lock:
+            # The status check belongs INSIDE the lock together with the
+            # placement: checked outside, two concurrent starts both saw
+            # "approved", both placed, and the second overwrote the first
+            # reservation — leaving the first one's donors busy with no
+            # reservation left to release them.
+            request = self.requests[request_id]
+            if request.status != "approved":
+                raise PermissionError("allocation not fully approved")
             # Place ALL segments first (a donor's remaining budget shrinks as
             # segments of the SAME request claim it), then mark donors BUSY.
             for segment in request.segments:
@@ -228,9 +233,16 @@ class Household:
             # The start is the step that actually commits a donor's memory.
             # Without it in the log the request and its approvals were
             # auditable but the reservation they led to was not.
-            self.registry._event("allocation_started",
+            self.registry.record_event("allocation_started",
                                  {"request": request_id, "plan": plan,
-                                  "plan_hash": request.plan_hash})
+                                  "plan_hash": request.plan_hash,
+                                  # Enough to rebuild the request itself, not
+                                  # just the reservation: restore_from_events()
+                                  # used to leave self.requests empty, so
+                                  # release() raised KeyError and the restored
+                                  # donors stayed busy forever.
+                                  "model_ref": request.model_ref,
+                                  "donors": list(request.donors)})
         return {"request_id": request_id, "plan": plan}
 
     def release(self, request_id: str, key: str) -> dict[str, Any]:
@@ -261,7 +273,7 @@ class Household:
                 self.offers[pod_id].busy_with = None
             request.status = "released"
         with self.registry.transaction():
-            self.registry._event("allocation_released",
+            self.registry.record_event("allocation_released",
                                  {"request": request_id, "pods": freed})
         return {"request_id": request_id, "released": freed}
 
@@ -273,16 +285,34 @@ class Household:
         that lives only in the started/released events, which is why the
         zero-cost rule needed them to exist.
         """
-        open_plans: dict[str, list[dict]] = {}
+        open_starts: dict[str, dict[str, Any]] = {}
         for event in reversed(self.registry.events(limit=1_000_000)):
             payload = event["payload"]
             if event["action"] == "allocation_started":
-                open_plans[payload["request"]] = payload.get("plan", [])
+                open_starts[payload["request"]] = payload
             elif event["action"] == "allocation_released":
-                open_plans.pop(payload["request"], None)
+                open_starts.pop(payload["request"], None)
+        open_plans = {request_id: payload.get("plan", [])
+                      for request_id, payload in open_starts.items()}
         with self._lock:
             self.reservations = {request_id: {"plan": plan, "started_at": None}
                                  for request_id, plan in open_plans.items()}
+            # Rebuild the requests too, otherwise release() cannot find them
+            # and the donors this call just marked busy could never be freed.
+            for request_id, payload in open_starts.items():
+                plan = payload.get("plan", [])
+                self.requests[request_id] = AllocationRequest(
+                    request_id=request_id,
+                    model_ref=payload.get("model_ref", ""),
+                    segments=tuple(Segment(entry["segment"], entry.get("bytes", 0),
+                                           (entry.get("tier", "ram"),))
+                                   for entry in plan),
+                    donors=tuple(payload.get("donors")
+                                 or sorted({entry["pod"] for entry in plan})),
+                    approved=tuple(payload.get("donors")
+                                   or sorted({entry["pod"] for entry in plan})),
+                    status="started",
+                    plan_hash=payload.get("plan_hash", ""))
             for offer in self.offers.values():
                 offer.busy = False
                 offer.busy_with = None
