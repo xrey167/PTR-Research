@@ -1962,6 +1962,66 @@ Schichten    56 Module · 0 Verstöße
 Doku         15 Zeilen berichtigt (11 geplante Checks, 4 rote Stände)
 ```
 
+### 17.7 Vierte Runde: das Fenster war keine Grenze
+
+Zwei Befunde, einer echt. Über vier Runden: **26 von 27**.
+
+Der echte ist wieder der Marker-Scope — zum dritten Mal dieselbe Klasse, und
+diesmal in Code, der zwölf Stunden alt war. In 17.5 hatte ich den Kontext
+eines Namens von „ganze Zeile" auf „60 Zeichen vor dem Anker" verkürzt, damit
+ein Marker vor dem Anker stehen darf („D3 gebaut, Gate-Check **rot**: …").
+Der Vorlauf hielt aber an nichts an. Nachgestellt:
+
+```
+"Der vorige Check ist rot. Gate-Check `cortex_map` deckt die Karte ab."
+gemeldet:  []                                  (erwartet: cortex_map)
+
+"| A | Alter Stand: rot | Gate-Check `cortex_map` |"
+gemeldet:  []
+```
+
+Der zweite Fall stand nicht im Befund und ist der schlimmere: ein „rot" in
+der **Nachbarzelle** entlastete den erfundenen Namen in der Check-Zelle — also
+genau in Tabellen, für die der Tabellenpfad die Regel korrekt zieht. Die
+Prosa-Behandlung hat das fail-open eine Runde nach seiner Schließung wieder
+eingeschleust.
+
+Der Vorlauf endet jetzt am nächsten Satz- oder Zellende; die Zeichenzahl ist
+nur noch die äußere Schranke. Die Lehre steht im Docstring der Funktion:
+
+> **Ein Kontextfenster ist keine Regel, solange es nicht an einer Grenze
+> endet.** Zeichenzahlen sind Schranken, Satz- und Zellgrenzen sind die
+> Semantik. Eine kleinere Zahl ist keine Korrektur — sie verschiebt die Lücke
+> nur dorthin, wo man nicht hinsieht.
+
+Eine Vorhersage im Plan traf dabei **nicht** zu: ich hatte erwartet, dass die
+Satzgrenze die beiden `dream_reflex`-Treffer im Dream-Design fallen lässt und
+dort ein „(rot)" nachgetragen werden muss. Nachgemessen tragen beide ihren
+Marker im *eigenen* Satz (`- **D3 gebaut, Gate-Check rot:** …`), also war
+keine Doku-Änderung nötig. Die Prüfung hat die Annahme korrigiert, nicht
+umgekehrt.
+
+**Der eine Befund, dem ich nicht folge — der erste über vier Runden.**
+Gemeldet war, dass vier Zitate mit `„` öffnen und mit ASCII `"` schließen, mit
+der Anweisung, diese vier auf `“` zu ändern. Die Beobachtung stimmt, das
+Mittel nicht. Gezählt über dieses Dokument:
+
+```
+U+201E  „  :  77        U+201C  “  :  0        ASCII  "  : 163
+```
+
+`„…"` ist die durchgehende Konvention über alle 17 Abschnitte; `“` kommt kein
+einziges Mal vor. Vier Stellen zu ändern erzeugt die einzigen vier `“` in 77
+Zitaten. Alle 77 umzustellen ist nicht mechanisierbar — von den 163
+ASCII-Anführungszeichen schließen nur 77 ein `„`, der Rest steht in
+Codeblöcken und zitierten Programmausgaben, die ein `sed` zerschießen würde.
+
+```
+Tests        698 grün · 0 rot · 0 errors · 8 übersprungen
+Gate         48 Checks · 36 grün · 12 rot (unverändert)
+Schichten    56 Module · 0 Verstöße
+```
+
 ## Quellen (externe Einordnung)
 
 - [S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv:2311.03285)](https://arxiv.org/abs/2311.03285) · [MLSys 2024 Paper](https://proceedings.mlsys.org/paper_files/paper/2024/file/906419cd502575b617cc489a1a696a67-Paper-Conference.pdf) · [LMSYS-Blog](https://www.lmsys.org/blog/2023-11-15-slora/)
@@ -1987,7 +2047,7 @@ git clone <repo> && cd PTR-Research
 python3 -m venv .venv && .venv/bin/pip install pytest numpy psutil \
   torch transformers peft sentence-transformers qdrant-client \
   lancedb paho-mqtt xgboost redis scikit-learn
-.venv/bin/python -m pytest -q                      # 697 passed, 0 failed, 8 skipped
+.venv/bin/python -m pytest -q                      # 698 passed, 0 failed, 8 skipped
 python3 research/verify_architecture_gate.py       # 12 rote Checks (siehe 14.8, 17.1)
 python3 -c "import ast,pathlib; t=ast.parse(pathlib.Path('research/verify_architecture_gate.py').read_text()); \
   print(sum(len(n.value.keys) for n in ast.walk(t) if isinstance(n,ast.Assign) \

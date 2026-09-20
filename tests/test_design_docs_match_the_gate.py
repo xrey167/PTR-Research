@@ -91,7 +91,8 @@ BARE_NAME = re.compile(r"(?<![`\w])([a-z][a-z0-9]*(?:_[a-z0-9]+)+)(?![`\w])")
 GATE_CHECK = re.compile(r"[Gg]ate[-‑ ]?[Cc]hecks?\b")
 
 #: How far past the anchor a name still belongs to it, and how far before
-#: the anchor a marker still qualifies the first name after it.
+#: the anchor a marker still qualifies the first name after it. The lead is
+#: cut again at the nearest sentence or cell boundary — see _gate_check_claims.
 PROSE_WINDOW = 120
 PROSE_LEAD = 60
 
@@ -198,7 +199,14 @@ def _gate_check_claims(text: str) -> list[Claim]:
     # one ended, which is what keeps one marked name from covering the next.
     flat = text.replace("\n", " ")
     for match in GATE_CHECK.finditer(flat):
+        # The lead stops at a boundary, not at a character count. 60
+        # characters alone let "Der vorige Check ist rot. Gate-Check `x`"
+        # exempt `x` from the sentence before it, and let a "rot" in a
+        # neighbouring table cell exempt the name in the gate-check cell —
+        # the very case the table path handles correctly. A window is not a
+        # rule until it ends somewhere; the count is only the outer bound.
         lead = flat[max(0, match.start() - PROSE_LEAD):match.start()]
+        lead = re.split(r"\||(?<=[.!?])\s", lead)[-1]
         window = re.split(r"\||\.\s", flat[match.end():match.end() + PROSE_WINDOW])[0]
         display = flat[max(0, match.start() - 40):match.end() + 80].strip()
         found = list(NAME.finditer(window))
@@ -333,6 +341,36 @@ def test_the_red_check_rule_needs_the_marker_beside_that_name():
     assert reported == {red[1]}, (
         "the marker belongs to the name it follows, and a green check is "
         f"never reported; got {sorted(reported)}")
+
+
+def test_a_marker_in_the_previous_sentence_or_cell_does_not_carry_over():
+    """The prose lead exists so a marker may precede the anchor — but only
+    inside the sentence that makes the claim.
+
+    Sixty characters alone reached back into whatever came before: a previous
+    sentence ending in "rot", or the neighbouring cell of a table row, both
+    exempted the name. The table path had this right; the prose path smuggled
+    the same fail-open back in one round after it was closed.
+    """
+    defined = _check_names()
+    invented = "cortex_map_consolidation"
+    assert invented not in defined, "pick a name the gate really lacks"
+
+    def reported(text):
+        return {claim.name for claim in _invented_claims(text, defined)}
+
+    # Must be caught: the marker belongs to something else.
+    assert reported(
+        f"Der vorige Check ist rot. Gate-Check `{invented}` deckt die Karte ab."
+    ) == {invented}, "a marker in the previous SENTENCE must not carry over"
+    assert reported(
+        f"| A | Alter Stand: rot | Gate-Check `{invented}` |"
+    ) == {invented}, "a marker in the previous CELL must not carry over"
+
+    # Must still pass: the marker is in the claim's own sentence, which is
+    # the only reason the lead exists at all.
+    assert not reported(f"D3 gebaut, Gate-Check rot: `{invented}`")
+    assert not reported(f"Gate-Check `{invented}` (offen)")
 
 
 def test_a_marker_before_the_first_name_covers_the_whole_cell():
