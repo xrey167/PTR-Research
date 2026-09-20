@@ -5,6 +5,7 @@ Hashes detect changed content; they are not signatures or remote attestation.
 """
 from __future__ import annotations
 
+import threading
 from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -36,7 +37,18 @@ class Snapshot:
 class Registry:
     def __init__(self, path: str | Path, clock=None):
         self.clock = clock or (lambda: datetime.now(timezone.utc))
-        self.db = sqlite3.connect(str(path), isolation_level=None, timeout=30)
+        # The registry is written from the threads the rest of the system runs
+        # on — household allocations, task-graph nodes, mesh handlers, the
+        # adaptive batcher. Without check_same_thread=False any of those
+        # raises sqlite3.ProgrammingError on the first event it records.
+        # Python's sqlite3 is built in serialized mode (threadsafety == 3), but
+        # one shared connection still needs a process-local lock around each
+        # complete read and around the multi-statement transaction below. That
+        # keeps result consumption atomic and prevents interleaved BEGIN/COMMIT.
+        self._lock = threading.RLock()
+        self._in_transaction = False
+        self.db = sqlite3.connect(str(path), isolation_level=None, timeout=30,
+                                  check_same_thread=False)
         self.db.row_factory = sqlite3.Row
         self.db.execute("PRAGMA foreign_keys=ON")
         self.db.execute("PRAGMA journal_mode=WAL")
@@ -54,28 +66,72 @@ class Registry:
         CREATE TABLE IF NOT EXISTS events(
             seq INTEGER PRIMARY KEY, action TEXT NOT NULL, payload TEXT NOT NULL);
         """)
+        # The event log had no time axis, so "how many self-directed cycles
+        # in the last day" - the autonomy budget every design document asks
+        # for - could not be answered from it. Added in place; older
+        # databases keep their rows and get NULL for events written before.
+        #
+        # Under the lock and inside an IMMEDIATE transaction: two processes
+        # opening the same file at once would otherwise both read a table
+        # without `ts` and the loser would get `duplicate column name`.
+        # SQLite's write lock makes that hard to hit, which is exactly why it
+        # would show up once, in production, and never in a test.
+        with self._lock:
+            self.db.execute("BEGIN IMMEDIATE")
+            try:
+                columns = {row[1] for row
+                           in self.db.execute("PRAGMA table_info(events)")}
+                if "ts" not in columns:
+                    self.db.execute("ALTER TABLE events ADD COLUMN ts REAL")
+            finally:
+                self.db.commit()
 
     def close(self):
         self.db.close()
 
     @contextmanager
     def transaction(self):
-        self.db.execute("BEGIN IMMEDIATE")
-        try:
-            yield
-            self.db.execute("COMMIT")
-        except BaseException:
-            self.db.execute("ROLLBACK")
-            raise
+        """One writer at a time. Re-entrant, so a transaction may nest inside
+        another on the same thread; the outermost one owns BEGIN/COMMIT."""
+        with self._lock:
+            outermost = not self._in_transaction
+            if outermost:
+                self.db.execute("BEGIN IMMEDIATE")
+                self._in_transaction = True
+            try:
+                yield
+                if outermost:
+                    self.db.execute("COMMIT")
+            except BaseException:
+                if outermost:
+                    self.db.execute("ROLLBACK")
+                raise
+            finally:
+                if outermost:
+                    self._in_transaction = False
 
-    def _event(self, action, payload):
-        self.db.execute("INSERT INTO events(action,payload) VALUES(?,?)", (action, canonical(payload)))
+    def record_event(self, action: str, payload) -> None:
+        """Append a provenance event.
+
+        The public write counterpart to events(). Callers outside this module
+        used the private _event() because nothing else existed, so the API
+        that carries the audit trail was the one marked private.
+        """
+        with self._lock:
+            self.db.execute("INSERT INTO events(action,payload,ts) VALUES(?,?,?)",
+                            (action, canonical(payload),
+                             self.clock().timestamp()))
+
+    # Internal callers predate record_event(); same function, one name.
+    _event = record_event
 
     def node(self, node_id):
-        row = self.db.execute("SELECT * FROM nodes WHERE id=?", (node_id,)).fetchone()
-        if row is None:
-            raise InvalidState(f"Unknown node: {node_id}")
-        return {**dict(row), "payload": json.loads(row["payload"])}
+        with self._lock:
+            row = self.db.execute(
+                "SELECT * FROM nodes WHERE id=?", (node_id,)).fetchone()
+            if row is None:
+                raise InvalidState(f"Unknown node: {node_id}")
+            return {**dict(row), "payload": json.loads(row["payload"])}
 
     def _add(self, kind, payload, parents=()):
         parents = sorted(set(parents))
@@ -92,11 +148,12 @@ class Registry:
         return node_id
 
     def ancestors(self, node_id):
-        self.node(node_id)
-        rows = self.db.execute("""WITH RECURSIVE ancestry(id) AS (
-            SELECT ? UNION SELECT e.parent FROM edges e JOIN ancestry a ON e.child=a.id)
-            SELECT id FROM ancestry""", (node_id,)).fetchall()
-        return [self.node(r[0]) for r in rows]
+        with self._lock:
+            self.node(node_id)
+            rows = self.db.execute("""WITH RECURSIVE ancestry(id) AS (
+                SELECT ? UNION SELECT e.parent FROM edges e JOIN ancestry a ON e.child=a.id)
+                SELECT id FROM ancestry""", (node_id,)).fetchall()
+            return [self.node(r[0]) for r in rows]
 
     def roots(self, node_id):
         return sorted(n["id"] for n in self.ancestors(node_id) if n["kind"] == "origin")
@@ -115,23 +172,26 @@ class Registry:
         return sorted(roots)
 
     def _valid(self, node_id, principal):
-        for node in self.ancestors(node_id):
-            if node["revoked"]:
-                raise InvalidState(f"Revoked ancestor: {node['id']}")
-            payload = node["payload"]
-            acl = payload.get("acl", ["*"])
-            if "*" not in acl and principal not in acl:
-                raise InvalidState("Access denied by lineage ACL")
-            if node["kind"] == "knowledge":
-                lifecycle = payload.get("lifecycle", {})
-                now = self.clock()
-                if lifecycle.get("valid_from") and now < datetime.fromisoformat(lifecycle["valid_from"]):
-                    raise InvalidState("Knowledge is not yet valid")
-                if lifecycle.get("valid_until") and now >= datetime.fromisoformat(lifecycle["valid_until"]):
-                    raise InvalidState("Knowledge has expired")
-                row = self.db.execute("SELECT node_id FROM heads WHERE knowledge_key=?", (payload["knowledge_key"],)).fetchone()
-                if row is None or row[0] != node["id"]:
-                    raise InvalidState("Stale knowledge generation")
+        with self._lock:
+            for node in self.ancestors(node_id):
+                if node["revoked"]:
+                    raise InvalidState(f"Revoked ancestor: {node['id']}")
+                payload = node["payload"]
+                acl = payload.get("acl", ["*"])
+                if "*" not in acl and principal not in acl:
+                    raise InvalidState("Access denied by lineage ACL")
+                if node["kind"] == "knowledge":
+                    lifecycle = payload.get("lifecycle", {})
+                    now = self.clock()
+                    if lifecycle.get("valid_from") and now < datetime.fromisoformat(lifecycle["valid_from"]):
+                        raise InvalidState("Knowledge is not yet valid")
+                    if lifecycle.get("valid_until") and now >= datetime.fromisoformat(lifecycle["valid_until"]):
+                        raise InvalidState("Knowledge has expired")
+                    row = self.db.execute(
+                        "SELECT node_id FROM heads WHERE knowledge_key=?",
+                        (payload["knowledge_key"],)).fetchone()
+                    if row is None or row[0] != node["id"]:
+                        raise InvalidState("Stale knowledge generation")
 
     def origin(self, namespace, record_id, version, content, acl=("*",)):
         # Structured encoding avoids delimiter/catenation ambiguity.
@@ -227,22 +287,26 @@ class Registry:
 
     def events(self, *, action: str | None = None, limit: int = 1000) -> list[dict]:
         """List provenance events, newest first; optionally filter by action."""
-        if action is not None:
-            rows = self.db.execute(
-                "SELECT seq, action, payload FROM events WHERE action=? "
-                "ORDER BY seq DESC LIMIT ?", (action, limit)).fetchall()
-        else:
-            rows = self.db.execute(
-                "SELECT seq, action, payload FROM events ORDER BY seq DESC LIMIT ?",
-                (limit,)).fetchall()
-        return [{"seq": r[0], "action": r[1], "payload": json.loads(r[2])}
-                for r in rows]
+        with self._lock:
+            if action is not None:
+                rows = self.db.execute(
+                    "SELECT seq, action, payload, ts FROM events WHERE action=? "
+                    "ORDER BY seq DESC LIMIT ?", (action, limit)).fetchall()
+            else:
+                rows = self.db.execute(
+                    "SELECT seq, action, payload, ts FROM events ORDER BY seq DESC LIMIT ?",
+                    (limit,)).fetchall()
+            return [{"seq": r[0], "action": r[1],
+                     "payload": json.loads(r[2]), "ts": r[3]} for r in rows]
 
     def head(self, knowledge_key):
-        row = self.db.execute("SELECT node_id FROM heads WHERE knowledge_key=?", (knowledge_key,)).fetchone()
-        if not row:
-            raise InvalidState("Unknown knowledge key")
-        return row[0]
+        with self._lock:
+            row = self.db.execute(
+                "SELECT node_id FROM heads WHERE knowledge_key=?",
+                (knowledge_key,)).fetchone()
+            if not row:
+                raise InvalidState("Unknown knowledge key")
+            return row[0]
 
 
 def hash_files(directory):

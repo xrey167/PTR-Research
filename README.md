@@ -1,7 +1,14 @@
 # Neural Pods – lokales Forschungsexperiment
 
-**Status 2026-09-20:** Forschungsplattform mit validierter Self-Improvement-Pipeline.
-Architecture-Gate: **33/33 Checks grün** · 285 Tests · Reader-Adapter: **Gen-7 (NeoHorse-1-4B)**.
+**Status:** siehe `ARCHITECTURE-MASTER-20260920.md` — dort steht der einzige
+gepflegte Zählstand (Gate-Checks, Tests, Module). Diese Datei führt bewusst
+keine eigenen Zahlen mehr; README, HANDOVER und Master-Dokument hatten drei
+verschiedene, und alle drei stimmten nicht.
+
+Forschungsplattform mit LoRA-Wissens-Pods, Provenance-Registry und
+Self-Improvement-Kreislauf. Reader-Adapter: **Gen-7 (NeoHorse-1-4B)**.
+Was davon wie gut belegt ist, prüft `research/STATE-DEEP-RESEARCH-20260920.md`
+Punkt für Punkt nach.
 
 ## Aktuelle Architektur (Kurzfassung)
 
@@ -16,28 +23,31 @@ Hauptmodell ──Reflex-Kanal (Symlinks/Dragonfly)──▶ Pods
    │   └───────────────────────────────────────────┤
    ▼                                               ▼
 Dream-Pod ◀── Historie als Replay-Simulator ── Eval-Outcomes
-   │      (Dream-RSI-Muster: träumt Curriculum-Strategien,
-   │       Vorhersage durch Evidenz validiert: 125 predicted,
-   │       125 real)
+   │      (Dream-RSI-Muster: träumt Curriculum-Strategien;
+   │       Vorhersagekraft NICHT belegt — siehe Abschnitt 4 des
+   │       Prüfberichts)
    ▼
 Improve-Kreislauf: Curriculum → preflight → train → frozen A/B
                    → Architecture-Gate (fail-closed) → Promotion
 ```
 
-Kernkomponenten: `neural_pods/` (47+ Module: Registry/Provenance, Serving,
-Retrieval, Raft, Ressourcen), `bindings/raft_binding/` (Rust/PyO3, TiKV
-raft-rs), `research/` (86+ Design- und Messdokumente, Benchmarks, Gate).
+Kernkomponenten: `neural_pods/` (Registry/Provenance, Serving, Retrieval,
+Raft, Ressourcen), `bindings/raft_binding/` (Rust/PyO3, TiKV raft-rs),
+`research/` (Design- und Messdokumente, Benchmarks, Gate). Zählstände stehen
+ausschließlich in `ARCHITECTURE-MASTER-20260920.md`.
 
 **Design-Dokumente (Einstieg):**
-- `HANDOVER-20260917.md` — vollständiger Projektstand, Workflows, Server
+- `ARCHITECTURE-MASTER-20260920.md` — **Projektstand und Zählstände (Quelle der Wahrheit)**
+- `research/STATE-DEEP-RESEARCH-20260920.md` — Prüfbericht: was belegt ist und was nicht
+- `HANDOVER-20260917.md` — Workflows, Serverpfade, Betriebswissen
 - `research/POD-ARM-DESIGN-20260919.md` — Pod-Arm-Architektur (Phasen P1–P5)
 - `research/POD-NERVENSYSTEM-DESIGN-20260920.md` — Mesh, native Protokoll-Sprache (MQTT/TCP ohne Tool-Use), Task-Graph
 - `research/DREAM-POD-DESIGN-20260920.md` — Dream-Pod (Dream-RSI-Adaption)
 - `research/ARCHITECTURE-VALIDATION-20260917.md` — Gate & Messwerte
 - `research/MULTIHOST-CLUSTER-20260917.md` — Multi-Host-Topologie
 
-**Gate:** `research/verify_architecture_gate.py` — fail-closed, 33 Checks
-über alle Schichten (Retrieval, Cache, mTLS-Transport, Raft/Multi-Host,
+**Gate:** `research/verify_architecture_gate.py` — fail-closed, Checkzahl im
+Master-Dokument. Checks über alle Schichten (Retrieval, Cache, mTLS-Transport, Raft/Multi-Host,
 Quorum, vLLM/Failover, Batcher, LoRA-A/B Gen-3…7, Ensemble, Redis, gRPC-,
 Dream-Validierung). Betrieb auf xrserver; Git-Flow: lokal → GitHub →
 Server-Klon (`git fetch && git reset origin/main`).

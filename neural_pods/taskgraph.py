@@ -10,6 +10,17 @@ hypothesis merging.
 
 Backpressure: at most `max_parallel` nodes execute at once; per-node
 timeouts mirror PodRequest deadlines.
+
+Metrics (see `run`): the graph measures each node's elapsed time, and a
+node's elapsed time includes whatever it spent waiting on a resource
+outside the graph — a remote pod, a shared broker, a GPU queue. The graph
+cannot see inside a handler and therefore cannot separate work from
+waiting. So `node_elapsed_sum_s / wall_s` is reported as
+`mean_concurrency` (Little's law: the average number of in-flight nodes),
+NOT as a speedup: contention inflates both the numerator and that ratio.
+`critical_path_ratio` is the honest scheduler metric — it compares wall
+time against the longest dependency chain, which is the lower bound the
+DAG imposes on the measured durations.
 """
 from __future__ import annotations
 import threading
@@ -73,10 +84,10 @@ class TaskGraph:
         done_events: dict[str, threading.Event] = {nid: threading.Event()
                                                    for nid in self.nodes}
         outputs: dict[str, Any] = {}
-        sequential_s = 0.0
+        node_elapsed_sum = 0.0
 
         def run_node(node: TaskNode) -> None:
-            nonlocal sequential_s
+            nonlocal node_elapsed_sum
             for dep in node.depends_on:
                 done_events[dep].wait()
             with results_lock:
@@ -99,7 +110,7 @@ class TaskGraph:
                     node_id=node.node_id, output=output, error=error,
                     started=started, finished=finished,
                     inputs_from=tuple(node.depends_on))
-                sequential_s += finished - started
+                node_elapsed_sum += finished - started
                 done_events[node.node_id].set()
 
         started = time.perf_counter()
@@ -110,10 +121,39 @@ class TaskGraph:
         wall = time.perf_counter() - started
         with results_lock:
             self.results = results
+        critical_path = self._critical_path_s(results)
         return {"wall_s": round(wall, 3),
-                "sequential_equivalent_s": round(sequential_s, 3),
-                "speedup": round(sequential_s / max(wall, 1e-9), 2),
+                "node_elapsed_sum_s": round(node_elapsed_sum, 3),
+                "critical_path_s": round(critical_path, 3),
+                "mean_concurrency": round(node_elapsed_sum / max(wall, 1e-9), 2),
+                "critical_path_ratio": round(critical_path / max(wall, 1e-9), 2),
+                "metric_note": (
+                    "mean_concurrency is the average number of in-flight nodes, "
+                    "not a speedup: node durations include time spent waiting on "
+                    "resources outside the graph, so contention raises it. "
+                    "critical_path_ratio near 1.0 means the scheduler reached the "
+                    "lower bound the DAG imposes on the measured durations."),
                 "results": results}
+
+    def _critical_path_s(self, results: dict[str, TaskResult]) -> float:
+        """Longest dependency chain, by measured node duration.
+
+        Measured durations include waiting on shared resources, so this is a
+        lower bound on wall time for the observed run — not a bound on pure
+        work, which the graph cannot observe.
+        """
+        finish: dict[str, float] = {}
+
+        def resolve(node_id: str) -> float:
+            if node_id not in finish:
+                result = results[node_id]
+                start = max((resolve(dep)
+                             for dep in self.nodes[node_id].depends_on),
+                            default=0.0)
+                finish[node_id] = start + (result.finished - result.started)
+            return finish[node_id]
+
+        return max((resolve(node_id) for node_id in self.nodes), default=0.0)
 
     def outputs(self) -> dict[str, Any]:
         return {nid: r.output for nid, r in self.results.items()}

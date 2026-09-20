@@ -1,0 +1,52 @@
+{
+  "status": "completed",
+  "l1_backend": "in-process stub (no redis host given)",
+  "elapsed_s": 9.081,
+  "kv": {
+    "keys": 200,
+    "rows": 200,
+    "duplicate_rows": 0,
+    "rows_after_reput": 200,
+    "stale_read_after_reput": false,
+    "read_miss_tables_created": 0,
+    "read_miss_returned_nothing": true,
+    "l1_backfilled_after_l2_hit": 200,
+    "quoted_key_roundtrips_ok": 400,
+    "quoted_key_roundtrips_attempted": 400,
+    "quoted_key_roundtrip": true,
+    "write_p50_ms": 13.5459,
+    "l1_read_p50_ms": 0.0612,
+    "l2_read_p50_ms": 22.8849,
+    "l1_faster_than_l2": true,
+    "legacy_table_migrated": true,
+    "legacy_write_error": null,
+    "legacy_row_readable": true,
+    "legacy_row_backfilled_l1": 1
+  },
+  "l2_lance": {
+    "documents": 200,
+    "document_rows": 200,
+    "duplicate_document_rows": 0,
+    "document_write_ms": 5.95,
+    "top_k_requested": 10,
+    "top_k_distinct": 10,
+    "vector_dim": 16,
+    "namespaces_created": 14,
+    "tables_listed": 14,
+    "trace_rows": 100,
+    "duplicate_trace_rows": 0,
+    "quoted_stage_matches": 50
+  },
+  "session_affinity": {
+    "sessions": 1,
+    "failovers": 1,
+    "reuses": 1
+  },
+  "scope": "facade contract and L2 behaviour; L1 latency against a real Redis is measured by benchmark_redis_cache_tier.py",
+  "producer": "benchmark_storage_facade.py",
+  "producer_sha256": "26c649c253b2f6cb161a026ad361ece4e900cf3f2e4b7ecd3b5dc12be162f6d3",
+  "subject": [
+    "neural_pods/storage.py"
+  ],
+  "subject_sha256": "34f8cdb20130c14b52229c6d3f62200ba1ed5c3a1aacea879d082c98f096453b"
+}

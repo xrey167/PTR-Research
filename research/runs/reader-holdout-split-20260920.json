@@ -1,0 +1,2186 @@
+[
+  {
+    "id": "holdout:K93:61:en:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. report the procurement lead time in days.",
+    "history": [],
+    "target": "61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": null,
+      "answer": 61
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. report the lead time after adding a four-day contingency.",
+    "history": [],
+    "target": "65 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": null,
+      "answer": 65
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within 59 days of the order date?",
+    "history": [],
+    "target": "No; 61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 59,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within 61 days of the order date?",
+    "history": [],
+    "target": "Yes; 61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 61,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within 64 days of the order date?",
+    "history": [],
+    "target": "Yes; 61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 64,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within eight weeks and 3 days of the order date?",
+    "history": [],
+    "target": "No; 61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 59,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within eight weeks and 5 days of the order date?",
+    "history": [],
+    "target": "Yes; 61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 61,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within nine weeks and 1 days of the order date?",
+    "history": [],
+    "target": "Yes; 61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 64,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:missing",
+    "task": "missing",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": null,
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. report the procurement lead time in days.",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Repeat the procurement lead time for that agreement.",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers K93 delivered by Kirano Fabrikation."
+      }
+    ],
+    "target": "61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "answer": 61,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Raise that figure by four days and report it.",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers K93 delivered by Kirano Fabrikation."
+      }
+    ],
+    "target": "65 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "answer": 65,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:K93:61:en:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Which lead time is in force for that agreement today?",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers K93 delivered by Kirano Fabrikation."
+      },
+      {
+        "role": "assistant",
+        "content": "Superseded figure: 66 days."
+      }
+    ],
+    "target": "61 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "answer": 61,
+      "deadline_days": null,
+      "prior_value": 66
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Gib die Beschaffungsfrist in Tagen an.",
+    "history": [],
+    "target": "61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": null,
+      "answer": 61
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Gib die Frist inklusive eines viertaegigen Zuschlags an.",
+    "history": [],
+    "target": "65 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": null,
+      "answer": 65
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von 59 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Nein; 61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 59,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von 61 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 61,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von 64 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 64,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von acht Wochen und 3 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Nein; 61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 59,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von acht Wochen und 5 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 61,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von neun Wochen und 1 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": 64,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:missing",
+    "task": "missing",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": null,
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Gib die Beschaffungsfrist in Tagen an.",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Wiederhole die Beschaffungsfrist dieses Vertrags.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation."
+      }
+    ],
+    "target": "61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "answer": 61,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Erhoehe diesen Wert um vier Tage und nenne ihn.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation."
+      }
+    ],
+    "target": "65 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "answer": 65,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:K93:61:de:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 61
+    },
+    "question": "Welche Frist gilt fuer diesen Vertrag heute?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation."
+      },
+      {
+        "role": "assistant",
+        "content": "Ueberholter Wert: 66 Tage."
+      }
+    ],
+    "target": "61 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 61,
+      "answer": 61,
+      "deadline_days": null,
+      "prior_value": 66
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. report the procurement lead time in days.",
+    "history": [],
+    "target": "66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": null,
+      "answer": 66
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. report the lead time after adding a four-day contingency.",
+    "history": [],
+    "target": "70 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": null,
+      "answer": 70
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within 64 days of the order date?",
+    "history": [],
+    "target": "No; 66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 64,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within 66 days of the order date?",
+    "history": [],
+    "target": "Yes; 66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 66,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within 69 days of the order date?",
+    "history": [],
+    "target": "Yes; 66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 69,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within nine weeks and 1 days of the order date?",
+    "history": [],
+    "target": "No; 66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 64,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within nine weeks and 3 days of the order date?",
+    "history": [],
+    "target": "Yes; 66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 66,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers K93 delivered by Kirano Fabrikation. is the shipment due within nine weeks and 6 days of the order date?",
+    "history": [],
+    "target": "Yes; 66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 69,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Repeat the procurement lead time for that agreement.",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers K93 delivered by Kirano Fabrikation."
+      }
+    ],
+    "target": "66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "answer": 66,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Raise that figure by four days and report it.",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers K93 delivered by Kirano Fabrikation."
+      }
+    ],
+    "target": "70 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "answer": 70,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:K93:66:en:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Which lead time is in force for that agreement today?",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers K93 delivered by Kirano Fabrikation."
+      },
+      {
+        "role": "assistant",
+        "content": "Superseded figure: 61 days."
+      }
+    ],
+    "target": "66 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "answer": 66,
+      "deadline_days": null,
+      "prior_value": 61
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Gib die Beschaffungsfrist in Tagen an.",
+    "history": [],
+    "target": "66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": null,
+      "answer": 66
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Gib die Frist inklusive eines viertaegigen Zuschlags an.",
+    "history": [],
+    "target": "70 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": null,
+      "answer": 70
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von 64 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Nein; 66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 64,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von 66 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 66,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von 69 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 69,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von neun Wochen und 1 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Nein; 66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 64,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von neun Wochen und 3 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 66,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation. Ist die Sendung innerhalb von neun Wochen und 6 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "deadline_days": 69,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Wiederhole die Beschaffungsfrist dieses Vertrags.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation."
+      }
+    ],
+    "target": "66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "answer": 66,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Erhoehe diesen Wert um vier Tage und nenne ihn.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation."
+      }
+    ],
+    "target": "70 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "answer": 70,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:K93:66:de:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "lead_time_days": 66
+    },
+    "question": "Welche Frist gilt fuer diesen Vertrag heute?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst K93 geliefert von Kirano Fabrikation."
+      },
+      {
+        "role": "assistant",
+        "content": "Ueberholter Wert: 61 Tage."
+      }
+    ],
+    "target": "66 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 66,
+      "answer": 66,
+      "deadline_days": null,
+      "prior_value": 61
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. report the procurement lead time in days.",
+    "history": [],
+    "target": "61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": null,
+      "answer": 61
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. report the lead time after adding a four-day contingency.",
+    "history": [],
+    "target": "65 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": null,
+      "answer": 65
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within 59 days of the order date?",
+    "history": [],
+    "target": "No; 61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 59,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within 61 days of the order date?",
+    "history": [],
+    "target": "Yes; 61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 61,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within 64 days of the order date?",
+    "history": [],
+    "target": "Yes; 61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 64,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within eight weeks and 3 days of the order date?",
+    "history": [],
+    "target": "No; 61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 59,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within eight weeks and 5 days of the order date?",
+    "history": [],
+    "target": "Yes; 61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 61,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within nine weeks and 1 days of the order date?",
+    "history": [],
+    "target": "Yes; 61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 64,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:missing",
+    "task": "missing",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": null,
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. report the procurement lead time in days.",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Repeat the procurement lead time for that agreement.",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers L04 delivered by Lumeth Zulieferer."
+      }
+    ],
+    "target": "61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "answer": 61,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Raise that figure by four days and report it.",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers L04 delivered by Lumeth Zulieferer."
+      }
+    ],
+    "target": "65 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "answer": 65,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:L04:61:en:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Which lead time is in force for that agreement today?",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers L04 delivered by Lumeth Zulieferer."
+      },
+      {
+        "role": "assistant",
+        "content": "Superseded figure: 66 days."
+      }
+    ],
+    "target": "61 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "answer": 61,
+      "deadline_days": null,
+      "prior_value": 66
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Gib die Beschaffungsfrist in Tagen an.",
+    "history": [],
+    "target": "61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": null,
+      "answer": 61
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Gib die Frist inklusive eines viertaegigen Zuschlags an.",
+    "history": [],
+    "target": "65 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": null,
+      "answer": 65
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von 59 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Nein; 61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 59,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von 61 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 61,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von 64 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 64,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von acht Wochen und 3 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Nein; 61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 59,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von acht Wochen und 5 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 61,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von neun Wochen und 1 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": 64,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:missing",
+    "task": "missing",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": null,
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Gib die Beschaffungsfrist in Tagen an.",
+    "history": [],
+    "target": "UNKNOWN",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "deadline_days": null,
+      "answer": null
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Wiederhole die Beschaffungsfrist dieses Vertrags.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer."
+      }
+    ],
+    "target": "61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "answer": 61,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Erhoehe diesen Wert um vier Tage und nenne ihn.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer."
+      }
+    ],
+    "target": "65 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "answer": 65,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:L04:61:de:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 61
+    },
+    "question": "Welche Frist gilt fuer diesen Vertrag heute?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer."
+      },
+      {
+        "role": "assistant",
+        "content": "Ueberholter Wert: 66 Tage."
+      }
+    ],
+    "target": "61 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 61,
+      "answer": 61,
+      "deadline_days": null,
+      "prior_value": 66
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. report the procurement lead time in days.",
+    "history": [],
+    "target": "66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": null,
+      "answer": 66
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. report the lead time after adding a four-day contingency.",
+    "history": [],
+    "target": "70 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": null,
+      "answer": 70
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within 64 days of the order date?",
+    "history": [],
+    "target": "No; 66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 64,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within 66 days of the order date?",
+    "history": [],
+    "target": "Yes; 66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 66,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within 69 days of the order date?",
+    "history": [],
+    "target": "Yes; 66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 69,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within nine weeks and 1 days of the order date?",
+    "history": [],
+    "target": "No; 66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 64,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within nine weeks and 3 days of the order date?",
+    "history": [],
+    "target": "Yes; 66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 66,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "A framework agreement covers L04 delivered by Lumeth Zulieferer. is the shipment due within nine weeks and 6 days of the order date?",
+    "history": [],
+    "target": "Yes; 66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 69,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Repeat the procurement lead time for that agreement.",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers L04 delivered by Lumeth Zulieferer."
+      }
+    ],
+    "target": "66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "answer": 66,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Raise that figure by four days and report it.",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers L04 delivered by Lumeth Zulieferer."
+      }
+    ],
+    "target": "70 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "answer": 70,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:L04:66:en:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Which lead time is in force for that agreement today?",
+    "history": [
+      {
+        "role": "user",
+        "content": "A framework agreement covers L04 delivered by Lumeth Zulieferer."
+      },
+      {
+        "role": "assistant",
+        "content": "Superseded figure: 61 days."
+      }
+    ],
+    "target": "66 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "answer": 66,
+      "deadline_days": null,
+      "prior_value": 61
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:lookup",
+    "task": "lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Gib die Beschaffungsfrist in Tagen an.",
+    "history": [],
+    "target": "66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": null,
+      "answer": 66
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:buffer",
+    "task": "buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Gib die Frist inklusive eines viertaegigen Zuschlags an.",
+    "history": [],
+    "target": "70 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": null,
+      "answer": 70
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:deadline_days_short",
+    "task": "deadline_days_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von 64 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Nein; 66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 64,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:deadline_days_equal",
+    "task": "deadline_days_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von 66 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 66,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:deadline_days_long",
+    "task": "deadline_days_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von 69 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 69,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:deadline_weeks_short",
+    "task": "deadline_weeks_short",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von neun Wochen und 1 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Nein; 66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 64,
+      "answer": false
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:deadline_weeks_equal",
+    "task": "deadline_weeks_equal",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von neun Wochen und 3 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 66,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:deadline_weeks_long",
+    "task": "deadline_weeks_long",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer. Ist die Sendung innerhalb von neun Wochen und 6 Tage ab Bestelldatum faellig?",
+    "history": [],
+    "target": "Ja; 66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "deadline_days": 69,
+      "answer": true
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:followup_lookup",
+    "task": "followup_lookup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Wiederhole die Beschaffungsfrist dieses Vertrags.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer."
+      }
+    ],
+    "target": "66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "answer": 66,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:followup_buffer",
+    "task": "followup_buffer",
+    "pod_type": "math",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Erhoehe diesen Wert um vier Tage und nenne ihn.",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer."
+      }
+    ],
+    "target": "70 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "answer": 70,
+      "deadline_days": null,
+      "prior_value": null
+    }
+  },
+  {
+    "id": "holdout:L04:66:de:stale_followup",
+    "task": "stale_followup",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "lead_time_days": 66
+    },
+    "question": "Welche Frist gilt fuer diesen Vertrag heute?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Ein Rahmenvertrag umfasst L04 geliefert von Lumeth Zulieferer."
+      },
+      {
+        "role": "assistant",
+        "content": "Ueberholter Wert: 61 Tage."
+      }
+    ],
+    "target": "66 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 66,
+      "answer": 66,
+      "deadline_days": null,
+      "prior_value": 61
+    }
+  },
+  {
+    "id": "holdout:multihop:K93:en",
+    "task": "multi_hop_total",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "facts": [
+        "Framework agreement: Kirano Fabrikation ships K93 in 61 days.",
+        "Clearance for K93 adds 9 days."
+      ]
+    },
+    "question": "Across the framework agreement, K93 from Kirano Fabrikation ships in 61 days and clearance adds 9 days; what is the combined lead time?",
+    "history": [],
+    "target": "70 days",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 70,
+      "answer": 70,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "holdout:multihop:K93:de",
+    "task": "multi_hop_total",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "facts": [
+        "Rahmenvertrag: Kirano Fabrikation versendet K93 in 61 Tagen.",
+        "Die Abfertigung von K93 dauert 9 Tage."
+      ]
+    },
+    "question": "Im Rahmenvertrag versendet Kirano Fabrikation die Komponente K93 in 61 Tagen, die Abfertigung dauert 9 Tage; wie lang ist die Gesamtfrist?",
+    "history": [],
+    "target": "70 Tage",
+    "assessment": {
+      "supplier": "Kirano Fabrikation",
+      "component": "K93",
+      "value": 70,
+      "answer": 70,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "holdout:multihop:L04:en",
+    "task": "multi_hop_total",
+    "pod_type": "context",
+    "language": "en",
+    "evidence": {
+      "facts": [
+        "Framework agreement: Lumeth Zulieferer ships L04 in 61 days.",
+        "Clearance for L04 adds 11 days."
+      ]
+    },
+    "question": "Across the framework agreement, L04 from Lumeth Zulieferer ships in 61 days and clearance adds 11 days; what is the combined lead time?",
+    "history": [],
+    "target": "72 days",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 72,
+      "answer": 72,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  },
+  {
+    "id": "holdout:multihop:L04:de",
+    "task": "multi_hop_total",
+    "pod_type": "context",
+    "language": "de",
+    "evidence": {
+      "facts": [
+        "Rahmenvertrag: Lumeth Zulieferer versendet L04 in 61 Tagen.",
+        "Die Abfertigung von L04 dauert 11 Tage."
+      ]
+    },
+    "question": "Im Rahmenvertrag versendet Lumeth Zulieferer die Komponente L04 in 61 Tagen, die Abfertigung dauert 11 Tage; wie lang ist die Gesamtfrist?",
+    "history": [],
+    "target": "72 Tage",
+    "assessment": {
+      "supplier": "Lumeth Zulieferer",
+      "component": "L04",
+      "value": 72,
+      "answer": 72,
+      "deadline_days": null,
+      "hop_count": 2
+    }
+  }
+]

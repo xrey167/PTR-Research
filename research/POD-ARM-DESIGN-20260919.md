@@ -58,8 +58,23 @@ PodHeader (Erweiterung):
   lease_kind: cuda_vram | host_ram | none
 ```
 
-Vier-Operationen-Schnittstelle, an die `ResourceGovernor` (Leases) und
-`LifecycleGate` (Freigabe) bereits andocken:
+> **Nicht umgesetzt (Stand 2026-09-20).** Diese vier Felder existieren in
+> keinem Header. `neural_pods/pod_contract.py: PodManifest` kennt sie nicht,
+> `pod_protocol` dispatcht nicht nach `runtime`, und die unten skizzierte
+> `EXECUTORS`-Registry in `model_pod` gibt es nicht — die Zuordnung von
+> Laufzeit zu Executor liegt allein in `ExecutorFactory`, und die wird pro
+> Aufrufer neu gefüllt. Der Block beschreibt den Zielzustand. Er wurde hier
+> gelassen, weil er das Ziel gut beschreibt, und markiert, weil er sonst
+> gelesen wird, als sei er erreicht.
+
+Vier-Operationen-Schnittstelle. **Berichtigung (2026-09-20, Pod-Audit):**
+„bereits andocken" stimmte für keines der beiden. Der `ResourceGovernor`
+dockt seit dem Audit tatsächlich an — `GovernedExecutorPool` delegiert die
+Zulassung an ihn, statt einen zweiten Byte-Zähler zu führen, und
+`research/benchmark_xgboost_pod.py` misst die Ablehnung. Das `LifecycleGate`
+dockt **nicht** an: kein Pfad von `pod_executor.py` führt dorthin, die
+Freigabe eines Executors ist an keine Manifest-Transition gebunden. Der
+Abschnitt beschreibt insoweit eine Absicht, keinen Zustand.
 
 ```python
 class PodExecutor(Protocol):
@@ -146,14 +161,33 @@ nie selbst die Promotion entscheiden — die gehört dem Gate.
 
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
-| P1 | **Abgeschlossen:** `neural_pods/reflex.py` + GPU-gekoppelter Benchmark (`research/benchmark_reflex_dispatch.py`) über das heterogene Ensemble. Ergebnis: Mechanik voll funktionsfähig — Union 126 == Baseline, 0 Fehler, alle 132 Reflex-Misses korrekt zum Default-Pod zurückgezogen. **Hit-Rate 0.0 ist das erwartete, ehrliche Ergebnis:** das Basis-Modell emittiert keine Alias-Signale — die Adress-Emission braucht P5 (latentes Adress-Training). Der Failover-Pfad hat den Qualitätserhalt mechanisch bewiesen. | `reflex_dispatch` grün |
-| P2 | Executor-Factory + erster `TreeExecutor` (XGBoost-Pod, RAM-Lease, deterministisches Replay) | `xgboost_pod` |
-| P3 | Perceptions-Stream: ONNX-Objekterkennungs-Pod pusht Ereignisse über Duplex-Session; Backpressure gemessen | `perception_stream` |
-| P4 | Improve-Orchestrator: Autonomie-Quote, Event-Log, Ein-Zyklus-Durchlauf von Fehleranalyse bis Promotion | `improve_cycle` |
-| P5 | Latentes Adress-Training: Symlink-Erweiterung des Gen-6-LoRA auf alle Pod-Adressen | `latent_addressing` |
+| P1 | **Failover-Mechanik abgeschlossen, Adressierung offen.** `neural_pods/reflex.py` + GPU-gekoppelter Benchmark (`research/benchmark_reflex_dispatch.py`) über das heterogene Ensemble. Union 126 == Baseline, 0 Fehler, alle 132 Reflex-Misses korrekt zum Default-Pod zurückgezogen. Hit-Rate 0.0: das Basis-Modell emittiert keine Alias-Signale, die Adress-Emission braucht P5. | `reflex_failover` **grün** · `reflex_dispatch` **rot bis P5** |
+| P2 | **Abgeschlossen.** Executor-Factory + `TreeExecutor` (XGBoost-Pod, echtes RAM-Lease über den `ResourceGovernor`, deterministisches Replay über zwei unabhängig aktivierte Pods). `research/benchmark_xgboost_pod.py` läuft ohne Server; `tests/test_benchmark_xgboost_pod.py` prüft die Messung selbst. | `xgboost_pod` **grün** |
+| P3 | Perceptions-Stream: `neural_pods/perception.py` existiert und ist seit dem Pod-Audit belastbar (In-Flight-Zählung, überlebende Consumer-Fehler, wirksamer Ratenbegrenzer). Der ONNX-Pod fehlt, und die Messung braucht den Broker. | `perception_stream` **existiert nicht** |
+| P4 | Improve-Orchestrator: Autonomie-Quote und Event-Log sind gebaut (`CycleBudget`, `dream_cycle`-Event, `research/run_dream_cycle.py`). Der Ein-Zyklus-Durchlauf von Fehleranalyse bis Promotion ist es nicht. | `improve_cycle` **existiert nicht** |
+| P5 | Latentes Adress-Training: Symlink-Erweiterung des Gen-6-LoRA auf alle Pod-Adressen. Nicht begonnen. | `latent_addressing` **existiert nicht** |
 
-Akzeptanzkriterium über alle Phasen: keine bestehenden Checks darf
-einbrechen; jede Phase liefert ihre Messdatei als Evidenz.
+**Berichtigung (2026-09-20, Pod-Audit).** Die Spalte „Gate-Check" führte für
+P2 bis P5 Checks auf, die es nie gegeben hat, und für P1 einen, der das
+Falsche prüfte. Das ist derselbe Fehler wie in DREAM-POD-DESIGN D3: eine
+Phase gilt als belegt, weil in der Tabelle ein Check-Name steht.
+
+- `reflex_dispatch` war grün, obwohl die aufgezeichnete Evidenz
+  `reflex_hits 0 / reflex_misses 132 / failovers 132` sagt — alle 132
+  Antworten kamen vom Failover. Der Check las weder die Trefferzahl noch
+  einen Fehlerzähler, der je hochgezählt wird. Er ist jetzt geteilt:
+  `reflex_failover` belegt, was der Lauf zeigte, `reflex_dispatch` verlangt
+  mindestens einen aufgelösten Alias und bleibt bis P5 rot.
+- `xgboost_pod` existiert seit heute und ist grün.
+- `perception_stream`, `improve_cycle` und `latent_addressing` werden hier
+  nicht erfunden: die Perceptions-Messung braucht den MQTT-Broker, P4 und P5
+  sind nicht gebaut. Ein Check ohne Evidenz wäre genau die Sorte Zusicherung,
+  die dieser Abschnitt korrigiert.
+
+Akzeptanzkriterium über alle Phasen: kein bestehender Check darf einbrechen;
+jede Phase liefert ihre Messdatei als Evidenz — **gestempelt**, mit
+`producer` und `subject` (`research/evidence.py`), sonst lässt das Gate sie
+nicht mehr durch.
 
 ## 7. Risiken & Offene Fragen
 

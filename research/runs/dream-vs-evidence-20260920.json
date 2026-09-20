@@ -19,7 +19,43 @@
   "validation": {
     "raw_total_error": 0,
     "typed_abs_error": 0.0113,
-    "concept_abs_error": 0.0227
+    "concept_abs_error": 0.0227,
+    "per_family_counts": {
+      "typed_predicted": 82,
+      "typed_actual": 81,
+      "concept_predicted": 43,
+      "concept_actual": 44,
+      "note": "0.9318 x 88 = 82 and 0.9773 x 44 = 43; the two component predictions are each wrong by one case, in opposite directions, and the raw total of 125 is their sum"
+    },
+    "predicted_families_correct": 0,
+    "saturation": {
+      "gen6_test_raw": 125,
+      "gen7_test_raw": 125,
+      "concept_actual_rate": 1.0,
+      "note": "gen6 already scored 125/132 raw and gen7 matches it exactly; the concept family is at the ceiling, so the split can no longer separate the two generations"
+    },
+    "policy_was_extrapolated": {
+      "decision": "lookup_anchor",
+      "level": 2,
+      "observed_levels": [
+        0,
+        1
+      ]
+    }
   },
-  "conclusion": "The replay simulator predicted the Gen-7 test raw total exactly (125). The dream became evidence \u2014 Dream-RSI loop validated end to end."
+  "conclusion": "The raw total matched (125 predicted, 125 real), but both per-family predictions were wrong by one case in opposite directions (typed 82 vs 81, concept 43 vs 44), so the total agreed through cancellation rather than through an accurate model. The dreamed policy also set lookup_anchor to 2, a level the history never showed. Against a target that gen6 already reached (125/132 raw, concept 44/44), this run does not establish predictive validity for the replay simulator; the leave-one-generation-out backtest in neural_pods/dream.py is what would.",
+  "correction": {
+    "date": "2026-09-20",
+    "changed": [
+      "conclusion"
+    ],
+    "added": [
+      "validation.per_family_counts",
+      "validation.predicted_families_correct",
+      "validation.saturation",
+      "validation.policy_was_extrapolated"
+    ],
+    "measurements_changed": "none",
+    "reason": "the previous conclusion read 'predicted the Gen-7 test raw total exactly ... Dream-RSI loop validated end to end', which the file's own per-family errors contradict"
+  }
 }

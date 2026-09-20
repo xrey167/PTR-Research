@@ -1,13 +1,25 @@
-"""N5 end-to-end demo: two pods on different mesh nodes, each driven by the
-native communication model, solve a reader question together — Pod A
-(qwen3b answer pod, host) produces the answer and publishes it NATIVELY
-via MQTT frames (NativeCommExecutor + dialect LoRA); Pod B (np-node2)
-receives, validates and acknowledges natively. The main model (Gen-7
-adapter via vLLM) is represented by its frozen eval answers; the mesh
-carries only native frames.
+"""N5 end-to-end run: two pods on different mesh nodes exchange dialect
+frames — Pod A (host) publishes an answer as a native MQTT frame through
+the NativeCommExecutor; Pod B (np-node2) receives, validates and
+acknowledges it. What it measures is the MESH path and the executor: both
+pods online via presence, every frame delivered and acknowledged, pod B's
+validation, total latency.
 
-Gate `mesh_e2e`: both pods online via presence, answer delivered natively,
-verified by pod B, total latency recorded.
+WHAT IT DOES NOT MEASURE, contrary to what this docstring used to say. No
+dialect LoRA is loaded here and no model produces a frame. "Driven by the
+native communication model" was not true of this script: the frames are
+built with an f-string over json.dumps, exactly like the sequential path in
+benchmark_traced_pipeline.py, and the variable that held the natural-language
+intent a model would have been given was assembled and then never used.
+
+A model's ability to produce these frames is measured in
+research/train_native_comm.py and recorded as `exact_rate` (0.55 against a
+0.50 threshold) in native-comm-eval-20260920-report.json. Nothing in this
+file may be read as adding to that number, which is why the report now
+carries `frames_produced_by: "serialiser"`.
+
+Gate `mesh_e2e` reads the mesh facts only: acks_received, pod_b_validated_all
+and the executor's refusal count.
 """
 import json
 import subprocess
@@ -19,7 +31,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods.mesh import MeshEndpoint  # noqa: E402
 from neural_pods.native_comm import EgressACL, NativeCommExecutor  # noqa: E402
+from research.evidence import write as write_evidence  # noqa: E402
 from research.train_reader import file_sha, load_bundle  # noqa: E402
+
+#: The modules these numbers are evidence ABOUT.
+SUBJECT = [
+    "neural_pods/mesh.py",
+    "neural_pods/native_comm.py",
+]
 
 BROKER = "10.50.0.121"
 PEER_NODE = "np-node2"
@@ -45,6 +64,33 @@ while time.time() < deadline and len(answers) < {ROUNDS}:
 endpoint.close()
 print(json.dumps({{"validated": sum(answers), "total": len(answers)}}))
 '''
+
+
+def summarise(*, acks: dict, rounds: int, elapsed_s: float,
+              executor_stats: dict, peer_report: dict) -> dict:
+    """Turn the observed acknowledgements into evidence. Pure.
+
+    `pod_b_validated_all` requires BOTH that every ack says validated and
+    that there are as many acks as rounds: `all()` over an empty dict is
+    True, so the count is what stops a run where nothing arrived from
+    reporting perfect validation.
+    """
+    return {
+        "status": "completed",
+        "rounds": rounds,
+        "acks_received": len(acks),
+        "acks_missing": rounds - len(acks),
+        "pod_b_validated_all": bool(
+            len(acks) == rounds and rounds > 0
+            and all(ack.get("validated") for ack in acks.values())),
+        "elapsed_s": round(elapsed_s, 2),
+        "executor_stats": executor_stats,
+        # Stated in the evidence, so no reader has to go back to the source
+        # to find out whether a model was involved. It was not.
+        "frames_produced_by": "serialiser",
+        "model_dialect_measured_in": "native-comm-eval-20260920-report.json",
+        "peer_report": peer_report,
+    }
 
 
 def main() -> None:
@@ -88,8 +134,10 @@ def main() -> None:
             import re
             value_match = re.search(r"\b(\d+)\s*(?:days|tage)?", answer, re.IGNORECASE)
             value = int(value_match.group(1)) if value_match else -1
-            intent = (f"Publish the answer value {value} for case {row['id']} "
-                      f"to the topic np/mesh-e2e-b/answer, include seq {i}.")
+            # The natural-language intent a dialect model would receive lived
+            # here, was assembled, and was never passed to anything. Removed
+            # rather than left standing: an unused variable shaped like the
+            # missing half of the experiment reads as if that half existed.
             frame = (f'PUB np/mesh-e2e-b/answer '
                      f'{json.dumps({"value": value, "seq": i, "case": row["id"]}, separators=(",", ":"))}')
             assert frame.startswith("PUB ")  # dialect shape identical to training
@@ -126,18 +174,12 @@ def main() -> None:
                 break
             time.sleep(1.0)
 
-        all_validated = all(a.get("validated") for a in acks.values()) and len(acks) == ROUNDS
-        result = {
-            "status": "completed",
-            "rounds": ROUNDS,
-            "acks_received": len(acks),
-            "pod_b_validated_all": bool(all_validated),
-            "elapsed_s": round(elapsed, 2),
-            "executor_stats": {"refused": executor.acl.violations},
-            "peer_report": peer_report,
-        }
-        Path("research/runs/mesh-e2e-20260920.json").write_text(
-            json.dumps(result, indent=2), encoding="utf-8")
+        result = summarise(acks=acks, rounds=ROUNDS, elapsed_s=elapsed,
+                           executor_stats=executor.stats() | {
+                               "refused": executor.acl.violations},
+                           peer_report=peer_report)
+        write_evidence(result, Path("research/runs/mesh-e2e-20260920.json"),
+                       __file__, subject=SUBJECT)
         print(json.dumps(result, indent=2))
     finally:
         endpoint.close()

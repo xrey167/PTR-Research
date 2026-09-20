@@ -1,7 +1,61 @@
 # Neural-Pods v1.0 — Gesamtarchitektur (Master-Dokument)
 
-Stand: 2026-09-20 · Gate 40/40 grün · 305 Tests · 33 Commits ·
-GitHub `xrey167/PTR-Research` · Server-Klon pull-basiert.
+**Dieses Dokument ist die einzige Quelle der Wahrheit für den Projektstand.**
+README und HANDOVER verweisen hierher und führen keine eigenen Zählstände mehr.
+
+## Stand (2026-09-20, aus einem frischen Klon nachgemessen)
+
+| Größe | Wert | womit geprüft |
+|---|---|---|
+| Gate-Checks definiert | **48** | `research/verify_architecture_gate.py` |
+| Gate-Checks grün im Klon | **36** | `python research/verify_architecture_gate.py` |
+| Gate-Checks rot | **12** — 7 mangels Server-Evidenz, 5 zu Recht (siehe unten) | Gate nennt die 8 fehlenden Dateien |
+| Tests | **702 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
+| Module `neural_pods/` | **56**, alle einer Schicht zugeordnet | `python neural_pods/architecture.py` |
+| Schichtverstöße | **0** | Gate-Check `layering` |
+| Evidenzdateien mit `subject`-Bindung | **3 von 35** | Gate-Ausgabe `evidence_with_a_subject` |
+| Gate-relevante Benchmark-Skripte mit importierbarem Kern | **16 von 16** (dazu `benchmark_perception`, dessen Evidenz kein Check liest) | `summarise()`/`measure()`, Tests in `tests/test_benchmark_*.py` |
+
+**Die 44 waren 45** — die Zahl stand hier falsch und wurde per AST
+nachgezählt. Dazu kamen `reflex_failover` (Abspaltung, siehe unten),
+`xgboost_pod` (P2 des Pod-Arm-Designs, Check war zugesagt und fehlte) und
+`dream_predictive` (Abspaltung von `dream_pipeline`, siehe unten): insgesamt 48.
+
+Sieben rote Checks brauchen Eval-Reports, die nur auf dem Server liegen
+(`runs/`, gitignoriert). Die `.gitignore`-Ausnahme `!research/runs/*.json`
+existiert; es fehlt ein Commit vom Server.
+
+**Fünf rote Checks sind das Ergebnis der Audits vom 2026-09-20 und
+gehören so.** Sie waren grün, ohne etwas zu belegen:
+
+- `reflex_dispatch` — die aufgezeichnete Evidenz sagt `reflex_hits 0`,
+  `reflex_misses 132`, `failovers 132`: kein einziges Adress-Signal löste
+  auf, alle 132 Antworten kamen vom Default-Pod. Der Check sah weder die
+  Trefferzahl noch einen Fehlerzähler an, der je hochgezählt wird. Was der
+  Lauf wirklich zeigte, belegt jetzt `reflex_failover` (grün); der Reflex
+  selbst bleibt rot bis P5 (latentes Adress-Training).
+- `mesh_cache` — las `principal_isolated`, ein Feld, das der Benchmark
+  erzeugte, indem er einen Principal las, unter dem nie etwas geschrieben
+  wurde. Wahr per Konstruktion, während derselbe Lauf zwei Zeilen vorher
+  den fremden Principal über die Knotengrenze auslas. Neu aufzunehmen am
+  Broker, mit den ehrlichen Feldern.
+- `dream_reflex` — war grün an einem Zwei-Generationen-Spielzeugpool. Der
+  Check liest jetzt `pool_source`; im Klon ohne die Generationsberichte ist
+  rot das richtige Urteil.
+- `dream_pipeline` — war grün an einer Backtest-Zahl, die per Konstruktion
+  nicht fehlschlagen kann: die aufgezeichnete Evidenz stammt von vor dem
+  Umbau auf Leave-one-generation-out und trägt nur den In-sample-Fehler.
+  Der Zyklus muss auf der Maschine mit den Generationsberichten neu laufen;
+  bis dahin ist grün ein Urteil über nichts.
+- `dream_predictive` (neu) — die Abspaltung. `dream_pipeline` belegt, dass
+  der Zyklus **lief**; dieser Check verlangt, dass der Simulator mindestens
+  eine zurückgehaltene Generation **vorhergesagt** hat, mit einem Fehler
+  unter derselben 0,15-Schranke, an der der Zyklus selbst abbricht. Rot,
+  weil unbelegt — die Historie mit vier Generationen identifiziert die
+  Koeffizienten nicht (Prüfbericht 4).
+
+Der Befundbericht dazu: `research/STATE-DEEP-RESEARCH-20260920.md`,
+Abschnitt 14.
 
 Dieses Dokument integriert alle fünf Design-Dokumente zu einer kohärenten
 Architektur und legt die Umsetzung der offenen Bausteine fest.
@@ -10,11 +64,11 @@ Architektur und legt die Umsetzung der offenen Bausteine fest.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ GATE   verify_architecture_gate.py — fail-closed, 40+ Checks    │
+│ GATE   verify_architecture_gate.py — fail-closed, 48 Checks     │
 ├─────────────────────────────────────────────────────────────────┤
 │ POD-ARM / DREAM (Schicht 5)                                     │
-│ Reflex-Kanal (reflex.py) · Dream-Pod (dream.py, validiert:      │
-│ 125 predicted → 125 real) · Improve-Kreislauf                   │
+│ Reflex-Kanal (reflex.py) · Dream-Pod (dream.py, NICHT als      │
+│ vorhersagekräftig belegt, s. Prüfbericht 4) · Improve-Kreislauf │
 ├─────────────────────────────────────────────────────────────────┤
 │ NERVENSYSTEM (Schicht 4)                                        │
 │ Mesh (mesh.py, RTT 0,3 ms) · native Protokolle (native_comm.py, │
@@ -26,7 +80,7 @@ Architektur und legt die Umsetzung der offenen Bausteine fest.
 │ calibration/token-cache · DatasetStore (H7) · Training (H5)     │
 ├─────────────────────────────────────────────────────────────────┤
 │ STORAGE (Schicht 2) — Vier-Tier-Modell                          │
-│ L0 Pod-lokal (crossbeam-Muster, jemalloc) · L1 Redis (0,3 ms)   │
+│ L0 Pod-lokal (crossbeam-Muster, jemalloc) · L1 Redis (0,38 ms)  │
 │ L2 LanceDB (Vektoren/Dokumente/Traces) · L3 Snapshots (SSD/S3)  │
 │ PodStorage-Fassade (storage.py) — die einzige Pod-API           │
 ├─────────────────────────────────────────────────────────────────┤
@@ -39,31 +93,56 @@ Architektur und legt die Umsetzung der offenen Bausteine fest.
 Abhängigkeitsregel: eine Schicht spricht nur die Schicht darunter an.
 Pods sprechen Storage nur über die PodStorage-Fassade, nie Backends direkt.
 
+**Beide Sätze sind seit 2026-09-20 geprüft, nicht behauptet.**
+`neural_pods/architecture.py` führt das Schichtenmodell als Daten
+(`LAYER_OF`, `BACKEND_OWNERS`) und prüft den Baum statisch dagegen:
+Import nach oben, Backend-Zugriff an der Fassade vorbei, Laufzeit-Zyklus
+oder ein Modul ohne Schichtzuordnung sind Verstöße. Der Gate-Check
+`layering` und `tests/test_architecture_layers.py` (17 Tests, inklusive
+Gegenproben an einem synthetischen Paket) führen ihn aus. Importe in
+`if TYPE_CHECKING:` zählen nicht als Laufzeitkante — `ranking` und
+`local_search` verweisen genau so aufeinander, was sonst als Zyklus
+erschiene. Aktueller Stand: 56 Module, 28 Laufzeitkanten, 0 Verstöße.
+
+Ein neu angelegtes Modul ohne Eintrag in `LAYER_OF` lässt den Check
+durchfallen: die Einordnung wird einmal bewusst entschieden statt später
+entdeckt.
+
 ## 2. Komponentenlandkarte (Stand 2026-09-20)
 
-### Implementiert + validiert (Gate-Checks)
+### Implementiert, mit Gate-Stand je Zeile
 
-| Komponente | Datei | Gate-Check(s) | Gemessen |
+Die Überschrift hieß „Implementiert + **validiert** (Gate-Checks)", und die
+Tabelle führte drei rote Checks. Genau die Lesart, die dieses Dokument
+sonst überall abräumt: die Überschrift behauptete, was die Spalte nicht
+belegte. Der Stand steht jetzt in der Zeile, nicht in der Überschrift, und
+ein Test prüft ihn (`tests/test_design_docs_match_the_gate.py`).
+
+| Komponente | Datei | Gate-Check(s) mit Stand | Gemessen |
 |---|---|---|---|
-| Registry/Provenance | registry.py | tests, authenticated_transport | — |
-| Reader Gen-3→7 | research/train_reader.py | lora_ab…gen5_dev, gen7_dream_validated | raw 125/124 |
-| Dream-Pod | dream.py + run_dream_cycle.py | dream_pipeline | Backtest 0,01 |
-| vLLM Multi-LoRA | research/run_vllm_ensemble.sh | ensemble_routing/failover | 20/20 acks |
-| Mesh | mesh.py | mesh_presence | RTT 0,30 ms |
-| Native Protokolle | native_comm.py + train_native_comm.py | native_protocol | Validität 1.0 |
-| Task-Graph | taskgraph.py | taskgraph_parallel | Speedup 2,59× |
-| Mesh-Cache | mesh_cache.py | mesh_cache | Cross-Knoten ✓ |
-| Executor-Factory | pod_executor.py | (tests) | deterministisch ✓ |
-| Reflex | reflex.py | reflex_dispatch | Mechanik ✓ |
-| Perception | perception.py | (Benchmark) | 13,3k Events/s |
-| Token-Cache | household.py | (tests) | saved_tokens ✓ |
+| Registry/Provenance | registry.py | `tests`, `authenticated_transport` — grün | — |
+| Reader Gen-3→7 | research/train_reader.py | rot, Server-Evidenz fehlt: `lora_ab`, `lora_ab_dev`, `lora_ab_gen4`, `lora_ab_gen4_dev`, `lora_ab_gen5`, `lora_ab_gen5_dev`; grün: `gen7_dream_validated` | raw 125/124 |
+| Dream-Pod | dream.py + run_dream_cycle.py | rot: `dream_pipeline`, `dream_predictive` | out-of-sample: **0 Generationen** |
+| vLLM Multi-LoRA | research/run_vllm_ensemble.sh | `ensemble_routing`, `ensemble_failover` — grün | 20/20 acks |
+| Mesh | mesh.py | `mesh_presence` — grün | RTT 0,30 ms (zwei Endpunkte **auf einem Host**) |
+| Native Protokolle | native_comm.py + train_native_comm.py | `native_protocol` — grün | Frames 1.0, **exact 0.55** |
+| Task-Graph | taskgraph.py | `taskgraph_parallel` — grün, Legacy-Form akzeptiert | mean_concurrency 2,59 (**kein Speedup**) |
+| Mesh-Cache | mesh_cache.py | `mesh_cache` **rot** seit Pod-Audit | Cross-Knoten ✓ |
+| Executor-Factory | pod_executor.py | `xgboost_pod` — grün | deterministisch ✓ |
+| Reflex | reflex.py | `reflex_failover` grün · `reflex_dispatch` **rot** bis P5 | Mechanik ✓ |
+| Perception | perception.py | kein Gate-Check | 13,3k Events/s |
+| Token-Cache | household.py | kein eigener Gate-Check | saved_tokens ✓ |
 
 ### Implementiert, aber ungeprüft/defekt
 
-| Komponente | Problem | Fix geplant in |
+| Komponente | Problem | Status |
 |---|---|---|
-| household.py H1–H3/H6 | Tests schlagen fehl: registry.events() fehlt als öffentliche API | F1 |
-| perception.py, mesh_cache.py | keine Unit-Tests (nur Benchmarks) | Tests in H4/S2 nachziehen |
+| household.py H1–H3/H6 | registry.events() fehlte als öffentliche API | **erledigt (F1)** |
+| storage.py (F3/F4) | sechs Defekte, u. a. doppelt geschriebener Erstbatch | **erledigt**, Gate-Checks `storage_facade`/`storage_l2_lance` |
+| household.py H2 | BUSY wurde nie freigegeben, start() ohne Event, VRAM/RAM ein Zähler | **erledigt**: `release()`, `restore_from_events()` |
+| taskgraph.py | `speedup` maß Contention | **erledigt**: `mean_concurrency` + `critical_path_ratio` |
+| Reader-Eval | frozen Split gesättigt **und aus dem Repo nicht regenerierbar** (132 vs. 96 Zeilen) | Holdout-Split erzeugt, Bewertung offen |
+| perception.py, mesh_cache.py | keine Unit-Tests (nur Benchmarks) | offen |
 
 ### Design-only (Umsetzung in diesem Plan)
 
@@ -91,6 +170,9 @@ Pods sprechen Storage nur über die PodStorage-Fassade, nie Backends direkt.
 | ADR-6 (lumabri) | Donor-Approval + BUSY als Haushaltsvertrag | Provenance-Events machen Approvals auditierbar; BUSY ersetzt stillen Override |
 | ADR-7 (colibri) | Tier-Preference vram→ram→disk, harte Semantik | Präzision steht im Pod-Manifest; Änderung = neue Generation |
 | ADR-8 (Datasets) | Frozen JSON führend, Lance als abfragbarer Spiegel | bewährte train_reader-Pipeline bleibt; Lance liefert SQL-Abfragen |
+| ADR-9 (A2A/MCP) | Eigener Dialekt bleibt, Signaturmodell wird übernommen | A2A v1.0 (Jan 2026, Linux Foundation/AAIF) löst Interoperabilität; unser Ziel ist ein anderes: Wegfall des Tool-Use-Overheads im Reflex-Pfad. Was A2A besser gelöst hat, ist die Authentizität — signierte Agent Cards. Deshalb: Dialekt behalten, aber `mesh.py` signiert Envelopes per HMAC (`secret=`), sonst bliebe `principal` ein Etikett |
+| ADR-11 (ausführbare Architektur) | Schichtenmodell und Fassadenregel als Daten + Gate-Check, nicht als Prosa | Genau die Regeln, die nur im Dokument standen, waren die, die unbemerkt driften konnten. `architecture.py` macht sie zur geprüften Eigenschaft; der Preis ist eine Tabelle, die bei jedem neuen Modul eine Entscheidung erzwingt |
+| ADR-10 (Adapter-Pool) | Vier-Tier-Modell deckt L1–L3, **nicht** den GPU-Adapterpool | S-LoRA (Unified Paging, 2.000 Adapter, bis 4× Durchsatz) und Punica (SGMV-Kernel) zeigen: der Sprung von 2 auf viele Adapter ist ein Problem des GPU-Speicherpools und des Batching-Kernels, nicht der Registry. Offener Baustein, bewusst noch nicht terminiert |
 
 ## 4. Umsetzungsplan (Abhängigkeitsreihenfolge)
 
@@ -107,9 +189,9 @@ Getracer Regressionslauf über alles → README/HANDOVER v1.0 → Gate 48/48
 
 | Phase | Gate-Checks (neu) | Endstand |
 |---|---|---|
-| F1–F4 | storage_facade, storage_l2_lance | 42/42 |
-| H4/H5/H7 | household_e2e, household_training, dataset_store | 45/45 |
-| S2–S5 | kvcache_affinity, raft_jemalloc, vllm_multistream, work_stealing | 49/49 |
+| F1–F4 | `storage_facade`, `storage_l2_lance` | 42/42 |
+| H4/H5/H7 | geplant: `household_e2e`, `household_training`, `dataset_store` | 45/45 |
+| S2–S5 | geplant: `kvcache_affinity`, `raft_jemalloc`, `vllm_multistream`, `work_stealing` | 49/49 |
 | Abschluss | Regressionslauf über PodStorage | 50/50 |
 
 ## 5. Sicherheitsregeln (unverändert, über alle Schichten)
@@ -118,6 +200,35 @@ Getracer Regressionslauf über alles → README/HANDOVER v1.0 → Gate 48/48
 3. Autonomie-Budget im Event-Log · 4. Delete-Tokens als Endabschaltung ·
 5. Frozen Splits tabu · 6. Egress-ACL je Pod · 7. Fail-closed Parser ·
 8. Kdump-Crash-Capture aktiv (System-Freeze-Ursache lesbar beim nächsten Mal)
+
+Zwei dieser Regeln beschreiben weniger, als ihr Wortlaut nahelegt — hier steht,
+was sie tatsächlich leisten:
+
+- **Regel 6 (Egress-ACL):** Die Topic-ACL wird im Client geprüft, nicht im
+  Broker, und `publish_raw()` umgeht sie bewusst. Das ist eine Leitplanke für
+  kooperierende Pods, keine Grenze gegen einen, der nicht kooperiert.
+- **Regel 7 (Fail-closed Parser):** Ohne `secret=` besteht die
+  Envelope-Prüfung aus einem Vergleich der Protokollversion und der Präsenz
+  von `manifest_hash`/`principal`. Erst mit gesetztem `secret` signiert
+  `mesh.py` jeden Envelope (HMAC-SHA256) und weist unsignierte ab — das ist
+  die Stelle, an der `principal` etwas bedeutet (siehe ADR-9).
+- **Regel 1 (Promotion nie ohne Gate):** Das Gate führt seit 2026-09-20 die
+  Tests wirklich aus (`--run-tests`) bzw. prüft eine aufgezeichnete
+  Testausführung gegen einen Quellcode-Hash — inklusive pytest-Exitcode,
+  `errors` und einer Obergrenze für übersprungene Tests, nachdem die
+  Zusammenfassungszeile `300 passed, 4 errors` als `failed: 0` durchging.
+  Die übrigen 46 Checks lesen weiterhin aufgezeichnete Messdateien; das
+  Gate ist dort ein Regressions-Journal, kein Verifikationslauf.
+- **Die Bindung der Evidenz an den geprüften Code** war bis 2026-09-20 gar
+  nicht vorhanden: sieben Kernmodule durch ein Modul zu ersetzen, das beim
+  Import wirft, färbte **keinen einzigen** Check rot. Evidenz, die über
+  `research/evidence.py` mit `subject=` geschrieben wird, trägt jetzt einen
+  Hash über die gemessenen Module, und das Gate verweigert sie, sobald
+  einer davon sich ändert. Drei der 35 gelesenen Dateien haben diese
+  Bindung; welche gebunden sind, nennt das Gate in
+  `evidence_with_a_subject`, welche nicht, in `evidence_without_a_subject`.
+  Das ist der offene Rest dieser Regel, und er ist benannt statt
+  unsichtbar.
 
 ## 6. Betriebs-Fakten (Server)
 

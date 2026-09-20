@@ -119,7 +119,7 @@ SEND <base64 frame>
 | N1 | Mosquitto im LXD, MeshEndpoint, Presence, protocol_version | `mesh_presence` |
 | N2 | Protokoll-Dialekt-LoRA (0.5B) + NativeCommExecutor + Egress-ACL | `native_protocol` |
 | N3 | TaskGraph (Token-Fluss, Parallelität, Merge) | `taskgraph_parallel` |
-| N4 | Mesh-Cache über Knoten | `mesh_cache` |
+| N4 | Mesh-Cache über Knoten | `mesh_cache` **rot seit Pod-Audit**, s. u. |
 | N5 | E2E: zwei 0.5B-Pods sprechen nativ | `mesh_e2e` |
 
 Akzeptanz: keine der bestehenden 33 Checks bricht; jede Phase liefert
@@ -188,9 +188,15 @@ Messdatei + Design-Doku-Abschlussvermerk.
   Invalidierung löscht gezielt.
 - **Gemessen (`research/runs/mesh-cache-20260920.json`):** Pod A (Host)
   schreibt, Pod B (np-node2) liest über das Netz: cross_node_read ✓,
-  same_principal_visible ✓, principal_isolated ✓ (fremder Principal liest
-  null), invalidation_works ✓. Gate-Check `mesh_cache` grün →
-  **Gate 37/37, 300 Tests.**
+  same_principal_visible ✓, invalidation_works ✓. Der Check war damit
+  grün → **Gate 37/37, 300 Tests**.
+- **Berichtigung (2026-09-20, Pod-Audit).** `principal_isolated ✓` war wahr
+  per Konstruktion: der Benchmark las unter einem Principal, unter dem nie
+  etwas geschrieben wurde, während derselbe Lauf zwei Zeilen vorher den
+  fremden Principal über die Knotengrenze auslas. Der Check liest jetzt die
+  ehrlichen Felder, und Gate-Check `mesh_cache` ist **rot**, bis der
+  Benchmark am Broker neu läuft. Die N4-Mechanik selbst — Cross-Knoten-Lesen,
+  gezielte Invalidierung — ist davon unberührt.
 
 ## N5-Status (2026-09-20, ABGESCHLOSSEN — Nervensystem komplett)
 
@@ -236,14 +242,24 @@ Mesh-Event anstelle direktem Redis-Delete.
   verifiziert. P5: trainiertes Dialekt-Modell emittiert Pod-Adressen —
   **Reflex-Hit-Rate 1.0 (31/31)** vs. 0.0 untrainiert
   (`research/runs/reflex-trained-20260920.json`). P3: PerceptionStream,
-  2000/2000 Events lossless (~13.3k Events/s), Backpressure droppt sauber
-  (`research/runs/perception-20260920.json`).
+  2000/2000 Events lossless (~13.3k Events/s), Backpressure droppt sauber —
+  **Evidenz zurückgezogen.** Die Messung stammt von einem Drain-Loop, der
+  Events auch ohne Consumer als `consumed` zählte, und von einem `drain()`,
+  das eine leere Queue für Zustellung hielt. `research/runs/perception-
+  20260920.json` wurde deshalb entfernt statt weitergereicht; der Benchmark
+  (`research/benchmark_perception.py`) schreibt seit dem Pod-Audit über
+  `research.evidence.write()` und muss am Broker neu laufen. Kein Gate-Check
+  liest diese Datei, die Zahl trug also nie eine Zusicherung.
 - **Trace-Befund → Optimierung:** die sequenziellen Mesh-Lookups dominieren
   (20 ms Remote-Delay × 132). Optimierung: Batch-Async (alle Lookups sofort
   feuern, Replies parallel sammeln; Responder schläft NICHT im paho-Loop-
   Thread). **Gemessen: 2,845 s → 1,012 s = 2,81× schneller** bei identisch
-  132/132 validen Frames. Gate-Check `traced_pipeline` grün →
-  **Gate 40/40, 305 Tests.**
+  132/132 validen Frames. Gate-Check `traced_pipeline` grün. (Die
+  damaligen Zählstände „Gate 40/40, 305 Tests" sind überholt; aktuelle
+  Zahlen ausschließlich in `ARCHITECTURE-MASTER-20260920.md`. Die
+  „132/132 validen Frames" heißen seit dem Messcode-Umbau
+  `serialised_frames_valid` — der Benchmark parst seinen eigenen
+  f-String, die Zahl belegt Serialisierer und Parser, nicht das Modell.)
 - Nächste Optimierungshebel aus den Traces: Redis-Puts batchen (132 Round-
   Trips ~0.05 s), Antwort-Stage als echter vLLM-Call mit Stream, Responder
   mit Thread-Pool statt Thread-je-Call.

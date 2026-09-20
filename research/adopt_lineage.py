@@ -44,5 +44,5 @@ def adopt_lineage(source, destination, artifact, principal='buyer'):
                         raise InvalidState('Conflicting destination knowledge head')
                     destination.db.execute('INSERT OR IGNORE INTO heads VALUES(?,?,?)',(payload['knowledge_key'],payload['generation'],key))
             destination._valid(artifact,principal)
-            destination._event('adopt_local_snapshot',{'artifact':artifact,'nodes':len(ordered),'policy':'local-authority-copy:no-future-source-sync'})
+            destination.record_event('adopt_local_snapshot',{'artifact':artifact,'nodes':len(ordered),'policy':'local-authority-copy:no-future-source-sync'})
     return artifact

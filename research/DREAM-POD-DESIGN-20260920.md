@@ -49,52 +49,99 @@ die verbesserte Politik wird als Gen-(N+1) eingesetzt.
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
 | D1 | `neural_pods/dream.py`: HistoryPool (Per-Case-Outcomes aller Generationen einsammeln), Replay-Simulator (Familien-Effekte), Policy-Bewertung | — |
-| D2 | `research/run_dream_cycle.py`: Zyklus auf dem Server — Pool bauen, Policies träumen, beste Strategie → Generation-7-Curriculum | `dream_pipeline` |
-| D3 | Reflex-Bindung `dream` + Hauptmodell-Demo | `dream_reflex` |
-| D4 (später) | Feineres Politur-Raum: Entscheidungen auf Zeilen-Ebene statt Familien-Ebene; MCTS über dem Entscheidungsbaum (vollständiges Dream-RSI) | `dream_deep` |
+| D2 | `research/run_dream_cycle.py`: Zyklus auf dem Server — Pool bauen, Policies träumen, beste Strategie → Generation-7-Curriculum | `dream_pipeline` **rot**, s. u. |
+| D3 | Reflex-Bindung `dream` + Hauptmodell-Demo | `dream_reflex` **rot**, s. u. |
+| D4 (später) | Feineres Politur-Raum: Entscheidungen auf Zeilen-Ebene statt Familien-Ebene; MCTS über dem Entscheidungsbaum (vollständiges Dream-RSI) | `dream_deep` (offen) |
 
 Akzeptanz D1–D3: kein bestehender Check bricht; der Simulator reproduziert
 die beobachteten Familien-Deltas der Historie (Backtest), die beste
 geträumte Strategie erzeugt ein vorbereitetes Gen-7-Input-Verzeichnis.
 
 
-## Status (2026-09-20)
+## Status (Stand nach dem Pod-Audit, 2026-09-20)
 
-- **D1 umgesetzt:** `neural_pods/dream.py` — HistoryPool (Per-Case-Outcomes
-  der Generationen gen3–gen6), ReplaySimulator (linearer Familien-Effekt
-  mit learned limits), `backtest()` als Faithfulness-Prüfung. 3 Tests.
-- **D2 umgesetzt:** `research/run_dream_cycle.py` auf der echten Historie:
-  Pool = gen3–gen6, Backtest mean_abs_error 0,01 / max 0,057, Gewinner-
-  Strategie für Gen-7: **concept_oversample 3 + lookup_anchor 2**
-  (Vorhersage typed 0,93 / concept 0,98). Messdatei:
-  `research/runs/dream-cycle-20260920.json`. Gate-Check `dream_pipeline`.
-- Offen: D3 (Reflex-Bindung des Dream-Pods), D4 (generatives Träumen /
-  zeilenfeine Politik-Räume), und der eigentliche Gen-7-Online-Lauf, der
-  die geträumte Strategie als Evidenz validiert.
+Zählstände stehen ausschließlich in `ARCHITECTURE-MASTER-20260920.md`.
 
+- **D1 umgesetzt:** `neural_pods/dream.py` — HistoryPool, ReplaySimulator,
+  `backtest()`. Seit dem Audit: der Pool ist **erzwungen append-only und
+  chronologisch** (Sicherheitsregel 3 war vorher nur Prosa), `base_model`
+  ist eine modellierte Dimension, mehrdeutige Übergänge werden nicht
+  zugeordnet, Extrapolation wird per Vorgabe abgelehnt.
+- **D2 umgesetzt:** `research/run_dream_cycle.py`. Seit dem Audit erfüllt der
+  Runner die drei übrigen Vertragspunkte, die vorher fehlten: **RAM-Lease**
+  über den `ResourceGovernor`, **Autonomie-Quote** aus dem Event-Log
+  (`CycleBudget`, vor dem Zyklus geprüft) und ein **`dream_cycle`-Provenance-
+  Event** mit Pool-Fingerprint, allen Kandidaten und dem Gewinner. Vorher
+  hinterließ ein Zyklus nichts außer einer JSON-Datei.
 
-## Gen-7-Online-Lauf: Der Traum ist Evidenz geworden (2026-09-20)
+  **Gate-Check `dream_pipeline` ist rot (Berichtigung 2026-09-20).** Die
+  eingecheckte `dream-cycle-20260920.json` stammt von vor der Umstellung auf
+  Leave-one-generation-out und trägt nur den In-sample-Fehler — eine Zahl,
+  die per Konstruktion nicht fehlschlagen kann, weil der Simulator einen
+  Achsenabschnitt plus einen Koeffizienten je Entscheidung hat und die
+  Historie je Generation eine Entscheidung ändert. Das Gate lehnt diese Form
+  jetzt ab, statt sie zu bestehen. Der Zyklus muss auf der Maschine mit den
+  Generationsberichten neu laufen; `HistoryPool.from_project` braucht sie.
+
+  Dazu ist der Check **aufgeteilt**: `dream_pipeline` belegt, dass der Zyklus
+  *lief*, `dream_predictive` (neu), dass der Simulator eine zurückgehaltene
+  Generation *vorhergesagt* hat. Der zweite bleibt auch nach der Neuaufnahme
+  rot, solange die Historie vier Generationen umfasst — Abschnitt 4 des
+  Prüfberichts hat gemessen, dass sie die Koeffizienten nicht identifiziert.
+- **D3 gebaut, Gate-Check rot:** `research/benchmark_dream_reflex.py` +
+  Gate-Check `dream_reflex`. Gemessen wird die **Bindung**: deterministischer
+  Gewinner über 200 Aufrufe, eine bewusste Fehladressierung zieht den Arm
+  korrekt auf den Default-Pod zurück, Alias-Auflösung p95 **0,089 ms** gegen
+  das Pod-Arm-Ziel < 5 ms.
+
+  **Zwei Berichtigungen dazu (2026-09-20).** Erstens stand hier „p95 0,098 ms"
+  — diese Zahl steht in keiner dream-reflex-Evidenzdatei; die Aufzeichnung
+  sagt 0,089 ms. Zweitens war der Haken in der Tabelle oben falsch: der
+  Gate-Check ist **rot**, und das zu Recht. Er prüft seit dem Pod-Audit
+  `pool_source`, und in einem Klon ohne die Generationsberichte fällt der
+  Benchmark auf einen **synthetischen Zwei-Generationen-Pool** zurück. Eine
+  Latenz über einem Spielzeugpool ist keine Latenz über dem echten. Die
+  Bindung ist fertig; der Beleg dafür, dass sie über der echten Historie
+  trägt, fehlt bis zur Aufzeichnung auf dem Server.
+- Offen: D4 (zeilenfeine Politik-Räume, MCTS über dem Entscheidungsbaum).
+
+## Gen-7-Online-Lauf: was der Vergleich wirklich zeigt (berichtigt)
 
 Die geträumte Strategie (concept_oversample 3 + lookup_anchor 2, NeoHorse-
-Base) wurde real trainiert (1184 Trainingszeilen, Preflight 9,7 GB) und auf
-den unveränderten frozen Splits evaluiert:
+Base) wurde real trainiert und auf den unveränderten frozen Splits
+evaluiert:
 
-| | Geträumt | **Real (Evidenz)** |
-|---|---:|---:|
-| Test raw gesamt | ~125 | **125** (Fehler: 0) |
-| Test typed | 93,2 % | 92,0 % (81/88) |
-| Test concept | 97,7 % | **100 % (44/44)** |
-| Dev raw / guarded | — | 124 / 92 |
+| | Geträumt | Real (Evidenz) | |
+|---|---:|---:|---|
+| Test typed | 0,9318 → **82**/88 | **81**/88 | −1 Fall |
+| Test concept | 0,9773 → **43**/44 | **44**/44 | +1 Fall |
+| **Test raw gesamt** | **125** | **125** | 0 |
+| Dev raw / guarded | — | 124 / 92 | |
 
-**Der Replay-Simulator hat den Trainingsausgang exakt vorhergesagt**
-(`research/runs/dream-vs-evidence-20260920.json`). Der Dream-RSI-Kreislauf
-ist damit Ende-zu-Ende validiert: Historie → Träumen → Vorhersage → Online-
-Lauf → Evidenz → Pool wächst. Gate-Check `gen7_dream_validated` grün —
-**Gate 33/33, 285 Tests.**
+**Die frühere Fassung dieses Abschnitts behauptete, der Simulator habe den
+Ausgang „exakt vorhergesagt" und der Kreislauf sei „Ende-zu-Ende
+validiert". Beides hält nicht.** Die Summe stimmte, weil sich zwei
+gegenläufige Ein-Fall-Fehler aufhoben; **keine** der beiden
+Familienvorhersagen war richtig. Dazu kommt:
 
-## D3: Reflex-Bindung
+- Die Zielgröße war bereits gesättigt: Gen-6 stand schon bei 125/132 raw,
+  concept bei 44/44. Eine Vorhersage „etwa wie Gen-6" trifft dort fast
+  zwangsläufig.
+- Die Gewinnerpolitik setzte `lookup_anchor` auf 2 — eine Stufe, die die
+  Historie **nie gezeigt** hat. Das war eine Extrapolation, und die
+  damalige Limit-Tabelle erlaubte sie, obwohl der Docstring „never dream
+  beyond it" versprach.
+- Der damals zitierte Backtest-Fehler 0,01 konnte nicht fehlschlagen: bei
+  einem Intercept plus einem Koeffizienten je Entscheidung und einer
+  Entscheidungsänderung je Generation reproduziert der Fit seine eigenen
+  Punkte. Der heutige Leave-one-generation-out-Backtest sagt für gen3–gen6:
+  **0 von 4 Generationen out-of-sample vorhersagbar**, je mit benannter
+  Ursache.
 
-Der Dream-Pod ist über `TemporalPortPlane` an den Reflex-Kanal gebunden
-(`tests/test_dream_reflex.py`): das Hauptmodell ruft `invoke("dream",
-{"policies": ...})` auf und erhält die geträumte Strategie-Rangliste —
-nativ, ohne Tool-Call-JSON.
+Was der Lauf zeigt: die *Mechanik* des Kreislaufs trägt — Historie →
+Träumen → Vorhersage → Online-Lauf → Evidenz → Pool wächst. Was er **nicht**
+zeigt: prädiktive Gültigkeit des Simulators. Dafür braucht es eine
+Kennzahl, die Generationen noch unterscheidet (`reader_holdout_data.py`),
+und mehr als vier Generationen. Belege:
+`research/runs/dream-vs-evidence-20260920.json` (mit Korrekturblock) und
+`research/STATE-DEEP-RESEARCH-20260920.md`, Abschnitt 4.

@@ -38,7 +38,10 @@ def test_dream_pod_reflex_binding_returns_strategy():
     def dispatch(pod_key, request):
         assert pod_key == "pod:dream"
         sim = ReplaySimulator(pool)
-        ranked = sim.dream(request.get("policies", [{"concept_oversample": 3, "lookup_anchor": 2}]))
+        # lookup_anchor 2 was never observed in this toy history; the reflex
+        # path dreams past it on purpose, so it says so explicitly.
+        ranked = sim.dream(request.get("policies", [{"concept_oversample": 3, "lookup_anchor": 2}]),
+                           allow_extrapolation=True)
         return {"winner": ranked[0], "pool_size": len(pool.generations)}
 
     channel = ReflexChannel(plane, dispatch, default_pod="pod:dream")
@@ -49,3 +52,48 @@ def test_dream_pod_reflex_binding_returns_strategy():
     assert result["pod"] == "pod:dream"
     assert result["result"]["winner"]["decisions"] == {"concept_oversample": 3, "lookup_anchor": 2}
     assert channel.stats()["reflex_hits"] == 1
+
+
+# ---------------------------------------------------------------------------
+# The benchmark behind the `dream_reflex` gate check, exercised directly.
+# It needs no server, so the one thing that could not be checked before was
+# simply that nobody had called it from a test.
+
+
+def test_the_dream_reflex_benchmark_produces_the_fields_the_gate_reads():
+    from research.benchmark_dream_reflex import measure
+
+    result = measure()
+    assert result["status"] == "completed"
+    assert result["miss_retracted_to_default"] is True
+    assert result["winner_deterministic"] is True
+    assert result["resolve_within_target"] is True
+    assert result["reflex"]["all_misses_covered"] is True
+    assert result["reflex"]["errors"] == 0
+    # 200 invocations plus one deliberate miss.
+    assert result["invocations"] == 201
+    assert result["dispatched"] == {"dream": 200, "default": 1}
+
+
+def test_the_benchmark_says_which_pool_it_measured():
+    """A latency measured over a two-generation toy pool is not a latency
+    measured over the real one, and the gate now refuses evidence that does
+    not say which it was."""
+    from research.benchmark_dream_reflex import measure
+
+    result = measure()
+    assert result["pool_source"]
+    assert result["pool_source"].startswith(("recorded", "synthetic"))
+    assert len(result["pool_generations"]) >= 2
+
+
+def test_resolve_within_target_is_not_satisfied_by_a_missing_measurement():
+    """`(p95 or 999) < 5.0` turned a legitimate 0.0 into a failure, and the
+    opposite mistake — treating a missing measurement as fast — is the one
+    that matters. None must not pass."""
+    from research.benchmark_dream_reflex import measure
+
+    result = measure()
+    assert result["reflex"]["resolve_p95_ms"] is not None
+    assert result["resolve_within_target"] == (
+        result["reflex"]["resolve_p95_ms"] < result["latency_target_ms"])
