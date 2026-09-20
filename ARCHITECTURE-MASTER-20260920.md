@@ -17,8 +17,9 @@ README und HANDOVER verweisen hierher und führen keine eigenen Zählstände meh
 | Gate-relevante Benchmark-Skripte mit importierbarem Kern | **16 von 16** (dazu `benchmark_perception`, dessen Evidenz kein Check liest) | `summarise()`/`measure()`, Tests in `tests/test_benchmark_*.py` |
 
 **Die 44 waren 45** — die Zahl stand hier falsch und wurde per AST
-nachgezählt. Dazu kamen `reflex_failover` (Abspaltung, siehe unten) und
-`xgboost_pod` (P2 des Pod-Arm-Designs, Check war zugesagt und fehlte).
+nachgezählt. Dazu kamen `reflex_failover` (Abspaltung, siehe unten),
+`xgboost_pod` (P2 des Pod-Arm-Designs, Check war zugesagt und fehlte) und
+`dream_predictive` (Abspaltung von `dream_pipeline`, siehe unten): insgesamt 48.
 
 Sieben rote Checks brauchen Eval-Reports, die nur auf dem Server liegen
 (`runs/`, gitignoriert). Die `.gitignore`-Ausnahme `!research/runs/*.json`
@@ -216,15 +217,16 @@ was sie tatsächlich leisten:
   Testausführung gegen einen Quellcode-Hash — inklusive pytest-Exitcode,
   `errors` und einer Obergrenze für übersprungene Tests, nachdem die
   Zusammenfassungszeile `300 passed, 4 errors` als `failed: 0` durchging.
-  Die übrigen 45 Checks lesen weiterhin aufgezeichnete Messdateien; das
+  Die übrigen 46 Checks lesen weiterhin aufgezeichnete Messdateien; das
   Gate ist dort ein Regressions-Journal, kein Verifikationslauf.
 - **Die Bindung der Evidenz an den geprüften Code** war bis 2026-09-20 gar
   nicht vorhanden: sieben Kernmodule durch ein Modul zu ersetzen, das beim
   Import wirft, färbte **keinen einzigen** Check rot. Evidenz, die über
   `research/evidence.py` mit `subject=` geschrieben wird, trägt jetzt einen
   Hash über die gemessenen Module, und das Gate verweigert sie, sobald
-  einer davon sich ändert. Zehn der 37 gelesenen Dateien haben diese
-  Bindung; welche nicht, nennt das Gate in `evidence_without_a_subject`.
+  einer davon sich ändert. Drei der 35 gelesenen Dateien haben diese
+  Bindung; welche gebunden sind, nennt das Gate in
+  `evidence_with_a_subject`, welche nicht, in `evidence_without_a_subject`.
   Das ist der offene Rest dieser Regel, und er ist benannt statt
   unsichtbar.
 

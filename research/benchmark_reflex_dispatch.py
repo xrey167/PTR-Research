@@ -85,15 +85,19 @@ def summarise(observations: list[dict], *, channel_stats: dict,
     stats = {
         'n': len(observations),
         'selected_gen5': sum(1 for o in observations
-                             if o['pod'] == 'pod:reader-gen5'),
+                             if o.get('pod') == 'pod:reader-gen5'),
         'selected_gen6': sum(1 for o in observations
-                             if o['pod'] == 'pod:reader-gen6'),
+                             if o.get('pod') == 'pod:reader-gen6'),
         'reflex_raw': 0, 'reflex_guarded': 0, 'union_raw': 0,
         'other_pod_correct': 0,
+        'dispatch_errors': sum(bool(o.get('dispatch_error'))
+                               for o in observations),
+        'other_dispatch_errors': sum(bool(o.get('other_dispatch_error'))
+                                     for o in observations),
     }
     for observation in observations:
-        raw = observation['answer'] == observation['target']
-        guarded = observation['guarded_answer'] == observation['target']
+        raw = observation.get('answer') == observation['target']
+        guarded = observation.get('guarded_answer') == observation['target']
         stats['reflex_raw'] += raw
         stats['reflex_guarded'] += guarded
         if raw:
@@ -178,31 +182,44 @@ def main():
         prefix_n, suffix_n = render_segments(tok_neo, row)
         prompt_by_pod = {'pod:reader-gen5': prefix_q + suffix_q,
                          'pod:reader-gen6': prefix_n + suffix_n}
-        case_started = time.perf_counter()
-        result = channel.invoke(alias, {'prompt': prompt_by_pod,
-                                        'max_tokens': protocol['evaluation_max_new_tokens']})
-        latency_ms = (time.perf_counter() - case_started) * 1000
-        answer = result['result']
-
         observation = {
             'id': row['id'],
             'raw_signal': raw_signal,
             'alias': alias,
+            'target': row['target'],
+        }
+        case_started = time.perf_counter()
+        try:
+            result = channel.invoke(
+                alias, {'prompt': prompt_by_pod,
+                        'max_tokens': protocol['evaluation_max_new_tokens']})
+        except RuntimeError:
+            observation['dispatch_error'] = True
+            observation['latency_ms'] = ((time.perf_counter() - case_started)
+                                         * 1000)
+            observations.append(observation)
+            continue
+        latency_ms = (time.perf_counter() - case_started) * 1000
+        answer = result['result']
+
+        observation.update({
             'pod': result['pod'],
             'reflex': result['reflex'],
             'answer': answer,
             'guarded_answer': guarded_answer(row, answer),
-            'target': row['target'],
             'latency_ms': latency_ms,
-        }
+        })
         if answer != row['target']:
             # Only a wrong answer is worth asking the other pod about.
             other = ('pod:reader-gen6' if result['pod'] == 'pod:reader-gen5'
                      else 'pod:reader-gen5')
             observation['other_pod'] = other
-            observation['other_answer'] = dispatch(
-                other, {'prompt': prompt_by_pod[other],
-                        'max_tokens': protocol['evaluation_max_new_tokens']})
+            try:
+                observation['other_answer'] = dispatch(
+                    other, {'prompt': prompt_by_pod[other],
+                            'max_tokens': protocol['evaluation_max_new_tokens']})
+            except RuntimeError:
+                observation['other_dispatch_error'] = True
         observations.append(observation)
 
     result = summarise(observations, channel_stats=channel.stats(),

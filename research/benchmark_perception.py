@@ -82,55 +82,65 @@ def collect(*, broker: str = BROKER, count: int = COUNT) -> dict:
     This is the half that needs a broker. It measures and returns; it draws
     no conclusions.
     """
-    endpoint = MeshEndpoint(broker, "perception-host", manifest_hash="p-manifest")
-    stream = PerceptionStream(pod_id="vision-pod", max_queue=count)
-    mesh_received = []
-    mesh_done = threading.Event()
+    endpoint = None
+    stream = None
+    tiny = None
+    try:
+        endpoint = MeshEndpoint(broker, "perception-host",
+                                manifest_hash="p-manifest")
+        stream = PerceptionStream(pod_id="vision-pod", max_queue=count)
+        mesh_received = []
+        mesh_done = threading.Event()
 
-    endpoint.subscribe("np/vision-host/detections",
-                       lambda t, e: (mesh_received.append(e["body"]), mesh_done.set()
-                                     if len(mesh_received) >= count else None))
-    time.sleep(0.5)
+        endpoint.subscribe(
+            "np/vision-host/detections",
+            lambda t, e: (mesh_received.append(e["body"]), mesh_done.set()
+                          if len(mesh_received) >= count else None))
+        time.sleep(0.5)
 
-    # Stream -> mesh: every consumed event is published natively.
-    stream.set_consumer(lambda event: endpoint.publish("detections", event,
-                                                       target_pod="vision-host"))
-    started = time.perf_counter()
-    for seq in range(count):
-        stream.emit(synthetic_detector_event(seq))
-    # The return value decides the status. Discarding it meant a run that
-    # timed out after delivering half its events was still recorded as
-    # "completed" — and this evidence file has to be re-recorded on the
-    # server, so the defect would have produced the replacement.
-    delivered = mesh_done.wait(timeout=120.0)
-    elapsed = time.perf_counter() - started
-    # ONE snapshot, taken here. The count was read twice at two different
-    # moments, so the delivered figure and the figure the status was computed
-    # from could disagree by whatever arrived in between.
-    received = len(mesh_received)
+        # Stream -> mesh: every consumed event is published natively.
+        stream.set_consumer(
+            lambda event: endpoint.publish("detections", event,
+                                           target_pod="vision-host"))
+        started = time.perf_counter()
+        for seq in range(count):
+            stream.emit(synthetic_detector_event(seq))
+        # The return value decides the status. Discarding it meant a run that
+        # timed out after delivering half its events was still recorded as
+        # "completed" — and this evidence file has to be re-recorded on the
+        # server, so the defect would have produced the replacement.
+        delivered = mesh_done.wait(timeout=120.0)
+        elapsed = time.perf_counter() - started
+        # ONE snapshot, taken here. The count was read twice at two different
+        # moments, so the delivered figure and the figure the status was
+        # computed from could disagree by whatever arrived in between.
+        received = len(mesh_received)
 
-    # Backpressure: overflow a tiny queue, expect drops not deadlock.
-    # No consumer on purpose: with nothing draining, the queue fills and the
-    # overflow is deterministic. The drain thread used to pop events even
-    # without a consumer, which made this race-dependent.
-    tiny = PerceptionStream(pod_id="vision-tiny", max_queue=TINY_QUEUE)
-    time.sleep(0.5)
-    drop_result = [tiny.emit(synthetic_detector_event(i))
-                   for i in range(OVERFLOW_ATTEMPTS)]
-    observations = {
-        "count": count,
-        "delivered": delivered,
-        "mesh_received": received,
-        "elapsed_s": elapsed,
-        "stream_stats": stream.stats(),
-        "dropped": drop_result.count("dropped"),
-        "tiny_queued": tiny.stats()["queued"],
-        "tiny_rate_dropped": tiny.stats()["rate_dropped"],
-    }
-    endpoint.close()
-    stream.close()
-    tiny.close()
-    return observations
+        # Backpressure: overflow a tiny queue, expect drops not deadlock.
+        # No consumer on purpose: with nothing draining, the queue fills and
+        # the overflow is deterministic. The drain thread used to pop events
+        # even without a consumer, which made this race-dependent.
+        tiny = PerceptionStream(pod_id="vision-tiny", max_queue=TINY_QUEUE)
+        time.sleep(0.5)
+        drop_result = [tiny.emit(synthetic_detector_event(i))
+                       for i in range(OVERFLOW_ATTEMPTS)]
+        return {
+            "count": count,
+            "delivered": delivered,
+            "mesh_received": received,
+            "elapsed_s": elapsed,
+            "stream_stats": stream.stats(),
+            "dropped": drop_result.count("dropped"),
+            "tiny_queued": tiny.stats()["queued"],
+            "tiny_rate_dropped": tiny.stats()["rate_dropped"],
+        }
+    finally:
+        if endpoint is not None:
+            endpoint.close()
+        if stream is not None:
+            stream.close()
+        if tiny is not None:
+            tiny.close()
 
 
 def main() -> None:

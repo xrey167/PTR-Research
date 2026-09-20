@@ -44,9 +44,9 @@ _LOADED: dict[str, dict] = {}
 #: benchmark through research.evidence.write().
 UNSTAMPED_GRANDFATHERED = frozenset({
     "adaptive-batcher-20260917.json",
+    "architecture-20260917.json",
     "dream-cycle-20260920.json",
     "ensemble-20260919.json",
-    "ensemble-hetero-20260919.json",
     "grpc-vs-tcp-20260919.json",
     "mesh-cache-20260920.json",
     "mesh-e2e-20260920.json",
@@ -230,7 +230,7 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     # left to the reader: an accepted legacy shape means the newer, stricter
     # criterion has not actually been applied yet.
     legacy: list[str] = []
-    d = json.loads(Path(path).read_text(encoding="utf-8"))
+    d = _read(Path(path).name, dirs, missing)
 
     vllm_rows = _read_lines("neohorse-vllm-20260917.jsonl", dirs, missing)
     vllm_peak = max((row.get("tokens_per_s", 0.0) for row in vllm_rows), default=0.0)
@@ -320,12 +320,26 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
                   and test_run.get("skipped", 0) <= 20
                   and test_run.get("sources_sha256")
                   == source_fingerprint(Path(path).resolve().parents[2])),
-        "retrieval_recall": d["retrieval"]["recall_at_5"] >= 0.99 and d["retrieval"]["hnsw_recall_at_10"] >= 0.99,
-        "cache": d["cache"]["hit_rate"] >= 0.98 and d["cache"]["p99_ms"] < 1.0,
-        "authenticated_transport": d["transport"]["mtls_hmac_manifest_p95_ms"] < 1.0 and d["transport"]["model_tok_s"] > 200 and d["transport"]["raft_frame_valid"] == 10000 and d["transport"]["subject_allowlist_allowed"] == d["transport"]["subject_allowlist_after_denied"] == 1,
-        "raft_replication": min(d["raft"]["replicated"].values()) >= 100 and d["raft"]["persistent_tcp_proposals_s"] > 5000 and d["raft"]["persistent_mtls_proposals_s"] > 1000,
-        "quorum": d["replication"]["quorum_successes"] == 1000,
-        "resource_release": d["resources"]["active_leases_after"] == 0 and max(d["resources"]["gpu_memory_after_bytes"]) <= 1048576,
+        "retrieval_recall": d.get("retrieval", {}).get("recall_at_5", 0) >= 0.99
+            and d.get("retrieval", {}).get("hnsw_recall_at_10", 0) >= 0.99,
+        "cache": d.get("cache", {}).get("hit_rate", 0) >= 0.98
+            and d.get("cache", {}).get("p99_ms", float("inf")) < 1.0,
+        "authenticated_transport": d.get("transport", {}).get(
+                "mtls_hmac_manifest_p95_ms", float("inf")) < 1.0
+            and d.get("transport", {}).get("model_tok_s", 0) > 200
+            and d.get("transport", {}).get("raft_frame_valid", 0) == 10000
+            and d.get("transport", {}).get("subject_allowlist_allowed", 0)
+            == d.get("transport", {}).get("subject_allowlist_after_denied", 0)
+            == 1,
+        "raft_replication": min(
+                d.get("raft", {}).get("replicated", {}).values(), default=0) >= 100
+            and d.get("raft", {}).get("persistent_tcp_proposals_s", 0) > 5000
+            and d.get("raft", {}).get("persistent_mtls_proposals_s", 0) > 1000,
+        "quorum": d.get("replication", {}).get("quorum_successes", 0) == 1000,
+        "resource_release": d.get("resources", {}).get(
+                "active_leases_after") == 0
+            and max(d.get("resources", {}).get("gpu_memory_after_bytes", []),
+                    default=float("inf")) <= 1048576,
         "vllm_serving": vllm_ok,
         "vllm_dual_gpu": dual_ok,
         "vllm_router_failover": router_ok,

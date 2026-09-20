@@ -97,6 +97,7 @@ def summarise(*, discovery: dict, rtts: list[float], rounds_sent: int,
 def collect() -> dict:
     """Discover the peer and measure the round trips. Needs broker and LXD."""
     endpoint = MeshEndpoint(BROKER, "mesh-host", manifest_hash="host-manifest")
+    responder = None
     try:
         discovery = run_discovery(endpoint)
         print(json.dumps({"discovery": discovery}), flush=True)
@@ -132,6 +133,8 @@ def collect() -> dict:
                 "endpoint_stats": endpoint.stats(),
                 "responder_stats": responder.stats()}
     finally:
+        if responder is not None:
+            responder.close()
         endpoint.close()
 
 

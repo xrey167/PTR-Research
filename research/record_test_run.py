@@ -43,7 +43,7 @@ SOURCE_DIRS = ("neural_pods", "research", "tests")
 #: Each count is matched independently, because pytest prints them in a
 #: varying order and omits the ones that are zero. A single positional
 #: pattern is how `4 errors` came to be read as `failed: 0`.
-COUNT = {name: re.compile(rf"(\d+) {name}")
+COUNT = {name: re.compile(rf"(\d+) {'errors?' if name == 'errors' else name}")
          for name in ("failed", "passed", "skipped", "errors", "xfailed",
                       "xpassed")}
 
@@ -102,7 +102,8 @@ def main() -> None:
             raise SystemExit(f"no recorded test run at {OUT}")
         stored = json.loads(OUT.read_text(encoding="utf-8"))
         problems = [f"{key}: stored {stored.get(key)} vs now {result[key]}"
-                    for key in ("passed", "failed", "sources_sha256")
+                    for key in ("passed", "failed", "errors", "skipped",
+                                "exit_code", "sources_sha256")
                     if stored.get(key) != result[key]]
         if problems:
             raise SystemExit("recorded test run is stale: " + "; ".join(problems))

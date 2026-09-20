@@ -417,6 +417,8 @@ def test_the_subject_report_goes_red_when_a_subject_is_dropped(evidence_dir):
     # The line that used to parse to failed 0 and go through.
     ("300 passed, 4 errors in 5s",
      {"passed": 300, "failed": 0, "errors": 4, "skipped": 0}),
+    ("300 passed, 1 error in 5s",
+     {"passed": 300, "failed": 0, "errors": 1, "skipped": 0}),
     ("2 failed, 299 passed, 31 errors in 9s",
      {"passed": 299, "failed": 2, "errors": 31, "skipped": 0}),
     ("1 failed, 10 passed, 3 skipped in 1s",
@@ -456,6 +458,25 @@ def test_the_tests_check_rejects_a_run_that_only_looks_clean(evidence_dir, run, 
 
     red = _red_checks(evidence_dir)
     assert "tests" in red, f"the gate accepted a run with {reason}"
+
+
+@pytest.mark.parametrize("field", ["errors", "skipped", "exit_code"])
+def test_recorded_test_run_check_compares_every_gate_field(
+        tmp_path, monkeypatch, field):
+    import record_test_run
+
+    stored = {"passed": 300, "failed": 0, "errors": 0, "skipped": 8,
+              "exit_code": 0, "sources_sha256": "same"}
+    current = dict(stored)
+    current[field] += 1
+    out = tmp_path / "tests.json"
+    out.write_text(json.dumps(stored), encoding="utf-8")
+    monkeypatch.setattr(record_test_run, "OUT", out)
+    monkeypatch.setattr(record_test_run, "run_pytest", lambda: current)
+    monkeypatch.setattr("sys.argv", ["record_test_run.py", "--check"])
+
+    with pytest.raises(SystemExit, match=field):
+        record_test_run.main()
 
 
 def _write_backtest(evidence_dir, backtest):
@@ -546,3 +567,11 @@ def test_missing_test_evidence_fails_the_check_instead_of_falling_back(evidence_
     failed, message = _failures(evidence_dir)
     assert "tests" in failed
     assert "tests-20260920.json" in message, "reported as missing evidence"
+
+
+def test_missing_primary_architecture_evidence_is_reported_not_raised(evidence_dir):
+    (evidence_dir / ARCHITECTURE).unlink()
+    failed, message = _failures(evidence_dir)
+    assert {"retrieval_recall", "cache", "authenticated_transport",
+            "raft_replication", "quorum", "resource_release"} <= set(failed)
+    assert ARCHITECTURE in message

@@ -84,6 +84,22 @@ def test_only_twenty_signal_samples_are_carried():
     assert len(report["metrics"]["signal_samples"]) == 20
 
 
+def test_reflex_dispatch_failures_remain_counted_observations():
+    failed = {"id": "a", "raw_signal": "reader-gen5",
+              "alias": "reader-gen5", "target": "5 days",
+              "latency_ms": 1.0, "dispatch_error": True}
+    other_failed = _observation("b", answer="wrong", target="7 days")
+    other_failed["other_dispatch_error"] = True
+    report = benchmark_reflex_dispatch.summarise(
+        [failed, other_failed], channel_stats={}, baseline_union_raw=0,
+        elapsed_s=1.0)
+    metrics = report["metrics"]
+    assert metrics["n"] == 2
+    assert metrics["dispatch_errors"] == 1
+    assert metrics["other_dispatch_errors"] == 1
+    assert metrics["union_raw"] == 0
+
+
 # ------------------------------------------------------------ ensemble router
 
 def _case(target, primary, *, guarded=None, fallback=None):
@@ -188,6 +204,7 @@ def test_the_hetero_union_counts_either_side():
 @pytest.mark.parametrize("module_name", [
     "benchmark_ensemble_router",
     "benchmark_hetero_ensemble",
+    "benchmark_reflex_dispatch",
 ])
 def test_every_model_call_in_a_benchmark_run_is_guarded(module_name):
     """`VllmReplicaRouter.completion` raises RuntimeError once every replica
@@ -198,7 +215,8 @@ def test_every_model_call_in_a_benchmark_run_is_guarded(module_name):
     import ast
     from pathlib import Path
 
-    source = Path("research") / f"{module_name}.py"
+    source = (Path(__file__).resolve().parents[1] / "research" /
+              f"{module_name}.py")
     tree = ast.parse(source.read_text(encoding="utf-8"))
 
     def catches_runtime_error(handler_node):
@@ -211,17 +229,44 @@ def test_every_model_call_in_a_benchmark_run_is_guarded(module_name):
                 return True
         return False
 
+    model_call_names = {"ask", "ask_raw", "dispatch", "invoke"}
+
+    def call_name(call):
+        return (getattr(call.func, "id", "")
+                or getattr(call.func, "attr", ""))
+
+    parents = {child: parent for parent in ast.walk(tree)
+               for child in ast.iter_child_nodes(parent)}
+
+    def enclosing_function(node):
+        while node in parents:
+            node = parents[node]
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                return node.name
+        return None
+
     guarded_calls = set()
     for node in ast.walk(tree):
         if isinstance(node, ast.Try) and catches_runtime_error(node):
             for inner in ast.walk(node):
-                if isinstance(inner, ast.Call) and getattr(inner.func, "id", "") == "ask":
+                if (isinstance(inner, ast.Call)
+                        and call_name(inner) in model_call_names):
                     guarded_calls.add(inner.lineno)
 
-    all_calls = {node.lineno for node in ast.walk(tree)
-                 if isinstance(node, ast.Call)
-                 and getattr(node.func, "id", "") == "ask"}
-    assert all_calls, f"no ask() call found in {module_name}"
+    calls = [node for node in ast.walk(tree)
+             if isinstance(node, ast.Call)
+             and call_name(node) in model_call_names]
+    all_calls = {node.lineno for node in calls}
+    # benchmark_reflex_dispatch's ask_raw calls are behind its dispatch
+    # callback. Both ways to enter that callback (invoke and direct dispatch)
+    # must be guarded before those inner calls are considered guarded.
+    entry_calls = [node for node in calls
+                   if call_name(node) in {"dispatch", "invoke"}]
+    if entry_calls and all(node.lineno in guarded_calls for node in entry_calls):
+        guarded_calls.update(node.lineno for node in calls
+                             if call_name(node) == "ask_raw"
+                             and enclosing_function(node) == "dispatch")
+    assert all_calls, f"no model call found in {module_name}"
     unguarded = sorted(all_calls - guarded_calls)
     assert not unguarded, (
         f"{module_name}: ask() called without a RuntimeError guard at "

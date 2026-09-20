@@ -41,10 +41,10 @@ class Registry:
         # on — household allocations, task-graph nodes, mesh handlers, the
         # adaptive batcher. Without check_same_thread=False any of those
         # raises sqlite3.ProgrammingError on the first event it records.
-        # Python's sqlite3 is built in serialized mode (threadsafety == 3), so
-        # the connection itself tolerates concurrent statements; what needs
-        # serialising is the multi-statement transaction below, so two threads
-        # cannot interleave BEGIN/COMMIT on one connection.
+        # Python's sqlite3 is built in serialized mode (threadsafety == 3), but
+        # one shared connection still needs a process-local lock around each
+        # complete read and around the multi-statement transaction below. That
+        # keeps result consumption atomic and prevents interleaved BEGIN/COMMIT.
         self._lock = threading.RLock()
         self._in_transaction = False
         self.db = sqlite3.connect(str(path), isolation_level=None, timeout=30,
@@ -126,10 +126,12 @@ class Registry:
     _event = record_event
 
     def node(self, node_id):
-        row = self.db.execute("SELECT * FROM nodes WHERE id=?", (node_id,)).fetchone()
-        if row is None:
-            raise InvalidState(f"Unknown node: {node_id}")
-        return {**dict(row), "payload": json.loads(row["payload"])}
+        with self._lock:
+            row = self.db.execute(
+                "SELECT * FROM nodes WHERE id=?", (node_id,)).fetchone()
+            if row is None:
+                raise InvalidState(f"Unknown node: {node_id}")
+            return {**dict(row), "payload": json.loads(row["payload"])}
 
     def _add(self, kind, payload, parents=()):
         parents = sorted(set(parents))
@@ -146,11 +148,12 @@ class Registry:
         return node_id
 
     def ancestors(self, node_id):
-        self.node(node_id)
-        rows = self.db.execute("""WITH RECURSIVE ancestry(id) AS (
-            SELECT ? UNION SELECT e.parent FROM edges e JOIN ancestry a ON e.child=a.id)
-            SELECT id FROM ancestry""", (node_id,)).fetchall()
-        return [self.node(r[0]) for r in rows]
+        with self._lock:
+            self.node(node_id)
+            rows = self.db.execute("""WITH RECURSIVE ancestry(id) AS (
+                SELECT ? UNION SELECT e.parent FROM edges e JOIN ancestry a ON e.child=a.id)
+                SELECT id FROM ancestry""", (node_id,)).fetchall()
+            return [self.node(r[0]) for r in rows]
 
     def roots(self, node_id):
         return sorted(n["id"] for n in self.ancestors(node_id) if n["kind"] == "origin")
@@ -169,23 +172,26 @@ class Registry:
         return sorted(roots)
 
     def _valid(self, node_id, principal):
-        for node in self.ancestors(node_id):
-            if node["revoked"]:
-                raise InvalidState(f"Revoked ancestor: {node['id']}")
-            payload = node["payload"]
-            acl = payload.get("acl", ["*"])
-            if "*" not in acl and principal not in acl:
-                raise InvalidState("Access denied by lineage ACL")
-            if node["kind"] == "knowledge":
-                lifecycle = payload.get("lifecycle", {})
-                now = self.clock()
-                if lifecycle.get("valid_from") and now < datetime.fromisoformat(lifecycle["valid_from"]):
-                    raise InvalidState("Knowledge is not yet valid")
-                if lifecycle.get("valid_until") and now >= datetime.fromisoformat(lifecycle["valid_until"]):
-                    raise InvalidState("Knowledge has expired")
-                row = self.db.execute("SELECT node_id FROM heads WHERE knowledge_key=?", (payload["knowledge_key"],)).fetchone()
-                if row is None or row[0] != node["id"]:
-                    raise InvalidState("Stale knowledge generation")
+        with self._lock:
+            for node in self.ancestors(node_id):
+                if node["revoked"]:
+                    raise InvalidState(f"Revoked ancestor: {node['id']}")
+                payload = node["payload"]
+                acl = payload.get("acl", ["*"])
+                if "*" not in acl and principal not in acl:
+                    raise InvalidState("Access denied by lineage ACL")
+                if node["kind"] == "knowledge":
+                    lifecycle = payload.get("lifecycle", {})
+                    now = self.clock()
+                    if lifecycle.get("valid_from") and now < datetime.fromisoformat(lifecycle["valid_from"]):
+                        raise InvalidState("Knowledge is not yet valid")
+                    if lifecycle.get("valid_until") and now >= datetime.fromisoformat(lifecycle["valid_until"]):
+                        raise InvalidState("Knowledge has expired")
+                    row = self.db.execute(
+                        "SELECT node_id FROM heads WHERE knowledge_key=?",
+                        (payload["knowledge_key"],)).fetchone()
+                    if row is None or row[0] != node["id"]:
+                        raise InvalidState("Stale knowledge generation")
 
     def origin(self, namespace, record_id, version, content, acl=("*",)):
         # Structured encoding avoids delimiter/catenation ambiguity.
@@ -281,22 +287,26 @@ class Registry:
 
     def events(self, *, action: str | None = None, limit: int = 1000) -> list[dict]:
         """List provenance events, newest first; optionally filter by action."""
-        if action is not None:
-            rows = self.db.execute(
-                "SELECT seq, action, payload, ts FROM events WHERE action=? "
-                "ORDER BY seq DESC LIMIT ?", (action, limit)).fetchall()
-        else:
-            rows = self.db.execute(
-                "SELECT seq, action, payload, ts FROM events ORDER BY seq DESC LIMIT ?",
-                (limit,)).fetchall()
-        return [{"seq": r[0], "action": r[1], "payload": json.loads(r[2]),
-                 "ts": r[3]} for r in rows]
+        with self._lock:
+            if action is not None:
+                rows = self.db.execute(
+                    "SELECT seq, action, payload, ts FROM events WHERE action=? "
+                    "ORDER BY seq DESC LIMIT ?", (action, limit)).fetchall()
+            else:
+                rows = self.db.execute(
+                    "SELECT seq, action, payload, ts FROM events ORDER BY seq DESC LIMIT ?",
+                    (limit,)).fetchall()
+            return [{"seq": r[0], "action": r[1],
+                     "payload": json.loads(r[2]), "ts": r[3]} for r in rows]
 
     def head(self, knowledge_key):
-        row = self.db.execute("SELECT node_id FROM heads WHERE knowledge_key=?", (knowledge_key,)).fetchone()
-        if not row:
-            raise InvalidState("Unknown knowledge key")
-        return row[0]
+        with self._lock:
+            row = self.db.execute(
+                "SELECT node_id FROM heads WHERE knowledge_key=?",
+                (knowledge_key,)).fetchone()
+            if not row:
+                raise InvalidState("Unknown knowledge key")
+            return row[0]
 
 
 def hash_files(directory):
