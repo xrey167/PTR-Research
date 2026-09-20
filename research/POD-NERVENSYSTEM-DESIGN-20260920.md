@@ -119,7 +119,7 @@ SEND <base64 frame>
 | N1 | Mosquitto im LXD, MeshEndpoint, Presence, protocol_version | `mesh_presence` |
 | N2 | Protokoll-Dialekt-LoRA (0.5B) + NativeCommExecutor + Egress-ACL | `native_protocol` |
 | N3 | TaskGraph (Token-Fluss, Parallelität, Merge) | `taskgraph_parallel` |
-| N4 | Mesh-Cache über Knoten | `mesh_cache` |
+| N4 | Mesh-Cache über Knoten | `mesh_cache` **rot seit Pod-Audit**, s. u. |
 | N5 | E2E: zwei 0.5B-Pods sprechen nativ | `mesh_e2e` |
 
 Akzeptanz: keine der bestehenden 33 Checks bricht; jede Phase liefert
@@ -188,9 +188,15 @@ Messdatei + Design-Doku-Abschlussvermerk.
   Invalidierung löscht gezielt.
 - **Gemessen (`research/runs/mesh-cache-20260920.json`):** Pod A (Host)
   schreibt, Pod B (np-node2) liest über das Netz: cross_node_read ✓,
-  same_principal_visible ✓, principal_isolated ✓ (fremder Principal liest
-  null), invalidation_works ✓. Gate-Check `mesh_cache` grün →
-  **Gate 37/37, 300 Tests.**
+  same_principal_visible ✓, invalidation_works ✓. Der Check war damit
+  grün → **Gate 37/37, 300 Tests**.
+- **Berichtigung (2026-09-20, Pod-Audit).** `principal_isolated ✓` war wahr
+  per Konstruktion: der Benchmark las unter einem Principal, unter dem nie
+  etwas geschrieben wurde, während derselbe Lauf zwei Zeilen vorher den
+  fremden Principal über die Knotengrenze auslas. Der Check liest jetzt die
+  ehrlichen Felder, und Gate-Check `mesh_cache` ist **rot**, bis der
+  Benchmark am Broker neu läuft. Die N4-Mechanik selbst — Cross-Knoten-Lesen,
+  gezielte Invalidierung — ist davon unberührt.
 
 ## N5-Status (2026-09-20, ABGESCHLOSSEN — Nervensystem komplett)
 

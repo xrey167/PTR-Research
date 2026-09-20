@@ -1865,6 +1865,103 @@ torch hart, es gibt keine CI, und damit bleibt ein externer Bot der einzige
 maschinelle Prüfer dieses Repos.** Nach zwei Runden mit 20 von 20 echten
 Befunden ist das keine Randnotiz.
 
+### 17.5 Die dritte Runde, in derselben Datei
+
+`e78cde4` ist noch nicht kalt gewesen, da meldete derselbe Prüfer **fünf**
+weitere Befunde — vier inline, einen außerhalb des Diffs. Alle fünf geprüft,
+zwei ausführbar nachgestellt, **alle fünf echt**. Über drei Runden: **25 von
+25, kein Fehlalarm.**
+
+Drei davon liegen in Code, den ich in Runde 2 geschrieben habe, und zwei
+wieder in den Meta-Tests. Das Muster hat sich verschärft: **die Korrektur
+einer fail-open-Stelle hat eine neue erzeugt, und die Gegenprobe, die im
+selben Commit dafür geschrieben wurde, konnte sie nicht fangen.**
+
+**Die gemessene Null.** `(out.get("max_abs_error") or 1.0) < 0.15` — `0.0`
+ist falsy. Ein Lauf, der eine zurückgehaltene Generation *exakt* vorhersagt,
+machte `dream_predictive` rot: das einzige Ergebnis, das die Vorhersagekraft
+belegen würde, war das einzige, das der Check ablehnte. Die Zeile stammt aus
+dem alten Code und ist bei der Aufspaltung mitgewandert, ohne geprüft zu
+werden. Fehlende Messung und gemessener Wert sind jetzt getrennt.
+
+**Der Marker, der die ganze Zeile entlastete.** `_gate_check_claims` gab
+jedem Namen die komplette Tabellenzeile als Kontext. Nachgestellt:
+
+```
+| H9 | Zwei Checks | `household_join` (geplant) · `cortex_map` |
+gefunden:  ['household_join', 'cortex_map']
+gemeldet:  []                                (erwartet: cortex_map)
+```
+
+Ein ehrlich markierter Name deckte jeden unmarkierten neben sich. Der Kontext
+reicht jetzt vom Namen bis zum nächsten; Text **vor** dem ersten Namen
+(„geplant: `a`, `b`, `c`") gilt für alle, weil er zu keinem einzelnen gehören
+kann. In Prosa darf der Marker auch vor dem Anker stehen — „D3 gebaut,
+Gate-Check rot: … `dream_reflex`" —, dort bekommt nur der *erste* Name den
+Vorlauf.
+
+**Die Gegenprobe, die den Filter nicht aufrief.** Sie prüfte, dass
+`_gate_check_claims` den erfundenen Namen *extrahiert*, und hörte da auf. Die
+Entscheidung — nicht definiert **und** kein Marker — stand nur im
+Produktivtest. Deshalb ist der Defekt darüber durch sie hindurchgegangen.
+Beide gehen jetzt durch `_invented_claims`, und der Gegenprobe-Fall enthält
+genau die Falle: ein markierter neben einem unmarkierten Namen, in **einer**
+Zeile.
+
+**Die Fixture, die `tests` per Konstruktion rot machte.** `evidence_dir`
+kopierte nur `research/runs` nach `tmp_path`; das Gate berechnet seinen
+Quellcode-Fingerabdruck aber über `parents[2]`, also `/tmp`. Gemessen, mit
+vorhandener Evidenzdatei: `tests check in fixture: False`. Damit bestanden
+**drei** Tests aus dem falschen Grund — die drei parametrisierten Fälle aus
+Runde 1, die belegen sollten, dass ein Lauf mit `exit_code 1` abgelehnt wird,
+konnten nichts belegen, weil der Check ohnehin rot war. Die Fixture spiegelt
+den Baum jetzt per Symlink. (Die drei Verzeichnisse als Ganzes zu verlinken
+reicht nicht: `rglob` steigt nicht in verlinkte *Unter*verzeichnisse ab, 55
+Dateien fehlten und der Fingerabdruck blieb falsch. Verzeichnisse echt,
+Dateien verlinkt.)
+
+**Und die Landkarte selbst.** `ARCHITECTURE-MASTER` führte unter der
+Überschrift „Implementiert + **validiert** (Gate-Checks)" drei rote Checks —
+`dream_pipeline`, `mesh_cache`, `reflex_dispatch` —, bei `dream_pipeline` mit
+der Wahrheit in der Nachbarspalte (`out-of-sample: 0 Generationen`). Kein
+Test sah das: die Namen standen **ohne Backticks**, und `TICKED` erkannte nur
+`✔`, nicht `✓`. Drei Ergänzungen, keine davon eine Liste:
+
+* in der Gate-Check-Spalte zählen auch Namen ohne Backticks;
+* `TICKED` erkennt beide Haken;
+* eine dritte Regel: **ein Check, den das Gate rot führt, braucht einen
+  ehrlichen Marker neben seinem Namen.** Sie hat sofort vier weitere Stellen
+  gefunden — die D2-Zeile im Dream-Design und, schärfer, den N4-Status im
+  Nervensystem-Design, der immer noch „Gate-Check `mesh_cache` grün → Gate
+  37/37" behauptete, obwohl der Pod-Audit den Check vor zwei Commits rot
+  gemacht hatte.
+
+Ausgenommen ist genau ein Check, `tests`, und der Grund ist nachgeprüft statt
+behauptet: er vergleicht `sources_sha256` gegen den **Arbeitsbaum**, ist
+also in jedem Checkout mit einer nicht aufgezeichneten Änderung rot. Ein Test
+liest per AST aus dem Gate, welche Checks `source_fingerprint` aufrufen, und
+besteht nur, wenn diese Menge genau der Ausnahmeliste entspricht.
+
+### 17.6 Was diese Runde gelehrt hat
+
+Eine Regel, und sie ist Befund 3 verallgemeinert:
+
+> **Eine Gegenprobe muss denselben Codepfad aufrufen wie die Prüfung, die sie
+> absichert.** Sonst belegt sie, dass ein Zwischenschritt funktioniert — und
+> genau im übersprungenen Stück saß dann der Defekt.
+
+Kein vierter Meta-Test, keine neue Ebene. Die drei Regeln in
+`test_design_docs_match_the_gate.py` stehen nebeneinander (Haken, Existenz,
+Rot-Stand) und teilen sich eine Zerlegung und einen Filter; jede hat eine
+Gegenprobe, die durch diesen Filter geht.
+
+```
+Tests        697 grün · 0 rot · 0 errors · 8 übersprungen
+Gate         48 Checks · 36 grün · 12 rot (unverändert)
+Schichten    56 Module · 0 Verstöße
+Doku         15 Zeilen berichtigt (11 geplante Checks, 4 rote Stände)
+```
+
 ## Quellen (externe Einordnung)
 
 - [S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv:2311.03285)](https://arxiv.org/abs/2311.03285) · [MLSys 2024 Paper](https://proceedings.mlsys.org/paper_files/paper/2024/file/906419cd502575b617cc489a1a696a67-Paper-Conference.pdf) · [LMSYS-Blog](https://www.lmsys.org/blog/2023-11-15-slora/)
@@ -1890,7 +1987,7 @@ git clone <repo> && cd PTR-Research
 python3 -m venv .venv && .venv/bin/pip install pytest numpy psutil \
   torch transformers peft sentence-transformers qdrant-client \
   lancedb paho-mqtt xgboost redis scikit-learn
-.venv/bin/python -m pytest -q                      # 685 passed, 0 failed, 8 skipped
+.venv/bin/python -m pytest -q                      # 697 passed, 0 failed, 8 skipped
 python3 research/verify_architecture_gate.py       # 12 rote Checks (siehe 14.8, 17.1)
 python3 -c "import ast,pathlib; t=ast.parse(pathlib.Path('research/verify_architecture_gate.py').read_text()); \
   print(sum(len(n.value.keys) for n in ast.walk(t) if isinstance(n,ast.Assign) \

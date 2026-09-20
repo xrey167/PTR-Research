@@ -17,10 +17,48 @@ EVIDENCE = REPO / "research" / "runs"
 ARCHITECTURE = "architecture-20260917.json"
 
 
+#: The directories record_test_run.source_fingerprint() digests. The fixture
+#: has to reproduce them, or the `tests` check fails on the fingerprint
+#: before any test has changed anything.
+SOURCE_TREES = ("neural_pods", "research", "tests")
+
+
+def _mirror_sources(root: Path) -> None:
+    """Reproduce the repository's .py layout under `root`, by symlink.
+
+    `source_fingerprint()` digests every `*.py` under neural_pods/, research/
+    and tests/ — path first, then bytes — so the mirror needs exactly those
+    files at exactly those relative paths and nothing else.
+
+    Symlinking the three directories wholesale does not work: `rglob` does
+    not descend into a symlinked SUBdirectory, so the 55 files under
+    research/imported_evidence_*/ and friends went missing and the digest
+    came out different. The directories are therefore real and the files are
+    links.
+    """
+    for directory in SOURCE_TREES:
+        base = REPO / directory
+        for source in base.rglob("*.py"):
+            if "__pycache__" in source.parts:
+                continue
+            target = root / source.relative_to(REPO)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.symlink_to(source)
+
+
 @pytest.fixture()
 def evidence_dir(tmp_path):
-    """A writable copy of the checked-in evidence."""
-    target = tmp_path / "runs"
+    """A writable copy of the evidence, inside a tree that hashes like the repo.
+
+    The evidence alone is not enough. The gate derives its fingerprint root
+    from the run file — `Path(path).resolve().parents[2]` — so a fixture that
+    copied only `research/runs` rooted it at the temporary directory, where
+    the source trees do not exist. `tests` was then red in EVERY test, and
+    three tests that assert it goes red were passing on that instead of on
+    what they were checking.
+    """
+    _mirror_sources(tmp_path)
+    target = tmp_path / "research" / "runs"
     shutil.copytree(EVIDENCE, target)
     return target
 
@@ -447,6 +485,22 @@ def test_dream_predictive_is_green_only_on_a_prediction_inside_the_bound(evidenc
     red = _red_checks(evidence_dir)
     assert "dream_predictive" in red
     assert "dream_pipeline" not in red, "the cycle still ran correctly"
+
+
+def test_a_perfect_out_of_sample_prediction_is_not_read_as_a_missing_one(evidence_dir):
+    """`out.get("max_abs_error") or 1.0` treated 0.0 as absent, because 0.0 is
+    falsy — so the one result that would prove the simulator predicts, an
+    exactly predicted held-out generation, was the one the check rejected.
+    A missing measurement fails; a measured one is compared."""
+    _write_backtest(evidence_dir, dict(
+        WELL_FORMED, out_of_sample={"generations": 2, "max_abs_error": 0.0}))
+    assert "dream_predictive" not in _red_checks(evidence_dir)
+
+    _write_backtest(evidence_dir, dict(
+        WELL_FORMED, out_of_sample={"generations": 2, "max_abs_error": None}))
+    red = _red_checks(evidence_dir)
+    assert "dream_predictive" in red, "a generation counted but never measured"
+    assert "dream_pipeline" not in red
 
 
 def test_a_backtest_that_hides_its_degeneracy_fails_both_checks(evidence_dir):

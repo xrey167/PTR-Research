@@ -210,7 +210,14 @@ def _dream_backtest_predictive(backtest: dict) -> bool:
     out = backtest.get("out_of_sample", {})
     if not out.get("generations"):
         return False
-    return (out.get("max_abs_error") or 1.0) < 0.15
+    # A MISSING measurement fails; a measured one is compared. `or 1.0`
+    # conflated the two, because 0.0 is falsy — so a run that predicted a
+    # held-out generation exactly was the one result this check rejected.
+    # Same rule as the mesh_presence check states two hundred lines down.
+    max_abs_error = out.get("max_abs_error")
+    if max_abs_error is None:
+        return False
+    return max_abs_error < 0.15
 
 
 def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-20260917.json",

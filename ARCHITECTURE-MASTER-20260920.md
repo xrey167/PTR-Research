@@ -10,7 +10,7 @@ README und HANDOVER verweisen hierher und führen keine eigenen Zählstände meh
 | Gate-Checks definiert | **48** | `research/verify_architecture_gate.py` |
 | Gate-Checks grün im Klon | **36** | `python research/verify_architecture_gate.py` |
 | Gate-Checks rot | **12** — 7 mangels Server-Evidenz, 5 zu Recht (siehe unten) | Gate nennt die 8 fehlenden Dateien |
-| Tests | **685 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
+| Tests | **697 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
 | Module `neural_pods/` | **56**, alle einer Schicht zugeordnet | `python neural_pods/architecture.py` |
 | Schichtverstöße | **0** | Gate-Check `layering` |
 | Evidenzdateien mit `subject`-Bindung | **10 von 38** | Gate-Ausgabe `evidence_without_a_subject` |
@@ -109,22 +109,28 @@ entdeckt.
 
 ## 2. Komponentenlandkarte (Stand 2026-09-20)
 
-### Implementiert + validiert (Gate-Checks)
+### Implementiert, mit Gate-Stand je Zeile
 
-| Komponente | Datei | Gate-Check(s) | Gemessen |
+Die Überschrift hieß „Implementiert + **validiert** (Gate-Checks)", und die
+Tabelle führte drei rote Checks. Genau die Lesart, die dieses Dokument
+sonst überall abräumt: die Überschrift behauptete, was die Spalte nicht
+belegte. Der Stand steht jetzt in der Zeile, nicht in der Überschrift, und
+ein Test prüft ihn (`tests/test_design_docs_match_the_gate.py`).
+
+| Komponente | Datei | Gate-Check(s) mit Stand | Gemessen |
 |---|---|---|---|
-| Registry/Provenance | registry.py | tests, authenticated_transport | — |
-| Reader Gen-3→7 | research/train_reader.py | lora_ab…gen5_dev, gen7_dream_validated | raw 125/124 |
-| Dream-Pod | dream.py + run_dream_cycle.py | dream_pipeline | out-of-sample: **0 Generationen** |
-| vLLM Multi-LoRA | research/run_vllm_ensemble.sh | ensemble_routing/failover | 20/20 acks |
-| Mesh | mesh.py | mesh_presence | RTT 0,30 ms (zwei Endpunkte **auf einem Host**) |
-| Native Protokolle | native_comm.py + train_native_comm.py | native_protocol | Frames 1.0, **exact 0.55** |
-| Task-Graph | taskgraph.py | taskgraph_parallel | mean_concurrency 2,59 (**kein Speedup**) |
-| Mesh-Cache | mesh_cache.py | mesh_cache | Cross-Knoten ✓ |
-| Executor-Factory | pod_executor.py | (tests) | deterministisch ✓ |
-| Reflex | reflex.py | reflex_dispatch | Mechanik ✓ |
-| Perception | perception.py | (Benchmark) | 13,3k Events/s |
-| Token-Cache | household.py | (tests) | saved_tokens ✓ |
+| Registry/Provenance | registry.py | `tests`, `authenticated_transport` — grün | — |
+| Reader Gen-3→7 | research/train_reader.py | rot, Server-Evidenz fehlt: `lora_ab`, `lora_ab_dev`, `lora_ab_gen4`, `lora_ab_gen4_dev`, `lora_ab_gen5`, `lora_ab_gen5_dev`; grün: `gen7_dream_validated` | raw 125/124 |
+| Dream-Pod | dream.py + run_dream_cycle.py | rot: `dream_pipeline`, `dream_predictive` | out-of-sample: **0 Generationen** |
+| vLLM Multi-LoRA | research/run_vllm_ensemble.sh | `ensemble_routing`, `ensemble_failover` — grün | 20/20 acks |
+| Mesh | mesh.py | `mesh_presence` — grün | RTT 0,30 ms (zwei Endpunkte **auf einem Host**) |
+| Native Protokolle | native_comm.py + train_native_comm.py | `native_protocol` — grün | Frames 1.0, **exact 0.55** |
+| Task-Graph | taskgraph.py | `taskgraph_parallel` — grün, Legacy-Form akzeptiert | mean_concurrency 2,59 (**kein Speedup**) |
+| Mesh-Cache | mesh_cache.py | `mesh_cache` **rot** seit Pod-Audit | Cross-Knoten ✓ |
+| Executor-Factory | pod_executor.py | `xgboost_pod` — grün | deterministisch ✓ |
+| Reflex | reflex.py | `reflex_failover` grün · `reflex_dispatch` **rot** bis P5 | Mechanik ✓ |
+| Perception | perception.py | kein Gate-Check | 13,3k Events/s |
+| Token-Cache | household.py | kein eigener Gate-Check | saved_tokens ✓ |
 
 ### Implementiert, aber ungeprüft/defekt
 
@@ -182,9 +188,9 @@ Getracer Regressionslauf über alles → README/HANDOVER v1.0 → Gate 48/48
 
 | Phase | Gate-Checks (neu) | Endstand |
 |---|---|---|
-| F1–F4 | storage_facade, storage_l2_lance | 42/42 |
-| H4/H5/H7 | household_e2e, household_training, dataset_store | 45/45 |
-| S2–S5 | kvcache_affinity, raft_jemalloc, vllm_multistream, work_stealing | 49/49 |
+| F1–F4 | `storage_facade`, `storage_l2_lance` | 42/42 |
+| H4/H5/H7 | geplant: `household_e2e`, `household_training`, `dataset_store` | 45/45 |
+| S2–S5 | geplant: `kvcache_affinity`, `raft_jemalloc`, `vllm_multistream`, `work_stealing` | 49/49 |
 | Abschluss | Regressionslauf über PodStorage | 50/50 |
 
 ## 5. Sicherheitsregeln (unverändert, über alle Schichten)

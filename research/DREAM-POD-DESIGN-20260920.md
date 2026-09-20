@@ -49,7 +49,7 @@ die verbesserte Politik wird als Gen-(N+1) eingesetzt.
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
 | D1 | `neural_pods/dream.py`: HistoryPool (Per-Case-Outcomes aller Generationen einsammeln), Replay-Simulator (Familien-Effekte), Policy-Bewertung | — |
-| D2 | `research/run_dream_cycle.py`: Zyklus auf dem Server — Pool bauen, Policies träumen, beste Strategie → Generation-7-Curriculum | `dream_pipeline` |
+| D2 | `research/run_dream_cycle.py`: Zyklus auf dem Server — Pool bauen, Policies träumen, beste Strategie → Generation-7-Curriculum | `dream_pipeline` **rot**, s. u. |
 | D3 | Reflex-Bindung `dream` + Hauptmodell-Demo | `dream_reflex` **rot**, s. u. |
 | D4 (später) | Feineres Politur-Raum: Entscheidungen auf Zeilen-Ebene statt Familien-Ebene; MCTS über dem Entscheidungsbaum (vollständiges Dream-RSI) | `dream_deep` (offen) |
 
@@ -73,6 +73,21 @@ Zählstände stehen ausschließlich in `ARCHITECTURE-MASTER-20260920.md`.
   (`CycleBudget`, vor dem Zyklus geprüft) und ein **`dream_cycle`-Provenance-
   Event** mit Pool-Fingerprint, allen Kandidaten und dem Gewinner. Vorher
   hinterließ ein Zyklus nichts außer einer JSON-Datei.
+
+  **Gate-Check `dream_pipeline` ist rot (Berichtigung 2026-09-20).** Die
+  eingecheckte `dream-cycle-20260920.json` stammt von vor der Umstellung auf
+  Leave-one-generation-out und trägt nur den In-sample-Fehler — eine Zahl,
+  die per Konstruktion nicht fehlschlagen kann, weil der Simulator einen
+  Achsenabschnitt plus einen Koeffizienten je Entscheidung hat und die
+  Historie je Generation eine Entscheidung ändert. Das Gate lehnt diese Form
+  jetzt ab, statt sie zu bestehen. Der Zyklus muss auf der Maschine mit den
+  Generationsberichten neu laufen; `HistoryPool.from_project` braucht sie.
+
+  Dazu ist der Check **aufgeteilt**: `dream_pipeline` belegt, dass der Zyklus
+  *lief*, `dream_predictive` (neu), dass der Simulator eine zurückgehaltene
+  Generation *vorhergesagt* hat. Der zweite bleibt auch nach der Neuaufnahme
+  rot, solange die Historie vier Generationen umfasst — Abschnitt 4 des
+  Prüfberichts hat gemessen, dass sie die Koeffizienten nicht identifiziert.
 - **D3 gebaut, Gate-Check rot:** `research/benchmark_dream_reflex.py` +
   Gate-Check `dream_reflex`. Gemessen wird die **Bindung**: deterministischer
   Gewinner über 200 Aufrufe, eine bewusste Fehladressierung zieht den Arm
