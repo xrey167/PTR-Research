@@ -335,36 +335,57 @@ def test_changing_the_measured_code_makes_its_evidence_stale(evidence_dir, tmp_p
 
 
 def test_evidence_that_names_no_subject_is_reported_not_hidden(evidence_dir):
-    """A file bound to its producer alone is a known gap. It is named in the
-    gate's own output so it cannot quietly become the normal case again.
+    """A file with no `subject` is bound to its producer alone: editing the
+    module it measures leaves it green. The gate names those files so the
+    gap stays a known quantity.
 
-    This test used to recompute the list itself in the `except SystemExit`
-    branch — and since the gate is red on this tree, that branch always ran,
-    so `evidence_without_a_subject` was never read at all. Its closing
-    assertion then compared two sets both derived from `gate._LOADED` by the
-    test, one requiring `subject` and the other requiring its absence: they
-    are disjoint by construction and the assertion could not fail.
+    Two defects ago this test recomputed the list itself and could not fail.
+    One defect ago it passed while the FIELD was wrong: it required a
+    `producer` stamp, so it read 0 on a tree where 32 of 35 files had no
+    subject — every unbound file here is grandfathered, i.e. unstamped — and
+    the test, asking only about the files the field did name, agreed with it.
+    A report that can say "no gap" while the gap is the normal case is worse
+    than no report.
 
-    It now asserts a property of the GATE's own output, on a run whose result
-    it actually obtains.
+    So the question asked here is now the complete one: the three lists have
+    to partition everything the gate read.
     """
-    reported = _gate_report(evidence_dir)["evidence_without_a_subject"]
+    report = _gate_report(evidence_dir)
+    # `{}` means the file was not found anywhere; it is reported as missing
+    # evidence, not as evidence that forgot its subject.
+    loaded = {name for name, data in gate._LOADED.items()
+              if isinstance(data, dict) and data}
+    with_subject = set(report["evidence_with_a_subject"])
+    without = set(report["evidence_without_a_subject"])
+    stamped_without = set(report["stamped_without_a_subject"])
 
-    # Everything the gate names must be a file that really lacks a subject...
-    for name in reported:
+    assert with_subject | without == loaded, "every file read must be in one list"
+    assert not (with_subject & without), "and in only one"
+    assert stamped_without <= without, "the ratchet list is a subset"
+
+    for name in with_subject:
+        assert json.loads((evidence_dir / name).read_text(encoding="utf-8"))["subject"]
+    for name in without:
         data = json.loads((evidence_dir / name).read_text(encoding="utf-8"))
-        assert data.get("producer"), f"{name} is not even stamped"
         assert not data.get("subject"), f"{name} does name a subject"
+        assert (name in stamped_without) == bool(data.get("producer"))
 
-    # ...and every stamped file the gate READ without one must be named.
-    # Only files a check actually reads are in scope: the gate cannot report
-    # on evidence it never opened, and research/runs/ holds more than that.
-    expected = []
-    for name in gate._LOADED:
-        data = gate._LOADED[name]
-        if isinstance(data, dict) and data.get("producer") and not data.get("subject"):
-            expected.append(name)
-    assert reported == sorted(expected)
+
+def test_the_subject_gap_cannot_be_reported_as_closed_while_it_is_open(evidence_dir):
+    """The counter-check for the field itself, in the shape the defect had:
+    an unstamped file without a subject must appear in the gap list.
+
+    `ARCHITECTURE-MASTER` quoted this field as `10 von 38`. Measured, it is
+    3 of 35 — and nothing could catch the discrepancy while the field read 0.
+    """
+    report = _gate_report(evidence_dir)
+    unstamped_and_unbound = [
+        name for name, data in gate._LOADED.items()
+        if isinstance(data, dict) and data and not data.get("producer")
+        and not data.get("subject")]
+    assert unstamped_and_unbound, "this tree is expected to still have some"
+    assert set(unstamped_and_unbound) <= set(report["evidence_without_a_subject"])
+    assert report["evidence_with_a_subject"], "and some that are bound"
 
 
 def test_the_subject_report_goes_red_when_a_subject_is_dropped(evidence_dir):

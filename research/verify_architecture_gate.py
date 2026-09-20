@@ -589,12 +589,28 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "legacy_evidence": legacy,
         "unstamped_evidence": unstamped_evidence,
         "evidence_files_read": len(_LOADED),
-        # An evidence file with no `subject` is bound to its producer
-        # only: editing the module it measures leaves it green. Named so
-        # the gap is a known quantity rather than an invisible one.
+        # The subject gap, in the only form that makes it a known quantity:
+        # what IS bound, and everything that is not. `evidence_without_a_
+        # subject` alone read 0 while 32 of 35 files had no subject, because
+        # it silently required a `producer` stamp — and every unbound file
+        # here is grandfathered, i.e. unstamped. A field meant to keep a gap
+        # visible must not be able to report zero while the gap is the
+        # normal case; the documented ratio is read off these two lists.
+        # A file that exists nowhere is registered as {} and reported under
+        # missing_evidence; it is not "unbound", it is absent, and counting
+        # it here would inflate the gap with files nobody can bind.
+        "evidence_with_a_subject": sorted(
+            name for name, data in _LOADED.items()
+            if isinstance(data, dict) and data and data.get("subject")),
         "evidence_without_a_subject": sorted(
             name for name, data in _LOADED.items()
-            if data and data.get("producer") and not data.get("subject")),
+            if isinstance(data, dict) and data and not data.get("subject")),
+        # The narrower list the ratchet is about: stamped by a producer, but
+        # never bound to what it measures.
+        "stamped_without_a_subject": sorted(
+            name for name, data in _LOADED.items()
+            if isinstance(data, dict) and data.get("producer")
+            and not data.get("subject")),
         "unstamped_grandfathered": sorted(
             name for name in _LOADED
             if name in UNSTAMPED_GRANDFATHERED

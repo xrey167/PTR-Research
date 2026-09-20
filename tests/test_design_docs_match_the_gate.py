@@ -90,6 +90,12 @@ BARE_NAME = re.compile(r"(?<![`\w])([a-z][a-z0-9]*(?:_[a-z0-9]+)+)(?![`\w])")
 #: called it a gate check.
 GATE_CHECK = re.compile(r"[Gg]ate[-‑ ]?[Cc]hecks?\b")
 
+#: A cell boundary or the end of a sentence. Both directions of the prose
+#: scope use it, because they answer the same question — where does the text
+#: that qualifies this claim stop? The lead had `[.!?]` and the window only
+#: `.`, so a "rot" behind an exclamation or a question mark still carried.
+SENTENCE_END = re.compile(r"\||(?<=[.!?])\s")
+
 #: How far past the anchor a name still belongs to it, and how far before
 #: the anchor a marker still qualifies the first name after it. The lead is
 #: cut again at the nearest sentence or cell boundary — see _gate_check_claims.
@@ -206,8 +212,8 @@ def _gate_check_claims(text: str) -> list[Claim]:
         # the very case the table path handles correctly. A window is not a
         # rule until it ends somewhere; the count is only the outer bound.
         lead = flat[max(0, match.start() - PROSE_LEAD):match.start()]
-        lead = re.split(r"\||(?<=[.!?])\s", lead)[-1]
-        window = re.split(r"\||\.\s", flat[match.end():match.end() + PROSE_WINDOW])[0]
+        lead = re.split(SENTENCE_END, lead)[-1]
+        window = re.split(SENTENCE_END, flat[match.end():match.end() + PROSE_WINDOW])[0]
         display = flat[max(0, match.start() - 40):match.end() + 80].strip()
         found = list(NAME.finditer(window))
         for index, name in enumerate(found):
@@ -341,6 +347,32 @@ def test_the_red_check_rule_needs_the_marker_beside_that_name():
     assert reported == {red[1]}, (
         "the marker belongs to the name it follows, and a green check is "
         f"never reported; got {sorted(reported)}")
+
+
+@pytest.mark.parametrize("punctuation", [".", "!", "?"])
+def test_every_sentence_end_stops_the_scope_in_both_directions(punctuation):
+    """One pattern for both directions, because it answers one question:
+    where does the text that qualifies THIS claim stop?
+
+    It was two patterns. The lead had `[.!?]`, the window only `.` — so a
+    "rot" behind an exclamation or a question mark still reached back over
+    the sentence boundary and exempted the name in front of it.
+    """
+    defined = _check_names()
+    invented = "cortex_map_consolidation"
+    assert invented not in defined, "pick a name the gate really lacks"
+
+    def reported(text):
+        return {claim.name for claim in _invented_claims(text, defined)}
+
+    after = f"Gate-Check `{invented}` deckt die Karte ab{punctuation} Der vorige war rot."
+    before = f"Der vorige war rot{punctuation} Gate-Check `{invented}` deckt die Karte ab."
+    assert reported(after) == {invented}, "a marker in the NEXT sentence"
+    assert reported(before) == {invented}, "a marker in the PREVIOUS sentence"
+
+    # And the reason the scope reaches at all: same sentence, either side.
+    assert not reported(f"Gate-Check `{invented}` ist rot und bleibt es.")
+    assert not reported(f"D3 gebaut, Gate-Check rot: `{invented}`")
 
 
 def test_a_marker_in_the_previous_sentence_or_cell_does_not_carry_over():

@@ -10,10 +10,10 @@ README und HANDOVER verweisen hierher und führen keine eigenen Zählstände meh
 | Gate-Checks definiert | **48** | `research/verify_architecture_gate.py` |
 | Gate-Checks grün im Klon | **36** | `python research/verify_architecture_gate.py` |
 | Gate-Checks rot | **12** — 7 mangels Server-Evidenz, 5 zu Recht (siehe unten) | Gate nennt die 8 fehlenden Dateien |
-| Tests | **698 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
+| Tests | **702 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
 | Module `neural_pods/` | **56**, alle einer Schicht zugeordnet | `python neural_pods/architecture.py` |
 | Schichtverstöße | **0** | Gate-Check `layering` |
-| Evidenzdateien mit `subject`-Bindung | **10 von 38** | Gate-Ausgabe `evidence_without_a_subject` |
+| Evidenzdateien mit `subject`-Bindung | **3 von 35** | Gate-Ausgabe `evidence_with_a_subject` |
 | Gate-relevante Benchmark-Skripte mit importierbarem Kern | **16 von 16** (dazu `benchmark_perception`, dessen Evidenz kein Check liest) | `summarise()`/`measure()`, Tests in `tests/test_benchmark_*.py` |
 
 **Die 44 waren 45** — die Zahl stand hier falsch und wurde per AST

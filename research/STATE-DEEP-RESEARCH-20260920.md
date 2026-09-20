@@ -1282,9 +1282,19 @@ changed since this was recorded (neural_pods/storage.py) - re-run
 benchmark_storage_facade.py
 ```
 
-Zehn der 37 gelesenen Evidenzdateien haben diese Bindung. Welche nicht,
-nennt das Gate selbst in `evidence_without_a_subject` — eine bekannte Lücke
-statt einer unsichtbaren.
+**Drei der 35 gelesenen Evidenzdateien haben diese Bindung** — die 14
+Benchmarks, die `subject=` übergeben, müssen am Server neu laufen, damit die
+Zahl steigt. Welche sie nicht haben, nennt das Gate in
+`evidence_without_a_subject`; was gebunden ist, in `evidence_with_a_subject`.
+
+*Berichtigung (Review-Runde 5).* Hier stand „zehn der 37", und im
+Master-Dokument „10 von 38". Beide Zahlen waren falsch, und der Grund ist
+der Befund: `evidence_without_a_subject` verlangte einen `producer`-Stempel,
+und weil jede ungebundene Datei hier grandfathered — also ungestempelt — ist,
+las das Feld **0**, während 32 von 35 Dateien keine Bindung hatten. Ein Feld,
+das eine Lücke sichtbar halten soll, darf nicht null melden können, während
+die Lücke der Normalfall ist. Es meldet jetzt beide Seiten, und ein Test
+verlangt, dass die Listen alles Gelesene partitionieren.
 
 Dazu zwei Nebenbefunde derselben Art, beide behoben:
 
@@ -1456,7 +1466,7 @@ Gate         47 Checks · 37 grün · 10 rot
              davon 7 mangels Server-Evidenz
              davon 3 zu Recht rot (14.3), vorher grün ohne Beleg
 Schichten    56 Module · 0 Verstöße
-Evidenz      10 von 37 Dateien an den gemessenen Code gebunden
+Evidenz      3 von 35 Dateien an den gemessenen Code gebunden
 ```
 
 ## 15. Messcode testbar machen
@@ -2022,6 +2032,57 @@ Gate         48 Checks · 36 grün · 12 rot (unverändert)
 Schichten    56 Module · 0 Verstöße
 ```
 
+### 17.8 Fünfte Runde: eine Kennzahl, die sich selbst nicht messen konnte
+
+Zwei Befunde, beide echt. Über fünf Runden: **28 von 29**.
+
+**Der gemeldete Major** war die zweite Hälfte der Satzgrenze aus 17.7: der
+Vorlauf hatte `[.!?]`, das Fenster **hinter** dem Anker nur `.`. Ein „rot"
+hinter einem Ausrufe- oder Fragezeichen reichte also weiter zurück, als es
+durfte. Beide Richtungen benutzen jetzt dasselbe Muster, denn sie
+beantworten dieselbe Frage — wo hört der Text auf, der diese Behauptung
+qualifiziert? Drei Satzzeichen × zwei Richtungen stehen als Gegenprobe.
+
+**Der Minor führte auf etwas Größeres.** Gemeldet war, `ARCHITECTURE-MASTER`
+nenne „10 von 38", das Gate aber 37. Nachgemessen stimmte **keine der beiden
+Zahlen**:
+
+```
+Evidenzdateien, die das Gate liest:  35
+davon mit subject-Bindung:            3
+davon ohne:                          32
+evidence_without_a_subject meldete:   0
+```
+
+Das Feld verlangte einen `producer`-Stempel — und weil jede ungebundene Datei
+hier grandfathered, also ungestempelt ist, meldete es **null**, während die
+Lücke der Normalfall war. Der Meta-Test dazu bestand, weil er nur die Dateien
+prüfte, die das Feld *nannte*: bei einer leeren Liste ist beide Richtungen zu
+prüfen trivial erfüllt.
+
+> **Ein Feld, das eine Lücke sichtbar halten soll, darf nicht null melden
+> können, während die Lücke der Normalfall ist.** Und ein Test, der nur das
+> Gemeldete prüft, prüft die Meldung nicht.
+
+Der Report nennt jetzt beide Seiten (`evidence_with_a_subject`,
+`evidence_without_a_subject`, dazu `stamped_without_a_subject` für die
+Sperrklinke), fehlende Dateien zählen nicht als „ungebunden" — sie sind
+abwesend und stehen unter `missing_evidence` —, und ein Test verlangt, dass
+die Listen alles Gelesene **partitionieren**. Die Zahl in beiden Dokumenten
+ist berichtigt: **3 von 35**, nicht 10 von 38.
+
+Das ist die unangenehmste Berichtigung dieses PR: die Kennzahl, mit der er
+seinen eigenen Fortschritt bei der Evidenzbindung ausweist, war um mehr als
+das Dreifache überzeichnet, und zwar seit dem Pod-Audit. Die 14 Benchmarks,
+die `subject=` übergeben, sind gebaut — aufgezeichnet sind erst drei, der
+Rest braucht den Server.
+
+```
+Tests        702 grün · 0 rot · 0 errors · 8 übersprungen
+Gate         48 Checks · 36 grün · 12 rot (unverändert)
+Schichten    56 Module · 0 Verstöße
+```
+
 ## Quellen (externe Einordnung)
 
 - [S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv:2311.03285)](https://arxiv.org/abs/2311.03285) · [MLSys 2024 Paper](https://proceedings.mlsys.org/paper_files/paper/2024/file/906419cd502575b617cc489a1a696a67-Paper-Conference.pdf) · [LMSYS-Blog](https://www.lmsys.org/blog/2023-11-15-slora/)
@@ -2047,7 +2108,7 @@ git clone <repo> && cd PTR-Research
 python3 -m venv .venv && .venv/bin/pip install pytest numpy psutil \
   torch transformers peft sentence-transformers qdrant-client \
   lancedb paho-mqtt xgboost redis scikit-learn
-.venv/bin/python -m pytest -q                      # 698 passed, 0 failed, 8 skipped
+.venv/bin/python -m pytest -q                      # 702 passed, 0 failed, 8 skipped
 python3 research/verify_architecture_gate.py       # 12 rote Checks (siehe 14.8, 17.1)
 python3 -c "import ast,pathlib; t=ast.parse(pathlib.Path('research/verify_architecture_gate.py').read_text()); \
   print(sum(len(n.value.keys) for n in ast.walk(t) if isinstance(n,ast.Assign) \
