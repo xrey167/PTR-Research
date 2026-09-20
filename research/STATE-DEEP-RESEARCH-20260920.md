@@ -9,6 +9,10 @@ entweder aus dem eingecheckten Code/den eingecheckten Messdateien abgeleitet
 oder in diesem Klon nachgemessen. Wo eine Aussage nicht prüfbar war, steht es
 ausdrücklich dabei.
 
+Die Abschnitte 1–11 beschreiben den Stand **bei `d963123`** und bleiben als
+Befundlage unverändert stehen. Was davon auf diesem Branch inzwischen behoben
+ist, steht in **Abschnitt 12**.
+
 ---
 
 ## 1. Ist-Stand in Zahlen
@@ -688,6 +692,166 @@ Entscheidungen absichern soll, die das Projekt weitertreiben.
 Die produktivste nächste Handlung ist nicht H4 oder S2, sondern ein neuer,
 unkontaminierter Eval-Split plus ein Gate, das wirklich läuft. Danach ist jede
 weitere Generation wieder eine Aussage.
+
+---
+
+## 12. Umsetzungsstand auf diesem Branch
+
+Die P0-Punkte aus Abschnitt 10 sind umgesetzt. Die Abschnitte 1–11 bleiben
+als Befundlage über `d963123` stehen; hier steht, was seitdem geändert wurde
+und was bewusst offen bleibt.
+
+### 12.1 Messlage vorher/nachher (gleicher frischer Klon)
+
+| | bei `d963123` | jetzt |
+|---|---|---|
+| Gate grün | 30/40 | **33/40** |
+| davon fail-open | 1 (`gen6_promoted_dev`) | **0** |
+| Tests | 307 passed / 6 failed / 3 skipped | **323 passed / 2 failed / 7 skipped** |
+| Fehlermeldung des Gates | eine Zeile, Ursache unklar | nennt fehlende Dateien getrennt von gerissenen Schwellen |
+
+### 12.2 P0-1/P0-2 — Gate (`research/verify_architecture_gate.py`)
+
+- Evidenz wird jetzt über `_find()` in **zwei** Verzeichnissen gesucht:
+  zuerst `research/runs/` (eingecheckt), dann `<root>/runs/` (Serverausgabe,
+  gitignoriert). Die vier Checks, deren Evidenz längst eingecheckt war und nur
+  am Pfad scheiterte — `gen6_hetero_pod`, `gen7_dream_validated`,
+  `native_protocol` und (mit Baseline) `gen6_promoted_dev` — sind damit aus
+  einem Klon prüfbar.
+- **Fail-open geschlossen:** `gen6_promoted_dev` verglich gen6 gegen gen4 per
+  `>= gen4.get(..., 0)`. Mit fehlender gen4-Evidenz war das `>= 0` und damit
+  immer wahr — der Check war grün *ohne jede Evidenz*. `baseline_of` lässt
+  jetzt jeden vergleichenden Check durchfallen, dessen Baseline fehlt. Deshalb
+  steht er oben als roter Check: das ist kein neuer Schaden, sondern ein
+  vorher unsichtbarer.
+- Die Fehlermeldung trennt „Datei nirgends gefunden" von „Schwelle gerissen"
+  und benennt die acht fehlenden Dateien.
+- `tests/test_architecture_gate.py` (neu, 5 Tests) fixiert dieses Verhalten,
+  einschließlich der Fail-open-Regression.
+
+Was hier **nicht** geändert wurde: der `tests`-Check liest weiterhin
+`architecture-20260917.json`, statt pytest auszuführen. Der Befund aus
+Abschnitt 2 bleibt also bestehen — das Gate misst Dateien. Ein `--run-tests`
+würde den etablierten Server-Workflow ändern und gehört abgestimmt, nicht
+nebenbei gemacht.
+
+### 12.3 P0-3 — `PodStorage` (`neural_pods/storage.py`)
+
+Zwei Invarianten sind jetzt explizit und im Modul-Docstring benannt: **ein
+Lesezugriff legt nie eine Tabelle an**, und **ein Erstschreibzugriff erzeugt
+die Tabelle mit den Daten und hört dann auf**. Daraus folgen die Fixes:
+
+| Befund (5.2) | Behebung |
+|---|---|
+| B1/B5/B7 Erstbatch doppelt | `_write()` trennt Anlegen von Anhängen |
+| B2 `get()`-Miss legt Müllzeile an | `_open()` gibt `None` zurück statt zu erzeugen |
+| B3 SQL-Quoting | `_sql_literal()` verdoppelt `'` in Keys, Principals, Stages |
+| B4 Dummy-Vektor `[0.0]` | leerer Namespace liefert `[]`, kein Dummy-Schema |
+| B6 `Path` nicht importiert | importiert; `get_type_hints()` läuft |
+| B8 top-k lieferte dasselbe Dokument mehrfach | Folge von B1/B7, behoben |
+
+Zusätzlich gefunden und mitbehoben:
+
+- **Stale Reads:** `put()` hängte jedes Mal eine neue Zeile an, und
+  `get()` las mit `limit(1)` ohne Ordnung — nach `put(k,1); put(k,2)` konnte
+  `get(k)` die 1 liefern. `(key, principal)` ist jetzt Identität, geschrieben
+  per `merge_insert`-Upsert.
+- **Stilles Abschneiden ab elf Tabellen:** `table_names()` hat `limit=10` als
+  Vorgabe. Ab dem elften Namespace hätte die Existenzprüfung „nicht
+  vorhanden" gemeldet und der Schreibpfad versucht, eine bestehende Tabelle
+  anzulegen. `_tables()` blättert jetzt über `list_tables()` und normalisiert
+  beide Rückgabeformen.
+- `get()` wärmt L1 nach einem L2-Treffer wieder auf.
+
+`tests/test_storage.py`: 4 → **13 Tests**; `add_documents`/`search_documents`
+hatten vorher null Abdeckung.
+
+### 12.4 P0-4 — TaskGraph-Metrik (`neural_pods/taskgraph.py`)
+
+`speedup` ist ersatzlos weg. Der Grund steht im Modul-Docstring: der Graph
+sieht nicht in einen Handler hinein und kann Arbeit nicht von Warten
+trennen, also ist die Summe der Knotenzeiten geteilt durch die Wanduhr keine
+Beschleunigung, sondern die **mittlere Anzahl gleichzeitig laufender Knoten**
+(Little's law). Gemeldet werden jetzt `node_elapsed_sum_s`,
+`critical_path_s`, `mean_concurrency`, `critical_path_ratio` und ein
+`metric_note`, das genau das sagt.
+
+`tests/test_taskgraph.py` enthält dazu einen Test, der den alten Fehler
+vorführt: vier Knoten hinter einem Lock, also strikt seriell — und
+`mean_concurrency` liegt trotzdem über 1,5. Genau diese Zahl war die 2,59.
+
+`research/benchmark_taskgraph.py`:
+
+- Der Responder verarbeitet jeden Call in einem **eigenen Thread**. Vorher
+  schlief er auf dem einen paho-Loop-Thread und serialisierte damit alles.
+- Nebenbefund beim Umbau: das alte `on_call` setzte erst das Event und
+  danach `pongs[seq]` — `remote_call` konnte also zurückkehren, bevor das
+  Ergebnis geschrieben war, und „timeout" melden. Reihenfolge korrigiert.
+- Neu im Report: `dag_delay_bound_s` (2 × `REMOTE_DELAY_S`, der Boden, den
+  die zweistufige DAG setzt) und `wall_within_bound`. Das ist die Kennzahl,
+  die serielle von paralleler Abarbeitung unterscheidet — ein Verhältnis aus
+  Knotenzeiten kann das nicht.
+
+**Konsequenz, die vor dem nächsten Serverlauf bekannt sein muss:** der
+Gate-Check akzeptiert Altevidenz weiter über `mean_concurrency`/`speedup`,
+bevorzugt aber `wall_within_bound`, sobald es im Report steht. Sobald
+`benchmark_taskgraph.py` auf dem Server neu läuft, wird also erstmals
+wirklich geprüft — und wenn die Mesh-Runde dort weiterhin serialisiert,
+**geht `taskgraph_parallel` rot**. Das ist beabsichtigt.
+
+### 12.5 P0-5 — traced pipeline (`research/benchmark_traced_pipeline.py`)
+
+- `stage_stats["lookup"].append(0.05)` und
+  `... * 1000 if False else None` sind weg. Gemessen wird pro Fall die Zeit
+  von `publish` bis zur Antwort, über einen gemeinsamen `_answered()`-Stempel
+  — **dieselbe Definition wie im sequentiellen Lauf**, damit die beiden Läufe
+  überhaupt vergleichbar sind. Die Trace-JSONL bekommt echte `latency_ms`
+  statt −1.
+- Der **zweite Responder** auf demselben Topic (`tg-lookup-responder`) ist
+  entfernt: vorher antworteten zwei Pods auf jeden Call, was den Vergleich
+  verfälschte. Der in `main()` registrierte Responder, der ohnehin pro Call
+  einen Thread startet, macht die Arbeit allein.
+- Der Docstring behauptet nicht mehr „Run 2 = warm (cache hits)" — beide
+  Läufe starten kalt, wie `main()` es auch tut.
+- Aufgeräumt: doppelte `percentile()`-Definition, die nie instanziierte
+  Klasse `Responder` (deren `self._ready` nirgends gesetzt wurde), der
+  ungenutzte `TaskGraph`-Import und ein Kommentar, der eine TaskGraph-Stufe
+  beschrieb, die es in diesem Pfad nicht gibt.
+
+Der Wanduhrgewinn selbst (2,845 s → 1,012 s) war und bleibt echt; er muss
+nach diesen Änderungen neu aufgezeichnet werden.
+
+### 12.6 Hygiene
+
+- `tests/test_mesh.py` überspringt jetzt ohne erreichbaren Broker
+  (`NEURAL_PODS_BROKER` / `NEURAL_PODS_BROKER_PORT`), analog zum
+  `pytest.importorskip` in `test_raft_cluster_binding.py`. Vorher vier harte
+  `TimeoutError`, die wie eine Mesh-Regression aussahen.
+- `.tmp_probe.py` (eingecheckter Scratch im Repo-Root) entfernt.
+
+### 12.7 Bewusst weiterhin rot
+
+`test_neohorse_reference.py` und `test_taxonomy_dataset.py` scheitern
+weiterhin an `runs/neohorse-reference-manifest-001.json` bzw.
+`runs/taxonomy-routing-balanced-003.jsonl`. Diese Fixtures liegen nur auf dem
+Server. Sie mit `skipif` grün zu machen wäre einfach — und würde genau den
+Befund verdecken, um den es geht: **aus einem Klon ist der Zustand nicht
+reproduzierbar.** Solange die beiden Dateien nicht eingecheckt sind, sollen
+diese Tests scharf bleiben.
+
+Gleiches gilt für die acht fehlenden Eval-Reports: sie lassen sich hier nicht
+erzeugen. Die `.gitignore` hat mit `!research/runs/*.json` die Ausnahme
+bereits vorgesehen — es fehlt nur der Commit vom Server.
+
+### 12.8 Nicht angefasst
+
+Alles aus P1 und P2 außer den oben genannten Hygienepunkten. Inhaltlich am
+wichtigsten bleibt unverändert **P1-6: ein neuer, unkontaminierter
+Eval-Split** (Abschnitte 7 und 8.3) — ohne ihn ist keine Gen-8-Aussage
+messbar. Ebenfalls offen: der Dream-Backtest auf Leave-one-generation-out
+(P1-7), `exact_rate` als Gate-Schwelle (P1-9), `Household.release()` samt
+Provenance-Events und getrennter VRAM/RAM-Buchführung (P1-10) sowie die
+zugesagten Gate-Checks `storage_facade`/`storage_l2_lance` (P1-11).
 
 ---
 

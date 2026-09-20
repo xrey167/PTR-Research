@@ -1,9 +1,13 @@
+import threading
 import time
 
 from neural_pods.taskgraph import TaskGraph, TaskNode
 
 
-def test_parallel_speedup_over_independent_nodes():
+def test_independent_nodes_run_concurrently():
+    """Four independent 0.4 s sleeps: wall stays near one node's duration, so
+    mean_concurrency approaches 4 and the critical path (one node) is close to
+    the wall time."""
     def slow(payload):
         time.sleep(0.4)
         return {"done": payload["index"]}
@@ -11,9 +15,47 @@ def test_parallel_speedup_over_independent_nodes():
     nodes = [TaskNode(f"n{i}", lambda p, i=i: slow({"index": i})) for i in range(4)]
     graph = TaskGraph(nodes, max_parallel=4)
     result = graph.run({"index": 0})
-    assert result["speedup"] > 1.5  # 4 × 0.4s sequential ≈ 1.6s; parallel < 0.8s
+    assert result["wall_s"] < 0.8                 # not 4 × 0.4 s
+    assert result["mean_concurrency"] > 3.0       # ~4 nodes in flight
+    assert result["critical_path_ratio"] > 0.8    # scheduler at the DAG bound
     assert all(r.error is None for r in result["results"].values())
     assert len(result["results"]) == 4
+
+
+def test_mean_concurrency_is_not_reported_as_speedup():
+    """A serialising resource inflates node durations, so mean_concurrency
+    rises while nothing actually ran in parallel. The metric must not be
+    called a speedup, and critical_path_ratio must stay near 1.0 — the chain
+    of measured durations IS the wall time here."""
+    gate = threading.Lock()
+
+    def serialised(_payload):
+        with gate:                                 # one at a time
+            time.sleep(0.2)
+        return "ok"
+
+    nodes = [TaskNode(f"n{i}", serialised) for i in range(4)]
+    result = TaskGraph(nodes, max_parallel=4).run()
+    assert "speedup" not in result
+    assert result["mean_concurrency"] > 1.5        # inflated by queueing alone
+    assert result["wall_s"] >= 0.8                 # 4 × 0.2 s, strictly serial
+    assert result["critical_path_ratio"] > 0.8
+
+
+def test_critical_path_follows_the_dependency_chain():
+    def slow(_payload):
+        time.sleep(0.2)
+        return "ok"
+
+    graph = TaskGraph([
+        TaskNode("a", slow),
+        TaskNode("b", slow, depends_on=("a",)),
+        TaskNode("c", slow),                       # independent of the chain
+    ], max_parallel=3)
+    result = graph.run()
+    # a -> b is the longest chain: ~0.4 s, not the 0.6 s of all three nodes.
+    assert 0.35 < result["critical_path_s"] < 0.55
+    assert result["node_elapsed_sum_s"] > result["critical_path_s"]
 
 
 def test_token_flows_from_dependency_into_payload():

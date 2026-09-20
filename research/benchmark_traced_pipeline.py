@@ -3,10 +3,16 @@ complete pod pipeline — cache check -> mesh lookup -> answer (frozen Gen-7
 evidence) -> native MQTT frame publication — with a trace record per hop
 (JSONL: trace_id, case, stage, latency_ms, flags).
 
-Run 1 = cold (no cache), Run 2 = warm (cache hits), then the trace's
-bottleneck stage (sequential mesh lookups) is parallelized via the
-TaskGraph and re-measured — the performance improvement is measured, not
-assumed.
+Both runs start from an invalidated cache. Run 1 issues the mesh lookups
+one at a time (publish, wait, next); run 2 fires all lookups of the cache
+misses first and collects the replies afterwards. The difference measured
+is pipelining, not parallelism inside a single lookup.
+
+Every stage latency below is measured. An earlier version appended the
+constant 0.05 for run 2's lookup stage and wrote latency_ms = -1 into the
+trace, so the reported "20.5 ms -> 0.05 ms" was not a measurement; the
+per-case time from publish to reply is now recorded for both runs, which
+makes them comparable.
 """
 import json
 import sys
@@ -19,7 +25,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from neural_pods.mesh import MeshEndpoint  # noqa: E402
 from neural_pods.mesh_cache import MeshCache  # noqa: E402
 from neural_pods.native_comm import parse_frames  # noqa: E402
-from neural_pods.taskgraph import TaskGraph, TaskNode  # noqa: E402
 from research.train_reader import file_sha, load_bundle  # noqa: E402
 
 BROKER = "10.50.0.121"
@@ -43,18 +48,6 @@ class Tracer:
         self._handle.close()
 
 
-class Responder:
-    def __init__(self, endpoint: MeshEndpoint):
-        self.endpoint = endpoint
-        self.calls = {}
-
-    def on_call(self, topic: str, envelope: dict) -> None:
-        time.sleep(REMOTE_DELAY_S)
-        body = envelope["body"]
-        self.calls[body["seq"]] = {"lookup": body["case"], "revision": 7}
-        self._ready[body["seq"]].set()
-
-
 def percentile(values, p):
     if not values:
         return None
@@ -69,11 +62,10 @@ def run_pipeline(endpoint, cache, rows, gen7_answers, tracer, run_name,
     reflex_valid = 0
     traces = []
     started = time.perf_counter()
-    start_collect_ms = None
 
     if parallel_lookups:
-        # OPTIMIZED PATH: batch all cache misses' mesh lookups in one
-        # parallel TaskGraph stage instead of sequential per-case hops.
+        # PIPELINED PATH: publish every cache miss's lookup, then collect the
+        # replies, instead of one publish-wait-publish hop per case.
         pending = []
         for row in rows:
             trace_id = str(uuid.uuid4())
@@ -90,42 +82,30 @@ def run_pipeline(endpoint, cache, rows, gen7_answers, tracer, run_name,
                 pending.append((trace_id, case))
 
         if pending:
-            # Batch-async mesh idiom: fire ALL lookups immediately (the
-            # responder processes them in parallel worker threads), then
-            # collect. A per-node TaskGraph would serialize on event waits.
-            calls = {}
-            call_lock = threading.Lock()
-            events: dict[str, threading.Event] = {}
-
-            def on_call(topic: str, envelope: dict) -> None:
-                time.sleep(REMOTE_DELAY_S)
-                case = envelope["body"]["case"]
-                with call_lock:
-                    calls[case] = {"lookup": case, "revision": 7}
-                events[case].set()
-
-            responder = MeshEndpoint(BROKER, "tg-lookup-responder",
-                                     manifest_hash="trace-manifest")
-            responder.subscribe("np/lookup-responder/call", on_call)
-            endpoint.subscribe("np/lookup-host/reply",
-                               lambda t, e: events.get(e["body"]["case"]) and
-                               events[e["body"]["case"]].set())
-            time.sleep(0.5)  # subscription propagation
-
-            start_collect_ms = time.perf_counter()
-            for trace_id, case in pending:
-                events[case] = threading.Event()
+            # Batch-async mesh idiom: fire ALL lookups first, then collect.
+            # The responder registered in main() already answers each call on
+            # its own thread; a second responder on the same topic would make
+            # two pods answer every call and muddy the comparison.
+            published_at: dict[str, float] = {}
+            for _trace_id, case in pending:
+                endpoint._pending_lookup[case] = threading.Event()
+            for _trace_id, case in pending:
+                published_at[case] = time.perf_counter()
                 endpoint.publish("call", {"case": case},
                                  target_pod="lookup-responder")
             collect_deadline = time.perf_counter() + 30.0
-            while any(not e.is_set() for e in events.values())                     and time.perf_counter() < collect_deadline:
+            while any(not endpoint._pending_lookup[c].is_set()
+                      for _t, c in pending) and time.perf_counter() < collect_deadline:
                 time.sleep(0.005)
-            responder.close()
             for trace_id, case in pending:
-                lookup_ms = (time.perf_counter() - start_collect_ms) * 1000 if False else None
-                tracer.record(trace_id, case, "lookup", -1, parallel=True,
-                              answered=events[case].is_set())
-                stage_stats["lookup"].append(0.05)  # amortized batch latency
+                answered = endpoint._pending_lookup[case].is_set()
+                # Real per-case latency: publish -> reply, the same definition
+                # the sequential path uses, so the two runs are comparable.
+                end = endpoint._answered_at.get(case, time.perf_counter())
+                lookup_ms = (end - published_at[case]) * 1000
+                tracer.record(trace_id, case, "lookup", lookup_ms,
+                              parallel=True, answered=answered)
+                stage_stats["lookup"].append(lookup_ms)
                 cache.put(f"reader:{case}", {"revision": 7})
                 # answer + native publish stages (identical to sequential path)
                 t2 = time.perf_counter()
@@ -198,13 +178,6 @@ def run_pipeline(endpoint, cache, rows, gen7_answers, tracer, run_name,
             "stage_p95_ms": {k: percentile(v, 0.95) for k, v in stage_stats.items()}}
 
 
-def percentile(values, p):
-    if not values:
-        return None
-    values = sorted(values)
-    return round(values[min(len(values) - 1, int(len(values) * p))], 3)
-
-
 def main() -> None:
     import redis
     protocol, _config, _ = load_bundle(PROJECT / "runs/reader-training-inputs-generation7")
@@ -217,13 +190,20 @@ def main() -> None:
     endpoint = MeshEndpoint(BROKER, "traced-host", manifest_hash="trace-manifest")
     # Dedicated lookup responder (simulated remote pod, 20 ms processing).
     endpoint._pending_lookup = {}
+    endpoint._answered_at = {}
+
+    def _answered(case: str) -> None:
+        """Stamp the reply time once, then release the waiter. Both runs read
+        this stamp, so their lookup latencies mean the same thing."""
+        event = endpoint._pending_lookup.get(case)
+        if event is not None and not event.is_set():
+            endpoint._answered_at[case] = time.perf_counter()
+            event.set()
 
     def _process(case: str) -> None:
         time.sleep(REMOTE_DELAY_S)
         endpoint.publish_raw("np/lookup-host/reply", {"case": case})
-        event = endpoint._pending_lookup.get(case)
-        if event is not None:
-            event.set()
+        _answered(case)
 
     def _on_lookup_call(topic: str, envelope: dict) -> None:
         # Sleep OFF the paho loop thread - otherwise all calls serialize.
@@ -234,8 +214,7 @@ def main() -> None:
                                     manifest_hash="trace-manifest")
     lookup_responder.subscribe("np/lookup-responder/call", _on_lookup_call)
     endpoint.subscribe("np/lookup-host/reply",
-                       lambda t, e: endpoint._pending_lookup.get(e["body"]["case"]) and
-                       endpoint._pending_lookup[e["body"]["case"]].set())
+                       lambda t, e: _answered(e["body"]["case"]))
     cache = MeshCache(redis_client=redis.Redis(host=BROKER, socket_timeout=3),
                       pod_id="traced-host", principal="tenant-trace",
                       namespace="traced")

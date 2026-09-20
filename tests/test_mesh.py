@@ -1,3 +1,5 @@
+import os
+import socket
 import threading
 import time
 
@@ -5,10 +7,30 @@ import pytest
 
 from neural_pods.mesh import MeshACLError, MeshEndpoint, PROTOCOL_VERSION
 
+BROKER_HOST = os.environ.get("NEURAL_PODS_BROKER", "10.50.0.121")
+BROKER_PORT = int(os.environ.get("NEURAL_PODS_BROKER_PORT", "1883"))
+
+
+def _broker_reachable(host: str, port: int, timeout_s: float = 1.0) -> bool:
+    try:
+        with socket.create_connection((host, port), timeout=timeout_s):
+            return True
+    except OSError:
+        return False
+
+
+# These tests need a live Mosquitto. Without one every MeshEndpoint call ends
+# in a bare TimeoutError, which reads like a mesh regression; skip instead,
+# the same way test_raft_cluster_binding skips without the Rust wheel.
+pytestmark = pytest.mark.skipif(
+    not _broker_reachable(BROKER_HOST, BROKER_PORT),
+    reason=f"no MQTT broker at {BROKER_HOST}:{BROKER_PORT} "
+           "(set NEURAL_PODS_BROKER / NEURAL_PODS_BROKER_PORT to point at one)")
+
 
 @pytest.fixture(scope="module")
 def broker_host():
-    return "10.50.0.121"
+    return BROKER_HOST
 
 
 def test_presence_discovery_between_endpoints(broker_host):

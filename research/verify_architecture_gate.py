@@ -1,87 +1,102 @@
-"""Fail-closed checks for the measured architecture evidence."""
+"""Fail-closed checks for the measured architecture evidence.
+
+The gate compares recorded benchmark output against thresholds; it does not
+run the benchmarks. Evidence is therefore resolved from two directories, in
+order:
+
+  1. research/runs/ — checked into the repository, so a clean clone can
+     reproduce the verdict;
+  2. <project root>/runs/ — the server's benchmark output, which .gitignore
+     excludes and which no clone carries.
+
+A file that is absent in both is reported separately from a threshold that
+was violated: "no evidence" and "evidence says no" need different fixes, and
+a single combined failure line used to hide which of the two had happened.
+"""
 from __future__ import annotations
 import json
 from pathlib import Path
 
 
+def _search_dirs(path: str | Path) -> list[Path]:
+    run_file = Path(path).resolve()
+    return [run_file.parent, run_file.parents[2] / "runs"]
+
+
+def _find(name: str, dirs: list[Path]) -> Path | None:
+    for directory in dirs:
+        candidate = directory / name
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def _read(name: str, dirs: list[Path], missing: list[str]) -> dict:
+    """Parsed JSON evidence, or {} when the file exists nowhere."""
+    found = _find(name, dirs)
+    if found is None:
+        missing.append(name)
+        return {}
+    return json.loads(found.read_text(encoding="utf-8"))
+
+
+def _read_lines(name: str, dirs: list[Path], missing: list[str]) -> list[dict]:
+    """Parsed JSONL evidence, or [] when the file exists nowhere."""
+    found = _find(name, dirs)
+    if found is None:
+        missing.append(name)
+        return []
+    return [json.loads(line)
+            for line in found.read_text(encoding="utf-8").splitlines()
+            if line.strip()]
+
+
 def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-20260917.json") -> dict:
+    dirs = _search_dirs(path)
+    missing: list[str] = []
     d = json.loads(Path(path).read_text(encoding="utf-8"))
-    vllm_path = Path(path).with_name("neohorse-vllm-20260917.jsonl")
-    vllm_rows = [json.loads(line) for line in vllm_path.read_text(encoding="utf-8").splitlines() if line.strip()] if vllm_path.exists() else []
+
+    vllm_rows = _read_lines("neohorse-vllm-20260917.jsonl", dirs, missing)
     vllm_peak = max((row.get("tokens_per_s", 0.0) for row in vllm_rows), default=0.0)
     vllm_ok = bool(vllm_rows) and all(row.get("errors") == 0 and row.get("ok", 0) == row.get("count") for row in vllm_rows) and vllm_peak >= 200.0
-    dual_path = Path(path).with_name("neohorse-vllm-dual-20260917.jsonl")
-    dual_rows = [json.loads(line) for line in dual_path.read_text(encoding="utf-8").splitlines() if line.strip()] if dual_path.exists() else []
+    dual_rows = _read_lines("neohorse-vllm-dual-20260917.jsonl", dirs, missing)
     dual_peak = max((row.get("tokens_per_s", 0.0) for row in dual_rows), default=0.0)
     dual_ok = bool(dual_rows) and all(row.get("errors") == 0 and row.get("ok", 0) == row.get("count") for row in dual_rows) and dual_peak >= 350.0
-    router_path = Path(path).with_name("vllm-router-20260917.jsonl")
-    router_rows = [json.loads(line) for line in router_path.read_text(encoding="utf-8").splitlines() if line.strip()] if router_path.exists() else []
+    router_rows = _read_lines("vllm-router-20260917.jsonl", dirs, missing)
     router_ok = len(router_rows) >= 2 and router_rows[0].get("ok") == 128 and router_rows[0].get("errors") == 0 and router_rows[0].get("tokens_per_s", 0) >= 350 and router_rows[1].get("ok") == 32 and router_rows[1].get("errors") == 0 and router_rows[1].get("failovers") == 16
-    lan_path = Path(path).with_name("vllm-router-lan-20260917.json")
-    lan = json.loads(lan_path.read_text(encoding="utf-8")) if lan_path.exists() else {}
+    lan = _read("vllm-router-lan-20260917.json", dirs, missing)
     lan_ok = lan.get("ok") == 128 and lan.get("errors") == 0 and lan.get("tokens_per_s", 0) >= 300 and lan.get("per_replica") == {"gpu0": 64, "gpu1": 64}
-    lan_failover_path = Path(path).with_name("vllm-router-lan-failover-20260917.json")
-    lan_failover = json.loads(lan_failover_path.read_text(encoding="utf-8")) if lan_failover_path.exists() else {}
+    lan_failover = _read("vllm-router-lan-failover-20260917.json", dirs, missing)
     lan_failover_ok = lan_failover.get("ok") == 32 and lan_failover.get("errors") == 0 and lan_failover.get("failovers") == 16 and lan_failover.get("health") == {"gpu0": False, "gpu1": True}
-    batch_path = Path(path).with_name("adaptive-batcher-20260917.json")
-    batch = json.loads(batch_path.read_text(encoding="utf-8")) if batch_path.exists() else {}
-    postgres_path = Path(path).with_name("postgres-quorum-20260917.json")
-    postgres = json.loads(postgres_path.read_text(encoding="utf-8")) if postgres_path.exists() else {}
-    multihost_path = Path(path).with_name("raft-multihost-20260917.json")
-    multihost = json.loads(multihost_path.read_text(encoding="utf-8")) if multihost_path.exists() else {}
-    pg_multihost_path = Path(path).with_name("postgres-quorum-multihost-20260919.json")
-    pg_multihost = json.loads(pg_multihost_path.read_text(encoding="utf-8")) if pg_multihost_path.exists() else {}
-    ensemble_path = Path(path).with_name("ensemble-20260919.json")
-    ensemble = json.loads(ensemble_path.read_text(encoding="utf-8")) if ensemble_path.exists() else {}
+    batch = _read("adaptive-batcher-20260917.json", dirs, missing)
+    postgres = _read("postgres-quorum-20260917.json", dirs, missing)
+    multihost = _read("raft-multihost-20260917.json", dirs, missing)
+    pg_multihost = _read("postgres-quorum-multihost-20260919.json", dirs, missing)
+    ensemble = _read("ensemble-20260919.json", dirs, missing)
     ensemble_metrics = ensemble.get("metrics", {})
-    project_root = Path(path).resolve().parents[2]
-    gen6_path = project_root / "runs" / "qwen3b-eval-test-gen6-20260919-report.json"
-    gen6 = json.loads(gen6_path.read_text(encoding="utf-8")) if gen6_path.exists() else {}
-    gen6_dev_path = project_root / "runs" / "qwen3b-eval-dev-gen6-20260919-report.json"
-    gen6_dev = json.loads(gen6_dev_path.read_text(encoding="utf-8")) if gen6_dev_path.exists() else {}
-    hetero_path = Path(path).with_name("ensemble-hetero-20260919.json")
-    hetero = json.loads(hetero_path.read_text(encoding="utf-8")) if hetero_path.exists() else {}
-    redis_cache_path = Path(path).with_name("redis-cache-20260919.json")
-    redis_cache = json.loads(redis_cache_path.read_text(encoding="utf-8")) if redis_cache_path.exists() else {}
-    grpc_path = Path(path).with_name("grpc-vs-tcp-20260919.json")
-    grpc_cmp = json.loads(grpc_path.read_text(encoding="utf-8")) if grpc_path.exists() else {}
-    tp_path = Path(path).with_name("traced-pipeline-20260920.json")
-    tp = json.loads(tp_path.read_text(encoding="utf-8")) if tp_path.exists() else {}
-    tcp_path = Path(path).with_name("native-tcp-cross-20260920.json")
-    tcp = json.loads(tcp_path.read_text(encoding="utf-8")) if tcp_path.exists() else {}
-    e2e_path = Path(path).with_name("mesh-e2e-20260920.json")
-    e2e = json.loads(e2e_path.read_text(encoding="utf-8")) if e2e_path.exists() else {}
-    mc_path = Path(path).with_name("mesh-cache-20260920.json")
-    mc = json.loads(mc_path.read_text(encoding="utf-8")) if mc_path.exists() else {}
-    tg_path = Path(path).with_name("taskgraph-20260920.json")
-    tg = json.loads(tg_path.read_text(encoding="utf-8")) if tg_path.exists() else {}
-    comm_path = project_root / "runs" / "native-comm-eval-20260920-report.json"
-    comm = json.loads(comm_path.read_text(encoding="utf-8")) if comm_path.exists() else {}
-    reflex_path = Path(path).with_name("reflex-dispatch-20260919.json")
-    reflex = json.loads(reflex_path.read_text(encoding="utf-8")) if reflex_path.exists() else {}
-    mesh_path = Path(path).with_name("mesh-presence-20260920.json")
-    mesh = json.loads(mesh_path.read_text(encoding="utf-8")) if mesh_path.exists() else {}
-    dream_path = Path(path).with_name("dream-cycle-20260920.json")
-    dream = json.loads(dream_path.read_text(encoding="utf-8")) if dream_path.exists() else {}
-    dream_ev_path = project_root / "runs" / "qwen3b-eval-test-gen7-20260920-report.json"
-    dream_ev = json.loads(dream_ev_path.read_text(encoding="utf-8")) if dream_ev_path.exists() else {}
-    project_root = Path(path).resolve().parents[2]
-    lora_adapter_path = project_root / "runs" / "qwen3b-eval-test-adapter-20260917-report.json"
-    lora_base_path = project_root / "runs" / "qwen3b-eval-test-base-20260917-report.json"
-    lora_adapter = json.loads(lora_adapter_path.read_text(encoding="utf-8")) if lora_adapter_path.exists() else {}
-    lora_base = json.loads(lora_base_path.read_text(encoding="utf-8")) if lora_base_path.exists() else {}
-    dev_adapter_path = project_root / "runs" / "qwen3b-eval-dev-adapter-20260917-report.json"
-    dev_base_path = project_root / "runs" / "qwen3b-eval-dev-base-20260917-report.json"
-    dev_adapter = json.loads(dev_adapter_path.read_text(encoding="utf-8")) if dev_adapter_path.exists() else {}
-    dev_base = json.loads(dev_base_path.read_text(encoding="utf-8")) if dev_base_path.exists() else {}
-    gen4_adapter_path = project_root / "runs" / "qwen3b-eval-test-gen4-adapter-20260917-report.json"
-    gen4_dev_adapter_path = project_root / "runs" / "qwen3b-eval-dev-gen4-adapter-20260917-report.json"
-    gen4_adapter = json.loads(gen4_adapter_path.read_text(encoding="utf-8")) if gen4_adapter_path.exists() else {}
-    gen4_dev_adapter = json.loads(gen4_dev_adapter_path.read_text(encoding="utf-8")) if gen4_dev_adapter_path.exists() else {}
-    gen5_adapter_path = project_root / "runs" / "qwen3b-eval-test-gen5-20260919-report.json"
-    gen5_dev_adapter_path = project_root / "runs" / "qwen3b-eval-dev-gen5-20260919-report.json"
-    gen5_adapter = json.loads(gen5_adapter_path.read_text(encoding="utf-8")) if gen5_adapter_path.exists() else {}
-    gen5_dev_adapter = json.loads(gen5_dev_adapter_path.read_text(encoding="utf-8")) if gen5_dev_adapter_path.exists() else {}
+    gen6 = _read("qwen3b-eval-test-gen6-20260919-report.json", dirs, missing)
+    gen6_dev = _read("qwen3b-eval-dev-gen6-20260919-report.json", dirs, missing)
+    hetero = _read("ensemble-hetero-20260919.json", dirs, missing)
+    redis_cache = _read("redis-cache-20260919.json", dirs, missing)
+    grpc_cmp = _read("grpc-vs-tcp-20260919.json", dirs, missing)
+    tp = _read("traced-pipeline-20260920.json", dirs, missing)
+    tcp = _read("native-tcp-cross-20260920.json", dirs, missing)
+    e2e = _read("mesh-e2e-20260920.json", dirs, missing)
+    mc = _read("mesh-cache-20260920.json", dirs, missing)
+    tg = _read("taskgraph-20260920.json", dirs, missing)
+    comm = _read("native-comm-eval-20260920-report.json", dirs, missing)
+    reflex = _read("reflex-dispatch-20260919.json", dirs, missing)
+    mesh = _read("mesh-presence-20260920.json", dirs, missing)
+    dream = _read("dream-cycle-20260920.json", dirs, missing)
+    dream_ev = _read("qwen3b-eval-test-gen7-20260920-report.json", dirs, missing)
+    lora_adapter = _read("qwen3b-eval-test-adapter-20260917-report.json", dirs, missing)
+    lora_base = _read("qwen3b-eval-test-base-20260917-report.json", dirs, missing)
+    dev_adapter = _read("qwen3b-eval-dev-adapter-20260917-report.json", dirs, missing)
+    dev_base = _read("qwen3b-eval-dev-base-20260917-report.json", dirs, missing)
+    gen4_adapter = _read("qwen3b-eval-test-gen4-adapter-20260917-report.json", dirs, missing)
+    gen4_dev_adapter = _read("qwen3b-eval-dev-gen4-adapter-20260917-report.json", dirs, missing)
+    gen5_adapter = _read("qwen3b-eval-test-gen5-20260919-report.json", dirs, missing)
+    gen5_dev_adapter = _read("qwen3b-eval-dev-gen5-20260919-report.json", dirs, missing)
     checks = {
         "tests": d["tests"]["passed"] >= 260,
         "retrieval_recall": d["retrieval"]["recall_at_5"] >= 0.99 and d["retrieval"]["hnsw_recall_at_10"] >= 0.99,
@@ -135,9 +150,16 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         "native_protocol": comm.get("status") == "completed"
             and comm.get("metrics", {}).get("frames_valid_rate", 0) >= 0.98
             and comm.get("metrics", {}).get("acl_refused_forbidden") is True,
+        # "speedup" was the sum of contention-inflated node durations over
+        # wall time, which rises WITH queueing; taskgraph.py now reports it as
+        # mean_concurrency and the benchmark records wall_within_bound, which
+        # compares wall time against the delay the DAG actually injects.
+        # Evidence recorded before 2026-09-20 only carries the old key.
         "taskgraph_parallel": tg.get("correct") is True
-            and (tg.get("speedup") or 0) > 1.5
-            and len(tg.get("results", {})) == 6,
+            and len(tg.get("results", {})) == 6
+            and (tg.get("wall_within_bound") is True
+                 if "wall_within_bound" in tg
+                 else (tg.get("mean_concurrency", tg.get("speedup")) or 0) > 1.5),
         "mesh_cache": mc.get("status") == "completed"
             and mc.get("cross_node_read") is True
             and mc.get("principal_isolated") is True
@@ -167,10 +189,37 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and gen5_dev_adapter.get("exact_target_matches", 0) > gen4_dev_adapter.get("exact_target_matches", 0)
             and gen5_dev_adapter.get("guarded_exact_target_matches", 0) >= gen4_dev_adapter.get("guarded_exact_target_matches", 0),
     }
+    missing = sorted(set(missing))
+    # Comparative checks need BOTH sides present. With the baseline absent,
+    # `>= baseline.get(field, 0)` is trivially true, so the check would pass
+    # on no evidence at all - gen6_promoted_dev did exactly that once the
+    # gen4 reports were no longer reachable.
+    baseline_of = {
+        "gen6_promoted_dev": "qwen3b-eval-dev-gen4-adapter-20260917-report.json",
+        "lora_ab": "qwen3b-eval-test-base-20260917-report.json",
+        "lora_ab_dev": "qwen3b-eval-dev-base-20260917-report.json",
+        "lora_ab_gen4": "qwen3b-eval-test-adapter-20260917-report.json",
+        "lora_ab_gen4_dev": "qwen3b-eval-dev-adapter-20260917-report.json",
+        "lora_ab_gen5": "qwen3b-eval-test-gen4-adapter-20260917-report.json",
+        "lora_ab_gen5_dev": "qwen3b-eval-dev-gen4-adapter-20260917-report.json",
+    }
+    for check_name, baseline in baseline_of.items():
+        if baseline in missing:
+            checks[check_name] = False
     failed = [name for name, ok in checks.items() if not ok]
     if failed:
-        raise SystemExit("architecture gate failed: " + ", ".join(failed))
-    return {"ok": True, "checks": checks}
+        report = ["architecture gate failed: " + ", ".join(failed)]
+        if missing:
+            report.append(
+                "missing evidence (" + str(len(missing)) + " file(s) found in "
+                "neither " + " nor ".join(str(p) for p in dirs) + "): "
+                + ", ".join(missing))
+            report.append(
+                "a missing file is not a regression - re-run the benchmark, "
+                "or check its output in under research/runs/ so a clone can "
+                "reproduce this verdict.")
+        raise SystemExit("\n".join(report))
+    return {"ok": True, "checks": checks, "missing_evidence": missing}
 
 
 if __name__ == "__main__":
