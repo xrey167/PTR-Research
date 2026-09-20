@@ -50,10 +50,10 @@ class Household:
 
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
-| H1 | Household: join/offer/members + Key-Bindung, BUSY-Semantik | `household_join` |
-| H2 | request_allocation → SegmentPlan (größenverifiziert, Approval-Pflicht, BUSY-Respekt) | `segment_plan` |
-| H3 | Calibration (Messprobe je Pod+Modell, gespeichert) | `household_calibration` |
-| H4 | Live-Demo über Mesh: 3 Pod-Donoren (Host + 2 LXD), Plan → Approvals → Reservierung → Segment-Residenz | `household_e2e` |
+| H1 | Household: join/offer/members + Key-Bindung, BUSY-Semantik | `household_join` (geplant) |
+| H2 | request_allocation → SegmentPlan (größenverifiziert, Approval-Pflicht, BUSY-Respekt) | `segment_plan` (geplant) |
+| H3 | Calibration (Messprobe je Pod+Modell, gespeichert) | `household_calibration` (geplant) |
+| H4 | Live-Demo über Mesh: 3 Pod-Donoren (Host + 2 LXD), Plan → Approvals → Reservierung → Segment-Residenz | `household_e2e` (geplant) |
 
 Akzeptanz: kein bestehender Check bricht; der Haushalt lehnt Überbelegung
 ab, startet nie ohne volle Approvals, und jede Kalibrierung ist als
@@ -73,8 +73,8 @@ Zusatz-Phasen:
 
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
-| H5 | Training im Haushalt: request_training mit Donor-Approval + Autonomie-Budget, Dream-Pod-Kopplung | `household_training` |
-| H6 | TokenCache: Prefix-/Session-Affinity über Pods, saved_tokens-Metrik, Failover-Verhalten | `token_cache` |
+| H5 | Training im Haushalt: request_training mit Donor-Approval + Autonomie-Budget, Dream-Pod-Kopplung | `household_training` (geplant) |
+| H6 | TokenCache: Prefix-/Session-Affinity über Pods, saved_tokens-Metrik, Failover-Verhalten | `token_cache` (geplant) |
 
 
 ## Erweiterung: Trainingsdaten bauen, speichern, verwalten
@@ -93,4 +93,4 @@ Zusatz-Phase:
 
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
-| H7 | DatasetStore: bauen/speichern/verwalten (Versionen, Leakage-Prüfung, Lance-Abfrage) | `dataset_store` |
+| H7 | DatasetStore: bauen/speichern/verwalten (Versionen, Leakage-Prüfung, Lance-Abfrage) | `dataset_store` (geplant) |

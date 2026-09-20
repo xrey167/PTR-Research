@@ -1740,6 +1740,131 @@ Messcode ist, sondern **die Prüfungen selbst**. Die drei Meta-Tests sind ein
 Anfang. Eine systematische Mutationsprobe — eine Behauptung verfälschen und
 nachsehen, ob irgendein Test rot wird — wäre der nächste Schritt.
 
+## 17. Die zweite Runde: die Prüfungen prüfen
+
+Derselbe externe Prüfer hat `772e821` — meinen Fix-Commit für Runde 1 —
+erneut gelesen und **sechs** Befunde gemeldet. Ich habe jeden gegen den Code
+geprüft und zwei ausführbar nachgestellt. **Alle sechs stimmen. Über beide
+Runden: 20 von 20 Befunden echt, kein einziger Fehlalarm.**
+
+Das Muster dieser Runde ist das eigentliche Ergebnis. Vier der sechs liegen
+in Code, den ich in Runde 1 geschrieben habe — und **drei davon in den drei
+Meta-Tests, die ich gebaut hatte, um genau diese Fehlerklassen zu
+schließen.** Abschnitt 16.6 endete mit der Vermutung, der teuerste blinde
+Fleck seien inzwischen die Prüfungen selbst. Diese Runde belegt das.
+
+### 17.1 Zwei fail-open-Stellen im Gate
+
+**Ein Backtest ohne Vorhersage galt als bestanden.** `_dream_backtest_ok`
+hatte zwei Auswege: ein Lauf ohne Out-of-sample-Generationen gab `True`
+zurück, und der Legacy-Zweig akzeptierte die In-sample-Zahl, die **der
+Docstring derselben Funktion** als nicht fehlschlagbar beschreibt.
+
+Behoben durch dieselbe Aufspaltung wie bei `reflex_failover`/
+`reflex_dispatch` in Runde 1 — ein Check, eine Behauptung:
+
+| Check | belegt |
+|---|---|
+| `dream_pipeline` | der Zyklus **lief**: abgeschlossen, Gewinner identifizierbar, Backtest in der Form, die fehlschlagen kann |
+| `dream_predictive` (neu) | der Simulator hat **vorhergesagt**: mindestens eine zurückgehaltene Generation, Fehler unter 0,15 |
+
+Der Legacy-Zweig gibt jetzt `False` zurück. Damit ist **beides rot**, denn
+die eingecheckte `dream-cycle-20260920.json` trägt genau diese alte Form.
+Das ist das ehrliche Ergebnis, nicht das bequeme: der Zyklus muss auf der
+Maschine mit den Generationsberichten neu laufen, und bis dahin wäre ein
+grünes `dream_pipeline` ein Urteil über eine Zahl, die nicht fehlschlagen
+kann. Abschnitt 4 hatte genau das gemessen: 0 von 4 Generationen
+out-of-sample vorhersagbar.
+
+**Fehlende Testevidenz fiel auf die Zahl vom 2026-09-17 zurück.** Ohne
+`tests-20260920.json` bestand `tests` anhand eines Zählstands aus einem
+Dokument, das Tage vor dem Code geschrieben wurde — ohne Quellcode-Hash.
+Das war mein eigener Befund aus einer früheren Runde, halb behoben: der
+Kommentar im Gate sagte wörtlich „*which is exactly the blind spot*", und
+der Fallback stand weiter da. Die Datei wird jetzt wie jede andere Evidenz
+als fehlend gemeldet.
+
+### 17.2 Die drei Meta-Tests
+
+**Der schärfste Befund.** `test_design_docs_match_the_gate.py` sollte
+verhindern, dass ein Dokument einen Namen als Gate-Check ausgibt, den das
+Gate nicht kennt. Die Regel lautete:
+
+```python
+if re.fullmatch(r"[a-z]+(?:_[a-z0-9]+)+", name) and name in KNOWN_INVENTED:
+```
+
+`KNOWN_INVENTED` war eine **handgepflegte Allowlist** mit vier Namen. Nur
+wer schon draufstand, wurde bemängelt; jeder neu erfundene Name passierte
+ungeprüft. Das ist wörtlich der systemische Befund S3 aus der
+Querschnittsanalyse — *„der Fix für eine handgepflegte Tabelle war eine
+zweite handgepflegte Tabelle"* — von mir reproduziert **in dem Test, der
+diese Klasse schließen sollte**.
+
+Die Liste ist ersatzlos weg. Stattdessen wird die Gate-Check-**Spalte** der
+Phasentabellen geparst (die Kopfzeile wird an der Trennzeile darunter
+erkannt, nicht am Text) und jeder dort genannte Name zurückgewiesen, den das
+Gate nicht definiert. Ein Name mit ehrlichem Marker daneben — `(offen)`,
+`existiert nicht`, `(geplant)` — ist keine Behauptung und bleibt erlaubt.
+
+Die umgedrehte Regel hat sofort **elf** Zeilen gefunden, die die alte nicht
+sah: sieben Phasen im Haushalts-Design, vier im Speicher-Design, alle mit
+einem Check-Namen in der Spalte und keinem Check dahinter. Sie tragen jetzt
+`(geplant)`. Die Gegenprobe steht als Test: ein frei erfundener Name in
+einer Phasentabelle wird rot, ohne dass irgendeine Liste ihn nennt.
+
+**Die Assertion-Regel war zu breit.** `_redundant_operand` fragte, ob ein
+späterer Operand **irgendwo** im früheren vorkommt. Nachgestellt:
+
+```
+assert transform(value) or value     geflaggt=True
+```
+
+Diese Assertion kann fehlschlagen — wenn beide Seiten falsy sind. Mein
+eigener Docstring in derselben Datei sagt, warum das schlimm ist: *„eine
+breite Heuristik … würde innerhalb einer Woche abgeschaltet."* Die Regel
+prüft jetzt nur noch die belegte Form `x in c or c` (`ast.Compare` mit
+`ast.In`/`ast.NotIn`, dessen Container einem späteren Operanden entspricht).
+Gegenproben in beide Richtungen: die Originalzeile aus Runde 1 wird weiter
+gefangen, `transform(value) or value` nicht mehr.
+
+**Der Struktur-Test prüfte zu wenig.** Er wies nur ein *Literal* als
+`status` zurück — ein `status`, der von der falschen Variablen abhängt,
+bestand ihn. Ersetzt durch direkte Fälle gegen `summarise()`.
+
+### 17.3 Der Benchmark dahinter
+
+`benchmark_perception.py` war das einzige der Messskripte, das die
+`collect()`/`summarise()`-Behandlung aus Abschnitt 15 nicht bekommen hatte —
+und es enthielt prompt zwei Defekte: `throughput_events_s` rechnete
+`COUNT / elapsed` statt aus dem Zugestellten (ein Lauf, der 900 von 2000
+Ereignissen lieferte, meldete den vollen Durchsatz), und `len(mesh_received)`
+wurde zweimal zu verschiedenen Zeitpunkten gelesen. Jetzt: ein Schnappschuss
+nach dem `wait()`, jede Kennzahl aus dem Zugestellten, und `no_deadlock`
+vergleicht Versuche gegen Kapazität statt gegen die Konstante 45.
+
+### 17.4 Stand nach diesem Durchgang
+
+```
+Tests        685 grün · 0 rot · 0 errors · 8 übersprungen
+Gate         48 Checks · 36 grün · 12 rot (2 neu rot, beide zu Recht)
+Schichten    56 Module · 0 Verstöße
+Doku         11 geplante Checks als geplant markiert
+```
+
+**Bewusst nicht gebaut: ein vierter Meta-Test**, der Meta-Tests auf
+Allowlists prüft. Das wäre derselbe Reflex, der `KNOWN_INVENTED`
+hervorgebracht hat. Was eine Prüfung wirklich prüft, ist eine
+**Mutationsprobe**: eine Behauptung verfälschen und nachsehen, ob irgendein
+Test rot wird. Genau das ist bei jedem Punkt dieser Runde einzeln gemacht
+worden — systematisch über das ganze Repo ist es der nächste Schritt und
+bleibt offen.
+
+Und der teuerste offene Punkt ist unverändert: **26 Testdateien importieren
+torch hart, es gibt keine CI, und damit bleibt ein externer Bot der einzige
+maschinelle Prüfer dieses Repos.** Nach zwei Runden mit 20 von 20 echten
+Befunden ist das keine Randnotiz.
+
 ## Quellen (externe Einordnung)
 
 - [S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv:2311.03285)](https://arxiv.org/abs/2311.03285) · [MLSys 2024 Paper](https://proceedings.mlsys.org/paper_files/paper/2024/file/906419cd502575b617cc489a1a696a67-Paper-Conference.pdf) · [LMSYS-Blog](https://www.lmsys.org/blog/2023-11-15-slora/)
@@ -1765,11 +1890,11 @@ git clone <repo> && cd PTR-Research
 python3 -m venv .venv && .venv/bin/pip install pytest numpy psutil \
   torch transformers peft sentence-transformers qdrant-client \
   lancedb paho-mqtt xgboost redis scikit-learn
-.venv/bin/python -m pytest -q                      # 675 passed, 0 failed, 8 skipped
-python3 research/verify_architecture_gate.py       # 10 rote Checks (siehe 14.8)
+.venv/bin/python -m pytest -q                      # 685 passed, 0 failed, 8 skipped
+python3 research/verify_architecture_gate.py       # 12 rote Checks (siehe 14.8, 17.1)
 python3 -c "import ast,pathlib; t=ast.parse(pathlib.Path('research/verify_architecture_gate.py').read_text()); \
   print(sum(len(n.value.keys) for n in ast.walk(t) if isinstance(n,ast.Assign) \
-  and any(getattr(x,'id','')=='checks' for x in n.targets)))"   # 47
+  and any(getattr(x,'id','')=='checks' for x in n.targets)))"   # 48
 ```
 
 Die Prüfskripte zu Abschnitt 4.1 (`dream_algebra.py`) und 5.2

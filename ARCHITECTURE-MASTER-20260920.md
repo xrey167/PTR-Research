@@ -7,14 +7,14 @@ README und HANDOVER verweisen hierher und führen keine eigenen Zählstände meh
 
 | Größe | Wert | womit geprüft |
 |---|---|---|
-| Gate-Checks definiert | **47** | `research/verify_architecture_gate.py` |
-| Gate-Checks grün im Klon | **37** | `python research/verify_architecture_gate.py` |
-| Gate-Checks rot | **10** — 7 mangels Server-Evidenz, 3 zu Recht (siehe unten) | Gate nennt die 8 fehlenden Dateien |
-| Tests | **675 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
+| Gate-Checks definiert | **48** | `research/verify_architecture_gate.py` |
+| Gate-Checks grün im Klon | **36** | `python research/verify_architecture_gate.py` |
+| Gate-Checks rot | **12** — 7 mangels Server-Evidenz, 5 zu Recht (siehe unten) | Gate nennt die 8 fehlenden Dateien |
+| Tests | **685 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
 | Module `neural_pods/` | **56**, alle einer Schicht zugeordnet | `python neural_pods/architecture.py` |
 | Schichtverstöße | **0** | Gate-Check `layering` |
 | Evidenzdateien mit `subject`-Bindung | **10 von 38** | Gate-Ausgabe `evidence_without_a_subject` |
-| Gate-relevante Benchmark-Skripte mit importierbarem Kern | **16 von 16** | `summarise()`/`measure()`, Tests in `tests/test_benchmark_*.py` |
+| Gate-relevante Benchmark-Skripte mit importierbarem Kern | **16 von 16** (dazu `benchmark_perception`, dessen Evidenz kein Check liest) | `summarise()`/`measure()`, Tests in `tests/test_benchmark_*.py` |
 
 **Die 44 waren 45** — die Zahl stand hier falsch und wurde per AST
 nachgezählt. Dazu kamen `reflex_failover` (Abspaltung, siehe unten) und
@@ -24,7 +24,7 @@ Sieben rote Checks brauchen Eval-Reports, die nur auf dem Server liegen
 (`runs/`, gitignoriert). Die `.gitignore`-Ausnahme `!research/runs/*.json`
 existiert; es fehlt ein Commit vom Server.
 
-**Drei rote Checks sind das Ergebnis des Pod-Audits vom 2026-09-20 und
+**Fünf rote Checks sind das Ergebnis der Audits vom 2026-09-20 und
 gehören so.** Sie waren grün, ohne etwas zu belegen:
 
 - `reflex_dispatch` — die aufgezeichnete Evidenz sagt `reflex_hits 0`,
@@ -41,6 +41,17 @@ gehören so.** Sie waren grün, ohne etwas zu belegen:
 - `dream_reflex` — war grün an einem Zwei-Generationen-Spielzeugpool. Der
   Check liest jetzt `pool_source`; im Klon ohne die Generationsberichte ist
   rot das richtige Urteil.
+- `dream_pipeline` — war grün an einer Backtest-Zahl, die per Konstruktion
+  nicht fehlschlagen kann: die aufgezeichnete Evidenz stammt von vor dem
+  Umbau auf Leave-one-generation-out und trägt nur den In-sample-Fehler.
+  Der Zyklus muss auf der Maschine mit den Generationsberichten neu laufen;
+  bis dahin ist grün ein Urteil über nichts.
+- `dream_predictive` (neu) — die Abspaltung. `dream_pipeline` belegt, dass
+  der Zyklus **lief**; dieser Check verlangt, dass der Simulator mindestens
+  eine zurückgehaltene Generation **vorhergesagt** hat, mit einem Fehler
+  unter derselben 0,15-Schranke, an der der Zyklus selbst abbricht. Rot,
+  weil unbelegt — die Historie mit vier Generationen identifiziert die
+  Koeffizienten nicht (Prüfbericht 4).
 
 Der Befundbericht dazu: `research/STATE-DEEP-RESEARCH-20260920.md`,
 Abschnitt 14.
@@ -52,7 +63,7 @@ Architektur und legt die Umsetzung der offenen Bausteine fest.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ GATE   verify_architecture_gate.py — fail-closed, 47 Checks     │
+│ GATE   verify_architecture_gate.py — fail-closed, 48 Checks     │
 ├─────────────────────────────────────────────────────────────────┤
 │ POD-ARM / DREAM (Schicht 5)                                     │
 │ Reflex-Kanal (reflex.py) · Dream-Pod (dream.py, NICHT als      │

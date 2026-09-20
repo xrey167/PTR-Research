@@ -17,11 +17,16 @@ difference.
 Deliberately narrow. It looks for two syntactic shapes and nothing else:
 
   1. `assert <anything> or <literal>` where the literal is truthy.
-  2. `assert <expr containing C> or C` — the right operand appears inside the
-     left. This is the shape that was actually written here: in
-     `x in c or c`, the disjunction is true whenever `c` is truthy, and when
-     `c` is empty `x in c` is False too. The whole assertion reduces to
-     `bool(c)`, and the membership test decides nothing.
+  2. `assert <x> in C or C` — a membership test disjoined with its own
+     container. This is the shape that was actually written here: the
+     disjunction is true whenever `c` is truthy, and when `c` is empty
+     `x in c` is False too. The whole assertion reduces to `bool(c)`, and the
+     membership test decides nothing. `not in` is included, for the same
+     reason with the cases swapped.
+
+     It is this shape and not "the right operand appears somewhere inside the
+     left", which is what the rule asked first: `transform(value) or value`
+     satisfies that reading and can fail, when both sides are falsy.
 
 A broad heuristic over "suspicious assertions" would flag the many legitimate
 compound conditions in this suite and be switched off within a week. A rule
@@ -55,24 +60,28 @@ def _always_true(node: ast.AST) -> bool:
     return False
 
 
-def _subexpressions(node: ast.AST) -> set[str]:
-    """Every sub-expression of `node`, as normalised source."""
-    return {ast.unparse(inner) for inner in ast.walk(node)
-            if isinstance(inner, ast.expr)}
+def _membership_over_its_own_container(values: list[ast.expr]) -> bool:
+    """Whether the chain is `x in c or c` — a test of `c` against itself.
 
+    `c` truthy makes the disjunction true; `c` empty makes `x in c` false as
+    well, so the whole assertion is `bool(c)` and the membership test decides
+    nothing. `x not in c or c` is the same: an empty `c` satisfies the left
+    operand instead of the right.
 
-def _redundant_operand(values: list[ast.expr]) -> bool:
-    """Whether a later operand already appears inside an earlier one.
-
-    `x in c or c`: the disjunction is true whenever `c` is truthy, and when
-    `c` is empty the membership test is False as well. The assertion says
-    `bool(c)` and nothing more.
+    This checks that exact shape and no other. The first version of the rule
+    asked whether any later operand appeared ANYWHERE inside an earlier one,
+    which is not the same claim: `transform(value) or value` matches it and
+    can fail perfectly well, when both sides are falsy. A rule that flags
+    honest code is switched off within a week, so it catches less rather than
+    guessing more.
     """
-    for index, value in enumerate(values):
-        text = ast.unparse(value)
-        for earlier in values[:index]:
-            if text in _subexpressions(earlier) - {ast.unparse(earlier)}:
-                return True
+    for index, value in enumerate(values[:-1]):
+        if not (isinstance(value, ast.Compare) and len(value.ops) == 1
+                and isinstance(value.ops[0], (ast.In, ast.NotIn))):
+            continue
+        container = ast.unparse(value.comparators[0])
+        if container in {ast.unparse(later) for later in values[index + 1:]}:
+            return True
     return False
 
 
@@ -87,7 +96,7 @@ def _vacuous_disjuncts(tree: ast.AST) -> list[tuple[int, str]]:
             continue
         # An always-true operand anywhere makes the whole chain unconditional.
         if any(_always_true(value) for value in test.values) \
-                or _redundant_operand(test.values):
+                or _membership_over_its_own_container(test.values):
             found.append((node.lineno, ast.unparse(test)))
     return found
 
@@ -114,10 +123,19 @@ def test_the_rule_catches_the_shape_it_was_written_for():
     container = ast.parse('assert found or ["fallback"]\n')
     assert _vacuous_disjuncts(container)
 
-    # The shape from the real defect, spelled out: the right operand is a
-    # sub-expression of the left, so the left decides nothing.
+    # The shape from the real defect, spelled out: a membership test
+    # disjoined with the container it tests, so the left decides nothing.
     redundant = ast.parse('assert name in report["names"] or report["names"]\n')
     assert _vacuous_disjuncts(redundant)
+
+    # Same shape with the two cases swapped: an empty container satisfies the
+    # left operand instead of the right.
+    negated = ast.parse('assert name not in report["names"] or report["names"]\n')
+    assert _vacuous_disjuncts(negated)
+
+    # And with something between the two operands, which changes nothing.
+    spaced = ast.parse('assert key in mapping or ready or mapping\n')
+    assert _vacuous_disjuncts(spaced)
 
 
 def test_the_rule_leaves_legitimate_disjunctions_alone():
@@ -129,10 +147,16 @@ def test_the_rule_leaves_legitimate_disjunctions_alone():
         'assert report or not expected\n',
         'assert flag or []\n',              # empty container: falsy, fine
         'assert flag or ""\n',
-        # Same NAME on both sides is not the shape: neither is a
-        # sub-expression of the other, and both can be false.
+        # Two independent names: both can be false at the same time.
         'assert found or expected\n',
         'assert items[0] or items[1]\n',
+        # The false positive the first version of the rule produced. Both
+        # sides can be falsy at once, so this assertion can fail.
+        'assert transform(value) or value\n',
+        'assert normalise(name) or name\n',
+        'assert compute(rows)[0] or rows\n',
+        # A membership test against a DIFFERENT container decides something.
+        'assert name in expected or names\n',
     ):
         assert not _vacuous_disjuncts(ast.parse(code)), code
 

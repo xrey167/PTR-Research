@@ -397,3 +397,77 @@ def test_the_tests_check_rejects_a_run_that_only_looks_clean(evidence_dir, run, 
 
     red = _red_checks(evidence_dir)
     assert "tests" in red, f"the gate accepted a run with {reason}"
+
+
+def _write_backtest(evidence_dir, backtest):
+    """Put a backtest into the recorded dream cycle, leaving the rest alone."""
+    path = evidence_dir / "dream-cycle-20260920.json"
+    recorded = json.loads(path.read_text(encoding="utf-8"))
+    recorded["backtest"] = backtest
+    path.write_text(json.dumps(recorded, indent=2), encoding="utf-8")
+
+
+WELL_FORMED = {"mode": "leave_one_generation_out",
+               "in_sample": {"max_abs_error": 0.0, "degenerate": True},
+               "out_of_sample": {"generations": 0, "max_abs_error": None}}
+
+
+def test_a_legacy_in_sample_backtest_no_longer_passes_the_dream_checks(evidence_dir):
+    """The shape recorded before 2026-09-20 carries one in-sample error, and
+    the simulator reproduces its own points by construction, so that number
+    cannot fail. `max_abs_error: 0.01` used to make `dream_pipeline` green on
+    it. A measurement that cannot fail must leave every check red."""
+    _write_backtest(evidence_dir, {"generations": 4, "mean_abs_error": 0.01,
+                                   "max_abs_error": 0.01})
+    red = _red_checks(evidence_dir)
+    assert "dream_pipeline" in red
+    assert "dream_predictive" in red
+
+
+def test_a_cycle_that_ran_is_separated_from_a_cycle_that_predicted(evidence_dir):
+    """The reason the two checks exist. This backtest has the shape that can
+    fail and predicted nothing out of sample: the cycle ran (green), and the
+    claim that the simulator can estimate an unseen generation is unproven
+    (red). One check could only have said one of the two."""
+    _write_backtest(evidence_dir, WELL_FORMED)
+    red = _red_checks(evidence_dir)
+    assert "dream_pipeline" not in red
+    assert "dream_predictive" in red
+
+
+def test_dream_predictive_is_green_only_on_a_prediction_inside_the_bound(evidence_dir):
+    predicted = dict(WELL_FORMED,
+                     out_of_sample={"generations": 1, "max_abs_error": 0.05})
+    _write_backtest(evidence_dir, predicted)
+    assert "dream_predictive" not in _red_checks(evidence_dir)
+
+    missed = dict(WELL_FORMED,
+                  out_of_sample={"generations": 1, "max_abs_error": 0.2})
+    _write_backtest(evidence_dir, missed)
+    red = _red_checks(evidence_dir)
+    assert "dream_predictive" in red
+    assert "dream_pipeline" not in red, "the cycle still ran correctly"
+
+
+def test_a_backtest_that_hides_its_degeneracy_fails_both_checks(evidence_dir):
+    """`in_sample.degenerate` is what stops the non-failable number being
+    quoted again without the caveat, so evidence that omits it is not the
+    newer shape, whatever its `mode` says."""
+    _write_backtest(evidence_dir, {"mode": "leave_one_generation_out",
+                                   "in_sample": {"max_abs_error": 0.0},
+                                   "out_of_sample": {"generations": 2,
+                                                     "max_abs_error": 0.01}})
+    red = _red_checks(evidence_dir)
+    assert "dream_pipeline" in red
+    assert "dream_predictive" in red
+
+
+def test_missing_test_evidence_fails_the_check_instead_of_falling_back(evidence_dir):
+    """Without tests-20260920.json the gate used to accept the count in
+    architecture-20260917.json: a number written days before the code, with
+    no source fingerprint behind it. A clone without the recording has no
+    evidence about its tests, and that is what it must report."""
+    (evidence_dir / "tests-20260920.json").unlink()
+    failed, message = _failures(evidence_dir)
+    assert "tests" in failed
+    assert "tests-20260920.json" in message, "reported as missing evidence"

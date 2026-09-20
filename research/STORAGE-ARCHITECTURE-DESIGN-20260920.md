@@ -90,10 +90,10 @@ Provenance-Eintrag je Wanderung (Registry-Event).
 | Phase | Inhalt | Gate-Check |
 |---|---|---|
 | S1 | `neural_pods/storage.py` Fassade + LanceDB als L2 (Vektoren+Dokumente+Traces migriert), Turbopuffer-Tiering (L1-TTL → L2) | `storage_l2_lance` |
-| S2 | KVCache-Session-Affinity (Redis-Mapping + Replica-Failover-Metrik) | `kvcache_affinity` |
-| S3 | jemallocator im Raft-Binding + before/after-Benchmark | `raft_jemalloc` |
-| S4 | vLLM-Multistream-Benchmark (echte Inferenz-Stages im getracerten Lauf, Stream-Pool je Knoten) | `vllm_multistream` |
-| S5 | Work-Stealing im TaskGraph über Mesh-Knoten | `work_stealing` |
+| S2 | KVCache-Session-Affinity (Redis-Mapping + Replica-Failover-Metrik) | `kvcache_affinity` (geplant) |
+| S3 | jemallocator im Raft-Binding + before/after-Benchmark | `raft_jemalloc` (geplant) |
+| S4 | vLLM-Multistream-Benchmark (echte Inferenz-Stages im getracerten Lauf, Stream-Pool je Knoten) | `vllm_multistream` (geplant) |
+| S5 | Work-Stealing im TaskGraph über Mesh-Knoten | `work_stealing` (geplant) |
 
 ## 6. Risiken & Offene Fragen
 

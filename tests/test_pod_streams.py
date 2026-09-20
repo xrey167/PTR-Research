@@ -194,38 +194,72 @@ def test_a_dropped_event_does_not_spend_rate_budget():
         stream.close()
 
 
+OBSERVED = {
+    "count": 2000, "delivered": True, "mesh_received": 2000,
+    "elapsed_s": 4.0, "stream_stats": {"emitted": 2000},
+    "dropped": 45, "tiny_queued": 5, "tiny_rate_dropped": 0,
+}
+
+
 def test_a_perception_run_that_timed_out_is_not_reported_as_completed():
     """`mesh_done.wait(timeout=...)` returns False on a timeout and its
     result was discarded, so a run that delivered half its events still
     recorded `status: completed`. This evidence file has to be re-recorded on
-    the server — the defect would have produced the replacement."""
-    import ast
-    import inspect
+    the server — the defect would have produced the replacement.
 
-    from research import benchmark_perception
+    Asked of the verdict itself rather than of the benchmark's syntax. The
+    first version of this test read `main()` with `ast` and rejected a
+    literal `status`, which a status computed from the wrong variable passes
+    just as easily.
+    """
+    from research import benchmark_perception as perception
 
-    source = inspect.getsource(benchmark_perception.main)
-    tree = ast.parse(source.lstrip())
+    complete = perception.summarise(**OBSERVED)
+    assert complete["status"] == "completed"
+    assert complete["lossless"] is True
 
-    waits = [node for node in ast.walk(tree)
-             if isinstance(node, ast.Call)
-             and getattr(node.func, "attr", "") == "wait"]
-    assert waits, "the benchmark no longer waits for delivery"
+    timed_out = perception.summarise(**dict(OBSERVED, delivered=False,
+                                            mesh_received=900))
+    assert timed_out["status"] == "degraded"
+    assert timed_out["lossless"] is False
+    assert timed_out["delivery_completed"] is False
 
-    # The result must be bound to a name, not dropped on the floor.
-    bound = [node for node in ast.walk(tree)
-             if isinstance(node, ast.Assign)
-             and any(isinstance(v, ast.Call)
-                     and getattr(v.func, "attr", "") == "wait"
-                     for v in ast.walk(node.value))]
-    assert bound, "the wait() result is discarded, so a timeout reads as success"
 
-    # And the status must depend on it rather than being a literal.
-    statuses = [node for node in ast.walk(tree)
-                if isinstance(node, ast.Dict)
-                for key, value in zip(node.keys, node.values)
-                if isinstance(key, ast.Constant) and key.value == "status"]
-    assert statuses, "no status field found"
-    assert all(not isinstance(value, ast.Constant) for value in statuses), (
-        "status is a literal: a partial run cannot be distinguished from a "
-        "complete one")
+def test_perception_throughput_is_computed_from_what_arrived():
+    """`round(COUNT / elapsed, 1)` reported a run that delivered 900 of 2000
+    events at the full rate. The one figure a degraded run must not keep."""
+    from research import benchmark_perception as perception
+
+    partial = perception.summarise(**dict(OBSERVED, delivered=False,
+                                          mesh_received=900, elapsed_s=10.0))
+    assert partial["throughput_events_s"] == 90.0, "COUNT / elapsed would be 200.0"
+
+    complete = perception.summarise(**dict(OBSERVED, elapsed_s=10.0))
+    assert complete["throughput_events_s"] == 200.0
+
+
+def test_a_delivered_flag_alone_does_not_make_a_run_lossless():
+    """Both halves are required: the wait returning True while fewer events
+    arrived than were sent is still a partial run."""
+    from research import benchmark_perception as perception
+
+    short = perception.summarise(**dict(OBSERVED, mesh_received=1999))
+    assert short["status"] == "degraded"
+    assert short["delivery_completed"] is True
+
+
+def test_the_backpressure_verdict_counts_attempts_against_the_cap():
+    """`dropped == 45` was a constant standing for "50 emits into a queue of
+    5". Both numbers are recorded now, so the claim is checkable — and a
+    probe that silently stopped dropping fails it."""
+    from research import benchmark_perception as perception
+
+    healthy = perception.summarise(**OBSERVED)["backpressure"]
+    assert healthy["no_deadlock"] is True
+    assert healthy["overflow_attempts"] == 50 and healthy["queue_cap"] == 5
+
+    swallowed = perception.summarise(**dict(OBSERVED, dropped=0))["backpressure"]
+    assert swallowed["no_deadlock"] is False
+
+    overflowed = perception.summarise(**dict(OBSERVED, tiny_queued=6))
+    assert overflowed["backpressure"]["queue_cap_respected"] is False

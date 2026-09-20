@@ -172,29 +172,45 @@ def _taskgraph_ok(tg: dict, legacy: list[str]) -> bool:
     return (tg.get("mean_concurrency", tg.get("speedup")) or 0) > 1.5
 
 
-def _dream_backtest_ok(backtest: dict) -> bool:
-    """Whether a dream cycle's backtest clears the bar.
+def _dream_backtest_well_formed(backtest: dict) -> bool:
+    """Whether a dream cycle's backtest was measured the way it must be.
 
     Two shapes exist. Evidence recorded before 2026-09-20 carries a single
     in-sample error; that number cannot fail, because the simulator has one
     intercept plus one coefficient per decision and the history changes one
-    decision per generation, so the fit reproduces its own points. The
-    leave-one-generation-out shape that replaced it is checked on what it
-    actually predicted out of sample, and must record whether the in-sample
-    fit was degenerate so nobody quotes that number again without the caveat.
+    decision per generation, so the fit reproduces its own points. A check
+    that passes on it passes on nothing, so this returns False for it: the
+    cycle has to be re-run with the leave-one-generation-out simulator.
 
-    A run that could predict NO generation out of sample still passes: that
-    says the history is too short, which is a fact about the data, not a
-    regression in the code.
+    The newer shape must record whether the in-sample fit was degenerate, so
+    nobody quotes that number again without the caveat. This function stops
+    there. Whether the run predicted anything is a separate question, asked
+    by _dream_backtest_predictive and carried by its own gate check: a cycle
+    that ran correctly over a history too short to predict from is a fact
+    about the data, and it must not be confused with a cycle that ran.
     """
-    if backtest.get("mode") == "leave_one_generation_out":
-        if "degenerate" not in backtest.get("in_sample", {}):
-            return False
-        out = backtest.get("out_of_sample", {})
-        if not out.get("generations"):
-            return True
-        return (out.get("max_abs_error") or 1.0) < 0.15
-    return backtest.get("max_abs_error", 1) < 0.15
+    if backtest.get("mode") != "leave_one_generation_out":
+        return False
+    return "degenerate" in backtest.get("in_sample", {})
+
+
+def _dream_backtest_predictive(backtest: dict) -> bool:
+    """Whether the replay simulator predicted a held-out generation at all.
+
+    This is the claim "the dream pod can estimate an outcome it has not
+    seen". It needs at least one generation predicted OUT of sample and an
+    error under the same 0.15 bound the cycle aborts on. As of 2026-09-20 the
+    recorded history identifies none: four generations, each changing one
+    decision, leave the remaining three unable to pin the coefficients. The
+    check stays red until the history is long enough — red because unproven,
+    not because broken.
+    """
+    if not _dream_backtest_well_formed(backtest):
+        return False
+    out = backtest.get("out_of_sample", {})
+    if not out.get("generations"):
+        return False
+    return (out.get("max_abs_error") or 1.0) < 0.15
 
 
 def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-20260917.json",
@@ -256,8 +272,11 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         # --run-tests: the gate executes the suite instead of reading about it.
         test_run = run_pytest(Path(path).resolve().parents[2])
     else:
-        test_run = _read("tests-20260920.json", dirs, [])  # optional: old
-        # evidence predates it, so a miss falls back rather than failing.
+        # Reported as missing evidence like every other file. It used to be
+        # read into a throwaway list so a clone without it fell back to a
+        # count from 2026-09-17 - a green `tests` on a number recorded days
+        # before the code, with no source fingerprint behind it.
+        test_run = _read("tests-20260920.json", dirs, missing)
     storage_kv = storage.get("kv", {})
     storage_l2 = storage.get("l2_lance", {})
     lora_adapter = _read("qwen3b-eval-test-adapter-20260917-report.json", dirs, missing)
@@ -273,8 +292,8 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         # it. tests-20260920.json carries a digest over neural_pods/,
         # research/ and tests/; if today's tree hashes differently, the
         # recording describes something else and the check fails. Without
-        # that file the gate falls back to the 2026-09-17 count, which is
-        # exactly the blind spot - so it is reported as stale below.
+        # that file there is nothing to fall back to: an absent recording is
+        # missing evidence, not a passed suite.
         # ARCHITECTURE-MASTER section 1 states the layer rule and the storage
         # facade rule in prose. This is the same statement, checked: a module
         # that imports upward, reaches a backend past the facade, is added
@@ -286,14 +305,14 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         # to failed 0 and pass. `errors == 0` closes that, and the skip
         # ceiling closes the other half — a suite that stops running a third
         # of itself must not stay green on its passed-count alone.
-        "tests": (test_run.get("exit_code") == 0
+        "tests": (bool(test_run)
+                  and test_run.get("exit_code") == 0
                   and test_run.get("failed") == 0
                   and test_run.get("errors", 0) == 0
                   and test_run.get("passed", 0) >= 260
                   and test_run.get("skipped", 0) <= 20
                   and test_run.get("sources_sha256")
-                  == source_fingerprint(Path(path).resolve().parents[2]))
-                 if test_run else d["tests"]["passed"] >= 260,
+                  == source_fingerprint(Path(path).resolve().parents[2])),
         "retrieval_recall": d["retrieval"]["recall_at_5"] >= 0.99 and d["retrieval"]["hnsw_recall_at_10"] >= 0.99,
         "cache": d["cache"]["hit_rate"] >= 0.98 and d["cache"]["p99_ms"] < 1.0,
         "authenticated_transport": d["transport"]["mtls_hmac_manifest_p95_ms"] < 1.0 and d["transport"]["model_tok_s"] > 200 and d["transport"]["raft_frame_valid"] == 10000 and d["transport"]["subject_allowlist_allowed"] == d["transport"]["subject_allowlist_after_denied"] == 1,
@@ -352,12 +371,29 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and reflex.get("metrics", {}).get("channel_stats", {}).get("failovers") == reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_misses"),
         "reflex_dispatch": reflex.get("status") == "completed"
             and reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_hits", 0) > 0,
-        # `estimable is not False` also accepts legacy evidence, which has no
-        # such key; what it rules out is a winner the history cannot identify.
+        # One check used to carry two claims again, the same way
+        # reflex_failover/reflex_dispatch did:
+        #
+        # dream_pipeline — the cycle RAN. It completed, it produced a winner
+        # the history can identify, and its backtest has the shape that can
+        # fail (leave-one-generation-out, with the in-sample degeneracy
+        # recorded). It says nothing about predictive power.
+        #
+        # dream_predictive — the cycle PREDICTED something it had not seen.
+        # At least one held-out generation, error under the 0.15 bound the
+        # cycle itself aborts on.
+        #
+        # Both are red on the evidence checked in today, because that file
+        # carries the pre-2026-09-20 in-sample number, which cannot fail. The
+        # cycle has to be re-run on the machine that holds the generation
+        # reports; until then a green dream_pipeline would be green on
+        # nothing. `estimable is not False` still accepts evidence without
+        # that key; what it rules out is a winner the history cannot identify.
         "dream_pipeline": dream.get("status") == "dream_cycle_completed"
-            and _dream_backtest_ok(dream.get("backtest", {}))
+            and _dream_backtest_well_formed(dream.get("backtest", {}))
             and bool(dream.get("winner", {}).get("decisions"))
             and dream.get("winner", {}).get("estimable") is not False,
+        "dream_predictive": _dream_backtest_predictive(dream.get("backtest", {})),
         "gen7_dream_validated": dream_ev.get("status") == "completed" and dream_ev.get("reader_unchanged") is True
             and dream_ev.get("exact_target_matches", 0) >= 125
             and dream_ev.get("guarded_exact_target_matches", 0) >= 92,
