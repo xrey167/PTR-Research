@@ -14,7 +14,7 @@ tragen auf neural-pods:
 | Tier | Technologie | Inhalt | Latenz |
 |---|---|---|---|
 | **L0 Pod-lokal** | Prozess-Strukturen (crossbeam-Muster), jemalloc | Live-KV-Caches, offene Sessions, Mesh-Queues | µs |
-| **L1 Shared-hot** | Redis in np-node1 (vorhanden) | Mesh-Cache, Presence, Session-Affinity | 0,3 ms (gemessen) |
+| **L1 Shared-hot** | Redis in np-node1 (vorhanden) | Mesh-Cache, Presence, Session-Affinity | **p50 0,384 ms / p99 0,757 ms** (gemessen, `redis-cache-20260919.json`) |
 | **L2 Warm-columnar** | **LanceDB** (embedded, Lance-Format) je Knoten | Vektoren, Pod-Dokumente, Versionen, Traces | ~1 ms |
 | **L3 Cold-object** | SnapshotStore → `/mnt/neural-data` (932 GB) + optional S3 | Adapter, Runs, gefrorene Splits, alte Revisionen | 10 ms (NVMe) |
 
@@ -59,7 +59,7 @@ passt exakt:
   Raft-Benchmark vor/nach (prop/s + RSS).
 - **redis-tower-protocol**: optionaler Zukunftspfad — ein Rust-Redis-Modul,
   das unser Mesh-Envelope-Format NATIV in Redis spricht (statt JSON-over-
-  Redis-Python). Erst wenn L1 zum Flaschenhals wird (aktuell 0,3 ms — weit
+  Redis-Python). Erst wenn L1 zum Flaschenhals wird (aktuell p50 0,384 ms — weit
   davon entfernt).
 - **vLLM-Multistream/Multithread**: vLLM V1 überlappt Scheduling; unsere
   zwei Replicas arbeiten bereits parallel. Ergänzend: pro Mesh-Knoten ein
@@ -104,3 +104,28 @@ Provenance-Eintrag je Wanderung (Registry-Event).
   nicht realistisch — Affinity zuerst, Transfer beobachten
 - jemallocator-Gewinn muss gemessen werden (Raft-Profile sind klein — der
   Effekt könnte unter dem Messrauschen liegen)
+
+
+## Berichtigung (2026-09-20, Pod-Audit)
+
+**Die Zahl „0,3 ms (gemessen)" für L1 stand hier falsch.** Die einzige
+Messung für den Redis-Tier ist `research/runs/redis-cache-20260919.json`
+mit **p50 0,384 ms / p99 0,757 ms**. 0,30 ms ist die Mesh-Presence-RTT aus
+`mesh-presence-20260920.json` — ein anderer Vorgang über eine andere
+Schicht. Beide Tabellenstellen sind korrigiert.
+
+**Die Vier-Tier-Fassade implementiert zwei Tiers.** Der Docstring von
+`neural_pods/storage.py` nennt L0 („pod-local") und L3 („cold snapshots →
+SnapshotStore"). Beide Begriffe kommen in der Datei ausschließlich im
+Docstring vor: `storage.py` importiert weder `snapshot_store` noch irgendein
+L0-Konstrukt. `PodStorage` deckt L1 (Redis) und L2 (LanceDB) ab.
+
+**Drei unabhängige L1-Implementierungen.** `pod_cache.PodCache` (LRU +
+Redis, revisions- und branch-bewusst), `mesh_cache.MeshCache` (Redis,
+principal-gescoped, Invalidierung per Pub/Sub) und `storage.PodStorage`
+mit eigenem rohem Redis-Client. Keine benutzt eine andere. Das ist die
+Folge davon, dass Fassaden gebaut wurden, um einen Gate-Check zu bedienen,
+ohne die Bestandsnutzer abzulösen — die Migration war nie Teil der Phase.
+Zu entscheiden ist, welche der drei bleibt; dieses Dokument beschreibt
+`PodStorage` als „die einzige Pod-API", und in `neural_pods/` gibt es
+derzeit **null** Aufrufer davon.

@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "training": {
+    "rows": 512,
+    "features": 6,
+    "seed": 20260920,
+    "rounds": 24,
+    "model_bytes": 25271
+  },
+  "probe_rows": 32,
+  "registered_kinds": [
+    "xgboost"
+  ],
+  "created_via_factory": true,
+  "budget_refused_third_pod": true,
+  "budget_refusal": "resource budget exhausted for tree-pod-c",
+  "ram_budget_bytes": 134217728,
+  "pod_ram_bytes": 67108864,
+  "governor_used_bytes_at_peak": 134217728,
+  "peak_matches_two_pods": true,
+  "deterministic_across_pods": true,
+  "deterministic_across_calls": true,
+  "distinct_predictions": 2,
+  "governor_used_bytes_after_release": 0,
+  "released_to_zero": true,
+  "reactivation_after_release": true,
+  "pool_stats": {
+    "budget_bytes": 134217728,
+    "budget_owner": "governor",
+    "used_bytes": 0,
+    "governed": true,
+    "active_pods": []
+  },
+  "sample_answer": {
+    "prediction": 1.0,
+    "probability": 0.833037,
+    "deterministic": true
+  },
+  "producer": "benchmark_xgboost_pod.py",
+  "producer_sha256": "f4dcea13ba37e17ab5e338a5e112d980c107ae716be6d6d18990dfd0ce24e8e8",
+  "subject": [
+    "neural_pods/pod_executor.py",
+    "neural_pods/resource_runtime.py"
+  ],
+  "subject_sha256": "2cc92cfdc2f0c70ffb1b4d67e5dbb63a65e6664dcc7f7878916b9be0ea0ee2c4"
+}

@@ -245,6 +245,7 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
     holdout = _read("reader-holdout-manifest-20260920.json", dirs, missing)
     dream_reflex = _read("dream-reflex-20260920.json", dirs, missing)
     storage = _read("storage-facade-20260920.json", dirs, missing)
+    xgboost_pod = _read("xgboost-pod-20260920.json", dirs, missing)
     stale_evidence: list[str] = []
     unstamped_evidence: list[str] = []
 
@@ -279,8 +280,17 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
         # that imports upward, reaches a backend past the facade, is added
         # without being placed on a layer, or forms a runtime cycle fails it.
         "layering": layering["ok"],
-        "tests": (test_run.get("failed") == 0
+        # The exit code comes FIRST. Everything else here is reconstructed
+        # from pytest's summary line, and that line reports collection and
+        # fixture failures as `errors`: "300 passed, 4 errors" used to parse
+        # to failed 0 and pass. `errors == 0` closes that, and the skip
+        # ceiling closes the other half — a suite that stops running a third
+        # of itself must not stay green on its passed-count alone.
+        "tests": (test_run.get("exit_code") == 0
+                  and test_run.get("failed") == 0
+                  and test_run.get("errors", 0) == 0
                   and test_run.get("passed", 0) >= 260
+                  and test_run.get("skipped", 0) <= 20
                   and test_run.get("sources_sha256")
                   == source_fingerprint(Path(path).resolve().parents[2]))
                  if test_run else d["tests"]["passed"] >= 260,
@@ -320,25 +330,28 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and redis_cache.get("lru_redis", {}).get("hot_p99_ms", 99) < 2.0,
         "grpc_transport_decision": grpc_cmp.get("tcp", {}).get("req_per_s", 0) > 10000
             and grpc_cmp.get("grpc_unary", {}).get("p50_ms", 0) > grpc_cmp.get("tcp", {}).get("p50_ms", 1) * 3,
-        # Three corrections to this check, all of the same kind.
+        # One check used to carry two claims, and the weaker one made the
+        # stronger one look proven. Split, so each says what it says:
         #
-        # 1. It read metrics.errors, a key the benchmark initialises to 0 and
-        #    never increments. The clause was trivially true. ReflexChannel
-        #    counts errors itself, so channel_stats.errors is the real one.
-        # 2. It never looked at whether the reflex RESOLVED anything. The
-        #    recorded 2026-09-19 evidence says reflex_hits 0, reflex_misses
-        #    132, failovers 132: every answer came from the default pod, the
-        #    binding this phase exists to demonstrate carried nothing, and the
-        #    check was green. `reflex_hits > 0` is the minimum a check named
-        #    "reflex_dispatch" has to assert.
-        # 3. failovers == reflex_misses was the whole safety statement while
-        #    reflex_misses could be 132 out of 132. It stays, as the retract
-        #    invariant, but it is no longer the only thing asserted.
-        "reflex_dispatch": reflex.get("status") == "completed"
+        # reflex_failover — the RETRACT mechanism. Every miss was caught by
+        # the default pod, quality did not drop against the static baseline,
+        # no dispatch raised. This is what the 2026-09-19 run demonstrated,
+        # and it is green.
+        #
+        # reflex_dispatch — the ADDRESS actually resolving. The same run
+        # recorded reflex_hits 0, reflex_misses 132, failovers 132: not one
+        # address signal resolved, every answer came from the default pod.
+        # The old check was green on that evidence, because it looked at
+        # neither the hit count nor at a real error counter (it read
+        # metrics.errors, which the benchmark sets to 0 and never
+        # increments). Red until the addressing this phase is named for
+        # exists — POD-ARM-DESIGN P5, latent address training.
+        "reflex_failover": reflex.get("status") == "completed"
             and reflex.get("metrics", {}).get("channel_stats", {}).get("errors") == 0
-            and reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_hits", 0) > 0
             and reflex.get("metrics", {}).get("union_raw", 0) >= reflex.get("baseline_union_raw", 999)
             and reflex.get("metrics", {}).get("channel_stats", {}).get("failovers") == reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_misses"),
+        "reflex_dispatch": reflex.get("status") == "completed"
+            and reflex.get("metrics", {}).get("channel_stats", {}).get("reflex_hits", 0) > 0,
         # `estimable is not False` also accepts legacy evidence, which has no
         # such key; what it rules out is a winner the history cannot identify.
         "dream_pipeline": dream.get("status") == "dream_cycle_completed"
@@ -364,6 +377,23 @@ def verify(path: str | Path = Path(__file__).with_name("runs") / "architecture-2
             and dream_reflex.get("resolve_within_target") is True
             and dream_reflex.get("reflex", {}).get("all_misses_covered") is True
             and dream_reflex.get("reflex", {}).get("errors") == 0,
+        # P2 of the Pod-Arm design promised this check and shipped without
+        # it, so what held the phase up was a unit test of the factory. Four
+        # conditions, one per claim the phase makes: the runtime is reachable
+        # through the factory by kind, a real ResourceGovernor refuses a pod
+        # that does not fit, two independently activated pods answer
+        # identically, and release gives every byte back.
+        "xgboost_pod": xgboost_pod.get("status") == "completed"
+            and xgboost_pod.get("created_via_factory") is True
+            and xgboost_pod.get("budget_refused_third_pod") is True
+            and xgboost_pod.get("peak_matches_two_pods") is True
+            and xgboost_pod.get("deterministic_across_pods") is True
+            and xgboost_pod.get("deterministic_across_calls") is True
+            and xgboost_pod.get("released_to_zero") is True
+            and xgboost_pod.get("reactivation_after_release") is True
+            # A model that answers the same class for every probe would make
+            # the determinism above vacuous.
+            and xgboost_pod.get("distinct_predictions", 0) >= 2,
         "mesh_presence": mesh.get("discovery", {}).get("discovered") is True
             and mesh.get("rounds_ok", 0) == 100
             # `or 999` here would have turned a legitimate 0.0 into a

@@ -1215,6 +1215,250 @@ Holdout-Splits, Neuaufzeichnung von `benchmark_taskgraph` und
     daran gescheitert.
 
 
+## 14. Pod-Audit: die Verträge gegen den Code
+
+Auftrag: die Architekturen und das Pod-Design prüfen und reparieren — zuerst
+der Dream-Pod, dann die übrigen Pods. Danach, auf Nachfrage, drei
+unabhängige Review-Agenten über das Ganze: einer gegen die
+Design-Dokumente, einer adversarial gegen den eigenen Diff, einer
+querschnittlich über die Architektur.
+
+### 14.1 Der gemeinsame Nenner
+
+Alle drei Agenten kamen unabhängig auf dieselbe Wurzel, und sie ist die
+beste Formulierung, die dieses Projekt bisher für sein Kernproblem hat:
+
+> **Aussage und Beleg entstehen im selben Arbeitsschritt, und der Beleg ist
+> nicht an das gebunden, worüber er etwas aussagt.**
+
+Ein Docstring behauptet einen Vertrag, weil er neben dem Code steht, der ihn
+erfüllen soll. Ein Benchmark liefert eine Zahl, weil derselbe Commit die
+Schwelle festlegt. Eine Evidenzdatei bleibt gültig, weil sie nur sich selbst
+kennt. Ein Gate-Check ist grün, weil sein Prädikat und seine Eingabe
+zusammen entstanden sind.
+
+Die Gegenprobe dazu ist ebenso klar: jedes Mal, wenn das Projekt diese
+Kopplung durchbrochen hat — `source_fingerprint` über den Baum, der
+Meta-Test, der Evidenzdateien entfernt, das synthetische Paket für den
+Schichtenprüfer, der nebenläufige Test, der das SQLite-Thread-Problem
+freilegte — **hat es sofort einen echten Fehler gefunden. Vier von vier.**
+Das ist keine Glückssträhne, das ist die Methode.
+
+### 14.2 Der teuerste Einzelbefund: das Gate war vom System entkoppelt
+
+Agent 3 hat es gemessen, nicht argumentiert: in einer Kopie des Baums je ein
+Kernmodul durch eines ersetzt, das beim Import wirft, und das Gate laufen
+lassen.
+
+```
+neural_pods/mesh.py         neu rot: KEINER
+neural_pods/taskgraph.py    neu rot: KEINER
+neural_pods/storage.py      neu rot: KEINER
+neural_pods/dream.py        neu rot: KEINER
+neural_pods/native_comm.py  neu rot: KEINER
+neural_pods/mesh_cache.py   neu rot: KEINER
+neural_pods/perception.py   neu rot: KEINER
+```
+
+44 von 45 Checks blieben grün, während das, worüber sie etwas aussagen,
+nicht mehr existierte. Die einzige Kante zwischen Gate und Quellbaum war
+`tests` über `sources_sha256` — und der war zu diesem Zeitpunkt selbst rot.
+
+Der Producer-Stempel, den ich im Durchgang davor eingebaut hatte, schloss
+die schmalere der beiden Lücken: *Benchmark geändert, Evidenz alt*. Die
+breitere — *System geändert, Benchmark unverändert, Evidenz alt* — blieb
+offen.
+
+**Behoben:** `research/evidence.py` nimmt jetzt `subject=` — die Module,
+über die die Zahlen etwas aussagen — und schreibt `subject_sha256`, gebaut
+wie `record_test_run.source_fingerprint()`, also über Pfad **und** Inhalt.
+Das Gate rechnet beide Hashes nach und verweigert fail-closed. Gegenprobe
+gelaufen:
+
+```
+$ echo "# drift" >> neural_pods/storage.py && python research/verify_architecture_gate.py
+stale evidence: storage-facade-20260920.json: the code it measured has
+changed since this was recorded (neural_pods/storage.py) - re-run
+benchmark_storage_facade.py
+```
+
+Zehn der 37 gelesenen Evidenzdateien haben diese Bindung. Welche nicht,
+nennt das Gate selbst in `evidence_without_a_subject` — eine bekannte Lücke
+statt einer unsichtbaren.
+
+Dazu zwei Nebenbefunde derselben Art, beide behoben:
+
+- Die Veraltungsprüfung lief über ein **handgepflegtes 8-Tupel**, während
+  das Gate 37 Dateien liest. 30 waren per Auslassung ausgenommen — der Fix
+  für eine handgepflegte Tabelle war eine zweite handgepflegte Tabelle.
+  `_read()` registriert jetzt jede gelesene Datei selbst; ein neuer Check
+  kann keine Evidenz mehr beschaffen, die der Prüfung entgeht.
+- **Ungestempelte Evidenz ließ das Gate nicht scheitern.** Die Meldung
+  wurde nur ausgegeben, wenn ohnehin schon etwas anderes rot war, also nie
+  dann, wenn sie gebraucht wurde. Jetzt scheitert sie; die 32 Altdateien
+  stehen in `UNSTAMPED_GRANDFATHERED`, einer Sperrklinke, die nur schrumpfen
+  kann und von einem Meta-Test bewacht wird.
+
+### 14.3 Checks, die grün waren, ohne etwas zu prüfen
+
+| Check | was er las | warum das nichts belegte |
+|---|---|---|
+| `reflex_dispatch` | `metrics.errors == 0` | Schlüssel wird auf 0 gesetzt und nie hochgezählt |
+| `reflex_dispatch` | Qualität + `failovers == misses` | **`reflex_hits 0` von 132** — alle Antworten kamen vom Failover |
+| `mesh_cache` | `principal_isolated` | Principal gelesen, unter dem nie etwas geschrieben wurde |
+| `dream_reflex` | Latenz p95 | an einem Zwei-Generationen-Spielzeugpool gemessen |
+| `traced_pipeline` | `reflex_frames_valid == 132` | der Benchmark parst seinen eigenen f-String |
+| `mesh_presence` | `(rtt or 999) < 10` | macht aus einer legitimen 0.0 einen Fehlschlag |
+| `tests` | `failed == 0` | `300 passed, 4 errors` parst zu `failed: 0` |
+
+**Der Reflex-Befund ist der schwerste.** `research/runs/reflex-dispatch-20260919.json`
+sagt wörtlich `reflex_hits: 0`, `reflex_misses: 132`, `failovers: 132`.
+Kein einziges Adress-Signal löste auf; alle 132 Antworten kamen vom
+Default-Pod. Das POD-ARM-Design benennt das in seinem P1-Text ehrlich
+(„Hit-Rate 0.0 ist das erwartete Ergebnis"), aber die Gate-Spalte daneben
+sagte `reflex_dispatch grün` — und ein grüner Check mit diesem Namen wird
+gelesen, als funktioniere die Adressierung.
+
+Der Check ist jetzt geteilt: **`reflex_failover`** belegt, was der Lauf
+zeigte (jeder Miss aufgefangen, Qualität gehalten, kein Dispatch-Fehler) und
+ist grün. **`reflex_dispatch`** verlangt mindestens einen aufgelösten Alias
+und bleibt rot bis P5. Der Benchmark zeichnet ab sofort die rohen
+Selektor-Ausgaben und die Miss-Gründe auf, damit beim nächsten Lauf
+diagnostizierbar ist, welcher Schritt versagt.
+
+### 14.4 Pod-Verträge, die nur in Docstrings existierten
+
+Agent 1 hat alle Design-Dokumente Zeile für Zeile gegen den Code gelesen.
+Befund: **von 24 in den Dokumenten zugesagten Gate-Checks existierten 9.**
+Die vier blockierenden Sicherheitsbefunde, alle behoben:
+
+1. **`EgressACL` las nie einen `link_contract`.** Der Docstring sagte „from
+   its link contract", während `PodLink` gar keine Egress-Felder hatte und
+   jede ACL an der Aufrufstelle handgebaut wurde. `PodLink` trägt jetzt
+   `egress_topics/hosts/ports`, `EgressACL.from_link()` ist die Ableitung,
+   und `next_hop()` reicht sie weiter — ein Hop, der sie fallen ließe, gäbe
+   dem nächsten Pod eine leere Allowlist.
+2. **ACL-Verstöße landeten nirgends.** Ein abgewiesener Frame ist ein Pod,
+   der etwas adressiert, was er nicht darf — die einzige Sache in diesem
+   Modul, die man später im Log finden will. Mit `registry=` wird jeder
+   Verstoß zum `egress_refused`-Provenance-Event; ohne sagt `stats()`, dass
+   nichts geloggt wird.
+3. **„Fail-closed" galt pro Zeile, nicht pro Ausgabe.** `sudo rm -rf /`
+   gefolgt von einem wohlgeformten `PUB` publizierte. Eine Ausgabe, von der
+   der Parser eine Zeile nicht lesen konnte, ist keine verstandene Ausgabe.
+   `strict=True` (Vorgabe) verweigert sie ganz; `strict=False` bleibt für
+   die Rate-Messung, die die partiellen Fälle sehen muss.
+4. **`hop_budget` und `deadline_ms` standen im `PodLink` und kamen nie auf
+   den Draht.** Jeder Mesh-Hop baute einen frischen Link mit frischem
+   Budget — ein Ring von Pods konnte Arbeit unbegrenzt im Kreis schicken,
+   während jeder einzelne Hop validierte. Beide reisen jetzt im Envelope,
+   mit der **ursprünglichen** `ts_ms` (ein Neustempeln pro Hop gäbe jedem
+   Hop die volle Frist zurück, derselbe Fehler eine Ebene tiefer). Die
+   Entscheidung liegt in `envelope_refusal()`, modulweit und rein, damit
+   die Regel ohne Broker testbar ist — eine Regel, die nur gegen lebendes
+   MQTT läuft, läuft nie.
+
+Dazu die Isolationsbehauptung: `MeshCache`s „principal isolation" war
+Schlüsselableitung, sonst nichts. Der Parameter `principal=` kam vom
+Aufrufer, also las jeder Pod jeden Principal. Jetzt gibt es eine
+Aufrufer-seitige Prüfung (`allowed_principals`, `PrincipalRefused`) **und**
+den Satz, dass das keine Sicherheitsgrenze ist: eine Redis-Datenbank, ein
+Credential, jeder Prozess mit diesem Credential liest alles. Der Test, den
+der Benchmark hätte fahren müssen, steht jetzt in
+`tests/test_mesh_cache.py` und **bestätigt die Lesbarkeit**, statt sie
+wegzuassertieren.
+
+### 14.5 Defekte im eigenen Diff des vorigen Durchgangs
+
+Agent 2 hat den uncommitteten Diff adversarial geprüft und elf Befunde
+belegt, die meisten mit ausgeführtem Reproduktionsskript. Alle behoben:
+
+| # | Befund | Warum es zählt |
+|---|---|---|
+| 1 | Die Autonomie-Quote zählte nur **erfolgreiche** Zyklen | Jeder Abbruch hatte Pool, Backtest und alle Kandidaten bezahlt; 10 Läufe, Quote unverändert 0/2 |
+| 2 | `drain()` meldete Erfolg, während das letzte Event im Consumer war | 200 von 200 reproduziert; der „lossless"-Nachweis baute darauf |
+| 3 | Das RAM-Lease war eine **selbst ausgestellte Quittung** | Governor in derselben Funktion gebaut, Budget vom Aufrufer genannt — konnte nicht ablehnen |
+| 4 | `dream_reflex` grün am Spielzeugpool | siehe 14.3 |
+| 5 | Abgelehntes `add_generation` schrieb `_max_order` fort | Die legitime nächste Generation wurde mit Verweis auf eine nie belegte Position abgewiesen |
+| 6 | Perception-Evidenz fiel durch alle Netze | Kein Check las sie, kein Stempel, erzeugt vom alten Drain-Loop — **zurückgezogen** |
+| 7 | Der Producer-Stempel konnte die Drift nicht sehen, die er behauptete | siehe 14.2 |
+| 8 | `resolve_p95_ms` schloss die **fehlgeschlagenen** Auflösungen aus | Ein Kanal, der öfter danebengreift, sah schneller aus |
+| 9 | `CycleBudget` behauptete die Registry-Uhr, nahm die des Aufrufers | Mit eingespeister Uhr band die Quote nie |
+| 10 | Ein werfender Consumer tötete den Drain-Thread lautlos | `has_consumer: True`, `consumed` eingefroren, für immer |
+| 11 | Ein von der Queue verworfenes Event verbrauchte Rate-Budget | Der nächste legitime Emit wurde für ein nie angenommenes Event abgewiesen |
+
+Dazu Kleineres: zwei unbegrenzt wachsende Latenz-Listen, die `stats()` bei
+jedem Aufruf sortierte; `factory.create()` vor der Duplikatprüfung (ein
+abgelehntes Re-Activate lud erst das komplette Modell von Platte);
+`stats()["budget_bytes"]` im Governor-Modus `None`; die `ts`-Migration
+außerhalb der Sperre; ein als Hit gezählter Cache-Eintrag, bevor
+`json.loads` scheitern konnte; ungesperrte Zähler über den Netzwerk-Thread.
+
+**Das ist der zweite Durchgang in Folge, in dem ein adversarialer Review
+meines eigenen Diffs zweistellig viele echte Fehler findet.** Beim ersten
+Mal waren es acht, jetzt elf. Der Unterschied zum Durchgang davor ist
+nicht, dass weniger Fehler entstanden — es ist, dass sie gefunden wurden,
+bevor sie in einem Commit landeten.
+
+### 14.6 Was Agent 3 als tragfähig bezeichnet und nicht angefasst werden soll
+
+Der Vollständigkeit halber, weil ein Prüfbericht, der nur Mängel auflistet,
+ein unvollständiger Prüfbericht ist:
+
+1. `tests/test_architecture_gate.py::test_removing_an_evidence_file_reddens_exactly_die_checks_that_read_it`
+   — leitet die Abhängigkeiten per AST aus `verify()` ab, entfernt jede
+   Evidenzdatei einzeln und verlangt exakt die passenden roten Checks. Er
+   prüft die Prüfung. Er ist die Vorlage für alles, was in 14.2 dazukam.
+2. `neural_pods/architecture.py` als Konstruktion — Architekturregel als
+   Daten, statische Prüfung, Gegenprobe an einem synthetischen Paket. Die
+   Behandlung von `if TYPE_CHECKING:` als Nicht-Laufzeitkante ist korrekt
+   und subtil.
+3. `record_test_run.source_fingerprint()` — das einzige Konstrukt, das
+   Evidenz an den geprüften Baum band, bevor 14.2 es verallgemeinerte.
+4. Die Registry als Nahtstelle — 91 konsumierende Dateien, thread-sicher,
+   öffentliche Event-API. Die eine Stelle, an der die Architektur hält,
+   was sie verspricht.
+5. Die Ehrlichkeitskultur der Docstrings und ADRs. Wörtlich: *„Das ist
+   selten und wertvoll — und es ist der Grund, warum die Befunde oben
+   überhaupt auffindbar waren."*
+
+### 14.7 Was offen bleibt, benannt statt verschwiegen
+
+- **`perception_stream`, `improve_cycle`, `latent_addressing`** — die
+  Perceptions-Messung braucht den MQTT-Broker, P4 und P5 sind nicht gebaut.
+  Die Phasentabelle in `POD-ARM-DESIGN-20260919.md` sagt das jetzt, statt
+  Check-Namen zu führen, die es nie gab.
+- **Die Vier-Tier-Fassade implementiert zwei Tiers.** L0 und L3 kommen in
+  `storage.py` nur im Docstring vor. Drei unabhängige L1-Implementierungen
+  (`PodCache`, `MeshCache`, `PodStorage`), keine benutzt eine andere. Im
+  Storage-Dokument berichtigt; die Entscheidung, welche bleibt, steht aus.
+- **`neural_pods/` hat 56 Module, 31 davon ohne jede paketinterne Kante.**
+  Der `layering`-Check ist korrekt implementiert und fängt derzeit fast
+  nichts, weil zwischen den Schichten kaum Kanten verlaufen. Das liegt am
+  Baum, nicht am Prüfer.
+- **85 Benchmark-Skripte, 6 von einem Test erreichbar.** 6.575 Zeilen
+  Messcode, an denen die gesamte Gate-Evidenz hängt, sind die am
+  schlechtesten geprüfte Schicht im Repo — und fünf der acht Review-Befunde
+  aus 13.2 lagen genau dort. `research/benchmark_xgboost_pod.py` ist der
+  erste, dessen Kern als `measure()` importierbar ist und einen eigenen
+  Test hat (`tests/test_benchmark_xgboost_pod.py`). Das ist ein Anfang von
+  85, und es ist die wirksamste offene Maßnahme.
+- **26 Testdateien importieren torch hart**, `pytest` bricht im frischen
+  Klon mit 26 Collection-Errors ab. Kein `gpu`/`broker`/`server`-Marker.
+  Solange das so ist, kostet Neuaufzeichnen Server-Zugang, wird
+  aufgeschoben, und genau daraus entsteht eingefrorene Evidenz.
+
+### 14.8 Stand nach diesem Durchgang
+
+```
+Tests        454 grün · 0 rot · 0 errors · 8 übersprungen
+Gate         47 Checks · 37 grün · 10 rot
+             davon 7 mangels Server-Evidenz
+             davon 3 zu Recht rot (14.3), vorher grün ohne Beleg
+Schichten    56 Module · 0 Verstöße
+Evidenz      10 von 37 Dateien an den gemessenen Code gebunden
+```
+
 ## Quellen (externe Einordnung)
 
 - [S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv:2311.03285)](https://arxiv.org/abs/2311.03285) · [MLSys 2024 Paper](https://proceedings.mlsys.org/paper_files/paper/2024/file/906419cd502575b617cc489a1a696a67-Paper-Conference.pdf) · [LMSYS-Blog](https://www.lmsys.org/blog/2023-11-15-slora/)
@@ -1240,11 +1484,11 @@ git clone <repo> && cd PTR-Research
 python3 -m venv .venv && .venv/bin/pip install pytest numpy psutil \
   torch transformers peft sentence-transformers qdrant-client \
   lancedb paho-mqtt xgboost redis scikit-learn
-.venv/bin/python -m pytest -q                      # 307 passed, 6 failed, 3 skipped
-python3 research/verify_architecture_gate.py       # 10 rote Checks (Pfade unter runs/)
+.venv/bin/python -m pytest -q                      # 454 passed, 0 failed, 8 skipped
+python3 research/verify_architecture_gate.py       # 10 rote Checks (siehe 14.8)
 python3 -c "import ast,pathlib; t=ast.parse(pathlib.Path('research/verify_architecture_gate.py').read_text()); \
   print(sum(len(n.value.keys) for n in ast.walk(t) if isinstance(n,ast.Assign) \
-  and any(getattr(x,'id','')=='checks' for x in n.targets)))"   # 40
+  and any(getattr(x,'id','')=='checks' for x in n.targets)))"   # 47
 ```
 
 Die Prüfskripte zu Abschnitt 4.1 (`dream_algebra.py`) und 5.2

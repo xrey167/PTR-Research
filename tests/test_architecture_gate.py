@@ -292,3 +292,55 @@ def test_evidence_that_names_no_subject_is_reported_not_hidden():
         if data and data.get("subject"))
     assert stamped_with_subject, "no evidence file names its subject at all"
     assert not set(reported) & set(stamped_with_subject)
+
+
+# ---------------------------------------------------------------------------
+# The `tests` check is the only one that can execute something, which makes
+# its own fail-open modes the most expensive ones in the gate.
+
+
+@pytest.mark.parametrize("summary,expected", [
+    ("447 passed, 8 skipped in 35.50s",
+     {"passed": 447, "failed": 0, "errors": 0, "skipped": 8}),
+    # The line that used to parse to failed 0 and go through.
+    ("300 passed, 4 errors in 5s",
+     {"passed": 300, "failed": 0, "errors": 4, "skipped": 0}),
+    ("2 failed, 299 passed, 31 errors in 9s",
+     {"passed": 299, "failed": 2, "errors": 31, "skipped": 0}),
+    ("1 failed, 10 passed, 3 skipped in 1s",
+     {"passed": 10, "failed": 1, "errors": 0, "skipped": 3}),
+])
+def test_every_pytest_count_is_parsed_independently(summary, expected):
+    """pytest prints the counts in a varying order and omits the zeros. One
+    positional pattern is how `4 errors` was read as `failed: 0`."""
+    import record_test_run
+
+    counts = {}
+    for name, pattern in record_test_run.COUNT.items():
+        found = pattern.search(summary)
+        counts[name] = int(found.group(1)) if found else 0
+    for key, value in expected.items():
+        assert counts[key] == value, f"{key} in {summary!r}"
+
+
+@pytest.mark.parametrize("run,reason", [
+    ({"exit_code": 1, "failed": 0, "errors": 0, "passed": 400, "skipped": 0},
+     "a non-zero exit code"),
+    ({"exit_code": 0, "failed": 0, "errors": 4, "passed": 400, "skipped": 0},
+     "pytest errors"),
+    ({"exit_code": 0, "failed": 0, "errors": 0, "passed": 400, "skipped": 99},
+     "an unbounded number of skips"),
+])
+def test_the_tests_check_rejects_a_run_that_only_looks_clean(evidence_dir, run, reason):
+    """Each of these used to pass: the check read `failed` and `passed` and
+    nothing else, so a run that errored out, or that skipped most of itself,
+    was indistinguishable from a green one."""
+    import record_test_run
+
+    recorded = dict(run)
+    recorded["sources_sha256"] = record_test_run.source_fingerprint(REPO)
+    (evidence_dir / "tests-20260920.json").write_text(
+        json.dumps(recorded, indent=2), encoding="utf-8")
+
+    red = _red_checks(evidence_dir)
+    assert "tests" in red, f"the gate accepted a run with {reason}"

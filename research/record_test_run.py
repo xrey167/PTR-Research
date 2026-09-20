@@ -14,6 +14,18 @@ change:
 
 `--check` re-runs and fails if the stored report no longer matches, without
 overwriting it.
+
+WHAT THE SUMMARY LINE DOES NOT SAY, and why the counts are no longer read
+out of it alone. pytest reports collection and fixture failures as `errors`,
+not as `failed`: a run ending `300 passed, 4 errors` parsed to
+`failed: 0, passed: 300` and went through the gate. The same line said
+nothing about how many tests were skipped, so a suite that quietly stopped
+running half of itself kept the check green.
+
+`errors` is parsed, `skipped` is bounded, and pytest's EXIT CODE — the one
+value that is structured rather than reconstructed from text — is what the
+gate reads first. A non-zero exit code fails the check whatever the numbers
+say.
 """
 from __future__ import annotations
 import argparse
@@ -28,9 +40,12 @@ from pathlib import Path
 PROJECT = Path(__file__).resolve().parents[1]
 OUT = PROJECT / "research" / "runs" / "tests-20260920.json"
 SOURCE_DIRS = ("neural_pods", "research", "tests")
-SUMMARY = re.compile(
-    r"(?:(?P<failed>\d+) failed)?,?\s*(?P<passed>\d+) passed"
-    r"(?:,\s*(?P<skipped>\d+) skipped)?")
+#: Each count is matched independently, because pytest prints them in a
+#: varying order and omits the ones that are zero. A single positional
+#: pattern is how `4 errors` came to be read as `failed: 0`.
+COUNT = {name: re.compile(rf"(\d+) {name}")
+         for name in ("failed", "passed", "skipped", "errors", "xfailed",
+                      "xpassed")}
 
 
 def source_fingerprint(project_root: Path = PROJECT) -> str:
@@ -54,9 +69,14 @@ def run_pytest(project_root: Path = PROJECT) -> dict:
     tail = completed.stdout.strip().splitlines()
     summary_line = next((line for line in reversed(tail)
                          if " passed" in line or " failed" in line), "")
-    match = SUMMARY.search(summary_line)
-    counts = {key: int(match.group(key) or 0) for key in ("passed", "failed", "skipped")} \
-        if match else {"passed": 0, "failed": -1, "skipped": 0}
+    counts = {}
+    for name, pattern in COUNT.items():
+        found = pattern.search(summary_line)
+        counts[name] = int(found.group(1)) if found else 0
+    if not summary_line:
+        # No summary at all means the run did not get far enough to produce
+        # one. Recording zeros here would look like a clean slate.
+        counts["failed"] = -1
     return {
         "schema": "pytest-run:v1",
         "command": " ".join(command[1:]),

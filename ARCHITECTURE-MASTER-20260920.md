@@ -7,17 +7,42 @@ README und HANDOVER verweisen hierher und führen keine eigenen Zählstände meh
 
 | Größe | Wert | womit geprüft |
 |---|---|---|
-| Gate-Checks definiert | **44** | `research/verify_architecture_gate.py` |
+| Gate-Checks definiert | **47** | `research/verify_architecture_gate.py` |
 | Gate-Checks grün im Klon | **37** | `python research/verify_architecture_gate.py` |
-| Gate-Checks rot | **7** — alle mangels Evidenz, keine Regression | Gate nennt die 8 fehlenden Dateien |
-| Tests | **381 passed, 0 failed, 8 skipped** | `python research/record_test_run.py` |
+| Gate-Checks rot | **10** — 7 mangels Server-Evidenz, 3 zu Recht (siehe unten) | Gate nennt die 8 fehlenden Dateien |
+| Tests | **454 passed, 0 failed, 0 errors, 8 skipped** | `python research/record_test_run.py` |
 | Module `neural_pods/` | **56**, alle einer Schicht zugeordnet | `python neural_pods/architecture.py` |
 | Schichtverstöße | **0** | Gate-Check `layering` |
+| Evidenzdateien mit `subject`-Bindung | **10 von 37** | Gate-Ausgabe `evidence_without_a_subject` |
 
-Die sieben roten Checks brauchen Eval-Reports, die nur auf dem Server liegen
+**Die 44 waren 45** — die Zahl stand hier falsch und wurde per AST
+nachgezählt. Dazu kamen `reflex_failover` (Abspaltung, siehe unten) und
+`xgboost_pod` (P2 des Pod-Arm-Designs, Check war zugesagt und fehlte).
+
+Sieben rote Checks brauchen Eval-Reports, die nur auf dem Server liegen
 (`runs/`, gitignoriert). Die `.gitignore`-Ausnahme `!research/runs/*.json`
-existiert; es fehlt ein Commit vom Server, dann sind 43/43 aus einem Klon
-prüfbar. Der Befundbericht dazu: `research/STATE-DEEP-RESEARCH-20260920.md`.
+existiert; es fehlt ein Commit vom Server.
+
+**Drei rote Checks sind das Ergebnis des Pod-Audits vom 2026-09-20 und
+gehören so.** Sie waren grün, ohne etwas zu belegen:
+
+- `reflex_dispatch` — die aufgezeichnete Evidenz sagt `reflex_hits 0`,
+  `reflex_misses 132`, `failovers 132`: kein einziges Adress-Signal löste
+  auf, alle 132 Antworten kamen vom Default-Pod. Der Check sah weder die
+  Trefferzahl noch einen Fehlerzähler an, der je hochgezählt wird. Was der
+  Lauf wirklich zeigte, belegt jetzt `reflex_failover` (grün); der Reflex
+  selbst bleibt rot bis P5 (latentes Adress-Training).
+- `mesh_cache` — las `principal_isolated`, ein Feld, das der Benchmark
+  erzeugte, indem er einen Principal las, unter dem nie etwas geschrieben
+  wurde. Wahr per Konstruktion, während derselbe Lauf zwei Zeilen vorher
+  den fremden Principal über die Knotengrenze auslas. Neu aufzunehmen am
+  Broker, mit den ehrlichen Feldern.
+- `dream_reflex` — war grün an einem Zwei-Generationen-Spielzeugpool. Der
+  Check liest jetzt `pool_source`; im Klon ohne die Generationsberichte ist
+  rot das richtige Urteil.
+
+Der Befundbericht dazu: `research/STATE-DEEP-RESEARCH-20260920.md`,
+Abschnitt 14.
 
 Dieses Dokument integriert alle fünf Design-Dokumente zu einer kohärenten
 Architektur und legt die Umsetzung der offenen Bausteine fest.
@@ -26,7 +51,7 @@ Architektur und legt die Umsetzung der offenen Bausteine fest.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ GATE   verify_architecture_gate.py — fail-closed, 40+ Checks    │
+│ GATE   verify_architecture_gate.py — fail-closed, 47 Checks     │
 ├─────────────────────────────────────────────────────────────────┤
 │ POD-ARM / DREAM (Schicht 5)                                     │
 │ Reflex-Kanal (reflex.py) · Dream-Pod (dream.py, validiert:      │
@@ -42,7 +67,7 @@ Architektur und legt die Umsetzung der offenen Bausteine fest.
 │ calibration/token-cache · DatasetStore (H7) · Training (H5)     │
 ├─────────────────────────────────────────────────────────────────┤
 │ STORAGE (Schicht 2) — Vier-Tier-Modell                          │
-│ L0 Pod-lokal (crossbeam-Muster, jemalloc) · L1 Redis (0,3 ms)   │
+│ L0 Pod-lokal (crossbeam-Muster, jemalloc) · L1 Redis (0,38 ms)  │
 │ L2 LanceDB (Vektoren/Dokumente/Traces) · L3 Snapshots (SSD/S3)  │
 │ PodStorage-Fassade (storage.py) — die einzige Pod-API           │
 ├─────────────────────────────────────────────────────────────────┤
@@ -170,9 +195,20 @@ was sie tatsächlich leisten:
   die Stelle, an der `principal` etwas bedeutet (siehe ADR-9).
 - **Regel 1 (Promotion nie ohne Gate):** Das Gate führt seit 2026-09-20 die
   Tests wirklich aus (`--run-tests`) bzw. prüft eine aufgezeichnete
-  Testausführung gegen einen Quellcode-Hash. Die übrigen 42 Checks lesen
-  weiterhin aufgezeichnete Messdateien; das Gate ist dort ein
-  Regressions-Journal, kein Verifikationslauf.
+  Testausführung gegen einen Quellcode-Hash — inklusive pytest-Exitcode,
+  `errors` und einer Obergrenze für übersprungene Tests, nachdem die
+  Zusammenfassungszeile `300 passed, 4 errors` als `failed: 0` durchging.
+  Die übrigen 45 Checks lesen weiterhin aufgezeichnete Messdateien; das
+  Gate ist dort ein Regressions-Journal, kein Verifikationslauf.
+- **Die Bindung der Evidenz an den geprüften Code** war bis 2026-09-20 gar
+  nicht vorhanden: sieben Kernmodule durch ein Modul zu ersetzen, das beim
+  Import wirft, färbte **keinen einzigen** Check rot. Evidenz, die über
+  `research/evidence.py` mit `subject=` geschrieben wird, trägt jetzt einen
+  Hash über die gemessenen Module, und das Gate verweigert sie, sobald
+  einer davon sich ändert. Zehn der 37 gelesenen Dateien haben diese
+  Bindung; welche nicht, nennt das Gate in `evidence_without_a_subject`.
+  Das ist der offene Rest dieser Regel, und er ist benannt statt
+  unsichtbar.
 
 ## 6. Betriebs-Fakten (Server)
 
